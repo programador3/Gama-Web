@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\datos\bin\Debug\datos.dll">
+   <Modules>
+    <Module Name="datos.dll">
+     <Namespaces>
+      <Namespace Name="datos">
+       <Types>
+        <Type Name="conexion" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#execute_funcion(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="71">El objeto 'connection' admite Dispose más de una vez en el método 'conexion.execute_funcion(string)'. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 71</Issue>
+            </Message>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="73">'conexion.execute_funcion(string)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="66">La cadena de consulta pasada a 'SqlCommand.SqlCommand(string, SqlConnection)' en 'conexion.execute_funcion(string)' podría contener las siguientes variables: 'query'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#execute_sp(System.String,System.Collections.Generic.List`1&lt;System.Data.SqlClient.SqlParameter&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="39">El objeto 'connection' admite Dispose más de una vez en el método 'conexion.execute_sp(string, List&lt;SqlParameter&gt;)'. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 39</Issue>
+            </Message>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="41">'conexion.execute_sp(string, List&lt;SqlParameter&gt;)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="30">La cadena de consulta pasada a 'SqlCommand.SqlCommand(string, SqlConnection)' en 'conexion.execute_sp(string, List&lt;SqlParameter&gt;)' podría contener las siguientes variables: 'query'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#execute_sp_ajax(System.String,System.String[],System.Object[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="131">El objeto 'connection' admite Dispose más de una vez en el método 'conexion.execute_sp_ajax(string, string[], object[])'. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 131</Issue>
+            </Message>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="133">'conexion.execute_sp_ajax(string, string[], object[])' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="118">La cadena de consulta pasada a 'SqlCommand.SqlCommand(string, SqlConnection)' en 'conexion.execute_sp_ajax(string, string[], object[])' podría contener las siguientes variables: 'sp'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#obten_cadena_con()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="conexion.cs" Line="98">'conexion.obten_cadena_con()' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Datos" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#enviar(System.String,System.Collections.Generic.List`1&lt;System.Data.SqlClient.SqlParameter&gt;,System.Boolean)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="Datos.cs" Line="60">'Datos.enviar(string, List&lt;SqlParameter&gt;, bool)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#enviar_ajax(System.String,System.String[],System.Object[],System.Boolean)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="Datos.cs" Line="124">'Datos.enviar_ajax(string, string[], object[], bool)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#enviar_funcion(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:16Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos" File="Datos.cs" Line="79">'Datos.enviar_funcion(string)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>No usar Dispose varias veces en objetos</Name>
+   <Description>Un método Dispose correctamente implementado se puede llamar varias veces sin producir ninguna excepción. Sin embargo, esto no está garantizado y, para evitar generar una excepción System.ObjectDisposedException, no debe llamar al método Dispose más de una vez en un objeto.</Description>
+   <Resolution Name="Default">El objeto {0} admite Dispose más de una vez en el método {1}. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 131</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200">
+   <Name>Reiniciar para mantener los detalles de la pila</Name>
+   <Description>Utilice la instrucción de reinicio IL para mantener los detalles de la pila original cuando vaya a volver a provocar la excepción detectada.</Description>
+   <Resolution Name="Default">{0} vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182363.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad</Name>
+   <Description>Una cadena de comando SQL compilada a partir de datos proporcionados por el usuario es vulnerable a ataques pon inyección de código SQL. Microsoft SQL Server y otros servidores de bases de datos admiten procedimientos almacenados y consultas SQL parametrizadas, que reducen el riesgo de ataques por inyección.</Description>
+   <Resolution Name="WithNonLiterals">La cadena de consulta pasada a {0} en {1} podría contener las siguientes variables: {2}. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Categoría</String>
+  <String Key="Certainty">Certeza</String>
+  <String Key="CollapseAll">Contraer todo</String>
+  <String Key="CheckId">Comprobar id.</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">errores</String>
+  <String Key="ExpandAll">Expandir todo</String>
+  <String Key="Help">Ayuda</String>
+  <String Key="Line">Línea</String>
+  <String Key="Messages">mensajes</String>
+  <String Key="LocationNotStoredInPdb">[Ubicación no almacenada en Pdb]</String>
+  <String Key="Project">Proyecto</String>
+  <String Key="Resolution">Resolución</String>
+  <String Key="Rule">Regla</String>
+  <String Key="RuleFile">Archivo de regla</String>
+  <String Key="RuleDescription">Descripción de la regla</String>
+  <String Key="Source">Origen</String>
+  <String Key="Status">Estado</String>
+  <String Key="Target">Círculos concéntricos</String>
+  <String Key="Warning">Advertencia</String>
+  <String Key="Warnings">advertencias</String>
+  <String Key="ReportTitle">Informe de análisis del código</String>
+ </Localized>
+</FxCopReport>

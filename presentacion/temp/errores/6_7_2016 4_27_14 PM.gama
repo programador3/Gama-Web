@@ -1,0 +1,9 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): Error al convertir el tipo de datos nvarchar a int.
+   at negocio.Componentes.SolicitudHorarioCOM.Autorizar(Solicitud_HorarioENT Etiqueta)
+   at presentacion.solicitud_horario.Yes_Click(Object sender, EventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\solicitud_horario.aspx.cs:line 248
+ClientConnectionId:aad565d3-a06f-4ef7-b912-6279e7c2f2df
+Error Number:8114,State:5,Class:16

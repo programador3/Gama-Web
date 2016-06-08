@@ -1,0 +1,871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\programador3\Desktop\Compilado\ELITE</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="assets/bootstrap/css/bootstrap-theme.css">
+      <publishTime>03/16/2016 15:30:44</publishTime>
+    </File>
+    <File Include="assets/bootstrap/css/bootstrap-theme.css.map">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/bootstrap/css/bootstrap-theme.min.css">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/bootstrap/css/bootstrap.css">
+      <publishTime>03/16/2016 15:30:48</publishTime>
+    </File>
+    <File Include="assets/bootstrap/css/bootstrap.css.map">
+      <publishTime>03/05/2016 11:34:28</publishTime>
+    </File>
+    <File Include="assets/bootstrap/css/bootstrap.min.css">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/bootstrap/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/bootstrap/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>03/16/2016 15:30:57</publishTime>
+    </File>
+    <File Include="assets/bootstrap/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/bootstrap/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/bootstrap/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/bootstrap/js/bootstrap.js">
+      <publishTime>03/17/2016 08:15:16</publishTime>
+    </File>
+    <File Include="assets/bootstrap/js/bootstrap.min.js">
+      <publishTime>03/16/2016 15:31:02</publishTime>
+    </File>
+    <File Include="assets/bootstrap/js/npm.js">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/css/form-elements.css">
+      <publishTime>03/16/2016 15:31:03</publishTime>
+    </File>
+    <File Include="assets/css/style.css">
+      <publishTime>03/17/2016 14:26:32</publishTime>
+    </File>
+    <File Include="assets/font-awesome/css/font-awesome.css">
+      <publishTime>03/16/2016 15:31:06</publishTime>
+    </File>
+    <File Include="assets/font-awesome/css/font-awesome.min.css">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>03/03/2016 14:48:01</publishTime>
+    </File>
+    <File Include="assets/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>03/16/2016 15:31:08</publishTime>
+    </File>
+    <File Include="assets/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/font-awesome/fonts/fontawesome-webfont.woff2">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/animated.less">
+      <publishTime>03/16/2016 15:31:09</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/bordered-pulled.less">
+      <publishTime>03/16/2016 15:31:10</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/core.less">
+      <publishTime>03/16/2016 15:31:11</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/fixed-width.less">
+      <publishTime>03/16/2016 15:31:12</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/font-awesome.less">
+      <publishTime>03/16/2016 15:31:12</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/icons.less">
+      <publishTime>03/16/2016 15:31:13</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/larger.less">
+      <publishTime>03/16/2016 15:31:14</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/list.less">
+      <publishTime>03/16/2016 15:31:14</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/mixins.less">
+      <publishTime>03/16/2016 15:31:15</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/path.less">
+      <publishTime>03/16/2016 15:31:16</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/rotated-flipped.less">
+      <publishTime>03/16/2016 15:31:16</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/stacked.less">
+      <publishTime>03/16/2016 15:31:17</publishTime>
+    </File>
+    <File Include="assets/font-awesome/less/variables.less">
+      <publishTime>03/16/2016 15:31:18</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/font-awesome.scss">
+      <publishTime>03/16/2016 15:31:28</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_animated.scss">
+      <publishTime>03/16/2016 15:31:19</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_bordered-pulled.scss">
+      <publishTime>03/16/2016 15:31:20</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_core.scss">
+      <publishTime>03/16/2016 15:31:20</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_fixed-width.scss">
+      <publishTime>03/16/2016 15:31:21</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_icons.scss">
+      <publishTime>03/16/2016 15:31:22</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_larger.scss">
+      <publishTime>03/16/2016 15:31:23</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_list.scss">
+      <publishTime>03/16/2016 15:31:23</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_mixins.scss">
+      <publishTime>03/16/2016 15:31:24</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_path.scss">
+      <publishTime>03/16/2016 15:31:25</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_rotated-flipped.scss">
+      <publishTime>03/16/2016 15:31:26</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_stacked.scss">
+      <publishTime>03/16/2016 15:31:26</publishTime>
+    </File>
+    <File Include="assets/font-awesome/scss/_variables.scss">
+      <publishTime>03/16/2016 15:31:27</publishTime>
+    </File>
+    <File Include="assets/ico/apple-touch-icon-114-precomposed.png">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/ico/apple-touch-icon-144-precomposed.png">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/ico/apple-touch-icon-57-precomposed.png">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/ico/apple-touch-icon-72-precomposed.png">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/ico/favicon.png">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/img/1.jpg">
+      <publishTime>03/17/2016 09:18:28</publishTime>
+    </File>
+    <File Include="assets/img/backgrounds/1%402x.jpg">
+      <publishTime>03/03/2016 14:48:02</publishTime>
+    </File>
+    <File Include="assets/img/backgrounds/1.jpg">
+      <publishTime>03/17/2016 09:18:34</publishTime>
+    </File>
+    <File Include="assets/js/jquery-1.11.1.js">
+      <publishTime>03/17/2016 08:15:36</publishTime>
+    </File>
+    <File Include="assets/js/jquery-1.11.1.min.js">
+      <publishTime>03/16/2016 15:31:37</publishTime>
+    </File>
+    <File Include="assets/js/jquery.backstretch.js">
+      <publishTime>03/17/2016 08:15:40</publishTime>
+    </File>
+    <File Include="assets/js/jquery.backstretch.min.js">
+      <publishTime>03/16/2016 15:31:39</publishTime>
+    </File>
+    <File Include="assets/js/placeholder.js">
+      <publishTime>03/16/2016 15:31:39</publishTime>
+    </File>
+    <File Include="assets/js/scripts.js">
+      <publishTime>03/17/2016 08:15:42</publishTime>
+    </File>
+    <File Include="bin/ClosedXML.dll">
+      <publishTime>03/03/2016 15:08:58</publishTime>
+    </File>
+    <File Include="bin/datos.dll">
+      <publishTime>03/16/2016 15:35:54</publishTime>
+    </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>03/03/2016 15:08:57</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>03/03/2016 15:08:37</publishTime>
+    </File>
+    <File Include="bin/negocio.dll">
+      <publishTime>03/18/2016 12:20:21</publishTime>
+    </File>
+    <File Include="bin/presentacion.dll">
+      <publishTime>03/18/2016 12:20:22</publishTime>
+    </File>
+    <File Include="catalogo_cuestionarios.aspx">
+      <publishTime>03/17/2016 08:15:44</publishTime>
+    </File>
+    <File Include="css/ionicons.css">
+      <publishTime>03/05/2016 11:00:44</publishTime>
+    </File>
+    <File Include="css/ionicons.min.css">
+      <publishTime>03/05/2016 11:00:44</publishTime>
+    </File>
+    <File Include="css/PanelsLTE.css">
+      <publishTime>03/05/2016 11:00:44</publishTime>
+    </File>
+    <File Include="css/scss/style.scss">
+      <publishTime>03/17/2016 11:07:01</publishTime>
+    </File>
+    <File Include="css/scss/themes/flat-blue.scss">
+      <publishTime>03/16/2016 15:31:48</publishTime>
+    </File>
+    <File Include="css/scss/themes/flat-green.scss">
+      <publishTime>03/16/2016 15:31:50</publishTime>
+    </File>
+    <File Include="css/style.css">
+      <publishTime>03/16/2016 15:31:51</publishTime>
+    </File>
+    <File Include="css/themes/flat-blue.css">
+      <publishTime>03/16/2016 15:31:51</publishTime>
+    </File>
+    <File Include="css/themes/flat-green.css">
+      <publishTime>03/16/2016 15:31:52</publishTime>
+    </File>
+    <File Include="cuestionario.aspx">
+      <publishTime>03/18/2016 10:54:07</publishTime>
+    </File>
+    <File Include="cuestionarios_captura.aspx">
+      <publishTime>03/17/2016 08:42:15</publishTime>
+    </File>
+    <File Include="DataTable/css/dataTables.bootstrap.css">
+      <publishTime>03/03/2016 16:27:36</publishTime>
+    </File>
+    <File Include="DataTable/css/dataTables.bootstrap.min.css">
+      <publishTime>03/03/2016 16:27:36</publishTime>
+    </File>
+    <File Include="DataTable/css/jquery.dataTables.css">
+      <publishTime>03/03/2016 16:27:36</publishTime>
+    </File>
+    <File Include="DataTable/css/jquery.dataTables.min.css">
+      <publishTime>03/03/2016 16:27:36</publishTime>
+    </File>
+    <File Include="DataTable/js/jquery.dataTables.js">
+      <publishTime>03/03/2016 16:27:48</publishTime>
+    </File>
+    <File Include="DataTable/js/jquery.dataTables.min.js">
+      <publishTime>03/03/2016 16:27:48</publishTime>
+    </File>
+    <File Include="DataTable/js/jquery.js">
+      <publishTime>03/03/2016 16:27:48</publishTime>
+    </File>
+    <File Include="font-awesome/css/font-awesome.css">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/css/font-awesome.min.css">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>03/16/2016 15:32:22</publishTime>
+    </File>
+    <File Include="font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/fonts/FontAwesome.otf">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/bordered-pulled.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/core.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/fixed-width.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/font-awesome.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/icons.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/larger.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/list.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/mixins.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/path.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/rotated-flipped.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/spinning.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/stacked.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/less/variables.less">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/font-awesome.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_bordered-pulled.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_core.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_fixed-width.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_icons.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_larger.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_list.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_mixins.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_path.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_rotated-flipped.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_spinning.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_stacked.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="font-awesome/scss/_variables.scss">
+      <publishTime>03/05/2016 11:08:21</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>03/05/2016 11:08:32</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>03/16/2016 15:32:39</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>03/05/2016 11:08:32</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>03/05/2016 11:08:32</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>03/05/2016 11:08:32</publishTime>
+    </File>
+    <File Include="fonts/ionicons.eot">
+      <publishTime>03/05/2016 11:08:32</publishTime>
+    </File>
+    <File Include="fonts/ionicons.svg">
+      <publishTime>03/16/2016 15:32:43</publishTime>
+    </File>
+    <File Include="fonts/ionicons.ttf">
+      <publishTime>03/05/2016 11:08:32</publishTime>
+    </File>
+    <File Include="fonts/ionicons.woff">
+      <publishTime>03/05/2016 11:08:32</publishTime>
+    </File>
+    <File Include="Global.Master">
+      <publishTime>03/17/2016 14:29:54</publishTime>
+    </File>
+    <File Include="icons/font-awesome.html">
+      <publishTime>03/16/2016 15:32:49</publishTime>
+    </File>
+    <File Include="icons/glyphicons.html">
+      <publishTime>03/16/2016 15:32:50</publishTime>
+    </File>
+    <File Include="imagenes/actions_document_preview.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/anexar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/areas/1.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/avisos.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/back_btn.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/add_image_prof.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/btn_solicitar_equipos.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/btn_solicitar_equipos_press.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/car_default.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/celular.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/checked.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/default_employed.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/excel.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/home.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/html_icon.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icono_organigrama.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_actualizar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_actualizar_16.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_add.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_agregar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_autorizar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_borrar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_buscar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_candado.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_comit.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_comparar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_delete.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_editar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_list_perfil.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_llave.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_regresar.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_regresar_16.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_return_borr.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/icon_user.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/inchecked.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/logo-gama.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/more.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/new_register.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/ntphone.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/pdf.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/preview_icon.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/return-up.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/return_default.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/ver-mas.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/word_icon.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/down_btn.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/elite.png">
+      <publishTime>03/17/2016 09:00:44</publishTime>
+    </File>
+    <File Include="imagenes/favicon.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/fondo_login.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/hexagono_azul.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/ios_off.png">
+      <publishTime>03/07/2016 16:29:47</publishTime>
+    </File>
+    <File Include="imagenes/ios_on.png">
+      <publishTime>03/07/2016 16:29:47</publishTime>
+    </File>
+    <File Include="imagenes/item_header.png">
+      <publishTime>03/17/2016 12:16:44</publishTime>
+    </File>
+    <File Include="imagenes/loading.gif">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/logo.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/logo_black.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/lugares/1.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/lugares/2.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/lugares/3.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/lugares/4.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/lugares/5.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/lugares/6.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/lugares/7.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/lugares/8.jpg">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/office_html2.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/pendiente.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/sign-up.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/up_btn.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/word.png">
+      <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="img/.DS_Store">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/app-header-bg.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/backdrop/micro_carbon.png">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/backdrop/tactile_noise.png">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/bg.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/bg/picjumbo.com_HNCK3558.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/contact-us-bg.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/profile/picjumbo.com_HNCK4153_resize.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/profile/profile-1.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/screenshots/dashboard.png">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/screenshots/landing.png">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/screenshots/login.png">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/screenshots/theming.png">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/thumbnails/picjumbo.com_HNCK4737.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/thumbnails/picjumbo.com_IMG_3241.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="img/thumbnails/picjumbo.com_IMG_4566.jpg">
+      <publishTime>03/03/2016 14:44:45</publishTime>
+    </File>
+    <File Include="js/alert.js">
+      <publishTime>03/16/2016 15:32:51</publishTime>
+    </File>
+    <File Include="js/app.js">
+      <publishTime>03/16/2016 15:32:52</publishTime>
+    </File>
+    <File Include="js/button.js">
+      <publishTime>03/16/2016 15:32:53</publishTime>
+    </File>
+    <File Include="js/card.js">
+      <publishTime>03/16/2016 15:32:53</publishTime>
+    </File>
+    <File Include="js/chartjs.js">
+      <publishTime>03/16/2016 15:32:54</publishTime>
+    </File>
+    <File Include="js/coffee/alert.coffee">
+      <publishTime>03/03/2016 14:45:05</publishTime>
+    </File>
+    <File Include="js/coffee/app.coffee">
+      <publishTime>03/03/2016 14:45:05</publishTime>
+    </File>
+    <File Include="js/coffee/button.coffee">
+      <publishTime>03/03/2016 14:45:05</publishTime>
+    </File>
+    <File Include="js/coffee/card.coffee">
+      <publishTime>03/03/2016 14:45:05</publishTime>
+    </File>
+    <File Include="js/coffee/chartjs.coffee">
+      <publishTime>03/03/2016 14:45:05</publishTime>
+    </File>
+    <File Include="js/coffee/index.coffee">
+      <publishTime>03/03/2016 14:45:05</publishTime>
+    </File>
+    <File Include="js/coffee/theming.coffee">
+      <publishTime>03/03/2016 14:45:05</publishTime>
+    </File>
+    <File Include="js/index.js">
+      <publishTime>03/16/2016 15:32:55</publishTime>
+    </File>
+    <File Include="js/list.js">
+      <publishTime>03/16/2016 15:32:56</publishTime>
+    </File>
+    <File Include="js/modal.js">
+      <publishTime>03/16/2016 15:32:56</publishTime>
+    </File>
+    <File Include="js/sweetalert-dev.js">
+      <publishTime>03/03/2016 15:10:44</publishTime>
+    </File>
+    <File Include="js/sweetalert.css">
+      <publishTime>03/03/2016 15:10:44</publishTime>
+    </File>
+    <File Include="js/sweetalert.min.js">
+      <publishTime>03/03/2016 15:10:44</publishTime>
+    </File>
+    <File Include="js/theming.js">
+      <publishTime>03/16/2016 15:33:01</publishTime>
+    </File>
+    <File Include="lib/css/animate.min.css">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/css/bootstrap-switch.min.css">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/css/bootstrap.min.css">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/css/checkbox3.min.css">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/css/dataTables.bootstrap.css">
+      <publishTime>03/16/2016 15:33:13</publishTime>
+    </File>
+    <File Include="lib/css/font-awesome.min.css">
+      <publishTime>03/16/2016 15:33:16</publishTime>
+    </File>
+    <File Include="lib/css/jquery.dataTables.min.css">
+      <publishTime>03/16/2016 15:33:17</publishTime>
+    </File>
+    <File Include="lib/css/select2.min.css">
+      <publishTime>03/16/2016 15:33:19</publishTime>
+    </File>
+    <File Include="lib/fonts/fontawesome-webfont.eot">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/fonts/fontawesome-webfont.svg">
+      <publishTime>03/16/2016 15:33:21</publishTime>
+    </File>
+    <File Include="lib/fonts/fontawesome-webfont.ttf">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/fonts/fontawesome-webfont.woff">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/fonts/fontawesome-webfont.woff2">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/fonts/FontAwesome.otf">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>03/03/2016 14:44:13</publishTime>
+    </File>
+    <File Include="lib/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>03/16/2016 15:33:21</publishTime>
+    </File>
+    <File Include="lib/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>03/03/2016 14:44:14</publishTime>
+    </File>
+    <File Include="lib/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>03/03/2016 14:44:14</publishTime>
+    </File>
+    <File Include="lib/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>03/03/2016 14:44:14</publishTime>
+    </File>
+    <File Include="lib/js/ace/ace.js">
+      <publishTime>03/17/2016 08:17:02</publishTime>
+    </File>
+    <File Include="lib/js/ace/mode-html.js">
+      <publishTime>03/17/2016 08:17:03</publishTime>
+    </File>
+    <File Include="lib/js/ace/theme-github.js">
+      <publishTime>03/16/2016 15:33:26</publishTime>
+    </File>
+    <File Include="lib/js/bootstrap-switch.min.js">
+      <publishTime>03/16/2016 15:33:28</publishTime>
+    </File>
+    <File Include="lib/js/bootstrap.min.js">
+      <publishTime>03/16/2016 15:33:30</publishTime>
+    </File>
+    <File Include="lib/js/Chart.min.js">
+      <publishTime>03/16/2016 15:33:34</publishTime>
+    </File>
+    <File Include="lib/js/dataTables.bootstrap.min.js">
+      <publishTime>03/16/2016 15:33:35</publishTime>
+    </File>
+    <File Include="lib/js/jquery.dataTables.min.js">
+      <publishTime>03/16/2016 15:33:38</publishTime>
+    </File>
+    <File Include="lib/js/jquery.matchHeight-min.js">
+      <publishTime>03/16/2016 15:33:39</publishTime>
+    </File>
+    <File Include="lib/js/jquery.min.js">
+      <publishTime>03/16/2016 15:33:47</publishTime>
+    </File>
+    <File Include="lib/js/select2.full.min.js">
+      <publishTime>03/16/2016 15:33:56</publishTime>
+    </File>
+    <File Include="login.aspx">
+      <publishTime>03/17/2016 14:29:16</publishTime>
+    </File>
+    <File Include="Login.Master">
+      <publishTime>03/17/2016 08:17:24</publishTime>
+    </File>
+    <File Include="log_vendedores.aspx">
+      <publishTime>03/17/2016 08:17:19</publishTime>
+    </File>
+    <File Include="menu.aspx">
+      <publishTime>03/17/2016 10:03:19</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/07/2016 09:01:57</publishTime>
+    </File>
+    <File Include="pendientes.aspx">
+      <publishTime>03/17/2016 08:17:29</publishTime>
+    </File>
+    <File Include="reporte_visitas.aspx">
+      <publishTime>03/18/2016 12:19:52</publishTime>
+    </File>
+    <File Include="reporte_visitas_detalles.aspx">
+      <publishTime>03/18/2016 14:05:04</publishTime>
+    </File>
+    <File Include="sounds/correct.wav">
+      <publishTime>03/03/2016 15:12:21</publishTime>
+    </File>
+    <File Include="sounds/error.wav">
+      <publishTime>03/03/2016 15:12:21</publishTime>
+    </File>
+    <File Include="sounds/info.wav">
+      <publishTime>03/03/2016 15:12:21</publishTime>
+    </File>
+    <File Include="sounds/modal.wav">
+      <publishTime>03/03/2016 15:12:21</publishTime>
+    </File>
+    <File Include="sounds/sms.wav">
+      <publishTime>03/03/2016 15:12:21</publishTime>
+    </File>
+    <File Include="vendedores.aspx">
+      <publishTime>03/17/2016 08:17:32</publishTime>
+    </File>
+    <File Include="vendedores_captura.aspx">
+      <publishTime>03/17/2016 08:17:34</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/18/2016 12:20:24</publishTime>
+    </File>
+    <File Include="WebForm1.aspx">
+      <publishTime>03/03/2016 15:01:50</publishTime>
+    </File>
+    <File Include="web_methods.aspx">
+      <publishTime>03/17/2016 08:17:40</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

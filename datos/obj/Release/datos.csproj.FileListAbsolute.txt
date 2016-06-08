@@ -1,0 +1,56 @@
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\datos\bin\Release\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\datos\bin\Release\datos.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\datos\obj\Release\datos.recursos.resources
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\datos\obj\Release\datos.csproj.GenerateResource.Cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\datos\obj\Release\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\datos\obj\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\datos\bin\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\datos\bin\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\datos\obj\Release\datos.recursos.resources
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\datos\obj\Release\datos.csproj.GenerateResource.Cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\datos\obj\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\datos\obj\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\datos\bin\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\datos\bin\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\datos\obj\Release\datos.recursos.resources
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\datos\obj\Release\datos.csproj.GenerateResource.Cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\datos\obj\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\datos\obj\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos\bin\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos\bin\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos\obj\Release\datos.recursos.resources
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos\obj\Release\datos.csproj.GenerateResource.Cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos\obj\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\datos\obj\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\datos\bin\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\datos\bin\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\datos\obj\Release\datos.recursos.resources
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\datos\obj\Release\datos.csproj.GenerateResource.Cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\datos\obj\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\datos\obj\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\datos\bin\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\datos\bin\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\datos\obj\Release\datos.recursos.resources
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\datos\obj\Release\datos.csproj.GenerateResource.Cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\datos\obj\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\datos\obj\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\datos\bin\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\datos\bin\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\datos\obj\Release\datos.recursos.resources
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\datos\obj\Release\datos.csproj.GenerateResource.Cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\datos\obj\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\datos\obj\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\datos\bin\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\datos\bin\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\datos\obj\Release\datos.recursos.resources
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\datos\obj\Release\datos.csproj.GenerateResource.Cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\datos\obj\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\datos\obj\Release\datos.pdb

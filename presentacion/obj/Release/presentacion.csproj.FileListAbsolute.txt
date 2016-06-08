@@ -1,0 +1,1130 @@
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\itextsharp.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\negocio.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\negocio.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\itextsharp.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\bin\datos.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\08_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\itextsharp.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\negocio.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\negocio.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\itextsharp.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\bin\datos.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\09_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\itextsharp.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\negocio.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\negocio.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\itextsharp.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\bin\datos.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\10_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\itextsharp.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\negocio.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\negocio.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\itextsharp.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\bin\datos.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\11_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\itextsharp.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\negocio.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\negocio.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\itextsharp.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\bin\datos.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\12_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\itextsharp.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\negocio.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\negocio.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\itextsharp.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\bin\datos.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\14_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\presentacion.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\itextsharp.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\negocio.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\datos.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\negocio.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\itextsharp.xml
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\bin\datos.pdb
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+M:\Trabajos Humberto\Respaldo Humberto\Proyectos Diarios\2016\03MARZO\15_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\presentacion.dll.config
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\presentacion.dll
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\presentacion.pdb
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\ClosedXML.dll
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\itextsharp.dll
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\negocio.dll
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\datos.dll
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\negocio.pdb
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\ClosedXML.xml
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\itextsharp.xml
+C:\Users\programador3\Desktop\Elite Web\presentacion\bin\datos.pdb
+C:\Users\programador3\Desktop\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+C:\Users\programador3\Desktop\Elite Web\presentacion\obj\Release\presentacion.dll
+C:\Users\programador3\Desktop\Elite Web\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\16_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\17_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\18_03_16\Elite Web\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\28_03_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\03MARZO\29_03_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\01_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\04_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\05_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\06_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\07_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\08_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\09_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\11_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\14_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\15_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\18_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\19_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\21_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\22_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\23_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\25_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\26_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\27_04_16\Tareas\presentacion\obj\Release\presentacion.pdb
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\presentacion.dll.config
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\presentacion.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\presentacion.pdb
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\ClosedXML.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\EjemploDLL.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\itextsharp.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\negocio.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\datos.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\negocio.pdb
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\ClosedXML.xml
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\EjemploDLL.pdb
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\itextsharp.xml
+C:\Users\programador3\Desktop\Puestos\presentacion\bin\datos.pdb
+C:\Users\programador3\Desktop\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+C:\Users\programador3\Desktop\Puestos\presentacion\obj\Release\presentacion.dll
+C:\Users\programador3\Desktop\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\29_04_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\02_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\03_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\04_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\06_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\07_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\09_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\10_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\11_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\12_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\13_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\14_03_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\16_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\17_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\18_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\19_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\20_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\21_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\23_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\24_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\25_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\26_05_15\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\29_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\05MAYO\31_05_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\01_06_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\02_06_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\03_06_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\04_06_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\06_06_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\07_06_16\Puestos\presentacion\obj\Release\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\presentacion.dll.config
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\presentacion.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\ClosedXML.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\EjemploDLL.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\itextsharp.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\Winthusiasm.HtmlEditor.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\ClosedXML.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\EjemploDLL.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\itextsharp.xml
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\bin\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\obj\Release\presentacion.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\obj\Release\presentacion.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\08_06_16\Puestos\presentacion\obj\Release\presentacion.pdb

@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\bin\Debug\negocio.dll">
+   <Modules>
+    <Module Name="negocio.dll">
+     <Namespaces>
+      <Namespace Name="negocio.Componentes">
+       <Types>
+        <Type Name="Asignacion_RevisionesCOM" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AgregarAsignacion(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="213">'Asignacion_RevisionesCOM.AgregarAsignacion(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaAsignacion(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="28">'Asignacion_RevisionesCOM.CargaAsignacion(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaComboDinamico(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="137">'Asignacion_RevisionesCOM.CargaComboDinamico(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaComboDinamicoServicios(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="157">'Asignacion_RevisionesCOM.CargaComboDinamicoServicios(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaDatosEducionRevision(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="114">'Asignacion_RevisionesCOM.CargaDatosEducionRevision(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaSucursales(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="68">'Asignacion_RevisionesCOM.CargaSucursales(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaTipoAplicacion(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="46">'Asignacion_RevisionesCOM.CargaTipoAplicacion(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaTipoRevisiones(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="91">'Asignacion_RevisionesCOM.CargaTipoRevisiones(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EditarAsignacion(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="248">'Asignacion_RevisionesCOM.EditarAsignacion(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EliminarAsignacion(negocio.Entidades.Asignacion_RevisionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Asignacion_RevisionesCOM.cs" Line="179">'Asignacion_RevisionesCOM.EliminarAsignacion(Asignacion_RevisionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="AvisosCOM" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CargaAvisos(negocio.Entidades.AvisosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="AvisosCOM.cs" Line="28">'AvisosCOM.CargaAvisos(AvisosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OcultaAvisos(negocio.Entidades.AvisosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="AvisosCOM.cs" Line="51">'AvisosCOM.OcultaAvisos(AvisosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="CuestionariosCOM" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AgregarCliente(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="348">'CuestionariosCOM.AgregarCliente(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AgregarCuestionario(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="104">'CuestionariosCOM.AgregarCuestionario(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CambiarNombreCliente(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="399">'CuestionariosCOM.CambiarNombreCliente(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CancelarrEncuesta(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="375">'CuestionariosCOM.CancelarrEncuesta(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaCategoriasArticuloss(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="41">'CuestionariosCOM.CargaCategoriasArticuloss(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaCuestionarios(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="23">'CuestionariosCOM.CargaCuestionarios(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargarClientes(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="467">'CuestionariosCOM.CargarClientes(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargarCotizaciones(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="526">'CuestionariosCOM.CargarCotizaciones(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargarCuestionariosPendientes(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="486">'CuestionariosCOM.CargarCuestionariosPendientes(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargarDatosEditar(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="172">'CuestionariosCOM.CargarDatosEditar(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargarDatosEncuesta(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="198">'CuestionariosCOM.CargarDatosEncuesta(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargarEncuestaHistorial(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="432">'CuestionariosCOM.CargarEncuestaHistorial(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargarVendedores(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="224">'CuestionariosCOM.CargarVendedores(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaTipoClientes(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="449">'CuestionariosCOM.CargaTipoClientes(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaTipoCuestionarios(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="77">'CuestionariosCOM.CargaTipoCuestionarios(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaTipoPreguntas(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="59">'CuestionariosCOM.CargaTipoPreguntas(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaVisitasReporte(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="506">'CuestionariosCOM.CargaVisitasReporte(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EditarCuestionario(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="132">'CuestionariosCOM.EditarCuestionario(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EliminarCuestionario(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="154">'CuestionariosCOM.EliminarCuestionario(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IngresarColaDeTrabajo(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="303">'CuestionariosCOM.IngresarColaDeTrabajo(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IngresarEncuesta(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="273">'CuestionariosCOM.IngresarEncuesta(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#TerminarEncuesta(negocio.Entidades.CuestionariosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="CuestionariosCOM.cs" Line="325">'CuestionariosCOM.TerminarEncuesta(CuestionariosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Grupos_PuestosCOM" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AgregarGrupo(negocio.Entidades.Grupos_PuestosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Grupos_PuestosCOM.cs" Line="130">'Grupos_PuestosCOM.AgregarGrupo(Grupos_PuestosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaGrupos_Puestos(negocio.Entidades.Grupos_PuestosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Grupos_PuestosCOM.cs" Line="74">'Grupos_PuestosCOM.CargaGrupos_Puestos(Grupos_PuestosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaGruposEditar(negocio.Entidades.Grupos_PuestosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Grupos_PuestosCOM.cs" Line="52">'Grupos_PuestosCOM.CargaGruposEditar(Grupos_PuestosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaPuesto(negocio.Entidades.Grupos_PuestosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Grupos_PuestosCOM.cs" Line="28">'Grupos_PuestosCOM.CargaPuesto(Grupos_PuestosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EditarGrupo(negocio.Entidades.Grupos_PuestosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Grupos_PuestosCOM.cs" Line="160">'Grupos_PuestosCOM.EditarGrupo(Grupos_PuestosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EliminarGrupo(negocio.Entidades.Grupos_PuestosENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="Grupos_PuestosCOM.cs" Line="101">'Grupos_PuestosCOM.EliminarGrupo(Grupos_PuestosENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="NotificacionesCOM" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CargaAvisos(negocio.Entidades.NotificacionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="NotificacionesCOM.cs" Line="131">'NotificacionesCOM.CargaAvisos(NotificacionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaMenuHerr(negocio.Entidades.NotificacionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="NotificacionesCOM.cs" Line="75">'NotificacionesCOM.CargaMenuHerr(NotificacionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaNotificaciones(negocio.Entidades.NotificacionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="NotificacionesCOM.cs" Line="24">'NotificacionesCOM.CargaNotificaciones(NotificacionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaSlack(negocio.Entidades.NotificacionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="NotificacionesCOM.cs" Line="40">'NotificacionesCOM.CargaSlack(NotificacionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaUsuarios(negocio.Entidades.NotificacionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="NotificacionesCOM.cs" Line="92">'NotificacionesCOM.CargaUsuarios(NotificacionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetName(negocio.Entidades.NotificacionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="NotificacionesCOM.cs" Line="57">'NotificacionesCOM.GetName(NotificacionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NuevoMensajeGeneral(negocio.Entidades.NotificacionesENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="NotificacionesCOM.cs" Line="113">'NotificacionesCOM.NuevoMensajeGeneral(NotificacionesENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="OpcionesBL" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#MenuDinmaico(negocio.Entidades.OpcionesE)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="OpcionesBL.cs" Line="72">'OpcionesBL.MenuDinmaico(OpcionesE)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#opciones_menu(negocio.Entidades.OpcionesE)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="OpcionesBL.cs" Line="52">'OpcionesBL.opciones_menu(OpcionesE)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#preparar_funcion(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="OpcionesBL.cs" Line="88">'OpcionesBL.preparar_funcion(string)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="OrganigramaBL" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CargaPath(negocio.Entidades.UsuariosE)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="OrganigramaBL.cs" Line="40">'OrganigramaBL.CargaPath(UsuariosE)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#sp_ajax(System.String,System.String[],System.Object[],System.Boolean)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="OrganigramaBL.cs" Line="22">'OrganigramaBL.sp_ajax(string, string[], object[], bool)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="TareasAutomaticasCOM" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AgregarTarea(negocio.Entidades.TareasAutomaticasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasAutomaticasCOM.cs" Line="59">'TareasAutomaticasCOM.AgregarTarea(TareasAutomaticasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaTareas(negocio.Entidades.TareasAutomaticasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasAutomaticasCOM.cs" Line="96">'TareasAutomaticasCOM.CargaTareas(TareasAutomaticasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargaTareasEdicion(negocio.Entidades.TareasAutomaticasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasAutomaticasCOM.cs" Line="115">'TareasAutomaticasCOM.CargaTareasEdicion(TareasAutomaticasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DatosGraficas(negocio.Entidades.TareasAutomaticasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasAutomaticasCOM.cs" Line="139">'TareasAutomaticasCOM.DatosGraficas(TareasAutomaticasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EliminarTarea(negocio.Entidades.TareasAutomaticasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasAutomaticasCOM.cs" Line="78">'TareasAutomaticasCOM.EliminarTarea(TareasAutomaticasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="TareasCOM" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AgregarComentario(negocio.Entidades.TareasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasCOM.cs" Line="93">'TareasCOM.AgregarComentario(TareasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AgregarMovimiento(negocio.Entidades.TareasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasCOM.cs" Line="66">'TareasCOM.AgregarMovimiento(TareasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AgregarTarea(negocio.Entidades.TareasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasCOM.cs" Line="36">'TareasCOM.AgregarTarea(TareasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CargarTareas(negocio.Entidades.TareasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasCOM.cs" Line="120">'TareasCOM.CargarTareas(TareasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ValidarFechas(negocio.Entidades.TareasENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="TareasCOM.cs" Line="139">'TareasCOM.ValidarFechas(TareasENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UsuariosBL" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ListaUsarios(negocio.Entidades.UsuariosE)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="UsuariosBL.cs" Line="62">'UsuariosBL.ListaUsarios(UsuariosE)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#obtinenurl(negocio.Entidades.UsuariosE)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="UsuariosBL.cs" Line="45">'UsuariosBL.obtinenurl(UsuariosE)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#validar_usuarios(negocio.Entidades.UsuariosE)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="UsuariosBL.cs" Line="25">'UsuariosBL.validar_usuarios(UsuariosE)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="VendedoresCOM" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CambiarStatus(negocio.Entidades.VendedoresENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="VendedoresCOM.cs" Line="42">'VendedoresCOM.CambiarStatus(VendedoresENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CatalogoVendedores(negocio.Entidades.VendedoresENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="VendedoresCOM.cs" Line="99">'VendedoresCOM.CatalogoVendedores(VendedoresENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Pendientes(negocio.Entidades.VendedoresENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="VendedoresCOM.cs" Line="78">'VendedoresCOM.Pendientes(VendedoresENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SelectStatus(negocio.Entidades.VendedoresENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="VendedoresCOM.cs" Line="23">'VendedoresCOM.SelectStatus(VendedoresENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateStatus(negocio.Entidades.VendedoresENT)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-04-20 15:45:23Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="E:\Trabajos Humberto\Proyectos Diarios\2016\04ABRIL\20_04_16\Tareas\negocio\Componentes" File="VendedoresCOM.cs" Line="60">'VendedoresCOM.UpdateStatus(VendedoresENT)' vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200">
+   <Name>Reiniciar para mantener los detalles de la pila</Name>
+   <Description>Utilice la instrucción de reinicio IL para mantener los detalles de la pila original cuando vaya a volver a provocar la excepción detectada.</Description>
+   <Resolution Name="Default">{0} vuelve a producir una excepción detectada y la especifica explícitamente como un argumento. Utilice 'throw' sin un argumento, para mantener la ubicación de la pila donde se provocó inicialmente la excepción.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182363.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Categoría</String>
+  <String Key="Certainty">Certeza</String>
+  <String Key="CollapseAll">Contraer todo</String>
+  <String Key="CheckId">Comprobar id.</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">errores</String>
+  <String Key="ExpandAll">Expandir todo</String>
+  <String Key="Help">Ayuda</String>
+  <String Key="Line">Línea</String>
+  <String Key="Messages">mensajes</String>
+  <String Key="LocationNotStoredInPdb">[Ubicación no almacenada en Pdb]</String>
+  <String Key="Project">Proyecto</String>
+  <String Key="Resolution">Resolución</String>
+  <String Key="Rule">Regla</String>
+  <String Key="RuleFile">Archivo de regla</String>
+  <String Key="RuleDescription">Descripción de la regla</String>
+  <String Key="Source">Origen</String>
+  <String Key="Status">Estado</String>
+  <String Key="Target">Círculos concéntricos</String>
+  <String Key="Warning">Advertencia</String>
+  <String Key="Warnings">advertencias</String>
+  <String Key="ReportTitle">Informe de análisis del código</String>
+ </Localized>
+</FxCopReport>
