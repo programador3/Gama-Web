@@ -18,5 +18,6 @@ namespace negocio.Entidades
         public string idc_tarea_url;
         public string tipo;
         public string color_grupo;
+        public int redirect;
     }
 }

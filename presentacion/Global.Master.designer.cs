@@ -40,6 +40,15 @@ namespace presentacion {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// Control hdnidc_usuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnidc_usuario;
+        
+        /// <summary>
         /// Control lnkBackUrl.
         /// </summary>
         /// <remarks>

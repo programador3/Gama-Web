@@ -8,26 +8,6 @@ namespace negocio.Componentes
 {
     public class OpcionesBL
     {
-        //public DataSet opciones_menu(Entidades.UsuariosE usuario)
-        //{
-        //    DataSet ds = new DataSet();
-        //    List<SqlParameter> listparameters = new List<SqlParameter>();
-        //    Datos data = new Datos();
-
-        //    //listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = usuario.Idc_usuario });
-
-        //    try
-        //    {
-        //        //ds = data.datos_Clientes(listparameters);
-        //        ds = data.enviar("sp_menu_padre", listparameters, false);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    return ds;
-        //}
-
         public DataSet AcessosDirectos(Entidades.OpcionesE opcion)
         {
             DataSet ds = new DataSet();

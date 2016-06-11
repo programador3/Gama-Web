@@ -55,6 +55,7 @@ namespace presentacion
                 btnCancelarTodo.Visible = true;
                 file_guardar.Visible = true;
                 row_desccambio.Visible = false;
+                lnkCambiarFechaF.Visible = true;
                 CargarTareas(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"])));
                 url_back = "tareas_detalles.aspx?termina=1&idc_tarea=" + Request.QueryString["idc_tarea"];
             }
@@ -172,6 +173,7 @@ namespace presentacion
                 file_guardar.Visible = true;
                 row_desccambio.Visible = false;
                 btnCancelarTodo.Visible = true;
+                lnkCambiarFechaF.Visible = true;
                 ret = true;
             }
             //puesto que hace la tarea
@@ -183,6 +185,7 @@ namespace presentacion
                 btnGuardar.Visible = true;
                 nueva.Visible = true;
                 btnCancelarTodo.Visible = false;
+                lnkCambiarFechaF.Visible = false;
                 ret = true;
             }
             //puesto que hace la tarea pero el se la asigna
@@ -194,6 +197,7 @@ namespace presentacion
                 btnGuardar.Visible = true;
                 nueva.Visible = true;
                 btnCancelarTodo.Visible = true;
+                lnkCambiarFechaF.Visible = true;
                 ret = true;
             }
             return ret;
@@ -799,7 +803,7 @@ namespace presentacion
                     lbldinamico.Text = row["columna_dinamica"].ToString();
                     lbldinamico.Visible = row["columna_dinamica"].ToString() == "" ? false : true;
                     ldinamico.Visible = row["columna_dinamica"].ToString() == "" ? false : true;
-                    Session["fecha"] = Convert.ToDateTime(row["fecha_sin_f"]);
+                    //  Session["fecha"] = Convert.ToDateTime(row["fecha_sin_f"]);
                     Session["fecha_termi_mov"] = Convert.ToDateTime(row["fecha_terminado"]);
                     DateTime DT = Convert.ToDateTime(Session["fecha"]);
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMesededessssdesage", "ModalClose();", true);
@@ -1008,6 +1012,16 @@ namespace presentacion
                         txtfecha_pasada.Visible = false;
                         lnksolicitar_cam.Visible = false;
                         break;
+
+                    case "Fecha Cambio Directo":
+                        entidad.Pdescripcion = "CAMBIO DE FECHA REALIZADO DIRECTAMENTE." + System.Environment.NewLine + txtobsrcfd.Text.ToUpper();
+                        entidad.Pfecha = Convert.ToDateTime(txtfechacompromisodirecto.Text.Replace('T', ' '));
+                        ds = componente.AgregarMovimiento(entidad);
+                        vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                        row_desccambio.Visible = false;
+                        txtfecha_pasada.Visible = false;
+                        lnksolicitar_cam.Visible = false;
+                        break;
                 }
 
                 if (vmensaje == "")
@@ -1147,11 +1161,6 @@ namespace presentacion
                     Alert.ShowAlertError("No puede estipular una fecha menor o igual a la original.", this);
                     txtfecha_compromiso_externo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
                 }
-                else if (funciones.FechaCorrecta(Convert.ToDateTime(txtfecha_compromiso_externo.Text.Replace('T', ' '))) == false)
-                {
-                    Alert.ShowAlertError("La FECHA COMPROMISO de estar dentro de un horario laboral valido.", this);
-                    txtfecha_compromiso_externo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
-                }
                 else if (txtobsrfechaexternoi.Text == "")
                 {
                     Alert.ShowAlertError("Escriba un Motivo para el cambio.", this);
@@ -1163,6 +1172,48 @@ namespace presentacion
                     Session["tipo_conf"] = "C";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','Esta Solicitando un Cambio de Fecha por un Proveedor Externo, Desea continuar','modal fade modal-info');", true);
                 }
+            }
+        }
+
+        protected void lnkCambiarFechaF_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalCF();", true);
+        }
+
+        protected void btnsifecdirecto_Click(object sender, EventArgs e)
+        {
+            if (txtfechacompromisodirecto.Text != "")
+            {
+                DateTime caption = Convert.ToDateTime(txtfechacompromisodirecto.Text.Replace('T', ' '));
+                if (caption < DateTime.Now)
+                {
+                    Alert.ShowAlertError("No puede estipular una fecha menor a hoy.", this);
+                    txtfechacompromisodirecto.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                }
+                else if (caption <= Convert.ToDateTime(Session["fecha"]))
+                {
+                    Alert.ShowAlertError("No puede estipular una fecha menor o igual a la original.", this);
+                    txtfechacompromisodirecto.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                }
+                else if (txtobsrcfd.Text == "")
+                {
+                    Alert.ShowAlertError("Escriba un Motivo para el cambio.", this);
+                }
+                else if (Convert.ToBoolean(Session["tarea_terminada"]) == true)
+                {
+                    Alert.ShowAlertError("No puede cambiar la Fecha Compromiso fue TERMINADA O CANCELADA", this);
+                }
+                else
+                {
+                    Session["redirect"] = "tareas_detalles.aspx?termina=1&idc_tarea=" + Request.QueryString["idc_tarea"];
+                    Session["Caso_Confirmacion"] = "Fecha Cambio Directo";
+                    Session["tipo_conf"] = "Z";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','Esta Cambiando la Fecha de Compromiso, Desea continuar','modal fade modal-info');", true);
+                }
+            }
+            else {
+
+                Alert.ShowAlertError("Escriba una Fecha", this);
             }
         }
     }

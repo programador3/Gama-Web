@@ -85,5 +85,83 @@ namespace presentacion
                 }
             }
         }
+
+        protected void gridsistema_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            Redirect_sistema(index);
+        }
+
+        protected void grisusuario_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            Redirect(index);
+        }
+
+        private void Redirect(int index)
+        {
+            string fi = funciones.deTextoa64(Request.QueryString["fecha_inicio"]);
+            string ff = funciones.deTextoa64(Request.QueryString["fecha_fin"]);
+            string idc_puesto = Request.QueryString["idc_puesto"];
+            string pidc_depto = Request.QueryString["pidc_depto"];
+            string tipofiltro = "";
+            switch (index)
+            {
+                case 0://buenos resultados
+                    tipofiltro = "B";
+                    break;
+
+                case 1://malos resultados
+                    tipofiltro = "M";
+                    break;
+
+                case 2:
+                    tipofiltro = "";
+                    break;
+
+                case 5:
+                case 4://canceladas
+                    tipofiltro = "P";
+                    break;
+
+                case 6://canceladas
+                    tipofiltro = "C";
+                    break;
+            }
+            Response.Redirect("rendimiento_tareas_detalles.aspx?pidc_puesto=" + idc_puesto + "&pidc_depto=" + pidc_depto + "&inicio=" + fi + "&fin=" + ff + "&tipofiltro=" + tipofiltro);
+        }
+
+        private void Redirect_sistema(int index)
+        {
+            string fi = funciones.deTextoa64(Request.QueryString["fecha_inicio"]);
+            string ff = funciones.deTextoa64(Request.QueryString["fecha_fin"]);
+            string idc_puesto = Request.QueryString["idc_puesto"];
+            string pidc_depto = Request.QueryString["pidc_depto"];
+            string tipofiltro = "";
+            switch (index)
+            {
+                case 0://buenos resultados
+                    tipofiltro = "B";
+                    break;
+
+                case 1://malos resultados
+                    tipofiltro = "M";
+                    break;
+
+                case 2:
+                    tipofiltro = "";
+                    break;
+
+                case 5:
+                case 4://canceladas
+                    tipofiltro = "P";
+                    break;
+
+                case 6://canceladas
+                    tipofiltro = "C";
+                    break;
+            }
+            Response.Redirect("rendimiento_tareas_detalles.aspx?pidc_puesto=" + idc_puesto + "&pidc_depto=" + pidc_depto + "&inicio=" + fi + "&fin=" + ff + "&tipofiltrosistema=" + tipofiltro);
+        }
     }
 }

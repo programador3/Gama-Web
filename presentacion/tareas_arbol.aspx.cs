@@ -41,6 +41,7 @@ namespace presentacion
                 {
                     id = Convert.ToInt32(row["idc_tarea"]),
                     id_parent = Convert.ToInt32(row["idc_tarea_padre"]),
+                    redirect = Convert.ToInt32(row["redirect"]),
                     descripcion = row["descripcion"].ToString(),
                     puesto = row["puesto"].ToString(),
                     empleado = row["empleado"].ToString(),

@@ -9,5 +9,6 @@ namespace negocio.Entidades
     {
         public string Titulo;
         public string url;
+        public string idc_usuario;
     }
 }

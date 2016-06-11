@@ -150,10 +150,10 @@
                     <div class="table table-responsive">
 
                         <h4><strong>Tabla de Resultados segun sistema</strong></h4>
-                        <asp:GridView ID="gridsistema" runat="server" CssClass="table table-responsive table-bordered" ShowHeader="False" AutoGenerateColumns="False" OnRowDataBound="gridsistema_RowDataBound">
+                        <asp:GridView ID="gridsistema" runat="server" CssClass="table table-responsive table-bordered" OnRowCommand="gridsistema_RowCommand" ShowHeader="False" AutoGenerateColumns="False" OnRowDataBound="gridsistema_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="name" HeaderText="" ShowHeader="False"></asp:BoundField>
-                                <asp:BoundField DataField="total" HeaderText="" ShowHeader="False"></asp:BoundField>
+                                <asp:ButtonField DataTextField="total" CommandName="Ver" ShowHeader="False"></asp:ButtonField>
                                 <asp:BoundField DataField="b_color" HeaderText="" Visible="false" ShowHeader="False"></asp:BoundField>
                                 <asp:BoundField DataField="f_color" HeaderText="" Visible="false" ShowHeader="False"></asp:BoundField>
                             </Columns>
@@ -168,10 +168,10 @@
                 <div class="col-lg-5 col-md-5 col-sm-12  col-xs-12">
                     <div class="table table-responsive">
                         <h4><strong>Tabla de Resultados segun Puesto que reviso</strong> </h4>
-                        <asp:GridView ID="grisusuario" runat="server" CssClass="table table-responsive table-bordered" ShowHeader="False" AutoGenerateColumns="False" OnRowDataBound="gridsistema_RowDataBound">
+                        <asp:GridView ID="grisusuario" runat="server" CssClass="table table-responsive table-bordered" OnRowCommand="grisusuario_RowCommand" ShowHeader="False" AutoGenerateColumns="False" OnRowDataBound="gridsistema_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="name" HeaderText="" ShowHeader="False"></asp:BoundField>
-                                <asp:BoundField DataField="total" HeaderText="" ShowHeader="False"></asp:BoundField>
+                                <asp:ButtonField DataTextField="total" CommandName="Ver" ShowHeader="False"></asp:ButtonField>
                                 <asp:BoundField DataField="b_color" HeaderText="" Visible="false" ShowHeader="False"></asp:BoundField>
                                 <asp:BoundField DataField="f_color" HeaderText="" Visible="false" ShowHeader="False"></asp:BoundField>
                             </Columns>

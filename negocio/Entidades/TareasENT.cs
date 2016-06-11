@@ -6,6 +6,8 @@ namespace negocio.Entidades
     {
         private int idc_tarea;
         private int avance;
+        private string tipofiltro;
+        private string tipofiltros;
         private int idc_tarea_h;
         private int idc_puesto;
         private int idc_depto;
@@ -140,6 +142,18 @@ namespace negocio.Entidades
         {
             get { return extension; }
             set { extension = value; }
+        }
+
+        public string Ptipof
+        {
+            get { return tipofiltro; }
+            set { tipofiltro = value; }
+        }
+
+        public string Ptipofs
+        {
+            get { return tipofiltros; }
+            set { tipofiltros = value; }
         }
 
         public string Pdescripcion

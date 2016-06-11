@@ -47,7 +47,8 @@
                             itemTitleColor: val.color,
                             label: val.idc_tarea_url,
                             groupTitle: val.tipo,
-                            groupTitleColor: val.color_grupo
+                            groupTitleColor: val.color_grupo,
+                            redirect: val.redirect,
                         });
                         items.push(x);
 
@@ -60,20 +61,26 @@
                     options.hasSelectorCheckbox = primitives.common.Enabled.False;
                     options.hasButtons = primitives.common.Enabled.False;
                     options.onMouseClick = function (e, data) {
-                        var url = document.getElementById('<%= HiddenField.ClientID%>').value;
-                        url = url + "tareas_detalles.aspx?lectura=1&acepta=1&idc_tarea=" + data.context.label;
-                        swal({
-                            title: "¿Desea visualizar esta Tarea?",
-                            text: "Por cuestiones de seguridad, \n si usted NO ESTA INVOLUCRADO EN ESTA TAREA, \n NO SE LE PERMITIRA modificar el contenido de la misma.",
-                            type: "info",
-                            showCancelButton: true,
-                            confirmButtonColor: "#19B5FE",
-                            confirmButtonText: "Ver la Tarea",
-                            closeOnConfirm: false
-                        },
-                        function () {
-                            window.location = url;
-                        });
+                        var redi = parseInt(data.context.redirect);
+                        if (redi == 1) {
+                            var url = document.getElementById('<%= HiddenField.ClientID%>').value;
+                            url = url + "tareas_detalles.aspx?lectura=1&acepta=1&idc_tarea=" + data.context.label;
+                            swal({
+                                title: "¿Desea visualizar esta Tarea?",
+                                text: "Por cuestiones de seguridad, \n si usted NO ESTA INVOLUCRADO EN ESTA TAREA, \n NO SE LE PERMITIRA modificar el contenido de la misma.",
+                                type: "info",
+                                showCancelButton: true,
+                                confirmButtonColor: "#19B5FE",
+                                confirmButtonText: "Ver la Tarea",
+                                closeOnConfirm: false
+                            },
+                            function () {
+                                window.location = url;
+                            });
+                        } else {
+                            swal("Mensaje del Sistema", "Para ver los detalles, de clic sobre la tarea padre.", "info");
+                        }
+
                     }
                     jQuery("#basicdiagram").orgDiagram(options);
                     jQuery("#Top").click(function (e) {
@@ -172,9 +179,9 @@
                         return result;
                     }
 
-                    }
-
                 }
+
+            }
 
         });//]]>
     </script>

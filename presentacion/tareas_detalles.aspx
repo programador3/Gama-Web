@@ -4,9 +4,9 @@
 
     <script type="text/javascript">
         function ModalClose() {
-            $('#modalPreviewView').modal('hide');
             $('#myModal').modal('hide');
             $('#myModalMov').modal('hide');
+            $('#myModalCF').modal('hide');
         }
         function ModalConfirm(cTitulo, cContenido, ctype) {
             var audio = new Audio('sounds/modal.wav');
@@ -22,6 +22,10 @@
             audio.play();
             $('#myModalMov').modal('show');
             $('#modal_titlemov').text(cTitulo);
+        } function ModalCF() {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModalCF').modal('show');
         }
         function disbalebutton() {
             $('#<%= Yes.ClientID%>').prop('disabled', true);
@@ -69,8 +73,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <h4><i class="fa fa-calendar"></i>&nbsp;Fecha Estipulada de Compromiso </h4>
+                <div class="col-lg-12 col-xs-12">
+                    <h4><i class="fa fa-calendar"></i>&nbsp;Fecha Estipulada de Compromiso 
+                        <span>
+                            <asp:LinkButton Visible="false" ID="lnkCambiarFechaF" CssClass="btn btn-info" OnClick="lnkCambiarFechaF_Click" runat="server">Editar Fecha <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton>
+                        </span>
+                    </h4>
                     <asp:TextBox ID="txtfecha_solicompromiso" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
@@ -389,7 +397,38 @@
                                     <asp:Button ID="btnCancelar" runat="server" Text="Rechazar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <input id="Nos" class="btn btn-info btn-block" onclick="ModalClose();" value="Cerrar" />
+                                    <input id="Nos" type="button" class="btn btn-info btn-block" onclick="ModalClose();" value="Cerrar" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade modal-info" id="myModalCF" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="text-align: center;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4><strong>Mensaje del Sistema</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="text-align: center;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <h4>Como solicitante de la tarea usted puede cambiar la Fecha Compromiso Directamente
+                                    </h4>
+                                    <asp:TextBox ID="txtfechacompromisodirecto" runat="server" TextMode="DateTimeLocal" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtobsrcfd" runat="server" TextMode="MultiLine" Rows="3" placeholder="Observaciones" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <asp:Button ID="btnsifecdirecto" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="btnsifecdirecto_Click" />
+                                </div>
+                                <div class="col-lg-6 col-xs-6">
+                                    <input id="Ndddo" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                                 </div>
                             </div>
                         </div>

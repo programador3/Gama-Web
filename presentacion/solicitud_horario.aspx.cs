@@ -22,6 +22,12 @@ namespace presentacion
             //SI ES UN ALTA
             if (!IsPostBack && Request.QueryString["autoriza"] == null)
             {
+                Session["idc_horario_perm"] = null;
+                solicita.Visible = true;
+                lblobsr.Visible = false;
+                lnkedit.Visible = false;
+                edicion.Visible = false;
+                autoriza.Visible = false;
                 Session["pidc_empleado_solic_horario"] = null;
                 CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
                 txtfecha.Text = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
@@ -29,15 +35,11 @@ namespace presentacion
                 {
                     Alert.ShowAlertInfo("Este Empleado ya tiene una Solicitud Pendiente el dia " + Convert.ToDateTime(txtfecha.Text).ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX")), "Mensaje", this);
                 }
-                solicita.Visible = true;
-                lblobsr.Visible = false;
-                lnkedit.Visible = false;
-                edicion.Visible = false;
-                autoriza.Visible = false;
             }
             //SI ES UNA AUTORIZACION
             if (!IsPostBack && Request.QueryString["autoriza"] != null)
             {
+                Session["idc_horario_perm"] = null;
                 Session["pidc_empleado_solic_horario"] = null;
                 CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
                 CargarDetallesl(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"])));
@@ -157,6 +159,47 @@ namespace presentacion
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     ret = true;
+                    DataRow row = ds.Tables[0].Rows[0];
+                    txtfecha.Text = Convert.ToDateTime(row["fecha_textbox"]).ToString("yyyy-MM-dd");
+                    txthoraentrada.Text = row["hora_entrada"].ToString() == "00:00" ? "" : row["hora_entrada"].ToString();
+                    txthorasalida.Text = row["hora_salida"].ToString() == "00:00" ? "" : row["hora_salida"].ToString();
+                    txthoraentradac.Text = row["hora_entrada_comida"].ToString() == "00:00" ? "" : row["hora_entrada_comida"].ToString();
+                    txthorasalidac.Text = row["hora_salida_comida"].ToString() == "00:00" ? "" : row["hora_salida_comida"].ToString();
+                    ddlsucursales.SelectedValue = Convert.ToInt32(row["idc_sucursal"]).ToString();
+                    lblobsr.Text = "Observaciones de la Solicitud: " + row["observaciones"].ToString();
+                    int idc = Convert.ToInt32(row["idc_horario_perm"]);
+                    Session["idc_horario_perm"] = idc;
+                    ddlsucursales.Enabled = false;
+                    txthoraentrada.Enabled = false;
+                    txthoraentradac.Enabled = false;
+                    txthorasalida.Enabled = false;
+                    txthorasalidac.Enabled = false;
+                    solicita.Visible = true;
+                    lblobsr.Visible = true;
+                    lnkedit.Visible = true;
+                    edicion.Visible = false;
+                    if (txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
+                    {
+                        btntot.CssClass = "btn btn-success btn-block";
+                        cuerpo.Visible = false;
+                    }
+                }
+                else {
+                    ddlsucursales.SelectedValue = "0";
+                    txthoraentrada.Text = "";
+                    txthoraentradac.Text = "";
+                    txthorasalida.Text = "";
+                    txthorasalidac.Text = "";
+                    ddlsucursales.Enabled = true;
+                    txthoraentrada.Enabled = true;
+                    txthoraentradac.Enabled = true;
+                    txthorasalida.Enabled = true;
+                    txthorasalidac.Enabled = true;
+                    solicita.Visible = true;
+                    lblobsr.Visible = false;
+                    lnkedit.Visible = false;
+                    edicion.Visible = false;
+                    btntot.CssClass = "btn btn-defult btn-block";
                 }
                 return ret;
             }
@@ -306,13 +349,14 @@ namespace presentacion
                         break;
 
                     case "Editar":
-                        entidad.Pidc_horario_erm = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"]));
+                        entidad.Pidc_horario_erm = Request.QueryString["idc_horario_perm"]==null? Convert.ToInt32(Session["idc_horario_perm"]):Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"]));
                         entidad.Pstatus = "";
                         ds = componente.SolcitudEdicion(entidad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
-                            Alert.ShowGiftMessage("Estamos Guardando los cambios.", "Espere un Momento", "solicitud_horario.aspx?autoriza=JKCWKJBOJBObjBHvucv67c7C7c7TC7tc7TC7c7TCcxCJHjhVjhJCjhhcjCJcJCjhcJcjCJHCJHCJCJCjcJHCjhcHC&idc_puesto=" + Request.QueryString["idc_puesto"] + "&idc_horario_perm=" + Request.QueryString["idc_horario_perm"], "imagenes/loading.gif", "2000", "La Solicitud fue Editada correctamente ", this);
+                            string url = Request.QueryString["idc_horario_perm"] == null ? "solicitud_horario.aspx?idc_puesto=" + Request.QueryString["idc_puesto"] : "solicitud_horario.aspx?autoriza=JKCWKJBOJBObjBHvucv67c7C7c7TC7tc7TC7c7TCcxCJHjhVjhJCjhhcjCJcJCjhcJcjCJHCJHCJCJCjcJHCjhcHC&idc_puesto=" + Request.QueryString["idc_puesto"] + "&idc_horario_perm=" + Request.QueryString["idc_horario_perm"];
+                            Alert.ShowGiftMessage("Estamos Guardando los cambios.", "Espere un Momento", url, "imagenes/loading.gif", "2000", "La Solicitud fue Editada correctamente ", this);
                         }
                         else
                         {
@@ -379,14 +423,8 @@ namespace presentacion
 
         protected void btncancelaredicion_Click(object sender, EventArgs e)
         {
-            Session["pidc_empleado_solic_horario"] = null;
-            CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
-            CargarDetallesl(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"])));
-            solicita.Visible = false;
-            lblobsr.Visible = true;
-            lnkedit.Visible = true;
-            edicion.Visible = false;
-            autoriza.Visible = true;
+            string url = Request.QueryString["idc_horario_perm"] == null ? "solicitud_horario.aspx?idc_puesto=" + Request.QueryString["idc_puesto"] : "solicitud_horario.aspx?autoriza=JKCWKJBOJBObjBHvucv67c7C7c7TC7tc7TC7c7TCcxCJHjhVjhJCjhhcjCJcJCjhcJcjCJHCJHCJCJCjcJHCjhcHC&idc_puesto=" + Request.QueryString["idc_puesto"] + "&idc_horario_perm=" + Request.QueryString["idc_horario_perm"];
+            Response.Redirect(url);
         }
 
         protected void lnkedit_Click(object sender, EventArgs e)
@@ -399,6 +437,29 @@ namespace presentacion
             txthorasalidac.Enabled = true;
             edicion.Visible = true;
             autoriza.Visible = false;
+            if (Session["idc_horario_perm"] != null)
+            {
+                solicita.Visible = false;
+            }
+            if (txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
+            {
+                btntot.CssClass = "btn btn-success btn-block";
+                cuerpo.Visible = false;
+            }
+        }
+
+        protected void btntot_Click(object sender, EventArgs e)
+        {
+            btntot.CssClass = btntot.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
+            cuerpo.Visible = btntot.CssClass == "btn btn-default btn-block" ? true : false;
+            if (btntot.CssClass == "btn btn-default btn-block" && txthoraentrada.Enabled == true)
+            {
+                txthoraentrada.Text = "";
+                txthoraentradac.Text = "";
+                txthorasalida.Text = "";
+                txthorasalidac.Text = "";
+                ddlsucursales.SelectedValue = "0";
+            }
         }
     }
 }

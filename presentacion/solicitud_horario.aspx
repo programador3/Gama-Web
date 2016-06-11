@@ -126,7 +126,7 @@
                         <h4><strong>Departamento: </strong>
                             <asp:Label ID="lbldepto" runat="server" Text=""></asp:Label>
                         </h4>
-                        <h4><strong> 
+                        <h4><strong>
                             <asp:Label ID="lblobsr" Visible="false" runat="server" Text=""></asp:Label></strong>
                         </h4>
                     </div>
@@ -145,59 +145,69 @@
                 <div class="col-lg-12 col-xs-12">
                     <div class="panel panel-info fresh-color">
                         <div class="panel-heading">
-                            <h4 style="text-align:center;"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;Detalles de Solicitud <span>
+                            <h4 style="text-align: center;"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;Detalles de Solicitud <span>
                                 <asp:LinkButton ID="lnkedit" Visible="false" runat="server" CssClass="btn btn-default" OnClick="lnkedit_Click">Editar <i class="fa fa-pencil fa-fw"></i></asp:LinkButton></span> </h4>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-                                    <h5><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<strong>Fecha que aplicara</strong></h5>
-                                    <asp:TextBox ID="txtfecha" TextMode="Date" CssClass="form-control timepicker" AutoPostBack="true" OnTextChanged="txtfecha_TextChanged" runat="server"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-inline">
-                                        <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong>Hora de Entrada</strong> <small>Formato 24 Horas (0-24)</small>
-                                            <asp:TextBox ID="txthoraentrada" OnTextChanged="txthoraentrada_TextChanged" AutoPostBack="true" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
-                                        </h5>
+                                    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                                        <h5><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<strong>Fecha que aplicara</strong></h5>
+                                        <asp:TextBox ID="txtfecha" TextMode="Date" CssClass="form-control timepicker" AutoPostBack="true" OnTextChanged="txtfecha_TextChanged" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-inline">
-                                        <h5><strong><i class="fa fa-university" aria-hidden="true"></i>&nbsp;Sucursal</strong> <small>Solo Hora de Entrada</small>
-                                            <asp:DropDownList ID="ddlsucursales" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlsucursales_SelectedIndexChanged" Enabled="false" runat="server"></asp:DropDownList></h5>
-                                    </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-12 col-xs-12">
+                                    <asp:Button ID="btntot" runat="server" Text="No Tendra Ninguna Checada en el Dia" CssClass="btn btn-default btn-block" OnClick="btntot_Click" />
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-inline">
-                                        <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong>Hora de Salida a Comer</strong> <small>Formato 24 Horas (0-24)</small>
-                                            <asp:TextBox onchange="HorasdeComida();" onblur="ValidarHoraLaboral(this);" ID="txthorasalidac" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
-                                        </h5>
+                            <div id="cuerpo" runat="server">
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-inline">
+                                            <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong>Hora de Entrada</strong> <small>Formato 24 Horas (0-24)</small>
+                                                <asp:TextBox ID="txthoraentrada" OnTextChanged="txthoraentrada_TextChanged" AutoPostBack="true" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-inline">
+                                            <h5><strong><i class="fa fa-university" aria-hidden="true"></i>&nbsp;Sucursal</strong> <small>Solo Hora de Entrada</small>
+                                                <asp:DropDownList ID="ddlsucursales" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlsucursales_SelectedIndexChanged" Enabled="false" runat="server"></asp:DropDownList></h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-inline">
-                                        <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong> Hora Entrada de Comer</strong> <small>Formato 24 Horas (0-24)</small>
-                                            <asp:TextBox onchange="HorasdeComida();" onblur="ValidarHoraLaboral(this);" ID="txthoraentradac" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
-                                        </h5>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-inline">
+                                            <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong>Hora de Salida a Comer</strong> <small>Formato 24 Horas (0-24)</small>
+                                                <asp:TextBox onchange="HorasdeComida();" onblur="ValidarHoraLaboral(this);" ID="txthorasalidac" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-inline">
-                                        <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong>Hora de Salida </strong><small>&nbsp;Formato 24 Horas (0-24)</small>
-                                            &nbsp;
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-inline">
+                                            <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong> Hora Entrada de Comer</strong> <small>Formato 24 Horas (0-24)</small>
+                                                <asp:TextBox onchange="HorasdeComida();" onblur="ValidarHoraLaboral(this);" ID="txthoraentradac" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-inline">
+                                            <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong>Hora de Salida </strong><small>&nbsp;Formato 24 Horas (0-24)</small>
+                                                &nbsp;
                                             <asp:TextBox ID="txthorasalida" onblur="ValidarHoraLaboral(this);" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
-                                        </h5>
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-lg-12 col-xs-12">
 

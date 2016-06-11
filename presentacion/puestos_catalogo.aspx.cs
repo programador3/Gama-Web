@@ -147,36 +147,38 @@ namespace presentacion
             int id_puestoperfil = Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_puestoperfil"].ToString());
             int idc_herramienta = Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_herramienta"].ToString());
             int idc_puesto_reemplazo = Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_puesto_reemplazo"].ToString());
+            int idc_puesto_jefe = Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_puesto_jefe"].ToString());
             Session["idc_prepara"] = gridPuestos.DataKeys[index].Values["idc_prepara"].ToString();
             Session["puesto"] = gridPuestos.DataKeys[index].Values["descripcion"].ToString();
             Session["status"] = status;
             Session["idc_puesto"] = id_puesto;
             string IDC_EMPL = idc_empleado.ToString();
             Session["idc_empleado"] = IDC_EMPL;
-            //SOY EL JEFE DIRECTO
-            lnkprebaja.Visible = true;
+            int IDC_PUESTO_LOGIN = Convert.ToInt32(Session["sidc_puesto_login"]);
             lnkMVerHerramientas.Visible = idc_herramienta == 0 ? false : true;
             lnkMPerfil.Visible = id_puestoperfil == 0 ? false : true;
-            //SI EL USUARIO NO TIENE PERMISO PARA VET TODO LOS PUESTOS Y VE LA FILA, QUIERE DECIR QUE ES EL JEFE DIRECTO
-            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 349) == false)
+            //SI es el jefe directo
+            lnkservicios.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 338);
+            lnkservicios_medan.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 350);
+            if (idc_puesto_reemplazo == 0 || Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
             {
-                lnkservicios_medan.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 350);
+                lnkreemplazo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 351);
             }
-            //SI TIENE EL PERMISO VALIDAMOS INDIVIDUALMENTE CDA PERMISO PARA MOSTRAR EL BOTON
-            else
+            lnkprebaja.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 155);
+            lnkasignarperfil.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 353);
+            lnkpmd.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 352);
+            if (IDC_PUESTO_LOGIN == idc_puesto_jefe)
             {
-                lnkservicios.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 338);
-                lnkservicios_medan.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 350);
-                if (idc_puesto_reemplazo > 0 || Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) > 0)
+                lnkpermiso.Visible = true;
+                lnkprebaja.Visible = true;
+                lnkservicios.Visible = true;
+                if (idc_puesto_reemplazo == 0 &&  Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
                 {
-                    lnkreemplazo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 351);
+                    lnkreemplazo.Visible = true;
                 }
-                lnkprebaja.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 155);
-                lnkasignarperfil.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 353);
-                lnkpmd.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 352);
-                lnkpermiso.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 361);
+                lnkpmd.Visible = true;
+                lnkprebaja.Visible = true;
             }
-
             if (status == 4 | status == 3)//SI EL STATUS ES VACANTE O VACANTE NO CONTRATAR, EL PUESTO NO CONTIENE NINGUN EMPLEADO
             {
                 lnkprebaja.Visible = false;

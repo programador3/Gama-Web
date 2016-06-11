@@ -152,7 +152,8 @@ namespace presentacion
                 noti.Add(new Notificacion
                 {
                     url = row["pagina"].ToString(),
-                    Titulo = row["pendiente"].ToString()
+                    Titulo = row["pendiente"].ToString(),
+                    idc_usuario = row["idc_usuario"].ToString()
                 });
             }
             return noti;

@@ -18,6 +18,7 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
+            hdnidc_usuario.Value = Convert.ToInt32(Session["sidc_usuario"]).ToString();
             String path_actual = Request.Url.Segments[Request.Url.Segments.Length - 1];
             String path_actual_COMPLETO = HttpContext.Current.Request.Url.AbsoluteUri;
             path_actual_COMPLETO = path_actual_COMPLETO.Replace("%20", "+");
@@ -114,6 +115,10 @@ namespace presentacion
             if (path_actual2 == "view_files.aspx")
             {
                 Alert.ShowAlertError("Debe cerrar esta ventana o puede perder los cambios realizados.", this.Page);
+            }
+            else if (path_actual2 == "rendimiento_tareas_detalles.aspx" && Request.QueryString["tipofiltro"] != null)
+            {
+                Alert.ShowAlertError("Debe cerrar esta pestaña para poder navegar por el sistema.", this.Page);
             }
             else
             {

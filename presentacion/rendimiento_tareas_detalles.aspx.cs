@@ -48,6 +48,14 @@ namespace presentacion
                 entidad.Pidc_puesto = pidc_puesto;
                 entidad.Pidc_tarea = pidc_tarea;
                 entidad.Pidc_depto = idc_depto;
+                if (Request.QueryString["tipofiltro"] != null)
+                {
+                    entidad.Ptipof = Request.QueryString["tipofiltro"];
+                }
+                if (Request.QueryString["tipofiltrosistema"] != null)
+                {
+                    entidad.Ptipofs = Request.QueryString["tipofiltrosistema"];
+                }
                 DataSet ds = componente.TareasResultadoDetalles(entidad);
                 lblhead.Text = ds.Tables[0].Rows[0]["encabezado"].ToString();
                 gridtareas.DataSource = ds.Tables[1];
