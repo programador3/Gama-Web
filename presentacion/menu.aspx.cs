@@ -68,7 +68,7 @@ namespace presentacion
             DataSet ds = componente.CargarPendientesHoy(entidad);
             repeatasignadas.DataSource = ds.Tables[1];
             repeatasignadas.DataBind();
-            lblasi.Text = " Tiene un total de " + ds.Tables[1].Rows.Count.ToString() + " Tarea(s) que usted Asigno";
+            lblasi.Text = " Tiene un total de " + ds.Tables[1].Rows.Count.ToString();
             if (ds.Tables[1].Rows.Count == 0)
             {
                 tareasasig.Visible = true;

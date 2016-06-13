@@ -222,7 +222,10 @@
                     $.each(items, function (index, val) {
                         var urlpost = val.url;
                         var Titulopost = val.Titulo;
-                        $('#notipend').append('<li><a href=' + urlpost + '>' + Titulopost + '</a></li>');
+                        var idcpost = val.idc_usuario;
+                        if (idcpost == $('#<%= hdnidc_usuario.ClientID%>').val()) {
+                            $('#notipend').append('<li><a href=' + urlpost + '>' + Titulopost + '</a></li>');
+                        }
                     });
                 } else {
                     $('#notipend').append('<li><a> No Tiene Pendientes</a></li>');
@@ -307,7 +310,9 @@
 </head>
 <body class="flat-blue" onload="nobackbutton();">
     <form id="form1" runat="server">
+
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:HiddenField ID="hdnidc_usuario" runat="server" />
         <div class="app-container">
             <div class="row content-container">
                 <%-- BARRA DE INICIO--%>

@@ -21,6 +21,9 @@
         function DeleteFocus(txt) {
             txt.value = "";
         }
+        $(document).ready(function () {
+            $('.tooltip').tooltipster();
+        });
     </script>
     <style type="text/css">
         .dropdown-submenu {
@@ -109,7 +112,7 @@
                                         <div class="card-body">
                                             <i class="icon fa fa-chevron-circle-right fa-4x"></i>
                                             <div class="content">
-                                                <h4>
+                                                <h5>
                                                     <asp:Label ID="lbl" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, "descripcion").ToString() %>'></asp:Label>
                                                 </h4>
                                             </div>
@@ -135,9 +138,9 @@
                                         <div class="card-body">
                                             <i class="icon fa fa-chevron-circle-right fa-4x"></i>
                                             <div class="content">
-                                                <h4>
+                                                <h5>
                                                     <asp:Label ID="lbl" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, "menu").ToString() %>'></asp:Label>
-                                                </h4>
+                                                    </h4>
                                                 <h6><%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "Pagina":"Menu"  %>
                                                 </h6>
                                             </div>
@@ -185,7 +188,7 @@
                         <div class="card-header" style="background-color: #1ABC9C; color: white;">
                             <div class="card-title" style="background-color: #1ABC9C; color: white;">
                                 <div class="title" style="background-color: #1ABC9C; color: white;">
-                                    <h3 style="background-color: #1ABC9C; color: white;">Mis Tareas Asignadas para hoy <small style="background-color: #1ABC9C; color: white;" id="Small1" runat="server">
+                                    <h3 style="background-color: #1ABC9C; color: white;">Mis Tareas Asignadas <small style="background-color: #1ABC9C; color: white;" id="Small1" runat="server">
                                         <asp:Label ID="lblasi" runat="server" Text=""></asp:Label></small></h3>
                                 </div>
                             </div>

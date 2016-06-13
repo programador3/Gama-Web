@@ -2606,18 +2606,6 @@ namespace presentacion
                 DataView dv_etiqueta = tbl_puestos_perfil_d_eti_lib.DefaultView;
                 dv_etiqueta.RowFilter = "etiqueta='" + texto + "'";
                 int t = dv_etiqueta.ToTable().Rows.Count;
-                //if (t == 0)
-                //{
-                //    e.Row.Cells[3].Controls.Clear();
-                //}
-                //if (t > 0)
-                //{
-                //    string ruta = dv_etiqueta.ToTable().Rows[0]["ruta"].ToString();
-                //    if (!File.Exists(ruta))
-                //    {
-                //        e.Row.Cells[3].Controls.Clear();
-                //    }
-                //}
             }
         }
 
@@ -2766,7 +2754,7 @@ namespace presentacion
             Session[lblsession.Text + "archivos_etiquetas"] = papeleria;
             Session["texto_modal"] = null;
 
-            string queryurl = "&edit_htmlfile=" + funciones.deTextoa64(ruta) + "&etiqueta_edit=" + funciones.deTextoa64(etiqueta);
+            string queryurl = "&edit_htmlfile=" + funciones.deTextoa64(ruta) + "&etiqueta_edit=" + funciones.deTextoa64(etiqueta) + "&idc_html=" + funciones.deTextoa64(Convert.ToInt32(Session[lblsession.Text + "idc_etiqueta_htmlfile"]).ToString());
             String url = HttpContext.Current.Request.Url.AbsoluteUri;
             String path_actual = url.Substring(url.LastIndexOf("/") + 1);
             url = url.Replace(path_actual, "");
@@ -2890,6 +2878,17 @@ namespace presentacion
 
         protected void gridgpo_lib_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+        }
+
+        protected void gridgpo_lib_RowDataBound1(object sender, GridViewRowEventArgs e)
+        {
+            GridView grid = (GridView)sender;
+            TextBox txt = (TextBox)e.Row.FindControl("txtOrderGrupo");
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DataRowView rowView = (DataRowView)e.Row.DataItem;
+                txt.Text = (e.Row.RowIndex + 1).ToString();
+            }
         }
     }
 }

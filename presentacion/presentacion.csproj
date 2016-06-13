@@ -322,6 +322,7 @@
     <Content Include="js\maxlenght.js" />
     <Content Include="js\npm.js" />
     <Content Include="js\slack.js" />
+    <Content Include="js\styles.js" />
     <Content Include="js\wickedpicker.css" />
     <Content Include="js\wickedpicker.js" />
     <Content Include="js\wickedpicker.min.css" />

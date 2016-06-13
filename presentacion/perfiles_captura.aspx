@@ -152,7 +152,7 @@
                                                     <div class="col-lg-12">
                                                         <div class="table-responsive">
                                                             <!-- grid gpo libre -->
-                                                            <asp:GridView ID="gridgpo_lib" runat="server" AllowSorting="True" CssClass="table table-bordered table-hover table-striped" AutoGenerateColumns="False" DataKeyNames="idc_perfilgpod_dato_lib,orden" OnRowCommand="gridgpo_lib_RowCommand">
+                                                            <asp:GridView ID="gridgpo_lib" runat="server" AllowSorting="True" CssClass="table table-bordered table-hover table-striped" AutoGenerateColumns="False" DataKeyNames="idc_perfilgpod_dato_lib,orden" OnRowCommand="gridgpo_lib_RowCommand" OnRowDataBound="gridgpo_lib_RowDataBound1">
                                                                 <Columns>
                                                                     <asp:BoundField DataField="texto" HeaderText="Valor">
                                                                         <HeaderStyle HorizontalAlign="Center" />
@@ -178,9 +178,9 @@
                                                                     </asp:TemplateField>
                                                                     <asp:BoundField DataField="grupo" HeaderText="Grupo" Visible="False" />
                                                                     <asp:BoundField DataField="orden" HeaderText="orden" Visible="false" ItemStyle-Width="40px" />
-                                                                    <asp:TemplateField HeaderText="Orden">
+                                                                    <asp:TemplateField HeaderText="Orden" Visible="true">
                                                                         <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                                                        <HeaderStyle Width="30px"></HeaderStyle>
+                                                                        <HeaderStyle Width="100px"></HeaderStyle>
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="txtOrderGrupo" CssClass="form-control" Text='<%#Eval("orden") %>' AutoPostBack="true" OnTextChanged="txtOrderGrupo_TextChanged" onkeypress="return validarEnteros(event);" runat="server" CommandName="change_order" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"></asp:TextBox>
                                                                         </ItemTemplate>

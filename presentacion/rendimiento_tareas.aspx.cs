@@ -105,7 +105,7 @@ namespace presentacion
             }
             if (error == false)
             {
-                string idc_depto = funciones.deTextoa64(ddldeptos.SelectedValue);
+                string idc_depto = Convert.ToInt32(ddlPuestoAsigna.SelectedValue) > 0 ? funciones.deTextoa64("0") : funciones.deTextoa64(ddldeptos.SelectedValue);
                 String url = HttpContext.Current.Request.Url.AbsoluteUri;
                 String path_actual = url.Substring(url.LastIndexOf("/") + 1);
                 url = url.Replace(path_actual, "");
@@ -136,7 +136,7 @@ namespace presentacion
                 url = url.Replace(path_actual, "");
                 url = url + "grafica.aspx?idc_puesto=" + funciones.deTextoa64(ddlPuestoAsigna.SelectedValue) + "&fecha_inicio=" + txtfechainicio.Text + "&fecha_fin=" + txtfechafin.Text;
                 string id_puesto = ddlPuestoAsigna.SelectedValue == "0" ? funciones.deTextoa64("0") : funciones.deTextoa64(ddlPuestoAsigna.SelectedValue);
-                string idc_depto = funciones.deTextoa64(ddldeptos.SelectedValue);
+                string idc_depto = Convert.ToInt32(ddlPuestoAsigna.SelectedValue) > 0 ? funciones.deTextoa64("0") : funciones.deTextoa64(ddldeptos.SelectedValue);
                 Response.Redirect("rendimiento_tareas_detalles.aspx?pidc_depto=" + idc_depto + "&pidc_puesto=" + id_puesto + "&inicio=" + funciones.deTextoa64(txtfechainicio.Text) + "&fin=" + funciones.deTextoa64(txtfechafin.Text));
             }
         }
@@ -171,7 +171,7 @@ namespace presentacion
             entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
             DataSet ds = componente.CargaComboDinamicoOrgn(entidad);
             DataView view = ds.Tables[0].DefaultView;
-            view.RowFilter = "idc_depto = " + depto + "";
+            view.RowFilter = depto > 0 ? "idc_depto = " + depto + "":"";
             ddlPuestoAsigna.DataValueField = "idc_puesto";
             ddlPuestoAsigna.DataTextField = "descripcion_puesto_completa";
             ddlPuestoAsigna.DataSource = view.ToTable();

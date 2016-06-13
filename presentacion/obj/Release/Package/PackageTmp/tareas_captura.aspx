@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
                             <label>Selecciona un Empleado <small>Si solo es un Empleado, NO ES NECESARIO que se agrege a la tabla.</small></label>
                             <asp:DropDownList ID="ddlPuesto" OnSelectedIndexChanged="ddlPuesto_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
                             </asp:DropDownList>
@@ -79,9 +79,9 @@
                             <label></label>
                             <asp:LinkButton ID="lnkbuscarpuestos" runat="server" CssClass="btn btn-success btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
                             <label></label>
-                            <asp:LinkButton ID="lnkadd" runat="server" CssClass="btn btn-info btn-block" OnClick="lnkadd_Click">Agregar Empleado (Asignar Varios)<i class="fa fa-plus-circle" aria-hidden="true"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkadd" runat="server" CssClass="btn btn-info btn-block" OnClick="lnkadd_Click">Agregar <i class="fa fa-plus-circle" aria-hidden="true"></i></asp:LinkButton>
                         </div>
                     </div>
                     <div class="row">

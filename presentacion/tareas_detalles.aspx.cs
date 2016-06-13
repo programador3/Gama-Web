@@ -110,6 +110,7 @@ namespace presentacion
             {
                 TareasENT entidad = new TareasENT();
                 TareasCOM componente = new TareasCOM();
+                entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
                 entidad.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
                 entidad.Pidc_tarea = idc_tarea;
                 DataSet ds = componente.CargarTareas(entidad);
@@ -819,11 +820,11 @@ namespace presentacion
             }
             panel_captura_fecha.Visible = false;
             upda_proovc.Visible = false;
-            if (TIPO == "N" || TIPO == "R" && Request.QueryString["acepta"] != null)
+            if (TIPO == "N" || TIPO == "R" || TIPO == "G" && Request.QueryString["acepta"] != null)
             {
                 panel_captura_fecha.Visible = true;
-                upda_proovc.Visible = repeat_proovedores.Items.Count == 0 ? false : true;
                 upda_proovc.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 355);
+                upda_proovc.Visible = repeat_proovedores.Items.Count == 0 ? false : true;
                 txtcomentarios_proo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 355);
                 txtcomentarios_proo.Visible = repeat_proovedores.Items.Count == 0 ? false : true;
             }
@@ -867,9 +868,15 @@ namespace presentacion
                 btnCancelar.Visible = false;
                 btnGuardar.Visible = false;
             }
-            if (TIPO == "R" && idc_usuario != Convert.ToInt32(Session["sidc_usuario"]) && Request.QueryString["termina"] != null)
+            if (TIPO == "R" &&  idc_usuario != Convert.ToInt32(Session["sidc_usuario"]) && Request.QueryString["termina"] != null)
             {
                 BTNCANCELARGUARDAR.Visible = true;
+                btnCancelar.Visible = false;
+                btnGuardar.Visible = false;
+            }
+            if (TIPO == "G" && idc_usuario != Convert.ToInt32(Session["sidc_usuario"]) && Request.QueryString["termina"] != null)
+            {
+                BTNCANCELARGUARDAR.Visible = false;
                 btnCancelar.Visible = false;
                 btnGuardar.Visible = false;
             }
@@ -1014,7 +1021,7 @@ namespace presentacion
                         break;
 
                     case "Fecha Cambio Directo":
-                        entidad.Pdescripcion = "CAMBIO DE FECHA REALIZADO DIRECTAMENTE." + System.Environment.NewLine + txtobsrcfd.Text.ToUpper();
+                        entidad.Pdescripcion = "CAMBIO DE FECHA REALIZADO DIRECTAMENTE POR EL EMPLEADO QUE SOLICITO LA TAREA." + System.Environment.NewLine + txtobsrcfd.Text.ToUpper();
                         entidad.Pfecha = Convert.ToDateTime(txtfechacompromisodirecto.Text.Replace('T', ' '));
                         ds = componente.AgregarMovimiento(entidad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
@@ -1211,8 +1218,8 @@ namespace presentacion
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','Esta Cambiando la Fecha de Compromiso, Desea continuar','modal fade modal-info');", true);
                 }
             }
-            else {
-
+            else
+            {
                 Alert.ShowAlertError("Escriba una Fecha", this);
             }
         }

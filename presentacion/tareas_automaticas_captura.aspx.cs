@@ -96,15 +96,18 @@ namespace presentacion
                 {
                     case "D":
                         txtfrecuencia_d.Text = dt.Rows[0]["frecuencia"].ToString();
+                        panel_d.Visible = true;
                         break;
 
                     case "S":
                         txtfrecuencia_s.Text = dt.Rows[0]["frecuencia"].ToString();
+                        panel_s.Visible = true;
                         break;
 
                     case "M":
                         txtfrecuencia_m.Text = dt.Rows[0]["frecuencia"].ToString();
                         txtdiames.Text = dt.Rows[0]["dia_mes"].ToString();
+                        panel_m.Visible = true;
                         break;
                 }
                 lnklunes.CssClass = Convert.ToBoolean(dt.Rows[0]["lunes"]) == true ? "btn btn-success btn-block" : "btn btn-default btn-block";

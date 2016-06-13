@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Detalles Tareas" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="tareas_detalles.aspx.cs" Inherits="presentacion.tareas_detalles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
     <script type="text/javascript">
         function ModalClose() {
             $('#myModal').modal('hide');
@@ -22,7 +21,8 @@
             audio.play();
             $('#myModalMov').modal('show');
             $('#modal_titlemov').text(cTitulo);
-        } function ModalCF() {
+        }
+        function ModalCF() {
             var audio = new Audio('sounds/modal.wav');
             audio.play();
             $('#myModalCF').modal('show');
@@ -48,7 +48,6 @@
             $('#pavance').width(value);
         }
         function campoVacioVbno() {
-
             var obs = $('#<%= txtcomentarios_vbno.ClientID%>').val().replace(/\s+/g, '');
             if (obs.length < 1) {
                 //inhabilita el boton aceptar
@@ -74,7 +73,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-xs-12">
-                    <h4><i class="fa fa-calendar"></i>&nbsp;Fecha Estipulada de Compromiso 
+                    <h4><i class="fa fa-calendar"></i>&nbsp;Fecha Estipulada de Compromiso
                         <span>
                             <asp:LinkButton Visible="false" ID="lnkCambiarFechaF" CssClass="btn btn-info" OnClick="lnkCambiarFechaF_Click" runat="server">Editar Fecha <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton>
                         </span>

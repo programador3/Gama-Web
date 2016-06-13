@@ -29,11 +29,10 @@ namespace presentacion
             ScriptManager sm = ScriptManager.GetCurrent(this);
             sm.RegisterAsyncPostBackControl(SaveButton);
             sm.RegisterAsyncPostBackControl(ClearButton);
-
+            Random random = new Random();
+            int randomNumber = random.Next(0, 1000000);
             if (!IsPostBack && Request.QueryString["edit_live"] == null)//si no trae request significa que no es edicio
             {
-                Random random = new Random();
-                int randomNumber = random.Next(0, 1000000);
                 lblsession_h.Text = randomNumber.ToString();
                 Editor.Text = initialHtml;
                 CargarGrid();
@@ -43,8 +42,6 @@ namespace presentacion
             }
             if (!IsPostBack && Request.QueryString["edit_live"] != null)//si tare request siginfica que es edicion tipo perfiles
             {
-                Random random = new Random();
-                int randomNumber = random.Next(0, 1000000);
                 lblsession_h.Text = randomNumber.ToString();
 
                 if (Request.QueryString["url"] != null)
@@ -60,6 +57,8 @@ namespace presentacion
                 else
                 {
                     lblsession.Text = funciones.de64aTexto(Request.QueryString["dinamic_id"]);
+                    int id = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_html"]));
+                    Session[lblsession.Text + "idc_etiqueta_htmlfile"] = id.ToString();
                     btnGuardarEdicionLive.Visible = true;
                     SaveButton.Visible = false;
                     PanelTitulo.Visible = false;
@@ -402,7 +401,7 @@ namespace presentacion
                     StreamWriter file_edit = new StreamWriter(dirInfo_edit.ToString() + randomNumber_live.ToString() + date + ".html");
                     file_edit.Write(content);
                     file_edit.Close();
-                    string mesnaje = AddPapeleriaToTableEtiquetas(dirInfo_edit.ToString() + randomNumber_live.ToString() + date + ".html", txtTitulo.Text.ToUpper() + "html", etiqueta, Convert.ToInt32(Session[lblsession.Text + "idc_etiqueta_htmlfile"]));
+                    string mesnaje = AddPapeleriaToTableEtiquetas(dirInfo_edit.ToString() + randomNumber_live.ToString() + date + ".html", txtTitulo.Text.ToUpper() + "html", etiqueta, Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_html"])));
                     Alert.ShowGift("Estamos procesando el archivo al Servidor.", "Espere un Momento", "imagenes/loading.gif", "3000", "El archivo fue modificado temporalmente. No se guardara hasta que no guarde el perfil seleccionado", this);
                     break;
             }
