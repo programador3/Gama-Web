@@ -34,7 +34,6 @@
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/sweetalert-dev.js"></script>
     <script src="js/sweetalert.min.js"></script>
-
     <script type="text/javascript">
         function SendSlack(URL) {
             $.ajax({
@@ -194,10 +193,24 @@
             ValidarTareasPendientes();
             ValidarOpciones();
             ValidarNotificaciones();
+            MensajeTexto();
             window.location.hash = "no-back-button";
             window.location.hash = "Again-No-back-button" //chrome
             window.onhashchange = function () { window.location.hash = "no-back-button"; }
-
+            var myVar = setInterval(myTimer, 60000);
+            function myTimer() {
+                MensajeTexto();
+            }
+        }
+        function MensajeTexto() {
+            $.ajax({
+                url: "temp/mensaje.txt",
+                dataType: "text",
+                success: function (data) {
+                    PlaySound('sounds/info.wav');
+                    sweetAlert("Mensaje del Administrador del Sistema", data, "info");
+                }
+            });
         }
         function ValidarNotificaciones() {
             $('#notipend').empty();
@@ -288,6 +301,7 @@
             }
 
         }
+
         // convertimos en minusculas la cadena devuelta por navigator.userAgent
         var nav = navigator.userAgent.toLowerCase();
         //buscamos dentro de la cadena mediante indexOf() el identificador del navegador

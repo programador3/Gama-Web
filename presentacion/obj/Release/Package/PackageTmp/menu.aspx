@@ -21,9 +21,6 @@
         function DeleteFocus(txt) {
             txt.value = "";
         }
-        $(document).ready(function () {
-            $('.tooltip').tooltipster();
-        });
     </script>
     <style type="text/css">
         .dropdown-submenu {

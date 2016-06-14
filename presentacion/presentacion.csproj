@@ -153,8 +153,11 @@
     <Content Include="css\main.css" />
     <Content Include="css\PanelsLTE.css" />
     <Content Include="css\style.css" />
+    <Content Include="css\themes\facebook\facebook.css" />
     <Content Include="css\themes\flat-blue.css" />
     <Content Include="css\themes\flat-green.css" />
+    <Content Include="css\themes\google\google.css" />
+    <Content Include="css\themes\twitter\twitter.css" />
     <Content Include="cursos.aspx" />
     <Content Include="cursos_a_capacitar.aspx" />
     <Content Include="cursos_captura.aspx" />
@@ -1477,6 +1480,9 @@
     <Content Include="fonts\fontello.eot" />
     <Content Include="fonts\fontello.ttf" />
     <Content Include="fonts\fontello.woff" />
+    <Content Include="css\themes\facebook\facebook.scss" />
+    <Content Include="css\themes\google\google.scss" />
+    <Content Include="css\themes\twitter\twitter.scss" />
     <None Include="Properties\PublishProfiles\pub.pubxml" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <Content Include="StyleCop.Cache" />
