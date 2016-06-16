@@ -18,6 +18,7 @@ namespace negocio.Entidades
         private string cadena_pro;
         private string pdescripcion;
         private string tipo;
+        private string tipo_cambio_tarea;
         private string extension;
         private bool parchivo;
         private bool correcto;
@@ -148,6 +149,12 @@ namespace negocio.Entidades
         {
             get { return tipofiltro; }
             set { tipofiltro = value; }
+        }
+
+        public string Ptipo_cambio_tarea
+        {
+            get { return tipo_cambio_tarea; }
+            set { tipo_cambio_tarea = value; }
         }
 
         public string Ptipofs

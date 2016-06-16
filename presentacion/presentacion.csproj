@@ -495,6 +495,7 @@
     <Content Include="programacion_correos_d.aspx" />
     <Content Include="puestos.aspx" />
     <Content Include="puestos_catalogo.aspx" />
+    <Content Include="reasignacion_tareas.aspx" />
     <Content Include="redirect.aspx" />
     <Content Include="rendimiento_tareas.aspx" />
     <Content Include="rendimiento_tareas_detalles.aspx" />
@@ -1152,6 +1153,13 @@
     </Compile>
     <Compile Include="puestos_catalogo.aspx.designer.cs">
       <DependentUpon>puestos_catalogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reasignacion_tareas.aspx.cs">
+      <DependentUpon>reasignacion_tareas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reasignacion_tareas.aspx.designer.cs">
+      <DependentUpon>reasignacion_tareas.aspx</DependentUpon>
     </Compile>
     <Compile Include="redirect.aspx.cs">
       <DependentUpon>redirect.aspx</DependentUpon>

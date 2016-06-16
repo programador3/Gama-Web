@@ -1,0 +1,9 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El procedimiento o la función 'sp_a_cambios_tareas_historial' esperaba el parámetro '@ptipo', que no se ha especificado.
+   at negocio.Componentes.TareasCOM.AgregarMovimiento(TareasENT Etiqueta)
+   at presentacion.reasignacion_tareas.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:0aafc1bb-4628-4b7e-9953-3b3f7fd047cb
+Error Number:201,State:4,Class:16

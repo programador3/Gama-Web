@@ -157,6 +157,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.TextBox txthorasalidac;
         
         /// <summary>
+        /// Control lnkno_horacomida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkno_horacomida;
+        
+        /// <summary>
         /// Control txthoraentradac.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txthorasalida;
+        
+        /// <summary>
+        /// Control lnkno_Salida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkno_Salida;
         
         /// <summary>
         /// Control txtobservaciones.

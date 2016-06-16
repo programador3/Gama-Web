@@ -178,13 +178,18 @@ namespace presentacion
                     lblobsr.Visible = true;
                     lnkedit.Visible = true;
                     edicion.Visible = false;
-                    if (txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
+                    lnkno_horacomida.CssClass = "btn btn-default btn-block";
+                    lnkno_Salida.CssClass = "btn btn-default btn-block";
+                    lnkno_horacomida.CssClass = Convert.ToBoolean(row["no_comida"]) == true ? "btn btn-success btn-block" : "btn btn-default btn-block";
+                    lnkno_Salida.CssClass = Convert.ToBoolean(row["no_salida"]) == true ? "btn btn-success btn-block" : "btn btn-default btn-block";
+                    if (lnkno_Salida.CssClass == "btn btn-default btn-block" && lnkno_horacomida.CssClass == "btn btn-default btn-block" && txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
                     {
                         btntot.CssClass = "btn btn-success btn-block";
                         cuerpo.Visible = false;
                     }
                 }
-                else {
+                else
+                {
                     ddlsucursales.SelectedValue = "0";
                     txthoraentrada.Text = "";
                     txthoraentradac.Text = "";
@@ -199,7 +204,9 @@ namespace presentacion
                     lblobsr.Visible = false;
                     lnkedit.Visible = false;
                     edicion.Visible = false;
-                    btntot.CssClass = "btn btn-defult btn-block";
+                    btntot.CssClass = "btn btn-default btn-block";
+                    lnkno_horacomida.CssClass = "btn btn-default btn-block";
+                    lnkno_Salida.CssClass = "btn btn-default btn-block";
                 }
                 return ret;
             }
@@ -301,6 +308,8 @@ namespace presentacion
                 entidad.Phora_entrada_comida = txthoraentradac.Text == "" ? 0 : funciones.ReturnMinutesfromString(txthoraentradac.Text.Replace(" ", ""));
                 entidad.Phora_salida_comida = txthorasalidac.Text == "" ? 0 : funciones.ReturnMinutesfromString(txthorasalidac.Text.Replace(" ", ""));
                 entidad.Pfecha = Convert.ToDateTime(txtfecha.Text);
+                entidad.Pno_comida = lnkno_horacomida.CssClass == "btn btn-success btn-block" ? true : false;
+                entidad.Pno_salida = lnkno_Salida.CssClass == "btn btn-success btn-block" ? true : false;
                 DataSet ds;
                 string vmensaje = "";
                 switch (caso)
@@ -349,7 +358,7 @@ namespace presentacion
                         break;
 
                     case "Editar":
-                        entidad.Pidc_horario_erm = Request.QueryString["idc_horario_perm"]==null? Convert.ToInt32(Session["idc_horario_perm"]):Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"]));
+                        entidad.Pidc_horario_erm = Request.QueryString["idc_horario_perm"] == null ? Convert.ToInt32(Session["idc_horario_perm"]) : Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"]));
                         entidad.Pstatus = "";
                         ds = componente.SolcitudEdicion(entidad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
@@ -432,16 +441,16 @@ namespace presentacion
             txtfecha.Enabled = true;
             ddlsucursales.Enabled = txthoraentrada.Text == "" ? false : true;
             txthoraentrada.Enabled = true;
-            txthoraentradac.Enabled = true;
-            txthorasalida.Enabled = true;
-            txthorasalidac.Enabled = true;
+            txthoraentradac.Enabled = lnkno_horacomida.CssClass == "btn btn-default btn-block" ? true : false;
+            txthorasalida.Enabled = lnkno_Salida.CssClass == "btn btn-default btn-block" ? true : false; ;
+            txthorasalidac.Enabled = lnkno_horacomida.CssClass == "btn btn-default btn-block" ? true : false; ;
             edicion.Visible = true;
             autoriza.Visible = false;
             if (Session["idc_horario_perm"] != null)
             {
                 solicita.Visible = false;
             }
-            if (txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
+            if (lnkno_Salida.CssClass == "btn btn-default btn-block" && lnkno_horacomida.CssClass == "btn btn-default btn-block" && txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
             {
                 btntot.CssClass = "btn btn-success btn-block";
                 cuerpo.Visible = false;
@@ -458,7 +467,45 @@ namespace presentacion
                 txthoraentradac.Text = "";
                 txthorasalida.Text = "";
                 txthorasalidac.Text = "";
+                txthorasalida.Enabled = true;
+                txthoraentradac.Enabled = true;
+                txthorasalidac.Enabled = true;
                 ddlsucursales.SelectedValue = "0";
+                lnkno_horacomida.CssClass = "btn btn-default btn-block";
+                lnkno_Salida.CssClass = "btn btn-default btn-block";
+            }
+        }
+
+        protected void lnkno_horacomida_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = (LinkButton)sender;
+            lnk.CssClass = lnk.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
+            if (lnk.CssClass == "btn btn-success btn-block")
+            {
+                txthoraentradac.Text = "";
+                txthorasalidac.Text = "";
+                txthoraentradac.Enabled = false;
+                txthorasalidac.Enabled = false;
+            }
+            else
+            {
+                txthoraentradac.Enabled = true;
+                txthorasalidac.Enabled = true;
+            }
+        }
+
+        protected void lnkno_Salida_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = (LinkButton)sender;
+            lnk.CssClass = lnk.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
+            if (lnk.CssClass == "btn btn-success btn-block")
+            {
+                txthorasalida.Text = "";
+                txthorasalida.Enabled = false;
+            }
+            else
+            {
+                txthorasalida.Enabled = true;
             }
         }
     }

@@ -150,12 +150,12 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-                                        <h5><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<strong>Fecha que aplicara</strong></h5>
-                                        <asp:TextBox ID="txtfecha" TextMode="Date" CssClass="form-control timepicker" AutoPostBack="true" OnTextChanged="txtfecha_TextChanged" runat="server"></asp:TextBox>
-                                    </div>
+                                <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+                                    <h5><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<strong>Fecha que aplicara</strong></h5>
+                                    <asp:TextBox ID="txtfecha" TextMode="Date" CssClass="form-control timepicker" AutoPostBack="true" OnTextChanged="txtfecha_TextChanged" runat="server"></asp:TextBox>
                                 </div>
-                            
+                            </div>
+
                             <div class="row">
                                 <div class="col-lg-12 col-xs-12">
                                     <asp:Button ID="btntot" runat="server" Text="No Tendra Ninguna Checada en el Dia" CssClass="btn btn-default btn-block" OnClick="btntot_Click" />
@@ -186,6 +186,9 @@
                                             </h5>
                                         </div>
                                     </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <asp:LinkButton ID="lnkno_horacomida" CssClass="btn btn-default btn-block" OnClick="lnkno_horacomida_Click" runat="server">No Marcar Incidencia en Comida</asp:LinkButton>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -204,6 +207,10 @@
                                             <asp:TextBox ID="txthorasalida" onblur="ValidarHoraLaboral(this);" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
                                             </h5>
                                         </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <asp:LinkButton ID="lnkno_Salida" CssClass="btn btn-default btn-block" OnClick="lnkno_Salida_Click" runat="server">No Marcar Incidencia en Salida</asp:LinkButton>
                                     </div>
                                 </div>
                             </div>

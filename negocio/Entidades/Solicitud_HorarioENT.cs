@@ -10,6 +10,8 @@ namespace negocio.Entidades
         private int idc_horario_erm;
         private int idc_empleado;
         private DateTime fecha;
+        private bool no_comida;
+        private bool no_salida;
         private int hora_entrada;
         private int hora_salida;
         private int hora_salida_comida;
@@ -104,6 +106,18 @@ namespace negocio.Entidades
         {
             get { return idc_sucursal; }
             set { idc_sucursal = value; }
+        }
+
+        public Boolean Pno_comida
+        {
+            get { return no_comida; }
+            set { no_comida = value; }
+        }
+
+        public Boolean Pno_salida
+        {
+            get { return no_salida; }
+            set { no_salida = value; }
         }
     }
 }

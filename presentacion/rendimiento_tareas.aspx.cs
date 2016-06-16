@@ -36,6 +36,7 @@ namespace presentacion
                 Asignacion_RevisionesENT entidad = new Asignacion_RevisionesENT();
                 Asignacion_RevisionesCOM componente = new Asignacion_RevisionesCOM();
                 entidad.Filtro = filtro;
+                entidad.Ptipo = "T";
                 entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
                 DataSet ds = componente.CargaComboDinamicoOrgn(entidad);
                 ddlPuestoAsigna.DataValueField = "idc_puesto";
@@ -169,9 +170,10 @@ namespace presentacion
             Asignacion_RevisionesCOM componente = new Asignacion_RevisionesCOM();
             entidad.Filtro = "";
             entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+            entidad.Ptipo = "T";
             DataSet ds = componente.CargaComboDinamicoOrgn(entidad);
             DataView view = ds.Tables[0].DefaultView;
-            view.RowFilter = depto > 0 ? "idc_depto = " + depto + "":"";
+            view.RowFilter = depto > 0 ? "idc_depto = " + depto + "" : "";
             ddlPuestoAsigna.DataValueField = "idc_puesto";
             ddlPuestoAsigna.DataTextField = "descripcion_puesto_completa";
             ddlPuestoAsigna.DataSource = view.ToTable();

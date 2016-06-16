@@ -1,0 +1,8 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at presentacion.tareas_detalles.CargarTareas(Int32 idc_tarea) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\15_06_16\Puestos\presentacion\tareas_detalles.aspx.cs:line 117

@@ -53,7 +53,6 @@
                         items.push(x);
 
                     });
-                    var options = new primitives.orgdiagram.Config();
                     options.items = items;
                     options.cursorItem = 0;
                     options.templates = [getContactTemplate()];

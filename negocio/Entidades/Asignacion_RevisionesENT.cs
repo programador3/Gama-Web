@@ -5,6 +5,7 @@
         private string servicio;
         private int pidc_clasifrev;
         private string filtro;
+        private string tipo;
         private int pidc_puesto_revisa;
         private int pidc_puesto_prepara;
         private int pidc_puesto_entrega;
@@ -85,6 +86,12 @@
         {
             get { return filtro; }
             set { filtro = value; }
+        }
+
+        public string Ptipo
+        {
+            get { return tipo; }
+            set { tipo = value; }
         }
 
         public int Idc_clasifrev

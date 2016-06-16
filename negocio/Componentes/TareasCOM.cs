@@ -63,6 +63,23 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet CargarSinEmpleado(TareasENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_tareas_sin_empleados", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet CargarProveedores(TareasENT entidad)
         {
             DataSet ds = new DataSet();
@@ -184,6 +201,34 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_pro", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pcadena_pro });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcorrecto", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Pcorrecto });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcomentarios", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pcomentarios });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_a_cambios_tareas_historial", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet ReasignarTarea(TareasENT Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pdirecip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pnombrepc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tarea", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_tarea });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdescripcion", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pdescripcion });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Char, Value = Etiqueta.Ptipo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo_cambio_tarea", SqlDbType = SqlDbType.Char, Value = Etiqueta.Ptipo_cambio_tarea });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO_NUEVO", SqlDbType = SqlDbType.Char, Value = Etiqueta.Pidc_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO_asigna_NUEVO", SqlDbType = SqlDbType.Char, Value = Etiqueta.Pidc_puesto_asigna });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfecha", SqlDbType = SqlDbType.Date, Value = Etiqueta.Pfecha });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

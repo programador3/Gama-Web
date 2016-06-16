@@ -5,13 +5,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <h1 class="page-header">Reportes de rendimiento por Puesto</h1>
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  id="DEPTO" runat="server">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="DEPTO" runat="server">
             <label>Selecciona el Departamento</label>
             <asp:DropDownList ID="ddldeptos" OnSelectedIndexChanged="ddldeptos_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
             </asp:DropDownList>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <label>Selecciona el puesto que revisara la tarea (Visto Bueno)</label>
+            <label>Selecciona el puesto que realiza la Tarea)</label>
             <asp:DropDownList ID="ddlPuestoAsigna" OnSelectedIndexChanged="ddlPuesto_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
             </asp:DropDownList>
         </div>

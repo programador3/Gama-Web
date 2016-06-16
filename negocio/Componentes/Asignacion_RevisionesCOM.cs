@@ -21,6 +21,7 @@ namespace negocio.Componentes
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@pfiltro", SqlDbType = SqlDbType.Int, Value = Etiqueta.Filtro });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptipo });
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -38,6 +39,7 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Int, Value = "T" });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

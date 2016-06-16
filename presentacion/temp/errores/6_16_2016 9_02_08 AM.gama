@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El parámetro '@pobservaciones' se ha especificado varias veces.
+   at negocio.Componentes.SolicitudHorarioCOM.Solcitud(Solicitud_HorarioENT Etiqueta) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\16_06_16\Puestos\negocio\Componentes\SolicitudHorarioCOM.cs:line 53
+   at presentacion.solicitud_horario.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:d4fc7794-82e1-4d5e-b254-33b1f1388ff0
+Error Number:8143,State:1,Class:16

@@ -829,46 +829,44 @@ namespace presentacion
                 txtcomentarios_proo.Visible = repeat_proovedores.Items.Count == 0 ? false : true;
             }
 
-            if (TIPO == "A" && Request.QueryString["acepta"] != null && Convert.ToBoolean(Session["integrante_tarea"]) == true)
+            if (TIPO == "A" && Request.QueryString["acepta"] != null && Convert.ToBoolean(Session["integrante_tarea"]) == true && idc_usuario != Convert.ToInt32(Session["sidc_usuario"]))
             {
-                if (idc_usuario != Convert.ToInt32(Session["sidc_usuario"]))
+                try
                 {
-                    try
+                    TareasENT entidad = new TareasENT();
+                    TareasCOM componente = new TareasCOM();
+                    entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
+                    entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
+                    entidad.Pusuariopc = funciones.GetUserName();//usuario pc
+                    entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                    entidad.Ptipo = "L";
+                    entidad.Pfecha = txtnueva_fecha.Text == "" ? ((DateTime)Session["fecha"]) : Convert.ToDateTime(txtnueva_fecha.Text);
+                    entidad.Pdescripcion = txtcambio_desc.Text;
+                    entidad.Pidc_tarea = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"]));
+                    DataSet ds = new DataSet();
+                    string vmensaje = "";
+                    entidad.Pidc_tarea_h = idc_hist;
+                    ds = componente.AgregarMovimiento(entidad);
+                    vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                    if (vmensaje != "")
                     {
-                        TareasENT entidad = new TareasENT();
-                        TareasCOM componente = new TareasCOM();
-                        entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
-                        entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
-                        entidad.Pusuariopc = funciones.GetUserName();//usuario pc
-                        entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
-                        entidad.Ptipo = "L";
-                        entidad.Pfecha = txtnueva_fecha.Text == "" ? ((DateTime)Session["fecha"]) : Convert.ToDateTime(txtnueva_fecha.Text);
-                        entidad.Pdescripcion = txtcambio_desc.Text;
-                        entidad.Pidc_tarea = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"]));
-                        DataSet ds = new DataSet();
-                        string vmensaje = "";
-                        entidad.Pidc_tarea_h = idc_hist;
-                        ds = componente.AgregarMovimiento(entidad);
-                        vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
-                        if (vmensaje != "")
-                        {
-                            Alert.ShowAlertError(vmensaje, this);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Alert.ShowAlertError(ex.ToString(), this.Page);
-                        Global.CreateFileError(ex.ToString(), this);
+                        Alert.ShowAlertError(vmensaje, this);
                     }
                 }
+                catch (Exception ex)
+                {
+                    Alert.ShowAlertError(ex.ToString(), this.Page);
+                    Global.CreateFileError(ex.ToString(), this);
+                }
             }
+
             if (TIPO == "A")
             {
                 BTNCANCELARGUARDAR.Visible = false;
                 btnCancelar.Visible = false;
                 btnGuardar.Visible = false;
             }
-            if (TIPO == "R" &&  idc_usuario != Convert.ToInt32(Session["sidc_usuario"]) && Request.QueryString["termina"] != null)
+            if (TIPO == "R" && idc_usuario != Convert.ToInt32(Session["sidc_usuario"]) && Request.QueryString["termina"] != null)
             {
                 BTNCANCELARGUARDAR.Visible = true;
                 btnCancelar.Visible = false;
@@ -879,6 +877,12 @@ namespace presentacion
                 BTNCANCELARGUARDAR.Visible = false;
                 btnCancelar.Visible = false;
                 btnGuardar.Visible = false;
+            }
+            if (TIPO == "G" && idc_usuario == Convert.ToInt32(Session["sidc_usuario"]) && Request.QueryString["acepta"] != null)
+            {
+                BTNCANCELARGUARDAR.Visible = false;
+                btnCancelar.Visible = true;
+                btnGuardar.Visible = true;
             }
             if (TIPO == "T" && idc_usuario != Convert.ToInt32(Session["sidc_usuario"]))
             {
