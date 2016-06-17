@@ -140,8 +140,18 @@ namespace presentacion
                     txttitulo.Text = row["Puesto"].ToString();
                     //filtramos para evitar datos repetidos
                     DataTable TablaTemporal = tablaGrupos.DefaultView.ToTable(true, "Grupo");
-                    RepeatDataPuesto.DataSource = TablaTemporal;
-                    RepeatDataPuesto.DataBind();
+                    DataView view = TablaTemporal.DefaultView;
+                    if (Request.QueryString["vp"] != null)
+                    {
+                        view.RowFilter = "Grupo like '%Descripción de Puesto%'";
+                        RepeatDataPuesto.DataSource = view.ToTable();
+                        RepeatDataPuesto.DataBind();
+                    }
+                    else
+                    {
+                        RepeatDataPuesto.DataSource = TablaTemporal;
+                        RepeatDataPuesto.DataBind();
+                    }
                     //agregamos tabla global a session
                 }
             }
@@ -321,7 +331,8 @@ namespace presentacion
             DataRowView dbr = (DataRowView)e.Item.DataItem;
             DataTable tbl = (System.Data.DataTable)(Session["TablaFiltros"]);
             string Grupo = Convert.ToString(DataBinder.Eval(dbr, "Grupo"));
-            //filtramos la tabla para mostrar solo las filas con el grupo del item que se agrego
+            //filtramos la tabla para mostrar solo las filas crfon el grupo del item que se agrego
+
             DataView dv = new DataView(tbl);
             dv.RowFilter = "Grupo = '" + Grupo + "'";
             Repeater RepeaterVariables = (Repeater)e.Item.FindControl("RepeaterChild");

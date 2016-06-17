@@ -469,3 +469,10 @@ E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\16_06_16\Puestos\negocio\bin
 E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\16_06_16\Puestos\negocio\obj\Release\negocio.csprojResolveAssemblyReference.cache
 E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\16_06_16\Puestos\negocio\obj\Release\negocio.dll
 E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\16_06_16\Puestos\negocio\obj\Release\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\negocio\bin\Release\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\negocio\bin\Release\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\negocio\bin\Release\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\negocio\bin\Release\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\negocio\obj\Release\negocio.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\negocio\obj\Release\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\negocio\obj\Release\negocio.pdb

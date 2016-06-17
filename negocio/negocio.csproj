@@ -92,6 +92,7 @@
     <Compile Include="Componentes\TareasAutomaticasCOM.cs" />
     <Compile Include="Componentes\TareasCOM.cs" />
     <Compile Include="Componentes\UsuariosBL.cs" />
+    <Compile Include="Componentes\VacacionesCOM.cs" />
     <Compile Include="Componentes\Vehiculos_EntregarCOM.cs" />
     <Compile Include="Componentes\Vehiculos_PreparacionCOM.cs" />
     <Compile Include="Componentes\Vehiculos_RevisionCOM.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Entidades\TareasAutomaticasENT.cs" />
     <Compile Include="Entidades\TareasENT.cs" />
     <Compile Include="Entidades\UsuariosE.cs" />
+    <Compile Include="Entidades\VacacionesENT.cs" />
     <Compile Include="Entidades\Vehiculos_EntregaENT.cs" />
     <Compile Include="Entidades\Vehiculos_PreparacionENT.cs" />
     <Compile Include="Entidades\Vehiculos_RevisionENT.cs" />

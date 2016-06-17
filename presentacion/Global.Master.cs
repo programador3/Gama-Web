@@ -18,6 +18,8 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
+            lnkperfil.CommandName = Convert.ToInt32(Session["login_idc_perfil"]).ToString();
+            lnkperfil.Text = (string)Session["login_perfil"];
             hdnidc_usuario.Value = Convert.ToInt32(Session["sidc_usuario"]).ToString();
             String path_actual = Request.Url.Segments[Request.Url.Segments.Length - 1];
             String path_actual_COMPLETO = HttpContext.Current.Request.Url.AbsoluteUri;
@@ -177,6 +179,18 @@ namespace presentacion
                 {
                     Response.Redirect(url);
                 }
+            }
+        }
+
+        protected void lnkperfil_Click(object sender, EventArgs e)
+        {
+            if (lnkperfil.CommandName == "0")
+            {
+                Alert.ShowAlertInfo("No cuentas con un perfil.", "Mensaje del Sistema", this.Page);
+            }
+            else
+            {
+                Response.Redirect("perfiles_detalle.aspx?vp=1&perfiles=true&borrador=0&uidc_puestoperfil=" + lnkperfil.CommandName);
             }
         }
     }

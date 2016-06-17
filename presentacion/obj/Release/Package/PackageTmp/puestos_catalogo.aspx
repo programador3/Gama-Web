@@ -277,6 +277,11 @@
                             <asp:LinkButton ID="lnkpermiso" runat="server" Visible="false" CssClass="btn btn-success btn-block" OnClick="LinkButton1_Click">Permiso Cambio de Horario <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <asp:LinkButton ID="lnkvacaciones" runat="server" Visible="false" CssClass="btn btn-primary btn-block" OnClick="lnkvacaciones_Click">Solicitar Vacaciones <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -21,11 +21,29 @@ namespace negocio.Componentes
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_Puesto });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Int, Value = "P" });
-           listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_reves", SqlDbType = SqlDbType.Int, Value = Entidad.PReves });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_reves", SqlDbType = SqlDbType.Int, Value = Entidad.PReves });
             try
             {
                 //ds = data.datos_Clientes(listparameters);
                 ds = data.enviar("sp_filtro_puestos_servicios", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet CargarInfoVacaciones(PuestosServiciosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_Puesto });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_informacion_vacaciones_pendientes", listparameters, false);
             }
             catch (Exception ex)
             {

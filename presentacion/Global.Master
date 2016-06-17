@@ -365,7 +365,12 @@
                                             <h4 class="username">
                                                 <asp:Label ID="lbluser2" runat="server" Text=""></asp:Label></h4>
                                             <p>
+                                                <strong>Puesto:</strong>
                                                 <asp:Label ID="lblpuestos2" runat="server" Text=""></asp:Label>
+                                            </p>
+                                            <p>
+                                                <strong>Perfil :</strong>
+                                                <asp:LinkButton ID="lnkperfil" runat="server" OnClick="lnkperfil_Click"></asp:LinkButton>
                                             </p>
                                             <div class="btn-group margin-bottom-2x" role="group">
                                                 <asp:LinkButton ID="lnksalirlo" runat="server" CssClass="btn btn-default" OnClick="lnkSalir_Click"><i class="fa fa-sign-out"></i>Cerrar Sesión</asp:LinkButton>

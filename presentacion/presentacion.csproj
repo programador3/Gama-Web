@@ -526,6 +526,7 @@
     <Content Include="tareas_detalles.aspx" />
     <Content Include="tareas_listado.aspx" />
     <Content Include="temp\tareas\js.js" />
+    <Content Include="vacaciones.aspx" />
     <Content Include="vehiculos_entrega.aspx" />
     <Content Include="vehiculos_preparacion.aspx" />
     <Content Include="vehiculos_revision.aspx" />
@@ -1328,6 +1329,13 @@
     </Compile>
     <Compile Include="tareas_listado.aspx.designer.cs">
       <DependentUpon>tareas_listado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vacaciones.aspx.cs">
+      <DependentUpon>vacaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vacaciones.aspx.designer.cs">
+      <DependentUpon>vacaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehiculos_entrega.aspx.cs">
       <DependentUpon>vehiculos_entrega.aspx</DependentUpon>

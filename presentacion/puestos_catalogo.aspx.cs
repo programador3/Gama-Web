@@ -157,7 +157,6 @@ namespace presentacion
             int IDC_PUESTO_LOGIN = Convert.ToInt32(Session["sidc_puesto_login"]);
             lnkMVerHerramientas.Visible = idc_herramienta == 0 ? false : true;
             lnkMPerfil.Visible = id_puestoperfil == 0 ? false : true;
-            //SI es el jefe directo
             lnkservicios.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 338);
             lnkservicios_medan.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 350);
             if (idc_puesto_reemplazo == 0 || Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
@@ -167,12 +166,14 @@ namespace presentacion
             lnkprebaja.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 155);
             lnkasignarperfil.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 353);
             lnkpmd.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 352);
+            lnkvacaciones.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 199);
             if (IDC_PUESTO_LOGIN == idc_puesto_jefe)
             {
                 lnkpermiso.Visible = true;
                 lnkprebaja.Visible = true;
                 lnkservicios.Visible = true;
-                if (idc_puesto_reemplazo == 0 &&  Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
+                lnkvacaciones.Visible = true;
+                if (idc_puesto_reemplazo == 0 && Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
                 {
                     lnkreemplazo.Visible = true;
                 }
@@ -259,6 +260,24 @@ namespace presentacion
         {
             Session["Caso_Confirmacion"] = "PMD";
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea solicitar un Proceso de Mejora de Desempeño para " + (string)Session["puesto"] + "?');", true);
+        }
+
+        protected void lnkservicios_medan_Click(object sender, EventArgs e)
+        {
+            Session["Caso_Confirmacion"] = "Servicios Asignados";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Modificara el listado de quien le da servicio a " + (string)Session["puesto"] + "?');", true);
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["Caso_Confirmacion"] = "Permiso";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Solicitar un Permiso para cambiar el horario a " + (string)Session["puesto"] + "?');", true);
+        }
+
+        protected void lnkvacaciones_Click(object sender, EventArgs e)
+        {
+            Session["Caso_Confirmacion"] = "Vacaciones";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea solicitar Vacaciones para " + (string)Session["puesto"] + "?');", true);
         }
 
         protected void cbox_puestos_perfil()
@@ -372,6 +391,10 @@ namespace presentacion
 
                 case "Permiso":
                     Response.Redirect("solicitud_horario.aspx?idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
+                    break;
+
+                case "Vacaciones":
+                    Response.Redirect("vacaciones.aspx?valuea_page=jwxjkbwjbxwjbxqbjbBIqbqibibixubqibxiqbxibqxibajbiujbibiuqx7876F7TF7QF87FYF7FA7QF7F5265D2DCDX9387T20B3287T807T8703RT3CT32B87RCT378R&idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
                     break;
             }
         }
@@ -615,18 +638,6 @@ namespace presentacion
         {
             int value = Convert.ToInt32(modal_cboxperfiles.SelectedValue);
             Session["value_perfil"] = value;
-        }
-
-        protected void lnkservicios_medan_Click(object sender, EventArgs e)
-        {
-            Session["Caso_Confirmacion"] = "Servicios Asignados";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Modificara el listado de quien le da servicio a " + (string)Session["puesto"] + "?');", true);
-        }
-
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            Session["Caso_Confirmacion"] = "Permiso";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Solicitar un Permiso para cambiar el horario a " + (string)Session["puesto"] + "?');", true);
         }
     }
 }

@@ -277,10 +277,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:37</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>06/16/2016 09:47:57</publishTime>
+      <publishTime>06/17/2016 11:56:17</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>06/16/2016 09:47:58</publishTime>
+      <publishTime>06/17/2016 14:39:06</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>06/15/2016 08:43:24</publishTime>
@@ -673,7 +673,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/05/2016 11:08:32</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>06/13/2016 16:59:43</publishTime>
+      <publishTime>06/17/2016 11:01:52</publishTime>
     </File>
     <File Include="grafica.aspx">
       <publishTime>06/08/2016 16:54:10</publishTime>
@@ -1702,7 +1702,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/08/2016 10:22:55</publishTime>
     </File>
     <File Include="puestos_catalogo.aspx">
-      <publishTime>06/08/2016 15:07:12</publishTime>
+      <publishTime>06/17/2016 11:31:57</publishTime>
     </File>
     <File Include="reasignacion_tareas.aspx">
       <publishTime>06/15/2016 16:42:05</publishTime>
@@ -1800,6 +1800,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="temp/tareas/js.js">
       <publishTime>03/22/2016 15:16:05</publishTime>
     </File>
+    <File Include="vacaciones.aspx">
+      <publishTime>06/17/2016 10:34:20</publishTime>
+    </File>
     <File Include="vehiculos_entrega.aspx">
       <publishTime>05/20/2016 09:33:01</publishTime>
     </File>
@@ -1819,7 +1822,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/16/2016 09:55:33</publishTime>
+      <publishTime>06/17/2016 11:56:20</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>
