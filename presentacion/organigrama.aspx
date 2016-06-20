@@ -28,6 +28,7 @@
             var href = $(location).attr('href');
             window.location.replace(href);
         });
+     
         function Abrir() {
             var id_puesto = jQuery('#ValueIDE').val();
             var id_descripcion = jQuery('#ValueDescripcion').val();
@@ -59,22 +60,24 @@
                 var data = JSON.parse(req);
                 if (data.length > 0) {
                     if (data[0].length > 0) {
-                        var options = new primitives.orgdiagram.Config();
+                        var options = new primitives.famdiagram.Config();
                         var items = [];
                         for (var i = 0; i < data[0].length; i++) {
                             var urlimage = newURL + data[0][i].idc_empleado + '.jpg';
                             if (newURL == 'http://localhost/empleados/') {
                                 urlimage = 'imagenes/btn/default_employed.png';
                             }
-                            var x = new primitives.orgdiagram.ItemConfig({
+                            var x = new primitives.famdiagram.ItemConfig({
                                 id: data[0][i].idc_organigrama,
-                                parent: (data[0][i].padre == "0") ? null : data[0][i].padre,
+                                parents: [(data[0][i].padre == "0") ? null : data[0][i].padre],
                                 title: data[0][i].descripcion,
                                 label: data[0][i].idc_empleado,
                                 description: data[0][i].empleado,
                                 phone: statuspuesto(data[0][i].idc_statuso),
                                 image: urlimage,
-                                itemTitleColor: statuspuesto(data[0][i].idc_statuso)
+                                itemTitleColor: data[0][i].bcolor,
+                                groupTitle: data[0][i].status_name,
+                                groupTitleColor: data[0][i].bcolor
                             });
                             items.push(x);
                         }
@@ -82,6 +85,7 @@
                         options.cursorItem = 0;
                         options.hasSelectorCheckbox = primitives.common.Enabled.False;
                         options.pageFitMode = 5;
+                        options.arrowsDirection = primitives.common.GroupByType.Children;
                         options.leavesPlacementType = 1;
                         options.onMouseClick = function (e, data) {
                             var colorvalue = data.context.phone;
@@ -116,7 +120,7 @@
                             }
                             $('#myImage').attr('src', urlimage);
                         }
-                        jQuery("#basicdiagram").orgDiagram(options);
+                        jQuery("#basicdiagram").famDiagram(options);
                     }
                 }
                 else {
@@ -181,11 +185,10 @@
                     </asp:DropDownList>
                 </div>
             </div>
-            <br />
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <%-- <div class="table-responsive" id="mytbl">--%>
-                    <div id="basicdiagram" style="height: 500px; border-style: dotted;">
+                    <div id="basicdiagram" style="height: 650px; border-style: dotted;">
                     </div>
                     <%-- </div>--%>
                 </div>

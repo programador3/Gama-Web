@@ -222,6 +222,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="assets/img/backgrounds/1.jpg">
       <publishTime>03/01/2016 09:10:42</publishTime>
     </File>
+    <File Include="assets/img/body.png">
+      <publishTime>06/20/2016 08:34:11</publishTime>
+    </File>
     <File Include="assets/jquery-1.10.1.min.js">
       <publishTime>04/28/2016 09:37:22</publishTime>
     </File>
@@ -280,7 +283,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/17/2016 11:56:17</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>06/17/2016 14:39:06</publishTime>
+      <publishTime>06/20/2016 11:15:09</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>06/15/2016 08:43:24</publishTime>
@@ -526,7 +529,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:25:01</publishTime>
     </File>
     <File Include="etiquetas.aspx">
-      <publishTime>05/20/2016 09:25:04</publishTime>
+      <publishTime>06/20/2016 11:13:04</publishTime>
     </File>
     <File Include="etiquetas_bloq.aspx">
       <publishTime>05/20/2016 09:25:11</publishTime>
@@ -673,7 +676,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/05/2016 11:08:32</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>06/17/2016 11:01:52</publishTime>
+      <publishTime>06/18/2016 10:31:32</publishTime>
     </File>
     <File Include="grafica.aspx">
       <publishTime>06/08/2016 16:54:10</publishTime>
@@ -1336,10 +1339,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/16/2016 15:33:56</publishTime>
     </File>
     <File Include="login.aspx">
-      <publishTime>06/08/2016 10:41:26</publishTime>
+      <publishTime>06/20/2016 08:34:44</publishTime>
     </File>
     <File Include="Login.Master">
-      <publishTime>05/20/2016 09:28:50</publishTime>
+      <publishTime>06/20/2016 08:31:50</publishTime>
     </File>
     <File Include="lugares_captura.aspx">
       <publishTime>05/20/2016 09:28:52</publishTime>
@@ -1498,7 +1501,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/29/2016 07:33:08</publishTime>
     </File>
     <File Include="organigrama.aspx">
-      <publishTime>05/20/2016 09:29:50</publishTime>
+      <publishTime>06/20/2016 10:23:37</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>03/07/2016 09:01:57</publishTime>
@@ -1822,7 +1825,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/17/2016 11:56:20</publishTime>
+      <publishTime>06/20/2016 11:15:10</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>

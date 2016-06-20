@@ -1,0 +1,7 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.InvalidCastException: Object cannot be cast from DBNull to other types.
+   at negocio.Componentes.SolicitudHorarioCOM.Autorizar(Solicitud_HorarioENT Etiqueta) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\negocio\Componentes\SolicitudHorarioCOM.cs:line 124
+   at presentacion.solicitud_horario.Yes_Click(Object sender, EventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\17_06_16\Puestos\presentacion\solicitud_horario.aspx.cs:line 333

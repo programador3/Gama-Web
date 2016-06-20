@@ -93,6 +93,8 @@ namespace presentacion
         {
             if (!Page.IsPostBack)
             {
+                Session["opc_enedicion"] = false;
+                Session["opc_name"] = null;
                 int idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
                 //int idc_opcion = 1799;  //pertenece al modulo de grupos backend
                 //if (funciones.permiso(idc_usuario, idc_opcion) == false)
@@ -189,31 +191,47 @@ namespace presentacion
             {
                 //Igualo la tabla con tabla session
                 table = (System.Data.DataTable)(Session["Tabla"]);
-                //Igualo parametro ROW CON tabla.row
-                row = table.NewRow();
-                //Inserto los datos en cada columna
-                row["Descripcion"] = txtNombreOpcion.Text;
-                row["Nombre"] = txtNombreEtiqueta.Text;
-                row["borrado"] = 0;
-                row["nuevo"] = 1;
-                //Funcion que comprueba que no se repita
-                ComprobarTableOneColumn(txtNombreEtiqueta.Text, txtNombreOpcion.Text);
-                //SI STATUS SIGUE EN FALSO
-                if (status == false)
+                if (Session["opc_enedicion"] != null && Convert.ToBoolean(Session["opc_enedicion"]) == false)
                 {
-                    //AGREGO LOS DATOS A LA TABLA EN TABLA SESSION
-                    table.Rows.Add(row);
-                    //AGREGO LAS Opciones EN EL DROPDOWNLIST DE ETIQUETAS
-                    gridOpciones.DataSource = table;
-                    dlEtiqueta.Items.Add(txtNombreOpcion.Text);
-                    dlEtiqueta.DataBind();
-                    //Agrego el datatable al GRID
-                    gridOpciones.DataBind();
-                    //AGREGO DATATABLE A SESSION
-                    Session.Add("Tabla", table);
-                    txtNombreOpcion.Text = "";
-                    FiltroOpciones(txtNombreEtiqueta.Text);
+                    //Igualo parametro ROW CON tabla.row
+                    row = table.NewRow();
+                    //Inserto los datos en cada columna
+                    row["Descripcion"] = txtNombreOpcion.Text;
+                    row["Nombre"] = txtNombreEtiqueta.Text;
+                    row["borrado"] = 0;
+                    row["nuevo"] = 1;
+                    //Funcion que comprueba que no se repita
+                    ComprobarTableOneColumn(txtNombreEtiqueta.Text, txtNombreOpcion.Text);
+                    //SI STATUS SIGUE EN FALSO
+                    if (status == false)
+                    {
+                        //AGREGO LOS DATOS A LA TABLA EN TABLA SESSION
+                        table.Rows.Add(row);
+                    }
                 }
+                else
+                {
+                    //Paso valores de columnas a variables
+                    table = (System.Data.DataTable)(Session["Tabla"]);
+                    foreach (DataRow roww in table.Rows)
+                    {
+                        if (roww["Descripcion"].ToString() == (string)Session["opc_name"] && roww["Nombre"].ToString() == txtNombreEtiqueta.Text)
+                        {
+                            roww["Descripcion"] = txtNombreOpcion.Text;
+                            break;
+                        }
+                    }
+                    Session["opc_enedicion"] = false;
+                }
+                gridOpciones.DataSource = table;
+                dlEtiqueta.Items.Add(txtNombreOpcion.Text);
+                dlEtiqueta.DataBind();
+                //Agrego el datatable al GRID
+                gridOpciones.DataBind();
+                //AGREGO DATATABLE A SESSION
+                Session.Add("Tabla", table);
+                txtNombreOpcion.Text = "";
+                FiltroOpciones(txtNombreEtiqueta.Text);
             }
             catch (Exception ex)
             {
@@ -326,15 +344,10 @@ namespace presentacion
         public void ComprobarTableEtiquetas(String Item)
         {
             int l = tableetiquetas.Rows.Count;
-            for (int i = 0; i < l; i++)
+            foreach (DataRow roww in table.Rows)
             {
-                /*Tomo el indice iterado por el ciclo*/
-                DataRow row = tableetiquetas.Rows[i];
-                /*Tomo el valor de la columna OPCION en el INDICE I*/
-                String columna = row["Nombre"].ToString();
-                //Si mi COLUMNA eES IGUAL AL VALOR DEL DATO ITEM
-                if (columna.Equals(Item))
-                {
+                if (roww["nombre"].ToString() == Item)
+                { 
                     //CAMBIO  STATUS(BOOL) A TRUE
                     Alert.ShowAlertError("No se pueden repetir Etiquetas", this.Page);
                     statusetiqueta = true;
@@ -356,16 +369,9 @@ namespace presentacion
         public void ComprobarTableOneColumn(String Item1, String Item2)
         {
             int l = table.Rows.Count;
-            for (int i = 0; i < l; i++)
+            foreach (DataRow roww in table.Rows)
             {
-                /*Tomo el indice iterado por el ciclo*/
-                DataRow row = table.Rows[i];
-                /*Tomo el valor de las columnas  en el INDICE I y las combino*/
-                String combinacion = row["Nombre"].ToString() + row["Descripcion"].ToString();
-                //Combino mis valores ITEM1 ITEM2
-                String Items = Item1 + Item2;
-                //SI MI COMBINACION DE COLUMNAS ES IGUAL A MI COMBINACIÓN DE ITEMS
-                if (combinacion.Equals(Items))
+                if (roww["Descripcion"].ToString() == Item2 && roww["nombre"].ToString() == Item1 && Convert.ToBoolean(roww["borrado"]) == false)
                 {
                     Alert.ShowAlertError("No se pueden repetir Opciones en una misma etiqueta", this.Page);
 
@@ -374,7 +380,7 @@ namespace presentacion
                     //SE PARA EL CICLO
                     break;
                 }
-            }
+            }          
         }
 
         /*
@@ -388,6 +394,7 @@ namespace presentacion
         public void ComprobarTableTwoColum(String Item1, String Item2)
         {
             int l = tablebloqueo.Rows.Count;
+           
             for (int i = 0; i < l; i++)
             {
                 /*Tomo el indice iterado por el ciclo*/
@@ -552,6 +559,50 @@ namespace presentacion
             }
         }
 
+        protected void gridOpciones_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //INSERTO EL INDEX DE LA FILA SELECCIONADA EN VARIABLES INT
+            int id = Convert.ToInt32(e.CommandArgument);
+            //Busco el contenido de la fila con el index
+            GridViewRow row = gridOpciones.Rows[id];
+            //inserto el valor en un string
+            string item = gridOpciones.DataKeys[id].Values["descripcion"].ToString();
+            string itemetiqueta = gridOpciones.DataKeys[id].Values["nombre"].ToString();
+            //Mando llamar funcion para eliminar parametro de otra tabla enlzada
+            table = (System.Data.DataTable)(Session["Tabla"]);
+            switch (e.CommandName)
+            {
+                case "Eliminar":
+                    //Paso valores de columnas a variables
+                    foreach (DataRow roww in table.Rows)
+                    {
+                        if (roww["Descripcion"].ToString() == item && roww["nombre"].ToString() == itemetiqueta && Convert.ToBoolean(roww["borrado"])==false)
+                        {
+                            roww["borrado"] = true;
+                            break;
+                        }
+                    }
+                    break;
+
+                case "Editar":
+                    txtNombreOpcion.Text = item;
+                    txtNombreEtiqueta.Text = itemetiqueta;
+                    Session["opc_name"] = item;
+                    Session["opc_enedicion"] = true;
+                    break;
+            }
+            //Alert(item, item);
+            try
+            {
+                Session.Add("Tabla", table);
+                FiltroOpciones(itemetiqueta);
+            }
+            catch (Exception ex)
+            {
+                msgbox.show(ex.Message, this);
+            }
+        }
+
         //EVENTO ROWDELETING SE HEREDA DE GRIDVIEW
         //@SENDER:  Type Object.  Parametro vacio con objeto(GRID)
         //@GridDeleteEventArgs:    Type Event:  Se ehjecuta despues de presiona Template command de Grid
@@ -689,28 +740,28 @@ namespace presentacion
         //Evento acerca de informacion
         protected void btnInfoTipoDato_Click(object sender, EventArgs e)
         {
-            Alert.ShowAlert(
+            Alert.ShowAlertInfo(
                 "En cada nueva etiqueta, puede elegir el tipo de datos con los que pueden ser llenadas \\n\\n LIBRE: Eliga esta opción si desea que se ingrese un campo de texto libremente \\n CON OPCIONES: Eliga esta opción si desea que las etiquetas contengan opciones predefinidas para elegir. \\n\\n NOTA: Puede usar ambos tipos de entrada.",
                 "Ayuda Acerca de Tipos de Entrada de Datos", this.Page);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Alert.ShowAlert(
+            Alert.ShowAlertInfo(
                 "Coloque un numero Minimo y Maximo de Opciones con entrada de texto libre. \\n NOTA: Para definir sin limites también puede colocar 0 en Minimo y Maximo",
                 "Ayuda Acerca de Manejar Limite", this.Page);
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Alert.ShowAlert(
+            Alert.ShowAlertInfo(
                 "Coloque un numero Minimo y Maximo de Opciones. \\n NOTA: Para definir sin limites también puede colocar 0 en Minimo y Maximo",
                 "Ayuda Acerca de Manejar Limite", this.Page);
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Alert.ShowAlert(
+            Alert.ShowAlertInfo(
                 "Puede definir que una Opcion bloque a una etiqueta externa. \\n NOTA: Debe seleccionar en ambas listas una Opción y una Etiqueta.",
                 "Ayuda Acerca de Bloqueo de Etiquetas", this.Page);
         }

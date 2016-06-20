@@ -23,6 +23,10 @@
             bottom: 0;
             left: 0;
         }
+
+        body {
+            background: url("assets/img/body.png") repeat #444;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Contentlog" ContentPlaceHolderID="ContentLogin" runat="server">
@@ -66,7 +70,8 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <div id="footer-zone">
-        <h5> Versión <asp:Label ID="lblfooter" runat="server" Text="Footer"></asp:Label></h5>
+        <h5>Versión
+            <asp:Label ID="lblfooter" runat="server" Text="Footer"></asp:Label></h5>
     </div>
     <!-- /#page-wrapper -->
 </asp:Content>

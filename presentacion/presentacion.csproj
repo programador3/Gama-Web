@@ -112,6 +112,7 @@
     <Content Include="assets\img\1.jpg" />
     <Content Include="assets\img\backgrounds\1%402x.jpg" />
     <Content Include="assets\img\backgrounds\1.jpg" />
+    <Content Include="assets\img\body.png" />
     <Content Include="assets\jquery-1.10.1.min.js" />
     <Content Include="assets\jquery-1.9.0.min.js" />
     <Content Include="assets\jquery.backstretch.js" />

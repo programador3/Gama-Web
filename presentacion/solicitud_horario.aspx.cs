@@ -30,11 +30,6 @@ namespace presentacion
                 autoriza.Visible = false;
                 Session["pidc_empleado_solic_horario"] = null;
                 CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
-                txtfecha.Text = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
-                if (ExisteSolicituenDia(Convert.ToInt32(Session["pidc_empleado_solic_horario"]), Convert.ToDateTime(txtfecha.Text)))
-                {
-                    Alert.ShowAlertInfo("Este Empleado ya tiene una Solicitud Pendiente el dia " + Convert.ToDateTime(txtfecha.Text).ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX")), "Mensaje", this);
-                }
             }
             //SI ES UNA AUTORIZACION
             if (!IsPostBack && Request.QueryString["autoriza"] != null)
@@ -222,8 +217,9 @@ namespace presentacion
         {
             if (txtfecha.Text != "")
             {
-                if (DateTime.Today >= Convert.ToDateTime(txtfecha.Text))
+                if (DateTime.Today > Convert.ToDateTime(txtfecha.Text))
                 {
+                    txtfecha.Text = "";
                     Alert.ShowAlertError("No puede solicitar un permiso para una fecha menor o igual a hoy.", this);
                 }
                 else
@@ -262,6 +258,14 @@ namespace presentacion
             else if (txtfecha.Text == "")
             {
                 Alert.ShowAlertError("Ingrese la fecha de aplicación.", this);
+            }
+            else if (txtfecha.Text != "")
+            {
+                if (DateTime.Today > Convert.ToDateTime(txtfecha.Text))
+                {
+                    txtfecha.Text = "";
+                    Alert.ShowAlertError("No puede solicitar un permiso para una fecha menor o igual a hoy.", this);
+                }
             }
             else
             {
