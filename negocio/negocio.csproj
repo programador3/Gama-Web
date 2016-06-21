@@ -152,6 +152,7 @@
     <Compile Include="Entidades\TareasAutomaticasENT.cs" />
     <Compile Include="Entidades\TareasENT.cs" />
     <Compile Include="Entidades\UsuariosE.cs" />
+    <Compile Include="Entidades\UsuariosGET.cs" />
     <Compile Include="Entidades\VacacionesENT.cs" />
     <Compile Include="Entidades\Vehiculos_EntregaENT.cs" />
     <Compile Include="Entidades\Vehiculos_PreparacionENT.cs" />

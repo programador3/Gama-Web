@@ -212,12 +212,19 @@
         }
         function ValidarNotificaciones() {
             $('#notipend').empty();
+            var aData = [];
+            aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
+            var jsonData = JSON.stringify({ aData: aData });
             $.ajax({
                 type: "POST",
                 url: "web_methods.aspx/GetNotificaciones",
+                data: jsonData,
                 contentType: "application/json; charset=utf-8",
+                dataType: "json", // dataType is json format
                 success: OnSuccess,
-                error: OnErrorCall
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError.toString());
+                }
             });
 
             function OnSuccess(response) {
@@ -245,20 +252,24 @@
                 }
 
             }
-            function OnErrorCall(response) {
-                console.log(error);
-            }
 
         }
         function ValidarOpciones() {
 
             $('#ul_opciones').empty();
+             var aData = [];
+            aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
+            var jsonData = JSON.stringify({ aData: aData });
             $.ajax({
                 type: "POST",
                 url: "web_methods.aspx/GetOpciones",
+                data: jsonData,
                 contentType: "application/json; charset=utf-8",
+                dataType: "json", // dataType is json format
                 success: OnSuccess,
-                error: OnErrorCall
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError.toString());
+                }
             });
 
             function OnSuccess(response) {
@@ -273,10 +284,6 @@
                     });
                 }
             }
-            function OnErrorCall(response) {
-                console.log(error);
-            }
-
         }
         function ValidarTareasPendientes() {
             $('#tareas_pendi').hide();
@@ -285,7 +292,9 @@
                 url: "web_methods.aspx/GetTotalTareas",
                 contentType: "application/json; charset=utf-8",
                 success: OnSuccess,
-                error: OnErrorCall
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError.toString());
+                }
             });
 
             function OnSuccess(response) {
@@ -293,9 +302,6 @@
                 if (total > 0) {
                     $('#tareas_pendi').show();
                 }
-            }
-            function OnErrorCall(response) {
-                console.log(error);
             }
 
         }

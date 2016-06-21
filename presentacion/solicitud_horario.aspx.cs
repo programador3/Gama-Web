@@ -259,13 +259,10 @@ namespace presentacion
             {
                 Alert.ShowAlertError("Ingrese la fecha de aplicación.", this);
             }
-            else if (txtfecha.Text != "")
+            else if (txtfecha.Text != "" && DateTime.Today > Convert.ToDateTime(txtfecha.Text))
             {
-                if (DateTime.Today > Convert.ToDateTime(txtfecha.Text))
-                {
-                    txtfecha.Text = "";
-                    Alert.ShowAlertError("No puede solicitar un permiso para una fecha menor o igual a hoy.", this);
-                }
+                txtfecha.Text = "";
+                Alert.ShowAlertError("No puede solicitar un permiso para una fecha menor o igual a hoy.", this);
             }
             else
             {

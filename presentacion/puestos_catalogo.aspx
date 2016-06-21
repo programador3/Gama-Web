@@ -92,7 +92,7 @@
                                 </div>
                             </div>
                             <div class="table table-responsive" style="text-align: center;">
-                                <asp:GridView ID="gridPuestos" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [6]}" AutoGenerateColumns="False" DataKeyNames="idc_puesto_reemplazo,perfil_solicitud,idc_herramienta,idc_puesto,idc_puestoperfil,idc_statuso,idc_empleado, descripcion,idc_prepara,idc_puesto_jefe" OnRowDataBound="gridPuestos_RowDataBound" OnRowCommand="gridPuestos_RowCommand" Font-Size="Smaller">
+                                <asp:GridView ID="gridPuestos" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [6]}" AutoGenerateColumns="False" DataKeyNames="idc_puesto_reemplazo,perfil_solicitud,idc_herramienta,idc_puesto,idc_puestoperfil,idc_statuso,idc_empleado, descripcion,idc_prepara,idc_puesto_jefe,abajo_de_mi" OnRowDataBound="gridPuestos_RowDataBound" OnRowCommand="gridPuestos_RowCommand" Font-Size="Smaller">
                                     <Columns>
 
                                         <asp:ButtonField Visible="false" Text="Acciones" ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Pre-Baja" HeaderStyle-Width="40px" CommandName="Acciones" />
@@ -114,6 +114,7 @@
                                         <asp:BoundField DataField="idc_herramienta" HeaderText="idc_empleado" Visible="False" />
                                         <asp:BoundField DataField="idc_puesto_reemplazo" HeaderText="idc_puesto_reemplazo" Visible="False" />
                                         <asp:BoundField DataField="idc_puesto_jefe" HeaderText="idc_puesto_reemplazo" Visible="False" />
+                                        <asp:BoundField DataField="abajo_de_mi" HeaderText="abajo_de_mi" Visible="False" />
                                     </Columns>
                                 </asp:GridView>
                             </div>

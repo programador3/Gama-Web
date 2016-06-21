@@ -16,6 +16,12 @@ namespace presentacion
         public static string path_user_chat = "";
         public static string content = "";
 
+        [Serializable]
+        public class Id
+        {
+            public int id { get; set; }
+        }
+
         public static void SearchMenu(string search, Panel panel_menus_repeat, Panel panel_search, Repeater Repeater2)
         {
             panel_menus_repeat.Visible = search == "" ? true : false;
@@ -85,7 +91,6 @@ namespace presentacion
         public static int NotificationsPendientes()
         {
             NotificacionesENT ent = new NotificacionesENT();
-            ent.Idc_puesto = idc_puesto;
             ent.Idc_usuario = idc_usuario;
             NotificacionesCOM com = new NotificacionesCOM();
             int total = com.CargaNotificaciones(ent).Tables[0].Rows.Count;
@@ -141,10 +146,11 @@ namespace presentacion
         /// <param name="idc_puesto"></param>
         /// <returns></returns>
         [System.Web.Services.WebMethod]
-        public static List<Notificacion> GetNotificaciones()
+        public static List<Notificacion> GetNotificaciones(List<string> aData)
         {
+            String a = aData[0];
             NotificacionesENT ent = new NotificacionesENT();
-            ent.Idc_usuario = idc_usuario;
+            ent.Idc_usuario = Convert.ToInt32(a);
             NotificacionesCOM com = new NotificacionesCOM();
             List<Notificacion> noti = new List<Notificacion>();
             foreach (DataRow row in com.CargaNotificaciones(ent).Tables[0].Rows)
@@ -160,11 +166,12 @@ namespace presentacion
         }
 
         [System.Web.Services.WebMethod]
-        public static List<Opciones> GetOpciones()
+        public static List<Opciones> GetOpciones(List<string> aData)
         {
+            String a = aData[0];
             OpcionesE entidadad = new OpcionesE();
             OpcionesBL compad = new OpcionesBL();
-            entidadad.Usuario_id = idc_usuario;
+            entidadad.Usuario_id = Convert.ToInt32(a);
             List<Opciones> noti = new List<Opciones>();
             foreach (DataRow row in compad.AcessosDirectos(entidadad).Tables[0].Rows)
             {
