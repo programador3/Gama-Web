@@ -96,6 +96,9 @@
                             <h4><strong>Puesto: </strong>
                                 <asp:Label ID="lblPuesto" runat="server" Text=""></asp:Label>
                             </h4>
+                            <h4><strong>Sucursal: </strong>
+                                <asp:Label ID="lblsucursal" runat="server" Text=""></asp:Label>
+                            </h4>
                             <h4><strong>Fecha de Solicitud de entrega: </strong>
                                 <asp:Label ID="lblfecha" runat="server" Text=""></asp:Label>
                             </h4>

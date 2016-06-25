@@ -15,6 +15,8 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
+
+            Session["redirect"] = "menu.aspx";
             if (Request.QueryString["value"] == null)
             {
                 if (!Page.IsPostBack && Session["menu1"] == null)

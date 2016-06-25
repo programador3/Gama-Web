@@ -1,0 +1,9 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El nombre de objeto '#tab' no es válido.
+   at negocio.Componentes.Vehiculos_EntregarCOM.InsertarEntrega(Vehiculos_EntregaENT Entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\22_06_16\Puestos\negocio\Componentes\Vehiculos_EntregarCOM.cs:line 105
+   at presentacion.vehiculos_entrega.Yes_Click(Object sender, EventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\22_06_16\Puestos\presentacion\vehiculos_entrega.aspx.cs:line 454
+ClientConnectionId:400926e0-95c5-4854-ae03-3e5eee072fc6
+Error Number:208,State:0,Class:16

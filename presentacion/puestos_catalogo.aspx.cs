@@ -87,15 +87,15 @@ namespace presentacion
                 int perfil_solicitud = Convert.ToInt32(rowView["perfil_solicitud"]);
                 //asiganmos color a la  celda status
                 String color = rowView["COLOR"].ToString();
-                e.Row.Cells[13].BackColor = Color.FromName(color);//el numero puede cambiar
+                e.Row.Cells[14].BackColor = Color.FromName(color);//el numero puede cambiar
                 if (idc_puestoperfil == 0)//SI NO TIENE PERFIL
                 {
                     e.Row.Cells[4].Text = "SIN PERFIL RELACIONADO";
                 }
                 if (perfil_solicitud != 0)
                 {
-                    e.Row.Cells[5].BackColor = Color.Yellow;
-                    e.Row.Cells[5].Text = "EN PROCESO";
+                    e.Row.Cells[6].BackColor = Color.Yellow;
+                    e.Row.Cells[6].Text = "EN PROCESO";
                 }
             }
         }
@@ -155,55 +155,59 @@ namespace presentacion
             Session["idc_puesto"] = id_puesto;
             string IDC_EMPL = idc_empleado.ToString();
             Session["idc_empleado"] = IDC_EMPL;
-            lnkMVerHerramientas.Visible = idc_herramienta == 0 ? false : true;
-            lnkMPerfil.Visible = id_puestoperfil == 0 ? false : true;
-            lnkservicios_medan.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 350);
+            mverherr.Visible = idc_herramienta == 0 ? false : true;
+            mperfil.Visible = id_puestoperfil == 0 ? false : true;
+            servicios_medan.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 350);
             int IDC_PUESTO_LOGIN = Convert.ToInt32(Session["sidc_puesto_login"]);
             //si tengo el permiso de ver todo verificamos que el usuario tenga permisos de  los botones
             if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 349) == true)
             {
-                lnkservicios.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 338);
+                servicios.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 338);
                 if (idc_puesto_reemplazo == 0 || Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
                 {
-                    lnkreemplazo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 351);
+                    reemplazo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 351);
                 }
-                lnkprebaja.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 155);
-                lnkasignarperfil.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 353);
-                lnkpmd.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 352);
-                lnkvacaciones.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 199);
-                lnkpermiso.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 361); ;
+                prebaja.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 155);
+                asignarperfil.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 353);
+                pmd.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 352);
+                vacaiones.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 199);
+                permiso.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 361);
+
+                lugartrabajo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 362);
                 //si tiene el permiso pero tambien es su jefe directo o depende de el
                 if (idc_puesto_jefe == IDC_PUESTO_LOGIN || abajo_de_mi == true)
                 {
-                    lnkpermiso.Visible = true;
-                    lnkprebaja.Visible = true;
-                    lnkservicios.Visible = true;
-                    lnkvacaciones.Visible = true;
+                    lugartrabajo.Visible = true;
+                    permiso.Visible = true;
+                    prebaja.Visible = true;
+                    servicios.Visible = true;
+                    vacaiones.Visible = true;
+                    asignarperfil.Visible = true;
                     if (idc_puesto_reemplazo == 0 && Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
                     {
-                        lnkreemplazo.Visible = true;
+                        reemplazo.Visible = true;
                     }
-                    lnkpmd.Visible = true;
-                    lnkprebaja.Visible = true;
+                    pmd.Visible = true;
                 }
             }
             else//si no tiene el permiso de ver todo, y lo puede ver, quiere decir que es su jefe directo o depende de el
             {
-                lnkpermiso.Visible = true;
-                lnkprebaja.Visible = true;
-                lnkservicios.Visible = true;
-                lnkvacaciones.Visible = true;
+                lugartrabajo.Visible = true;
+                permiso.Visible = true;
+                prebaja.Visible = true;
+                servicios.Visible = true;
+                vacaiones.Visible = true;
+                asignarperfil.Visible = true;
                 if (idc_puesto_reemplazo == 0 && Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
                 {
-                    lnkreemplazo.Visible = true;
+                    reemplazo.Visible = true;
                 }
-                lnkpmd.Visible = true;
-                lnkprebaja.Visible = true;
+                pmd.Visible = true;
             }
 
             if (status == 4 | status == 3)//SI EL STATUS ES VACANTE O VACANTE NO CONTRATAR, EL PUESTO NO CONTIENE NINGUN EMPLEADO
             {
-                lnkprebaja.Visible = false;
+                prebaja.Visible = false;
             }
 
             DataTable table = (DataTable)Session["Tabla_PuestosPermitidos"];
@@ -211,7 +215,7 @@ namespace presentacion
             DR = table.Select("idc_empleado=" + idc_empleado);
             if (DR.Length == 0)
             {
-                lnkprebaja.Visible = false;
+                prebaja.Visible = false;
             }
             switch (e.CommandName)
             {
@@ -261,44 +265,46 @@ namespace presentacion
 
         protected void lnkprebaja_Click(object sender, EventArgs e)
         {
-            Session["Caso_Confirmacion"] = "Prebaja";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Esta seguro de solicitar la Pre-Baja de " + (string)Session["puesto"] + "?');", true);
+            string idc_empleado = Session["idc_empleado"].ToString();
+            Session["Previus"] = HttpContext.Current.Request.Url.LocalPath.ToString();
+            Response.Redirect("pre_bajas.aspx?idc_empleado=" + idc_empleado);
         }
 
         protected void lnkreemplazo_Click(object sender, EventArgs e)
         {
-            Session["Caso_Confirmacion"] = "Reemplazo";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea solicitar el reemplazo de " + (string)Session["puesto"] + "?');", true);
+            Response.Redirect("solicitar_reemplazo.aspx?idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
         }
 
         protected void lnkservicios_Click(object sender, EventArgs e)
         {
-            Session["Caso_Confirmacion"] = "Asignar Servicios";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Modificara el listados de Puestos a quienes podra dar Servicios " + (string)Session["puesto"] + "?');", true);
+            Response.Redirect("servicios_captura.aspx?idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
         }
 
         protected void lnkpmd_Click(object sender, EventArgs e)
         {
-            Session["Caso_Confirmacion"] = "PMD";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea solicitar un Proceso de Mejora de Desempeño para " + (string)Session["puesto"] + "?');", true);
+            Response.Redirect("pmd.aspx?idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
         }
 
         protected void lnkservicios_medan_Click(object sender, EventArgs e)
         {
-            Session["Caso_Confirmacion"] = "Servicios Asignados";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Modificara el listado de quien le da servicio a " + (string)Session["puesto"] + "?');", true);
+            Response.Redirect("servicios_captura.aspx?val=KJBXAKJASBKjbamndvlknsclkanconbwclnwcokn&idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Session["Caso_Confirmacion"] = "Permiso";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Solicitar un Permiso para cambiar el horario a " + (string)Session["puesto"] + "?');", true);
+            Response.Redirect("solicitud_horario.aspx?idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
         }
 
         protected void lnkvacaciones_Click(object sender, EventArgs e)
         {
-            Session["Caso_Confirmacion"] = "Vacaciones";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea solicitar Vacaciones para " + (string)Session["puesto"] + "?');", true);
+            Response.Redirect("vacaciones.aspx?valuea_page=jwxjkbwjbxwjbxqbjbBIqbqibibixubqibxiqbxibqxibajbiujbibiuqx7876F7TF7QF87FYF7FA7QF7F5265D2DCDX9387T20B3287T807T8703RT3CT32B87RCT378R&idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
+
+        }
+
+        protected void lnklugar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("asignacion_lugares.aspx?valuea_page=jwxjkbwjbxwjbxqbjbBIqbqibibixubqibxiqbxibqxibajbiujbibiuqx7876F7TF7QF87FYF7FA7QF7F5265D2DCDX9387T20B3287T807T8703RT3CT32B87RCT378R&idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
+
         }
 
         protected void cbox_puestos_perfil()
@@ -416,6 +422,10 @@ namespace presentacion
 
                 case "Vacaciones":
                     Response.Redirect("vacaciones.aspx?valuea_page=jwxjkbwjbxwjbxqbjbBIqbqibibixubqibxiqbxibqxibajbiujbibiuqx7876F7TF7QF87FYF7FA7QF7F5265D2DCDX9387T20B3287T807T8703RT3CT32B87RCT378R&idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
+                    break;
+
+                case "Lugar":
+                    Response.Redirect("asignacion_lugares.aspx?valuea_page=jwxjkbwjbxwjbxqbjbBIqbqibibixubqibxiqbxibqxibajbiujbibiuqx7876F7TF7QF87FYF7FA7QF7F5265D2DCDX9387T20B3287T807T8703RT3CT32B87RCT378R&idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
                     break;
             }
         }

@@ -39,8 +39,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="areas_captura.aspx">
       <publishTime>05/20/2016 09:21:25</publishTime>
     </File>
+    <File Include="asignacion_lugares.aspx">
+      <publishTime>06/22/2016 14:57:44</publishTime>
+    </File>
     <File Include="asignacion_lugares_puestos.aspx">
-      <publishTime>05/20/2016 09:21:28</publishTime>
+      <publishTime>06/21/2016 11:58:32</publishTime>
     </File>
     <File Include="asignacion_revisiones_captura.aspx">
       <publishTime>06/08/2016 10:17:38</publishTime>
@@ -280,10 +283,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:37</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>06/21/2016 09:44:32</publishTime>
+      <publishTime>06/24/2016 14:56:05</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>06/21/2016 10:06:08</publishTime>
+      <publishTime>06/24/2016 16:08:53</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>06/15/2016 08:43:24</publishTime>
@@ -296,6 +299,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="candidatos_preparar_captura.aspx">
       <publishTime>05/20/2016 09:22:53</publishTime>
+    </File>
+    <File Include="catalogo_areas.aspx">
+      <publishTime>06/22/2016 15:23:23</publishTime>
     </File>
     <File Include="catalogo_asignacion_revisiones.aspx">
       <publishTime>06/08/2016 10:17:36</publishTime>
@@ -322,13 +328,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/08/2016 10:17:32</publishTime>
     </File>
     <File Include="celulares_entrega.aspx">
-      <publishTime>05/20/2016 09:23:21</publishTime>
+      <publishTime>06/22/2016 07:39:28</publishTime>
     </File>
     <File Include="celulares_preparacion.aspx">
-      <publishTime>05/20/2016 09:23:25</publishTime>
+      <publishTime>06/22/2016 07:35:43</publishTime>
     </File>
     <File Include="celulares_revision.aspx">
-      <publishTime>05/20/2016 09:23:29</publishTime>
+      <publishTime>06/22/2016 07:33:11</publishTime>
     </File>
     <File Include="confirmacion_entrega.aspx">
       <publishTime>05/20/2016 09:23:32</publishTime>
@@ -537,6 +543,81 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="examenes_captura.aspx">
       <publishTime>05/20/2016 09:25:14</publishTime>
     </File>
+    <File Include="fancybox/blank.gif">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancybox-x.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancybox-y.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancybox.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_close.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_loading.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_nav_left.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_nav_right.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_shadow_e.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_shadow_n.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_shadow_ne.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_shadow_nw.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_shadow_s.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_shadow_se.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_shadow_sw.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_shadow_w.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_title_left.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_title_main.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_title_over.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/fancy_title_right.png">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/jquery.easing-1.3.pack.js">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/jquery.fancybox-1.3.4.css">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/jquery.fancybox-1.3.4.js">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/jquery.fancybox-1.3.4.pack.js">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
+    <File Include="fancybox/jquery.mousewheel-3.0.4.pack.js">
+      <publishTime>06/21/2016 11:56:40</publishTime>
+    </File>
     <File Include="font-awesome/css/font-awesome.css">
       <publishTime>03/05/2016 11:08:21</publishTime>
     </File>
@@ -676,7 +757,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/05/2016 11:08:32</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>06/21/2016 09:55:11</publishTime>
+      <publishTime>06/22/2016 07:49:15</publishTime>
     </File>
     <File Include="grafica.aspx">
       <publishTime>06/08/2016 16:54:10</publishTime>
@@ -790,7 +871,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:27:02</publishTime>
     </File>
     <File Include="herramientas_preparacion.aspx">
-      <publishTime>05/20/2016 09:27:05</publishTime>
+      <publishTime>06/23/2016 08:50:39</publishTime>
     </File>
     <File Include="herramientas_revision.aspx">
       <publishTime>06/08/2016 10:23:01</publishTime>
@@ -1705,7 +1786,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/08/2016 10:22:55</publishTime>
     </File>
     <File Include="puestos_catalogo.aspx">
-      <publishTime>06/21/2016 08:15:25</publishTime>
+      <publishTime>06/22/2016 10:35:27</publishTime>
     </File>
     <File Include="reasignacion_tareas.aspx">
       <publishTime>06/15/2016 16:42:05</publishTime>
@@ -1825,7 +1906,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/21/2016 09:44:35</publishTime>
+      <publishTime>06/24/2016 14:56:09</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>

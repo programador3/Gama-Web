@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-lg-12" style="text-align: left">
                     <div class="form-group">
-                        <h3><strong>Fecha de Baja: </strong>
+                        <h3><strong>Fecha de Solicitud: </strong>
                             <asp:Label ID="lblfechasoli" runat="server" Text=""></asp:Label>
                         </h3>
                     </div>

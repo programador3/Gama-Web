@@ -223,7 +223,6 @@
                 dataType: "json", // dataType is json format
                 success: OnSuccess,
                 error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError.toString());
                 }
             });
 
@@ -257,7 +256,7 @@
         function ValidarOpciones() {
 
             $('#ul_opciones').empty();
-             var aData = [];
+            var aData = [];
             aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
             var jsonData = JSON.stringify({ aData: aData });
             $.ajax({
@@ -268,7 +267,6 @@
                 dataType: "json", // dataType is json format
                 success: OnSuccess,
                 error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError.toString());
                 }
             });
 
@@ -293,7 +291,6 @@
                 contentType: "application/json; charset=utf-8",
                 success: OnSuccess,
                 error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError.toString());
                 }
             });
 

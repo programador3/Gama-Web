@@ -1,0 +1,9 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El nombre de objeto '#tab_general' no es válido.
+   at negocio.Componentes.Vehiculos_EntregarCOM.InsertarEntrega(Vehiculos_EntregaENT Entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\22_06_16\Puestos\negocio\Componentes\Vehiculos_EntregarCOM.cs:line 105
+   at presentacion.vehiculos_entrega.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:e4f74151-63f3-4f52-ab88-ad0a5301ec44
+Error Number:208,State:0,Class:16

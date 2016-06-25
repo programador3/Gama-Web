@@ -1,0 +1,9 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): Los objetos "usuarios" y "usuarios" en la cláusula FROM tienen los mismos nombres expuestos. Use nombres de correlación para distinguirlos.
+   at negocio.Componentes.Administrador_EntregasCOM.CargaPendientes(Administrador_EntregasENT Entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\22_06_16\Puestos\negocio\Componentes\Administrador_EntregasCOM.cs:line 31
+   at presentacion.administrador_entregas.DataPrebajasDetalles(Int32 idc_entrega, Int32 idc_puestoprebaja)
+ClientConnectionId:6ac61c8f-8887-4b30-83e2-227a129b137b
+Error Number:1013,State:1,Class:16

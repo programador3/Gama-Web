@@ -1,0 +1,13 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.EvaluateException: Cannot find column [lugar].
+   at System.Data.NameNode.Bind(DataTable table, List`1 list)
+   at System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   at System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   at System.Data.DataExpression.Bind(DataTable table)
+   at System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   at System.Data.DataView.set_RowFilter(String value)
+   at presentacion.asignacion_lugares.cargarrepeat_lugares()
+   at presentacion.asignacion_lugares.Lugares(Int32 idc_area)

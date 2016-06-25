@@ -88,6 +88,10 @@
                             : </strong>
                             <asp:Label ID="lblfechasoli" runat="server" Text=""></asp:Label>
                         </h3>
+                        <h3><strong>Sucursal
+                            <asp:Label ID="lblsucursal" runat="server" Text=""></asp:Label>
+                        </strong>
+                        </h3>
                     </div>
                 </div>
             </div>

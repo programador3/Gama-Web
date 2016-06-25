@@ -75,6 +75,7 @@ namespace presentacion
                 DataRow row = ds.Tables[0].Rows[0];
                 lblPuesto.Text = row["descripcion"].ToString();
                 lblfechasoli.Text = row["fecha_registro"].ToString();
+                lblsucursal.Text = row["SUCURSAL"].ToString();
                 Session["idc_prepara"] = Convert.ToInt32(row["idc_prepara"].ToString());
             }
             catch (Exception ex)

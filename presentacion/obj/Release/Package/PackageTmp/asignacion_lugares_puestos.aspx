@@ -4,6 +4,9 @@
 
     <link href="css/ionicons.css" rel="stylesheet" />
     <link href="css/ionicons.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="/fancybox/jquery.easing-1.4.pack.js"></script>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
     <script type="text/javascript">
         function ModalClose() {
             $('#myModal').modal('hide');

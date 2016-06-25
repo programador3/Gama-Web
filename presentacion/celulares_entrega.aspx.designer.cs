@@ -94,6 +94,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Label lblPuesto;
         
         /// <summary>
+        /// Control lblsucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblsucursal;
+        
+        /// <summary>
         /// Control lblfecha.
         /// </summary>
         /// <remarks>

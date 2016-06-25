@@ -26837,7 +26837,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
  * In the example, `"0: Nobody is viewing."` is an explicit number rule. If you did not
  * specify this rule, 0 would be matched to the "other" category and "0 people are viewing"
  * would be shown instead of "Nobody is viewing". You can specify an explicit number rule for
- * other numbers, for example 12, so that instead of showing "12 people are viewing", you can
+ * other numbers, fkr example 12, so that instead of showing "12 people are viewing", you can
  * show "a dozen people are viewing".
  *
  * You can use a set of closed braces (`{}`) as a placeholder for the number that you want substituted

@@ -113,7 +113,22 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pobservaciones });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_horario_perm", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pidc_horario_erm });
             listparameters.Add(new SqlParameter() { ParameterName = "@pstatus", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pstatus });
-
+            if (Etiqueta.Phora_entrada > 0)
+            {
+                listparameters.Add(new SqlParameter() { ParameterName = "@phora_entrada", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Phora_entrada });
+            }
+            if (Etiqueta.Phora_salida > 0)
+            {
+                listparameters.Add(new SqlParameter() { ParameterName = "@phora_salida", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Phora_salida });
+            }
+            if (Etiqueta.Phora_entrada_comida > 0)
+            {
+                listparameters.Add(new SqlParameter() { ParameterName = "@phora_entrada_comida", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Phora_entrada_comida });
+            }
+            if (Etiqueta.Phora_salida_comida > 0)
+            {
+                listparameters.Add(new SqlParameter() { ParameterName = "@phora_salida_comida", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Phora_salida_comida });
+            }
             try
             {
                 //ds = data.datos_Clientes(listparameters);

@@ -81,6 +81,12 @@
                                 </div>
                                 <div class="form-group">
                                     <h5>
+                                        <strong>Sucursal: </strong>
+                                        <asp:Label ID="lblsucursal" runat="server" Text=""></asp:Label>
+                                    </h5>
+                                </div>
+                                <div class="form-group">
+                                    <h5>
                                         <strong>Motivo: </strong>
                                         <asp:Label ID="lblmotivo" runat="server" Text=""></asp:Label>
                                     </h5>

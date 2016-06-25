@@ -1,0 +1,7 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.IndexOutOfRangeException: Cannot find table 2.
+   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at presentacion.servicios_revisiones.CargarGridPrincipal(Int32 idc_usuario, Int32 idc_puestorevi, Int32 idc_puestoprebaja) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\22_06_16\Puestos\presentacion\servicios_revisiones.aspx.cs:line 83

@@ -467,11 +467,11 @@ namespace presentacion
                                     {
                                         if (roww["tipo"].ToString() == "Formato Revision")
                                         {
-                                            File.Copy(roww["ruta"].ToString(), funciones.GenerarRuta("PEV_REV ", "unidad") + rows["idc_vehiculo"].ToString() + ".jpg", true);
+                                            File.Copy(roww["ruta"].ToString(), funciones.GenerarRuta("PEV_REV ", "unidad") + rows["ids_cons"].ToString() + ".jpg", true);
                                         }
                                         if (roww["tipo"].ToString() == "Carta Responsiva")
                                         {
-                                            File.Copy(roww["ruta"].ToString(), funciones.GenerarRuta("PEV_RES ", "unidad") + rows["idc_vehiculo"].ToString() + ".jpg", true);
+                                            File.Copy(roww["ruta"].ToString(), funciones.GenerarRuta("PEV_RES ", "unidad") + rows["ids_cons"].ToString() + ".jpg", true);
                                         }
                                     }
                                 }

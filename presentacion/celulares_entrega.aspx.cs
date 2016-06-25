@@ -69,6 +69,7 @@ namespace presentacion
                 DataRow row = ds.Tables[0].Rows[0];
                 lblPuesto.Text = row["descripcion"].ToString();
                 lblEmpleado.Text = row["empleado"].ToString();
+                lblsucursal.Text = row["sucursal"].ToString();
                 Session["idc_entrega"] = Convert.ToInt32(row["idc_entrega"].ToString());
                 Session["idc_empleado"] = Convert.ToInt32(row["idc_empleado"].ToString());
                 Session["idc_puesto"] = Convert.ToInt32(row["idc_puesto"].ToString());

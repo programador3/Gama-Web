@@ -15,6 +15,7 @@ namespace presentacion
             if (!IsPostBack)
             {
                 CargaTareas("");
+                Session["redirect"] = "tareas_listado.aspx";
             }
         }
 

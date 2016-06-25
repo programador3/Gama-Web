@@ -19,12 +19,13 @@ namespace presentacion
             if (!IsPostBack)
             {
                 CargaTareas("");
+
+                Session["redirect"] = "tareas_asignadas_lista.aspx";
             }
         }
 
         private void CargaTareas(string filtro)
         {
-            
             TareasENT entidad = new TareasENT();
             TareasCOM componente = new TareasCOM();
             entidad.Pidc_puesto_asigna = Convert.ToInt32(Session["sidc_puesto_login"]);

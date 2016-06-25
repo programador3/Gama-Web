@@ -1,0 +1,10 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El nombre de columna 'IDC_LUGART' es ambiguo.
+El recuento de transacciones después de EXECUTE indica un número no coincidente de instrucciones BEGIN y COMMIT. Recuento anterior = 0, recuento actual = 1.
+   at negocio.Componentes.LugaresCOM.ModificarRelacionPuestosLugares(LugaresENT Etiqueta) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\22_06_16\Puestos\negocio\Componentes\LugaresCOM.cs:line 86
+   at presentacion.asignacion_lugares.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:d616dca0-87e0-431f-b15a-bde01e702097
+Error Number:209,State:1,Class:16

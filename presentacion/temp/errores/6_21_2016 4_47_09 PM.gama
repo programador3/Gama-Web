@@ -1,0 +1,18 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Web.HttpException (0x80004005): DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'lugar'.
+   at System.Web.UI.DataBinder.GetPropertyValue(Object container, String propName)
+   at System.Web.UI.DataBinder.Eval(Object container, String[] expressionParts)
+   at System.Web.UI.DataBinder.Eval(Object container, String expression)
+   at presentacion.asignacion_lugares.repeater_puestos_ItemDataBound(Object sender, RepeaterItemEventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\21_06_16\Puestos\presentacion\asignacion_lugares.aspx.cs:line 274
+   at System.Web.UI.WebControls.Repeater.OnItemDataBound(RepeaterItemEventArgs e)
+   at System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   at System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   at System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   at System.Web.UI.WebControls.Repeater.CreateControlHierarchy(Boolean useDataSource)
+   at System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   at System.Web.UI.WebControls.Repeater.DataBind()
+   at presentacion.asignacion_lugares.cargargrid() in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\21_06_16\Puestos\presentacion\asignacion_lugares.aspx.cs:line 46
+   at presentacion.asignacion_lugares.lugaresPuestos(Int32 idc_puesto) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\21_06_16\Puestos\presentacion\asignacion_lugares.aspx.cs:line 98

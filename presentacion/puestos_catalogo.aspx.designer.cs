@@ -184,6 +184,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Label lblMSucursal;
         
         /// <summary>
+        /// Control mperfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mperfil;
+        
+        /// <summary>
         /// Control lnkMPerfil.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkMPerfil;
+        
+        /// <summary>
+        /// Control mverherr.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mverherr;
         
         /// <summary>
         /// Control lnkMVerHerramientas.
@@ -202,6 +220,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.LinkButton lnkMVerHerramientas;
         
         /// <summary>
+        /// Control asignarperfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl asignarperfil;
+        
+        /// <summary>
         /// Control lnkasignarperfil.
         /// </summary>
         /// <remarks>
@@ -209,6 +236,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkasignarperfil;
+        
+        /// <summary>
+        /// Control prebaja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl prebaja;
         
         /// <summary>
         /// Control lnkprebaja.
@@ -220,6 +256,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.LinkButton lnkprebaja;
         
         /// <summary>
+        /// Control reemplazo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reemplazo;
+        
+        /// <summary>
         /// Control lnkreemplazo.
         /// </summary>
         /// <remarks>
@@ -227,6 +272,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkreemplazo;
+        
+        /// <summary>
+        /// Control pmd.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pmd;
         
         /// <summary>
         /// Control lnkpmd.
@@ -238,6 +292,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.LinkButton lnkpmd;
         
         /// <summary>
+        /// Control servicios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl servicios;
+        
+        /// <summary>
         /// Control lnkservicios.
         /// </summary>
         /// <remarks>
@@ -245,6 +308,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkservicios;
+        
+        /// <summary>
+        /// Control servicios_medan.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl servicios_medan;
         
         /// <summary>
         /// Control lnkservicios_medan.
@@ -256,6 +328,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.LinkButton lnkservicios_medan;
         
         /// <summary>
+        /// Control permiso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl permiso;
+        
+        /// <summary>
         /// Control lnkpermiso.
         /// </summary>
         /// <remarks>
@@ -265,6 +346,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.LinkButton lnkpermiso;
         
         /// <summary>
+        /// Control vacaiones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl vacaiones;
+        
+        /// <summary>
         /// Control lnkvacaciones.
         /// </summary>
         /// <remarks>
@@ -272,5 +362,23 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkvacaciones;
+        
+        /// <summary>
+        /// Control lugartrabajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lugartrabajo;
+        
+        /// <summary>
+        /// Control lnklugar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnklugar;
     }
 }
