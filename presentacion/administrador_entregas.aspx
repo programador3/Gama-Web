@@ -5,6 +5,7 @@
     <link href="css/ionicons.css" rel="stylesheet" />
     <link href="css/ionicons.min.css" rel="stylesheet" />
     <script type="text/javascript">
+        //jejeje
         function ProgressBar(value, valuein) {
             $('#progressincorrect').css('width', valuein);
             $('#progrescorrect').css('width', value);
