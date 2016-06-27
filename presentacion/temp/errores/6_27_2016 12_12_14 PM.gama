@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El parámetro '@PIDC_PUESTO' se ha especificado varias veces.
+   at negocio.Componentes.TareasCOM.TareasResultadoDetalles(TareasENT Etiqueta)
+   at presentacion.rendimiento_tareas_detalles.CargaTareas(DateTime start, DateTime end, Int32 pidc_puesto, Int32 pidc_tarea, Int32 idc_depto)
+ClientConnectionId:f6831d63-33d1-4bdc-8cf5-e6fc6cabe243
+Error Number:8143,State:1,Class:16

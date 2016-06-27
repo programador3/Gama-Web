@@ -48,6 +48,8 @@ namespace presentacion
                 entidad.Pidc_puesto = pidc_puesto;
                 entidad.Pidc_tarea = pidc_tarea;
                 entidad.Pidc_depto = idc_depto;
+                entidad.Idc_usuario = Request.QueryString["ver_solo_asignadas"] != null ? 0 : Convert.ToInt32(Session["sidc_usuario"]);
+                entidad.Pidc_puesto_asigna = Convert.ToInt32(Session["sidc_puesto_login"]);
                 if (Request.QueryString["tipofiltro"] != null)
                 {
                     entidad.Ptipof = Request.QueryString["tipofiltro"];

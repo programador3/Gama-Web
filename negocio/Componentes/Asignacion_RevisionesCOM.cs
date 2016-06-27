@@ -21,6 +21,7 @@ namespace negocio.Componentes
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@pfiltro", SqlDbType = SqlDbType.Int, Value = Etiqueta.Filtro });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTOASIGNA", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_puesto_revisa });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptipo });
             try
             {

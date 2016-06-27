@@ -525,6 +525,7 @@
     <Content Include="puestos_catalogo.aspx" />
     <Content Include="reasignacion_tareas.aspx" />
     <Content Include="redirect.aspx" />
+    <Content Include="rendimiento_tareas_asignadas.aspx" />
     <Content Include="rendimiento_tareas.aspx" />
     <Content Include="rendimiento_tareas_detalles.aspx" />
     <Content Include="reporte_faltas.aspx" />
@@ -1210,6 +1211,13 @@
     </Compile>
     <Compile Include="redirect.aspx.designer.cs">
       <DependentUpon>redirect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rendimiento_tareas_asignadas.aspx.cs">
+      <DependentUpon>rendimiento_tareas_asignadas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rendimiento_tareas_asignadas.aspx.designer.cs">
+      <DependentUpon>rendimiento_tareas_asignadas.aspx</DependentUpon>
     </Compile>
     <Compile Include="rendimiento_tareas.aspx.cs">
       <DependentUpon>rendimiento_tareas.aspx</DependentUpon>

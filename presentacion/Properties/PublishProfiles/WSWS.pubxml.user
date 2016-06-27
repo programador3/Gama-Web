@@ -283,10 +283,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:37</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>06/24/2016 14:56:05</publishTime>
+      <publishTime>06/27/2016 12:21:14</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>06/27/2016 08:28:12</publishTime>
+      <publishTime>06/27/2016 12:21:16</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>06/15/2016 08:43:24</publishTime>
@@ -1906,7 +1906,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/27/2016 08:28:18</publishTime>
+      <publishTime>06/27/2016 12:21:17</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>

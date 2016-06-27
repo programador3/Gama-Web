@@ -425,6 +425,8 @@ namespace negocio.Componentes
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO_ASIGNA", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto_asigna });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_USUARIO", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_usuario });
             listparameters.Add(new SqlParameter() { ParameterName = "@PFECHA_INICIO", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha });
             listparameters.Add(new SqlParameter() { ParameterName = "@PFECHA_FIN", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_fin });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptipofiltro", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptipof });
