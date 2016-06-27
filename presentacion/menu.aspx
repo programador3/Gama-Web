@@ -111,7 +111,7 @@
                                             <div class="content">
                                                 <h5>
                                                     <asp:Label ID="lbl" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, "descripcion").ToString() %>'></asp:Label>
-                                                </h4>
+                                                </h5>
                                             </div>
                                             <div class="clear-both"></div>
                                         </div>

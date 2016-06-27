@@ -46,7 +46,6 @@ namespace presentacion
             {
                 Session["fecha"] = null;
                 Session["tabla_movimientos"] = null;
-                Session["redirect"] = null;
                 Session["fecha_termi_mov"] = null;
                 panel_captura_fecha.Visible = false;
                 btnTerminarVBNO.Visible = false;
@@ -65,7 +64,6 @@ namespace presentacion
                 Session["Back_Page"] = null;
                 Session["fecha"] = null;
                 Session["tabla_movimientos"] = null;
-                Session["redirect"] = null;
                 panel_captura_fecha.Visible = true;
                 btnTerminar.Visible = true;
                 btnGuardar.Visible = true;
@@ -82,7 +80,6 @@ namespace presentacion
                 Session["Back_Page"] = null;
                 Session["fecha"] = null;
                 Session["tabla_movimientos"] = null;
-                Session["redirect"] = null;
                 CargarTareas(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"])));
                 btnCancelar.Visible = false;
                 lnkGO.Visible = false;

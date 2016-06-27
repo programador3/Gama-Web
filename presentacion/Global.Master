@@ -7,7 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <link rel="shortcut icon" href="imagenes/favicon.png" />
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css' />
@@ -470,19 +469,14 @@
                     </nav>
                 </div>
                 <!-- Main Content -->
-
                 <div class="side-body padding-top">
-
                     <asp:ContentPlaceHolder ID="Contenido" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
             </div>
         </div>
-
         <!-- Javascript Libs -->
-
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
         <script type="text/javascript" src="js/app.js"></script>
     </form>
 </body>

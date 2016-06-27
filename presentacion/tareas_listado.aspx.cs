@@ -15,7 +15,14 @@ namespace presentacion
             if (!IsPostBack)
             {
                 CargaTareas("");
+            }
+            if (Request.QueryString["lectura"] == null)
+            {
                 Session["redirect"] = "tareas_listado.aspx";
+            }
+            else
+            {
+                Session["redirect"] = "tareas_listado.aspx?lectura=lKJJHSJQHVXQHSVXVHJAKJBKJbkjJlkboqwdknwqknd";
             }
         }
 
