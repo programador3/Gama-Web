@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): La función o el procedimiento sp_puestos_abajo_organigrama tiene demasiados argumentos.
+   at negocio.Componentes.Asignacion_RevisionesCOM.CargaComboDinamicoOrgn(Asignacion_RevisionesENT Etiqueta) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\27_06_16\Puestos\negocio\Componentes\Asignacion_RevisionesCOM.cs:line 33
+   at presentacion.rendimiento_tareas_asignadas.CargaPuestos(String filtro) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\27_06_16\Puestos\presentacion\rendimiento_tareas_asignadas.aspx.cs:line 40
+ClientConnectionId:88ca0f8b-4432-4c1b-b0bb-ad4e1dd38599
+Error Number:8144,State:2,Class:16
