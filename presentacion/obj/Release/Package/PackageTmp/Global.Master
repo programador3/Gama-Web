@@ -199,6 +199,9 @@
                 MensajeTexto();
             }
         }
+        function explode() {
+            alert("Boom!");
+        }
         function MensajeTexto() {
             $.ajax({
                 url: "temp/mensaje.txt",

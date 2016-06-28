@@ -320,7 +320,8 @@ namespace presentacion
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
-                            Alert.ShowGiftMessage("Estamos Guardando los cambios.", "Espere un Momento", "puestos_catalogo.aspx", "imagenes/loading.gif", "2000", "La Solicitud fue Guardada correctamente ", this);
+                            string MESS = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 363) == true ? "Estamos Autorizando Automaticamente la Solicitud" : "Estamos Guardando los cambios.";
+                            Alert.ShowGiftMessage(MESS, "Espere un Momento", "puestos_catalogo.aspx", "imagenes/loading.gif", "2000", "Solicitud Guardada correctamente ", this);
                         }
                         else
                         {
@@ -360,7 +361,7 @@ namespace presentacion
 
                     case "Editar":
                         entidad.Pidc_horario_erm = Request.QueryString["idc_horario_perm"] == null ? Convert.ToInt32(Session["idc_horario_perm"]) : Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"]));
-                        entidad.Pstatus = "";
+                        entidad.Pstatus = "E";
                         ds = componente.SolcitudEdicion(entidad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")

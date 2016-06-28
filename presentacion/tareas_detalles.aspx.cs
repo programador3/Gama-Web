@@ -707,7 +707,6 @@ namespace presentacion
                     Session["Caso_Confirmacion"] = "Visto Bueno";
                     Session["tipo_conf"] = "B";
                     row_vbno.Visible = true;
-                    Session["redirect"] = null;
                     btnfecha_est.Text = "Estipulada: " + txtfecha_solicompromiso.Text;
                     btnfecha_term.Text = lbldinamico.Text;
                     DateTime TIMEST = Convert.ToDateTime(Session["tarea_sin_f"]);

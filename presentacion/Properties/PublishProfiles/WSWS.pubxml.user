@@ -49,7 +49,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/08/2016 10:17:38</publishTime>
     </File>
     <File Include="assets/bootstrap/css/bootstrap-theme.css">
-      <publishTime>04/28/2016 12:27:57</publishTime>
+      <publishTime>06/28/2016 08:22:39</publishTime>
     </File>
     <File Include="assets/bootstrap/css/bootstrap-theme.css.map">
       <publishTime>04/28/2016 09:37:21</publishTime>
@@ -64,7 +64,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/28/2016 09:37:22</publishTime>
     </File>
     <File Include="assets/bootstrap/css/bootstrap.min.css">
-      <publishTime>04/28/2016 09:37:22</publishTime>
+      <publishTime>06/28/2016 08:20:30</publishTime>
     </File>
     <File Include="assets/bootstrap/fonts/glyphicons-halflings-regular.eot">
       <publishTime>04/28/2016 09:37:22</publishTime>
@@ -226,7 +226,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/01/2016 09:10:42</publishTime>
     </File>
     <File Include="assets/img/body.png">
-      <publishTime>06/20/2016 08:34:11</publishTime>
+      <publishTime>06/28/2016 07:49:40</publishTime>
     </File>
     <File Include="assets/jquery-1.10.1.min.js">
       <publishTime>04/28/2016 09:37:22</publishTime>
@@ -286,7 +286,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/27/2016 16:16:47</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>06/27/2016 16:16:48</publishTime>
+      <publishTime>06/28/2016 14:57:14</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>06/15/2016 08:43:24</publishTime>
@@ -757,7 +757,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/05/2016 11:08:32</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>06/25/2016 12:19:28</publishTime>
+      <publishTime>06/28/2016 08:35:06</publishTime>
     </File>
     <File Include="grafica.aspx">
       <publishTime>06/08/2016 16:54:10</publishTime>
@@ -899,6 +899,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="imagenes/back_btn.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/body_page.png">
+      <publishTime>06/28/2016 07:57:03</publishTime>
     </File>
     <File Include="imagenes/btn/add_image_prof.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
@@ -1900,7 +1903,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/08/2016 10:22:50</publishTime>
     </File>
     <File Include="view_files.aspx">
-      <publishTime>05/20/2016 09:33:16</publishTime>
+      <publishTime>06/28/2016 08:16:33</publishTime>
     </File>
     <File Include="view_page.aspx">
       <publishTime>05/20/2016 09:33:18</publishTime>
@@ -1909,7 +1912,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/27/2016 16:16:49</publishTime>
+      <publishTime>06/28/2016 14:57:16</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>
