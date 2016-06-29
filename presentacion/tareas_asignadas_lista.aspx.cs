@@ -20,7 +20,7 @@ namespace presentacion
             {
                 CargaTareas("");
 
-                Session["redirect"] = "tareas_asignadas_lista.aspx";
+                Session["redirect_pagedet"] = "tareas_asignadas_lista.aspx";
             }
         }
 

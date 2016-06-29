@@ -271,7 +271,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:58</publishTime>
     </File>
     <File Include="bin/datos.dll">
-      <publishTime>06/15/2016 08:43:23</publishTime>
+      <publishTime>06/28/2016 16:57:06</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>03/03/2016 15:08:57</publishTime>
@@ -283,13 +283,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:37</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>06/27/2016 16:16:47</publishTime>
+      <publishTime>06/29/2016 16:24:18</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>06/28/2016 14:57:14</publishTime>
+      <publishTime>06/29/2016 16:24:19</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
-      <publishTime>06/15/2016 08:43:24</publishTime>
+      <publishTime>06/28/2016 16:57:06</publishTime>
     </File>
     <File Include="cambiar_fechas_compromiso.aspx">
       <publishTime>05/20/2016 09:22:47</publishTime>
@@ -530,6 +530,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="empleados_faltas_captura.aspx">
       <publishTime>05/20/2016 09:24:58</publishTime>
+    </File>
+    <File Include="empleados_reportes.aspx">
+      <publishTime>06/29/2016 14:51:04</publishTime>
+    </File>
+    <File Include="empleados_reportes_pendientes.aspx">
+      <publishTime>06/29/2016 15:45:48</publishTime>
     </File>
     <File Include="entregas.aspx">
       <publishTime>05/20/2016 09:25:01</publishTime>
@@ -1912,7 +1918,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/28/2016 14:57:16</publishTime>
+      <publishTime>06/29/2016 16:24:21</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>

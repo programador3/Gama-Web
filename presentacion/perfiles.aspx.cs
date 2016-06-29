@@ -691,6 +691,7 @@ namespace presentacion
                 PerfilesBL Componente = new PerfilesBL();
                 DataSet data = new DataSet();
 
+                ScriptManager.RegisterStartupScript(this, GetType(), "DWWWWWWWE", "ModalClose();", true);
                 switch (tipo_case)
                 {
                     case "PRODUCCION-BORRADOR":
@@ -728,7 +729,7 @@ namespace presentacion
                         int total = ((t_archivos_eti * 1) + 1) * 1000;
                         string t = total.ToString();
                         string idc_puestoperfil_borr = rowr["Resultado"].ToString();
-                        Alert.ShowGiftRedirect("Estamos Generando el Borrador y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", t, "perfiles_captura.aspx?uidc_puestoperfil=" + idc_puestoperfil_borr + "&uborrador=1", this);
+                        Alert.ShowGiftRedirect("Estamos Generando el Borrador y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", "8000", "perfiles_captura.aspx?uidc_puestoperfil=" + idc_puestoperfil_borr + "&uborrador=1", this);
                     }
                 }
                 else

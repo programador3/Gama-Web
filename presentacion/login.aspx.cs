@@ -123,6 +123,7 @@ namespace presentacion
                         //subimos a sesion
                         Session["nombre"] = nombre_user;
                         Session["puesto_login"] = puesto_user;
+                        Session["sidc_empleado"] = (ds.Tables[0].Rows[0]["idc_empleado"].ToString());
                         //creamos la sesion y lo redireccionamos al menu de opciones.
                         Session["sidc_usuario"] = idc_usuario;
                         Session["login_idc_perfil"] = ds.Tables[0].Rows[0]["idc_puestoperfil"].ToString();

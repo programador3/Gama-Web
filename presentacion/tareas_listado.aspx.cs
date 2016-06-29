@@ -18,11 +18,11 @@ namespace presentacion
             }
             if (Request.QueryString["lectura"] == null)
             {
-                Session["redirect"] = "tareas_listado.aspx";
+                Session["redirect_pagedet"] = "tareas_listado.aspx";
             }
             else
             {
-                Session["redirect"] = "tareas_listado.aspx?lectura=lKJJHSJQHVXQHSVXVHJAKJBKJbkjJlkboqwdknwqknd";
+                Session["redirect_pagedet"] = "tareas_listado.aspx?lectura=lKJJHSJQHVXQHSVXVHJAKJBKJbkjJlkboqwdknwqknd";
             }
         }
 

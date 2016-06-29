@@ -175,6 +175,8 @@
     <Content Include="css\dataTables.bootstrap.min.css" />
     <Content Include="css\jquery.dataTables.css" />
     <Content Include="css\jquery.dataTables.min.css" />
+    <Content Include="empleados_reportes.aspx" />
+    <Content Include="empleados_reportes_pendientes.aspx" />
     <Content Include="fancybox\blank.gif" />
     <Content Include="fancybox\fancybox-x.png" />
     <Content Include="fancybox\fancybox-y.png" />
@@ -913,6 +915,20 @@
     </Compile>
     <Compile Include="empleados_faltas_captura.aspx.designer.cs">
       <DependentUpon>empleados_faltas_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="empleados_reportes.aspx.cs">
+      <DependentUpon>empleados_reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="empleados_reportes.aspx.designer.cs">
+      <DependentUpon>empleados_reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="empleados_reportes_pendientes.aspx.cs">
+      <DependentUpon>empleados_reportes_pendientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="empleados_reportes_pendientes.aspx.designer.cs">
+      <DependentUpon>empleados_reportes_pendientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="entregas.aspx.cs">
       <DependentUpon>entregas.aspx</DependentUpon>

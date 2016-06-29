@@ -33,6 +33,7 @@ namespace presentacion
                 Session["papeleria"] = papeleria;
                 Session["id_archi"] = null;
                 Session["no_redirect"] = null;
+                Session["redirect"] = null;
                 Session["idc_tarea_historial"] = null;
                 Session["integrante_tarea"] = null;
                 row_vbno.Visible = false;
@@ -1035,9 +1036,14 @@ namespace presentacion
                 {
                     string url = ds.Tables[0].Rows[0]["url"].ToString();
                     ScriptManager.RegisterStartupScript(this, GetType(), "noti533sededW3", "SendSlack('" + url + "');", true);
-                    if (Session["redirect"] != null)
+                    if (Session["redirect"] != null && Session["redirect_pagedet"] == null)
                     {
                         Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", (string)Session["redirect"], "imagenes/loading.gif", "2000", "El movimiento fue Guardado Correctamente", this);
+                    }
+                    else if (Session["redirect_pagedet"] != null)
+                    {
+                        Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", (string)Session["redirect_pagedet"], "imagenes/loading.gif", "2000", "El movimiento fue Guardado Correctamente", this);
+                        Session["redirect_pagedet"] = null;
                     }
                     else
                     {

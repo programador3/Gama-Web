@@ -81,6 +81,7 @@
     <Compile Include="Componentes\PuestosCOM.cs" />
     <Compile Include="Componentes\PuestosServiciosCOM.cs" />
     <Compile Include="Componentes\Puestos_EntregarCOM.cs" />
+    <Compile Include="Componentes\ReportesCOM.cs" />
     <Compile Include="Componentes\RevisionesCOM.cs" />
     <Compile Include="Componentes\Revisiones_PreparacionCOM.cs" />
     <Compile Include="Componentes\Revisiones_ServciosCOM.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Entidades\PuestosENT.cs" />
     <Compile Include="Entidades\PuestosServiciosENT.cs" />
     <Compile Include="Entidades\Puestos_EntregarENT.cs" />
+    <Compile Include="Entidades\ReportesENT.cs" />
     <Compile Include="Entidades\RevisionesENT.cs" />
     <Compile Include="Entidades\Revisiones_ServiciosENT.cs" />
     <Compile Include="Entidades\Revision_FinalENT.cs" />

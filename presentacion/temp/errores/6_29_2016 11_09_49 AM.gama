@@ -1,0 +1,7 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.InvalidCastException: Unable to cast object of type 'System.Web.UI.WebControls.ListItem' to type 'System.IConvertible'.
+   at System.Convert.ToInt32(Object value)
+   at presentacion.empleados_reportes.CargaPuestos(String filtro) in E:\Trabajos Humberto\Proyectos Diarios\2016\06JUNIO\29_06_16\Puestos\presentacion\empleados_reportes.aspx.cs:line 59

@@ -20,6 +20,7 @@ namespace negocio.Componentes
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_Puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_pre_empleado });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Int, Value = "P" });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_reves", SqlDbType = SqlDbType.Int, Value = Entidad.PReves });
             try
