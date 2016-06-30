@@ -20,6 +20,9 @@ namespace presentacion
             CargarPendientes();
         }
 
+        /// <summary>
+        /// Carga los pendientes de mi puesto
+        /// </summary>
         private void CargarPendientes()
         {
             try
@@ -28,6 +31,7 @@ namespace presentacion
                 entidad.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
                 ReportesCOM componente = new ReportesCOM();
                 DataTable DT = componente.CargaJefe(entidad).Tables[0];
+                //filtro los que estan pendientes
                 DataView view = DT.DefaultView;
                 view.RowFilter = "status LIKE'%PENDIENTE%'";
                 repeat.DataSource = view.ToTable();

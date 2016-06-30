@@ -124,6 +124,9 @@ namespace presentacion
             }
         }
 
+        /// <summary>
+        /// Carga Combo con los tipos de reportes
+        /// </summary>
         private void CargarReportes()
         {
             try
