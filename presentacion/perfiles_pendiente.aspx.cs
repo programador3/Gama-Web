@@ -50,6 +50,40 @@ namespace presentacion
             }
         }
 
+        private String Cadena()
+        {
+            string cadena = "";
+            if (lnktodo.CssClass != "btn btn-info btn-block")
+            {
+                foreach (RepeaterItem item in Repeater1.Items)
+                {
+                    LinkButton lnk = (LinkButton)item.FindControl("lnkgrupo");
+                    if (lnk.CssClass == "btn btn-success btn-block")
+                    {
+                        cadena = cadena + lnk.CommandName + ";";
+                    }
+                }
+            }
+            return cadena;
+        }
+
+        private int TotalCadena()
+        {
+            int cadena = 0;
+            if (lnktodo.CssClass != "btn btn-info btn-block")
+            {
+                foreach (RepeaterItem item in Repeater1.Items)
+                {
+                    LinkButton lnk = (LinkButton)item.FindControl("lnkgrupo");
+                    if (lnk.CssClass == "btn btn-success btn-block")
+                    {
+                        cadena = cadena + 1;
+                    }
+                }
+            }
+            return cadena;
+        }
+
         /// <summary>
         /// Evento agregado de forma manual, se encadena cuando el usuario confirma modal
         /// </summary>
@@ -67,9 +101,27 @@ namespace presentacion
                     break;
 
                 case "aprobar":
-                    //autorizarBorrador(id);
-                    //cargar_perfil_pendiente();
-                    Alert.ShowAlertError("No debe entrar aqui.", this.Page);
+                    //levantamos la solicitud
+                    string res = solicitudAprobacion(Convert.ToInt32(Session["sidc_puestoperfil_borr"]));
+                    if (TotalCadena() == 0 && lnktodo.CssClass == "btn btn-default btn-block")
+                    {
+                        Alert.ShowAlertError("Seleccione una opcion", this.Page);
+                    }
+                    else if (string.IsNullOrEmpty(res.Trim().Replace(" ", "")))
+                    {
+                        if (TotalCadena() > 0)
+                        {
+                            Response.Redirect("aprobaciones_firma.aspx?cadena=" + funciones.deTextoa64(Cadena()) + "&total=" + TotalCadena().ToString());
+                        }
+                        else
+                        {
+                            Response.Redirect("aprobaciones_firma.aspx?cadena=&total=" + TotalCadena().ToString());
+                        }
+                    }
+                    else if (res != "")
+                    {
+                        Alert.ShowAlertError(res, this.Page);
+                    }
                     break;
 
                 case "regresar":
@@ -126,6 +178,7 @@ namespace presentacion
             Session["scomando"] = e.CommandName;
             //necesito mandar el id de la solicitud de aprobacion si no tiene se manda un cero
 
+            autori.Visible = false;
             switch (e.CommandName)
             {
                 case "comparar":
@@ -133,22 +186,25 @@ namespace presentacion
                     break;
 
                 case "aprobar":
-                    //levantamos la solicitud
-                    string res = solicitudAprobacion(vidc);
 
-                    if (string.IsNullOrEmpty(res.Trim().Replace(" ", "")))
+                    try
                     {
-                        //todo bien
-
-                        Response.Redirect("aprobaciones_firma.aspx");
+                        //llamamos la entidad
+                        Aprobaciones_solicitudE entidad = new Aprobaciones_solicitudE();
+                        entidad.Idc_registro = vidc;
+                        //llamamos al componente
+                        DataSet ds = new DataSet();
+                        Aprobaciones_solicitudBL componente = new Aprobaciones_solicitudBL();
+                        ds = componente.CargarGrupos(entidad);
+                        Repeater1.DataSource = ds.Tables[0];
+                        Repeater1.DataBind();
+                        autori.Visible = true;
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Alert.ShowAlertError(res, this.Page);
-                        return;
+                        Alert.ShowAlertError(ex.Message, this.Page);
                     }
-
-                    // ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','¿Está seguro que desea autorizar este borrador? Ahora esta información podrá verse en el organigrama');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','¿Está seguro que desea autorizar este borrador? Seleccione la informacion que desea que sea publicada');", true);
                     break;
 
                 case "regresar":
@@ -269,15 +325,6 @@ namespace presentacion
                     int vfolio = Convert.ToInt32(ds.Tables[0].Rows[0]["folio"].ToString()); //id de la solicitud de aprobacion
                                                                                             //ALERTA REVISAR ESTA SESISON
                     Session.Add("sidc_aprobacion_soli", vfolio);
-                    //string vmensaje_no2 = "";
-                    //if (string.IsNullOrEmpty(vmensaje)) // si esta vacio todo bien
-                    //{
-                    //    //ahora sigue los adicionales
-                    //    //debe mandarse el idc_perfil de produccion no de borrador
-                    //    int id_row_produccion = Convert.ToInt32(fila[0]["idc_puestoperfil"]);//idPerfilProd(id_row);
-                    //    vmensaje_no2 = solicitudAprobacionAdicional(vfolio, id_row_produccion);
-                    //    //todo bien en teoria aqui no se valida el mensaje vacio sino donde se llama.
-                    //}
 
                     return vmensaje;// +" " + vmensaje_no2;
                 }
@@ -348,6 +395,19 @@ namespace presentacion
                     btncancelar.Visible = false;
                 }
             }
+        }
+
+        protected void lnkgrupo_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = sender as LinkButton;
+            lnk.CssClass = lnk.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
+        }
+
+        protected void lnktodo_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = sender as LinkButton;
+            lnk.CssClass = lnk.CssClass == "btn btn-default btn-block" ? "btn btn-info btn-block" : "btn btn-default btn-block";
+            Repeater1.Visible = lnk.CssClass == "btn btn-default btn-block" ? true : false;
         }
     }
 }

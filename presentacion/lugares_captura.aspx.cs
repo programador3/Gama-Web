@@ -3,7 +3,7 @@ using negocio.Entidades;
 using System;
 using System.Data;
 using System.IO;
-using System.Web.UI.HtmlControls;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace presentacion
@@ -18,19 +18,18 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
-                Session["idc_area_lcaptura"] = funciones.ConvertHexToString(Request.QueryString["idc_area"]);
-                DataTable papeleria = new DataTable();
-                papeleria.Columns.Add("ruta");
-                papeleria.Columns.Add("nombre");
-                papeleria.Columns.Add("folio");
-                papeleria.Columns.Add("descripcion");
-                Session["tabla_lugares"] = papeleria;
-                TablaDatosAreas(Convert.ToInt32(funciones.ConvertHexToString(Request.QueryString["idc_area"])));
-                DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/imagenes/areas/"));//path local
-                File.Copy(funciones.GenerarRuta("areas", "unidad") + funciones.ConvertHexToString(Request.QueryString["idc_area"]) + ".jpg", dirInfo + funciones.ConvertHexToString(Request.QueryString["idc_area"]) + ".jpg", true);
-                var domn = Request.Url.Host;
-                string server = System.Configuration.ConfigurationManager.AppSettings["server"];
-                img_area.Attributes["href"] = domn == "localhost" ? "/imagenes/areas/" + funciones.ConvertHexToString(Request.QueryString["idc_area"]) + ".jpg" : server + "/imagenes/areas/" + funciones.ConvertHexToString(Request.QueryString["idc_area"]) + ".jpg";
+                Session["idc_lugartedit"] = null;
+                Session["nombre_lugar"] = null;
+                DataTable dt = new DataTable();
+                dt.Columns.Add("idc_lugart");
+                dt.Columns.Add("alias");
+                dt.Columns.Add("nombre");
+                dt.Columns.Add("ruta");
+                dt.Columns.Add("img");
+                dt.Columns.Add("lugar");
+                Session["tabla_lugares"] = dt;
+                int idc_area = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_area"]));
+                TablaDatosAreas(idc_area);
             }
         }
 
@@ -45,156 +44,323 @@ namespace presentacion
             LugaresCOM com = new LugaresCOM();
             entidades.Pidc_area = idc_area;
             DataSet ds = com.CargaAreas(entidades);
-            foreach (DataRow row in ds.Tables[1].Rows)
+            DataRow row = ds.Tables[0].Rows[0];
+            CopyTofolder(ds.Tables[0], "~/imagenes/areas/", "idc_area");
+            lbltitle.Text = "Lugares de Trabajo del Area '" + row["nombre"].ToString() + "'";
+            lblareaname.Text = row["nombre"].ToString();
+            string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/areas/" + row["idc_area"].ToString() + ".jpg";
+            imgarea.ImageUrl = url;
+            foreach (DataRow rows in ds.Tables[1].Rows)
             {
-                DateTime localDate = DateTime.Now;
-                string date = localDate.ToString();
-                date = date.Replace("/", "_");
-                date = date.Replace(":", "_");
-                AddPapeleriaToTable(row["ruta"].ToString(), Path.GetFileName(row["ruta"].ToString()), row["folio"].ToString(), row["descripcion"].ToString());
-            }
-            DataTable papeleria = (DataTable)Session["tabla_lugares"];
-            gridPapeleria.DataSource = papeleria;
-            gridPapeleria.DataBind();
-        }
-
-        protected void lnkGuardarPape_Click(object sender, EventArgs e)
-        {
-            bool error = false;
-            if (txtdescripcion.Text == "") { error = true; Alert.ShowAlertError("Escriba una descripcion para el lugar", this); }
-            if (txtfolio.Text == "") { error = true; Alert.ShowAlertError("Escriba un folio para el lugar", this); }
-            if (fupPapeleria.HasFile && error == false)
-            {
-                DateTime localDate = DateTime.Now;
-                string date = localDate.ToString();
-                date = date.Replace("/", "_");
-                date = date.Replace(":", "_");
-                DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/lugares_captura/"));//path local
-                string mensaje = AddPapeleriaToTable(dirInfo + date + "_" + fupPapeleria.FileName, date + "_" + fupPapeleria.FileName, txtfolio.Text, txtdescripcion.Text);
-                if (mensaje.Equals(string.Empty))
-                {
-                    bool pape = funciones.UploadFile(fupPapeleria, dirInfo + date + "_" + fupPapeleria.FileName, this);
-                    if (pape == true)
-                    {
-                        REV.Enabled = gridPapeleria.Rows.Count == 0 ? true : false;
-                        Alert.ShowGift("Estamos subiendo el archivo.", "Espere un Momento", "imagenes/loading.gif", "5000", "Archivo Guardardo Correctamente", this);
-                        fupPapeleria.Visible = true;
-                        txtdescripcion.Text = "";
-                        txtfolio.Text = "";
-                        gridPapeleria.DataSource = (DataTable)Session["tabla_lugares"]; ;
-                        gridPapeleria.DataBind();
-                    }
-                }
-                else
-                {
-                    Alert.ShowAlertError(mensaje, this);
-                }
+                AddToTable(Convert.ToInt32(rows["idc_lugart"]), rows["alias"].ToString(), rows["nombre"].ToString(), rows["ruta"].ToString(), rows["img"].ToString(), Convert.ToInt32(rows["lugar"]));
             }
         }
 
-        public string AddPapeleriaToTable(string ruta, string nombre, string folio, string descripcion)
+        /// <summary>
+        /// Comprueba si existe un lugar con nombres y alias similares
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="alias"></param>
+        /// <returns></returns>
+        private bool ExistsinTable(string nombre, string alias)
         {
-            string mensaje = "";
-            DataTable papeleria = (DataTable)Session["tabla_lugares"];
-            foreach (DataRow row in papeleria.Rows)
+            DataTable tbl = (DataTable)Session["tabla_lugares"];
+            DataView view = tbl.DefaultView;
+            view.RowFilter = "nombre = '" + nombre + "' OR alias = '" + alias + "'";
+            if (view.ToTable().Rows.Count > 0)
             {
-                if (folio == row["folio"].ToString())
+                return true;//existe
+            }
+            else
+            {
+                return false;//no existe
+            }
+        }
+
+        /// <summary>
+        /// Agrega Registro a tabla
+        /// </summary>
+        private void AddToTable(int idc_lugart, string alias, string nombre, string ruta, string img, int lugar)
+        {
+            DataTable tbl = (DataTable)Session["tabla_lugares"];
+            foreach (DataRow rows in tbl.Rows)
+            {
+                //if (Convert.ToInt32(rows["idc_lugart"]) == idc_lugart && idc_lugart > 0)
+                //{
+                //    rows.Delete();
+                //    break;
+                //}
+                if (Session["nombre_lugar"] != null && rows["nombre"].ToString() == (string)Session["nombre_lugar"])
+                {
+                    rows.Delete();
+                    break;
+                }
+            }
+            DataRow row = tbl.NewRow();
+            row["idc_lugart"] = idc_lugart;
+            row["alias"] = alias;
+            row["nombre"] = nombre;
+            row["ruta"] = ruta;
+            row["img"] = img;
+            row["lugar"] = lugar;
+            tbl.Rows.Add(row);
+            CopyTofolder(tbl, "~/imagenes/lugares/captura/", "idc_lugart");
+            cargargrid();
+        }
+
+        /// <summary>
+        /// Elimina registro de tabla
+        /// </summary>
+        /// <param name="idc_lugart"></param>
+        private void DeleteToTable(int idc_lugart)
+        {
+            DataTable tbl = (DataTable)Session["tabla_lugares"];
+            foreach (DataRow row in tbl.Rows)
+            {
+                if (Convert.ToInt32(row["idc_lugart"]) == idc_lugart)
                 {
                     row.Delete();
                     break;
                 }
             }
-            DataRow new_row = papeleria.NewRow();
-            new_row["nombre"] = nombre;
-            new_row["ruta"] = ruta;
-            new_row["folio"] = folio;
-            new_row["descripcion"] = descripcion;
-            papeleria.Rows.Add(new_row);
-            Session["tabla_lugares"] = papeleria;
-            return mensaje;
+            Session["tabla_lugares"] = tbl;
+            cargargrid();
+            Alert.ShowAlert("Lugar eliminado correctamente", "Mensaje del sistema", this);
         }
 
-        protected void gridPapeleria_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            int index = Convert.ToInt32(e.CommandArgument);
-            string ruta = gridPapeleria.DataKeys[index].Values["ruta"].ToString();
-            string nombre = gridPapeleria.DataKeys[index].Values["nombre"].ToString();
-            string descripcion = gridPapeleria.DataKeys[index].Values["descripcion"].ToString();
-            string folio = gridPapeleria.DataKeys[index].Values["folio"].ToString();
-            DataTable papeleria = (DataTable)Session["tabla_lugares"];
-            switch (e.CommandName)
-            {
-                case "Eliminar":
-                    foreach (DataRow row in papeleria.Rows)
-                    {
-                        if (folio == row["folio"].ToString())
-                        {
-                            row.Delete();
-                            break;
-                        }
-                    }
-                    Session["tabla_lugares"] = papeleria;
-                    gridPapeleria.DataSource = papeleria;
-                    gridPapeleria.DataBind();
-                    break;
-
-                case "Editar":
-                    txtdescripcion.Text = descripcion;
-                    txtfolio.Text = folio;
-                    break;
-
-                case "Descargar":
-                    Download(ruta, nombre);
-                    break;
-            }
-        }
-
-        // <summary>
-        /// Descarga un archivo
+        /// <summary>
+        /// Carga el grid de lugares
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="file_name"></param>
-        public void Download(string path, string file_name)
+        private void cargargrid()
         {
-            if (!File.Exists(path))
+            DataTable dt = (DataTable)Session["tabla_lugares"];
+            DataTable ntble = new DataTable();
+            ntble.Columns.Add("idc_lugart");
+            ntble.Columns.Add("alias");
+            ntble.Columns.Add("nombre");
+            ntble.Columns.Add("ruta");
+            ntble.Columns.Add("img");
+            ntble.Columns.Add("lugar");
+            foreach (DataRow row in dt.Rows)
             {
-                Alert.ShowAlertError("No tiene archivo relacionado", this);
+                DataRow newr = ntble.NewRow();
+                newr["idc_lugart"] = row["idc_lugart"];
+                newr["alias"] = row["alias"];
+                newr["nombre"] = row["nombre"];
+                newr["img"] = row["img"];
+                newr["ruta"] = row["ruta"];
+                newr["lugar"] = row["lugar"];
+                ntble.Rows.Add(newr);
             }
-            else
+            gridlugares.DataSource = ntble;
+            gridlugares.DataBind();
+        }
+
+        /// <summary>
+        /// Copia las imagenes a la ruta local
+        /// </summary>
+        /// <param name="tbl"></param>
+        /// <param name="folder"></param>
+        private void CopyTofolder(DataTable tbl, string folder, string idc)
+        {
+            try
             {
-                // Limpiamos la salida
-                Response.Clear();
-                // Con esto le decimos al browser que la salida sera descargable
-                Response.ContentType = "application/octet-stream";
-                // esta linea es opcional, en donde podemos cambiar el nombre del fichero a descargar (para que sea diferente al original)
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + file_name);
-                // Escribimos el fichero a enviar
-                Response.WriteFile(path);
-                // volcamos el stream
-                Response.Flush();
-                // Enviamos todo el encabezado ahora
-                Response.End();
-                // Response.End();
+                DirectoryInfo dirInfo2 = new DirectoryInfo(Server.MapPath("~/imagenes/lugares/"));//path local
+                DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath(folder));//path local
+                foreach (DataRow row in tbl.Rows)
+                {
+                    String RUTA = row["ruta"].ToString();
+                    String RUTA_LOCAL = row[idc].ToString() + ".jpg";
+                    if (File.Exists(RUTA))
+                    {                     //   funciones.CopiarArchivos(dirInfo2 + "lugar.png", dirInfo + RUTA_LOCAL, this);
+                        funciones.CopiarArchivos(RUTA, dirInfo + RUTA_LOCAL, this);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
             }
         }
 
-        protected void gridPapeleria_RowDataBound(object sender, GridViewRowEventArgs e)
+        /// <summary>
+        /// Regresa la cadena de luagres
+        /// </summary>
+        /// <returns></returns>
+        private String Cadena()
         {
-            HtmlAnchor a_img = (HtmlAnchor)e.Row.FindControl("a_img");
+            string cadena = "";
+            DataTable tbl = (DataTable)Session["tabla_lugares"];
+            foreach (DataRow row in tbl.Rows)
+            {
+                cadena = cadena + row["idc_lugart"].ToString() + ";" + row["nombre"].ToString() + ";" + row["alias"].ToString() + ";" + row["ruta"].ToString() + ";";
+            }
+            return cadena;
+        }
+
+        /// <summary>
+        /// Regresa el total de la cadena de lugares
+        /// </summary>
+        /// <returns></returns>
+        private int TotalCadena()
+        {
+            DataTable tbl = (DataTable)Session["tabla_lugares"];
+            return tbl.Rows.Count;
+        }
+
+        protected void gridlugares_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Image ocupado = (Image)e.Row.FindControl("ocupado");
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 DataRowView rowView = (DataRowView)e.Row.DataItem;
-                string ruta = rowView["ruta"].ToString();
-                string nombre = rowView["nombre"].ToString();
-                DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/lugares_captura/"));//path local
-                if (ruta != dirInfo + nombre)
-                {
-                    File.Copy(ruta, dirInfo + nombre, true);
-                }
-                var domn = Request.Url.Host;
-                string server = System.Configuration.ConfigurationManager.AppSettings["server"];
-                a_img.Attributes["href"] = domn == "localhost" ? "/temp/lugares_captura/" + nombre : server + "/temp/lugares_captura/" + nombre;
+                string img = rowView["img"].ToString();
+                ocupado.ImageUrl = img;
             }
+        }
+
+        protected void gridlugares_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            int idc = Convert.ToInt32(gridlugares.DataKeys[index].Values["idc_lugart"]);
+            int ocupado = Convert.ToInt32(gridlugares.DataKeys[index].Values["lugar"]);
+            string nombre = gridlugares.DataKeys[index].Values["nombre"].ToString();
+            string alias = gridlugares.DataKeys[index].Values["alias"].ToString();
+            string ruta = gridlugares.DataKeys[index].Values["ruta"].ToString();
+            switch (e.CommandName)
+            {
+                case "Editar":
+                    Session["idc_lugartedit"] = idc;
+                    Session["nombre_lugar"] = nombre;
+                    txtalias.Text = alias;
+                    txtnombre.Text = nombre;
+                    break;
+
+                case "Borrar":
+                    if (ocupado == 1)
+                    {
+                        Alert.ShowAlertError("El lugar esta ocupado.", this);
+                    }
+                    else
+                    {
+                        DeleteToTable(idc);
+                    }
+                    break;
+
+                case "Ver":
+                    string file = Path.GetFileName(ruta);
+                    string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/lugares/captura/" + file;
+                    imgmodal.ImageUrl = url;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalImgc('" + nombre + "','modal fade modal-info');", true);
+                    break;
+            }
+        }
+
+        protected void lnkguardar_Click(object sender, EventArgs e)
+        {
+            String FileExtension = fupPapeleria.HasFile == true ? System.IO.Path.GetExtension(fupPapeleria.FileName) : "";
+            if (!fupPapeleria.HasFile)
+            {
+                Alert.ShowAlertError("Ingrese la Imagen del Lugar", this);
+            }
+            else if (FileExtension != ".jpg")
+            {
+                Alert.ShowAlertInfo("Solo se permiten formatos de imagen JPG || PNG", "Mensaje del sistema", this);
+            }
+            else if (txtalias.Text == "")
+            {
+                Alert.ShowAlertInfo("Escriba un Alias para el lugar", "Mensaje del sistema", this);
+            }
+            else if (txtnombre.Text == "")
+            {
+                Alert.ShowAlertInfo("Escriba el nombre completo del lugar", "Mensaje del sistema", this);
+            }
+            else if (ExistsinTable(txtnombre.Text, txtalias.Text) == true)
+            {
+                Alert.ShowAlertError("Ya existe un  Lugar con el nombre o alias.", this);
+            }
+            else
+            {
+                int idc_lugart = Session["idc_lugartedit"] == null ? 0 : Convert.ToInt32(Session["idc_lugartedit"]);
+                DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/imagenes/lugares/captura/"));//path local
+                AddToTable(idc_lugart, txtalias.Text, txtnombre.Text, dirInfo + fupPapeleria.FileName, "imagenes/btn/inchecked.png", 0);
+                bool pape = funciones.UploadFile(fupPapeleria, dirInfo + fupPapeleria.FileName, this.Page);
+                if (pape == true)
+                {
+                    Alert.ShowGift("Estamos subiendo el archivo.", "Espere un Momento", "imagenes/loading.gif", "2000", "Lugar Guardardo Correctamente", this);
+                    Session["idc_lugartedit"] = null;
+                    Session["nombre_lugar"] = null;
+                    txtnombre.Text = "";
+                    txtalias.Text = "";
+                }
+            }
+        }
+
+        protected void Yes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string caso = (string)Session["Caso_Confirmacion"];
+                switch (caso)
+                {
+                    case "Cancelar":
+                        Response.Redirect("areas.aspx");
+                        break;
+
+                    case "Guardar":
+                        LugaresENT entidad = new LugaresENT();
+                        int idc_area = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_area"]));
+                        entidad.Pidc_area = idc_area;
+                        entidad.Pcadena = Cadena();
+                        entidad.Ptotalcadea = TotalCadena();
+                        entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
+                        entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
+                        entidad.Pusuariopc = funciones.GetUserName();//usuario pc
+                        entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                        LugaresCOM componente = new LugaresCOM();
+                        DataSet ds = componente.AgregarLugares(entidad);
+                        string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                        if (vmensaje == "")
+                        {
+                            DataTable tabla_archivos = ds.Tables[1];
+                            bool correct = true;
+                            foreach (DataRow row_archi in tabla_archivos.Rows)
+                            {
+                                string ruta_det = row_archi["ruta_destino"].ToString();
+                                string ruta_origen = row_archi["ruta_origen"].ToString();
+                                if (ruta_det != ruta_origen)
+                                {
+                                    correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
+                                }
+                                if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
+                            }
+                            Alert.ShowGiftMessage("Estamos procesando la cantidad de " + tabla_archivos.Rows.Count.ToString() + " archivo(s) al Servidor.", "Espere un Momento", "areas.aspx", "imagenes/loading.gif", "4000", "Movimiento realizado correctamente", this);
+                        }
+                        else
+                        {
+                            Alert.ShowAlertError(vmensaje, this);
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            Session["Caso_Confirmacion"] = "Guardar";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Guardar los Cambios?','modal fade modal-info');", true);
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Session["Caso_Confirmacion"] = "Cancelar";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Cancelar?','modal fade modal-info');", true);
         }
     }
 }

@@ -1,0 +1,10 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El nombre de columna 'ID' no es válido.
+El recuento de transacciones después de EXECUTE indica un número no coincidente de instrucciones BEGIN y COMMIT. Recuento anterior = 0, recuento actual = 1.
+   at negocio.Componentes.TareasCOM.ReasignarTarea(TareasENT Etiqueta) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\02_07_16\Puestos\negocio\Componentes\TareasCOM.cs:line 245
+   at presentacion.reasignacion_tareas.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:87cac714-0cb6-49fb-9f8b-dac48c520014
+Error Number:207,State:1,Class:16

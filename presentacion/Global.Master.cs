@@ -154,7 +154,7 @@ namespace presentacion
             int index = listas_url.Count;
             String url = listas_url[index - 1];
             String path_actual2 = Request.Url.Segments[Request.Url.Segments.Length - 1];
-            if (path_actual2 == "view_files.aspx")
+            if (path_actual2 == "view_files.aspx" || path_actual2 == "tareas_informacion_adicional.aspx")
             {
                 Alert.ShowAlertError("Debe cerrar esta ventana o puede perder los cambios realizados.", this.Page);
             }

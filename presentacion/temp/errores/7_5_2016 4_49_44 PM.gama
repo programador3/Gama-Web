@@ -1,0 +1,16 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Web.HttpException (0x80004005): DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'idc_area'.
+   at System.Web.UI.DataBinder.GetPropertyValue(Object container, String propName)
+   at System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   at System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   at System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   at System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   at System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   at System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   at System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   at System.Web.UI.WebControls.GridView.DataBind()
+   at presentacion.asignacion_lugares.cargargrid() in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\04_07_16\Puestos\presentacion\asignacion_lugares.aspx.cs:line 58
+   at presentacion.asignacion_lugares.AddToTable(Int32 idc_lugart, String sucursal, String area, String nombre, String idc_area) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\04_07_16\Puestos\presentacion\asignacion_lugares.aspx.cs:line 252

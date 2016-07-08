@@ -1,0 +1,8 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'ruta_local' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at presentacion.lugares_captura.CopyTofolder(DataTable tbl, String folder) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\06_07_16\Puestos\presentacion\lugares_captura.aspx.cs:line 111

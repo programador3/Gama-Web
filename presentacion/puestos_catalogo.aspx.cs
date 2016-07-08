@@ -153,6 +153,7 @@ namespace presentacion
             Session["puesto"] = gridPuestos.DataKeys[index].Values["descripcion"].ToString();
             Session["status"] = status;
             Session["idc_puesto"] = id_puesto;
+            lbllugar.Text = gridPuestos.DataKeys[index].Values["lugares"].ToString();
             string IDC_EMPL = idc_empleado.ToString();
             Session["idc_empleado"] = IDC_EMPL;
             mverherr.Visible = idc_herramienta == 0 ? false : true;
@@ -298,13 +299,11 @@ namespace presentacion
         protected void lnkvacaciones_Click(object sender, EventArgs e)
         {
             Response.Redirect("vacaciones.aspx?valuea_page=jwxjkbwjbxwjbxqbjbBIqbqibibixubqibxiqbxibqxibajbiujbibiuqx7876F7TF7QF87FYF7FA7QF7F5265D2DCDX9387T20B3287T807T8703RT3CT32B87RCT378R&idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
-
         }
 
         protected void lnklugar_Click(object sender, EventArgs e)
         {
             Response.Redirect("asignacion_lugares.aspx?valuea_page=jwxjkbwjbxwjbxqbjbBIqbqibibixubqibxiqbxibqxibajbiujbibiuqx7876F7TF7QF87FYF7FA7QF7F5265D2DCDX9387T20B3287T807T8703RT3CT32B87RCT378R&idc_puesto=" + funciones.deTextoa64((Convert.ToInt32(Session["idc_puesto"])).ToString()));
-
         }
 
         protected void cbox_puestos_perfil()

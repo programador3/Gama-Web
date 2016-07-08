@@ -24,6 +24,7 @@ namespace presentacion
                 Session["idc_realiza"] = null;
                 Session["idc_asigna"] = null;
                 Session["idc_tarea_r"] = null;
+                Session["CAMBIO_MASIVO"] = false;
                 Cargar();
             }
         }
@@ -36,6 +37,12 @@ namespace presentacion
             Repeater3.DataSource = ds.Tables[0];
             Repeater3.DataBind();
             Session["tabla_tareas_r"] = ds.Tables[0];
+            ddlpuestosmasivo.DataTextField = "puesto";
+            ddlpuestosmasivo.DataValueField = "idc_puesto";
+            ddlpuestosmasivo.DataSource = ds.Tables[1];
+            ddlpuestosmasivo.DataBind();
+            ddlpuestosmasivo.Items.Insert(0, new ListItem("-- Seleccione un Puesto", "0")); //updated code}
+            Session["tabla_tareas_masivo"] = ds.Tables[1];
         }
 
         /// <summary>
@@ -225,10 +232,19 @@ namespace presentacion
                 string caso = (string)Session["Caso_Confirmacion"];
                 TareasENT entidad = new TareasENT();
                 TareasCOM componente = new TareasCOM();
-                entidad.Pidc_tarea = Convert.ToInt32(Session["idc_tarea_r"]);
-                entidad.Pfecha = Convert.ToDateTime(Session["fo"]);
-                entidad.Pidc_puesto = Convert.ToInt32(ddlpuestorealiza.SelectedValue);
-                entidad.Pidc_puesto_asigna = Convert.ToInt32(ddlPuesto.SelectedValue);
+                if (Convert.ToBoolean(Session["CAMBIO_MASIVO"]) == false)
+                {
+                    entidad.Pidc_tarea = Convert.ToInt32(Session["idc_tarea_r"]);
+                    entidad.Pfecha = Convert.ToDateTime(Session["fo"]);
+                    entidad.Pidc_puesto = Convert.ToInt32(ddlpuestorealiza.SelectedValue);
+                    entidad.Pidc_puesto_asigna = Convert.ToInt32(ddlPuesto.SelectedValue);
+                }
+                else {
+                    entidad.Pidc_tarea = 0;
+                    entidad.Pfecha = DateTime.Today;
+                    entidad.Pidc_puesto = 0;
+                    entidad.Pidc_puesto_asigna = 0;
+                }
                 entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
                 entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
                 entidad.Pusuariopc = funciones.GetUserName();//usuario pc
@@ -236,6 +252,9 @@ namespace presentacion
                 string tipo = (string)Session["tipo_reasignacion"];
                 tipo = tipo.TrimEnd().TrimStart();
                 entidad.Ptipo_cambio_tarea = tipo;
+                entidad.PAPLICAR_CAMBIOTODOS = Convert.ToBoolean(Session["CAMBIO_MASIVO"]);
+                entidad.Ptotal_cadena_arch = TotalCadena();
+                entidad.Pcadena_arch = Cadena();
                 DataSet ds;
                 String vmensaje = "";
                 switch (caso)
@@ -305,6 +324,148 @@ namespace presentacion
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessDFDFDFage", "ModalConfirmC();", true);
             }
+        }
+
+        protected void lnkmasivo_Click(object sender, EventArgs e)
+        {
+            ddlpuestocambmasivo.DataValueField = "idc_puesto";
+            ddlpuestocambmasivo.DataTextField = "descripcion_puesto_completa";
+            ddlpuestocambmasivo.DataSource = CargaPuestos("").Tables[0];
+            ddlpuestocambmasivo.DataBind();
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessDFDFDFage", "ModalMasivo();", true);
+        }
+
+        protected void yesmasivp_Click(object sender, EventArgs e)
+        {
+            int idc_puesto = Convert.ToInt32(ddlpuestocambmasivo.SelectedValue);
+            int idc_puestoca = Convert.ToInt32(ddlpuestosmasivo.SelectedValue);
+            if (idc_puesto == 0 && MASIVO.Visible == true)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
+                Alert.ShowAlertError("Seleccione un Puesto Valido, o intente buscando uno.", this);
+            }
+            else if (idc_puestoca == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
+                Alert.ShowAlertError("Seleccione un Puesto para realizar el cambio", this);
+            }
+            else if (idc_puesto == Convert.ToInt32(ddlpuestosmasivo.SelectedValue) && MASIVO.Visible == true)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
+                Alert.ShowAlertError("Seleccione un Puesto diferente al Original.", this);
+            }
+            else if (ddlaccionmasivo.SelectedValue == "0")
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
+                Alert.ShowAlertError("Seleccione una Acción.", this);
+            }
+            else
+            {
+                Session["Caso_Confirmacion"] = ddlaccionmasivo.SelectedValue == "Q" ? "Cancelar" : "Reasignar";
+                Session["CAMBIO_MASIVO"] = true;
+                Session["tipo_reasignacion"] = "AR";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessDFDFDFage", "ModalConfirmC();", true);
+            }
+        }
+
+        protected void ddlpuestocambmasivo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idc_puesto = Convert.ToInt32(ddlpuestocambmasivo.SelectedValue);
+            if (idc_puesto == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
+                Alert.ShowAlertError("Seleccione un Puesto Valido, o intente buscando uno.", this);
+            }
+            else if (idc_puesto == Convert.ToInt32(Session["idc_asigna"]))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
+                Alert.ShowAlertError("Seleccione un Puesto diferente al Original.", this);
+            }
+        }
+
+        protected void txtcambiomas_TextChanged(object sender, EventArgs e)
+        {
+            ddlpuestocambmasivo.DataValueField = "idc_puesto";
+            ddlpuestocambmasivo.DataTextField = "descripcion_puesto_completa";
+            ddlpuestocambmasivo.DataSource = CargaPuestos(txtcambiomas.Text).Tables[0];
+            ddlpuestocambmasivo.DataBind();
+            //si no hay filtro insertamos una etiqueta inicial
+            if (txtcambiomas.Text == "")
+            {
+                ddlpuestocambmasivo.Items.Insert(0, new ListItem("-- Seleccione un Puesto", "0")); //updated code}
+            }
+        }
+
+        protected void ddlaccionmasivo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string value = ddlaccionmasivo.SelectedValue;
+            if (value.Equals("0"))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalClose();", true);
+                Alert.ShowAlertError("Seleccione una Acción.", this);
+            }
+            else if (value.Equals("Q"))
+            {
+                MASIVO.Visible = false;
+            }
+            else if (value.Equals("G"))
+            {
+                MASIVO.Visible = true;
+            }
+        }
+
+        private String Cadena()
+        {
+            string cadena = "";
+            int idc_puesto_ori = Convert.ToInt32(ddlpuestosmasivo.SelectedValue);
+            int idc_puesto_nuevo = Convert.ToInt32(ddlpuestocambmasivo.SelectedValue);
+            DataTable dt = (DataTable)Session["tabla_tareas_r"];
+            foreach (DataRow row in dt.Rows)
+            {
+                int idc_tarea = Convert.ToInt32(row["idc_tarea"]);
+                int idc_puesto = Convert.ToInt32(row["idc_puesto"]);
+                int idc_puesto_asigna = Convert.ToInt32(row["idc_puesto_asigna"]);
+                if (idc_puesto == idc_puesto_ori && idc_puesto_asigna != idc_puesto_ori)//solo puesto
+                {
+                    cadena = cadena + idc_tarea.ToString() + ";" + idc_puesto_nuevo.ToString() + ";" + idc_puesto_asigna.ToString() + ";";
+                }
+                else if (idc_puesto != idc_puesto_ori && idc_puesto_asigna == idc_puesto_ori)//solo puesto asigna
+                {
+                    cadena = cadena + idc_tarea.ToString() + ";" + idc_puesto.ToString() + ";" + idc_puesto_nuevo.ToString() + ";";
+                }
+                else if (idc_puesto == idc_puesto_ori && idc_puesto_asigna == idc_puesto_ori)//ambos
+                {
+                    cadena = cadena + idc_tarea.ToString() + ";" + idc_puesto_nuevo.ToString() + ";" + idc_puesto_nuevo.ToString() + ";";
+                }
+            }
+            return cadena;
+        }
+
+        private int TotalCadena()
+        {
+            int cadena = 0;
+            int idc_puesto_ori = Convert.ToInt32(ddlpuestosmasivo.SelectedValue);
+            DataTable dt = (DataTable)Session["tabla_tareas_r"];
+            foreach (DataRow row in dt.Rows)
+            {
+                int idc_tarea = Convert.ToInt32(row["idc_tarea"]);
+                int idc_puesto = Convert.ToInt32(row["idc_puesto"]);
+                int idc_puesto_asigna = Convert.ToInt32(row["idc_puesto_asigna"]);
+                if (idc_puesto == idc_puesto_ori && idc_puesto_asigna != idc_puesto_ori)//solo puesto
+                {
+                    cadena = cadena + 1;
+                }
+                else if (idc_puesto != idc_puesto_ori && idc_puesto_asigna == idc_puesto_ori)//solo puesto asigna
+                {
+                    cadena = cadena + 1;
+                }
+                else if (idc_puesto == idc_puesto_ori && idc_puesto_asigna == idc_puesto_ori)//ambos
+                {
+                    cadena = cadena + 1;
+                }
+            }
+            return cadena;
         }
     }
 }

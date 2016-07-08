@@ -2,6 +2,8 @@
 {
     public class LugaresENT
     {
+        private string nombre;
+        private string alias;
         private int idc_puesto;
         private int idc_area;
         private int idc_lugar;
@@ -71,6 +73,18 @@
         {
             get { return cadena; }
             set { cadena = value; }
+        }
+
+        public string Pnombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        public string Palias
+        {
+            get { return alias; }
+            set { alias = value; }
         }
     }
 }

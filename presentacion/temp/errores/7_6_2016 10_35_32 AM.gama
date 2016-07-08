@@ -1,0 +1,9 @@
+Nombre: 
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): @ptotal_cadena no es un parámetro del procedimiento sp_a_lugares_areas.
+   at negocio.Componentes.LugaresCOM.AgregarLugares(LugaresENT Etiqueta) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\06_07_16\Puestos\negocio\Componentes\LugaresCOM.cs:line 105
+   at presentacion.lugares_captura.Yes_Click(Object sender, EventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\06_07_16\Puestos\presentacion\lugares_captura.aspx.cs:line 322
+ClientConnectionId:e16667ed-cbae-4f8b-ac14-e0a9ea39a28c
+Error Number:8145,State:1,Class:16

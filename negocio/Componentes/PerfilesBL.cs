@@ -328,7 +328,7 @@ namespace negocio.Componentes
             try
             {
                 //ds = data.datos_Clientes(listparameters);
-                ds = data.enviar("sp_aperfiles_borrador-borrador", listparameters, false);
+                ds = data.enviar("sp_aperfiles_borrador_borrador", listparameters, false);
             }
             catch (Exception ex)
             {

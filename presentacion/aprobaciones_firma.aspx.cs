@@ -37,6 +37,8 @@ namespace presentacion
                     oc_paginaprevia.Value = "menu.aspx";
                 }
             }
+
+            string value = Request.QueryString["cadena"] == null || Request.QueryString["cadena"] == "" ? "" : funciones.de64aTexto(Request.QueryString["cadena"]);
             int id_usuario = Convert.ToInt32(Session["sidc_usuario"]);
             PanelCancelar.Visible = funciones.autorizacion(id_usuario, 330);////AQUI cambia
         }
@@ -121,7 +123,9 @@ namespace presentacion
                                                                 //llamamos al componente
                     AprobacionesCOM componente = new AprobacionesCOM();
                     DataSet ds = new DataSet();
-                    ds = componente.validar_firma(vusuario, vcontraseña, vaprobado, vidc_aprobacion_reg, vcomentarios, Idc_usuario, Pdirecip, Pnombrepc, Pusuariopc);
+                    string value = Request.QueryString["cadena"] == null || Request.QueryString["cadena"] == "" ? "" : funciones.de64aTexto(Request.QueryString["cadena"]);
+                    int intvalue = Convert.ToInt32(Request.QueryString["total"]);
+                    ds = componente.validar_firma(vusuario, vcontraseña, vaprobado, vidc_aprobacion_reg, vcomentarios, Idc_usuario, Pdirecip, Pnombrepc, Pusuariopc, value, intvalue);
                     //mesaje del sp
                     string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                     bool tabla = Convert.ToBoolean(ds.Tables[0].Rows[0]["copia_archi"]);

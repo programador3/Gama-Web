@@ -13,6 +13,7 @@
             $('#myModal').modal('hide');
             $('#myModalOpciones').modal('hide');
             $('#myModalcss').modal('hide');
+            $('#myModalMasivo').modal('hide');
         }
         function ModalConfirm(cTitulo, ctype) {
             var audio = new Audio('sounds/modal.wav');
@@ -32,6 +33,11 @@
             $('#myModalOpciones').modal('show');
             $('#title_opciones').text(cTitulo);
         }
+        function ModalMasivo(cTitulo) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModalMasivo').modal('show');
+        }
         function AlertGO(TextMess, URL) {
             swal({
                 title: "Mensaje del Sistema",
@@ -50,6 +56,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <h1 class="page-header">Tareas sin Empleado Activo</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <asp:LinkButton ID="lnkmasivo" Visible="true" CssClass="btn btn-danger btn-block" OnClick="lnkmasivo_Click" runat="server">Realizar cambio Masivo <i class="fa fa-pencil-square-o" aria-hidden="true"></i></asp:LinkButton>
+        </div>
+    </div>
     <div class="row">
         <asp:Repeater ID="Repeater3" runat="server">
             <ItemTemplate>
@@ -203,6 +214,77 @@
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <input id="Noa" class="btn btn-danger btn-block" onclick="ModalClose();" value="No" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-info" id="myModalMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4><strong>Mensaje del Sistema</strong></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="text-align: center;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            <h4>Complete los datos para realizar una acción masiva a las tareas relacionadas
+                            </h4>
+                        </div>
+                    </div>
+
+                    <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Always">
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="lnkbuscarpuestos" EventName="Click" />
+                            <asp:AsyncPostBackTrigger ControlID="txtpuesto_filtro" EventName="TextChanged" />
+                            <asp:AsyncPostBackTrigger ControlID="ddlaccionmasivo" EventName="SelectedIndexChanged" />
+                        </Triggers>
+                        <ContentTemplate>
+                            <div class="row" style="text-align: center;">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <h5>Seleccione un puesto
+                                    </h5>
+                                    <asp:DropDownList ID="ddlpuestosmasivo" CssClass="form-control" runat="server"></asp:DropDownList>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <h5>Seleccione una Accion
+                                    </h5>
+                                    <asp:DropDownList ID="ddlaccionmasivo" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlaccionmasivo_SelectedIndexChanged">
+                                        <asp:ListItem Text="--Seleccione una Acción" Value="0" Selected="True"></asp:ListItem>
+                                        <asp:ListItem Text="Reasignar todas las Tareas" Value="G"></asp:ListItem>
+                                        <asp:ListItem Text="Cancelar todas las Tareas" Value="Q"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div id="MASIVO" runat="server">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label>Empleado que los sustituira</label>
+                                        <asp:DropDownList ID="ddlpuestocambmasivo" OnSelectedIndexChanged="ddlpuestocambmasivo_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                        <label></label>
+                                        <asp:TextBox ID="txtcambiomas" runat="server" TextMode="SingleLine" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtcambiomas_TextChanged" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <label></label>
+                                        <asp:LinkButton ID="lnkgo" runat="server" CssClass="btn btn-success btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-lg-6 col-xs-6">
+                        <asp:Button ID="yesmasivp" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="yesmasivp_Click" />
+                    </div>
+                    <div class="col-lg-6 col-xs-6">
+                        <input id="Noasss" class="btn btn-danger btn-block" type="button" onclick="ModalClose();" value="Cancelar" />
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
-            // permiso_no_escribir_folio = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 332);
+            permiso_no_escribir_folio = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 332);
             //si nop trae valores regreso
             if (Request.QueryString["idc_puestoprebaja"] == null)
             {
@@ -247,14 +247,24 @@ namespace presentacion
                 CheckBox cbx = (CheckBox)item.FindControl("cbx"); TextBox txtFolio = (TextBox)item.FindControl("txtFolio");
                 Label lblfolioactv = (Label)item.FindControl("lblfolioactv");
                 Label lblerrorfolio = (Label)item.FindControl("lblerrorfolio");
+                Label lblfoliocorrecto = (Label)item.FindControl("lblfoliocorrecto");
                 lblerrorfolio.Visible = false;
-                lblerrorfolio.Text = "DEBE INSERTAR EL FOLIO CORRECTO";
+                lblerrorfolio.Text = "DEBE INSERTAR EL FOLIO";
                 string folio = lblfolioactv.Text;
+
+                lblfoliocorrecto.Text = "0";
                 //COMENTADO HUMBERTO: DETERMINA SI NO SE ESCRIBE EL FOLIO
-                if (folio != txtFolio.Text && permiso_no_escribir_folio == false)
+                if (txtFolio.Text == "" && permiso_no_escribir_folio == false)
                 {
+                    lblfoliocorrecto.Text = "1";
                     lblerrorfolio.Visible = true;
                     error = true;
+                }
+                if (txtFolio.Text != "" && folio != txtFolio.Text && permiso_no_escribir_folio == false)
+                {
+                    lblerrorfolio.Text = "EL FOLIO ES INCORRECTO, SE REVISARA";
+                    lblfoliocorrecto.Text = "1";
+                    lblerrorfolio.Visible = true;
                 }
                 lblerror.Visible = false;
                 decimal cantidad = Convert.ToDecimal(txtMoney.Text);
@@ -358,14 +368,18 @@ namespace presentacion
             {
                 CheckBox cbx = (CheckBox)item.FindControl("cbx");
                 TextBox txt = (TextBox)item.FindControl("txtMoney");
+                TextBox txtFolio = (TextBox)item.FindControl("txtFolio");
+                Label lblfolioactv = (Label)item.FindControl("lblfolioactv");
                 Label lblidc = (Label)item.FindControl("lblactivo");
+                Label lblfoliocorrecto = (Label)item.FindControl("lblfoliocorrecto");
                 foreach (DataRow row in tabla.Rows)
                 {
                     if (Convert.ToInt32(row["idc_activo"]) == Convert.ToInt32(lblidc.Text))
                     {
                         int resultcbx = 0;
+                        string value = lblfoliocorrecto.Text == "1" ? txtFolio.Text : "0";
                         if (cbx.Checked == true) { resultcbx = 1; }
-                        list = list + (lblidc.Text + ";" + resultcbx.ToString() + ";" + txt.Text + ";");
+                        list = list + (lblidc.Text + ";" + resultcbx.ToString() + ";" + txt.Text + ";" + value + ";");
                     }
                 }
             }
@@ -499,12 +513,22 @@ namespace presentacion
                 TextBox txtFolio = (TextBox)item.FindControl("txtFolio");
                 Label lblfolioactv = (Label)item.FindControl("lblfolioactv");
                 Label lblerrorfolio = (Label)item.FindControl("lblerrorfolio");
+                Label lblfoliocorrecto = (Label)item.FindControl("lblfoliocorrecto");
                 lblerrorfolio.Visible = false;
-                lblerrorfolio.Text = "DEBE INSERTAR EL FOLIO CORRECTO";
                 string folio = lblfolioactv.Text;
+
+                lblfoliocorrecto.Text = "0";
+                if (txtFolio.Text == "" && permiso_no_escribir_folio == false)
+                {
+                    lblerrorfolio.Text = "DEBE INSERTAR EL FOLIO";
+                    lblfoliocorrecto.Text = "1";
+                    lblerrorfolio.Visible = true;
+                }
 
                 if (txtFolio.Text != "" && folio != txtFolio.Text && permiso_no_escribir_folio == false)
                 {
+                    lblerrorfolio.Text = "EL FOLIO ES INCORRECTO, SE REVISARA";
+                    lblfoliocorrecto.Text = "1";
                     lblerrorfolio.Visible = true;
                 }
             }

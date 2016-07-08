@@ -202,7 +202,11 @@
     <Content Include="fancybox\jquery.fancybox-1.3.4.js" />
     <Content Include="fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="imagenes\areas\captura\ok.png" />
+    <Content Include="imagenes\areas\ok.png" />
     <Content Include="imagenes\body_page.png" />
+    <Content Include="imagenes\lugares\captura\ok.png" />
+    <Content Include="imagenes\lugares\ok.png" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\jquery.dataTables.min.js" />
     <Content Include="disponibilidad_celulares.aspx" />
@@ -262,7 +266,6 @@
     <Content Include="html.aspx" />
     <Content Include="imagenes\actions_document_preview.png" />
     <Content Include="imagenes\anexar.png" />
-    <Content Include="imagenes\areas\1.jpg" />
     <Content Include="imagenes\avisos.png" />
     <Content Include="imagenes\back_btn.png" />
     <Content Include="imagenes\btn\add_image_prof.png" />
@@ -320,14 +323,6 @@
     <Content Include="imagenes\loading.gif" />
     <Content Include="imagenes\logo.png" />
     <Content Include="imagenes\logo_black.png" />
-    <Content Include="imagenes\lugares\1.jpg" />
-    <Content Include="imagenes\lugares\2.jpg" />
-    <Content Include="imagenes\lugares\3.jpg" />
-    <Content Include="imagenes\lugares\4.jpg" />
-    <Content Include="imagenes\lugares\5.jpg" />
-    <Content Include="imagenes\lugares\6.jpg" />
-    <Content Include="imagenes\lugares\7.jpg" />
-    <Content Include="imagenes\lugares\8.jpg" />
     <Content Include="imagenes\office_html2.png" />
     <Content Include="imagenes\ok.png" />
     <Content Include="imagenes\pendiente.png" />
@@ -556,6 +551,7 @@
     <Content Include="tareas_automaticas_captura.aspx" />
     <Content Include="tareas_captura.aspx" />
     <Content Include="tareas_detalles.aspx" />
+    <Content Include="tareas_informacion_adicional.aspx" />
     <Content Include="tareas_listado.aspx" />
     <Content Include="temp\tareas\js.js" />
     <Content Include="vacaciones.aspx" />
@@ -1389,6 +1385,13 @@
     </Compile>
     <Compile Include="tareas_detalles.aspx.designer.cs">
       <DependentUpon>tareas_detalles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tareas_informacion_adicional.aspx.cs">
+      <DependentUpon>tareas_informacion_adicional.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tareas_informacion_adicional.aspx.designer.cs">
+      <DependentUpon>tareas_informacion_adicional.aspx</DependentUpon>
     </Compile>
     <Compile Include="tareas_listado.aspx.cs">
       <DependentUpon>tareas_listado.aspx</DependentUpon>

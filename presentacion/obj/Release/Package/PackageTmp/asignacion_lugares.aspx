@@ -1,17 +1,8 @@
 ﻿<%@ Page Title="Asignacion" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="asignacion_lugares.aspx.cs" Inherits="presentacion.asignacion_lugares" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript" src="/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
     <script type="text/javascript">
-        function getImage(path) {
-            $("#myImage").attr("src", path);
-            //alert(path);
-            var audio = new Audio('sounds/modal.wav');
-            audio.play();
-            $('#modalPreviewView').modal('show');
-        }
+
         function ModalClose() {
             $('#modalPreviewView').modal('hide');
             $('#myModal').modal('hide');
@@ -26,12 +17,6 @@
             $('#content_modal').text(cContenido);
         }
     </script>
-
-    <style type="text/css">
-        .fancybox-custom .fancybox-skin {
-            box-shadow: 0 0 50px #222;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div id="page-wrapper">
@@ -40,7 +25,7 @@
             <h1 class="page-header">Aisgnacion de Lugares de Trabajo</h1>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
                 <Triggers>
-                    <%--<asp:PostBackTrigger ControlID="lnkagrgar" />--%>
+                    <asp:AsyncPostBackTrigger ControlID="ddlareas" EventName="SelectedIndexChanged" />
                 </Triggers>
                 <ContentTemplate>
                     <div class="row">
@@ -80,21 +65,21 @@
                         </div>
                     </div>
                     <div class="row" runat="server" id="divimgarea" visible="false">
-                        <div class="col-lg-6 col-md-6 col-sm-12" style="text-align: center;">
+                        <div class="col-lg-6 col-md-12 col-sm-12" style="text-align: center;">
                             <h4><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<asp:Label ID="lblareaname" runat="server" Text=""></asp:Label></h4>
                             <a id="example2" runat="server">
                                 <asp:Image ID="imgarea" CssClass="image img-responsive" runat="server" />
                             </a>
-                            <asp:LinkButton ID="lnkagrgar" CssClass="btn btn-info btn-block" OnClick="lnkagrgar_Click" runat="server">Agregar Relación con este Lugar </asp:LinkButton>
+                            <asp:LinkButton ID="lnkagrgar" CssClass="btn btn-info btn-block" OnClick="lnkagrgar_Click" runat="server">Agregar Relación con este Lugar <i class="fa fa-floppy-o" aria-hidden="true"></i></asp:LinkButton>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <h5><i class="ion ion-briefcase"></i>&nbsp;Lugares</h5>
+                        <div class="col-lg-6 col-md-12 col-sm-12" style="text-align: center; background-color: white;">
+                            <h4><i class="ion ion-briefcase"></i>&nbsp;Lugares</h4>
                             <div class="row">
                                 <asp:Repeater ID="repeater_puestos" runat="server">
                                     <ItemTemplate>
                                         <asp:UpdatePanel ID="up_repeat" runat="server" UpdateMode="Always">
                                             <ContentTemplate>
-                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                                     <div class="form-group">
                                                         <asp:LinkButton ID="btnLugar" ToolTip='<%#Eval("nombre")%>' Text='<%#Eval("ALIAS")%>' CssClass="btn btn-default btn-block" OnClick="btnLugar_Click" runat="server" CommandName='<%#Eval("idc_lugart")%>' CommandArgument='<%#Eval("lugar")%>'>
                                                         </asp:LinkButton>
@@ -106,17 +91,17 @@
                                 </asp:Repeater>
                             </div>
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label class="label label-warning">LUGAR OCUPADO</label>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label class="label label-default">LUGAR DISPONIBLE</label>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label class="label label-success">LUGAR SELECCIONADO</label>
                                     </div>
@@ -126,14 +111,21 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4><strong><i class="fa fa-tasks" aria-hidden="true"></i>&nbsp;Relacion de este Puesto con Otros Lugares</strong></h4>
+                            <h4><strong><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Relacion de este Puesto con Otros Lugares</strong></h4>
                             <div class="table table-responsive">
-                                <asp:GridView ID="grid_puestpos" DataKeyNames="idc_lugart,nombre,area" CssClass="table table-responsive table-bordered table-hover" OnRowCommand="gridlugares_RowCommand" runat="server" AutoGenerateColumns="False">
+                                <asp:GridView ID="grid_puestpos" DataKeyNames="idc_lugart,nombre,area,idc_area,idc_sucursal" CssClass="table table-responsive table-bordered table-hover" OnRowCommand="gridlugares_RowCommand" runat="server" AutoGenerateColumns="False">
                                     <Columns>
-                                        <asp:CommandField ButtonType="Image" EditText="" HeaderText="Eliminar" SelectImageUrl="~/imagenes/btn/icon_delete.png" SelectText="" ShowSelectButton="True">
+                                        <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/more.png" HeaderText="Ver" CommandName="Ver">
                                             <HeaderStyle HorizontalAlign="Center" Width="40px" />
-                                        </asp:CommandField>
+                                            <ItemStyle HorizontalAlign="Center" />
+                                        </asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Borrar" CommandName="Borrar">
+                                            <HeaderStyle HorizontalAlign="Center" Width="40px" />
+                                            <ItemStyle HorizontalAlign="Center" />
+                                        </asp:ButtonField>
                                         <asp:BoundField DataField="idc_lugart" HeaderText="idc" Visible="false"></asp:BoundField>
+                                        <asp:BoundField DataField="idc_area" HeaderText="idc" Visible="false"></asp:BoundField>
+                                        <asp:BoundField DataField="idc_sucursal" HeaderText="idc" Visible="false"></asp:BoundField>
                                         <asp:BoundField DataField="nombre" HeaderText="Lugar De Trabajo"></asp:BoundField>
                                         <asp:BoundField DataField="area" HeaderText="Area"></asp:BoundField>
                                         <asp:BoundField DataField="Sucursal" HeaderText="Sucursal"></asp:BoundField>

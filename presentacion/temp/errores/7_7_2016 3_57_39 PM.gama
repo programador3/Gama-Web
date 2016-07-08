@@ -1,0 +1,10 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El identificador formado por varias partes "#tab.folio" no se pudo enlazar.
+El recuento de transacciones después de EXECUTE indica un número no coincidente de instrucciones BEGIN y COMMIT. Recuento anterior = 0, recuento actual = 1.
+   at negocio.Componentes.Herramientas_RevisionCOM.InsertarRevision(Herramientas_RevisionENT Entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\06_07_16\Puestos\negocio\Componentes\Herramientas_RevisionCOM.cs:line 63
+   at presentacion.herramientas_revision.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:a5b3b309-f6d4-4498-b0f5-1cce63da219c
+Error Number:4104,State:1,Class:16

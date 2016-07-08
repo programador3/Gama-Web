@@ -130,17 +130,33 @@
                                     <asp:TextBox ID="txtcoments" runat="server" CssClass="form-control" TextMode="MultiLine" onblur="campoVacio();"></asp:TextBox>
                                 </div>
                             </asp:Panel>
+                            <div class="row" id="autori" runat="server" viis="false">
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                                    <ContentTemplate>
+                                        <div class="col-lg-12">
+                                            <asp:LinkButton ID="lnktodo" CssClass="btn btn-default btn-block" OnClick="lnktodo_Click" runat="server">Mostrar Toda la Información</asp:LinkButton>
+                                        </div>
+                                        <asp:Repeater ID="Repeater1" runat="server">
+                                            <ItemTemplate>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <asp:LinkButton ID="lnkgrupo" CommandName='<%#Eval("idc_perfilgpo") %>' ToolTip='<%#Eval("TOOLTIP") %>' CssClass="btn btn-default btn-block" OnClick="lnkgrupo_Click" runat="server"><%#Eval("grupo") %></asp:LinkButton>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Si" OnClick="btnConfirm_Click" />
+                                        <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="btnConfirm_Click" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <asp:Button ID="No" class="btn btn-danger btn-block" runat="server" Text="No" />
+                                        <asp:Button ID="No" class="btn btn-danger btn-block" runat="server" Text="Cancelar" />
                                     </div>
                                 </div>
                             </div>
@@ -166,8 +182,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <asp:Button ID="Button1" class="btn btn-success" runat="server" Text="Si" OnClick="btnConfirm_Click" />
-                            <asp:Button ID="Button2" class="btn btn-danger" runat="server" Text="No" />
+                            <asp:Button ID="Button1" class="btn btn-success" runat="server" Text="Aceptar" OnClick="btnConfirm_Click" />
+                            <asp:Button ID="Button2" class="btn btn-danger" runat="server" Text="Cancelar" />
                         </div>
                     </div>
                 </div>

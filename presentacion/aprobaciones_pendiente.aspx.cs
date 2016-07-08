@@ -120,7 +120,7 @@ namespace presentacion
                 //llamamos al componente
                 AprobacionesCOM componente = new AprobacionesCOM();
                 DataSet ds = new DataSet();
-                ds = componente.validar_firma(vusuario, vcontraseña, vaprobado, vidc_aprobacion_reg, vcomentarios, Idc_usuario, Pdirecip, Pnombrepc, Pusuariopc);
+                ds = componente.validar_firma(vusuario, vcontraseña, vaprobado, vidc_aprobacion_reg, vcomentarios, Idc_usuario, Pdirecip, Pnombrepc, Pusuariopc, "", 0);
                 //mesaje del sp
                 string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
 

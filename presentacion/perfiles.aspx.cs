@@ -737,6 +737,7 @@ namespace presentacion
                     //AlertError(vmensaje); //marca error por comillas el mensaje trae comillas simples y se corta cuando se concatena en la funcion javascript
                     lblerror.Visible = true;
                     lblerror.Text = vmensaje;
+                    Alert.ShowAlertError(vmensaje, this);
                     return;
                 }
             }

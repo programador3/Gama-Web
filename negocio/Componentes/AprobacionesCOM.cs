@@ -92,7 +92,7 @@ namespace negocio.Componentes
         /// <param name="entidad"></param>
         /// <returns></returns>
 
-        public DataSet validar_firma(string usuario, string password, bool aprobado, int idc_aprobacion_reg, string comentarios, int Idc_usuario, string Pdirecip, string Pnombrepc, string Pusuariopc)
+        public DataSet validar_firma(string usuario, string password, bool aprobado, int idc_aprobacion_reg, string comentarios, int Idc_usuario, string Pdirecip, string Pnombrepc, string Pusuariopc, string cadena, int total_cadena)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
@@ -106,6 +106,8 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = Pdirecip });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_grupos", SqlDbType = SqlDbType.VarChar, Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotal_cadena_grupos", SqlDbType = SqlDbType.VarChar, Value = total_cadena });
 
             try
             {

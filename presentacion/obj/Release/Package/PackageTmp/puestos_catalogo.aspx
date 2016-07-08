@@ -92,7 +92,7 @@
                                 </div>
                             </div>
                             <div class="table table-responsive" style="text-align: center;">
-                                <asp:GridView ID="gridPuestos" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [6]}" AutoGenerateColumns="False" DataKeyNames="idc_puesto_reemplazo,perfil_solicitud,idc_herramienta,idc_puesto,idc_puestoperfil,idc_statuso,idc_empleado, descripcion,idc_prepara,idc_puesto_jefe,abajo_de_mi" OnRowDataBound="gridPuestos_RowDataBound" OnRowCommand="gridPuestos_RowCommand" Font-Size="Smaller">
+                                <asp:GridView ID="gridPuestos" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [6]}" AutoGenerateColumns="False" DataKeyNames="idc_puesto_reemplazo,perfil_solicitud,idc_herramienta,idc_puesto,idc_puestoperfil,idc_statuso,idc_empleado, descripcion,idc_prepara,idc_puesto_jefe,abajo_de_mi,lugares" OnRowDataBound="gridPuestos_RowDataBound" OnRowCommand="gridPuestos_RowCommand" Font-Size="Smaller">
                                     <Columns>
 
                                         <asp:ButtonField Visible="false" Text="Acciones" ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Pre-Baja" HeaderStyle-Width="40px" CommandName="Acciones" />
@@ -227,22 +227,24 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-lg-3 col-md-5 col-sm-5 col-xs-12 portfolio-item">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 portfolio-item">
                             <a>
-                                <img id="myImage" class="img-responsive" src="imagenes/btn/default_employed.png" alt="Gama System" style="width: 120px; height: 120PX; margin: 0 auto;" />
+                                <img id="myImage" class="img-responsive" src="imagenes/btn/default_employed.png" alt="Gama System" style="width: 130px; height: 150PX; margin: 0 auto;" />
                             </a>
                         </div>
-                        <div class="col-lg-9 col-md-7 col-sm-7 col-xs-12 ">
-                            <h3><strong>
-                                <asp:Label ID="lblMNombre" runat="server" Text=""></asp:Label></strong></h3>
-                            <h4><strong>Fecha de Nacimiento: </strong>
-                                <asp:Label runat="server" ID="lblMFechaNac"></asp:Label></h4>
-                            <h4><strong>Fecha de Ingreso: </strong>
-                                <asp:Label runat="server" ID="lblMFechaIngreso"></asp:Label></h4>
-                            <h4><strong>Departamento: </strong>
-                                <asp:Label runat="server" ID="lblMDepto"></asp:Label></h4>
-                            <h4><strong>Sucursal: </strong>
-                                <asp:Label runat="server" ID="lblMSucursal"></asp:Label></h4>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 ">
+                            <h4><strong><i class="fa fa-user" aria-hidden="true"></i>&nbsp;
+                                <asp:Label ID="lblMNombre" runat="server" Text=""></asp:Label></strong></h4>
+                            <h5><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Fecha de Nacimiento: </strong>
+                                <asp:Label runat="server" ID="lblMFechaNac"></asp:Label></h5>
+                            <h5><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Fecha de Ingreso: </strong>
+                                <asp:Label runat="server" ID="lblMFechaIngreso"></asp:Label></h5>
+                            <h5><strong><i class="fa fa-suitcase" aria-hidden="true"></i>&nbsp;Departamento: </strong>
+                                <asp:Label runat="server" ID="lblMDepto"></asp:Label></h5>
+                            <h5><strong><i class="fa fa-university" aria-hidden="true"></i>&nbsp;Sucursal: </strong>
+                                <asp:Label runat="server" ID="lblMSucursal"></asp:Label></h5>
+                            <h5><strong><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;Areas (Lugares) de trabajo : </strong>
+                                <asp:Label runat="server" ID="lbllugar"></asp:Label></h5>
                         </div>
                     </div>
                     <div class="row">

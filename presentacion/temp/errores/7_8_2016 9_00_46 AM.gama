@@ -1,0 +1,14 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.InvalidCastException: Unable to cast object of type 'System.Web.UI.WebControls.LinkButton' to type 'System.Web.UI.WebControls.HiddenField'.
+   at presentacion.tareas_informacion_adicional.repeat_ItemDataBound(Object sender, RepeaterItemEventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\08_07_16\Puestos\presentacion\tareas_informacion_adicional.aspx.cs:line 66
+   at System.Web.UI.WebControls.Repeater.OnItemDataBound(RepeaterItemEventArgs e)
+   at System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   at System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   at System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   at System.Web.UI.WebControls.Repeater.CreateControlHierarchy(Boolean useDataSource)
+   at System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   at System.Web.UI.WebControls.Repeater.DataBind()
+   at presentacion.tareas_informacion_adicional.CargarTareas() in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\08_07_16\Puestos\presentacion\tareas_informacion_adicional.aspx.cs:line 49

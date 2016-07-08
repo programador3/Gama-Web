@@ -5,6 +5,8 @@ namespace negocio.Entidades
     public class TareasENT
     {
         private int idc_tarea;
+        private int idc_tipoi;
+        private int idc_proceso;
         private int avance;
         private string tipofiltro;
         private string tipofiltros;
@@ -22,6 +24,7 @@ namespace negocio.Entidades
         private string extension;
         private bool parchivo;
         private bool correcto;
+        private bool APLICAR_CAMBIOTODOS;
         private bool cambio_fecha_ori;
         private string comentarios;
         private DateTime fecha;
@@ -54,6 +57,8 @@ namespace negocio.Entidades
             get { return pusuariopc; }
             set { pusuariopc = value; }
         }
+
+        public Boolean PAPLICAR_CAMBIOTODOS { get { return APLICAR_CAMBIOTODOS; } set { APLICAR_CAMBIOTODOS = value; } }
 
         public int Pidc_tarea
         {
@@ -107,6 +112,18 @@ namespace negocio.Entidades
         {
             get { return idc_puesto_asigna; }
             set { idc_puesto_asigna = value; }
+        }
+
+        public int Pidc_tipoi
+        {
+            get { return idc_tipoi; }
+            set { idc_tipoi = value; }
+        }
+
+        public int Pidc_proceso
+        {
+            get { return idc_proceso; }
+            set { idc_proceso = value; }
         }
 
         public int Ptotal_cadena_arch

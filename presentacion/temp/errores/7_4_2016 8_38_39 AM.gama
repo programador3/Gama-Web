@@ -1,0 +1,7 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+   at negocio.Componentes.TareasCOM.AgregarMovimiento(TareasENT Etiqueta) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\02_07_16\Puestos\negocio\Componentes\TareasCOM.cs:line 214
+   at presentacion.reasignacion_tareas.Yes_Click(Object sender, EventArgs e)

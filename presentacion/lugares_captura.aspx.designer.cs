@@ -13,40 +13,58 @@ namespace presentacion {
     public partial class lugares_captura {
         
         /// <summary>
-        /// Control id_res.
+        /// Control u.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField id_res;
+        protected global::System.Web.UI.UpdatePanel u;
         
         /// <summary>
-        /// Control txtfolio.
+        /// Control lbltitle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtfolio;
+        protected global::System.Web.UI.WebControls.Label lbltitle;
         
         /// <summary>
-        /// Control txtdescripcion.
+        /// Control lblareaname.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdescripcion;
+        protected global::System.Web.UI.WebControls.Label lblareaname;
         
         /// <summary>
-        /// Control img_area.
+        /// Control imgarea.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor img_area;
+        protected global::System.Web.UI.WebControls.Image imgarea;
+        
+        /// <summary>
+        /// Control txtnombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtnombre;
+        
+        /// <summary>
+        /// Control txtalias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtalias;
         
         /// <summary>
         /// Control fupPapeleria.
@@ -58,39 +76,57 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.FileUpload fupPapeleria;
         
         /// <summary>
-        /// Control lnkGuardarPape.
+        /// Control lnkguardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkGuardarPape;
+        protected global::System.Web.UI.WebControls.LinkButton lnkguardar;
         
         /// <summary>
-        /// Control REV.
+        /// Control gridlugares.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator REV;
+        protected global::System.Web.UI.WebControls.GridView gridlugares;
         
         /// <summary>
-        /// Control UpdatePanel1.
+        /// Control imgmodal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Image imgmodal;
         
         /// <summary>
-        /// Control gridPapeleria.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridPapeleria;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
+        
+        /// <summary>
+        /// Control btnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// Control Yes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Yes;
     }
 }

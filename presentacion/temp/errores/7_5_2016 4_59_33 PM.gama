@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): @pidc_empleado no es un parámetro del procedimiento sp_filtro_puestos_servicios.
+   at negocio.Componentes.PuestosServiciosCOM.CargaPuestos(PuestosServiciosENT Entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\04_07_16\Puestos\negocio\Componentes\PuestosServiciosCOM.cs:line 33
+   at presentacion.asignacion_lugares.CargarPrincipal(Int32 idc_puesto)
+ClientConnectionId:062af8de-dffc-49b5-8beb-57ba98cf5164
+Error Number:8145,State:1,Class:16

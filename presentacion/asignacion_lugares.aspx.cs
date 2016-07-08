@@ -23,6 +23,8 @@ namespace presentacion
                 DataTable tbl = new DataTable();
                 tbl.Columns.Add("idc_lugart");
                 tbl.Columns.Add("area");
+                tbl.Columns.Add("idc_area");
+                tbl.Columns.Add("idc_sucursal");
                 tbl.Columns.Add("sucursal");
                 tbl.Columns.Add("nombre");
                 Session["tbl_area"] = tbl;
@@ -41,6 +43,8 @@ namespace presentacion
             DataTable dt = (DataTable)Session["tbl_area"];
             DataTable ntble = new DataTable();
             ntble.Columns.Add("idc_lugart");
+            ntble.Columns.Add("idc_area");
+            ntble.Columns.Add("idc_sucursal");
             ntble.Columns.Add("area");
             ntble.Columns.Add("sucursal");
             ntble.Columns.Add("nombre");
@@ -51,6 +55,8 @@ namespace presentacion
                 newr["area"] = row["area"];
                 newr["sucursal"] = row["sucursal"];
                 newr["nombre"] = row["nombre"];
+                newr["idc_area"] = row["idc_area"];
+                newr["idc_sucursal"] = row["idc_sucursal"];
                 ntble.Rows.Add(newr);
             }
             grid_puestpos.DataSource = ntble;
@@ -64,24 +70,27 @@ namespace presentacion
         {
             DataTable dt = (DataTable)Session["tbl_area"];
             DataTable dt2 = (DataTable)Session["tbl_lugares_list"];
-            DataView view = dt2.DefaultView;
-            foreach (RepeaterItem item in repeater_puestos.Items)
+            if (dt2 != null && dt != null)
             {
-                LinkButton btnLugar = (LinkButton)item.FindControl("btnLugar");
-                int lugar = Convert.ToInt32(btnLugar.CommandArgument);
-                string value = btnLugar.CommandName;
-                btnLugar.CssClass = "btn btn-default btn-block";
-                foreach (DataRow row in dt.Rows)
+                DataView view = dt2.DefaultView;
+                foreach (RepeaterItem item in repeater_puestos.Items)
                 {
-                    if (value == row["idc_lugart"].ToString())
+                    LinkButton btnLugar = (LinkButton)item.FindControl("btnLugar");
+                    int lugar = Convert.ToInt32(btnLugar.CommandArgument);
+                    string value = btnLugar.CommandName;
+                    btnLugar.CssClass = "btn btn-default btn-block";
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (value == row["idc_lugart"].ToString())
+                        {
+                            btnLugar.CssClass = "btn btn-warning btn-block";
+                        }
+                    }
+                    view.RowFilter = "idc_lugart = " + value + " and lugar = 1";
+                    if (view.ToTable().Rows.Count > 0)
                     {
                         btnLugar.CssClass = "btn btn-warning btn-block";
                     }
-                }
-                view.RowFilter = "idc_lugart = " + value + " and lugar = 1";
-                if (view.ToTable().Rows.Count > 0)
-                {
-                    btnLugar.CssClass = "btn btn-warning btn-block";
                 }
             }
         }
@@ -104,6 +113,8 @@ namespace presentacion
                     lblPuesto.Text = ds.Tables[0].Rows[0]["descripcion"].ToString();
                     lblEmpleado.Text = ds.Tables[0].Rows[0]["empleado"].ToString();
                     lbldepto.Text = ds.Tables[0].Rows[0]["depto"].ToString();
+                    ddldeptos.SelectedValue = ds.Tables[0].Rows[0]["idc_sucursal"].ToString();
+                    Areas();
                     Session["pidc_empleado_solic_horario"] = Convert.ToInt32(ds.Tables[0].Rows[0]["idc_empleado"]);
                     string rutaimagen = funciones.GenerarRuta("fot_emp", "rw_carpeta");
                     var domn = Request.Url.Host;
@@ -115,7 +126,6 @@ namespace presentacion
                     else
                     {
                         var url = "http://" + domn + rutaimagen + ds.Tables[0].Rows[0]["idc_empleado"].ToString() + ".jpg";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "img", "getImage('" + url + "');", true);
                         imgEmpleado.ImageUrl = url;
                     }
                 }
@@ -141,7 +151,7 @@ namespace presentacion
                 DataSet ds = comp.CargaLugaresPuestos(entidad);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    AddToTable(Convert.ToInt32(row["idc_lugart"]), row["sucursal"].ToString(), row["area"].ToString(), row["nombre"].ToString());
+                    AddToTable(Convert.ToInt32(row["idc_lugart"]), row["sucursal"].ToString(), row["area"].ToString(), row["nombre"].ToString(), row["idc_area"].ToString(), row["idc_sucursal"].ToString());
                 }
                 cargargrid();
             }
@@ -166,7 +176,7 @@ namespace presentacion
                 ddldeptos.DataTextField = "nombre";
                 ddldeptos.DataSource = ds.Tables[0];
                 ddldeptos.DataBind();
-                ddldeptos.Items.Insert(0, new ListItem("Seleccione una Sucursal", "0")); //updated code}
+                ddldeptos.Items.Insert(0, new ListItem("--Seleccione una Sucursal", "0")); //updated code}
             }
             catch (Exception ex)
             {
@@ -190,7 +200,7 @@ namespace presentacion
                 ddlareas.DataTextField = "nombre";
                 ddlareas.DataSource = ds.Tables[0];
                 ddlareas.DataBind();
-                ddlareas.Items.Insert(0, new ListItem("Seleccione un Area", "0")); //updated code}
+                ddlareas.Items.Insert(0, new ListItem("--Seleccione un Area", "0")); //updated code}
                 CopyTofolder(ds.Tables[0], "~/imagenes/areas/");
             }
             catch (Exception ex)
@@ -233,7 +243,7 @@ namespace presentacion
         /// <param name="sucursal"></param>
         /// <param name="area"></param>
         /// <param name="nombre"></param>
-        private void AddToTable(int idc_lugart, string sucursal, string area, string nombre)
+        private void AddToTable(int idc_lugart, string sucursal, string area, string nombre, string idc_area, string idc_sucursal)
         {
             try
             {
@@ -243,6 +253,8 @@ namespace presentacion
                 row["area"] = area;
                 row["sucursal"] = sucursal;
                 row["nombre"] = nombre;
+                row["idc_area"] = idc_area;
+                row["idc_sucursal"] = idc_sucursal;
                 dt.Rows.Add(row);
                 Session["tbl_area"] = dt;
                 cargargrid();
@@ -281,13 +293,11 @@ namespace presentacion
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath(folder));//path local
                 foreach (DataRow row in tbl.Rows)
                 {
-                    if (!File.Exists(row["ruta"].ToString()))
-                    {
-                        funciones.CopiarArchivos(dirInfo2 + "lugar.png", dirInfo + row["ruta_local"].ToString(), this);
-                    }
-                    else
-                    {
-                        funciones.CopiarArchivos(row["ruta"].ToString(), dirInfo + row["ruta_local"].ToString(), this);
+                    String RUTA = row["ruta"].ToString();
+                    String RUTA_LOCAL = row["ruta_local"].ToString();
+                    if (File.Exists(RUTA))
+                    {                     //   funciones.CopiarArchivos(dirInfo2 + "lugar.png", dirInfo + RUTA_LOCAL, this);
+                        funciones.CopiarArchivos(RUTA, dirInfo + RUTA_LOCAL, this);
                     }
                 }
             }
@@ -320,7 +330,7 @@ namespace presentacion
             int depto = Convert.ToInt32(ddldeptos.SelectedValue);
             if (depto == 0)
             {
-                Alert.ShowAlertError("Seleccione una Sucursal", this);
+                Alert.ShowAlertError("--Seleccione una Sucursal", this);
             }
             else
             {
@@ -333,14 +343,15 @@ namespace presentacion
             int depto = Convert.ToInt32(ddlareas.SelectedValue);
             if (depto == 0)
             {
-                Alert.ShowAlertError("Seleccione un Area", this);
+                Alert.ShowAlertError("--Seleccione un Area", this);
             }
             else
             {
                 Lugares(depto);
                 divimgarea.Visible = true;
                 lblareaname.Text = ddlareas.SelectedItem.ToString();
-                imgarea.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/areas/" + depto + ".jpg";
+                string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/areas/" + depto + ".jpg";
+                imgarea.ImageUrl = url;
             }
         }
 
@@ -353,19 +364,21 @@ namespace presentacion
                 LinkButton btnLugar = (LinkButton)item.FindControl("btnLugar");
                 int lugar = Convert.ToInt32(btnLugar.CommandArgument);
                 string value = btnLugar.CommandName;
+                DataTable dt = (DataTable)Session["tbl_lugares_list"];
+                DataView view = dt.DefaultView;
                 if (btnLugar == btnLugar_sender && btnLugar.CssClass == "btn btn-default btn-block")//si es igual y no esta asignado
                 {
                     Session["idc_lugart"] = value;
                     btnLugar.CssClass = "btn btn-success btn-block";
-                    imgarea.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"]+ "/imagenes/lugares/" + value + ".jpg";
-                    DataTable dt = (DataTable)Session["tbl_lugares_list"];
-                    DataView view = dt.DefaultView;
+                    imgarea.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/lugares/" + value + ".jpg";                   
                     view.RowFilter = "idc_lugart = " + value + "";
-                    lblareaname.Text = view.ToTable().Rows[0]["nombre"].ToString();
+                    lblareaname.Text = view.ToTable().Rows[0]["nombre"].ToString()+" " + view.ToTable().Rows[0]["ocupado"].ToString();
                 }
                 if (btnLugar == btnLugar_sender && btnLugar.CssClass == "btn btn-warning btn-block")//si esta asignado
                 {
                     Session["idc_lugart"] = null;
+                    imgarea.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/lugares/" + value + ".jpg";
+                    lblareaname.Text = view.ToTable().Rows[0]["nombre"].ToString() + " " + view.ToTable().Rows[0]["ocupado"].ToString();
                     Alert.ShowAlertInfo("El lugar " + btnLugar.Text + " ya esta ocupado", "Mensaje del Sistema", this);
                 }
                 if (btnLugar != btnLugar_sender && btnLugar.CssClass != "btn btn-warning btn-block")//limpiamos los demas
@@ -384,7 +397,7 @@ namespace presentacion
             }
             else if (Session["idc_lugart"] == null)
             {
-                Alert.ShowAlertError("Seleccione un lugar", this);
+                Alert.ShowAlertError("--Seleccione un lugar", this);
             }
             else
             {
@@ -394,10 +407,11 @@ namespace presentacion
                 DataView view = dt.DefaultView;
                 view.RowFilter = "idc_lugart = " + Convert.ToInt32(Session["idc_lugart"]) + "";
                 name = view.ToTable().Rows[0]["nombre"].ToString();
-                AddToTable(Convert.ToInt32(Session["idc_lugart"]), ddldeptos.SelectedItem.ToString(), ddlareas.SelectedItem.ToString(), name);
+                AddToTable(Convert.ToInt32(Session["idc_lugart"]), ddldeptos.SelectedItem.ToString(), ddlareas.SelectedItem.ToString(), name, ddlareas.SelectedValue, ddldeptos.SelectedValue);
                 cargargrid();
                 cargarrepeat_lugares();
                 Session["idc_lugart"] = null;
+                Alert.ShowAlert("Relación Agregada Correctamente. Guarde para salvar los cambios.", "Mensaje del Sistema", this);
             }
         }
 
@@ -405,18 +419,36 @@ namespace presentacion
         {
             int index = Convert.ToInt32(e.CommandArgument);
             int idc = Convert.ToInt32(grid_puestpos.DataKeys[index].Values["idc_lugart"]);
+            int idc_area = Convert.ToInt32(grid_puestpos.DataKeys[index].Values["idc_area"]);
+            int idc_sucursal = Convert.ToInt32(grid_puestpos.DataKeys[index].Values["idc_sucursal"]);
             DataTable dt = (DataTable)Session["tbl_area"];
-            foreach (DataRow row in dt.Rows)
+            switch (e.CommandName)
             {
-                if (Convert.ToInt32(row["idc_lugart"]) == idc)
-                {
-                    row.Delete();
+                case "Borrar":
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (Convert.ToInt32(row["idc_lugart"]) == idc)
+                        {
+                            row.Delete();
+                            break;
+                        }
+                    }
+                    Session["tbl_area"] = dt;
+                    cargargrid();
+                    cargarrepeat_lugares();
                     break;
-                }
+
+                case "Ver":
+                    ddldeptos.SelectedValue = idc_sucursal.ToString();
+                    Areas();
+                    ddlareas.SelectedValue = idc_area.ToString();
+                    Lugares(idc_area);
+                    divimgarea.Visible = true;
+                    lblareaname.Text = ddlareas.SelectedItem.ToString();
+                    string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/areas/" + idc_area.ToString() + ".jpg";
+                    imgarea.ImageUrl = url;
+                    break;
             }
-            Session["tbl_area"] = dt;
-            cargargrid();
-            cargarrepeat_lugares();
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)

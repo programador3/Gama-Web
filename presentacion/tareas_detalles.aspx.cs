@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Globalization;
 using System.IO;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -141,6 +142,8 @@ namespace presentacion
                 repeat_proovedore_info.DataSource = ds.Tables[4];
                 repeat_proovedore_info.DataBind();
                 proveedores.Visible = ds.Tables[4].Rows.Count == 0 ? false : true;
+                lnkurladicinal.Visible = ds.Tables[5].Rows.Count == 0 ? false : true;
+                lnkurladicinal.CommandName = ds.Tables[5].Rows.Count == 0 ? "" : ds.Tables[5].Rows[0]["url_adicional"].ToString();
                 gridPapeleria.DataSource = ds.Tables[2];
                 gridPapeleria.DataBind();
                 repeat_proovedores.DataSource = componente.CargarProveedores(entidad);
@@ -1228,6 +1231,17 @@ namespace presentacion
             {
                 Alert.ShowAlertError("Escriba una Fecha", this);
             }
+        }
+
+        protected void lnkurladicinal_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = sender as LinkButton;
+            string pagina = lnk.CommandName;
+            String url = HttpContext.Current.Request.Url.AbsoluteUri;
+            String path_actual = url.Substring(url.LastIndexOf("/") + 1);
+            url = url.Replace(path_actual, "");
+            url = url + pagina + "&title=" + funciones.deTextoa64(txtdescripcion.Text);
+            ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "window.open('" + url + "');", true);
         }
     }
 }

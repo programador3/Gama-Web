@@ -1,0 +1,7 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.IndexOutOfRangeException: Cannot find table 5.
+   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at presentacion.tareas_detalles.CargarTareas(Int32 idc_tarea) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\08_07_16\Puestos\presentacion\tareas_detalles.aspx.cs:line 145

@@ -201,6 +201,9 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_pro", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pcadena_pro });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcorrecto", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Pcorrecto });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcomentarios", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pcomentarios });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PAPLICAR_CAMBIOTODOS", SqlDbType = SqlDbType.Bit, Value = Etiqueta.PAPLICAR_CAMBIOTODOS });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_cambio", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Pcadena_arch });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTOTAL_CADENA_cambio", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Ptotal_cadena_arch });
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -229,6 +232,9 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO_NUEVO", SqlDbType = SqlDbType.Char, Value = Etiqueta.Pidc_puesto });
             listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO_asigna_NUEVO", SqlDbType = SqlDbType.Char, Value = Etiqueta.Pidc_puesto_asigna });
             listparameters.Add(new SqlParameter() { ParameterName = "@pfecha", SqlDbType = SqlDbType.Date, Value = Etiqueta.Pfecha });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PAPLICAR_CAMBIOTODOS", SqlDbType = SqlDbType.Bit, Value = Etiqueta.PAPLICAR_CAMBIOTODOS });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_cambio", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Pcadena_arch });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTOTAL_CADENA_cambio", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Ptotal_cadena_arch });
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -411,6 +417,25 @@ namespace negocio.Componentes
             {
                 //ds = data.datos_Clientes(listparameters);
                 ds = data.enviar("sp_validar_fechas_tareas", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet InformacionAdicional(TareasENT Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tipoi", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_tipoi });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_proceso", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_proceso });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_tareas_info_adicional", listparameters, false);
             }
             catch (Exception ex)
             {

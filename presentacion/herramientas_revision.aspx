@@ -201,6 +201,8 @@
                                                                 <span class="input-group-addon" style="color: #fff; background-color: #337ab7;">
                                                                     <i class="fa fa-wrench"></i></span>
                                                                 <asp:TextBox ID="txtFolio" AutoPostBack="true" runat="server" MaxLength="10" TextMode="Number" OnTextChanged="txtFolio_TextChanged" CssClass="form-control input-group-sm " placeholder="Folio"></asp:TextBox>
+
+                                                                <asp:Label ID="lblfoliocorrecto" runat="server" Text="0" Style="color: red; font: bold;" Visible="false"></asp:Label></strong>
                                                             </div>
                                                                 </div>
                                                             </div>

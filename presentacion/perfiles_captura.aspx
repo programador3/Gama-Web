@@ -227,7 +227,7 @@
                 <div class="col-lg-12">
                     <asp:Panel ID="panel_etiquetas" runat="server" Visible="false">
                         <div class="panel panel-primary">
-                            <div class="panel-heading" style="text-align: center;">Etiquetas</div>
+                            <div class="panel-heading" style="text-align: center;">Opciones</div>
                             <div class="panel-body">
                                 <div class="row">
 
