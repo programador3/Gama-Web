@@ -170,5 +170,23 @@ namespace presentacion
             ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "showalert",
                 "swal({   title: '" + Title + "',   text: '" + Mensaje + "', allowEscapeKey:false,imageUrl: '" + IMG + "',   timer: " + Timer + ",   showConfirmButton: false }, function () {location.href = '" + URL + "';});", true);
         }
+
+        /// <summary>
+        /// Alerta Gift y cIERRA PESTAÑA
+        /// </summary>
+        /// <param name="Mensaje"></param>
+        /// <param name="mypage"></param>
+        public static void ShowGiftCloseWindows(String Mensaje, String Title, String IMG, String Timer, Page mypage)
+        {
+            Mensaje = Mensaje.Replace("'", "");
+            char cr = (char)13;
+            char lf = (char)10;
+            char tab = (char)9;
+            Mensaje = Mensaje.Replace(cr.ToString(), "");
+            Mensaje = Mensaje.Replace(lf.ToString(), "");
+            Mensaje = Mensaje.Replace(tab.ToString(), "");
+            ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "showalert",
+                "swal({   title: '" + Title + "',   text: '" + Mensaje + "', allowEscapeKey:false,imageUrl: '" + IMG + "',   timer: " + Timer + ",   showConfirmButton: false }, function () {window.close();});", true);
+        }
     }
 }

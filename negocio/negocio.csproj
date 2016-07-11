@@ -77,6 +77,7 @@
     <Compile Include="Componentes\PerfilesBL.cs" />
     <Compile Include="Componentes\PreparacionesCOM.cs" />
     <Compile Include="Componentes\Pre_EmpleadosCOM.cs" />
+    <Compile Include="Componentes\ProcesosCOM.cs" />
     <Compile Include="Componentes\ProgramacionCorreosCOM.cs" />
     <Compile Include="Componentes\PuestosCOM.cs" />
     <Compile Include="Componentes\PuestosServiciosCOM.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Entidades\PerfilesE.cs" />
     <Compile Include="Entidades\PreparacionesENT.cs" />
     <Compile Include="Entidades\Pre_EmpleadosENT.cs" />
+    <Compile Include="Entidades\ProcesosENT.cs" />
     <Compile Include="Entidades\ProgramacionCorreosENT.cs" />
     <Compile Include="Entidades\PuestosENT.cs" />
     <Compile Include="Entidades\PuestosServiciosENT.cs" />

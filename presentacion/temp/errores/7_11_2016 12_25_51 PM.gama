@@ -1,0 +1,12 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El nombre de columna 'DESCRIPCION' es ambiguo.
+El nombre de columna 'ORDEN' es ambiguo.
+El nombre de columna 'ARCHIVO' es ambiguo.
+El recuento de transacciones después de EXECUTE indica un número no coincidente de instrucciones BEGIN y COMMIT. Recuento anterior = 0, recuento actual = 1.
+   at negocio.Componentes.ProcesosCOM.AgregarSubProcesos(ProcesosENT entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\11_07_16\Puestos\negocio\Componentes\ProcesosCOM.cs:line 83
+   at presentacion.subprocesos_captura.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:6569aaed-a356-443c-b5af-8b539869449d
+Error Number:209,State:1,Class:16

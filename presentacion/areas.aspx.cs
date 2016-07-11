@@ -30,11 +30,19 @@ namespace presentacion
 
         private void CargaAreas()
         {
-            LugaresENT enti = new LugaresENT();
-            LugaresCOM com = new LugaresCOM();
-            gridareas.DataSource = com.CargaAreas(enti).Tables[0];
-            gridareas.DataBind();
-            CopyTofolder(com.CargaAreas(enti).Tables[0], "~/imagenes/areas/", "idc_area");
+            try
+            {
+                LugaresENT enti = new LugaresENT();
+                LugaresCOM com = new LugaresCOM();
+                gridareas.DataSource = com.CargaAreas(enti).Tables[0];
+                gridareas.DataBind();
+                CopyTofolder(com.CargaAreas(enti).Tables[0], "~/imagenes/areas/", "idc_area");
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
         }
 
         /// <summary>
@@ -150,7 +158,7 @@ namespace presentacion
                         entidad.Pnombre = txtnombre.Text;
                         entidad.pidc_sucursal = Convert.ToInt32(ddldeptos.SelectedValue);
                         ds = componente.AgregarArea(entidad);
-                        vmensaje= ds.Tables[0].Rows[0]["mensaje"].ToString();
+                        vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
                             bool correct = true;
@@ -187,7 +195,7 @@ namespace presentacion
                         }
                         else
                         {
-                            Alert.ShowAlertError(vmensaje,this);
+                            Alert.ShowAlertError(vmensaje, this);
                         }
                         break;
                 }

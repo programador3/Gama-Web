@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): @pcadena no es un parámetro del procedimiento sp_e_subprocesos_borr_PROD.
+   at negocio.Componentes.ProcesosCOM.EliminarProcesos(ProcesosENT entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\11_07_16\Puestos\negocio\Componentes\ProcesosCOM.cs:line 111
+   at presentacion.catalogo_procesos.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:86be7fd4-8342-4779-99c5-5556d2f95693
+Error Number:8145,State:1,Class:16

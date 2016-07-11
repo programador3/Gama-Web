@@ -138,6 +138,7 @@
     <Content Include="catalogo_documentos_captura.aspx" />
     <Content Include="catalogo_examenes.aspx" />
     <Content Include="catalogo_grupos_puestos.aspx" />
+    <Content Include="catalogo_procesos.aspx" />
     <Content Include="catalogo_revisiones_servicios.aspx" />
     <Content Include="celulares_entrega.aspx" />
     <Content Include="celulares_preparacion.aspx" />
@@ -202,6 +203,7 @@
     <Content Include="fancybox\jquery.fancybox-1.3.4.js" />
     <Content Include="fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="html_dinamico.aspx" />
     <Content Include="imagenes\areas\captura\ok.png" />
     <Content Include="imagenes\areas\ok.png" />
     <Content Include="imagenes\body_page.png" />
@@ -544,6 +546,7 @@
     <Content Include="sounds\info.wav" />
     <Content Include="sounds\modal.wav" />
     <Content Include="sounds\sms.wav" />
+    <Content Include="subprocesos_captura.aspx" />
     <Content Include="tareas.aspx" />
     <Content Include="tareas_arbol.aspx" />
     <Content Include="tareas_asignadas_lista.aspx" />
@@ -743,6 +746,13 @@
     </Compile>
     <Compile Include="catalogo_grupos_puestos.aspx.designer.cs">
       <DependentUpon>catalogo_grupos_puestos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogo_procesos.aspx.cs">
+      <DependentUpon>catalogo_procesos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogo_procesos.aspx.designer.cs">
+      <DependentUpon>catalogo_procesos.aspx</DependentUpon>
     </Compile>
     <Compile Include="catalogo_revisiones_servicios.aspx.cs">
       <DependentUpon>catalogo_revisiones_servicios.aspx</DependentUpon>
@@ -1025,6 +1035,13 @@
     </Compile>
     <Compile Include="herramientas_revision.aspx.designer.cs">
       <DependentUpon>herramientas_revision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="html_dinamico.aspx.cs">
+      <DependentUpon>html_dinamico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="html_dinamico.aspx.designer.cs">
+      <DependentUpon>html_dinamico.aspx</DependentUpon>
     </Compile>
     <Compile Include="html.aspx.cs">
       <DependentUpon>html.aspx</DependentUpon>
@@ -1336,6 +1353,13 @@
     </Compile>
     <Compile Include="solicitud_horario.aspx.designer.cs">
       <DependentUpon>solicitud_horario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="subprocesos_captura.aspx.cs">
+      <DependentUpon>subprocesos_captura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="subprocesos_captura.aspx.designer.cs">
+      <DependentUpon>subprocesos_captura.aspx</DependentUpon>
     </Compile>
     <Compile Include="tareas.aspx.cs">
       <DependentUpon>tareas.aspx</DependentUpon>

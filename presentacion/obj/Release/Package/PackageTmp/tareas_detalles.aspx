@@ -64,10 +64,12 @@
         <asp:HiddenField ID="id_res" runat="server" />
         <div class="container-fluid">
             <h1 class="page-header">Detalles de Tarea <small>
-                <asp:Label ID="lbltitle" runat="server" Text=" Tarea Autogenerada" Visible="false"></asp:Label></small></h1>
+                <asp:Label ID="lbltitle" runat="server" Text=" Tarea Autogenerada" Visible="false"></asp:Label></small> </h1>
             <div class="row">
                 <div class="col-lg-12">
-                    <h4><i class="fa fa-list-alt"></i>&nbsp;Descripcion de la tarea</h4>
+                    <h4><i class="fa fa-list-alt"></i>&nbsp;Descripcion de la tarea<span>
+                    <asp:LinkButton Visible="false" ID="lnkurladicinal" CssClass="btn btn-success" OnClick="lnkurladicinal_Click" runat="server">Ver Información Adicional <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
+                </span></h4>
                     <asp:TextBox ID="txtdescripcion" ReadOnly="true" placeholder="Descripcion" CssClass="form-control" TextMode="MultiLine" Rows="3" onblur="return imposeMaxLength(this, 1000);" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
                 </div>
             </div>

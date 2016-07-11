@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): @pcadenab no es un parámetro del procedimiento sp_a_subprocesos_borr.
+   at negocio.Componentes.ProcesosCOM.AgregarSubProcesos(ProcesosENT entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\11_07_16\Puestos\negocio\Componentes\ProcesosCOM.cs:line 86
+   at presentacion.subprocesos_captura.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:aeb06bd5-4865-4c1e-addb-fc14f39b71af
+Error Number:8145,State:1,Class:16
