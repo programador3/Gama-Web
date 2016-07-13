@@ -48,6 +48,17 @@ namespace presentacion
                 Session[hiddenvalue.Value + "orden_subp"] = null;
                 Session[hiddenvalue.Value + "url_subp"] = null;
                 Session[hiddenvalue.Value + "idc_proceso"] = null;
+                Session["preview"] = Request.QueryString["preview"] == null ? false : true;
+                if (Request.QueryString["preview"] != null)
+                {
+                    lnkaddfile.Visible = false;
+                    txtdescproceso.ReadOnly = true;
+                    txtobsrarchivo.ReadOnly = true;
+                    txtsubproceso.ReadOnly = true;
+                    lnkagregar.Visible = false;
+                    lnkEditar.Visible = false;
+                    btnGuardar.Visible = false;
+                }
                 int idc_proceso = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_proceso"]));
                 Session[hiddenvalue.Value + "idc_proceso"] = idc_proceso;
                 string tipo = Request.QueryString["type"];
@@ -57,6 +68,7 @@ namespace presentacion
                     CargarProcesos(idc_proceso, tipo);
                 }
                 lnltipo.Text = tipo == "B" ? "Borrador" : "Produccion";
+                lnltipo.CssClass = tipo == "B" ? "btn btn-primary" : "btn btn-success";
             }
         }
 
@@ -460,6 +472,7 @@ namespace presentacion
 
         protected void gridarchivos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            bool preview = Convert.ToBoolean(Session["preview"]);
             int index = Convert.ToInt32(e.CommandArgument);
             string ruta = gridarchivos.DataKeys[index].Values["url"].ToString();
             string observaciones = gridarchivos.DataKeys[index].Values["observaciones"].ToString();
@@ -471,9 +484,16 @@ namespace presentacion
                     break;
 
                 case "eliminar":
-                    DeleteToTableFiles(observaciones, ruta);
-                    CargarGridFiles();
-                    Alert.ShowAlert("Elemento eliminado correctamente", "Mensaje del Sistema", this);
+                    if (preview == true)
+                    {
+                        Alert.ShowAlertInfo("Esta es solo una vista previa, no puede modificar", "Mensaje del Sistema", this);
+                    }
+                    else
+                    {
+                        DeleteToTableFiles(observaciones, ruta);
+                        CargarGridFiles();
+                        Alert.ShowAlert("Elemento eliminado correctamente", "Mensaje del Sistema", this);
+                    }
                     break;
             }
         }
@@ -590,6 +610,7 @@ namespace presentacion
 
         protected void grid_subprocesos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            bool preview = Convert.ToBoolean(Session["preview"]);
             int index = Convert.ToInt32(e.CommandArgument);
             int idc_subproceso = Convert.ToInt32(grid_subprocesos.DataKeys[index].Values["idc_subproceso"]);
             string descripcion = grid_subprocesos.DataKeys[index].Values["descripcion"].ToString();
@@ -615,20 +636,45 @@ namespace presentacion
             }
             switch (e.CommandName)
             {
-                case "eliminar":
-                    DeleteToTable(idc_subproceso, descripcion);
+                case "Ver":
+                    CargarPerfiles("");
+                    txtsubproceso.Text = descripcion;
+                    CargarListaPerfiles(idc_subproceso, descripcion);
                     Session[hiddenvalue.Value + "idc_subproceso"] = null;
                     Session[hiddenvalue.Value + "descripcion_subp"] = null;
                     Session[hiddenvalue.Value + "orden_subp"] = null;
                     Session[hiddenvalue.Value + "url_subp"] = null;
-                    CargarGrid();
-                    Alert.ShowAlert("Elemento eliminado correctamente", "Mensaje del Sistema", this);
+                    break;
+
+                case "eliminar":
+
+                    if (preview == true)
+                    {
+                        Alert.ShowAlertInfo("Esta es solo una vista previa, no puede modificar", "Mensaje del Sistema", this);
+                    }
+                    else
+                    {
+                        DeleteToTable(idc_subproceso, descripcion);
+                        Session[hiddenvalue.Value + "idc_subproceso"] = null;
+                        Session[hiddenvalue.Value + "descripcion_subp"] = null;
+                        Session[hiddenvalue.Value + "orden_subp"] = null;
+                        Session[hiddenvalue.Value + "url_subp"] = null;
+                        CargarGrid();
+                        Alert.ShowAlert("Elemento eliminado correctamente", "Mensaje del Sistema", this);
+                    }
                     break;
 
                 case "editar":
-                    CargarPerfiles("");
-                    txtsubproceso.Text = descripcion;
-                    CargarListaPerfiles(idc_subproceso, descripcion);
+                    if (preview == true)
+                    {
+                        Alert.ShowAlertInfo("Esta es solo una vista previa, no puede modificar", "Mensaje del Sistema", this);
+                    }
+                    else
+                    {
+                        CargarPerfiles("");
+                        txtsubproceso.Text = descripcion;
+                        CargarListaPerfiles(idc_subproceso, descripcion);
+                    }
                     break;
 
                 case "view_file":
@@ -772,7 +818,8 @@ namespace presentacion
                 entidad.Pcadena = Cadena();
                 entidad.Ptotalcadena = TotalCadena();
                 DataSet ds = new DataSet();
-                ds = com.AgregarSubProcesos(entidad);
+                string tipo = Request.QueryString["type"];
+                ds = tipo == "B" ? com.AgregarSubProcesos(entidad) : com.AgregarSubProcesosProduccion(entidad);
                 string vmensaje = "";
                 vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                 if (vmensaje == "")
@@ -811,7 +858,8 @@ namespace presentacion
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("catalogo_procesos.aspx");
+            string url = Request.QueryString["urlback"] == null ? "catalogo_procesos.aspx" : funciones.de64aTexto(Request.QueryString["urlback"]);
+            Response.Redirect(url);
         }
 
         protected void lnkaddfile_Click(object sender, EventArgs e)

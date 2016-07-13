@@ -122,7 +122,7 @@
     <comment>produccion</comment>
   </data>
   <data name="cadena_conexion_respa" xml:space="preserve">
-    <value>Data Source=192.168.8.4\pruebas;Initial Catalog=gm;Persist Security Info=True;User ID=conexion;Password=GaMa90</value>
+    <value>Data Source=192.168.0.1;Initial Catalog=gm;Persist Security Info=True;User ID=conexion;Password=GaMa90</value>
     <comment>respaldo</comment>
   </data>
 </root>

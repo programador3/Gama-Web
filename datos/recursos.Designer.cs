@@ -70,7 +70,7 @@ namespace datos {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Data Source=192.168.8.4\pruebas;Initial Catalog=gm;Persist Security Info=True;User ID=conexion;Password=GaMa90.
+        ///   Busca una cadena traducida similar a Data Source=192.168.0.1;Initial Catalog=gm;Persist Security Info=True;User ID=conexion;Password=GaMa90.
         /// </summary>
         public static string cadena_conexion_respa {
             get {

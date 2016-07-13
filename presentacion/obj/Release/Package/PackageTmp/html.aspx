@@ -92,10 +92,6 @@
                 <div class="form-group">
                     <asp:FileUpload ID="fileimg" runat="server" />
                 </div>
-                <asp:RegularExpressionValidator ID="REV" runat="server" Style="background-color: red; color: white; font: bold;"
-                    ErrorMessage="TIPO DE ARCHIVO NO PERMITIDO. DEBE SER IMAGEN" ControlToValidate="fileimg"
-                    ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))(.jpg|.JPG|.jpeg|.JPEG|.gif|.GIF|.png|.PNG|.bmp|.BMP|.ico|.ICO)$">
-                </asp:RegularExpressionValidator>
                 <div class="form-group">
                     <asp:Button ID="btnUploadIMG" CssClass="btn btn-primary" runat="server" Text="Subir Imagen" OnClick="btnUploadIMG_Click" />
                 </div>

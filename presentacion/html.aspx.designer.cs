@@ -202,15 +202,6 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.FileUpload fileimg;
         
         /// <summary>
-        /// Control REV.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator REV;
-        
-        /// <summary>
         /// Control btnUploadIMG.
         /// </summary>
         /// <remarks>

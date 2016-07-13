@@ -307,7 +307,7 @@ namespace presentacion
                 if (idc_aprobacion_soli == 0)
                 { //proseguimos a insertar la solicitud
                   //nevesitamos mandar los sig datos
-                    int idc_aprobacion = 1; //antes 8 que aprobacion queremos solicitar
+                    int idc_aprobacion = 1; //TIPO DE SOLICITUD APROBACION, CHECAR TABLA APROBACIONES
                     int idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString()); //que usuario hace la solicitud
                     int idc_registro = id_row; // el id del registro que se quiere aprobar EN ESTE CASO EL ID DEL BORRADOR
 

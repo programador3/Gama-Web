@@ -17,7 +17,13 @@
             $('#confirmTitulo').text(cTitulo);
             $('#confirmContenido').text(cContenido);
         }
-
+        function ReturnGr(cTitulo, cContenido) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModalGr').modal('show');
+            $('#confirmTituloGr').text(cTitulo);
+            $('#confirmContenido').text(cContenido);
+        }
         function modal_detalle() {
             var audio = new Audio('sounds/modal.wav');
             audio.play();
@@ -62,7 +68,7 @@
                                 <h1 style="text-align: center;">
                                     <asp:Label ID="lblTablaVacia" runat="server" Text="No hay Aprobaciones Pendientes<i class='fa fa-file-o'></i>" Visible="false"></asp:Label>
                                 </h1>
-                                <asp:GridView ID="gridaprobacionespendientes" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [4]}" DataKeyNames="nombre,nombre_soli, des_puesto,comentarios, descorta, idc_aprobacion_reg, pagina, fecha_movimiento" OnRowCommand="gridaprobacionespendientes_RowCommand" OnRowDataBound="gridaprobacionespendientes_RowDataBound" AutoGenerateColumns="False">
+                                <asp:GridView ID="gridaprobacionespendientes" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [4]}" DataKeyNames="nombre,nombre_soli, des_puesto,comentarios, descorta, idc_aprobacion_reg, pagina, fecha_movimiento,idc_registro,idc_aprobacion" OnRowCommand="gridaprobacionespendientes_RowCommand" OnRowDataBound="gridaprobacionespendientes_RowDataBound" AutoGenerateColumns="False">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Firma grupal" ShowHeader="False">
                                             <ItemTemplate>
@@ -111,6 +117,8 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="nombre_soli" HeaderText="pagina" Visible="false" />
+                                        <asp:BoundField DataField="idc_registro" HeaderText="pagina" Visible="false" />
+                                        <asp:BoundField DataField="idc_aprobacion" HeaderText="pagina" Visible="false" />
                                     </Columns>
                                 </asp:GridView>
                             </div>
@@ -230,6 +238,56 @@
                     </div>
                     <div class="modal-footer">
                         <input id="ok" class="btn btn-danger btn-block" value="Cerrar" onclick="close_comentarios();" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div id="myModalGr" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="text-align: center">
+                <div class="modal-header" style="background-color: #428bca; color: white">
+                    <h4><strong id="confirmTituloGr" class="modal-title"></strong></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            <h4>
+                                <label id="confirmContenido"></label>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row" id="autori" runat="server" viis="false">
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                            <ContentTemplate>
+                                <div class="col-lg-12">
+                                    <asp:LinkButton ID="lnktodo" CssClass="btn btn-default btn-block" OnClick="lnktodo_Click" runat="server">Mostrar Toda la Información</asp:LinkButton>
+                                </div>
+                                <asp:Repeater ID="Repeater1" runat="server">
+                                    <ItemTemplate>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <asp:LinkButton ID="lnkgrupo" CommandName='<%#Eval("idc_perfilgpo") %>' ToolTip='<%#Eval("TOOLTIP") %>' CssClass="btn btn-default btn-block" OnClick="lnkgrupo_Click" runat="server"><%#Eval("grupo") %></asp:LinkButton>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <asp:Button ID="Button1" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="Button1_Click" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <asp:Button ID="Button2" class="btn btn-danger btn-block" runat="server" Text="Cancelar" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

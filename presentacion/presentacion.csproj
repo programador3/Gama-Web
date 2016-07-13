@@ -519,6 +519,8 @@
     <Content Include="primitive\js\touch\jquery.ui.touch-punch.js" />
     <Content Include="primitive\primitives.latest.css" />
     <Content Include="primitive\primitives.min.js" />
+    <Content Include="procesos_autorizar.aspx" />
+    <Content Include="procesos_vista_previa.aspx" />
     <Content Include="programacion_correos.aspx" />
     <Content Include="programacion_correos_d.aspx" />
     <Content Include="puestos.aspx" />
@@ -1198,6 +1200,20 @@
     </Compile>
     <Compile Include="pre_empleados_captura.aspx.designer.cs">
       <DependentUpon>pre_empleados_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="procesos_autorizar.aspx.cs">
+      <DependentUpon>procesos_autorizar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="procesos_autorizar.aspx.designer.cs">
+      <DependentUpon>procesos_autorizar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="procesos_vista_previa.aspx.cs">
+      <DependentUpon>procesos_vista_previa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="procesos_vista_previa.aspx.designer.cs">
+      <DependentUpon>procesos_vista_previa.aspx</DependentUpon>
     </Compile>
     <Compile Include="programacion_correos.aspx.cs">
       <DependentUpon>programacion_correos.aspx</DependentUpon>

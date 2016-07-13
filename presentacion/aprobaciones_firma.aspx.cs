@@ -128,7 +128,7 @@ namespace presentacion
                     ds = componente.validar_firma(vusuario, vcontraseña, vaprobado, vidc_aprobacion_reg, vcomentarios, Idc_usuario, Pdirecip, Pnombrepc, Pusuariopc, value, intvalue);
                     //mesaje del sp
                     string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
-                    bool tabla = Convert.ToBoolean(ds.Tables[0].Rows[0]["copia_archi"]);
+                    bool tabla = true;
                     if (string.IsNullOrEmpty(vmensaje) && tabla == true) // si esta vacio todo bien
                     {
                         DataTable tabla_archivos = ds.Tables[1];
@@ -168,11 +168,11 @@ namespace presentacion
                                 url = listas_url[index - 1];
                                 if (url == null || url == "") { url = "menu.aspx"; }
                                 url = url.Replace("%20", "+");
-                                Alert.ShowGiftRedirect("Estamos Generando el Perfil e Producción y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", t, url, this);
+                                Alert.ShowGiftRedirect("Estamos Generando el Registro y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", t, url, this);
                             }
                             else
                             {
-                                Alert.ShowGiftRedirect("Estamos Generando el Perfil e Producción y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", t, url, this);
+                                Alert.ShowGiftRedirect("Estamos Generando el Registro y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", t, url, this);
                             }
                         }
                     }

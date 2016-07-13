@@ -205,7 +205,7 @@
                                                             <div class="table-responsive">
                                                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Always">
                                                                     <ContentTemplate>
-                                                                        <asp:CheckBoxList ID="check_gpo_opc" runat="server" CssClass="table table-hover table-striped" AutoPostBack='<%# (lblmax.Text).ToString() == "0" ?  false:true  %>' OnSelectedIndexChanged='<%# (lblmax.Text).ToString() == "0" ?  "":"check_gpo_opc_SelectedIndexChanged"  %>'></asp:CheckBoxList>
+                                                                        <asp:CheckBoxList ID="check_gpo_opc" runat="server"   CssClass="radio3 radio-check radio-info radio-inline" AutoPostBack='<%# (lblmax.Text).ToString() == "0" ?  false:true  %>' OnSelectedIndexChanged='<%# (lblmax.Text).ToString() == "0" ?  "":"check_gpo_opc_SelectedIndexChanged"  %>'></asp:CheckBoxList>
                                                                     </ContentTemplate>
                                                                 </asp:UpdatePanel>
                                                             </div>
@@ -319,7 +319,7 @@
                                                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always">
 
                                                                     <ContentTemplate>
-                                                                        <asp:CheckBoxList ID="check_etiqopc" CssClass="table  table-hover table-striped" runat="server" AutoPostBack="true" OnSelectedIndexChanged="check_etiqopc_SelectedIndexChanged"></asp:CheckBoxList>
+                                                                        <asp:CheckBoxList ID="check_etiqopc"  CssClass="radio3 radio-check radio-info radio-inline"  runat="server" AutoPostBack="true" OnSelectedIndexChanged="check_etiqopc_SelectedIndexChanged"></asp:CheckBoxList>
                                                                     </ContentTemplate>
                                                                 </asp:UpdatePanel>
                                                             </div>
@@ -346,7 +346,7 @@
                             <!--grid view -->
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <asp:CheckBoxList ID="checklist_docs" runat="server"></asp:CheckBoxList>
+                                    <asp:CheckBoxList ID="checklist_docs"  CssClass="radio3 radio-check radio-info radio-inline"  runat="server"></asp:CheckBoxList>
                                 </div>
                             </div>
                         </div>
@@ -362,7 +362,7 @@
                             <!--grid view -->
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <asp:CheckBoxList ID="chxExamenes" runat="server"></asp:CheckBoxList>
+                                    <asp:CheckBoxList ID="chxExamenes"  CssClass="radio3 radio-check radio-info radio-inline"  runat="server"></asp:CheckBoxList>
                                 </div>
                             </div>
                         </div>

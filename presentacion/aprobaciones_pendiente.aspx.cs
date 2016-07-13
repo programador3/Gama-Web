@@ -14,6 +14,7 @@ namespace presentacion
         {
             if (!Page.IsPostBack)
             {
+                Session["sidc_puestoperfil_borr"] = null;
                 CargarGrid_aprob_pendientes();
             }
         }
@@ -54,6 +55,8 @@ namespace presentacion
             String puesto = gridaprobacionespendientes.DataKeys[index].Values["des_puesto"].ToString();
             String fecha_movimiento = gridaprobacionespendientes.DataKeys[index].Values["fecha_movimiento"].ToString();
             String nombre_solic = gridaprobacionespendientes.DataKeys[index].Values["nombre_soli"].ToString();
+            Session["sidc_puestoperfil_borr"] = gridaprobacionespendientes.DataKeys[index].Values["idc_registro"].ToString();
+            String idc_aprobacion = gridaprobacionespendientes.DataKeys[index].Values["idc_aprobacion"].ToString();
             //recuperamos el valor de la fila
             DataRow[] row = buscarFila(vidc);
             switch (e.CommandName)
@@ -85,8 +88,14 @@ namespace presentacion
                     break;
 
                 case "firma_grupal":
+                    modal_ocaprobado.Value = "False";                   
                     Session.Add("sidc_aprobacion_soli", row[0]["idc_aprobacion_soli"].ToString());
-                    Response.Redirect("aprobaciones_firma.aspx");
+                    if (idc_aprobacion =="1")//1 : PERFILES A ORGANIGRAMA
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ReturnGr('Mensaje del Sistema','¿Está seguro que desea autorizar este borrador? Seleccione la informacion que desea que sea publicada');", true);
+                    } else {
+                        Response.Redirect("aprobaciones_firma.aspx");
+                    }
                     break;
 
                 case "Comentarios":
@@ -212,6 +221,137 @@ namespace presentacion
                 Button salajuntas = (Button)e.Row.FindControl("btnfirmagrupal");
                 salajuntas.CssClass = "btn btn-success";
                 salajuntas.CommandName = "firma_grupal";
+            }
+        }
+
+        protected void lnktodo_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = sender as LinkButton;
+            lnk.CssClass = lnk.CssClass == "btn btn-default btn-block" ? "btn btn-info btn-block" : "btn btn-default btn-block";
+            Repeater1.Visible = lnk.CssClass == "btn btn-default btn-block" ? true : false;
+        }
+
+        protected void lnkgrupo_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = sender as LinkButton;
+            lnk.CssClass = lnk.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //Your Void() or Event()
+            int id = Convert.ToInt32(Session["sidc_puestoperfil_borr"]);
+            string comando = Session["scomando"].ToString();
+            switch (comando)
+            {
+                case "aprobar":
+                    //levantamos la solicitud
+                    string res = solicitudAprobacion(Convert.ToInt32(Session["sidc_puestoperfil_borr"]));
+                    if (TotalCadena() == 0 && lnktodo.CssClass == "btn btn-default btn-block")
+                    {
+                        Alert.ShowAlertError("Seleccione una opcion", this.Page);
+                    }
+                    else if (string.IsNullOrEmpty(res.Trim().Replace(" ", "")))
+                    {
+                        if (TotalCadena() > 0)
+                        {
+                            Response.Redirect("aprobaciones_firma.aspx?cadena=" + funciones.deTextoa64(Cadena()) + "&total=" + TotalCadena().ToString());
+                        }
+                        else
+                        {
+                            Response.Redirect("aprobaciones_firma.aspx?cadena=&total=" + TotalCadena().ToString());
+                        }
+                    }
+                    else if (res != "")
+                    {
+                        Alert.ShowAlertError(res, this.Page);
+                    }
+                    break;
+            }
+            //reset a las sessiones
+            Session["sidc_puestoperfil_borr"] = 0;
+            Session["scomando"] = "";
+        }
+
+        private String Cadena()
+        {
+            string cadena = "";
+            if (lnktodo.CssClass != "btn btn-info btn-block")
+            {
+                foreach (RepeaterItem item in Repeater1.Items)
+                {
+                    LinkButton lnk = (LinkButton)item.FindControl("lnkgrupo");
+                    if (lnk.CssClass == "btn btn-success btn-block")
+                    {
+                        cadena = cadena + lnk.CommandName + ";";
+                    }
+                }
+            }
+            return cadena;
+        }
+
+        private int TotalCadena()
+        {
+            int cadena = 0;
+            if (lnktodo.CssClass != "btn btn-info btn-block")
+            {
+                foreach (RepeaterItem item in Repeater1.Items)
+                {
+                    LinkButton lnk = (LinkButton)item.FindControl("lnkgrupo");
+                    if (lnk.CssClass == "btn btn-success btn-block")
+                    {
+                        cadena = cadena + 1;
+                    }
+                }
+            }
+            return cadena;
+        }
+
+        protected string solicitudAprobacion(int id_row)
+        {
+            try
+            {
+                //recuperar el valor del datatable
+                DataTable dt = (DataTable)Session["PuestoPerfilBorr"];
+                DataRow[] fila;
+                fila = dt.Select("idc_puestoperfil_borr = " + id_row);
+                int idc_aprobacion_soli = Convert.ToInt32(fila[0]["idc_aprobacion_soli"]);
+                //ALERTA REVISAR ESTA SESISON
+                Session.Add("sidc_aprobacion_soli", idc_aprobacion_soli);
+                //SI NO TIENE SOLICITUD SE CREA
+                if (idc_aprobacion_soli == 0)
+                { //proseguimos a insertar la solicitud
+                  //nevesitamos mandar los sig datos
+                    int idc_aprobacion = 1; //antes 8 que aprobacion queremos solicitar
+                    int idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString()); //que usuario hace la solicitud
+                    int idc_registro = id_row; // el id del registro que se quiere aprobar EN ESTE CASO EL ID DEL BORRADOR
+
+                    //llamamos la entidad
+                    Aprobaciones_solicitudE entidad = new Aprobaciones_solicitudE();
+                    entidad.Idc_aprobacion = idc_aprobacion;
+                    entidad.Idc_usuario = idc_usuario;
+                    entidad.Idc_registro = idc_registro;
+                    entidad.Idc_aprobacion_soli = idc_aprobacion_soli; // SE MANDA CERO NO PASA NADA
+                                                                       //llamamos al componente
+                    DataSet ds = new DataSet();
+                    Aprobaciones_solicitudBL componente = new Aprobaciones_solicitudBL();
+                    ds = componente.nueva_solicitud_aprobacion(entidad, idc_registro);
+                    string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                    int vfolio = Convert.ToInt32(ds.Tables[0].Rows[0]["folio"].ToString()); //id de la solicitud de aprobacion
+                                                                                            //ALERTA REVISAR ESTA SESISON
+                    Session.Add("sidc_aprobacion_soli", vfolio);
+
+                    return vmensaje;// +" " + vmensaje_no2;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                //Alert.ShowAlertError(ex.Message,this.Page);
+                return ex.Message;
             }
         }
     }

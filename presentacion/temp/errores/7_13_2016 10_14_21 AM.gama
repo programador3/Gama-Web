@@ -1,0 +1,17 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at presentacion.procesos_autorizar.grid_perfilpendiente_RowDataBound(Object sender, GridViewRowEventArgs e)
+   at System.Web.UI.WebControls.GridView.OnRowDataBound(GridViewRowEventArgs e)
+   at System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   at System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   at System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   at System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   at System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   at System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   at System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   at System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   at System.Web.UI.WebControls.GridView.DataBind()
+   at presentacion.procesos_autorizar.cargar_manuales_pendientes()

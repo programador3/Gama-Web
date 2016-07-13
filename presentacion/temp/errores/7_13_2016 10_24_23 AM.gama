@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): @PBORRADOR no es un parámetro del procedimiento sp_e_solicitudaprobacion_procesos.
+   at negocio.Componentes.ProcesosCOM.CancelarSolicitud(ProcesosENT entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\13_07_16\Puestos\negocio\Componentes\ProcesosCOM.cs:line 219
+   at presentacion.procesos_autorizar.Yes_Click(Object sender, EventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\13_07_16\Puestos\presentacion\procesos_autorizar.aspx.cs:line 151
+ClientConnectionId:5b001f8e-a593-4b38-8935-409a618b3715
+Error Number:8145,State:1,Class:16

@@ -340,6 +340,8 @@ namespace presentacion
             String valor = gridperfiles.DataKeys[index].Values["id_perfilproduccion"].ToString();
             String valorborrador = gridperfiles.DataKeys[index].Values["id_perfilborrador"].ToString();
             String perfil = gridperfiles.DataKeys[index].Values["descripcion"].ToString();
+            perfil = perfil.TrimStart();
+            perfil = perfil.Replace(System.Environment.NewLine, "");
             int vidc = Convert.ToInt32(valor);
             int vidc_borr = Convert.ToInt32(valorborrador);
 
@@ -380,17 +382,8 @@ namespace presentacion
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','Desea Editar el perfil de " + perfil + "? O puede crear un nuevo borrador sin ligar a este perfil');", true);
                     Session["url_value"] = "perfiles_captura.aspx?uidc_puestoperfil=" + vidc_borr.ToString() + "&uborrador=1";
                 }
-
-                //TablasBorrador(vidc);//vavava
+                
             }
-
-            //if (id_borrador_grid == 0)//si no hay borrador
-            //{//Paso parametro a SWICTH
-            // //Mandamos script confirmAcion con parametros  TITUTLO y MENSAJE
-            //    Session["Caso_Confirmacion"] = "Crear Borrador";
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','No existe ningun BORRADOR relacionado " + perfil + ". ¿Desea crear un BORRADOR para este perfil?');", true);
-            //    id_borradorinexistente = id_produccion_grid;
-            //}
         }
 
         protected void gridperfiles_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -671,75 +664,82 @@ namespace presentacion
 
         protected void btnGuardarSinLigar_Click(object sender, EventArgs e)
         {
-            if (txtNombrePerfil.Text == "") { lblerror.Visible = true; }
-            else
+            try
             {
-                string tipo_case = (string)Session["tipo_creado_borrado"];
-                btnGuardarSinLigar.Visible = false;
-                lblerror.Visible = false;
-                //Bajo id de usuario de session
-                int idUsuario = (int)Session["sidc_usuario"];
-                //declaro entidad
-                PerfilesE EntidadB = new PerfilesE();
-                EntidadB.Nombre = txtNombrePerfil.Text.ToUpper();
-
-                EntidadB.Usuario = idUsuario;
-                EntidadB.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);//USUARIO QUE REALIZA LA PREBAJA
-                EntidadB.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
-                EntidadB.Pnombrepc = funciones.GetPCName();//nombre pc usuario
-                EntidadB.Pusuariopc = funciones.GetUserName();//usuario pc
-                PerfilesBL Componente = new PerfilesBL();
-                DataSet data = new DataSet();
-
-                ScriptManager.RegisterStartupScript(this, GetType(), "DWWWWWWWE", "ModalClose();", true);
-                switch (tipo_case)
-                {
-                    case "PRODUCCION-BORRADOR":
-                        EntidadB.Idc_perfil = id_borradorinexistente;
-                        data = Componente.VerificaPerfilBorrador(EntidadB);
-                        break;
-
-                    case "BORRADOR-BORRADOR":
-
-                        EntidadB.Idc_perfil = Convert.ToInt32(Session["value"]);
-                        data = Componente.CopiaBorrador(EntidadB);
-                        break;
-                }
-                DataRow rowr = data.Tables[0].Rows[0];
-                string mensaje = rowr["mensaje"].ToString();
-                string vmensaje = data.Tables[0].Rows[0]["mensaje"].ToString();
-                DataTable tabla_archivos = data.Tables[1];
-                if (string.IsNullOrEmpty(vmensaje)) // si esta vacio todo bien
-                {
-                    bool correct = true;
-                    foreach (DataRow row_archi in tabla_archivos.Rows)
-                    {
-                        correct = CopiarArchivos(row_archi["ruta_origen"].ToString(), row_archi["ruta_destino"].ToString());
-                        if (correct != true) { Alert.ShowAlertError("Hubo un error al subir uno o mas archivos", this); }
-                    }
-
-                    if (correct == true)
-                    {
-                        int t_archivos_eti = 0;
-                        foreach (DataRow row in tabla_archivos.Rows)
-                        {
-                            string path = row["ruta_origen"].ToString();
-                            t_archivos_eti = t_archivos_eti + (File.Exists(path) ? 1 : 0);
-                        }
-                        int total = ((t_archivos_eti * 1) + 1) * 1000;
-                        string t = total.ToString();
-                        string idc_puestoperfil_borr = rowr["Resultado"].ToString();
-                        Alert.ShowGiftRedirect("Estamos Generando el Borrador y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", "8000", "perfiles_captura.aspx?uidc_puestoperfil=" + idc_puestoperfil_borr + "&uborrador=1", this);
-                    }
-                }
+                if (txtNombrePerfil.Text == "") { lblerror.Visible = true; }
                 else
                 {
-                    //AlertError(vmensaje); //marca error por comillas el mensaje trae comillas simples y se corta cuando se concatena en la funcion javascript
-                    lblerror.Visible = true;
-                    lblerror.Text = vmensaje;
-                    Alert.ShowAlertError(vmensaje, this);
-                    return;
+                    string tipo_case = (string)Session["tipo_creado_borrado"];
+                    btnGuardarSinLigar.Visible = false;
+                    lblerror.Visible = false;
+                    //Bajo id de usuario de session
+                    int idUsuario = (int)Session["sidc_usuario"];
+                    //declaro entidad
+                    PerfilesE EntidadB = new PerfilesE();
+                    EntidadB.Nombre = txtNombrePerfil.Text.ToUpper();
+
+                    EntidadB.Usuario = idUsuario;
+                    EntidadB.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);//USUARIO QUE REALIZA LA PREBAJA
+                    EntidadB.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
+                    EntidadB.Pnombrepc = funciones.GetPCName();//nombre pc usuario
+                    EntidadB.Pusuariopc = funciones.GetUserName();//usuario pc
+                    PerfilesBL Componente = new PerfilesBL();
+                    DataSet data = new DataSet();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "DWWWWWWWE", "ModalClose();", true);
+                    switch (tipo_case)
+                    {
+                        case "PRODUCCION-BORRADOR":
+                            EntidadB.Idc_perfil = id_borradorinexistente;
+                            data = Componente.VerificaPerfilBorrador(EntidadB);
+                            break;
+
+                        case "BORRADOR-BORRADOR":
+
+                            EntidadB.Idc_perfil = Convert.ToInt32(Session["value"]);
+                            data = Componente.CopiaBorrador(EntidadB);
+                            break;
+                    }
+                    DataRow rowr = data.Tables[0].Rows[0];
+                    string mensaje = rowr["mensaje"].ToString();
+                    string vmensaje = data.Tables[0].Rows[0]["mensaje"].ToString();
+                    DataTable tabla_archivos = data.Tables[1];
+                    if (string.IsNullOrEmpty(vmensaje)) // si esta vacio todo bien
+                    {
+                        bool correct = true;
+                        foreach (DataRow row_archi in tabla_archivos.Rows)
+                        {
+                            correct = CopiarArchivos(row_archi["ruta_origen"].ToString(), row_archi["ruta_destino"].ToString());
+                            if (correct != true) { Alert.ShowAlertError("Hubo un error al subir uno o mas archivos", this); }
+                        }
+
+                        if (correct == true)
+                        {
+                            int t_archivos_eti = 0;
+                            foreach (DataRow row in tabla_archivos.Rows)
+                            {
+                                string path = row["ruta_origen"].ToString();
+                                t_archivos_eti = t_archivos_eti + (File.Exists(path) ? 1 : 0);
+                            }
+                            int total = ((t_archivos_eti * 1) + 1) * 1000;
+                            string t = total.ToString();
+                            string idc_puestoperfil_borr = rowr["Resultado"].ToString();
+                            Alert.ShowGiftRedirect("Estamos Generando el Borrador y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", "8000", "perfiles_captura.aspx?uidc_puestoperfil=" + idc_puestoperfil_borr + "&uborrador=1", this);
+                        }
+                    }
+                    else
+                    {
+                        //AlertError(vmensaje); //marca error por comillas el mensaje trae comillas simples y se corta cuando se concatena en la funcion javascript
+                        lblerror.Visible = true;
+                        lblerror.Text = vmensaje;
+                        Alert.ShowAlertError(vmensaje, this);
+                        return;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
             }
         }
 

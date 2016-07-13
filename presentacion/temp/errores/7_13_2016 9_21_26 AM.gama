@@ -1,0 +1,8 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at presentacion.subprocesos_captura.CargarProcesos(Int32 idc_proceso, String tipo)

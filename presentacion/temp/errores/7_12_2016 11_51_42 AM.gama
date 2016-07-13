@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): No se encontró el procedimiento almacenado 'sp_catalogo_procesos_borr'.
+   at negocio.Componentes.ProcesosCOM.CatalogoProcesosbORR(ProcesosENT entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\12_07_16\Puestos\negocio\Componentes\ProcesosCOM.cs:line 60
+   at presentacion.catalogo_procesos.CargarProcesos(String tipo) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\12_07_16\Puestos\presentacion\catalogo_procesos.aspx.cs:line 38
+ClientConnectionId:06958434-5eec-403c-8754-8900125ee9cb
+Error Number:2812,State:62,Class:16
