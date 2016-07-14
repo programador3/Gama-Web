@@ -399,7 +399,7 @@ namespace presentacion
                     file_edit.Write(content);
                     file_edit.Close();
                     AddPapeleriaToTableEtiquetas(dirInfo_edit.ToString() + randomNumber_live.ToString() + date + ".html", funciones.de64aTexto(Request.QueryString["descripcion"]), Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_subproceso"])));
-                    Alert.ShowGiftCloseWindows("Estamos procesando el archivo al Servidor.", "Espere un Momento", "imagenes/loading.gif", "3000", this);
+                    Alert.ShowGiftCloseWindows("Estamos procesando el archivo al Servidor.", "Espere un Momento", "imagenes/loading.gif", "4000", this);
                     break;
             }
         }

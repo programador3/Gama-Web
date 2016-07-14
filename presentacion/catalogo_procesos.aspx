@@ -158,10 +158,10 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-md-6 col-xs-12">
                                     <asp:Button Visible="false" ID="btnGuardarSinLigar" runat="server" Text="Guardar" class="btn btn-success btn-block" OnClick="btnGuardarSinLigar_Click" />
-                                    <asp:Button Visible="false" ID="btnSinLigar" class="btn btn-success btn-block" runat="server" Text="Si, sin ligar a perfil" OnClick="btnSinLigar_Click" />
+                                    <asp:Button Visible="false" ID="btnSinLigar" class="btn btn-success btn-block" runat="server" Text="Si, Borrador sin ligar a Manual" OnClick="btnSinLigar_Click" />
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-md-6 col-xs-12">
-                                    <asp:Button ID="btncrearborrador" class="btn btn-primary btn-block" runat="server" Text="Si, Ligado a este Perfil" OnClick="btncrearborrador_Click" />
+                                    <asp:Button ID="btncrearborrador" class="btn btn-primary btn-block" runat="server" Text="Si, Borrador Ligado a este Manual" OnClick="btncrearborrador_Click" />
                                 </div>
                             </div>
                             <div class="row">

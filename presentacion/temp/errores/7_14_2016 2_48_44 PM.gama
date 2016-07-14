@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): No se encontró el procedimiento almacenado 'sp_visitas_personas'.
+   at negocio.Componentes.VisitasCOM.CargaPerfiles(VisitasENT entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\negocio\Componentes\VisitasCOM.cs:line 24
+   at presentacion.registro_visitas.CargaPersonas(String filtro) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\presentacion\registro_visitas.aspx.cs:line 38
+ClientConnectionId:b033b21f-5f77-41a2-90c5-a9acbdab7896
+Error Number:2812,State:62,Class:16

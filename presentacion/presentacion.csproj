@@ -527,9 +527,11 @@
     <Content Include="puestos_catalogo.aspx" />
     <Content Include="reasignacion_tareas.aspx" />
     <Content Include="redirect.aspx" />
+    <Content Include="registro_visitas.aspx" />
     <Content Include="rendimiento_tareas_asignadas.aspx" />
     <Content Include="rendimiento_tareas.aspx" />
     <Content Include="rendimiento_tareas_detalles.aspx" />
+    <Content Include="reportes_empleados.aspx" />
     <Content Include="reporte_faltas.aspx" />
     <Content Include="revisiones.aspx" />
     <Content Include="revisiones_entrega.aspx" />
@@ -1258,6 +1260,13 @@
     <Compile Include="redirect.aspx.designer.cs">
       <DependentUpon>redirect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="registro_visitas.aspx.cs">
+      <DependentUpon>registro_visitas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registro_visitas.aspx.designer.cs">
+      <DependentUpon>registro_visitas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="rendimiento_tareas_asignadas.aspx.cs">
       <DependentUpon>rendimiento_tareas_asignadas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1278,6 +1287,13 @@
     </Compile>
     <Compile Include="rendimiento_tareas_detalles.aspx.designer.cs">
       <DependentUpon>rendimiento_tareas_detalles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reportes_empleados.aspx.cs">
+      <DependentUpon>reportes_empleados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reportes_empleados.aspx.designer.cs">
+      <DependentUpon>reportes_empleados.aspx</DependentUpon>
     </Compile>
     <Compile Include="reporte_faltas.aspx.cs">
       <DependentUpon>reporte_faltas.aspx</DependentUpon>

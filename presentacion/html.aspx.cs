@@ -402,7 +402,7 @@ namespace presentacion
                     file_edit.Write(content);
                     file_edit.Close();
                     string mesnaje = AddPapeleriaToTableEtiquetas(dirInfo_edit.ToString() + randomNumber_live.ToString() + date + ".html", txtTitulo.Text.ToUpper() + "html", etiqueta, Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_html"])));
-                    Alert.ShowGift("Estamos procesando el archivo al Servidor.", "Espere un Momento", "imagenes/loading.gif", "3000", "El archivo fue modificado temporalmente. No se guardara hasta que no guarde el perfil seleccionado", this);
+                    Alert.ShowGiftCloseWindows("Estamos procesando el archivo al Servidor.", "Espere un Momento", "imagenes/loading.gif", "3000", this);
                     break;
             }
         }

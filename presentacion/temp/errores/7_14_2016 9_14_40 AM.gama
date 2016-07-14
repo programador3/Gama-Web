@@ -1,0 +1,6 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at presentacion.perfiles_captura2.cargar_formulario(Int32 idc_perfilgpo)

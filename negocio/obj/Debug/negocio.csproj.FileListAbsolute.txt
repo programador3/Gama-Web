@@ -709,3 +709,10 @@ E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\13_07_16\Puestos\negocio\bin
 E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\13_07_16\Puestos\negocio\obj\Debug\negocio.csprojResolveAssemblyReference.cache
 E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\13_07_16\Puestos\negocio\obj\Debug\negocio.dll
 E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\13_07_16\Puestos\negocio\obj\Debug\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\negocio\bin\Debug\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\negocio\bin\Debug\negocio.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\negocio\bin\Debug\datos.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\negocio\bin\Debug\datos.pdb
+E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\negocio\obj\Debug\negocio.csprojResolveAssemblyReference.cache
+E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\negocio\obj\Debug\negocio.dll
+E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\14_07_16\Puestos\negocio\obj\Debug\negocio.pdb

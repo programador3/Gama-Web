@@ -102,7 +102,7 @@ namespace presentacion
                     //string[] llaves = { "idc_perfiletiq_opc_dato_lib_borr" };
                     //gridgpo_lib.DataKeyNames = llaves;
                     lblmensaje.Text = "Borrador";
-                    lblmensaje.CssClass = "label label-primary";
+                    lblmensaje.CssClass = "btn btn-primary";
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace presentacion
                     //string[] llaves = { "idc_perfiletiq_opc_dato_lib" };
                     //gridgpo_lib.DataKeyNames = llaves;
                     lblmensaje.Text = "Produccion";
-                    lblmensaje.CssClass = "label label-success";
+                    lblmensaje.CssClass = "btn btn-success";
                 }
 
                 if (idcperfil == 0)
@@ -180,7 +180,7 @@ namespace presentacion
                 //revisamos el registro de la primer tabla
                 //ETAPA DE GRUPOS
                 DataRow fila = tbl_perfiles_gpo.Rows[0];
-                lblgrupotitulo.Text = fila["grupo"].ToString();
+                lblgrupotitulo.Text = "<i class='fa fa-list-alt' aria-hidden='true'></i>" + " " + fila["grupo"].ToString();
                 bool libre = Convert.ToBoolean(fila["libre"].ToString());
                 if (libre)
                 { //construye una caja de texto
@@ -1276,7 +1276,7 @@ namespace presentacion
                 if (statusGpo(Convert.ToInt32(DataBinder.Eval(dbr, "idc_perfilgpo"))))
                 {
                     //colorea
-                    btn.CssClass = "btn btn-success";
+                    btn.CssClass = "btn btn-info";
                 }
                 else
                 {
@@ -1285,6 +1285,7 @@ namespace presentacion
 
                 if (idgpo == Convert.ToInt32(DataBinder.Eval(dbr, "idc_perfilgpo")))
                 {
+                    inicio.Visible = false;
                     btn.CssClass = "btn btn-warning";
                 }
 
@@ -1300,7 +1301,7 @@ namespace presentacion
             {
                 guardaCambiosCheckboxlist();
             }
-
+            inicio.Visible = false;
             limpiarControles();
             int idc_perfilgpo = Convert.ToInt32(e.CommandName);
             //lo guardamos en el hidden
@@ -1779,7 +1780,7 @@ namespace presentacion
                     Button btn = (Button)item.FindControl("btnmenugpo");
                     if (statusGpo(id_gpo))
                     {
-                        btn.CssClass = "btn btn-success";
+                        btn.CssClass = "btn btn-info";
                     }
                     else
                     {

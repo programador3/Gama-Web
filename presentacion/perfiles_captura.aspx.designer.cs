@@ -31,15 +31,6 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Literal lit_titulo;
         
         /// <summary>
-        /// Control oc_paginaprevia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField oc_paginaprevia;
-        
-        /// <summary>
         /// Control lblmensaje.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Label lblmensaje;
         
         /// <summary>
+        /// Control oc_paginaprevia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField oc_paginaprevia;
+        
+        /// <summary>
         /// Control check_borr_prod.
         /// </summary>
         /// <remarks>
@@ -56,15 +56,6 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox check_borr_prod;
-        
-        /// <summary>
-        /// Control panelGral.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelGral;
         
         /// <summary>
         /// Control txtnomperfil.
@@ -110,6 +101,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblgrupotitulo;
+        
+        /// <summary>
+        /// Control inicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl inicio;
         
         /// <summary>
         /// Control panel_grupo_detalle.
@@ -166,15 +166,6 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtgpolibre;
         
         /// <summary>
-        /// Control lit_mensaje_gpo_lib.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lit_mensaje_gpo_lib;
-        
-        /// <summary>
         /// Control btnaddgpolib.
         /// </summary>
         /// <remarks>
@@ -193,6 +184,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.ImageButton btneditgpolib;
         
         /// <summary>
+        /// Control btncanceleditgpolib.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btncanceleditgpolib;
+        
+        /// <summary>
         /// Control oc_edit_idgpolib.
         /// </summary>
         /// <remarks>
@@ -202,13 +202,13 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.HiddenField oc_edit_idgpolib;
         
         /// <summary>
-        /// Control btncanceleditgpolib.
+        /// Control lit_mensaje_gpo_lib.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btncanceleditgpolib;
+        protected global::System.Web.UI.WebControls.Literal lit_mensaje_gpo_lib;
         
         /// <summary>
         /// Control lblmin.

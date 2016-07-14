@@ -99,6 +99,7 @@
     <Compile Include="Componentes\Vehiculos_PreparacionCOM.cs" />
     <Compile Include="Componentes\Vehiculos_RevisionCOM.cs" />
     <Compile Include="Componentes\VendedoresCOM.cs" />
+    <Compile Include="Componentes\VisitasCOM.cs" />
     <Compile Include="Entidades\AdministradorPrebajasENT.cs" />
     <Compile Include="Entidades\Administrador_EntregasENT.cs" />
     <Compile Include="Entidades\Administrador_PreparacionesENT.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Entidades\Vehiculos_PreparacionENT.cs" />
     <Compile Include="Entidades\Vehiculos_RevisionENT.cs" />
     <Compile Include="Entidades\VendedoresENT.cs" />
+    <Compile Include="Entidades\VisitasENT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

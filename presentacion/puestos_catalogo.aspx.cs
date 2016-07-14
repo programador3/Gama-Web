@@ -174,10 +174,12 @@ namespace presentacion
                 vacaiones.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 199);
                 permiso.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 361);
 
+                reportes.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 370);
                 lugartrabajo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 362);
                 //si tiene el permiso pero tambien es su jefe directo o depende de el
                 if (idc_puesto_jefe == IDC_PUESTO_LOGIN || abajo_de_mi == true)
                 {
+                    reportes.Visible = true;
                     lugartrabajo.Visible = true;
                     permiso.Visible = true;
                     prebaja.Visible = true;
@@ -193,6 +195,7 @@ namespace presentacion
             }
             else//si no tiene el permiso de ver todo, y lo puede ver, quiere decir que es su jefe directo o depende de el
             {
+                reportes.Visible = true;
                 lugartrabajo.Visible = true;
                 permiso.Visible = true;
                 prebaja.Visible = true;
@@ -668,6 +671,12 @@ namespace presentacion
         {
             int value = Convert.ToInt32(modal_cboxperfiles.SelectedValue);
             Session["value_perfil"] = value;
+        }
+
+        protected void lnkreporte_Click(object sender, EventArgs e)
+        {
+            string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
+            Response.Redirect("reportes_empleados.aspx?idc_empleado=" + funciones.deTextoa64(val));
         }
     }
 }

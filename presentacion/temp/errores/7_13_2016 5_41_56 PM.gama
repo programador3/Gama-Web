@@ -1,0 +1,10 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.FormatException: Invalid length for a Base-64 char array or string.
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at presentacion.funciones.de64aTexto(String cadena) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\13_07_16\Puestos\presentacion\funciones.cs:line 704
+   at presentacion.tareas_informacion_adicional.CargarTareas() in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\13_07_16\Puestos\presentacion\tareas_informacion_adicional.aspx.cs:line 34

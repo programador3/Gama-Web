@@ -26,51 +26,43 @@ namespace presentacion
 
             //<--MAURICIO
             int idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
-            int idc_tipo_aut = 317;
-            int idc_opcion = 1798;
-            ////valida si tiene permiso de ver esta pagina//
-
-            //--z
-            //SI el reuqest viene de un evento via doPost por un boton
-            if (Request.Form["__EVENTTARGET"] == "btnNew")
-            {   //llamamos el metodo que queremos ejecutar, en este caso el evento onclick del boton btnNew
-                btnNew_Click(this, new EventArgs());
-            }
-
-            if (Request.QueryString["sborrador"] == null)// si el request viene vacio iniciamos en produccion
+            if (!IsPostBack)
             {
-                cbxTipo.Checked = false;
-                CargaGrid();
+                //FIN
+                try
+                {
+                    CargaGrid();
+                }
+                catch (Exception ex)
+                {
+                    msgbox.show("eere" + ex.Message, this.Page);
+                }
             }
-            else
-            {//tomamos parametros y comprobamos
+            ////valida si tiene permiso de ver esta pagina//
+            if (Request.QueryString["sborrador"] != null)// si el request viene vacio iniciamos en borrador
+            {
                 int sborrador = 0;
                 sborrador = Convert.ToInt32(Request.QueryString["sborrador"]);
                 if (sborrador == 0)
                 {
+                    lblmensaje.Text = " De Producción";
+                    lblmensaje.CssClass = "btn btn-success";
                     cbxTipo.Checked = true;
                 }
                 else
                 {
+                    lblmensaje.Text = " De Borrador";
+                    lblmensaje.CssClass = "btn btn-primary";
                     cbxTipo.Checked = false;
                 }
             }
             //TIENE PERMISO PARA PRODUCCION O NO 18-09-2015
             ////valida si tiene permiso de ver esta pagina//
             int sborradores = Request.QueryString["sborrador"] == null ? 1 : Convert.ToInt32(Request.QueryString["sborrador"]);
-            if (funciones.autorizacion(idc_usuario, idc_tipo_aut) == false && sborradores == 0)
+            if (funciones.autorizacion(idc_usuario, 317) == false && sborradores == 0)
             {
                 //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
-                btnNew.Visible = false;
-            }
-            //FIN
-            try
-            {
-                CargaGrid();
-            }
-            catch (Exception ex)
-            {
-                msgbox.show("eere" + ex.Message, this.Page);
+                lnknuevo.Visible = false;
             }
         }
 
@@ -101,7 +93,7 @@ namespace presentacion
                 {
                     ///todo bien
                     CargaGrid();
-                    Alert.ShowAlert("Perfil eliminado correctamente", "Mensaje del sistema", this);
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspxz", "imagenes/loading.gif", "2000", "Perfil Eliminado Correctamente", this);
                 }
                 else
                 {
@@ -158,8 +150,7 @@ namespace presentacion
             {
                 if (mensaje.Equals(string.Empty))
                 {
-                    CargaGrid();
-                    Alert.ShowAlert("La autorización fue solicitada correctamente.", "Mensaje del sistema", this);
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspxz", "imagenes/loading.gif", "2000", "La autorización fue solicitada correctamente", this);
                 }
                 else
                 {
@@ -204,7 +195,8 @@ namespace presentacion
                 {
                     //todo bien
                     CargaGrid();
-                    Alert.ShowAlert("Listo borrador desbloqueado", "Mensaje del sistema", this.Page);
+
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspxz", "imagenes/loading.gif", "2000", "Listo borrador desbloqueado", this);
                 }
                 else
                 {
@@ -382,7 +374,6 @@ namespace presentacion
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','Desea Editar el perfil de " + perfil + "? O puede crear un nuevo borrador sin ligar a este perfil');", true);
                     Session["url_value"] = "perfiles_captura.aspx?uidc_puestoperfil=" + vidc_borr.ToString() + "&uborrador=1";
                 }
-                
             }
         }
 
@@ -402,17 +393,13 @@ namespace presentacion
                     //nuevo_registro.ImageUrl = "imagenes/btn/new_register.png";
                     e.Row.Cells[7].BackColor = Color.FromName("#81F79F");
                 }
-            }
-
-            if (Request.QueryString["sborrador"] == null)//si el request viene vacio ejecuto el modo borrador
-            {
-                if (e.Row.RowType == DataControlRowType.DataRow)
+                if (cbxTipo.Checked == false)//si el request viene vacio ejecuto el modo borrador
                 {
-                    DataRowView rowView = (DataRowView)e.Row.DataItem;
-                    if (Convert.ToBoolean(rowView["pendiente"]) == true)//si es true, check es true
-                    {
+                    if (Convert.ToBoolean(rowView["pendiente"]) == true)
+                    {//si es true check es trueprimeros dos controles vacios
                         e.Row.Cells[1].Controls.Clear();
                         e.Row.Cells[2].Controls.Clear();
+
                         e.Row.Cells[9].Controls.Clear();
                         pendiente.ImageUrl = "imagenes/btn/checked.png";
                     }
@@ -420,11 +407,11 @@ namespace presentacion
                     {
                         e.Row.Cells[10].Controls.Clear();
                     }
-                    if (Convert.ToBoolean(rowView["produccion"]) == true)//si es true, check es true
+                    if (Convert.ToBoolean(rowView["produccion"]) == true)//si es true check es true
                     {
                         produccion.ImageUrl = "imagenes/btn/checked.png";
                     }
-                    if (Convert.ToBoolean(rowView["borrador"]) == true)//si es true, check es true
+                    if (Convert.ToBoolean(rowView["borrador"]) == true)//si es true check es true
                     {
                         borrador.ImageUrl = "imagenes/btn/checked.png";
                     }
@@ -433,91 +420,58 @@ namespace presentacion
                         e.Row.Cells[1].Controls.Clear();
                     }
                 }
-            }
-            else
-            {
-                int sborrador = 0;
-                sborrador = Convert.ToInt32(Request.QueryString["sborrador"]);
-                if (sborrador == 1)
-                {//solo si es borrador
-                    if (e.Row.RowType == DataControlRowType.DataRow)
+                else
+                {
+                    e.Row.Cells[9].Controls.Clear();
+                    int idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
+                    int idc_tipo_aut = 317;
+                    int idc_opcion = 1798;
+                    ////valida si tiene permiso de ver esta pagina//
+                    if (funciones.autorizacion(idc_usuario, 345) == true)
                     {
-                        DataRowView rowView = (DataRowView)e.Row.DataItem;
-                        if (Convert.ToBoolean(rowView["pendiente"]) == true)
-                        {//si es true check es trueprimeros dos controles vacios
-                            e.Row.Cells[1].Controls.Clear();
-                            e.Row.Cells[2].Controls.Clear();
-
-                            e.Row.Cells[9].Controls.Clear();
-                            pendiente.ImageUrl = "imagenes/btn/checked.png";
-                        }
-                        else
-                        {
-                            e.Row.Cells[10].Controls.Clear();
-                        }
-                        if (Convert.ToBoolean(rowView["produccion"]) == true)//si es true check es true
-                        {
-                            produccion.ImageUrl = "imagenes/btn/checked.png";
-                        }
-                        if (Convert.ToBoolean(rowView["borrador"]) == true)//si es true check es true
-                        {
-                            borrador.ImageUrl = "imagenes/btn/checked.png";
-                        }
-                        if (Convert.ToInt32(rowView["id_perfilborrador"]) == 0)//no tiene borrador(NO PUEDE BORRAR)
-                        {
-                            e.Row.Cells[1].Controls.Clear();
-                        }
+                        //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
+                        e.Row.Cells[0].Controls.Clear();
+                        e.Row.Cells[1].Controls.Clear();
                     }
-                }
-                if (sborrador == 0)
-                {//si es produccion
-                    if (e.Row.RowType == DataControlRowType.DataRow)
+                    if (funciones.autorizacion(idc_usuario, idc_tipo_aut) == false)
                     {
-                        e.Row.Cells[9].Controls.Clear();
-                        DataRowView rowView = (DataRowView)e.Row.DataItem;
-                        int idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
-                        int idc_tipo_aut = 317;
-                        int idc_opcion = 1798;
-                        ////valida si tiene permiso de ver esta pagina//
-                        if (funciones.autorizacion(idc_usuario, 345) == true)
-                        {
-                            //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
-                            e.Row.Cells[0].Controls.Clear();
-                            e.Row.Cells[1].Controls.Clear();
-                        }
-                        if (funciones.autorizacion(idc_usuario, idc_tipo_aut) == false)
-                        {
-                            //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
-                            e.Row.Cells[0].Controls.Clear();
-                            e.Row.Cells[1].Controls.Clear();
-                        }
+                        //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
+                        e.Row.Cells[0].Controls.Clear();
+                        e.Row.Cells[1].Controls.Clear();
+                    }
 
-                        if (Convert.ToBoolean(rowView["pendiente"]) == true)
-                        {//si es true check es true                        {
-                            pendiente.ImageUrl = "imagenes/btn/checked.png";
-                        }
-                        else
-                        {
-                            e.Row.Cells[10].Controls.Clear();
-                        }
-                        if (Convert.ToBoolean(rowView["produccion"]) == true)//si es true check es true
-                        {
-                            produccion.ImageUrl = "imagenes/btn/checked.png";
-                        }
-                        if (Convert.ToBoolean(rowView["borrador"]) == true)//si es true check es true
-                        {
-                            borrador.ImageUrl = "imagenes/btn/checked.png";
-                        }
+                    if (Convert.ToBoolean(rowView["pendiente"]) == true)
+                    {//si es true check es true                        {
+                        pendiente.ImageUrl = "imagenes/btn/checked.png";
+                    }
+                    else
+                    {
+                        e.Row.Cells[10].Controls.Clear();
+                    }
+                    if (Convert.ToBoolean(rowView["produccion"]) == true)//si es true check es true
+                    {
+                        produccion.ImageUrl = "imagenes/btn/checked.png";
+                    }
+                    if (Convert.ToBoolean(rowView["borrador"]) == true)//si es true check es true
+                    {
+                        borrador.ImageUrl = "imagenes/btn/checked.png";
+                    }
 
-                        if (Convert.ToInt32(rowView["id_perfilproduccion"]) == 0)//no tiene produccion(NO PUEDE BORRAR)
-                        {
-                            e.Row.Cells[1].Controls.Clear();
-                        }
+                    if (Convert.ToInt32(rowView["id_perfilproduccion"]) == 0)//no tiene produccion(NO PUEDE BORRAR)
+                    {
+                        e.Row.Cells[1].Controls.Clear();
                     }
                 }
             }
+
             ////valida si tiene permiso de ver esta pagina//
-            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 345) == true)
+            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 345) == true && cbxTipo.Checked == false) //borrador
+            {
+                //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
+                e.Row.Cells[0].Controls.Clear();
+                e.Row.Cells[1].Controls.Clear();
+            }
+            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 317) == false && cbxTipo.Checked == true)//produ
             {
                 //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
                 e.Row.Cells[0].Controls.Clear();
@@ -752,6 +706,57 @@ namespace presentacion
         protected void btnNo_Click(object sender, EventArgs e)
         {
             Response.Redirect("perfiles.aspx");
+        }
+
+        protected void lnknuevo_Click(object sender, EventArgs e)
+        {
+            //verifico que tipo de perfil es
+            if (cbxTipo.Checked == true)//si es produccion mando directo a pantalla con parammetro 0
+            {
+                Response.Redirect("perfiles_captura.aspx?uborrador=0");
+            }
+            if (cbxTipo.Checked == false)//si es borrador mando parametro1
+            {
+                Response.Redirect("perfiles_captura.aspx?uborrador=1");
+            }
+        }
+
+        protected void lnkproduccion_Click(object sender, EventArgs e)
+        {
+            lnkproduccion.Visible = false;
+            lnkborrador.Visible = true;
+            cbxTipo.Checked = true;
+            lblmensaje.Text = " De Producción";
+            lblmensaje.CssClass = "btn btn-success";
+            lnknuevo.CssClass = "btn btn-success btn-block";
+            //FIN
+            try
+            {
+                CargaGrid();
+            }
+            catch (Exception ex)
+            {
+                msgbox.show("eere" + ex.Message, this.Page);
+            }
+        }
+
+        protected void lnkborrador_Click(object sender, EventArgs e)
+        {
+            lnkproduccion.Visible = true;
+            lnkborrador.Visible = false;
+            cbxTipo.Checked = false;
+            lblmensaje.Text = " De Borrador";
+            lblmensaje.CssClass = "btn btn-primary";
+            lnknuevo.CssClass = "btn btn-primary btn-block";
+            //FIN
+            try
+            {
+                CargaGrid();
+            }
+            catch (Exception ex)
+            {
+                msgbox.show("eere" + ex.Message, this.Page);
+            }
         }
     }
 }

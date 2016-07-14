@@ -40,13 +40,40 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.HiddenField id_res;
         
         /// <summary>
-        /// Control btnNew.
+        /// Control lblmensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnNew;
+        protected global::System.Web.UI.WebControls.Label lblmensaje;
+        
+        /// <summary>
+        /// Control lnknuevo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnknuevo;
+        
+        /// <summary>
+        /// Control lnkproduccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkproduccion;
+        
+        /// <summary>
+        /// Control lnkborrador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkborrador;
         
         /// <summary>
         /// Control cbxTipo.

@@ -24,7 +24,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-    <h1 class="page-header">
+    <h1 class="page-header"> Manual de Procesos
         <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
         <span>
             <asp:Label ID="lnltipo" runat="server" Text=" Tipo Borrador" CssClass="btn btn-primary"></asp:Label></span>
@@ -37,19 +37,24 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4><strong><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;Proceso Principal</strong></h4>
-                            <asp:TextBox ID="txtdescproceso" CssClass="form-control" TextMode="MultiLine" Rows="2" runat="server"></asp:TextBox>
+                            <h4><strong><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Proceso Principal</strong></h4>
+                            <asp:TextBox ID="txtdescproceso" placeholder="Escriba el Nombredel Proceso" CssClass="form-control" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <h4><strong><i class="fa fa-files-o" aria-hidden="true"></i>&nbsp;Archivos Anexos al Proceso Principal</strong></h4>
-                            <br />
                             <h5><strong>Subir Archivos</strong></h5>
                             <asp:TextBox ID="txtobsrarchivo" CssClass="form-control" placeholder="Ingrese una descripcion para el archivo" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 200);" runat="server"></asp:TextBox>
                             <br />
-                            <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
-                            <asp:LinkButton ID="lnkaddfile" CssClass="btn btn-success btn-block" OnClick="lnkaddfile_Click" runat="server">Agregar Archivo  <i class="fa fa-plus-circle" aria-hidden="true"></i></asp:LinkButton>
+                            <div class="input-group">
+                                <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
+                                <span class="input-group-addon" style="color: #fff; background-color: #1ABC9C;">
+                                    <asp:LinkButton ID="lnkaddfile" Style="color: #fff; background-color: #1ABC9C;" OnClick="lnkaddfile_Click" runat="server">Agregar Archivo  <i class="fa fa-plus-circle" aria-hidden="true"></i></asp:LinkButton>
+                                </span>
+                            </div>
+                           
+                         
                             <br />
                             <div class="table table-responsive">
                                 <asp:GridView ID="gridarchivos" runat="server" DataKeyNames="idc_procesosarc,url,observaciones" CssClass="table table-responsive table-bordered" OnRowCommand="gridarchivos_RowCommand" AutoGenerateColumns="False">
@@ -77,18 +82,18 @@
                     <asp:PostBackTrigger ControlID="lnkDescargarArchi" />
                 </Triggers>
                 <ContentTemplate>
-                    <div class="panel panel-info fresh-color">
+                    <div class="panel panel-primary fresh-color">
                         <div class="panel-heading" style="text-align: center;">Sub Procesos</div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4><strong><i class="fa fa-retweet" aria-hidden="true"></i>&nbsp;SubProceso</strong></h4>
-                                    <asp:TextBox ID="txtsubproceso" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 250);" TextMode="MultiLine" placeholder="Escriba la descripcion del subproceso" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <h4><strong><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;SubProceso</strong></h4>
+                                    <asp:TextBox ID="txtsubproceso" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 250);" placeholder="Escriba la descripcion o encabezado del subproceso" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4><strong><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Perfiles Relacionados al SubProceso</strong><small> Seleccione los perfiles</small></h4>
+                                    <h4><strong><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Perfiles Relacionados al SubProceso</strong><small> Seleccione los perfiles relacionados</small></h4>
                                     <div style="height: 185px; overflow: scroll;">
                                         <asp:CheckBoxList ID="cbxlperfiles" CssClass="radio3 radio-check radio-info radio-inline" runat="server"></asp:CheckBoxList>
                                     </div>
