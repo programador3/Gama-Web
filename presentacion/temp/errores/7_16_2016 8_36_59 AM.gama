@@ -1,0 +1,16 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at presentacion.tareas_informacion_adicional.repeat_ItemDataBound(Object sender, RepeaterItemEventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\16_07_16\Puestos\presentacion\tareas_informacion_adicional.aspx.cs:line 69
+   at System.Web.UI.WebControls.Repeater.OnItemDataBound(RepeaterItemEventArgs e)
+   at System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   at System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   at System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   at System.Web.UI.WebControls.Repeater.CreateControlHierarchy(Boolean useDataSource)
+   at System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   at System.Web.UI.WebControls.Repeater.DataBind()
+   at presentacion.tareas_informacion_adicional.CargarTareas() in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\16_07_16\Puestos\presentacion\tareas_informacion_adicional.aspx.cs:line 49

@@ -335,5 +335,11 @@ namespace presentacion
             Encontramos.Visible = true;
             lblenc.Text = ds.Tables[0].Rows.Count.ToString();
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //string d = htmlsummernote.InnerHtml;
+            //d = d;
+        }
     }
 }

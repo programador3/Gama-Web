@@ -283,10 +283,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:37</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>07/13/2016 14:09:12</publishTime>
+      <publishTime>07/16/2016 10:43:56</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>07/14/2016 12:09:05</publishTime>
+      <publishTime>07/16/2016 10:43:58</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>07/02/2016 12:30:31</publishTime>
@@ -1456,7 +1456,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/06/2016 09:57:57</publishTime>
     </File>
     <File Include="menu.aspx">
-      <publishTime>06/25/2016 12:25:27</publishTime>
+      <publishTime>07/16/2016 10:02:07</publishTime>
     </File>
     <File Include="Not/animate.css">
       <publishTime>04/06/2016 17:23:21</publishTime>
@@ -1624,10 +1624,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/14/2016 11:34:07</publishTime>
     </File>
     <File Include="perfiles_captura.aspx">
-      <publishTime>07/14/2016 12:02:48</publishTime>
+      <publishTime>07/15/2016 08:40:48</publishTime>
     </File>
     <File Include="perfiles_detalle.aspx">
-      <publishTime>05/20/2016 09:30:15</publishTime>
+      <publishTime>07/15/2016 09:47:04</publishTime>
     </File>
     <File Include="perfiles_pendiente.aspx">
       <publishTime>07/01/2016 10:36:15</publishTime>
@@ -1827,6 +1827,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="redirect.aspx">
       <publishTime>05/20/2016 09:31:23</publishTime>
     </File>
+    <File Include="registro_visitas.aspx">
+      <publishTime>07/16/2016 09:01:44</publishTime>
+    </File>
     <File Include="rendimiento_tareas.aspx">
       <publishTime>06/27/2016 15:36:56</publishTime>
     </File>
@@ -1841,6 +1844,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="reporte_faltas.aspx">
       <publishTime>06/08/2016 10:22:54</publishTime>
+    </File>
+    <File Include="reporte_visitas.aspx">
+      <publishTime>07/16/2016 10:40:56</publishTime>
     </File>
     <File Include="revisiones.aspx">
       <publishTime>05/20/2016 09:31:38</publishTime>
@@ -1951,7 +1957,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/14/2016 12:09:07</publishTime>
+      <publishTime>07/16/2016 10:44:01</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>

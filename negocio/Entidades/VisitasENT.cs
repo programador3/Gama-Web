@@ -7,6 +7,8 @@ namespace negocio.Entidades
 {
     public class VisitasENT
     {
+        private DateTime fi;
+        private DateTime fs;
         private string nombre;
         private string nombreempresa;
         private string motivo;
@@ -84,5 +86,8 @@ namespace negocio.Entidades
             get { return idc_visitareg; }
             set { idc_visitareg = value; }
         }
+
+        public DateTime pfi { get { return fi; } set { fi = value; } }
+        public DateTime pf2 { get { return fs; } set { fs = value; } }
     }
 }

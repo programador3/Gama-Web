@@ -69,7 +69,7 @@ namespace presentacion
                         int RequestIDV = Convert.ToInt32(Request.QueryString["uidc_puestoperfil_borr"].ToString());//Tipo Borrador
                         CargarDatosPerfilBorrador(RequestIDV);
                         lbltipo.Text = "BORRADOR";
-                        lbltipo.CssClass = "label label-primary";
+                        lbltipo.CssClass = "btn btn-primary";
                         lbltipo.Visible = true;
                     }
                     else
@@ -77,7 +77,7 @@ namespace presentacion
                         int RequestIDV = Convert.ToInt32(Request.QueryString["uidc_puestoperfil"].ToString());//Tipo Produccion
                         CargarDatosPerfil(RequestIDV);
                         lbltipo.Text = "PRODUCCION";
-                        lbltipo.CssClass = "label label-success";
+                        lbltipo.CssClass = "btn btn-success";
                         lbltipo.Visible = true;
                     }
                 }

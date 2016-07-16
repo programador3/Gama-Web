@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -22,6 +23,7 @@ namespace presentacion
                 Session["idc_visitap"] = null;
                 Session["idc_visitaemp"] = null;
                 Session["idc_visitareg"] = null;
+                txtpbservaciones.Visible = false;
                 CargaPuestos("");
                 CargarVisitas(0);
             }
@@ -210,6 +212,7 @@ namespace presentacion
             else
             {
                 CargarVisitas(idc);
+                lbltitle.Text = ddlPuestoAsigna.SelectedItem.ToString();
             }
         }
 
@@ -234,22 +237,26 @@ namespace presentacion
                 entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
                 DataSet ds = new DataSet();
                 string vmensaje = "";
+                string vmensajee = "";
                 switch (caso)
                 {
                     case "Guardar":
                         ds = componente.AgregarVisita(entidad);
-                        vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         break;
 
                     case "Terminar":
+                        entidad.Pmotivo = txtpbservaciones.Text;
                         entidad.Pidc_visitareg = Convert.ToInt32(Session["idc_visitareg"]);
                         ds = componente.TerminarVisita(entidad);
-                        vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         break;
                 }
+
+                vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+
+                vmensajee = ds.Tables[0].Rows[0]["mensaje_extra"].ToString() == "" ? "Visita Procesada Correctamente" : ds.Tables[0].Rows[0]["mensaje_extra"].ToString();
                 if (vmensaje == "")
                 {
-                    Alert.ShowGiftMessage("Estamos procesando la visita.", "Espere un Momento", "registro_visitas.aspx", "imagenes/loading.gif", "2000", "Visita Procesada Correctamente ", this);
+                    Alert.ShowGiftMessage("Estamos procesando la visita.", "Espere un Momento", "registro_visitas.aspx", "imagenes/loading.gif", "2000", vmensajee, this);
                 }
                 else
                 {
@@ -281,6 +288,8 @@ namespace presentacion
             }
             else
             {
+                txtpbservaciones.Visible = false;
+                txtpbservaciones.Text = "";
                 Session["Caso_Confirmacion"] = "Guardar";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Guardar esta Visita.? Se le enviara un correo al Empleado " + ddlPuestoAsigna.SelectedItem + " de manera automatica.','modal fade modal-info');", true);
             }
@@ -300,10 +309,28 @@ namespace presentacion
                 case "Terminar":
                     Session["idc_visitareg"] = idc;
                     Session["Caso_Confirmacion"] = "Terminar";
+                    txtpbservaciones.Visible = true;
+
+                    txtpbservaciones.Text = "";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Terminar esta Visita.? ','modal fade modal-info');", true);
 
                     break;
             }
+        }
+
+        protected void lnkurladicinal_Click(object sender, EventArgs e)
+        {
+            string pagina = "tareas_informacion_adicional.aspx?idc_tipoi=" + funciones.deTextoa64("4") + "&idc_proceso=" + funciones.deTextoa64("0");
+            String url = HttpContext.Current.Request.Url.AbsoluteUri;
+            String path_actual = url.Substring(url.LastIndexOf("/") + 1);
+            url = url.Replace(path_actual, "");
+            url = url + pagina;
+            ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "window.open('" + url + "');", true);
+        }
+
+        protected void LNKUPDATE_Click(object sender, EventArgs e)
+        {
+            CargarVisitas(0);
         }
     }
 }

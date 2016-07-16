@@ -43,6 +43,25 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet CragarVisitasReporte(VisitasENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_empleado });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfechainicio", SqlDbType = SqlDbType.Int, Value = entidad.pfi });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfechafin", SqlDbType = SqlDbType.Int, Value = entidad.pf2 });
+            try
+            {
+                ds = data.enviar("sp_visitas_registros", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet CargaeMPRESA(VisitasENT entidad)
         {
             DataSet ds = new DataSet();
@@ -96,6 +115,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = entidad.Pdirecip });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.VarChar, Value = entidad.Pmotivo });
             try
             {
                 ds = data.enviar("sp_terminar_registros_visitas", listparameters, true);

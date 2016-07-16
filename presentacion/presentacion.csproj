@@ -533,6 +533,7 @@
     <Content Include="rendimiento_tareas_detalles.aspx" />
     <Content Include="reportes_empleados.aspx" />
     <Content Include="reporte_faltas.aspx" />
+    <Content Include="reporte_visitas.aspx" />
     <Content Include="revisiones.aspx" />
     <Content Include="revisiones_entrega.aspx" />
     <Content Include="revisiones_preparacion.aspx" />
@@ -1301,6 +1302,13 @@
     </Compile>
     <Compile Include="reporte_faltas.aspx.designer.cs">
       <DependentUpon>reporte_faltas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reporte_visitas.aspx.cs">
+      <DependentUpon>reporte_visitas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reporte_visitas.aspx.designer.cs">
+      <DependentUpon>reporte_visitas.aspx</DependentUpon>
     </Compile>
     <Compile Include="revisiones.aspx.cs">
       <DependentUpon>revisiones.aspx</DependentUpon>

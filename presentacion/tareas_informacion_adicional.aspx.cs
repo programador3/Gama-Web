@@ -66,29 +66,32 @@ namespace presentacion
             HiddenField cursor = (HiddenField)e.Item.FindControl("cursornumber");
             DataSet ds = (DataSet)Session["datasetiad"];
             DataTable dt = ds.Tables[contador];
-            string type_cursor = dt.Rows[0]["type_cursor"].ToString();
-            string title = dt.Rows[0]["name_table"].ToString();
-            switch (type_cursor)
+            if (dt.Rows.Count > 0)
             {
-                case "textbox":
-                    textbox.Visible = true;
-                    lbltextname.Text = dt.Rows[0]["name_table"].ToString();
-                    txt.Text = dt.Rows[0]["contenido"].ToString();
-                    break;
+                string type_cursor = dt.Rows[0]["type_cursor"].ToString();
+                string title = dt.Rows[0]["name_table"].ToString();
+                switch (type_cursor)
+                {
+                    case "textbox":
+                        textbox.Visible = true;
+                        lbltextname.Text = dt.Rows[0]["name_table"].ToString();
+                        txt.Text = dt.Rows[0]["contenido"].ToString();
+                        break;
 
-                case "gridview":
-                    gridview.Visible = true;
-                    //copiamos tabla para eliminar columnas
-                    DataTable copyDataTable;
-                    copyDataTable = dt.Copy();
-                    //eliminamos columnas inecesarias, al eliminar la 0, la 1 se convierte en 0
-                    copyDataTable.Columns.RemoveAt(0);// nombre de tabla
-                    copyDataTable.Columns.RemoveAt(0);// tipo de cursor
-                    lblname.Text = dt.Rows[0]["name_table"].ToString();
-                    grid.DataSource = copyDataTable;
-                    grid.DataBind();
-                    cursor.Value = contador.ToString();
-                    break;
+                    case "gridview":
+                        gridview.Visible = true;
+                        //copiamos tabla para eliminar columnas
+                        DataTable copyDataTable;
+                        copyDataTable = dt.Copy();
+                        //eliminamos columnas inecesarias, al eliminar la 0, la 1 se convierte en 0
+                        copyDataTable.Columns.RemoveAt(0);// nombre de tabla
+                        copyDataTable.Columns.RemoveAt(0);// tipo de cursor
+                        lblname.Text = dt.Rows[0]["name_table"].ToString();
+                        grid.DataSource = copyDataTable;
+                        grid.DataBind();
+                        cursor.Value = contador.ToString();
+                        break;
+                }
             }
 
             contador = contador + 1;

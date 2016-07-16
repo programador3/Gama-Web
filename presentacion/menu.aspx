@@ -4,6 +4,9 @@
     <link href="css/PanelsLTE.css" rel="stylesheet" />
     <link href="css/ionicons.css" rel="stylesheet" />
     <link href="css/ionicons.min.css" rel="stylesheet" />
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
     <script type="text/javascript">
         function Search() {
             var value = document.getElementById('<%=txtsearch.ClientID%>').value;
@@ -21,6 +24,13 @@
         function DeleteFocus(txt) {
             txt.value = "";
         }
+        //$(document).ready(function () {
+        //    $('#htmlsummernote').summernote();
+        //});
+        //function GetHtml(){
+        //    var markupStr = $('#htmlsummernote').summernote('code');
+        //    alert(markupStr);
+        //}
     </script>
     <style type="text/css">
         .dropdown-submenu {

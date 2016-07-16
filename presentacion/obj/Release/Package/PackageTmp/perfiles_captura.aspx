@@ -91,7 +91,7 @@
                         <asp:Label ID="lblgrupotitulo" runat="server" Text=""></asp:Label></strong></h2>
                     <div class="alert fresh-color alert-info alert-dismissible" role="alert" runat="server" id="inicio">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong>Empezar!</strong> Seleccione un Grupo para empezar a llenar el formulario.
+                        <strong>Para Empezar!</strong> Seleccione un Grupo para empezar a llenar el formulario.
                     </div>
                     <!-- GRUPO DETALLE -->
                     <asp:Panel ID="panel_grupo_detalle" runat="server" Visible="False">
