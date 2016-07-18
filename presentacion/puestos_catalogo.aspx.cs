@@ -675,8 +675,9 @@ namespace presentacion
 
         protected void lnkreporte_Click(object sender, EventArgs e)
         {
+            string idc_puesto = Convert.ToInt32(Session["idc_puesto"]).ToString();
             string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
-            Response.Redirect("reportes_empleados.aspx?idc_empleado=" + funciones.deTextoa64(val));
+            Response.Redirect("reportes_empleados.aspx?idc_empleado=" + funciones.deTextoa64(val)+ "&idc_puesto="+funciones.deTextoa64(idc_puesto));
         }
     }
 }

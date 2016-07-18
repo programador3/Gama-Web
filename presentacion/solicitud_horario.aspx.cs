@@ -23,6 +23,7 @@ namespace presentacion
             if (!IsPostBack && Request.QueryString["autoriza"] == null)
             {
                 Session["idc_horario_perm"] = null;
+                Session["checacomida"] = null;
                 solicita.Visible = true;
                 lblobsr.Visible = false;
                 lnkedit.Visible = false;
@@ -35,6 +36,7 @@ namespace presentacion
             if (!IsPostBack && Request.QueryString["autoriza"] != null)
             {
                 Session["idc_horario_perm"] = null;
+                Session["checacomida"] = null;
                 Session["pidc_empleado_solic_horario"] = null;
                 CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
                 CargarDetallesl(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"])));
@@ -68,6 +70,7 @@ namespace presentacion
                     lblEmpleado.Text = ds.Tables[0].Rows[0]["empleado"].ToString();
                     lbldepto.Text = ds.Tables[0].Rows[0]["depto"].ToString();
                     Session["pidc_empleado_solic_horario"] = Convert.ToInt32(ds.Tables[0].Rows[0]["idc_empleado"]);
+                    Session["checacomida"] = Convert.ToBoolean(ds.Tables[0].Rows[0]["CHECACOMIDA"]);
                     string rutaimagen = funciones.GenerarRuta("fot_emp", "rw_carpeta");
                     var domn = Request.Url.Host;
                     if (domn == "localhost" || Convert.ToInt32(ds.Tables[0].Rows[0]["idc_empleado"]) == 0)
@@ -122,6 +125,14 @@ namespace presentacion
                     txthoraentradac.Enabled = false;
                     txthorasalida.Enabled = false;
                     txthorasalidac.Enabled = false;
+                    if (txthoraentrada.Text == "" &&
+                        txthorasalida.Text == "" &&
+                        txthorasalidac.Text == "" &&
+                        txthoraentradac.Text == "")
+                    {
+                        btntot.CssClass = "btn btn-success btn-block";
+                        cuerpo.Visible = false;
+                    }
                 }
                 else
                 {
@@ -185,6 +196,7 @@ namespace presentacion
                 }
                 else
                 {
+                    cuerpo.Visible = true;
                     ddlsucursales.SelectedValue = "0";
                     txthoraentrada.Text = "";
                     txthoraentradac.Text = "";
@@ -224,9 +236,12 @@ namespace presentacion
                 }
                 else
                 {
+
+                    btnguardar.Visible = true;
                     if (ExisteSolicituenDia(Convert.ToInt32(Session["pidc_empleado_solic_horario"]), Convert.ToDateTime(txtfecha.Text)))
                     {
-                        Alert.ShowAlertInfo("Este Empleado ya tiene una Solicitud Pendiente el dia " + Convert.ToDateTime(txtfecha.Text).ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX")), "Mensaje", this);
+                        btnguardar.Visible = false;
+                        Alert.ShowAlertInfo("Este Empleado ya tiene una Solicitud Pendiente o Autorizada el dia " + Convert.ToDateTime(txtfecha.Text).ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX")), "Mensaje", this);
                     }
                 }
             }
@@ -508,6 +523,17 @@ namespace presentacion
             else
             {
                 txthorasalida.Enabled = true;
+            }
+        }
+
+        protected void txthorasalida_TextChanged(object sender, EventArgs e)
+        {
+            bool checacomida = Convert.ToBoolean(Session["checacomida"]);
+            string value = txthorasalida.Text;
+            divchecacomida.Visible = false;
+            if (checacomida == true && value != "")
+            {
+                divchecacomida.Visible = true;
             }
         }
     }

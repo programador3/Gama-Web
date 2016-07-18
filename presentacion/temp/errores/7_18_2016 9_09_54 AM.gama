@@ -1,0 +1,8 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'CHECACOMIDA' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at presentacion.solicitud_horario.CargarGridPrincipal(Int32 idc_puesto) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\18_07_16\Puestos\presentacion\solicitud_horario.aspx.cs:line 73

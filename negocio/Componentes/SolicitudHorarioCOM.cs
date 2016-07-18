@@ -111,6 +111,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pusuariopc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pobservaciones });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pidc_empleado });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_horario_perm", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pidc_horario_erm });
             listparameters.Add(new SqlParameter() { ParameterName = "@pstatus", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pstatus });
             if (Etiqueta.Phora_entrada > 0)

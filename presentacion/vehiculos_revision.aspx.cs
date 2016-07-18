@@ -711,19 +711,28 @@ namespace presentacion
                     Total = Total + cantidad;
                 }
             }
-            list_textbox_nodinamics.Clear();
             foreach (RepeaterItem item in repeat_herramientas.Items)
             {
                 TextBox txtMoney = (TextBox)item.FindControl("txtCostoHerramienta");
+                TextBox txtCantidadSistema = (TextBox)item.FindControl("txtCantidadSistema");
+                TextBox txtCantidadReal = (TextBox)item.FindControl("txtCantidadReal");
+                Label lblcosto = (Label)item.FindControl("lblcosto_herr");
                 if (txtMoney.Text != "")
                 {
                     decimal cantidad = Convert.ToDecimal(txtMoney.Text);
+                    decimal costo = Convert.ToDecimal(lblcosto.Text);
+                    decimal entregado = Convert.ToDecimal(txtCantidadReal.Text);
+                    decimal real = Convert.ToDecimal(txtCantidadSistema.Text);
                     if (cantidad < 0)
                     {
                         Alert.ShowAlertError("El Costo NO PUEDE TENER un valor negativo.", this);
                         txtMoney.Focus();
                     }
-                    Total = Total + cantidad;
+                    if (entregado > real)
+                    {
+                        entregado = real;
+                    }
+                    Total = Total + (costo * (real - entregado));
                 }
             }
             txtTotal.Text = Total.ToString();
@@ -767,7 +776,8 @@ namespace presentacion
                 lblerrorcostoherr.Visible = false;
                 if (Convert.ToDecimal(txtCantidadReal.Text) < Convert.ToDecimal(txtCantidadSistema.Text))
                 {
-                    decimal cantidad = Convert.ToDecimal(txtMoney.Text);
+                    decimal cantidad = Convert.ToDecimal(txtMoney.Text); decimal entregado = Convert.ToDecimal(txtCantidadReal.Text);
+                    decimal real = Convert.ToDecimal(txtCantidadSistema.Text);
                     if (cantidad <= 0)
                     {
                         txtMoney.Text = "0.00";
@@ -786,7 +796,7 @@ namespace presentacion
             {
                 Session["Caso_Confirmacion"] = "Guardar";
                 string d = SumaCosto(list_textbox_nodinamics).ToString();
-                string mensaje = SumaCosto(list_textbox_nodinamics).ToString() == "0.00" ? "¿Esta a punto de guardar la Revisión. Si esto sucede no podra ser modificada. Todos sus datos son correctos?" : "¿Esta a punto de guardar la Revisión Y Generar un vale por un total de " + SumaCosto(list_textbox_nodinamics).ToString() + ". Si esto sucede no podra ser modificada. Todos sus datos son correctos?";
+                string mensaje = d == "0.00" ? "¿Esta a punto de guardar la Revisión. Si esto sucede no podra ser modificada. Todos sus datos son correctos?" : "¿Esta a punto de guardar la Revisión Y Generar un vale por un total de " + SumaCosto(list_textbox_nodinamics).ToString() + ". Si esto sucede no podra ser modificada. Todos sus datos son correctos?";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','" + mensaje + "');", true);
             }
         }
@@ -810,15 +820,31 @@ namespace presentacion
                 TextBox txtMoney = (TextBox)item.FindControl("txtCostoHerramienta");
                 TextBox txt = (TextBox)item.FindControl("txt");
                 decimal cantidad = Convert.ToDecimal(txtCantidadReal.Text);
+                decimal real = Convert.ToDecimal(txtCantidadSistema.Text);
                 lblerrorCantidadReal.Visible = false;
+
+                if (cantidad > real)
+                {
+                    cantidad = real;
+                }
                 if (Convert.ToInt32(txtCantidadReal.Text) == Convert.ToInt32(txtCantidadSistema.Text))
                 {
                     txtMoney.Text = "0.00";
                 }
+                else if (cantidad > real)
+                {
+                    lblerrorCantidadReal.Visible = true;
+                }
                 else
                 {
-                    if (Convert.ToDecimal(lblcosto.Text) == 0) { txtMoney.Text = "1.00"; }
-                    else { txtMoney.Text = lblcosto.Text; }
+                    if (Convert.ToDecimal(lblcosto.Text) == 0)
+                    {
+                        txtMoney.Text = "1.00";
+                    }
+                    else
+                    {
+                        txtMoney.Text = (Convert.ToDecimal(lblcosto.Text) * (real - cantidad)).ToString();
+                    }
                 }
                 if (cantidad < 0)
                 {

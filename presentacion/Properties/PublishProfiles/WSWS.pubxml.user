@@ -283,10 +283,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:37</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>07/16/2016 10:43:56</publishTime>
+      <publishTime>07/18/2016 11:43:41</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>07/16/2016 10:43:58</publishTime>
+      <publishTime>07/18/2016 11:43:44</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>07/02/2016 12:30:31</publishTime>
@@ -1840,7 +1840,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/08/2016 17:03:23</publishTime>
     </File>
     <File Include="reportes_empleados.aspx">
-      <publishTime>07/13/2016 17:50:37</publishTime>
+      <publishTime>07/18/2016 09:27:02</publishTime>
     </File>
     <File Include="reporte_faltas.aspx">
       <publishTime>06/08/2016 10:22:54</publishTime>
@@ -1882,7 +1882,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:32:18</publishTime>
     </File>
     <File Include="solicitud_horario.aspx">
-      <publishTime>06/16/2016 08:20:06</publishTime>
+      <publishTime>07/18/2016 09:22:58</publishTime>
     </File>
     <File Include="sounds/correct.wav">
       <publishTime>03/03/2016 15:12:21</publishTime>
@@ -1957,7 +1957,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/16/2016 10:44:01</publishTime>
+      <publishTime>07/18/2016 11:43:48</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>

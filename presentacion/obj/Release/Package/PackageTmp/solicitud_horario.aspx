@@ -106,6 +106,10 @@
             <asp:PostBackTrigger ControlID="lnkedit" />
             <asp:PostBackTrigger ControlID="btnguardaredicio" />
             <asp:PostBackTrigger ControlID="btncancelaredicion" />
+            <asp:PostBackTrigger ControlID="btnguardar" />
+            <asp:PostBackTrigger ControlID="btnrechaza" />
+            <asp:PostBackTrigger ControlID="btnautoriza" />
+            <asp:PostBackTrigger ControlID="btncancelar" />
         </Triggers>
         <ContentTemplate>
             <div class="row">
@@ -204,8 +208,12 @@
                                         <div class="form-inline">
                                             <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<strong>Hora de Salida </strong><small>&nbsp;Formato 24 Horas (0-24)</small>
                                                 &nbsp;
-                                            <asp:TextBox ID="txthorasalida" onblur="ValidarHoraLaboral(this);" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="form-control" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txthorasalida" onblur="ValidarHoraLaboral(this);" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" AutoPostBack="true" OnTextChanged="txthorasalida_TextChanged" CssClass="form-control" runat="server"></asp:TextBox>
                                             </h5>
+                                        </div>
+
+                                        <div class="alert fresh-color alert-danger alert-dismissible" role="alert" runat="server" id="divchecacomida" visible="false">
+                                            <strong>NOTA IMPORTANTE!</strong> Verifica si la hora de comida va a cambiar o no checara comida.
                                         </div>
                                     </div>
 
@@ -226,9 +234,7 @@
                     </div>
                 </div>
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
-    <div class="row" id="solicita" runat="server" visible="false">
+              <div class="row" id="solicita" runat="server" visible="false">
         <div class="col-lg-6 col-sm-6 col-xs-6">
             <asp:Button ID="btnguardar" CssClass="btn btn-info btn-block" OnClick="btnguardar_Click" runat="server" Text="Guardar" />
         </div>
@@ -244,6 +250,9 @@
             <asp:Button ID="btnrechaza" CssClass="btn btn-danger btn-block" OnClick="btnrechaza_Click" runat="server" Text="Rechazar" />
         </div>
     </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+  
     <!-- Modal -->
     <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

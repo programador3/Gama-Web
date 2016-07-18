@@ -3,7 +3,28 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-    <h1 class="page-header" style="text-align: center;">Reportes de Empleados</h1>
+    <h1 class="page-header" style="text-align: center;">Reportes de Empleado</h1>
+    <div class="row">
+        <div class="col-lg-2" style="align-content: center;">
+            <a>
+                <asp:Image ID="imgEmpleado" runat="server" class="img-responsive" alt="Gama System" Style="width: 160px; margin: 0 auto;" />
+            </a>
+        </div>
+        <div class="col-lg-10" style="text-align: left">
+            <div class="form-group">
+                <h4>
+                    <strong>Nombre Empleado: </strong>
+                    <asp:Label ID="lblEmpleado" runat="server" Text=""></asp:Label>
+                </h4>
+                <h4><strong>Puesto: </strong>
+                    <asp:Label ID="lblPuesto" runat="server" Text=""></asp:Label>
+                </h4>
+                <h4><strong>Departamento: </strong>
+                    <asp:Label ID="lbldepto" runat="server" Text=""></asp:Label>
+                </h4>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <asp:LinkButton ID="lnkhorarios" OnClick="lnkhorarios_Click" CommandName="2" runat="server">
