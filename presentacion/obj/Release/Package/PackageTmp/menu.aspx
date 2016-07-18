@@ -24,13 +24,9 @@
         function DeleteFocus(txt) {
             txt.value = "";
         }
-        //$(document).ready(function () {
-        //    $('#htmlsummernote').summernote();
-        //});
-        //function GetHtml(){
-        //    var markupStr = $('#htmlsummernote').summernote('code');
-        //    alert(markupStr);
-        //}
+        $(document).ready(function () {
+            $('#editor').wysiwyg();
+        });
     </script>
     <style type="text/css">
         .dropdown-submenu {
@@ -87,6 +83,13 @@
         <div class="col-lg-12">
             <h1 class="page-header">Menu Principal
             </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="editor">
+                Go ahead&hellip;
+            </div>
         </div>
     </div>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">

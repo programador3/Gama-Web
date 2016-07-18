@@ -209,6 +209,7 @@
     <Content Include="imagenes\body_page.png" />
     <Content Include="imagenes\lugares\captura\ok.png" />
     <Content Include="imagenes\lugares\ok.png" />
+    <Content Include="js\bootstrap-wysiwyg.js" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\jquery.dataTables.min.js" />
     <Content Include="disponibilidad_celulares.aspx" />

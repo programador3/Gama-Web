@@ -24,13 +24,9 @@
         function DeleteFocus(txt) {
             txt.value = "";
         }
-        //$(document).ready(function () {
-        //    $('#htmlsummernote').summernote();
-        //});
-        //function GetHtml(){
-        //    var markupStr = $('#htmlsummernote').summernote('code');
-        //    alert(markupStr);
-        //}
+        $(document).ready(function () {
+            $('#editor').wysiwyg();
+        });
     </script>
     <style type="text/css">
         .dropdown-submenu {
@@ -89,6 +85,7 @@
             </h1>
         </div>
     </div>
+
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="row">
@@ -174,7 +171,8 @@
                         <div class="card-body">
                             <a class="btn btn-primary btn-block" href="tareas_listado.aspx">Ver Todas Mis Tareas <i class="fa fa-wrench" aria-hidden="true"></i></a>
                             <h3 style="text-align: center" id="notareas" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
-                            <div class="list-group">
+
+                            <div class="list-group" style="height: 800px; overflow: scroll;">
                                 <asp:Repeater ID="repeat_tareas" runat="server">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
@@ -203,7 +201,7 @@
                         <div class="card-body">
                             <a class="btn btn-success btn-block" href="tareas_asignadas_lista.aspx">Ver Todas Mis Tareas <i class="fa fa-wrench" aria-hidden="true"></i></a>
                             <h3 style="text-align: center" id="tareasasig" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
-                            <div class="list-group">
+                            <div class="list-group" style="height: 800px; overflow: scroll;">
                                 <asp:Repeater ID="repeatasignadas" runat="server">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>

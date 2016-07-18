@@ -30,7 +30,9 @@ namespace presentacion
         {
             Solicitud_HorarioENT entidad = new Solicitud_HorarioENT();
             SolicitudHorarioCOM componente = new SolicitudHorarioCOM();
-            gridcelulares.DataSource = componente.SolcitudDetalles(entidad).Tables[0];
+            DataView view = componente.SolcitudDetalles(entidad).Tables[0].DefaultView;
+            view.RowFilter = "status= 'P'";
+            gridcelulares.DataSource = view.ToTable();
             gridcelulares.DataBind();
         }
 

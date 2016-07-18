@@ -286,7 +286,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/18/2016 11:43:41</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>07/18/2016 11:43:44</publishTime>
+      <publishTime>07/18/2016 16:22:01</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>07/02/2016 12:30:31</publishTime>
@@ -1233,6 +1233,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="js/bootstrap-switch.min.js">
       <publishTime>04/28/2016 14:58:33</publishTime>
     </File>
+    <File Include="js/bootstrap-wysiwyg.js">
+      <publishTime>07/18/2016 16:06:56</publishTime>
+    </File>
     <File Include="js/bootstrap.min.js">
       <publishTime>04/29/2016 07:33:23</publishTime>
     </File>
@@ -1456,7 +1459,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/06/2016 09:57:57</publishTime>
     </File>
     <File Include="menu.aspx">
-      <publishTime>07/16/2016 10:02:07</publishTime>
+      <publishTime>07/18/2016 16:17:27</publishTime>
     </File>
     <File Include="Not/animate.css">
       <publishTime>04/06/2016 17:23:21</publishTime>
@@ -1957,7 +1960,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/18/2016 11:43:48</publishTime>
+      <publishTime>07/18/2016 16:22:02</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>

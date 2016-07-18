@@ -72,7 +72,7 @@
                                         <asp:DropDownList ID="ddlhistorial" runat="server" CssClass="btn btn-default" AutoPostBack="true" OnTextChanged="ddlhistorial_TextChanged"></asp:DropDownList>
                                         <asp:Button ID="btnEliminarrachivo" OnClientClick="Confirm('Desea Eliminar el Archivo')" runat="server" Text="Eliminar Archivo" OnClick="btnEliminarrachivo_Click" CssClass="btn btn-danger" ToolTip="Eliminar Archivo Seleccionado" Visible="false" />
                                     </div>
-                                    <cc:HtmlEditor ID="Editor" runat="server" Height="600px" Width="1200" />
+                                    <cc:HtmlEditor ID="Editor" runat="server" Height="720px" Width="1200" />
                                     <div id="DemoControls">
                                         <asp:BulletedList ID="lista_imagenes" runat="server">
                                         </asp:BulletedList>
