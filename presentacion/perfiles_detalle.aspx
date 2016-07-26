@@ -87,7 +87,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-    <div id="page-wrapper">      
+    <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-1 col-md-2 col-sm-12">
             </div>
@@ -149,6 +149,22 @@
                         </div>
                     </div>
                 </asp:Panel>
+                <div class="row" id="direccion" runat="server" visible="false">
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary fresh-color">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-info-circle fa-fw"></i>Dirección(Lugar) de Trabajo</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <a class="list-group-item">
+                                        <asp:Label ID="lbldire" runat="server" Text="Dirección:"> <i class="fa fa-fw fa-check"></i></asp:Label><asp:Label ID="lbldir" runat="server" Text="No Hay Direccion Registrada"></asp:Label>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <asp:Repeater ID="RepeatDataPuesto" runat="server" OnItemDataBound="RepeatDataPuesto_ItemDataBound">
                     <ItemTemplate>
                         <div class="row">

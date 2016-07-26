@@ -9,8 +9,8 @@
             $('#confirmContenidoarchivos').text(value);
         }
         function ModalClose() {
-            $('#ModalArchivos').modal('hide');
             $('#myModal').modal('hide');
+            $('#ModalArchivos').modal('hide');
         }
         function ModalConfirm(cTitulo, cContenido, ctype) {
             var audio = new Audio('sounds/modal.wav');

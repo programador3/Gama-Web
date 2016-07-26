@@ -70,7 +70,7 @@
                                 </h1>
                                 <asp:GridView ID="gridaprobacionespendientes" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [4]}" DataKeyNames="nombre,nombre_soli, des_puesto,comentarios, descorta, idc_aprobacion_reg, pagina, fecha_movimiento,idc_registro,idc_aprobacion" OnRowCommand="gridaprobacionespendientes_RowCommand" OnRowDataBound="gridaprobacionespendientes_RowDataBound" AutoGenerateColumns="False">
                                     <Columns>
-                                        <asp:TemplateField HeaderText="Firma grupal" ShowHeader="False">
+                                        <asp:TemplateField HeaderText="Firma grupal" ShowHeader="False" HeaderStyle-Width="80px">
                                             <ItemTemplate>
                                                 <asp:Button ID="btnfirmagrupal" runat="server" CausesValidation="false" CommandName="" Text="IR" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                             </ItemTemplate>
@@ -87,7 +87,7 @@
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:BoundField>
                                         <asp:ButtonField DataTextField="nombre" HeaderText="Aprobación" CommandName="Vista" />
-                                        <asp:BoundField DataField="des_puesto" HeaderText="Empleado-Puesto" Visible="true" />
+                                        <asp:BoundField DataField="des_puesto" HeaderText="Firma Requerida" Visible="true"  HeaderStyle-Width="220px" />
                                         <%-- <asp:BoundField DataField="pagina" HeaderText="pagina" Visible="false" />--%>
 
                                         <asp:TemplateField ShowHeader="False" HeaderText="Aprobar" Visible="false">
@@ -109,9 +109,9 @@
                                         </asp:BoundField>
                                         <asp:BoundField DataField="descorta" HeaderText="Descripción" Visible="false" />
                                         <asp:BoundField DataField="pagina" HeaderText="pagina" Visible="false" />
-                                        <asp:BoundField DataField="fecha_registro" HeaderText="Fecha de Solicitud" Visible="true" />
+                                        <asp:BoundField DataField="fecha_registro" HeaderText="Fecha de Solicitud" Visible="true" HeaderStyle-Width="100px" />
                                         <asp:BoundField DataField="fecha_movimiento" HeaderText="pagina" Visible="false" />
-                                        <asp:TemplateField HeaderText="Estatus">
+                                        <asp:TemplateField HeaderText="Estatus" HeaderStyle-Width="40px">
                                             <ItemTemplate>
                                                 <asp:Button ID="lblestatus" runat="server" CausesValidation="false" CommandName="Comentarios" Text="" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                             </ItemTemplate>
@@ -261,14 +261,33 @@
                     </div>
                     <div class="row" id="autori" runat="server" viis="false">
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                            <Triggers>
+                                <asp:PostBackTrigger ControlID="gridaprobacionespendientes" />
+                            </Triggers>
                             <ContentTemplate>
                                 <div class="col-lg-12">
-                                    <asp:LinkButton ID="lnktodo" CssClass="btn btn-default btn-block" OnClick="lnktodo_Click" runat="server">Mostrar Toda la Información</asp:LinkButton>
+                                    <asp:LinkButton ID="lnktodo" CssClass="btn btn-default btn-block" OnClick="lnktodo_Click" runat="server"></asp:LinkButton>
                                 </div>
-                                <asp:Repeater ID="Repeater1" runat="server">
+                                <asp:Repeater ID="Repeater1" runat="server" Visible="false">
                                     <ItemTemplate>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <asp:LinkButton ID="lnkgrupo" CommandName='<%#Eval("idc_perfilgpo") %>' ToolTip='<%#Eval("TOOLTIP") %>' CssClass="btn btn-default btn-block" OnClick="lnkgrupo_Click" runat="server"><%#Eval("grupo") %></asp:LinkButton>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+                                <asp:Repeater ID="REPEATPERFILPUESTO" runat="server" Visible="false">
+                                    <ItemTemplate>
+                                        <div class="col-lg-12">
+                                            <asp:LinkButton ID="lnkgrupo" CommandName='<%#Eval("idc_registro") %>' CssClass="btn btn-default btn-block" OnClick="lnkgrupo_Click" runat="server"><%#Eval("puesto") %></asp:LinkButton>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+                                <asp:Repeater ID="Repeater3" runat="server" Visible="false">
+                                    <ItemTemplate>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <asp:LinkButton ID="lnkgrupo" CommandName='<%#Eval("idc_subproceso_BORR") %>' ToolTip='<%#Eval("TOOLTIP") %>' CssClass="btn btn-default btn-block" OnClick="lnkgrupo_Click" runat="server"><%#Eval("descripcion") %></asp:LinkButton>
                                         </div>
                                     </ItemTemplate>
                                 </asp:Repeater>

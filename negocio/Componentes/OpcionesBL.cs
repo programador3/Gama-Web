@@ -74,6 +74,24 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet MenuDinmaico2(Entidades.OpcionesE opcion)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = opcion.Usuario_id });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_menu_drop_web", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataTable preparar_funcion(string funcion)
         {
             Datos data = new Datos();

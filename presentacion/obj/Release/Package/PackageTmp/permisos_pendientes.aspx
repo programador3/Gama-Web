@@ -59,6 +59,7 @@
                         <asp:BoundField DataField="empleado" HeaderText="Empleado" HeaderStyle-Width="150px"></asp:BoundField>
                         <asp:BoundField DataField="fecha" HeaderText="Fecha para aplicar" HeaderStyle-Width="150px"></asp:BoundField>
                         <asp:BoundField DataField="empleado_solicito" HeaderText="Solicito" HeaderStyle-Width="150px"></asp:BoundField>
+                        <asp:BoundField DataField="observaciones" HeaderText="Motivo" HeaderStyle-Width="200px"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
             </div>

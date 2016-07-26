@@ -1,12 +1,8 @@
 ﻿<%@ Page Title="Menu Principal" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="menu.aspx.cs" Inherits="presentacion.menu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="css/PanelsLTE.css" rel="stylesheet" />
     <link href="css/ionicons.css" rel="stylesheet" />
     <link href="css/ionicons.min.css" rel="stylesheet" />
-    <!-- include summernote css/js-->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet" />
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
     <script type="text/javascript">
         function Search() {
             var value = document.getElementById('<%=txtsearch.ClientID%>').value;
@@ -25,10 +21,13 @@
             txt.value = "";
         }
         $(document).ready(function () {
-            $('#editor').wysiwyg();
         });
     </script>
     <style type="text/css">
+        a, a:active {
+            text-decoration: none;
+        }
+
         .dropdown-submenu {
             position: relative;
         }
@@ -83,13 +82,6 @@
         <div class="col-lg-12">
             <h1 class="page-header">Menu Principal
             </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div id="editor">
-                Go ahead&hellip;
-            </div>
         </div>
     </div>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
@@ -177,6 +169,7 @@
                         <div class="card-body">
                             <a class="btn btn-primary btn-block" href="tareas_listado.aspx">Ver Todas Mis Tareas <i class="fa fa-wrench" aria-hidden="true"></i></a>
                             <h3 style="text-align: center" id="notareas" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
+
                             <div class="list-group">
                                 <asp:Repeater ID="repeat_tareas" runat="server">
                                     <ItemTemplate>

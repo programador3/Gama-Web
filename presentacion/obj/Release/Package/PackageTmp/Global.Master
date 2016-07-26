@@ -199,18 +199,15 @@
                 MensajeTexto();
             }
         }
-        function explode() {
-            alert("Boom!");
-        }
         function MensajeTexto() {
-            $.ajax({
-                url: "temp/mensaje.txt",
-                dataType: "text",
-                success: function (data) {
-                    PlaySound('sounds/info.wav');
-                    sweetAlert("Mensaje del Administrador del Sistema", data, "info");
-                }
-            });
+            //$.ajax({
+            //    url: "temp/mensaje.txt",
+            //    dataType: "text",
+            //    success: function (data) {
+            //        PlaySound('sounds/info.wav');
+            //        sweetAlert("Mensaje del Administrador del Sistema", data, "info");
+            //    }
+            //});
         }
         function ValidarNotificaciones() {
             $('#notipend').empty();
@@ -285,6 +282,14 @@
                 }
             }
         }
+        function ChangeCss(value) {
+            if (value != "P") {
+                $("#navbartop").removeClass("navbar navbar-inverse navbar-fixed-top navbar-top");
+                $("#navbartop").addClass("navbar navbar-default navbar-fixed-top navbar-top");
+                $("#navbartop2").removeClass("side-menu sidebar-inverse");
+                $("#navbartop2").addClass("side-menu sidebar-default");
+            } 
+        }
         function ValidarTareasPendientes() {
             $('#tareas_pendi').hide();
             $.ajax({
@@ -333,7 +338,7 @@
         <div class="app-container">
             <div class="row content-container">
                 <%-- BARRA DE INICIO--%>
-                <nav class="navbar navbar-inverse navbar-fixed-top navbar-top">
+                <nav class="navbar navbar-inverse navbar-fixed-top navbar-top" id="navbartop">
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <button type="button" class="navbar-expand-toggle">
@@ -345,9 +350,8 @@
                                     <asp:LinkButton ID="lnkBackUrl" OnClick="lnkBackUrl_Click" runat="server">
                                <i class="fa fa-arrow-circle-left"></i></asp:LinkButton>
                                 </li>
-                                <li id="tareas_pendi" runat="server" style="text-align: center; visibility: hidden;">
-                                    <a href="tareas_listado.aspx">
-                                        <asp:Image ID="imgtareaspend" ImageUrl="~/imagenes/warning.gif" Width="35px" Height="35px" runat="server" ToolTip="Tiene Tareas Pendientes para el dia de HOY" /></a>
+                                <li id="tareas_pendi" runat="server" visible="false">
+                                    SISTEMA DE PRUEBAS
                                 </li>
                             </ol>
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
@@ -385,7 +389,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="side-menu sidebar-inverse">
+                <div class="side-menu sidebar-inverse" id="navbartop2">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="side-menu-container">
                             <div class="navbar-header">

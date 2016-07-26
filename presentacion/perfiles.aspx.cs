@@ -93,7 +93,7 @@ namespace presentacion
                 {
                     ///todo bien
                     CargaGrid();
-                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspxz", "imagenes/loading.gif", "2000", "Perfil Eliminado Correctamente", this);
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx", "imagenes/loading.gif", "2000", "Perfil Eliminado Correctamente", this);
                 }
                 else
                 {
@@ -150,7 +150,7 @@ namespace presentacion
             {
                 if (mensaje.Equals(string.Empty))
                 {
-                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspxz", "imagenes/loading.gif", "2000", "La autorización fue solicitada correctamente", this);
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx", "imagenes/loading.gif", "2000", "La autorización fue solicitada correctamente", this);
                 }
                 else
                 {
@@ -196,7 +196,7 @@ namespace presentacion
                     //todo bien
                     CargaGrid();
 
-                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspxz", "imagenes/loading.gif", "2000", "Listo borrador desbloqueado", this);
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx", "imagenes/loading.gif", "2000", "Listo borrador desbloqueado", this);
                 }
                 else
                 {
@@ -487,6 +487,8 @@ namespace presentacion
             id_borrador_grid = Convert.ToInt32(gridperfiles.DataKeys[index].Values["id_perfilborrador"].ToString());
             String perfil = gridperfiles.DataKeys[index].Values["descripcion"].ToString();
 
+            perfil = perfil.TrimStart();
+            perfil = perfil.Replace(System.Environment.NewLine, "");
             switch (e.CommandName)
             {
                 case "Desbloquear"://Desboquear Autorizacion

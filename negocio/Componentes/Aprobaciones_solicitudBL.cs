@@ -77,6 +77,25 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet Cargarpp(Aprobaciones_solicitudE entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puestoperfilsol", SqlDbType = SqlDbType.Int, Value = entidad.Idc_registro });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_solicitudes_perfiles_similares", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet CargarSubProcesos(Aprobaciones_solicitudE entidad)
         {
             DataSet ds = new DataSet();

@@ -4,7 +4,6 @@
 
     <%--Plugin Org--%>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="org/js/jquery/jquery-ui-1.10.2.custom.min.js"></script>
@@ -40,7 +39,7 @@
             if (id_puesto == 0) {
                 location.href = "visualizar_perfil.aspx?id_descripcion=" + hex;
             } else {
-                location.href = "visualizar_perfil.aspx?id_puesto=" + id_puesto;
+                location.href = "perfiles_detalle.aspx?borrador=0&uidc_puestoperfil=" + id_puesto;
             }
 
         }
@@ -71,7 +70,7 @@
                                 id: data[0][i].idc_organigrama,
                                 parents: [(data[0][i].padre == "0") ? null : data[0][i].padre],
                                 title: data[0][i].descripcion,
-                                label: data[0][i].idc_empleado,
+                                label: data[0][i].idc_puestoperfil,
                                 description: data[0][i].empleado,
                                 phone: statuspuesto(data[0][i].idc_statuso),
                                 image: urlimage,

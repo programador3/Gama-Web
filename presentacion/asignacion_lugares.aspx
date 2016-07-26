@@ -127,6 +127,7 @@
                                         <asp:BoundField DataField="idc_area" HeaderText="idc" Visible="false"></asp:BoundField>
                                         <asp:BoundField DataField="idc_sucursal" HeaderText="idc" Visible="false"></asp:BoundField>
                                         <asp:BoundField DataField="nombre" HeaderText="Lugar De Trabajo"></asp:BoundField>
+                                        <asp:BoundField DataField="alias" HeaderText="Alias"></asp:BoundField>
                                         <asp:BoundField DataField="area" HeaderText="Area"></asp:BoundField>
                                         <asp:BoundField DataField="Sucursal" HeaderText="Sucursal"></asp:BoundField>
                                     </Columns>

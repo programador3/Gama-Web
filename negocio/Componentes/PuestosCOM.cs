@@ -272,6 +272,8 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena", SqlDbType = SqlDbType.VarChar, Value = entidad.Pcadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotalcadena", SqlDbType = SqlDbType.VarChar, Value = entidad.Ptotalcadena });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = entidad.Idc_Puesto });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puestoperfil", SqlDbType = SqlDbType.Int, Value = entidad.Idc_puestoperfil });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = entidad.Idc_usuario });

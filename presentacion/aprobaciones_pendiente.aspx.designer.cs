@@ -220,6 +220,24 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Repeater Repeater1;
         
         /// <summary>
+        /// Control REPEATPERFILPUESTO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater REPEATPERFILPUESTO;
+        
+        /// <summary>
+        /// Control Repeater3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater3;
+        
+        /// <summary>
         /// Control Button1.
         /// </summary>
         /// <remarks>

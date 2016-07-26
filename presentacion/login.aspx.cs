@@ -207,8 +207,8 @@ namespace presentacion
 
         protected void lnkVerContraseña_Click(object sender, EventArgs e)
         {
-            txtpass.TextMode = lnkVerContraseña.Text == "Mostrar" ? TextBoxMode.SingleLine : TextBoxMode.Password;
-            lnkVerContraseña.Text = lnkVerContraseña.Text == "Mostrar" ? "Ocultar" : "Mostrar";
+            //txtpass.TextMode = lnkVerContraseña.Text == "Mostrar" ? TextBoxMode.SingleLine : TextBoxMode.Password;
+            //lnkVerContraseña.Text = lnkVerContraseña.Text == "Mostrar" ? "Ocultar" : "Mostrar";
         }
 
         protected void Button1_Click(object sender, EventArgs e)

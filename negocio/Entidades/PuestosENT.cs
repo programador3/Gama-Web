@@ -5,6 +5,8 @@ namespace negocio.Entidades
     public class PuestosENT
     {
         private string extension;
+        private string cadena;
+        private int totalcadena;
         private int idc_puesto;
         private DateTime fecha_inicio;
         private DateTime fecha_fin;
@@ -117,6 +119,18 @@ namespace negocio.Entidades
         {
             get { return idc_puestoperfil; }
             set { idc_puestoperfil = value; }
+        }
+
+        public string Pcadena
+        {
+            get { return cadena; }
+            set { cadena = value; }
+        }
+
+        public int Ptotalcadena
+        {
+            get { return totalcadena; }
+            set { totalcadena = value; }
         }
 
         public DateTime Pfecha_inicio

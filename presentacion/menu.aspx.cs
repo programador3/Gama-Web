@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace presentacion
 {
@@ -15,7 +16,6 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
-
             Session["redirect_pagedet"] = "menu.aspx";
             if (Request.QueryString["value"] == null)
             {
@@ -334,6 +334,15 @@ namespace presentacion
             NoResultados.Visible = ds.Tables[0].Rows.Count == 0 ? true : false;
             Encontramos.Visible = true;
             lblenc.Text = ds.Tables[0].Rows.Count.ToString();
+        }
+
+        private void dinamic_menudrop(string search)
+        {
+            DataSet ds = new DataSet();
+            OpcionesE EntOpcion = new OpcionesE();
+            OpcionesBL menuBL = new OpcionesBL();
+            EntOpcion.Usuario_id = Convert.ToInt32(Session["sidc_usuario"].ToString());
+            ds = menuBL.MenuDinmaico2(EntOpcion);
         }
 
         protected void Button1_Click(object sender, EventArgs e)

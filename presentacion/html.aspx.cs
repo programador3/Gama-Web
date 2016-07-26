@@ -391,7 +391,7 @@ namespace presentacion
                 case "Editar_live":
 
                     Random random_edit = new Random();
-                    int randomNumber_live = random_edit.Next(0, 1000);
+                    int randomNumber_live = random_edit.Next(0, 100000);
                     DateTime localDate = DateTime.Now;
                     string date = localDate.ToString();
                     date = date.Replace("/", "_");
@@ -463,6 +463,17 @@ namespace presentacion
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string content = @"<meta http-equiv=" + '\u0022' + "Content-Type" + '\u0022' + "content=" + '\u0022' + "text/html;charset=utf-8" + '\u0022' + "/> " + System.Environment.NewLine + "<!--Diseñador HTML Creado por: Humberto De la Rosa para GAMA MATERIALES Y ACEROS-->" + System.Environment.NewLine + Editor.Text;
+            Random random_edit = new Random();
+            int randomNumber_live = random_edit.Next(0, 100000);
+            DateTime localDate = DateTime.Now;
+            string date = localDate.ToString();
+            date = date.Replace("/", "_");
+            date = date.Replace(":", "_");
+            DirectoryInfo dirInfo_edit = new DirectoryInfo(Server.MapPath("~/temp/html_files/"));//path local
+            StreamWriter file_edit = new StreamWriter(dirInfo_edit.ToString() + randomNumber_live.ToString() + date + ".html");
+            file_edit.Write(content);
+            file_edit.Close();
         }
 
         protected void close_Click(object sender, EventArgs e)

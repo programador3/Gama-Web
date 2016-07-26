@@ -1,4 +1,5 @@
-﻿using negocio.Componentes;
+﻿using ClosedXML.Excel;
+using negocio.Componentes;
 using negocio.Entidades;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,7 @@ namespace presentacion
                 DataSet ds = componente.CragarVisitasReporte(entidad);
                 gridvisitas.DataSource = ds.Tables[0];
                 gridvisitas.DataBind();
+                Session["tblexcel"] = ds.Tables[0];
             }
             catch (Exception ex)
             {
@@ -88,6 +90,39 @@ namespace presentacion
         {
             int idc = ddlPuestoAsigna.SelectedValue == "" ? 0 : Convert.ToInt32(ddlPuestoAsigna.SelectedValue);
             CargarVisitas(idc, Convert.ToDateTime(txtfechainicio.Text), Convert.ToDateTime(txtfechafin.Text));
+        }
+
+        protected void lnkurladicinal_Click(object sender, EventArgs e)
+        {
+            if (Session["tblexcel"] != null)
+            {
+                int idc = ddlPuestoAsigna.SelectedValue == "" ? 0 : Convert.ToInt32(ddlPuestoAsigna.SelectedValue);
+                CargarVisitas(idc, Convert.ToDateTime(txtfechainicio.Text), Convert.ToDateTime(txtfechafin.Text));
+                DataTable dt = (DataTable)Session["tblexcel"];
+                dt.Columns.RemoveAt(0);// nombre de tabla
+                dt.Columns.RemoveAt(7);// nombre de tabla
+                dt.Columns.RemoveAt(7);// nombre de tabla
+                Export Export = new Export();
+                //array de DataTables
+                List<DataTable> ListaTables = new List<DataTable>();
+                ListaTables.Add(dt);
+                //array de nombre de sheets
+                string[] Nombres = new string[] { "Visitas" };
+                if (dt.Rows.Count == 0)
+                {
+                    Alert.ShowAlertInfo("Este Puesto no cuenta con ningun dato para crear un reporte, verifique con el departamento de Sistemas.", "", this);
+                }
+                else
+                {
+                    string mensaje = Export.toExcel("Visitas", XLColor.White, XLColor.Black, 18, true, DateTime.Now.ToString(), XLColor.White,
+                                       XLColor.Black, 10, ListaTables, XLColor.Orange, XLColor.White, Nombres, 1,
+                                       "visita.xlsx", Page.Response);
+                    if (mensaje != "")
+                    {
+                        Alert.ShowAlertError(mensaje, this);
+                    }
+                }
+            }
         }
     }
 }

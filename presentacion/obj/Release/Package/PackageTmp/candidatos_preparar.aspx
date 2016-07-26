@@ -81,7 +81,7 @@
                 <h2 id="H1" runat="server" visible="true" style="text-align: center;"><a class="btn btn-success" href="cambiar_fechas_compromiso.aspx">Cambiar Fechas Compromiso <i class="fa fa-calendar" aria-hidden="true"></i></a></h2>
                 <asp:Repeater ID="repeatpendientes" runat="server" OnItemDataBound="repeatpendientes_ItemDataBound">
                     <ItemTemplate>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
                             <asp:Panel ID="PanelRevisionP" runat="server" class='<%#Eval("css_class") %>'>
                                 <div class="inner">
                                     <h4>Reclutar Candidatos

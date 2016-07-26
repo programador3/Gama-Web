@@ -245,6 +245,24 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet CargaSucursalPuesto(PerfilesE Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_perfil });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_direccion_sucursal_puesto", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         /// <summary>
         /// Verifica si existe un borrador, si no existe lo crea
         /// </summary>

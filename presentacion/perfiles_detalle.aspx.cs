@@ -154,6 +154,16 @@ namespace presentacion
                     }
                     //agregamos tabla global a session
                 }
+                if (Request.QueryString["idc_puesto"] != null)
+                {
+                    direccion.Visible = true;
+                    Entidad.Idc_perfil = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"]));
+                    ds = Componente.CargaSucursalPuesto(Entidad);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        lbldir.Text = ds.Tables[0].Rows[0]["direccion"].ToString();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -868,8 +878,13 @@ namespace presentacion
                 //CIERRO TABLA
                 content.Append("</table></FONT><br><br>");
             }//TERMINA CICLO CON TODOS LOS GRUPOS DE ESTE PERFIL
-            //CIERRO CODIGO HTML EN EL STRINGBUILDER
+             //CIERRO CODIGO HTML EN EL STRINGBUILDER
+            content.Append("<div><b><FONT FACE='calibri'>Dirección(Lugar) de Trabajo:</FONT></b></div>");
+            content.Append("<table>");
+            content.Append("<tr><td></td><td></td><td><FONT FACE='calibri'>" + lbldir.Text + "</FONT></td></tr>");
+            content.Append("</table></FONT><br><br>");
             content.Append("</body></html>");
+
             //TOMO VARIABLE DEL NOMBRE DE PERFIL Y REMPLAZO ESPACIOS POR GUINES BAJO PARA METERLO COMO NOMBRE DE ARCHIVO
             Titulo = Titulo.Replace(" ", "_");
             //CREO STRING CON EL NOMBRE DEL ARCHIVO QUE SE GENERARA
@@ -888,6 +903,7 @@ namespace presentacion
         /// <param name="e"></param>
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
+            direccion.Visible = false;
             RepeatDataPuesto.Visible = false;
             PanelHTML.Visible = true;
             VistaPrevia.Visible = false;
@@ -969,13 +985,18 @@ namespace presentacion
                 //CIERRO TABLA
                 content.Append(System.Environment.NewLine + "&lt;/table&gt;&lt;/FONT&gt;&lt;br&gt;&lt;br&gt;" + System.Environment.NewLine);
             }//TERMINA CICLO CON TODOS LOS GRUPOS DE ESTE PERFIL
-            //CIERRO CODIGO HTML EN EL STRINGBUILDER
+             //CIERRO CODIGO HTML EN EL STRINGBUILDER
+            content.Append(System.Environment.NewLine + "&lt;div&gt;&lt;b&gt;&lt;FONT FACE='calibri'&gt;Dirección(Lugar) de Trabajo::&lt;/FONT&gt;&lt;/b&gt;" + System.Environment.NewLine + "&lt;/div&gt;" + System.Environment.NewLine);
+
+            content.Append("&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;FONT FACE='calibri'&gt;" + lbldir.Text + "&lt;/FONT&gt;&lt;/td&gt;&lt;/tr&gt;");
+            content.Append("&lt;table&gt;" + System.Environment.NewLine);
             content.Append(System.Environment.NewLine + "&lt;/body&gt;" + System.Environment.NewLine + "&lt;/html&gt;");
             txthtml.Text = content.ToString();
         }
 
         protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
         {
+            direccion.Visible = false;
             PanelHTML.Visible = false;
             VistaPrevia.Visible = true;
             //Bajo tabla de la consulta a session
@@ -1053,7 +1074,12 @@ namespace presentacion
                 //CIERRO TABLA
                 content.Append(System.Environment.NewLine + "</table></FONT><br><br>" + System.Environment.NewLine);
             }//TERMINA CICLO CON TODOS LOS GRUPOS DE ESTE PERFIL
-            //CIERRO CODIGO HTML EN EL STRINGBUILDER
+             //CIERRO CODIGO HTML EN EL STRINGBUILDER
+
+            content.Append("<div><b><FONT FACE='calibri'>Dirección(Lugar) de Trabajo:</FONT></b></div>");
+            content.Append("<table>");
+            content.Append("<tr><td></td><td></td><td><FONT FACE='calibri'>" + lbldir.Text + "</FONT></td></tr>");
+            content.Append("</table></FONT><br><br>");
             content.Append(System.Environment.NewLine + "</body>" + System.Environment.NewLine + "</html>");
             lbVistaPrevia.Text = content.ToString();
         }

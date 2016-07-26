@@ -18,6 +18,10 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
+
+            string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
+            ScriptManager.RegisterStartupScript(this, GetType(), "ded", "ChangeCss('" + cs + "');", true);
+            tareas_pendi.Visible = cs == "P" ? false : true;
             lnkperfil.CommandName = Convert.ToInt32(Session["login_idc_perfil"]).ToString();
             lnkperfil.Text = (string)Session["login_perfil"];
             hdnidc_usuario.Value = Convert.ToInt32(Session["sidc_usuario"]).ToString();
@@ -190,7 +194,7 @@ namespace presentacion
             }
             else
             {
-                Response.Redirect("perfiles_detalle.aspx?vp=1&perfiles=true&borrador=0&uidc_puestoperfil=" + lnkperfil.CommandName);
+                Response.Redirect("perfiles_detalle.aspx?vp=1&perfiles=true&borrador=0&uidc_puestoperfil=" + lnkperfil.CommandName+"&idc_puesto="+funciones.deTextoa64(Convert.ToInt32(Session["sidc_puesto_login"]).ToString()));
             }
         }
     }

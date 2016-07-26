@@ -148,6 +148,33 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Label lbVistaPrevia;
         
         /// <summary>
+        /// Control direccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl direccion;
+        
+        /// <summary>
+        /// Control lbldire.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbldire;
+        
+        /// <summary>
+        /// Control lbldir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbldir;
+        
+        /// <summary>
         /// Control RepeatDataPuesto.
         /// </summary>
         /// <remarks>

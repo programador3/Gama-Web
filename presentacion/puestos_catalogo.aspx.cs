@@ -245,7 +245,7 @@ namespace presentacion
                     else
                     {
                         Session["Previus"] = HttpContext.Current.Request.Url.LocalPath.ToString();
-                        Response.Redirect("perfiles_detalle.aspx?borrador=0&uidc_puestoperfil=" + id_puestoperfil);
+                        Response.Redirect("perfiles_detalle.aspx?borrador=0&uidc_puestoperfil=" + id_puestoperfil + "&idc_puesto=" + funciones.deTextoa64(id_puesto.ToString()));
                     }
                     break;
 
@@ -477,6 +477,7 @@ namespace presentacion
         protected void lnkMPerfil_Click(object sender, EventArgs e)
         {
             int idc_puestoperfil = Convert.ToInt32(Session["idc_puestoperfil"]);
+            int id_puesto = Convert.ToInt32(Session["idc_puesto"]);
             if (idc_puestoperfil == 0)//SI NO HAY PERFIL RELACIONADO
             {
                 Alert.ShowAlertError("No hay ningun Perfil Relacionado", this);
@@ -484,7 +485,7 @@ namespace presentacion
             else
             {
                 Session["Previus"] = HttpContext.Current.Request.Url.LocalPath.ToString();
-                Response.Redirect("perfiles_detalle.aspx?borrador=0&uidc_puestoperfil=" + idc_puestoperfil);
+                Response.Redirect("perfiles_detalle.aspx?borrador=0&uidc_puestoperfil=" + idc_puestoperfil + "&idc_puesto=" + funciones.deTextoa64(id_puesto.ToString()));
             }
         }
 
@@ -677,7 +678,7 @@ namespace presentacion
         {
             string idc_puesto = Convert.ToInt32(Session["idc_puesto"]).ToString();
             string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
-            Response.Redirect("reportes_empleados.aspx?idc_empleado=" + funciones.deTextoa64(val)+ "&idc_puesto="+funciones.deTextoa64(idc_puesto));
+            Response.Redirect("reportes_empleados.aspx?idc_empleado=" + funciones.deTextoa64(val) + "&idc_puesto=" + funciones.deTextoa64(idc_puesto));
         }
     }
 }

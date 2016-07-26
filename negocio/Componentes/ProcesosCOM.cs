@@ -26,6 +26,23 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet CargaPerfilespUESTOS(ProcesosENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTOPERFIL", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_proceso });
+            try
+            {
+                ds = data.enviar("sp_puestos_perfil_relacion", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet CatalogoProcesos(ProcesosENT entidad)
         {
             DataSet ds = new DataSet();
@@ -199,6 +216,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet CancelarSolicitud(ProcesosENT entidad)
         {
             DataSet ds = new DataSet();
@@ -219,7 +237,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
-        
+
         public DataSet SolictarProcesos(ProcesosENT entidad)
         {
             DataSet ds = new DataSet();

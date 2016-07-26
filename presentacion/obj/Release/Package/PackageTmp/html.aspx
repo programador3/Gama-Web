@@ -32,6 +32,9 @@
             var audio = new Audio(path);
             audio.play();
         }
+
+        $(document).ready(function () {
+        });
     </script>
 </head>
 <body>
@@ -39,6 +42,7 @@
         <asp:HiddenField ID="HiddenField_value" runat="server" />
         <asp:Label ID="lblsession" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblsession_h" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:HiddenField ID="HiddenField" runat="server" />
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div id="Content">
             <asp:Image ID="Image1" runat="server" Style="position: fixed; top: 0px; left: 0px;" ImageUrl="~/imagenes/logo.png" Visible="false" />
@@ -47,7 +51,6 @@
                     <asp:PostBackTrigger ControlID="btnDescarga" />
                 </Triggers>
                 <ContentTemplate>
-
                     <table id="DemoTable" border="0" cellpadding="0" cellspacing="0">
 
                         <tr>
@@ -57,9 +60,9 @@
                                 <div id="EditorPanel">
 
                                     <asp:Panel ID="PanelTitulo" runat="server">
-                                        <h3 style="font-family: Verdana"><strong>Titulo del Archivo</strong>
+                                        <h2 style="font-family: Verdana"><strong>Titulo del Archivo</strong>
                                             <asp:TextBox ID="txtTitulo" placeholder="Titulo del Archivo" runat="server" CssClass="form-control" Width="500px"></asp:TextBox>
-                                        </h3>
+                                        </h2>
                                     </asp:Panel>
                                     <div class="form-group">
                                         <asp:Button ID="Button1" runat="server" Text="Salvar Cambios" OnClick="Button1_Click" CssClass="btn btn-primary" ToolTip="Salva los cambios temporales actuales" />
@@ -72,7 +75,7 @@
                                         <asp:DropDownList ID="ddlhistorial" runat="server" CssClass="btn btn-default" AutoPostBack="true" OnTextChanged="ddlhistorial_TextChanged"></asp:DropDownList>
                                         <asp:Button ID="btnEliminarrachivo" OnClientClick="Confirm('Desea Eliminar el Archivo')" runat="server" Text="Eliminar Archivo" OnClick="btnEliminarrachivo_Click" CssClass="btn btn-danger" ToolTip="Eliminar Archivo Seleccionado" Visible="false" />
                                     </div>
-                                    <cc:HtmlEditor ID="Editor" runat="server" Height="600px" Width="1200" />
+                                    <cc:HtmlEditor ID="Editor" runat="server" Height="720px" Width="1300" />
                                     <div id="DemoControls">
                                         <asp:BulletedList ID="lista_imagenes" runat="server">
                                         </asp:BulletedList>
@@ -84,7 +87,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div class="panel panel-primary" style="width: auto;">
+        <div class="panel panel-primary" style="width: auto;" id="panel">
             <div class="panel-heading" style="text-align: center;">
                 Subida de Imagenes
             </div>
@@ -93,7 +96,7 @@
                     <asp:FileUpload ID="fileimg" runat="server" />
                 </div>
                 <div class="form-group">
-                    <asp:Button ID="btnUploadIMG" CssClass="btn btn-primary" runat="server" Text="Subir Imagen" OnClick="btnUploadIMG_Click" />
+                    <asp:Button ID="btnUploadIMG" CssClass="btn btn-primary" runat="server" Text="Subir Archivo" OnClick="btnUploadIMG_Click" />
                 </div>
             </div>
         </div>

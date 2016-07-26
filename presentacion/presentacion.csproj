@@ -91,41 +91,6 @@
     <Content Include="asignacion_lugares.aspx" />
     <Content Include="asignacion_lugares_puestos.aspx" />
     <Content Include="asignacion_revisiones_captura.aspx" />
-    <Content Include="assets\bootstrap\css\bootstrap-theme.css" />
-    <Content Include="assets\bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="assets\bootstrap\css\bootstrap.css" />
-    <Content Include="assets\bootstrap\css\bootstrap.min.css" />
-    <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="assets\bootstrap\js\bootstrap.js" />
-    <Content Include="assets\bootstrap\js\bootstrap.min.js" />
-    <Content Include="assets\bootstrap\js\npm.js" />
-    <Content Include="assets\css\form-elements.css" />
-    <Content Include="assets\css\style.css" />
-    <Content Include="assets\font-awesome\css\font-awesome.css" />
-    <Content Include="assets\font-awesome\css\font-awesome.min.css" />
-    <Content Include="assets\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="assets\ico\apple-touch-icon-114-precomposed.png" />
-    <Content Include="assets\ico\apple-touch-icon-144-precomposed.png" />
-    <Content Include="assets\ico\apple-touch-icon-57-precomposed.png" />
-    <Content Include="assets\ico\apple-touch-icon-72-precomposed.png" />
-    <Content Include="assets\ico\favicon.png" />
-    <Content Include="assets\img\1%402x.jpg" />
-    <Content Include="assets\img\1.jpg" />
-    <Content Include="assets\img\backgrounds\1%402x.jpg" />
-    <Content Include="assets\img\backgrounds\1.jpg" />
-    <Content Include="assets\img\body.png" />
-    <Content Include="assets\jquery-1.10.1.min.js" />
-    <Content Include="assets\jquery-1.9.0.min.js" />
-    <Content Include="assets\jquery.backstretch.js" />
-    <Content Include="assets\jquery.backstretch.min.js" />
-    <Content Include="assets\jquery.mousewheel-3.0.6.pack.js" />
-    <Content Include="assets\js\jquery-1.11.1.js" />
-    <Content Include="assets\js\jquery-1.11.1.min.js" />
-    <Content Include="assets\js\jquery.backstretch.js" />
-    <Content Include="assets\js\jquery.backstretch.min.js" />
-    <Content Include="assets\js\placeholder.js" />
-    <Content Include="assets\js\scripts.js" />
-    <Content Include="assets\scripts.js" />
     <Content Include="avisos.aspx" />
     <Content Include="cambiar_fechas_compromiso.aspx" />
     <Content Include="candidatos_preparar.aspx" />
@@ -154,8 +119,12 @@
     <Content Include="css\html_page.css" />
     <Content Include="css\ionicons.css" />
     <Content Include="css\ionicons.min.css" />
+    <Content Include="css\lab.css" />
     <Content Include="css\main.css" />
+    <Content Include="css\other.css" />
     <Content Include="css\PanelsLTE.css" />
+    <Content Include="css\responsivemultimenu.css" />
+    <Content Include="css\slimmenu.min.css" />
     <Content Include="css\style.css" />
     <Content Include="css\themes\facebook\facebook.css" />
     <Content Include="css\themes\flat-blue.css" />
@@ -203,6 +172,10 @@
     <Content Include="fancybox\jquery.fancybox-1.3.4.js" />
     <Content Include="fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\icomoon.dev.svg" />
+    <Content Include="fonts\icomoon.svg" />
+    <Content Include="fonts\license.txt" />
     <Content Include="html_dinamico.aspx" />
     <Content Include="imagenes\areas\captura\ok.png" />
     <Content Include="imagenes\areas\ok.png" />
@@ -349,10 +322,13 @@
     <Content Include="js\html2canvas.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.mb.audio.js" />
+    <Content Include="js\jquery.slimmenu.js" />
     <Content Include="js\jquery10.js" />
     <Content Include="js\mascara.js" />
     <Content Include="js\maxlenght.js" />
     <Content Include="js\npm.js" />
+    <Content Include="js\prefixfree.min.js" />
+    <Content Include="js\responsivemultimenu.js" />
     <Content Include="js\slack.js" />
     <Content Include="js\styles.js" />
     <Content Include="js\wickedpicker.css" />
@@ -459,6 +435,7 @@
     <Content Include="org\js\randomdata.js" />
     <Content Include="page_error.aspx" />
     <Content Include="pendientes_tareas.aspx" />
+    <Content Include="perfiles_relacion.aspx" />
     <Content Include="permisos_pendientes.aspx" />
     <Content Include="pmd_rh_detalles.aspx" />
     <Content Include="perfiles.aspx" />
@@ -1114,6 +1091,13 @@
     <Compile Include="pendientes_tareas.aspx.designer.cs">
       <DependentUpon>pendientes_tareas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="perfiles_relacion.aspx.cs">
+      <DependentUpon>perfiles_relacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="perfiles_relacion.aspx.designer.cs">
+      <DependentUpon>perfiles_relacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="permisos_pendientes.aspx.cs">
       <DependentUpon>permisos_pendientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1550,43 +1534,6 @@
     <Content Include="js\coffee\chartjs.coffee" />
     <Content Include="js\coffee\index.coffee" />
     <Content Include="js\coffee\theming.coffee" />
-    <Content Include="assets\bootstrap\css\bootstrap-theme.css.map" />
-    <Content Include="assets\bootstrap\css\bootstrap.css.map" />
-    <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="assets\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="assets\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="assets\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="assets\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="assets\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="assets\font-awesome\less\animated.less" />
-    <Content Include="assets\font-awesome\less\bordered-pulled.less" />
-    <Content Include="assets\font-awesome\less\core.less" />
-    <Content Include="assets\font-awesome\less\fixed-width.less" />
-    <Content Include="assets\font-awesome\less\font-awesome.less" />
-    <Content Include="assets\font-awesome\less\icons.less" />
-    <Content Include="assets\font-awesome\less\larger.less" />
-    <Content Include="assets\font-awesome\less\list.less" />
-    <Content Include="assets\font-awesome\less\mixins.less" />
-    <Content Include="assets\font-awesome\less\path.less" />
-    <Content Include="assets\font-awesome\less\rotated-flipped.less" />
-    <Content Include="assets\font-awesome\less\stacked.less" />
-    <Content Include="assets\font-awesome\less\variables.less" />
-    <Content Include="assets\font-awesome\scss\font-awesome.scss" />
-    <Content Include="assets\font-awesome\scss\_animated.scss" />
-    <Content Include="assets\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="assets\font-awesome\scss\_core.scss" />
-    <Content Include="assets\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="assets\font-awesome\scss\_icons.scss" />
-    <Content Include="assets\font-awesome\scss\_larger.scss" />
-    <Content Include="assets\font-awesome\scss\_list.scss" />
-    <Content Include="assets\font-awesome\scss\_mixins.scss" />
-    <Content Include="assets\font-awesome\scss\_path.scss" />
-    <Content Include="assets\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="assets\font-awesome\scss\_stacked.scss" />
-    <Content Include="assets\font-awesome\scss\_variables.scss" />
     <Content Include="packages.config" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.ttf" />
@@ -1634,6 +1581,14 @@
     <Content Include="css\themes\facebook\facebook.scss" />
     <Content Include="css\themes\google\google.scss" />
     <Content Include="css\themes\twitter\twitter.scss" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\icomoon.eot" />
+    <Content Include="fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon.woff" />
     <None Include="Properties\PublishProfiles\pub.pubxml" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <Content Include="StyleCop.Cache" />

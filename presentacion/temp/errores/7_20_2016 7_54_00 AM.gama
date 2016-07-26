@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'puestos' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at presentacion.perfiles_relacion.Cadena()
+   at presentacion.perfiles_relacion.Yes_Click(Object sender, EventArgs e)

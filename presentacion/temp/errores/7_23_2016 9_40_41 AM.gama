@@ -1,0 +1,8 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'descripcion' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at presentacion.administrador_prebajas.DataPrebajasDetalles(Int32 idc_prebaja, Int32 idc_puestoprebaja) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\22_07_16\Puestos\presentacion\administrador_prebajas.aspx.cs:line 151

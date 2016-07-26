@@ -1,0 +1,8 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column '' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at presentacion.perfiles_relacion.lnkadd_Click(Object sender, EventArgs e) in E:\Trabajos Humberto\Proyectos Diarios\2016\07JULIO\19_07_16\Puestos\presentacion\perfiles_relacion.aspx.cs:line 151

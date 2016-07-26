@@ -42,21 +42,23 @@
     </script>
     <style type="text/css">
         .img_btn {
-         Width:19px;
-         Height:18px; 
+            Width: 19px;
+            Height: 18px;
         }
+
         .scroll {
-         padding:10px;
-         background-color:#F2F2F2;
+            padding: 10px;
+            background-color: #F2F2F2;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="page-header">
         <h1>
-            <strong><asp:Label ID="lblsession" runat="server" Text="" Visible="false"></asp:Label>
-            <asp:Literal ID="lit_titulo" runat="server"></asp:Literal><span>
-                <asp:Label ID="lblmensaje" runat="server" Text=""></asp:Label></span></strong></h1>
+            <strong>
+                <asp:Label ID="lblsession" runat="server" Text="" Visible="false"></asp:Label>
+                <asp:Literal ID="lit_titulo" runat="server"></asp:Literal><span>
+                    <asp:Label ID="lblmensaje" runat="server" Text=""></asp:Label></span></strong></h1>
         <asp:HiddenField ID="oc_paginaprevia" runat="server" />
         <asp:CheckBox ID="check_borr_prod" runat="server" Text="borrador" Visible="False" />
     </div>
@@ -68,12 +70,9 @@
             <br />
             <div class="btn-group">
                 <asp:HiddenField ID="ocgpoidmenu" runat="server" Value="0" />
-                <%-- <asp:DropDownList ID="DropGpos" class="btn btn-default dropdown-toggle" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropGpos_SelectedIndexChanged">
-                                              </asp:DropDownList>--%>
                 <asp:Repeater ID="repite_menu_grupos" runat="server" OnItemDataBound="repite_menu_grupos_ItemDataBound" OnItemCommand="repite_menu_grupos_ItemCommand">
 
                     <ItemTemplate>
-                        <%--<asp:LinkButton ID="linkbtnmenugpo" runat="server"></asp:LinkButton>--%>
                         <asp:Button ID="btnmenugpo" runat="server" Text="" />
                         <asp:HiddenField ID="oc_gpoid" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "idc_perfilgpo").ToString() %>' />
                     </ItemTemplate>
@@ -82,7 +81,7 @@
         </div>
     </div>
     <!-- titulo del grupo donde a dado clic -->
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-primary">
@@ -180,7 +179,6 @@
                                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Always">
                                                     <ContentTemplate>
                                                         <asp:CheckBoxList ID="check_gpo_opc" runat="server" CssClass="radio3 radio-check radio-info radio-inline" AutoPostBack='<%# (lblmax.Text).ToString() == "0" ?  false:true  %>' OnSelectedIndexChanged='<%# (lblmax.Text).ToString() == "0" ?  "":"check_gpo_opc_SelectedIndexChanged"  %>'></asp:CheckBoxList>
-
                                                     </ContentTemplate>
                                                 </asp:UpdatePanel>
                                             </div>
@@ -292,10 +290,8 @@
                             </div>
                         </div>
                     </asp:Panel>
-
                 </div>
             </div>
-
         </div>
     </div>
     <!-- GRUPO DETALLE -->
@@ -305,7 +301,6 @@
                 <div class="panel panel-primary fresh-color">
                     <div class="panel-heading" style="text-align: center;">Detalles</div>
                     <div class="panel-body">
-
                     </div>
                 </div>
             </asp:Panel>
@@ -313,7 +308,7 @@
     </div>--%>
     <!-- GRUPO DETALLE FIN -->
     <!-- ETIQUETAS -->
-   <%-- <div class="row">
+    <%-- <div class="row">
         <div class="col-lg-12">
             <asp:Panel ID="panel_etiquetas" runat="server" Visible="false">
                 <div class="panel panel-primary fresh-color">

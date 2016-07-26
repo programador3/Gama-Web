@@ -50,7 +50,7 @@
                 <ContentTemplate>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4><i class="fa fa-list-alt"></i>&nbsp;Descripcion de la tarea</h4>
+                            <h4><i class="fa fa-list-alt"></i>&nbsp;Descripción de la tarea</h4>
                             <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 1000);" placeholder="Descripcion" CssClass="form-control" TextMode="MultiLine" Rows="4" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
                         </div>
                     </div>

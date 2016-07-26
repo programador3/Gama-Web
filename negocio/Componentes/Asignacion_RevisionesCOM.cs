@@ -35,6 +35,24 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet CargaCombos(Asignacion_RevisionesENT Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfiltro", SqlDbType = SqlDbType.Int, Value = Etiqueta.Filtro });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_puestos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet CargaComboDeptos(Asignacion_RevisionesENT Etiqueta)
         {
             DataSet ds = new DataSet();
