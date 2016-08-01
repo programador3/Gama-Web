@@ -85,7 +85,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group has-feedback">
                         <asp:TextBox ID="txtsearch" onkeypress="Search()" onfocus="DeleteFocus(this);" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="txtsearch_TextChanged" placeholder="Buscar Pagina"></asp:TextBox>
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>

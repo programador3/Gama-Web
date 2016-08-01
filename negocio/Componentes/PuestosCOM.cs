@@ -33,6 +33,24 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet CargarReemplazo(PuestosENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = entidad.Idc_Puesto });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_reemplazo_existente", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet CargaPMD(PuestosENT entidad)
         {
             DataSet ds = new DataSet();
@@ -113,6 +131,31 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pusuariopc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_pre_empleado });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_asolicitud_reemplazo", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet CancelarSolicitud(PuestosENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = entidad.Idc_Puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = entidad.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = entidad.Pdirecip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pnombrepc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_pre_empleado });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_prepara", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_prepara });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pmotivocancel", SqlDbType = SqlDbType.Int, Value = entidad.Pobservaciones });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

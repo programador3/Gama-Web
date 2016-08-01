@@ -128,6 +128,7 @@ namespace presentacion
                 txtpuesto_asigna.Text = ds.Tables[0].Rows[0]["empleado_asigna"].ToString() + " || " + ds.Tables[0].Rows[0]["puesto_asigna"].ToString();
                 repeat_mis_tareas_asignadas.DataSource = ds.Tables[1];
                 repeat_mis_tareas_asignadas.DataBind();
+                lnkarbol.Visible = ds.Tables[1].Rows.Count > 0 ? true : false;
                 no_apen.Visible = ds.Tables[1].Rows.Count == 0 ? true : false;
                 repe_archivos.DataSource = ds.Tables[2];
                 repe_archivos.DataBind();
@@ -144,7 +145,9 @@ namespace presentacion
                 proveedores.Visible = ds.Tables[4].Rows.Count == 0 ? false : true;
                 lnkurladicinal.Visible = ds.Tables[5].Rows.Count == 0 ? false : true;
                 lnkurladicinal.CommandName = ds.Tables[5].Rows.Count == 0 ? "" : ds.Tables[5].Rows[0]["url_adicional"].ToString();
-                gridPapeleria.DataSource = ds.Tables[2];
+                DataView view = ds.Tables[2].DefaultView;
+                view.RowFilter = "tipo_comentario = 'comentario'";
+                gridPapeleria.DataSource = view.ToTable();
                 gridPapeleria.DataBind();
                 repeat_proovedores.DataSource = componente.CargarProveedores(entidad);
                 repeat_proovedores.DataBind();
@@ -1242,6 +1245,11 @@ namespace presentacion
             url = url.Replace(path_actual, "");
             url = url + pagina + "&title=" + funciones.deTextoa64(txtdescripcion.Text);
             ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "window.open('" + url + "');", true);
+        }
+
+        protected void lnkarbol_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("tareas_arbol.aspx?idc_tarea=" + Request.QueryString["idc_tarea"]);
         }
     }
 }

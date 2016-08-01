@@ -44,18 +44,20 @@
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-indent" aria-hidden="true"></i>&nbsp;Visitas
                         <asp:Label ID="lbltitle" runat="server" Text=""></asp:Label></strong><span>
+
+                            <asp:LinkButton Visible="true" ID="lnkurladicinal" CssClass="btn btn-success" OnClick="lnkurladicinal_Click" runat="server">Exportar a Excel <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
                         </span></h4>
             <div class="table-responsive">
                 <asp:GridView ID="gridvisitas" CssClass="table table-responsive table-condensed gvv" DataKeyNames="idc_visitareg" AutoGenerateColumns="false" runat="server">
                     <Columns>
-                        <asp:BoundField DataField="idc_visitareg" Visible="false"></asp:BoundField>
-                        <asp:BoundField DataField="visitante" HeaderStyle-Width="110px" HeaderText="Visitante"></asp:BoundField>
+                        <asp:BoundField DataField="fecha_ingreso" HeaderStyle-Width="90px" HeaderText="Ingreso"></asp:BoundField>
+                        <asp:BoundField DataField="visitante" HeaderStyle-Width="100px" HeaderText="Visitante"></asp:BoundField>
                         <asp:BoundField DataField="empresa" HeaderStyle-Width="110px" HeaderText="Empresa"></asp:BoundField>
                         <asp:BoundField DataField="motivo" HeaderStyle-Width="200px" HeaderText="Motivo"></asp:BoundField>
                         <asp:BoundField DataField="empleado" HeaderStyle-Width="200px" HeaderText="Empleado"></asp:BoundField>
-                        <asp:BoundField DataField="fecha_ingreso" HeaderStyle-Width="60px" HeaderText="Ingreso"></asp:BoundField>
                         <asp:BoundField DataField="fecha_salida" HeaderStyle-Width="60px" HeaderText="Salida"></asp:BoundField>
                         <asp:BoundField DataField="observaciones" HeaderStyle-Width="80px" HeaderText="Observaciones"></asp:BoundField>
+                        <asp:BoundField DataField="idc_visitareg" Visible="false"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
             </div>

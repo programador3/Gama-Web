@@ -112,10 +112,8 @@ namespace presentacion
                 Session["idc_prepara"] = nombres["idc_prepara"].ToString();
                 Session["aplica_descanso_diario"] = Convert.ToBoolean(nombres["aplica_descanso_diario"]);
                 int vehiculo = Convert.ToInt32(nombres["vehiculo"].ToString());
-                if (vehiculo == 0) { panelLicencia.Visible = false; }
+                if (vehiculo == 0 || Convert.ToInt32(nombres["idc_puesto"]) == 6) { panelLicencia.Visible = false; }
                 Session["idc_curso"] = nombres["idc_curso"].ToString();
-                //SI NO TIENE CARRRO NO MOSTRAMOS ARCHIVOS DE LICENCIA
-                if (Convert.ToInt32(nombres["idc_puesto"]) < 1) { panelLicencia.Visible = false; }
 
                 DataTable elector = (DataTable)Session["elector"];
                 DataTable licencia = (DataTable)Session["licencia"];
@@ -124,7 +122,7 @@ namespace presentacion
                 ddlEstadoCivil.DataValueField = "idc_edocivil";
                 ddlEstadoCivil.DataSource = ds.Tables[1];
                 ddlEstadoCivil.DataBind();
-
+                ddlEstadoCivil.Items.Insert(0, new ListItem("--Seleccione una opción", "0"));
                 //PAIS
                 ddlpais.DataTextField = "nombre";
                 ddlpais.DataValueField = "idc_pais";
@@ -191,6 +189,7 @@ namespace presentacion
                 ddlestado.DataValueField = "idc_estado";
                 ddlestado.DataSource = tabla_actual;
                 ddlestado.DataBind();
+                ddlestado.Items.Insert(0, new ListItem("--Seleccione una opción", "0"));
             }
             catch (Exception ex)
             {
@@ -582,7 +581,7 @@ namespace presentacion
 
         protected void lnkSiguientePDatosP_Click(object sender, EventArgs e)
         {
-            if (CompletePanelDPerso() != true)
+            if (CompletePanelDPerso() != true)//cambiar
             {
                 Panel_Personal.Visible = false;
                 PanelDatosLaborales.Visible = true;

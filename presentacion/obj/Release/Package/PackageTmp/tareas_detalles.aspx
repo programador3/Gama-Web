@@ -68,8 +68,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h4><i class="fa fa-list-alt"></i>&nbsp;Descripcion de la tarea<span>
-                    <asp:LinkButton Visible="false" ID="lnkurladicinal" CssClass="btn btn-success" OnClick="lnkurladicinal_Click" runat="server">Ver Información Adicional <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
-                </span></h4>
+                        <asp:LinkButton Visible="false" ID="lnkurladicinal" CssClass="btn btn-success" OnClick="lnkurladicinal_Click" runat="server">Ver Información Adicional <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
+                    </span></h4>
                     <asp:TextBox ID="txtdescripcion" ReadOnly="true" placeholder="Descripcion" CssClass="form-control" TextMode="MultiLine" Rows="3" onblur="return imposeMaxLength(this, 1000);" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
                 </div>
             </div>
@@ -97,7 +97,11 @@
             </div>
             <div class="row" id="DD" runat="server" visible="true">
                 <div class="col-lg-12">
-                    <h4><i class="fa fa-level-down"></i>&nbsp;Tareas que se generaron a partir de esta Tarea <small>Esta Tarea depende de la siguientes: </small></h4>
+                    <h4><i class="fa fa-level-down"></i>&nbsp;Tareas que se generaron a partir de esta Tarea <small>Esta Tarea depende de la siguientes: </small>
+                        <span>
+                            <asp:LinkButton Visible="false" ID="lnkarbol" CssClass="btn btn-success" OnClick="lnkarbol_Click" runat="server">Ver Arbol de Tareas <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton>
+                        </span>
+                    </h4>
                     <h4 id="no_apen" runat="server" style="text-align: center;">No hay tareas anidadas <i class="fa fa-thumbs-o-up"></i></h4>
                     <asp:Repeater ID="repeat_mis_tareas_asignadas" runat="server">
                         <ItemTemplate>

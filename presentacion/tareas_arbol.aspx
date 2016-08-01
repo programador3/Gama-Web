@@ -10,13 +10,24 @@
     <script type="text/javascript" src="primitive/js/primitives.min.js?2110"></script>
     <link href="primitive/css/primitives.latest.css?2110" media="screen" rel="stylesheet" type="text/css" />
     <script type='text/javascript'>        //<![CDATA[
-
+        function Go() {
+            var url = document.getElementById('<%= HiddenFieldurl.ClientID%>').value;
+            alert(url);
+            window.location = url;
+        }
+        function ModalConfirm(cTitulo, cContenido) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModal').modal('show');
+            $('#modal_title').text(cTitulo);
+            $('#content_modal').text(cContenido);
+        }
         $(window).load(function () {
             var width = $(window).width();
             var heigth = $(window).height();
             if ($(window).width() > 720) {
                 width = $(window).width() - 110;
-                heigth = $(window).height() - 160;
+                heigth = $(window).height() - 400;
             }
             $("#basicdiagram").width(width);
             $("#basicdiagram").height(heigth);
@@ -62,20 +73,23 @@
                     options.onMouseClick = function (e, data) {
                         var redi = parseInt(data.context.redirect);
                         if (redi == 1) {
+                            $('#<% =HiddenFieldidctarea.ClientID %>').attr('value', data.context.label);
                             var url = document.getElementById('<%= HiddenField.ClientID%>').value;
                             url = url + "tareas_detalles.aspx?lectura=1&acepta=1&idc_tarea=" + data.context.label;
-                            swal({
-                                title: "¿Desea visualizar esta Tarea?",
-                                text: "Por cuestiones de seguridad, \n si usted NO ESTA INVOLUCRADO EN ESTA TAREA, \n NO SE LE PERMITIRA modificar el contenido de la misma.",
-                                type: "info",
-                                showCancelButton: true,
-                                confirmButtonColor: "#19B5FE",
-                                confirmButtonText: "Ver la Tarea",
-                                closeOnConfirm: false
-                            },
-                            function () {
-                                window.location = url;
-                            });
+                            $('#<% =HiddenFieldurl.ClientID %>').attr('value', url);
+                            ModalConfirm('Mensaje del Sistema', 'Seleccione una opcion');
+                            //swal({
+                            //    title: "¿Desea visualizar esta Tarea?",
+                            //    text: "Por cuestiones de seguridad, \n si usted NO ESTA INVOLUCRADO EN ESTA TAREA, \n NO SE LE PERMITIRA modificar el contenido de la misma.",
+                            //    type: "info",
+                            //    showCancelButton: true,
+                            //    confirmButtonColor: "#19B5FE",
+                            //    confirmButtonText: "Ver la Tarea",
+                            //    closeOnConfirm: false
+                            //},
+                            //function () {
+                            //    window.location = url;
+                            //});
                         } else {
                             swal("Mensaje del Sistema", "Para ver los detalles, de clic sobre la tarea padre.", "info");
                         }
@@ -187,6 +201,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <asp:HiddenField ID="HiddenField" runat="server" />
+    <asp:HiddenField ID="HiddenFieldidctarea" runat="server" />
+    <asp:HiddenField ID="HiddenFieldurl" runat="server" />
     <label style="background-color: #58ACFA; color: white; font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;">Tareas Terminadas dentro del Tiempo</label>
     <label style="background-color: #FE9A2E; color: white; font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;">Tareas Pendientes dentro del Tiempo</label>
     <label style="background-color: #D358F7; color: white; font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;">Tareas Canceladas </label>
@@ -198,5 +214,60 @@
         <a class="btn btn-info" id="Left" href="#">Izquierda <i class="fa fa-arrow-left"></i></a>
         <a class="btn btn-info" id="Right" href="#">Derecha <i class="fa fa-arrow-right"></i></a>
         <a class="btn btn-info" id="Bottom" href="#">Abajo <i class="fa fa-arrow-down"></i></a>
+    </div>
+    <div id="comentarios">
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <h4><strong>Comentarios de la tarea "<asp:Label ID="lbltarea" runat="server" Text="Seleccione una Tarea para ver sus comentarios"></asp:Label>"</strong></h4>
+                <div class="table table-responsive">
+                    <asp:GridView ID="gridPapeleria" OnRowDataBound="gridPapeleria_RowDataBound" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed" OnRowCommand="gridPapeleria_RowCommand" DataKeyNames="archivo,idc_tarea_archivo,descripcion, ruta, extension">
+                        <Columns>
+                            <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Descargar" CommandName="Descargar" Text="Descargar">
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" Width="60px" />
+                            </asp:ButtonField>
+                            <asp:BoundField DataField="extension" HeaderText="extension" Visible="false"></asp:BoundField>
+                            <asp:BoundField DataField="ruta" HeaderText="Ruta Fisica Web" Visible="false"></asp:BoundField>
+                            <asp:BoundField DataField="descripcion" HeaderText="Comentario" HeaderStyle-Width="700px"></asp:BoundField>
+                            <asp:BoundField DataField="idc_tarea_archivo" HeaderText="id_archi" Visible="false"></asp:BoundField>
+                            <asp:BoundField DataField="archivo" HeaderText="id_archi" Visible="false"></asp:BoundField>
+                            <asp:BoundField DataField="empleado" HeaderText="Empleado" Visible="true"></asp:BoundField>
+                            <asp:BoundField DataField="puesto" HeaderText="Puesto" Visible="true"></asp:BoundField>
+                            <asp:BoundField DataField="tipo_comentario" HeaderText="Tipo" HeaderStyle-Width="120px" Visible="true"></asp:BoundField>
+                            <asp:BoundField DataField="fecha" HeaderText="Fecha" Visible="true"></asp:BoundField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 id="modal_title"><strong>Mensaje del Sistema</strong></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="text-align: center;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            <h4>
+                                <label id="content_modal"></label>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-lg-6 col-xs-6">
+                        <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Ver Comentarios" OnClick="Yes_Click" />
+                    </div>
+                    <div class="col-lg-6 col-xs-6">
+                        <asp:Button ID="Button1" class="btn btn-success btn-block" runat="server" Text="Ver Todos los Detalles" OnClick="Button1_Click" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </asp:Content>

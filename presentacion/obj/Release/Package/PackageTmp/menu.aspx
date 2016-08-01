@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="Menu Principal" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="menu.aspx.cs" Inherits="presentacion.menu" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="css/ionicons.css" rel="stylesheet" />
-    <link href="css/ionicons.min.css" rel="stylesheet" />
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">    
     <script type="text/javascript">
         function Search() {
             var value = document.getElementById('<%=txtsearch.ClientID%>').value;
@@ -87,7 +85,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group has-feedback">
                         <asp:TextBox ID="txtsearch" onkeypress="Search()" onfocus="DeleteFocus(this);" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="txtsearch_TextChanged" placeholder="Buscar Pagina"></asp:TextBox>
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>

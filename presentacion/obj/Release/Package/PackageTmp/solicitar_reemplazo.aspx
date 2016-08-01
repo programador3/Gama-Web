@@ -77,23 +77,34 @@
                                         <asp:Label ID="lblucursal" runat="server" Text=""></asp:Label>
                                     </h4>
                                 </div>
+                                
                             </div>
                         </div>
                     </asp:Panel>
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-12" id="fecha" runat="server" visible="false">
+                    <h4><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<strong>Fecha de Solicitud:</strong>
+                        <asp:Label ID="lblfecha" runat="server" Text=""></asp:Label></h4>
+                </div>
                 <div class="col-lg-12">
                     <h4>Motivo de la Solicitud</h4>
                     <asp:TextBox ID="txtobservaciones" TextMode="MultiLine" Rows="5" onblur="imposeMaxLength(this,1000);" CssClass="form-control" placeholder="Motivo" runat="server"></asp:TextBox>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="solicitud" runat="server">
                 <div class="col-lg-6 col-md-6 col-xs-6">
                     <asp:LinkButton ID="lnkguardar" CssClass="btn btn-primary btn-block" OnClick="lnkguardar_Click" runat="server">Guardar</asp:LinkButton>
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-6">
                     <asp:LinkButton ID="lnkcancelar" CssClass="btn btn-danger btn-block" OnClick="lnkcancelar_Click" runat="server">Cancelar</asp:LinkButton>
+                </div>
+            </div>
+
+            <div class="row" id="cancelacion" runat="server" visible="false">
+                <div class="col-lg-12">
+                    <asp:LinkButton ID="lnkcancelarproceso" CssClass="btn btn-danger btn-block" OnClick="lnkcancelarproceso_Click" runat="server">Cancelar Solicitud</asp:LinkButton>
                 </div>
             </div>
         </div>
@@ -113,14 +124,20 @@
                                 </h4>
                             </div>
                         </div>
+                        <div class="row" id="cancelaciontxt" runat="server" visible="false">
+                            <div class="col-lg-12">
+                                <h4>Motivo de la Cancelacion</h4>
+                                <asp:TextBox ID="txtcancel" TextMode="MultiLine" Rows="5" onblur="imposeMaxLength(this,250);" CssClass="form-control" placeholder="Motivo" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <div class="row">
                             <div class="col-lg-6 col-xs-6">
-                                <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Si" OnClick="Yes_Click" />
+                                <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
                             </div>
                             <div class="col-lg-6 col-xs-6">
-                                <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="No" />
+                                <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                             </div>
                         </div>
                     </div>

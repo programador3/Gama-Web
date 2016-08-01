@@ -16,6 +16,7 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
+                Session["idc_prepara"] = null;
                 CargarDatosEmpleado(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
             }
         }
@@ -28,7 +29,8 @@ namespace presentacion
             PuestosENT entidad = new PuestosENT();
             entidad.Idc_Puesto = idc_puesto;//indicamosm que queremos datos de empleado
             PuestosCOM componente = new PuestosCOM();
-            DataSet ds = componente.CargaCatologoPuestos(entidad);
+            DataSet ds = new DataSet();
+            ds = componente.CargaCatologoPuestos(entidad);
             DataRow row = ds.Tables[1].Rows[0];
             lblPuesto.Text = row["puesto"].ToString();
             lblNombre.Text = row["nombre"].ToString();
@@ -36,6 +38,20 @@ namespace presentacion
             lblucursal.Text = row["sucursal"].ToString();
             Session["pidc_empleado_reemplazo"] = Convert.ToInt32(row["idc_empleado"]);
             GenerarRuta(Convert.ToInt32(row["idc_empleado"]), "fot_emp");
+            ds = componente.CargarReemplazo(entidad);
+            DataTable dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                solicitud.Visible = false;
+                cancelacion.Visible = true;
+                DataRow rowreemp = dt.Rows[0];
+                txtobservaciones.Text = rowreemp["comentarios"].ToString();
+                txtobservaciones.ReadOnly = true;
+                lblfecha.Text = rowreemp["fecha"].ToString();
+                fecha.Visible = true;
+                Session["idc_prepara"] = Convert.ToInt32(rowreemp["idc_prepara"]);
+                Alert.ShowAlertInfo("Ya existe una Solicitud", "Mensaje del Sistema", this);
+            }
         }
 
         /// <summary>
@@ -118,10 +134,24 @@ namespace presentacion
                         ds = componente.SolicitudRemplazo(entidad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         break;
+
+                    case "Cancelar Solicitud":
+                        if (txtcancel.Text == "")
+                        {
+                            vmensaje = "Debe Escribir un Motivo de cancelacion";
+                        }
+                        else
+                        {
+                            entidad.Pidc_prepara = Convert.ToInt32(Session["idc_prepara"]);
+                            entidad.Pobservaciones = txtcancel.Text;
+                            ds = componente.CancelarSolicitud(entidad);
+                            vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                        }
+                        break;
                 }
                 if (vmensaje == "")
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "AlertGO('Solicitud Guardada correctamente','puestos_catalogo.aspx');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "AlertGO('Solicitud Procesada correctamente','puestos_catalogo.aspx');", true);
                 }
                 else
                 {
@@ -132,6 +162,13 @@ namespace presentacion
             {
                 Alert.ShowAlertError(ex.ToString(), this);
             }
+        }
+
+        protected void lnkcancelarproceso_Click(object sender, EventArgs e)
+        {
+            Session["Caso_Confirmacion"] = "Cancelar Solicitud";
+            cancelaciontxt.Visible = true;
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','Desea Cancelar esta Solicitud?');", true);
         }
     }
 }

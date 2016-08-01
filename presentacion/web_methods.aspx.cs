@@ -218,5 +218,10 @@ namespace presentacion
                 return "Problem: " + ex.Message;
             }
         }
+
+        public class Comentarios
+        {
+            public string comentario { get; set; }
+        }
     }
 }

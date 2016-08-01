@@ -283,10 +283,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:37</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>07/25/2016 11:18:21</publishTime>
+      <publishTime>07/27/2016 09:28:20</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>07/25/2016 15:34:43</publishTime>
+      <publishTime>07/30/2016 09:31:39</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>07/02/2016 12:30:31</publishTime>
@@ -1516,7 +1516,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/06/2016 09:57:57</publishTime>
     </File>
     <File Include="menu.aspx">
-      <publishTime>07/22/2016 16:18:37</publishTime>
+      <publishTime>07/29/2016 10:03:01</publishTime>
     </File>
     <File Include="Not/animate.css">
       <publishTime>04/06/2016 17:23:21</publishTime>
@@ -1720,7 +1720,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/08/2016 10:22:57</publishTime>
     </File>
     <File Include="pre_empleados_captura.aspx">
-      <publishTime>06/08/2016 10:22:56</publishTime>
+      <publishTime>07/26/2016 16:46:32</publishTime>
     </File>
     <File Include="primitive/css/bporgeditor.latest.css">
       <publishTime>05/27/2016 09:21:31</publishTime>
@@ -1909,7 +1909,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/08/2016 10:22:54</publishTime>
     </File>
     <File Include="reporte_visitas.aspx">
-      <publishTime>07/16/2016 10:40:56</publishTime>
+      <publishTime>07/26/2016 11:08:17</publishTime>
     </File>
     <File Include="revisiones.aspx">
       <publishTime>05/20/2016 09:31:38</publishTime>
@@ -1942,7 +1942,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:32:15</publishTime>
     </File>
     <File Include="solicitar_reemplazo.aspx">
-      <publishTime>05/20/2016 09:32:18</publishTime>
+      <publishTime>07/27/2016 08:51:42</publishTime>
     </File>
     <File Include="solicitud_horario.aspx">
       <publishTime>07/18/2016 09:22:58</publishTime>
@@ -1972,7 +1972,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:32:22</publishTime>
     </File>
     <File Include="tareas_arbol.aspx">
-      <publishTime>06/14/2016 17:40:39</publishTime>
+      <publishTime>07/29/2016 09:16:22</publishTime>
     </File>
     <File Include="tareas_asignadas_lista.aspx">
       <publishTime>05/25/2016 12:03:13</publishTime>
@@ -1984,10 +1984,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:32:29</publishTime>
     </File>
     <File Include="tareas_captura.aspx">
-      <publishTime>06/13/2016 11:29:59</publishTime>
+      <publishTime>07/26/2016 08:57:36</publishTime>
     </File>
     <File Include="tareas_detalles.aspx">
-      <publishTime>07/07/2016 17:06:25</publishTime>
+      <publishTime>07/29/2016 07:49:28</publishTime>
     </File>
     <File Include="tareas_informacion_adicional.aspx">
       <publishTime>07/08/2016 09:05:17</publishTime>
@@ -2020,7 +2020,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/25/2016 15:34:44</publishTime>
+      <publishTime>07/30/2016 09:31:40</publishTime>
     </File>
     <File Include="web_methods.aspx">
       <publishTime>05/20/2016 09:33:30</publishTime>
