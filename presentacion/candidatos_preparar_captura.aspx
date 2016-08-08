@@ -91,7 +91,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <asp:LinkButton ID="lnknuevocandidato" runat="server" CssClass="btn btn-info btn-block" OnClick="lnknuevocandidato_Click">Agregar Candidato <i class="fa fa-plus-circle"></i></asp:LinkButton>
+                    <asp:LinkButton ID="lnknuevocandidato" runat="server" CssClass="btn btn-success btn-block" OnClick="lnknuevocandidato_Click">Agregar Candidato <i class="fa fa-plus-circle"></i></asp:LinkButton>
                 </div>
             </div>
             <asp:Panel ID="PanelCatalogo" runat="server">
@@ -101,7 +101,7 @@
                 <br />
                 <div class="row">
                     <div class="col-lg-12 col-md-12 xol-sm-12">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-success fresh-color">
                             <div class="panel-heading" style="text-align: center;">
                                 <h4 class="panel-title">Candidatos al Puesto <i class="fa fa-users"></i></h4>
                             </div>
@@ -125,10 +125,128 @@
                                             <asp:BoundField DataField="idc_pre_empleado" HeaderText="idc_pre_empleado" Visible="false"></asp:BoundField>
                                             <asp:BoundField DataField="idc_puesto" HeaderText="idc_tipoherramienta" Visible="false"></asp:BoundField>
                                             <asp:BoundField DataField="idc_prepara" HeaderText="idc_prepara" Visible="false"></asp:BoundField>
-                                            <asp:BoundField DataField="nombre" HeaderText="Candidato" Visible="true"></asp:BoundField>
+                                            <asp:ButtonField DataTextField="nombre" ControlStyle-CssClass="btn btn-default btn-block" HeaderText="Candidato" CommandName="Puesto" />
                                             <asp:BoundField DataField="fec_ingreso" HeaderText="Fecha de Alta"></asp:BoundField>
                                         </Columns>
                                     </asp:GridView>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="view" runat="server" visible="false">
+                    <div class="panel panel-info fresh-color">
+                        <div class="panel-heading" style="text-align: center;">
+                            Información del Candidato
+                            <span>
+                                <asp:Button ID="btnocul" CssClass="btn btn-default" OnClick="btnocul_Click" runat="server" Text="Ocultar Información" /></span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <h4 style="text-align: center;"><strong>Datos Personales <i class="fa fa-user"></i></strong></h4>
+                                    <asp:Repeater ID="gridDetalles" runat="server">
+                                        <ItemTemplate>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">Nombre <i class="fa fa-user"></i></span>
+                                                            <asp:TextBox ID="txt" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("nombre") %>'></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">Genero <i class="fa fa-user"></i></span>
+                                                            <asp:TextBox ID="TextBox1" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("sexo") %>'></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">Estado Civil <i class="fa fa-user"></i></span>
+                                                            <asp:TextBox ID="TextBox4" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("edo_civil") %>'></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">Fecha de Nac <i class="fa fa-user"></i></span>
+                                                            <asp:TextBox ID="TextBox2" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("fec_nac") %>'></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">Dirección <i class="fa fa-user"></i></span>
+                                                            <asp:TextBox ID="TextBox5" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("direccion") %>'></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h4 style="text-align: center;"><strong>Contacto <i class="fa fa-mobile"></i></strong></h4>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">Correo <i class="fa fa-laptop"></i></span>
+                                                            <asp:TextBox ID="TextBox3" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("correo_personal") %>'></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+
+                                    <asp:Repeater ID="repeat_telefonos" runat="server">
+                                        <ItemTemplate>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;"><i class="fa fa-mobile"></i></span>
+                                                            <asp:TextBox ID="TextBox3" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("telefono") %>'></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    <h4 style="text-align: center;"><strong>Papeleria <i class="fa fa-archive"></i></strong></h4>
+
+                                    <div class="row">
+                                        <asp:Repeater ID="repeat_papeleria" runat="server" OnItemDataBound="repeat_papeleria_ItemDataBound">
+                                            <ItemTemplate>
+                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <asp:TextBox ID="TextBox3" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("descripcion") %>'></asp:TextBox>
+
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">
+                                                                <asp:LinkButton ID="lnkdownload" Style="color: #fff; background-color: #22A7F0;" runat="server" OnClick="lnkdownload_Click">Descargar <i class="fa fa-download"></i></asp:LinkButton>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <asp:TextBox ID="txtobservaciones2" ReadOnly="true" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4" Text=""></asp:TextBox>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +349,7 @@
                                         </div>
                                         <br />
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-8 xol-sm-12">
+                                            <div class="col-lg-12 col-md-12 Col-sm-12">
                                                 <div class="table table-responsive">
                                                     <asp:GridView ID="gridArchivos" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed" OnRowCommand="gridArchivos_RowCommand" DataKeyNames="ruta">
                                                         <Columns>
@@ -306,6 +424,26 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="modalPreviewView" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #428bca; color: white; text-align: center;">
+                    <h4>Información del Candidato <i class="fa fa-info-circle"></i>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <input id="btnModalAcept" class="btn btn-primary btn-block" value="Cerrar" onclick="ModalClose();" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.CONFIRMA -->
         </div>
     </div>
 </asp:Content>

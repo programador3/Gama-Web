@@ -13,6 +13,8 @@ namespace presentacion
 {
     public partial class perfiles_captura2 : System.Web.UI.Page
     {
+        private bool val = true;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["sidc_usuario"] == null)
@@ -483,6 +485,7 @@ namespace presentacion
                 archivos_etiquetas.Columns.Add("idc");
                 gridPapeleriaEtiquetas.DataSource = ds.Tables[8];
                 gridPapeleriaEtiquetas.DataBind();
+
                 foreach (DataRow ROW in ds.Tables[8].Rows)
                 {
                     DataRow new_row = archivos_etiquetas.NewRow();
@@ -492,7 +495,21 @@ namespace presentacion
                     new_row["idc"] = ROW["idc"];
                     archivos_etiquetas.Rows.Add(new_row);
                 }
-
+                if (val == true)
+                {
+                    carga_horarios();
+                    foreach (DataRow ROW in ds.Tables[9].Rows)
+                    {
+                        int idc = Convert.ToInt32(ROW["idc_horariog"]);
+                        foreach (ListItem item in cbxhorarios.Items)
+                        {
+                            if (idc == Convert.ToInt32(item.Value))
+                            {
+                                item.Selected = true;
+                            }
+                        }
+                    }
+                }
                 Session[lblsession.Text + "archivos_etiquetas"] = archivos_etiquetas;
             }
             catch (Exception ex)
@@ -1249,6 +1266,36 @@ namespace presentacion
             return resultado;
         }
 
+        /// <summary>
+        /// Cadena de horarios
+        /// </summary>
+        /// <returns></returns>
+        private String CadenaHorarios()
+        {
+            string cadena = "";
+            foreach (ListItem item in cbxhorarios.Items)
+            {
+                if (item.Selected == true)
+                {
+                    cadena = cadena + item.Value + ";";
+                }
+            }
+            return cadena;
+        }
+
+        private int TotalCadenaHorarios()
+        {
+            int cadena = 0;
+            foreach (ListItem item in cbxhorarios.Items)
+            {
+                if (item.Selected == true)
+                {
+                    cadena = cadena + 1;
+                }
+            }
+            return cadena;
+        }
+
         protected void btnGuardarTodo_Click(object sender, EventArgs e)
         {
             Session["Caso_Confirmacion"] = "Guardar";
@@ -1992,6 +2039,20 @@ namespace presentacion
             chxExamenes.DataBind();
         }
 
+        private void carga_horarios()
+        {
+            DataSet ds = new DataSet();
+            PerfilesBL componente = new PerfilesBL();
+            PerfilesE entidad = new PerfilesE();
+            ds = componente.horarios(entidad);
+            //llenamos el checklist
+            cbxhorarios.DataTextField = "descripcion";
+            cbxhorarios.DataValueField = "idc_horariog";
+
+            cbxhorarios.DataSource = ds.Tables[0];
+            cbxhorarios.DataBind();
+        }
+
         /// <summary>
         /// metodo que revisa que elementos fueron seleccionados del control checklist_docs y genera la cadena con el id y la descripcion y el id del perfil create 02-12-2015
         /// </summary>
@@ -2101,7 +2162,11 @@ namespace presentacion
                         entidad.Cad_perfil_docs_tot = Convert.ToInt32(res_perf_doc[1]);
                         entidad.Pcadena_archi = GeneraCadenaDocumentos();
                         entidad.Ptotal_cadena_archi = TotalCadenaDocumentos();
-
+                        if (val == true)
+                        {
+                            entidad.Cadena_h = CadenaHorarios();
+                            entidad.Cad_total_h = TotalCadenaHorarios();
+                        }
                         entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
                         entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
                         entidad.Pusuariopc = funciones.GetUserName();//usuario pc

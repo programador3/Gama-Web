@@ -3,6 +3,7 @@ using negocio.Entidades;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -24,6 +25,7 @@ namespace presentacion
             {
                 Response.Redirect("revisones_preparacion.aspx");
             }
+            Session["redirect"] = "candidatos_preparar_captura.aspx?idc_puesto=" + Request.QueryString["idc_puesto"].ToString() + "&idc_prepara=" + Request.QueryString["idc_prepara"].ToString();
             lnknuevocandidato.Visible = Request.QueryString["view"] == null ? true : false;
             //bajo valores
             int idc_puesto = 0;
@@ -34,8 +36,8 @@ namespace presentacion
             {
                 idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"].ToString());
                 idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
-                idc_puestobaja = Convert.ToInt32(Request.QueryString["idc_puesto"].ToString());
-                idc_prepara = Convert.ToInt32(Request.QueryString["idc_prepara"].ToString());
+                idc_puestobaja = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"].ToString()));
+                idc_prepara = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_prepara"].ToString()));
             }
             else
             {
@@ -405,9 +407,75 @@ namespace presentacion
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Esta seguro de realizar este movimiento? Esto hara que este puesto se bloquee hasta que el candidato pase el tiempo de capacitación.');", true);
                     }
                     break;
+
+                case "Puesto":
+                    int idc_prepara = Convert.ToInt32(gridCatalogo.DataKeys[index].Values["idc_prepara"].ToString());
+                    int idc_pre_empleado = Convert.ToInt32(gridCatalogo.DataKeys[index].Values["idc_pre_empleado"].ToString());
+                    DataPrep2(0, idc_prepara, idc_pre_empleado);
+                    view.Visible = true;
+                    break;
             }
             gridCatalogo.DataSource = (DataTable)Session["data"];
             gridCatalogo.DataBind();
+        }
+
+        public void DataPrep2(int idc_puestosbaja, int idc_prepara, int idc_pre_empleado)
+        {
+            CandidatosENT entidad = new CandidatosENT();
+            CandidatosCOM componente = new CandidatosCOM();
+            if (idc_pre_empleado != 0)
+            {
+                entidad.Pidc_puesto = idc_puestosbaja;
+                entidad.Pidc_prepara = idc_prepara;
+                entidad.Pidc_pre_empleado = idc_pre_empleado;
+                DataSet ds = componente.CargaCandidatos(entidad);
+                txtobservaciones2.Text = ds.Tables[1].Rows[0]["observaciones"].ToString();
+                gridDetalles.DataSource = ds.Tables[1];
+                gridDetalles.DataBind();
+                repeat_telefonos.DataSource = ds.Tables[2];
+                repeat_telefonos.DataBind();
+                repeat_papeleria.DataSource = ds.Tables[3];
+                repeat_papeleria.DataBind();
+            }
+        }
+
+        protected void lnkdownload_Click(object sender, EventArgs e)
+        {
+            LinkButton lnkdownload = (LinkButton)sender;
+            string ruta = lnkdownload.CommandName.ToString();
+            string archivo = lnkdownload.CommandArgument.ToString();
+            Download(ruta, archivo);
+        }
+
+        protected void repeat_papeleria_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView dbr = (DataRowView)e.Item.DataItem;
+            LinkButton lnkdownload = (LinkButton)e.Item.FindControl("lnkdownload");
+            string ruta = Convert.ToString(DataBinder.Eval(dbr, "ruta"));
+            string archivo = Convert.ToString(DataBinder.Eval(dbr, "archivo"));
+            lnkdownload.CommandName = ruta;
+            lnkdownload.CommandArgument = archivo;
+        }
+
+        /// <summary>
+        /// Descarga un archivo
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="file_name"></param>
+        public void Download(string path, string file_name)
+        {
+            // Limpiamos la salida
+            Response.Clear();
+            // Con esto le decimos al browser que la salida sera descargable
+            Response.ContentType = "application/octet-stream";
+            // esta linea es opcional, en donde podemos cambiar el nombre del fichero a descargar (para que sea diferente al original)
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + file_name);
+            // Escribimos el fichero a enviar
+            Response.WriteFile(path);
+            // volcamos el stream
+            Response.Flush();
+            // Enviamos todo el encabezado ahora
+            Response.End();
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
@@ -439,6 +507,11 @@ namespace presentacion
             cambiar_fecha.Visible = true;
             Session["Caso_Confirmacion"] = "Compromiso";
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','Ingerese la Nueva Fecha Compromiso');", true);
+        }
+
+        protected void btnocul_Click(object sender, EventArgs e)
+        {
+            view.Visible = false;
         }
     }
 }

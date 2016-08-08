@@ -88,5 +88,105 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
+        public DataSet CargarSucursalesAlmacen(InventariosENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_sucursales_combo_disponibles", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet CargarModulosfn(InventariosENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = entidad.Idc_usuario });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_modulos_alm_usu", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet CargarModulos(InventariosENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_almacen", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_almacen });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_modulos_almacen", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet CargarArticulos(InventariosENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_almacen", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_almacen });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_modulo", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_modulo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = entidad.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@p_artidesc", SqlDbType = SqlDbType.Int, Value = entidad.Pcadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@p_onall", SqlDbType = SqlDbType.Int, Value = entidad.Parea });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_arti_modulos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet Articulo(InventariosENT Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pdirecip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pnombrepc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_articulo", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_modulo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_sucursal", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_almacen });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pconteo", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfolio2 });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_artimodprog", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_actscategoria });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_aconteo_inventario_web", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
     }
 }

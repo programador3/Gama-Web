@@ -18,6 +18,10 @@
         private int cad_total_gpo_opc;
         private string tipo;
 
+        private string cadena_h;
+
+        private int cad_total_h;
+
         //
         private string cadena_etiq_lib;
 
@@ -112,6 +116,19 @@
             set { cad_total_gpo_lib = value; }
         }
 
+        public string Cadena_h
+        {
+            get { return cadena_h; }
+            set { cadena_h = value; }
+        }
+
+        public int Cad_total_h
+        {
+            get { return cad_total_h; }
+            set { cad_total_h = value; }
+        }
+
+        //
         //
         public string Cadena_gpo_opc
         {

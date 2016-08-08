@@ -208,7 +208,7 @@ namespace presentacion
                     string mensaje = row["mensaje"].ToString();
                     if (mensaje == "")
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "GOALERT", "AlertGO('La Selección fue Guardada Correctamente.','menu.aspx','success');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "GOALERT", "AlertGO('La Selección fue Guardada Correctamente. Un empleado de Recursos Humanos se contactara con las opciones que usted marco, en caso contrario, preparar nuevos candidatos.','menu.aspx','success');", true);
                     }
                     else
                     {

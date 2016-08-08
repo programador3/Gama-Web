@@ -21,9 +21,10 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
-            int idc_candidato = Convert.ToInt32(Request.QueryString["idc_puesto"]);
+            int idc_candidato = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"]));
             if (!Page.IsPostBack)
             {
+                Session["HORARIO"] = null;
                 Session["aplica_descanso_diario"] = null;
                 //TABLA PARA HIJOS
                 DataTable tabla_hijos = new DataTable();
@@ -112,7 +113,7 @@ namespace presentacion
                 Session["idc_prepara"] = nombres["idc_prepara"].ToString();
                 Session["aplica_descanso_diario"] = Convert.ToBoolean(nombres["aplica_descanso_diario"]);
                 int vehiculo = Convert.ToInt32(nombres["vehiculo"].ToString());
-                if (vehiculo == 0 || Convert.ToInt32(nombres["idc_puesto"]) == 6) { panelLicencia.Visible = false; }
+                if (vehiculo == 0 || Convert.ToInt32(nombres["idc_tipoveh"]) == 6) { panelLicencia.Visible = false; }
                 Session["idc_curso"] = nombres["idc_curso"].ToString();
 
                 DataTable elector = (DataTable)Session["elector"];
@@ -153,6 +154,15 @@ namespace presentacion
                 repeatPapeleria.DataSource = ds.Tables[7];
                 repeatPapeleria.DataBind();
                 Session["documentos_detalles"] = ds.Tables[8];
+
+                cbxhorarios.DataTextField = "descripcion";
+                cbxhorarios.DataValueField = "idc_horariog";
+
+                cbxhorarios.DataSource = ds.Tables[9];
+                cbxhorarios.DataBind();
+
+                Session["HORARIO"] = ds.Tables[9];
+
             }
             catch (Exception ex)
             {
@@ -281,19 +291,26 @@ namespace presentacion
             {
                 txtComplementos.Text = "0.00";
             }
-            int TOTAL = 0;
-            foreach (RepeaterItem item in repeatdias.Items)
+            lblErrorHorarioHORARIO.Visible = false;
+            DataTable dt = (DataTable)Session["HORARIO"];
+            if (TotalCadenaHorarios() != 1 && dt.Rows.Count > 0)
             {
-                DropDownList ddlhorariodia = (DropDownList)item.FindControl("ddlhorariodia");
-                DropDownList ddlhorariocomida = (DropDownList)item.FindControl("ddlhorariocomida");
-                CheckBox cbxLaborables = (CheckBox)item.FindControl("cbxLaborables");
-                Label lblErrorHorario = (Label)item.FindControl("lblErrorHorario");
-                lblErrorHorario.Visible = false;
-                if (ddlhorariocomida.SelectedValue == null || ddlhorariocomida.SelectedValue == "0") { lblErrorHorario.Text = "SELECCIONE UN HORARIO DE COMIDA"; error = true; }
-                if (ddlhorariodia.SelectedValue == null || ddlhorariodia.SelectedValue == "0") { lblErrorHorario.Text = "SELECCIONE UN HORARIO"; error = true; }
-                if (cbxLaborables.Checked == true) { TOTAL = TOTAL + 1; }
-                if (TOTAL > 6) { error = true; lblErrorHorario.Text = "SOLO DEBEN SER 6 DIAS"; lblErrorHorario.Visible = true; }
+                lblErrorHorarioHORARIO.Visible = true;
+                lblErrorHorarioHORARIO.Text = "SELECCIONE SOLO UN HORARIO";
+                error = true;
             }
+            //foreach (RepeaterItem item in repeatdias.Items)
+            //{
+            //    DropDownList ddlhorariodia = (DropDownList)item.FindControl("ddlhorariodia");
+            //    DropDownList ddlhorariocomida = (DropDownList)item.FindControl("ddlhorariocomida");
+            //    CheckBox cbxLaborables = (CheckBox)item.FindControl("cbxLaborables");
+            //    Label lblErrorHorario = (Label)item.FindControl("lblErrorHorario");
+            //    lblErrorHorario.Visible = false;
+            //    if (ddlhorariocomida.SelectedValue == null || ddlhorariocomida.SelectedValue == "0") { lblErrorHorario.Text = "SELECCIONE UN HORARIO DE COMIDA"; error = true; }
+            //    if (ddlhorariodia.SelectedValue == null || ddlhorariodia.SelectedValue == "0") { lblErrorHorario.Text = "SELECCIONE UN HORARIO"; error = true; }
+            //    if (cbxLaborables.Checked == true) { TOTAL = TOTAL + 1; }
+            //    if (TOTAL > 6) { error = true; lblErrorHorario.Text = "SOLO DEBEN SER 6 DIAS"; lblErrorHorario.Visible = true; }
+            //}
             return error;
         }
 
@@ -326,6 +343,32 @@ namespace presentacion
                 }
             }
             return error;
+        }
+
+        private String CadenaHorarios()
+        {
+            string cadena = "";
+            foreach (ListItem item in cbxhorarios.Items)
+            {
+                if (item.Selected == true)
+                {
+                    cadena = cadena + item.Value + ";";
+                }
+            }
+            return cadena;
+        }
+
+        private int TotalCadenaHorarios()
+        {
+            int cadena = 0;
+            foreach (ListItem item in cbxhorarios.Items)
+            {
+                if (item.Selected == true)
+                {
+                    cadena = cadena + 1;
+                }
+            }
+            return cadena;
         }
 
         /// <summary>
@@ -389,48 +432,6 @@ namespace presentacion
             bool error = false;
 
             return error;
-        }
-
-        /// <summary>
-        /// Regresa una cadena con los horarios
-        /// </summary>
-        /// <returns></returns>
-        public string CadenaHorarios()
-        {
-            string cadena = "";
-            DataTable tabla_telefonos = (DataTable)Session["tabla_telefonos"];
-            int num_dia = 0;//gnera el numero de dia
-            foreach (RepeaterItem item in repeatdias.Items)
-            {
-                num_dia = num_dia + 1;
-                DropDownList ddlhorariodia = (DropDownList)item.FindControl("ddlhorariodia");
-                DropDownList ddlhorariocomida = (DropDownList)item.FindControl("ddlhorariocomida");
-                CheckBox cbxLaborables = (CheckBox)item.FindControl("cbxLaborables");
-                CheckBox cbxDescanso = (CheckBox)item.FindControl("cbxDescanso");
-                Label lblErrorHorario = (Label)item.FindControl("lblErrorHorario");
-                int laborable = 1;
-                int descanso = cbxDescanso.Checked == true ? 1 : 0;
-                if (cbxDescanso.Enabled == false) { descanso = 0; }
-                if (cbxLaborables.Checked == false) { laborable = 0; }
-                if (ddlhorariocomida.Visible == true)//num_dia,labrable,idc_horario,idc_horarioc
-                {
-                    cadena = cadena + num_dia.ToString() + ";" + laborable.ToString() + ";" + ddlhorariodia.SelectedValue + ";" + ddlhorariocomida.SelectedValue + ";" + descanso.ToString() + ";";
-                }
-                else
-                {
-                    cadena = cadena + num_dia.ToString() + ";" + laborable.ToString() + ";" + ddlhorariodia.SelectedValue + ";;" + descanso.ToString() + ";";
-                }
-            }
-            return cadena;
-        }
-
-        /// <summary>
-        /// Retorna el numero de filas de cadena horarios, siempre debe ser 7 por 7 dias de la semana
-        /// </summary>
-        /// <returns></returns>
-        public int TotalHorarios()
-        {
-            return 7;
         }
 
         public string CadenaElectorLicencia()
@@ -1076,6 +1077,7 @@ namespace presentacion
                     DataTable elector = (DataTable)Session["elector"];
                     DataRow new_row = elector.NewRow();
                     new_row["folio"] = txtFolioElector.Text.ToUpper();
+
                     SqlDateTime fec_ven = SqlDateTime.Parse(txtFechaVencElect.Text);
                     new_row["vencimiento"] = fec_ven;
                     new_row["rutafrente"] = dirInfo + randomNumber.ToString() + fupFrenteElector.FileName;
@@ -1318,38 +1320,43 @@ namespace presentacion
 
         protected void lnkGuardarPape_Click(object sender, EventArgs e)
         {
+            LinkButton lnkGuardarPapeSender = (LinkButton)sender;
             foreach (RepeaterItem item in repeatPapeleria.Items)
             {
-                LinkButton lnkGuardarPapeSender = (LinkButton)sender;
                 LinkButton lnkGuardarPape = (LinkButton)item.FindControl("lnkGuardarPape");
                 Panel PanelPApeleriaIndv = (Panel)item.FindControl("PanelPApeleriaIndv");
                 Label lblDescr = (Label)item.FindControl("lblDescr");
+                Label lblerrorpapedinamico = (Label)item.FindControl("lblerrorpapedinamico");
                 RegularExpressionValidator revpapeleria = (RegularExpressionValidator)item.FindControl("revpapeleria");
-                FileUpload fupPapeleria = (FileUpload)item.FindControl("fupPapeleria");
-                if (fupPapeleria.HasFile)
+                if (lnkGuardarPape == lnkGuardarPapeSender)
                 {
-                    Random random = new Random();
-                    int randomNumber = random.Next(0, 100000);
-                    DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/pre_alta/documentos/papeleria/"));//path local
-                    string mensaje = AddPapeleriaToTable(lnkGuardarPape.CommandArgument.ToString(), lnkGuardarPape.CommandName.ToString(), lblDescr.Text.ToString(), dirInfo + randomNumber.ToString() + fupPapeleria.FileName, randomNumber.ToString() + fupPapeleria.FileName, Path.GetExtension(fupPapeleria.FileName).ToString());
-                    if (mensaje.Equals(string.Empty))
+                    FileUpload fupPapeleria = (FileUpload)item.FindControl("fupPapeleria");
+                    if (fupPapeleria.HasFile)
                     {
-                        bool pape = UploadFile(fupPapeleria, dirInfo + randomNumber.ToString() + fupPapeleria.FileName);
-
-                        if (pape == false)
+                        Random random = new Random();
+                        int randomNumber = random.Next(0, 100000);
+                        DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/pre_alta/documentos/papeleria/"));//path local
+                        string mensaje = AddPapeleriaToTable(lnkGuardarPape.CommandArgument.ToString(), lnkGuardarPape.CommandName.ToString(), lblDescr.Text.ToString(), dirInfo + randomNumber.ToString() + fupPapeleria.FileName, randomNumber.ToString() + fupPapeleria.FileName, Path.GetExtension(fupPapeleria.FileName).ToString());
+                        if (mensaje.Equals(string.Empty))
                         {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "DE", "GoSection('" + "#" + lnkGuardarPapeSender.ClientID.ToString() + "');", true);
-                            Alert.ShowGift("Estamos subiendo el archivo al servidor.", "Espere un Momento", "imagenes/loading.gif", "3000", "Archivo Subido Correctamente", this);
+                            bool pape = UploadFile(fupPapeleria, dirInfo + randomNumber.ToString() + fupPapeleria.FileName);
 
-                            //agregamos a tabla global de papelera
+                            if (pape == false)
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "DE", "GoSection('" + "#" + lnkGuardarPapeSender.ClientID.ToString() + "');", true);
+                                Alert.ShowGift("Estamos subiendo el archivo al servidor.", "Espere un Momento", "imagenes/loading.gif", "3000", "Archivo Subido Correctamente", this);
+
+                                //agregamos a tabla global de papelera
+                            }
                         }
+                        else
+                        {
+                            Alert.ShowAlertError(mensaje, this);
+                        }
+                        fupPapeleria.Visible = true;
+                        revpapeleria.Enabled = false;
+                        lblerrorpapedinamico.Visible = false;
                     }
-                    else
-                    {
-                        Alert.ShowAlertError(mensaje, this);
-                    }
-                    fupPapeleria.Visible = true;
-                    revpapeleria.Enabled = false;
                 }
             }
         }
@@ -1455,7 +1462,15 @@ namespace presentacion
                         entidad.Cadhijos = CadenaHijos();
                         entidad.Numcadhijos = TotalCadenaHijos();
                         entidad.Cadhorarios = CadenaHorarios();
-                        entidad.Numcadhorarios = TotalHorarios();
+                        int idc = 0;
+                        foreach (ListItem item in cbxhorarios.Items)
+                        {
+                            if (item.Selected == true)
+                            {
+                                idc = Convert.ToInt32(item.Value);
+                            }
+                        }
+                        entidad.Numcadhorarios = idc;
                         entidad.Cadelelic = CadenaElectorLicencia();
                         entidad.Numcadelelic = 1;
                         entidad.cadena_papeleria = CadenaPapeleriaDet();
@@ -1527,7 +1542,8 @@ namespace presentacion
                                 int total = (((papeleria.Rows.Count) * 1) + 1) * 1000;
                                 string t = total.ToString();
                                 int archivos_procesados = papeleria.Rows.Count;
-                                Alert.ShowGiftMessage("Estamos procesando la cantidad de " + archivos_procesados.ToString() + " archivo(s) al Servidor.", "Espere un Momento", "candidatos_preparar.aspx", "imagenes/loading.gif", t, "El Pre Empleado fue Guardado correctamente.", this);
+                                string url = Session["redirect"] == null ? "candidatos_preparar.aspx" : (string)Session["redirect"];
+                                Alert.ShowGiftMessage("Estamos procesando la cantidad de " + archivos_procesados.ToString() + " archivo(s) al Servidor.", "Espere un Momento", url, "imagenes/loading.gif", t, "El Pre Empleado fue Guardado correctamente.", this);
                             }
                         }
                         else
@@ -1591,6 +1607,26 @@ namespace presentacion
             string ruta = row["ruta"].ToString();
             string ext = row["extension"].ToString();
             Download(ruta, nombre);
+        }
+
+        protected void cbxhorarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idc = 0;
+            foreach (ListItem item in cbxhorarios.Items)
+            {
+                if (item.Selected == true)
+                {
+                    idc++;
+                }
+
+                lblErrorHorarioHORARIO.Visible = false;
+                if (idc > 1)
+                {
+                    lblErrorHorarioHORARIO.Visible = true;
+                    lblErrorHorarioHORARIO.Text = "SELECCIONE SOLO UN HORARIO";
+                    break;
+                }
+            }
         }
     }
 }

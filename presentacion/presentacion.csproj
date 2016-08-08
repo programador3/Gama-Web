@@ -145,6 +145,7 @@
     <Content Include="css\dataTables.bootstrap.min.css" />
     <Content Include="css\jquery.dataTables.css" />
     <Content Include="css\jquery.dataTables.min.css" />
+    <Content Include="easteregg.aspx" />
     <Content Include="empleados_reportes.aspx" />
     <Content Include="empleados_reportes_pendientes.aspx" />
     <Content Include="fancybox\blank.gif" />
@@ -182,6 +183,7 @@
     <Content Include="imagenes\body_page.png" />
     <Content Include="imagenes\lugares\captura\ok.png" />
     <Content Include="imagenes\lugares\ok.png" />
+    <Content Include="img\page-loader.gif" />
     <Content Include="js\bootstrap-wysiwyg.js" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\jquery.dataTables.min.js" />
@@ -541,6 +543,7 @@
     <Content Include="tareas_listado.aspx" />
     <Content Include="temp\tareas\js.js" />
     <Content Include="vacaciones.aspx" />
+    <Content Include="validar_conteo_inventario.aspx" />
     <Content Include="vehiculos_entrega.aspx" />
     <Content Include="vehiculos_preparacion.aspx" />
     <Content Include="vehiculos_revision.aspx" />
@@ -883,6 +886,13 @@
     </Compile>
     <Compile Include="documento.aspx.designer.cs">
       <DependentUpon>documento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="easteregg.aspx.cs">
+      <DependentUpon>easteregg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="easteregg.aspx.designer.cs">
+      <DependentUpon>easteregg.aspx</DependentUpon>
     </Compile>
     <Compile Include="ejemplo_menu.aspx.cs">
       <DependentUpon>ejemplo_menu.aspx</DependentUpon>
@@ -1455,6 +1465,13 @@
     </Compile>
     <Compile Include="vacaciones.aspx.designer.cs">
       <DependentUpon>vacaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="validar_conteo_inventario.aspx.cs">
+      <DependentUpon>validar_conteo_inventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="validar_conteo_inventario.aspx.designer.cs">
+      <DependentUpon>validar_conteo_inventario.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehiculos_entrega.aspx.cs">
       <DependentUpon>vehiculos_entrega.aspx</DependentUpon>

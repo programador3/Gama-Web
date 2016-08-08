@@ -88,9 +88,9 @@
                 <div class="panel-body">
                     <h2 style="text-align: center;"><strong>
                         <asp:Label ID="lblgrupotitulo" runat="server" Text=""></asp:Label></strong></h2>
-                    <div class="alert fresh-color alert-info alert-dismissible" role="alert" runat="server" id="inicio">
+                    <div class="alert fresh-color alert-danger alert-dismissible" role="alert" runat="server" id="inicio">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong>Para Empezar!</strong> Seleccione un Grupo para empezar a llenar el formulario.
+                        <strong>Para Comenzar!</strong> Seleccione un Grupo para empezar a llenar el formulario.
                     </div>
                     <!-- GRUPO DETALLE -->
                     <asp:Panel ID="panel_grupo_detalle" runat="server" Visible="False">
@@ -106,7 +106,7 @@
                                         <asp:Panel ID="panel_gpo_libre" runat="server" CssClass="row" Visible="False">
                                             <div class="col-lg-12">
                                                 <asp:HiddenField ID="oc_idcperfilgpo_lib" runat="server" />
-                                                <h4><strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>&nbsp;<asp:Label ID="lblgpolibre" runat="server" CssClass="etiqueta"></asp:Label></strong></h4>
+                                                <h4><strong><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<asp:Label ID="lblgpolibre" runat="server" CssClass="etiqueta"></asp:Label></strong></h4>
                                                 <div class="input-group">
                                                     <asp:TextBox ID="txtgpolibre" runat="server" CssClass="form-control" onkeypress="return isNumber(event);"></asp:TextBox>
                                                     <span class="input-group-addon">
@@ -169,7 +169,7 @@
                                         <asp:Panel ID="panel_gpo_opc" runat="server" Visible="False">
                                             <div class="row">
                                                 <div class="col-lg-3">
-                                                    <h4><strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>&nbsp;<asp:Label ID="lblgpoopc" runat="server" Text="" CssClass="etiqueta"></asp:Label></strong></h4>
+                                                    <h4><strong><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<asp:Label ID="lblgpoopc" runat="server" Text="" CssClass="etiqueta"></asp:Label></strong></h4>
                                                     <p class="help-block" style="color: grey;">
                                                         <asp:Literal ID="lit_mensaje_gpo_opc" runat="server"></asp:Literal>
                                                     </p>
@@ -202,7 +202,7 @@
                                                 <asp:Label ID="lblmax" runat="server" Text='<%#Eval("maximo_sel") %>' Visible="false"></asp:Label>
                                                 <div class='form-group <%# DataBinder.Eval(Container.DataItem, "libre").ToString() == "True" ?  "show":"hide"  %>'>
                                                     <asp:HiddenField ID="oc_idc_perfiletiqlibre" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "idc_perfiletiq").ToString()   %>' />
-                                                    <h4><strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>&nbsp;<asp:Label ID="lbletiquetalibre" runat="server" Text="lib" CssClass="etiqueta"></asp:Label></strong></h4>
+                                                    <h4><strong><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<asp:Label ID="lbletiquetalibre" runat="server" Text="lib" CssClass="etiqueta"></asp:Label></strong></h4>
                                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
                                                         <ContentTemplate>
                                                             <div class="input-group">
@@ -270,7 +270,7 @@
                                                 <!--etiqueta con opciones -->
                                                 <div class='form-group <%# DataBinder.Eval(Container.DataItem, "libre").ToString() == "False" ?  "show":"hide"  %>'>
                                                     <asp:HiddenField ID="oc_idc_perfiletiqopc" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "idc_perfiletiq").ToString()   %>' />
-                                                    <h4><strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>&nbsp;<asp:Label ID="lbletiquetaopcion" runat="server" Text="opc" CssClass="etiqueta"> </asp:Label></strong></h4>
+                                                    <h4><strong><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<asp:Label ID="lbletiquetaopcion" runat="server" Text="opc" CssClass="etiqueta"> </asp:Label></strong></h4>
                                                     <p class="help-block" style="color: grey">
                                                         <asp:Literal ID="lit_mensaje_etiq_opc" runat="server"></asp:Literal>
                                                     </p>
@@ -331,10 +331,19 @@
             </div>
         </div>
     </div>
+    <!--horarios-->
+    <div class="row" runat="server" id="hpor" visible="true">
+        <div class="col-lg-12 col-xs-12">
+            <h4><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Horarios Aplicables</strong></h4>
+            <div class="scroll">
+                <asp:CheckBoxList ID="cbxhorarios" CssClass="radio3 radio-check radio-info radio-inline" runat="server"></asp:CheckBoxList>
+            </div>
+        </div>
+    </div>
     <!--EXAMENES-->
     <div class="row">
         <div class="col-lg-12 col-xs-12">
-            <h4><strong><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;Examenes Aplicables</strong></h4>
+            <h4><strong><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;Examenes Disponibles</strong></h4>
             <div class="scroll">
                 <asp:CheckBoxList ID="chxExamenes" CssClass="radio3 radio-check radio-info radio-inline" runat="server"></asp:CheckBoxList>
             </div>

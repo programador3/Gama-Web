@@ -131,6 +131,8 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pusuariopc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_examenes", SqlDbType = SqlDbType.VarChar, Value = entidad.Pcadena_examenes });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptotal_cadena_examenes", SqlDbType = SqlDbType.Int, Value = entidad.Ptotal_examenes });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadenah", SqlDbType = SqlDbType.VarChar, Value = entidad.Cadena_h });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotal_cadenah", SqlDbType = SqlDbType.Int, Value = entidad.Cad_total_h });
             try
             {
                 ds = data.enviar("sp_aperfiles_captura", listparameters, true);
@@ -192,6 +194,8 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = entidad.Pdirecip });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadenah", SqlDbType = SqlDbType.VarChar, Value = entidad.Cadena_h });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotal_cadenah", SqlDbType = SqlDbType.Int, Value = entidad.Cad_total_h });
             try
             {
                 ds = data.enviar("sp_aperfiles_captura_borrador", listparameters, true);
@@ -412,6 +416,24 @@ namespace negocio.Componentes
             {
                 //ds = data.datos_Clientes(listparameters);
                 ds = data.enviar("sp_examenes", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet horarios(PerfilesE entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_horarios_perfiles", listparameters, false);
             }
             catch (Exception ex)
             {

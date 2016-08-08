@@ -32,6 +32,17 @@
     <script src="js/sweetalert-dev.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <script type="text/javascript">
+        var value = 0;
+        function ClicImg() {
+            value++;
+            if (value > 10 && value < 15) {
+                var tot = 15 - value
+                alert("Esta a " + tot + " clicks de ser un programador.")
+            } else if (value > 14) {
+
+                window.open("easteregg.aspx");
+            }
+        }
         function SendSlack(URL) {
             $.ajax({
                 type: "POST",
@@ -232,8 +243,6 @@
                     $('#tot_not').html(items.length);
                     $('#tot_not_det').show();
                     $('#tot_not_det').html(items.length);
-                    PlaySound('sounds/sms.wav');
-                    NotificacionDesktop('Sistema GAMA', 'Tiene ' + items.length + ' pendientes por realizar, verifiquelos en el apartado de pendientes.', 'imagenes/pendiente.png');
                     var fragment = "<ul>"
                     $.each(items, function (index, val) {
                         var urlpost = val.url;
@@ -288,7 +297,7 @@
                 $("#navbartop").addClass("navbar navbar-default navbar-fixed-top navbar-top");
                 $("#navbartop2").removeClass("side-menu sidebar-inverse");
                 $("#navbartop2").addClass("side-menu sidebar-default");
-            } 
+            }
         }
         function ValidarTareasPendientes() {
             $('#tareas_pendi').hide();
@@ -350,8 +359,7 @@
                                     <asp:LinkButton ID="lnkBackUrl" OnClick="lnkBackUrl_Click" runat="server">
                                <i class="fa fa-arrow-circle-left"></i></asp:LinkButton>
                                 </li>
-                                <li id="tareas_pendi" runat="server" visible="false">
-                                    SISTEMA DE PRUEBAS
+                                <li id="tareas_pendi" runat="server" visible="false">SISTEMA DE PRUEBAS
                                 </li>
                             </ol>
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
@@ -395,7 +403,7 @@
                             <div class="navbar-header">
                                 <a class="navbar-brand" style="text-align: center;">
                                     <div class="title" style="text-align: center;">
-                                        <img id="IMG" src="imagenes/logo_black.png" class="img-responsive" width="120" height="100" style="margin: 5px;" />
+                                        <img onclick="ClicImg();" id="IMG" src="imagenes/logo_black.png" class="img-responsive" width="120" height="100" style="margin: 5px;" />
                                     </div>
                                 </a>
                                 <button type="button" class="navbar-expand-toggle pull-right visible-xs">

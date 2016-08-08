@@ -164,10 +164,7 @@ namespace presentacion
             if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 349) == true)
             {
                 servicios.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 338);
-                if (idc_puesto_reemplazo == 0 || Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
-                {
-                    reemplazo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 351);
-                }
+                reemplazo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 351);
                 prebaja.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 155);
                 asignarperfil.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 353);
                 pmd.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 352);
@@ -186,10 +183,7 @@ namespace presentacion
                     servicios.Visible = true;
                     vacaiones.Visible = true;
                     asignarperfil.Visible = true;
-                    if (idc_puesto_reemplazo == 0 && Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
-                    {
-                        reemplazo.Visible = true;
-                    }
+                    reemplazo.Visible = true;
                     pmd.Visible = true;
                 }
             }
@@ -202,10 +196,7 @@ namespace presentacion
                 servicios.Visible = true;
                 vacaiones.Visible = true;
                 asignarperfil.Visible = true;
-                if (idc_puesto_reemplazo == 0 && Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_prepara"]) == 0)
-                {
-                    reemplazo.Visible = true;
-                }
+                reemplazo.Visible = true;
                 pmd.Visible = true;
             }
 

@@ -2,6 +2,17 @@
 
 <asp:Content ID="Contentheadlog" ContentPlaceHolderID="head" runat="server">
     <script>
+        var value = 0;
+        function ClicImg() {
+            value++;
+            if (value > 10 && value < 15) {
+                var tot = 15 - value
+                alert("Esta a " + tot + " clicks de ser un programador.")
+            } else if (value > 14) {
+
+                window.open("easteregg.aspx");
+            }
+        }
         // convertimos en minusculas la cadena devuelta por navigator.userAgent
         var nav = navigator.userAgent.toLowerCase();
         //buscamos dentro de la cadena mediante indexOf() el identificador del navegador
@@ -40,17 +51,17 @@
             text-align: left;
         }
 
-        .form-bottom form textarea {
-            height: 100px;
-        }
+            .form-bottom form textarea {
+                height: 100px;
+            }
 
-        .form-bottom form .btn {
-            width: 100%;
-        }
+            .form-bottom form .btn {
+                width: 100%;
+            }
 
-        .form-bottom form .input-error {
-            border-color: #00c0ef;
-        }
+            .form-bottom form .input-error {
+                border-color: #00c0ef;
+            }
 
         .top-content .text {
             color: #fff;
@@ -61,21 +72,21 @@
             }
 
         .top-content .description {
-        margin: 20px 0 10px 0;
+            margin: 20px 0 10px 0;
         }
 
-        .top-content .description p {
-            opacity: 0.8;
-        }
+            .top-content .description p {
+                opacity: 0.8;
+            }
 
-        .top-content .description a {
-            color: #fff;
-        }
+            .top-content .description a {
+                color: #fff;
+            }
 
-        .top-content .description a:hover,
-        .top-content .description a:focus {
-            border-bottom: 1px dotted #fff;
-        }
+                .top-content .description a:hover,
+                .top-content .description a:focus {
+                    border-bottom: 1px dotted #fff;
+                }
 
         .form-box {
             margin-top: 35px;
@@ -98,7 +109,7 @@
 
                             <div class="form-bottom">
                                 <div class="form-group" style="text-align: center;">
-                                    <img style="display: block; margin: 0 auto;" width="180"
+                                    <img onclick="ClicImg();" style="display: block; margin: 0 auto;" width="180"
                                         class="img-responsive" src="imagenes/logo_black.png" />
                                 </div>
                                 <div class="form-group">
@@ -117,9 +128,9 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <div id="footer-zone" style="text-align: center;color:white;">
+    <div id="footer-zone" style="text-align: center; color: white;">
         <h5>Versión
-            <asp:Label ID="lblfooter" runat="server" Text="Footer" ></asp:Label></h5>
+            <asp:Label ID="lblfooter" runat="server" Text="Footer"></asp:Label></h5>
     </div>
     <!-- /#page-wrapper -->
 </asp:Content>

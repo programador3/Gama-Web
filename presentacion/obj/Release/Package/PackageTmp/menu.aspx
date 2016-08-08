@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Menu Principal" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="menu.aspx.cs" Inherits="presentacion.menu" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">    
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         function Search() {
             var value = document.getElementById('<%=txtsearch.ClientID%>').value;

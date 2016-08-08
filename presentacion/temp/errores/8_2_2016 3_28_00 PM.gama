@@ -1,0 +1,9 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): @pcadenah no es un parámetro del procedimiento sp_apre_empleado_web.
+   at negocio.Componentes.Pre_EmpleadosCOM.GuardarPreEmpleas(Pre_EmpleadosENT Entidad) in E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\02_08-16\Puestos\negocio\Componentes\Pre_EmpleadosCOM.cs:line 120
+   at presentacion.pre_empleados_captura.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:2a97403e-f3f8-4698-a336-c03fe8029f89
+Error Number:8145,State:1,Class:16

@@ -95,8 +95,8 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@CADTEL", SqlDbType = SqlDbType.VarChar, Value = Entidad.Cadtel });
             listparameters.Add(new SqlParameter() { ParameterName = "@NUMCADHIJOS", SqlDbType = SqlDbType.Int, Value = Entidad.Numcadhijos });
             listparameters.Add(new SqlParameter() { ParameterName = "@CADHIJOS", SqlDbType = SqlDbType.VarChar, Value = Entidad.Cadhijos });
-            listparameters.Add(new SqlParameter() { ParameterName = "@NUMCADHORARIOS", SqlDbType = SqlDbType.Int, Value = Entidad.Numcadhorarios });
-            listparameters.Add(new SqlParameter() { ParameterName = "@CADHORARIOS", SqlDbType = SqlDbType.VarChar, Value = Entidad.Cadhorarios });
+            listparameters.Add(new SqlParameter() { ParameterName = "@NUMCADHORARIOS", SqlDbType = SqlDbType.Int, Value = 0 });
+            listparameters.Add(new SqlParameter() { ParameterName = "@CADHORARIOS", SqlDbType = SqlDbType.VarChar, Value = "" });
             listparameters.Add(new SqlParameter() { ParameterName = "@NUMCADENAELECTORLICENCIA", SqlDbType = SqlDbType.Int, Value = Entidad.Numcadelelic });
             listparameters.Add(new SqlParameter() { ParameterName = "@CADELECTORLICENCIA", SqlDbType = SqlDbType.VarChar, Value = Entidad.Cadelelic });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcapacitacion", SqlDbType = SqlDbType.Bit, Value = Entidad.Pcapacitacion });
@@ -107,6 +107,8 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pusuariopc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pobersvaciones });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_horariogpo", SqlDbType = SqlDbType.Int, Value = Entidad.Numcadhorarios });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadenah", SqlDbType = SqlDbType.VarChar, Value = Entidad.Cadhorarios });
 
             try
             {

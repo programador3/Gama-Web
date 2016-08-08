@@ -42,7 +42,7 @@ namespace presentacion
             {
                 ////COMENTADO PARA PODER PROGRAMAR
                 ////Validamos que no se la pagina menu para que no genere un bucle
-                if (user_id != 314 && user_id != 127)
+                if (user_id != 314 && user_id != 127 && user_id != 255)
                 {
                     if (!path_actual.Equals("menu.aspx"))
                     {
