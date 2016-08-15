@@ -35,6 +35,24 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet cARGARAHORROINFO(PuestosServiciosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_pre_empleado });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_empleado_ahorro_info", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet CargarInfoVacaciones(PuestosServiciosENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -68,6 +86,26 @@ namespace negocio.Componentes
             {
                 //ds = data.datos_Clientes(listparameters);
                 ds = data.enviar("sp_combo_puestos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet SolicitarRetiro(PuestosServiciosENT Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_pre_empleado });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PMONTO_RETIRO", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pretiro });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("SP_ASOLICITUD_RETIRO_AHORRO_nuevo", listparameters, true);
             }
             catch (Exception ex)
             {

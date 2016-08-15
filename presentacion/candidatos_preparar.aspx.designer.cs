@@ -49,6 +49,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.LinkButton lnkexcel;
         
         /// <summary>
+        /// Control LNKREP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LNKREP;
+        
+        /// <summary>
         /// Control gridreclu.
         /// </summary>
         /// <remarks>
@@ -92,5 +101,32 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repeatpendientes;
+        
+        /// <summary>
+        /// Control txtf1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtf1;
+        
+        /// <summary>
+        /// Control txtf2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtf2;
+        
+        /// <summary>
+        /// Control Yes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Yes;
     }
 }

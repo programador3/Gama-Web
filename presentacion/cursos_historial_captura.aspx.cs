@@ -14,7 +14,6 @@ namespace presentacion
         {
             if (!Page.IsPostBack)
             {
-                DeleteDirectory(Path.Combine(Server.MapPath("~/temp/cursos_exam/"), Session["sidc_usuario"].ToString()));
                 int vidc_curso_historial = 0;
                 if (!string.IsNullOrEmpty(Request.QueryString["uidc_curso_historial"]))
                 {

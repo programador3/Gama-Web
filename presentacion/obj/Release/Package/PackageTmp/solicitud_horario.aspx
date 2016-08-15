@@ -25,12 +25,7 @@
             $('#modal_title').text(cTitulo);
             $('#content_modal').text(cContenido);
         }
-        function Charge() {
-            $('#<%= txthorasalidac.ClientID%>').mask("99:99", { placeholder: "HH:MM" });
-            $('#<%= txthorasalida.ClientID%>').mask("99:99", { placeholder: "HH:MM" });
-            $('#<%= txthoraentrada.ClientID%>').mask("99:99", { placeholder: "HH:MM" });
-            $('#<%= txthoraentradac.ClientID%>').mask("99:99", { placeholder: "HH:MM" });
-        }
+
         $(document).ready(function () {
             Charge();
 
@@ -38,6 +33,12 @@
                 "lengthMenu": [[15, 25, -1], [15, 25, "Todos"]] //value:item pair
             });
         });
+        function Charge() {
+            $('#<%= txthorasalidac.ClientID%>').mask("99:99", { placeholder: "HH:MM" });
+            $('#<%= txthorasalida.ClientID%>').mask("99:99", { placeholder: "HH:MM" });
+            $('#<%= txthoraentrada.ClientID%>').mask("99:99", { placeholder: "HH:MM" });
+            $('#<%= txthoraentradac.ClientID%>').mask("99:99", { placeholder: "HH:MM" });
+        }
         function ValidateRange2(Object, val_min, val_max, error_mess) {
             // It's a number
 
@@ -66,6 +67,17 @@
             } else {
                 $('#<%= ddlsucursales.ClientID%>').prop('disabled', false);
             }
+
+            var hc1 = $('#<%= txthoraentradac.ClientID%>').val();
+            var hc2 = $('#<%= txthorasalidac.ClientID%>').val();
+            var he = $('#<%= txthoraentrada.ClientID%>').val();
+
+            if (he != "" && hc2 != "" && hc1 != "") {
+                if (hc2 < he || hc1 < he) {
+                    $('#<%= txthoraentrada.ClientID%>').val('');
+                    swal("Mensaje del Sistema", "Los horarios de Comida no deben ser mayores a el horario de entrada.", "info");
+                }
+            }
         }
 
         function HorasdeComida() {
@@ -76,6 +88,33 @@
             if ($('#<%= txthorasalidac.ClientID%>').val() == "" && $('#<%= txthoraentradac.ClientID%>').val() != "") {
                 $('#<%= txthorasalidac.ClientID%>').focus();
                 swal("Mensaje del Sistema", "Debe Cambiar ambos horarios de comida.", "info");
+            }
+
+            var hc1 = $('#<%= txthoraentradac.ClientID%>').val();
+            var hc2 = $('#<%= txthorasalidac.ClientID%>').val();
+            var he = $('#<%= txthoraentrada.ClientID%>').val();
+            var hs = $('#<%= txthorasalida.ClientID%>').val();
+
+            if (he != "" && hc2 != "" && hc1 != "") {
+                if (hc2 < he || hc1 < he) {
+                    $('#<%= txthorasalidac.ClientID%>').val('');
+                    $('#<%= txthoraentradac.ClientID%>').val('');
+                    swal("Mensaje del Sistema", "Los horarios de Comida no deben ser mayores a el horario de entrada.", "info");
+                }
+            }
+            if (hs != "" && hc2 != "" && hc1 != "") {
+                if (hc2 > hs || hc1 > hs) {
+                    $('#<%= txthorasalidac.ClientID%>').val('');
+                    $('#<%= txthoraentradac.ClientID%>').val('');
+                    swal("Mensaje del Sistema", "Los horarios de Comida no deben ser menores a el horario de salida.", "info");
+                }
+            }
+            if (hc2 != "" && hc1 != "") {
+                if (hc2 > hc1) {
+                    $('#<%= txthorasalidac.ClientID%>').val('');
+                    $('#<%= txthoraentradac.ClientID%>').val('');
+                    swal("Mensaje del Sistema", "Los horarios de Comida no tienen orden Logico.", "info");
+                }
             }
         }
         function ValidarHoraLaboral(Object) {
@@ -234,25 +273,25 @@
                     </div>
                 </div>
             </div>
-              <div class="row" id="solicita" runat="server" visible="false">
-        <div class="col-lg-6 col-sm-6 col-xs-6">
-            <asp:Button ID="btnguardar" CssClass="btn btn-info btn-block" OnClick="btnguardar_Click" runat="server" Text="Guardar" />
-        </div>
-        <div class="col-lg-6 col-sm-6 col-xs-6">
-            <asp:Button ID="btncancelar" CssClass="btn btn-danger btn-block" OnClick="btncancelar_Click" runat="server" Text="Cancelar" />
-        </div>
-    </div>
-    <div class="row" id="autoriza" runat="server" visible="false">
-        <div class="col-lg-6 col-sm-6 col-xs-6">
-            <asp:Button ID="btnautoriza" CssClass="btn btn-success btn-block" OnClick="btnautoriza_Click" runat="server" Text="Autorizar" />
-        </div>
-        <div class="col-lg-6 col-sm-6 col-xs-6">
-            <asp:Button ID="btnrechaza" CssClass="btn btn-danger btn-block" OnClick="btnrechaza_Click" runat="server" Text="Rechazar" />
-        </div>
-    </div>
+            <div class="row" id="solicita" runat="server" visible="false">
+                <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <asp:Button ID="btnguardar" CssClass="btn btn-info btn-block" OnClick="btnguardar_Click" runat="server" Text="Guardar" />
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <asp:Button ID="btncancelar" CssClass="btn btn-danger btn-block" OnClick="btncancelar_Click" runat="server" Text="Cancelar" />
+                </div>
+            </div>
+            <div class="row" id="autoriza" runat="server" visible="false">
+                <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <asp:Button ID="btnautoriza" CssClass="btn btn-success btn-block" OnClick="btnautoriza_Click" runat="server" Text="Autorizar" />
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <asp:Button ID="btnrechaza" CssClass="btn btn-danger btn-block" OnClick="btnrechaza_Click" runat="server" Text="Rechazar" />
+                </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-  
+
     <!-- Modal -->
     <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -24,6 +25,7 @@ namespace presentacion
                 DataPrep();
             }
             H1.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 348);
+            LNKREP.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 376);
         }
 
         /// <summary>
@@ -116,6 +118,29 @@ namespace presentacion
             string idc_puesto = gridreclu.DataKeys[index].Values["idc_puesto"].ToString();
             string idc_prepara = gridreclu.DataKeys[index].Values["idc_prepara"].ToString();
             Response.Redirect("candidatos_preparar_captura.aspx?idc_puesto=" + funciones.deTextoa64(idc_puesto) + "&idc_prepara=" + funciones.deTextoa64(idc_prepara));
+        }
+
+        protected void Yes_Click(object sender, EventArgs e)
+        {
+            if (txtf1.Text == "" || txtf2.Text == "")
+            {
+                Alert.ShowAlertError("Ingrese las Fechas", this);
+            }
+            else
+            {
+                string f1 = txtf1.Text;
+                string f2 = txtf2.Text;
+                String url = HttpContext.Current.Request.Url.AbsoluteUri;
+                String path_actual = url.Substring(url.LastIndexOf("/") + 1);
+                url = url.Replace(path_actual, "");
+                url = url + "tareas_informacion_adicional.aspx?idc_proceso=" + funciones.deTextoa64("0") + "&idc_tipoi=" + funciones.deTextoa64("5") + "&f1=" + funciones.deTextoa64(f1) + "&f2=" + funciones.deTextoa64(f2);
+                ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "window.open('" + url + "');", true);
+            }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Ingrese las Fecha para filtrar el reporte','modal fade modal-info');", true);
         }
     }
 }

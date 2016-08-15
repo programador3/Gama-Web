@@ -16,6 +16,43 @@ namespace presentacion
     public class funciones
     {
         /// <summary>
+        /// Convierte un Objeto tipo DataTable en FORMATO HTML
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="table_name"></param>
+        /// <returns></returns>
+        public static StringBuilder TableDinamic(DataTable dt, string table_name)
+        {
+            StringBuilder html = new StringBuilder();
+            html.Append("<table id='" + table_name + "'  class='dt table table-responsive table-bordered- table-condensed'>");
+            html.Append("<thead>");
+            html.Append("<tr>");
+            foreach (DataColumn columna in dt.Columns)
+            {
+                html.Append("<th>");
+                html.Append(columna.ColumnName);
+                html.Append("</th>");
+            }
+            html.Append("</tr>");
+            html.Append("</thead>");
+            html.Append("<tbody>");
+            foreach (DataRow row in dt.Rows)
+            {
+                html.Append("<tr>");
+                foreach (DataColumn columna in dt.Columns)
+                {
+                    html.Append("<td>");
+                    html.Append(row[columna.ColumnName]);
+                    html.Append("</td>");
+                }
+                html.Append("</tr>");
+            }
+            html.Append("</tbody>");
+            html.Append("</table>");
+            return html;
+        }
+
+        /// <summary>
         /// Convierte el formato string(HH:MM) a minutos en entero
         /// </summary>
         /// <param name="value"></param>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace presentacion
@@ -138,6 +139,39 @@ namespace presentacion
                 });
             }
             return noti;
+        }
+
+        public class Articulo
+        {
+            public string id;
+            public string nombre;
+        }
+
+        [System.Web.Services.WebMethod]
+        public static List<Articulo> CargaArticulos(List<string> aData)
+        {
+            String a = aData[0];
+            List<Articulo> list = new List<Articulo>();
+            TareasENT entidad = new TareasENT();
+            TareasCOM componente = new TareasCOM();
+            entidad.Pcadena_arch = a;
+            DataSet ds = componente.CargarArticulos(entidad);
+            DataTable dt = ds.Tables[0];
+            StringBuilder html = new StringBuilder();
+            foreach (DataRow row in dt.Rows)
+            {
+                list.Add(new Articulo
+                {
+                    id = row["idc_categoria"].ToString(),
+                    nombre = row["nombre"].ToString()
+                });
+                //string nombre = row["nombre"].ToString();
+                //string id = row["idc_categoria"].ToString();
+                //html.Append("<a href='http://www.google.com.mx'>" + nombre + "</a><br>");
+            }
+
+            return list;
+            //PlaceHolder.Controls.Add(new Literal { Text = html.ToString() });
         }
 
         /// <summary>

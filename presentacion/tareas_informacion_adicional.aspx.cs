@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -33,7 +34,21 @@ namespace presentacion
                 TareasCOM componente = new TareasCOM();
                 entidad.Pidc_tipoi = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tipoi"]));
                 entidad.Pidc_proceso = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_proceso"]));
-                DataSet ds = componente.InformacionAdicional(entidad);
+                if (Request.QueryString["f1"] != null)
+                {
+                    entidad.Pfecha = Convert.ToDateTime(funciones.de64aTexto(Request.QueryString["f1"]));
+                    entidad.Pfecha_fin = Convert.ToDateTime(funciones.de64aTexto(Request.QueryString["f2"]));
+                }
+
+                DataSet ds = new DataSet();
+                if (entidad.Pidc_proceso > 0)
+                {
+                    ds = componente.InformacionAdicional(entidad);
+                }
+                else
+                {
+                    ds = componente.InformacionAdicionalFechas(entidad);
+                }
                 Session["datasetiad"] = ds;
                 DataTable tbl = new DataTable();
                 tbl.Columns.Add("number");
@@ -63,6 +78,7 @@ namespace presentacion
             TextBox txt = (TextBox)e.Item.FindControl("txtdesc");
             Panel gridview = (Panel)e.Item.FindControl("gridview");
             Panel textbox = (Panel)e.Item.FindControl("textbox");
+            PlaceHolder plac = (PlaceHolder)e.Item.FindControl("PlaceHolder");
             HiddenField cursor = (HiddenField)e.Item.FindControl("cursornumber");
             DataSet ds = (DataSet)Session["datasetiad"];
             DataTable dt = ds.Tables[contador];
@@ -90,10 +106,11 @@ namespace presentacion
                         grid.DataSource = copyDataTable;
                         grid.DataBind();
                         cursor.Value = contador.ToString();
+                        plac.Controls.Add(new Literal { Text = funciones.TableDinamic(copyDataTable, "t" + contador.ToString()).ToString() });
+                        ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3" + contador.ToString(), "DataTa" + contador.ToString() + "('#t" + contador.ToString() + "');", true);
                         break;
                 }
             }
-
             contador = contador + 1;
         }
 

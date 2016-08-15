@@ -183,6 +183,7 @@
     <Content Include="imagenes\body_page.png" />
     <Content Include="imagenes\lugares\captura\ok.png" />
     <Content Include="imagenes\lugares\ok.png" />
+    <Content Include="img\arrastra.png" />
     <Content Include="img\page-loader.gif" />
     <Content Include="js\bootstrap-wysiwyg.js" />
     <Content Include="js\jquery.dataTables.js" />
@@ -503,6 +504,7 @@
     <Content Include="procesos_vista_previa.aspx" />
     <Content Include="programacion_correos.aspx" />
     <Content Include="programacion_correos_d.aspx" />
+    <Content Include="prueba.aspx" />
     <Content Include="puestos.aspx" />
     <Content Include="puestos_catalogo.aspx" />
     <Content Include="reasignacion_tareas.aspx" />
@@ -514,6 +516,7 @@
     <Content Include="reportes_empleados.aspx" />
     <Content Include="reporte_faltas.aspx" />
     <Content Include="reporte_visitas.aspx" />
+    <Content Include="retiro_ahorro.aspx" />
     <Content Include="revisiones.aspx" />
     <Content Include="revisiones_entrega.aspx" />
     <Content Include="revisiones_preparacion.aspx" />
@@ -543,7 +546,7 @@
     <Content Include="tareas_listado.aspx" />
     <Content Include="temp\tareas\js.js" />
     <Content Include="vacaciones.aspx" />
-    <Content Include="validar_conteo_inventario.aspx" />
+    <Content Include="conteo.aspx" />
     <Content Include="vehiculos_entrega.aspx" />
     <Content Include="vehiculos_preparacion.aspx" />
     <Content Include="vehiculos_revision.aspx" />
@@ -1228,6 +1231,13 @@
       <DependentUpon>programacion_correos_d.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="prueba.aspx.cs">
+      <DependentUpon>prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prueba.aspx.designer.cs">
+      <DependentUpon>prueba.aspx</DependentUpon>
+    </Compile>
     <Compile Include="puestos.aspx.cs">
       <DependentUpon>puestos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1304,6 +1314,13 @@
     </Compile>
     <Compile Include="reporte_visitas.aspx.designer.cs">
       <DependentUpon>reporte_visitas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="retiro_ahorro.aspx.cs">
+      <DependentUpon>retiro_ahorro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="retiro_ahorro.aspx.designer.cs">
+      <DependentUpon>retiro_ahorro.aspx</DependentUpon>
     </Compile>
     <Compile Include="revisiones.aspx.cs">
       <DependentUpon>revisiones.aspx</DependentUpon>
@@ -1466,12 +1483,12 @@
     <Compile Include="vacaciones.aspx.designer.cs">
       <DependentUpon>vacaciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="validar_conteo_inventario.aspx.cs">
-      <DependentUpon>validar_conteo_inventario.aspx</DependentUpon>
+    <Compile Include="conteo.aspx.cs">
+      <DependentUpon>conteo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="validar_conteo_inventario.aspx.designer.cs">
-      <DependentUpon>validar_conteo_inventario.aspx</DependentUpon>
+    <Compile Include="conteo.aspx.designer.cs">
+      <DependentUpon>conteo.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehiculos_entrega.aspx.cs">
       <DependentUpon>vehiculos_entrega.aspx</DependentUpon>

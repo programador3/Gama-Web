@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at System.Convert.FromBase64String(String s)
+   at presentacion.funciones.de64aTexto(String cadena) in E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\09_08_16\Puestos\presentacion\funciones.cs:line 704
+   at presentacion.tareas_informacion_adicional.CargarTareas() in E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\09_08_16\Puestos\presentacion\tareas_informacion_adicional.aspx.cs:line 36

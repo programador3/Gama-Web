@@ -284,7 +284,10 @@
                             <asp:LinkButton ID="lnklugar" runat="server" Visible="true" CssClass="btn btn-info btn-block" OnClick="lnklugar_Click">Asignar Lugar de Trabajo <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="reportes">
-                            <asp:LinkButton ID="lnkreporte" runat="server" Visible="true" CssClass="btn btn-info btn-block" OnClick="lnkreporte_Click">Reportes de Empleados<i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkreporte" runat="server" Visible="true" CssClass="btn btn-info btn-block" OnClick="lnkreporte_Click">Reportes de Empleados <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="ahorro">
+                            <asp:LinkButton ID="lnkretiroahorro" runat="server" Visible="true" CssClass="btn btn-danger btn-block" OnClick="lnkretiroahorro_Click">Solicitar Retiro de Ahorro <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                     </div>
                 </div>

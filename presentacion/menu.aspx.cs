@@ -2,6 +2,7 @@
 using negocio.Entidades;
 using System;
 using System.Data;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -350,5 +351,36 @@ namespace presentacion
             //string d = htmlsummernote.InnerHtml;
             //d = d;
         }
+
+        //protected void txtfiltroarticulos_TextChanged(object sender, EventArgs e)
+        //{
+        //    string filtro = txtfiltroarticulos.Text;
+        //    if (filtro != "")
+        //    {
+        //        PlaceHolder.Visible = true;
+        //        CargaArticulos(filtro);
+        //    }
+        //    else
+        //    {
+        //        PlaceHolder.Visible = false;
+        //    }
+        //}
+
+        //private void CargaArticulos(string filtro)
+        //{
+        //    TareasENT entidad = new TareasENT();
+        //    TareasCOM componente = new TareasCOM();
+        //    entidad.Pcadena_arch = filtro;
+        //    DataSet ds = componente.CargarArticulos(entidad);
+        //    DataTable dt = ds.Tables[0];
+        //    StringBuilder html = new StringBuilder();
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+        //        string nombre = row["nombre"].ToString();
+        //        string id = row["idc_categoria"].ToString();
+        //        html.Append("<a href='http://www.google.com.mx'>" + nombre + "</a><br>");
+        //    }
+        //    PlaceHolder.Controls.Add(new Literal { Text = html.ToString() });
+        //}
     }
 }

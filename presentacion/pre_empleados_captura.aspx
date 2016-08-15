@@ -113,21 +113,10 @@
                             <div class="col-lg-12" style="text-align: right;">
                                 <h4><strong>Formulario 1 de 4</strong></h4>
                             </div>
-                            <h4><strong><i class="fa fa-chevron-right"></i>Datos Personales</strong></h4>
+                            <h4><strong><i class="fa fa-caret-right"></i>Fotografia del Pre Empleado</strong></h4>
 
                             <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <div class="form-group">
-                                        <asp:DropDownList ID="ddlTitulo" runat="server" CssClass="form-control">
-                                            <asp:ListItem Selected="True" Text="Titulo" Value=""></asp:ListItem>
-                                            <asp:ListItem Text="Sin Titulo" Value=""></asp:ListItem>
-                                            <asp:ListItem Text="LIC" Value="LIC"></asp:ListItem>
-                                            <asp:ListItem Text="DR" Value="DR"></asp:ListItem>
-                                            <asp:ListItem Text="ING" Value="ING"></asp:ListItem>
-                                        </asp:DropDownList>
-                                        <label style="color: red; font-style: italic;"><strong>*</strong></label>
-                                    </div>
-                                </div>
+                                                            
                                 <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional">
                                     <Triggers>
                                         <asp:PostBackTrigger ControlID="lnkAgregarFotoPerfil" />
@@ -135,8 +124,12 @@
                                         <asp:PostBackTrigger ControlID="btnVer" />
                                     </Triggers>
                                     <ContentTemplate>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
-                                            <div class="form-group" id="partupload" runat="server" visible="true">
+                                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="text-align: center;">
+                                            <asp:Image ID="imgpreempleado" CssClass="image img-responsive" runat="server" />
+                                            <asp:ImageButton ID="imgdeletefoto" ImageUrl="~/imagenes/btn/icon_delete.png" OnClick="imgdeletefoto_Click" Visible="false" runat="server" />
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-6 col-xs-12">
+                                            <div id="partupload" runat="server" visible="true">
                                                 <div class="input-group">
                                                     <asp:FileUpload CssClass="form-control" ID="fupFotoPerfil" runat="server" />
                                                     <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">
@@ -151,17 +144,26 @@
                                                 <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-1">
+                                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" runat="server" id="im" visible="false">
                                             <asp:Button ID="btnVer" runat="server" Text="Ver Imagen" CssClass="btn btn-info btn-block" Visible="false" OnClick="btnVer_Click" />
-                                        </div>
-                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                                            <asp:ImageButton ID="imgdeletefoto" ImageUrl="~/imagenes/btn/icon_delete.png" OnClick="imgdeletefoto_Click" Visible="false" runat="server" />
                                         </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>
+                            <br />  
+                            <h4><strong><i class="fa fa-caret-right"></i>Datos Personales</strong></h4>                 
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-4 col-md-4 col-sm-12">
+                                    <asp:DropDownList ID="ddlTitulo" runat="server" CssClass="form-control">
+                                        <asp:ListItem Selected="True" Text="Titulo" Value=""></asp:ListItem>
+                                        <asp:ListItem Text="Sin Titulo" Value=""></asp:ListItem>
+                                        <asp:ListItem Text="LIC" Value="LIC"></asp:ListItem>
+                                        <asp:ListItem Text="DR" Value="DR"></asp:ListItem>
+                                        <asp:ListItem Text="ING" Value="ING"></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-12">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon" style="color: #fff; background-color: #22A7F0;">
@@ -258,7 +260,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                <h4><strong><i class="fa fa-chevron-right"></i>Originario de: Pais</strong></h4>
+                                                <h4><strong><i class="fa fa-caret-right"></i>Originario de: Pais</strong></h4>
                                                 <asp:DropDownList ID="ddlpais" AutoPostBack="true" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlpais_SelectedIndexChanged">
                                                 </asp:DropDownList>
                                                 <label style="color: red; font-style: italic;"><strong>*</strong></label>
@@ -273,7 +275,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <h4><strong><i class="fa fa-chevron-right"></i>Domicilio Actual </strong></h4>
+                                    <h4><strong><i class="fa fa-caret-right"></i>Domicilio Actual </strong></h4>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
@@ -316,7 +318,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <h4><strong><i class="fa fa-chevron-right"></i>Contacto </strong></h4>
+                                    <h4><strong><i class="fa fa-caret-right"></i>Contacto </strong></h4>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
@@ -399,7 +401,7 @@
                                         <div class="col-lg-12" style="text-align: right;">
                                             <h4><strong>Formulario 2 de 4</strong></h4>
                                         </div>
-                                        <h4><strong><i class="fa fa-chevron-right"></i>Afiliaciones </strong></h4>
+                                        <h4><strong><i class="fa fa-caret-right"></i>Afiliaciones </strong></h4>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <div class="form-group">
@@ -432,13 +434,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h4><strong><i class="fa fa-chevron-right"></i>Sueldos y Prestaciones </strong></h4>
+                                        <h4><strong><i class="fa fa-caret-right"></i>Sueldos y Prestaciones </strong></h4>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #00a65a;">Sueldo <i class="fa fa-usd"></i></span>
-                                                        <asp:TextBox ID="txtSueldo" TextMode="Number" OnTextChanged="txtSueldo_TextChanged" AutoPostBack="true" runat="server" class="form-control" placeholder="Sueldo" Style="resize: none;"></asp:TextBox>
+                                                        <span class="input-group-addon" style="color: #fff; background-color: #00a65a;">Salario Mensual <i class="fa fa-usd"></i></span>
+                                                        <asp:TextBox ID="txtSueldo" TextMode="Number" OnTextChanged="txtSueldo_TextChanged" AutoPostBack="true" runat="server" class="form-control" placeholder="Salario" Style="resize: none;"></asp:TextBox>
                                                     </div>
                                                     <asp:Label ID="lblSueldo" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
                                                     <label style="color: red; font-style: italic;"><strong>*</strong></label>
@@ -447,8 +449,8 @@
                                             <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #00a65a;">Complementos <i class="fa fa-usd"></i></span>
-                                                        <asp:TextBox ID="txtComplementos" TextMode="Number" OnTextChanged="txtComplementos_TextChanged" runat="server" AutoPostBack="true" class="form-control" placeholder="Complementos" Style="resize: none;" MaxLength="18"></asp:TextBox>
+                                                        <span class="input-group-addon" style="color: #fff; background-color: #00a65a;">Gratificacion Mensual <i class="fa fa-usd"></i></span>
+                                                        <asp:TextBox ID="txtComplementos" TextMode="Number" OnTextChanged="txtComplementos_TextChanged" runat="server" AutoPostBack="true" class="form-control" placeholder="Gratificacion" Style="resize: none;" MaxLength="18"></asp:TextBox>
                                                     </div>
                                                     <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                     <asp:Label ID="lblComplemento" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
@@ -462,27 +464,27 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h4><strong><i class="fa fa-chevron-right"></i>Horarios de Trabajo </strong></h4>
+                                        <h4><strong><i class="fa fa-caret-right"></i>Horarios de Trabajo </strong></h4>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                                 <!--horarios-->
-                                 <asp:UpdatePanel ID="UpdatePanEDEDEDEDel5" runat="server" UpdateMode="Always">
-                                            <Triggers>
-                                                <asp:AsyncPostBackTrigger ControlID="cbxhorarios" EventName="SelectedIndexChanged" />
-                                            </Triggers>
-                                     <ContentTemplate>
-                                         <div class="row" runat="server" id="hpor" visible="true">
-                                             <div class="col-lg-12 col-xs-12">
-                                                 <h4><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Horarios Aplicables</strong></h4>
-                                                 <div class="scroll">
-                                                     <asp:CheckBoxList ID="cbxhorarios" AutoPostBack="true" CssClass="radio3 radio-check radio-info radio-inline" OnSelectedIndexChanged="cbxhorarios_SelectedIndexChanged" runat="server"></asp:CheckBoxList>
-                                                 </div>
-                                                 <asp:Label ID="lblErrorHorarioHORARIO" runat="server" CssClass="label label-danger"></asp:Label>
-                                             </div>
-                                         </div>
-                                     </ContentTemplate>
-                                     </asp:UpdatePanel>
-                               
+                                <asp:UpdatePanel ID="UpdatePanEDEDEDEDel5" runat="server" UpdateMode="Always">
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="cbxhorarios" EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                    <ContentTemplate>
+                                        <div class="row" runat="server" id="hpor" visible="true">
+                                            <div class="col-lg-12 col-xs-12">
+                                                <h4><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Horarios Aplicables</strong></h4>
+                                                <div class="scroll">
+                                                    <asp:CheckBoxList ID="cbxhorarios" AutoPostBack="true" CssClass="radio3 radio-check radio-info radio-inline" OnSelectedIndexChanged="cbxhorarios_SelectedIndexChanged" runat="server"></asp:CheckBoxList>
+                                                </div>
+                                                <asp:Label ID="lblErrorHorarioHORARIO" runat="server" CssClass="label label-danger"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+
                                 <asp:Repeater ID="repeatdias" runat="server" OnItemDataBound="repeatdias_ItemDataBound" Visible="false">
                                     <ItemTemplate>
                                         <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional">
@@ -598,7 +600,7 @@
 
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-10 col-xs-10">
-                                                <h4><strong><i class="fa fa-chevron-right"></i>Hijos </strong></h4>
+                                                <h4><strong><i class="fa fa-caret-right"></i>Hijos </strong></h4>
                                                 <div class="form-group">
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #d9534f;"><i class="fa fa-users"></i></span>
@@ -676,7 +678,7 @@
                                     <div class="col-lg-12" style="text-align: right;">
                                         <h4><strong>Formulario 4 de 4</strong></h4>
                                     </div>
-                                    <h4><strong><i class="fa fa-chevron-right"></i>Credencial de Elector </strong>
+                                    <h4><strong><i class="fa fa-caret-right"></i>Credencial de Elector </strong>
                                         <asp:Image ID="imgElector" ImageUrl="~/imagenes/btn/checked.png" runat="server" Visible="false" /></h4>
                                     <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                     <div class="row">
@@ -742,7 +744,7 @@
                                     </div>
                                 </asp:Panel>
                                 <asp:Panel ID="panelLicencia" runat="server">
-                                    <h4><strong><i class="fa fa-chevron-right"></i>Licencia de Manejo
+                                    <h4><strong><i class="fa fa-caret-right"></i>Licencia de Manejo
                                     <asp:Image ID="imgLicencia" ImageUrl="~/imagenes/btn/checked.png" runat="server" Visible="false" />
                                     </strong></h4>
                                     <div class="row">
@@ -809,7 +811,7 @@
                                         </div>
                                     </div>
                                 </asp:Panel>
-                                <h4><strong><i class="fa fa-chevron-right"></i>Papeleria </strong>
+                                <h4><strong><i class="fa fa-caret-right"></i>Papeleria </strong>
                                 </h4>
                                 <div class="row">
                                     <asp:Repeater ID="repeatPapeleria" runat="server" OnItemDataBound="repeatPapeleria_ItemDataBound">

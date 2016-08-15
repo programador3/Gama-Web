@@ -162,7 +162,6 @@ namespace presentacion
                 cbxhorarios.DataBind();
 
                 Session["HORARIO"] = ds.Tables[9];
-
             }
             catch (Exception ex)
             {
@@ -1006,11 +1005,12 @@ namespace presentacion
                     row["ruta"] = dirInfo + fupFotoPerfil.FileName;
                     row["extension"] = Path.GetExtension(fupFotoPerfil.FileName);
                     foto.Rows.Add(row);
-                    Alert.ShowGift("Estamos subiendo la foto al servidor.", "Espere un Momento", "imagenes/loading.gif", "3000", "Foto Subida Correctamente", this);
+                    Alert.ShowGift("Estamos subiendo la foto al servidor.", "Espere un Momento", "imagenes/loading.gif", "1000", "Foto Subida Correctamente", this);
                     partupload.Visible = false;
                     REV.Enabled = false;
                     imgdeletefoto.Visible = true;
                     btnVer.Visible = true;
+                    imgpreempleado.ImageUrl = "/temp/pre_alta/personal/" + fupFotoPerfil.FileName;
                 }
             }
         }
@@ -1576,6 +1576,7 @@ namespace presentacion
             fupFotoPerfil.Visible = true;
             lnkAgregarFotoPerfil.Visible = true;
             btnVer.Visible = false;
+            imgpreempleado.ImageUrl = "";
         }
 
         protected void cbxLaborables_CheckedChanged(object sender, EventArgs e)
@@ -1611,6 +1612,7 @@ namespace presentacion
 
         protected void cbxhorarios_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CheckBoxList CBX = (CheckBoxList)sender;
             int idc = 0;
             foreach (ListItem item in cbxhorarios.Items)
             {
@@ -1622,6 +1624,7 @@ namespace presentacion
                 lblErrorHorarioHORARIO.Visible = false;
                 if (idc > 1)
                 {
+                    item.Selected = false;
                     lblErrorHorarioHORARIO.Visible = true;
                     lblErrorHorarioHORARIO.Text = "SELECCIONE SOLO UN HORARIO";
                     break;

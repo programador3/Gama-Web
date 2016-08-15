@@ -15,7 +15,7 @@
         private string pnombrepc;
         private string pusuariopc;
         private int idc_usuario;
-
+        private decimal retiro;
         public int Idc_usuario
         {
             get { return idc_usuario; }
@@ -50,6 +50,12 @@
         {
             get { return pidc_prepara; }
             set { pidc_prepara = value; }
+        }
+
+        public decimal Pretiro
+        {
+            get { return retiro; }
+            set { retiro = value; }
         }
 
         public bool Ptodos

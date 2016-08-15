@@ -19,6 +19,43 @@
             txt.value = "";
         }
         $(document).ready(function () {
+
+            $("#Listado").empty();
+            $("#Listado").hide();
+            var consulta;
+
+            //hacemos focus al campo de búsqueda
+            $("#busqueda").focus();
+
+            //comprobamos si se pulsa una tecla
+            $("#busqueda").keyup(function (e) {
+
+                //obtenemos el texto introducido en el campo de búsqueda
+                consulta = $("#busqueda").val();
+
+                //hace la búsqueda
+
+                $.ajax({
+                    type: "POST",
+                    url: "buscar.php",
+                    data: "b=" + consulta,
+                    dataType: "html",
+                    beforeSend: function () {
+                        //imagen de carga
+                        $("#resultado").html("<p align='center'><img src='ajax-loader.gif' /></p>");
+                    },
+                    error: function () {
+                        alert("error petición ajax");
+                    },
+                    success: function (data) {
+                        $("#resultado").empty();
+                        $("#resultado").append(data);
+
+                    }
+                });
+
+            });
+
         });
     </script>
     <style type="text/css">
@@ -81,10 +118,12 @@
             <h1 class="page-header">Menu Principal
             </h1>
         </div>
-    </div>
+    </div>    
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
+
             <div class="row">
+
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group has-feedback">
                         <asp:TextBox ID="txtsearch" onkeypress="Search()" onfocus="DeleteFocus(this);" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="txtsearch_TextChanged" placeholder="Buscar Pagina"></asp:TextBox>
@@ -215,7 +254,6 @@
                 </div>
             </div>
             </div>
-        </div>
 
             <!--campos ocultos -->
             <asp:HiddenField ID="ocmenu1" runat="server" />

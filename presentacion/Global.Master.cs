@@ -95,12 +95,12 @@ namespace presentacion
 
         public static void CreateFileError(string content, Page page)
         {
-            DateTime localDate = DateTime.Now;
-            string date = localDate.ToString();
-            date = date.Replace("/", "_");
-            date = date.Replace(":", "_");
-            content = "Nombre: " + (String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
-            funciones.CreateFile((string)page.Session["error_path"] + date + ".gama", content);
+            //    DateTime localDate = DateTime.Now;
+            //    string date = localDate.ToString();
+            //    date = date.Replace("/", "_");
+            //    date = date.Replace(":", "_");
+            //    content = "Nombre: " + (String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
+            //    funciones.CreateFile((string)page.Session["error_path"] + date + ".gama", content);
         }
 
         private void CargarHerramientasMenu()
@@ -194,7 +194,7 @@ namespace presentacion
             }
             else
             {
-                Response.Redirect("perfiles_detalle.aspx?vp=1&perfiles=true&borrador=0&uidc_puestoperfil=" + lnkperfil.CommandName+"&idc_puesto="+funciones.deTextoa64(Convert.ToInt32(Session["sidc_puesto_login"]).ToString()));
+                Response.Redirect("perfiles_detalle.aspx?vp=1&perfiles=true&borrador=0&uidc_puestoperfil=" + lnkperfil.CommandName + "&idc_puesto=" + funciones.deTextoa64(Convert.ToInt32(Session["sidc_puesto_login"]).ToString()));
             }
         }
     }

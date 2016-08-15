@@ -40,15 +40,6 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Panel Panel_Personal;
         
         /// <summary>
-        /// Control ddlTitulo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTitulo;
-        
-        /// <summary>
         /// Control UpdatePanel7.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,24 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel7;
+        
+        /// <summary>
+        /// Control imgpreempleado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgpreempleado;
+        
+        /// <summary>
+        /// Control imgdeletefoto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgdeletefoto;
         
         /// <summary>
         /// Control partupload.
@@ -94,6 +103,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator REV;
         
         /// <summary>
+        /// Control im.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl im;
+        
+        /// <summary>
         /// Control btnVer.
         /// </summary>
         /// <remarks>
@@ -103,13 +121,13 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Button btnVer;
         
         /// <summary>
-        /// Control imgdeletefoto.
+        /// Control ddlTitulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgdeletefoto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTitulo;
         
         /// <summary>
         /// Control txtNombres.

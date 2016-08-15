@@ -120,6 +120,25 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet CargarArticulos(TareasENT entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@vfiltro", SqlDbType = SqlDbType.Int, Value = entidad.Pcadena_arch });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_buscar_cat_prueba", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet AgregarTarea(TareasENT Etiqueta)
         {
             DataSet ds = new DataSet();
@@ -432,6 +451,27 @@ namespace negocio.Componentes
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tipoi", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_tipoi });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_proceso", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_proceso });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_tareas_info_adicional", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet InformacionAdicionalFechas(TareasENT Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tipoi", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_tipoi });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_proceso", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_proceso });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PFECHA1", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PFECHA2", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_fin });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

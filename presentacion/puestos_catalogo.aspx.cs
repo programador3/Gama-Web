@@ -173,6 +173,7 @@ namespace presentacion
 
                 reportes.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 370);
                 lugartrabajo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 362);
+                ahorro.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 199);
                 //si tiene el permiso pero tambien es su jefe directo o depende de el
                 if (idc_puesto_jefe == IDC_PUESTO_LOGIN || abajo_de_mi == true)
                 {
@@ -185,6 +186,7 @@ namespace presentacion
                     asignarperfil.Visible = true;
                     reemplazo.Visible = true;
                     pmd.Visible = true;
+                    ahorro.Visible = true;
                 }
             }
             else//si no tiene el permiso de ver todo, y lo puede ver, quiere decir que es su jefe directo o depende de el
@@ -198,13 +200,14 @@ namespace presentacion
                 asignarperfil.Visible = true;
                 reemplazo.Visible = true;
                 pmd.Visible = true;
+                ahorro.Visible = true;
             }
 
             if (status == 4 | status == 3)//SI EL STATUS ES VACANTE O VACANTE NO CONTRATAR, EL PUESTO NO CONTIENE NINGUN EMPLEADO
             {
                 prebaja.Visible = false;
             }
-
+            ahorro.Visible = idc_empleado == 0 ? false : lnkretiroahorro.Visible;
             DataTable table = (DataTable)Session["Tabla_PuestosPermitidos"];
             DataRow[] DR;
             DR = table.Select("idc_empleado=" + idc_empleado);
@@ -670,6 +673,13 @@ namespace presentacion
             string idc_puesto = Convert.ToInt32(Session["idc_puesto"]).ToString();
             string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
             Response.Redirect("reportes_empleados.aspx?idc_empleado=" + funciones.deTextoa64(val) + "&idc_puesto=" + funciones.deTextoa64(idc_puesto));
+        }
+
+        protected void lnkretiroahorro_Click(object sender, EventArgs e)
+        {
+            string idc_puesto = Convert.ToInt32(Session["idc_puesto"]).ToString();
+            string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
+            Response.Redirect("retiro_ahorro.aspx?idc_puesto=" + funciones.deTextoa64(idc_puesto));
         }
     }
 }

@@ -1,0 +1,9 @@
+Nombre: Isaac Humberto De La Rosa Mendez
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentNullException: Value cannot be null.
+Parameter name: s
+   at System.Convert.FromBase64String(String s)
+   at presentacion.funciones.de64aTexto(String cadena)
+   at presentacion.tareas_informacion_adicional.CargarTareas()

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Validar Inventario" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="validar_conteo_inventario.aspx.cs" Inherits="presentacion.validar_conteo_inventario" %>
+﻿<%@ Page Title="Validar Inventario" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="conteo.aspx.cs" Inherits="presentacion.validar_conteo_inventario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">

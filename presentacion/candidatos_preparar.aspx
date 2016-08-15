@@ -11,6 +11,19 @@
             $('#lblya').text(value);
             $('#lblno').text(valuein);
         }
+        function ModalClose() {
+            $('#modalPreviewView').modal('hide');
+            $('#myModal').modal('hide');
+        }
+        function ModalConfirm(cTitulo, cContenido, ctype) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModal').modal('show');
+            $('#myModal').removeClass('modal fade modal-info');
+            $('#myModal').addClass(ctype);
+            $('#modal_title').text(cTitulo);
+            $('#content_modal').text(cContenido);
+        }
         var downloadURL = function downloadURL(url) {
             var hiddenIFrameID = 'hiddenDownloader',
                 iframe = document.getElementById(hiddenIFrameID);
@@ -42,22 +55,13 @@
                    location.href = URL;
                });
         }
-        function ModalConfirm(cTitulo, cContenido) {
-            var audio = new Audio('sounds/modal.wav');
-            audio.play();
-            $('#myModal').modal('show');
-            $('#confirmTitulo').text(cTitulo);
-            $('#confirmContenido').text(cContenido);
-        }
+
         function ModalPreBaja() {
             var audio = new Audio('sounds/modal.wav');
             audio.play();
             $('#modalPreviewView').modal('show');
         }
-        function ModalClose() {
-            $('#modalPreviewView').modal('hide');
-            $('#myModal').modal('hide');
-        }
+
         function getImage(path) {
             $("#myImage").attr("src", path);
         }
@@ -85,6 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <asp:LinkButton ID="lnkexcel" CssClass="btn btn-success" runat="server" OnClick="lnkexcel_Click">Exportar Listado a Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></asp:LinkButton>
+                    <asp:LinkButton ID="LNKREP" CssClass="btn btn-info" runat="server" OnClick="LinkButton1_Click">Ver Reporte de Altas y Bajas de Empledos <i class="fa fa-file-excel-o" aria-hidden="true"></i></asp:LinkButton>
                     <div class="table table-responsive">
                         <asp:GridView AutoGenerateColumns="false" ID="gridreclu" DataKeyNames="idc_puesto,idc_prepara" OnRowCommand="gridreclu_RowCommand" CssClass="table table-responsive table-bordered table-condensed gvv" runat="server">
                             <Columns>
@@ -135,6 +140,41 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </asp:Panel>
+        </div>
+    </div>
+    <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 id="modal_title"><strong>Mensaje del Sistema</strong></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="text-align: center;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            <h4>
+                                <label id="content_modal"></label>
+                            </h4>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            <h4><strong>Fecha Inicial</strong></h4>
+                            <asp:TextBox ID="txtf1" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            <h4><strong>Fecha Final</strong></h4>
+                            <asp:TextBox ID="txtf2" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-lg-6 col-xs-6">
+                        <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Ver Reporte" OnClick="Yes_Click" />
+                    </div>
+                    <div class="col-lg-6 col-xs-6">
+                        <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cerrar" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>

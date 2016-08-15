@@ -1,0 +1,9 @@
+Nombre: Mayra Moreno Cavazos
+PC: PROGRAMADOR4
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): La función o el procedimiento sp_tareas_info_adicional tiene demasiados argumentos.
+   at negocio.Componentes.TareasCOM.InformacionAdicionalFechas(TareasENT Etiqueta) in E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\08_08_16\Puestos\negocio\Componentes\TareasCOM.cs:line 463
+   at presentacion.tareas_informacion_adicional.CargarTareas() in E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\08_08_16\Puestos\presentacion\tareas_informacion_adicional.aspx.cs:line 46
+ClientConnectionId:e80b61cf-20fb-41a0-a6dd-30621e7f5dc4
+Error Number:8144,State:2,Class:16

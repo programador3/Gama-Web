@@ -239,7 +239,6 @@ namespace presentacion
                 }
                 else
                 {
-
                     btnguardar.Visible = true;
                     if (ExisteSolicituenDia(Convert.ToInt32(Session["pidc_empleado_solic_horario"]), Convert.ToDateTime(txtfecha.Text)))
                     {
@@ -304,6 +303,25 @@ namespace presentacion
                 if (ter > 1260 || ter < 360)
                 {
                     Alert.ShowAlertInfo("Los Horarios deben ser entre 6 de la mañana (6:00) y 9 de la noche(21:00) .", "Mensaje del Sistema", this);
+                }
+                int he = txthoraentrada.Text == "" ? 0 : Convert.ToInt32(txthoraentrada.Text.Replace(":", ""));
+                int hc1 = txthoraentradac.Text == "" ? 0 : Convert.ToInt32(txthoraentradac.Text.Replace(":", ""));
+                int hc2 = txthorasalidac.Text == "" ? 0 : Convert.ToInt32(txthorasalidac.Text.Replace(":", ""));
+                int hs = txthorasalida.Text == "" ? 0 : Convert.ToInt32(txthorasalida.Text.Replace(":", ""));
+                if (hc1 > 0 && hc2 > 0)
+                {
+                    if (hc2 < he || hc1 < he)
+                    {
+                        divchecacomida.Visible = false;
+                        txthoraentrada.Text = "";
+                        Alert.ShowAlertInfo("El horario de Entrada debe ser el menor a los demas.", "Mensaje del sistema", this);
+                    }
+                }
+                if (he > hs && hs > 0)
+                {
+                    divchecacomida.Visible = false;
+                    txthoraentrada.Text = "";
+                    Alert.ShowAlertInfo("El horario de Salida debe ser el menor a los demas.", "Mensaje del sistema", this);
                 }
             }
         }
@@ -493,8 +511,9 @@ namespace presentacion
             if (Request.QueryString["autoriza"] != null && btnguardaredicio.Visible == true)
             {
                 btntot.CssClass = btntot.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
-                cuerpo.Visible = btntot.CssClass == "btn btn-default btn-block" ? true : false;               
-            } else if (Request.QueryString["autoriza"] == null)
+                cuerpo.Visible = btntot.CssClass == "btn btn-default btn-block" ? true : false;
+            }
+            else if (Request.QueryString["autoriza"] == null)
             {
                 btntot.CssClass = btntot.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
                 cuerpo.Visible = btntot.CssClass == "btn btn-default btn-block" ? true : false;
@@ -546,7 +565,6 @@ namespace presentacion
                     txthoraentradac.Enabled = true;
                     txthorasalidac.Enabled = true;
                 }
-
             }
         }
 
@@ -578,7 +596,6 @@ namespace presentacion
                 {
                     txthorasalida.Enabled = true;
                 }
-
             }
         }
 
@@ -590,6 +607,19 @@ namespace presentacion
             if (checacomida == true && value != "")
             {
                 divchecacomida.Visible = true;
+            }
+            int he = txthoraentrada.Text == "" ? 0 : Convert.ToInt32(txthoraentrada.Text.Replace(":", ""));
+            int hc1 = txthoraentradac.Text == "" ? 0 : Convert.ToInt32(txthoraentradac.Text.Replace(":", ""));
+            int hc2 = txthorasalidac.Text == "" ? 0 : Convert.ToInt32(txthorasalidac.Text.Replace(":", ""));
+            int hs = txthorasalida.Text == "" ? 0 : Convert.ToInt32(txthorasalida.Text.Replace(":", ""));
+            if (hs > 0)
+            {
+                if (he > hs || hc1 > hs || hc2 > hs)
+                {
+                    divchecacomida.Visible = false;
+                    txthorasalida.Text = "";
+                    Alert.ShowAlertInfo("El horario de Salida debe ser Mayor a los demas.", "Mensaje del sistema", this);
+                }
             }
         }
     }
