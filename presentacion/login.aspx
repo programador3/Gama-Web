@@ -2,6 +2,12 @@
 
 <asp:Content ID="Contentheadlog" ContentPlaceHolderID="head" runat="server">
     <script>
+
+        $(document).ready(function () {
+            if (!navigator.onLine) {
+                swal("Mensaje del Sistema", "Actualmente NO SE DETECTA una conexion a Internet.\nEsto podria hacer que la carga de la pagina sea lenta.\nPor Favor, Sea paciente!!", "info");
+            } 
+        });
         var value = 0;
         function ClicImg() {
             value++;
@@ -13,6 +19,7 @@
                 window.open("easteregg.aspx");
             }
         }
+
         // convertimos en minusculas la cadena devuelta por navigator.userAgent
         var nav = navigator.userAgent.toLowerCase();
         //buscamos dentro de la cadena mediante indexOf() el identificador del navegador

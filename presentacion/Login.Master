@@ -32,6 +32,16 @@
     <script src="js/sweetalert-dev.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if (navigator.onLine) {
+                    alert('Online');
+                } else {
+                    alert('Offline')
+                }
+            });
+
+        </script>
     </asp:ContentPlaceHolder>
 </head>
 <body>

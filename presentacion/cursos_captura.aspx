@@ -39,7 +39,7 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="page-header">
-                <h1><span class="label label-primary">
+                <h1><span>
                     <asp:Literal ID="lit_titulo" runat="server"></asp:Literal></span></h1>
                 <asp:HiddenField ID="oc_paginaprevia" runat="server" />
             </div>
@@ -56,23 +56,22 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary  fresh-color">
                         <div class="panel-heading">Cursos</div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="etiqueta">Descripción</label>
-                                        <asp:TextBox ID="txtdesc" onkeypress="return isNumber(event);" Style="text-transform: uppercase;" CssClass="form-control" runat="server"></asp:TextBox>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="etiqueta">Tipo Curso</label>
-                                        <asp:DropDownList ID="cbox_tipocurso" CssClass="form-control" runat="server">
-                                            <asp:ListItem Value="Seleccionar">Seleccionar</asp:ListItem>
-                                            <asp:ListItem Value="I">Interno</asp:ListItem>
-                                            <asp:ListItem Value="E">Externo</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
+                                <div class="col-lg-12">
+                                    <label class="etiqueta">Descripción</label>
+                                    <asp:TextBox ID="txtdesc" onkeypress="return isNumber(event);" Style="text-transform: uppercase;" CssClass="form-control" runat="server"></asp:TextBox>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <label class="etiqueta">Tipo Curso</label>
+                                    <asp:DropDownList ID="cbox_tipocurso" CssClass="form-control" runat="server">
+                                        <asp:ListItem Value="Seleccionar">Seleccionar</asp:ListItem>
+                                        <asp:ListItem Value="I">Interno</asp:ListItem>
+                                        <asp:ListItem Value="E">Externo</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -83,16 +82,17 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary  fresh-color">
                         <div class="panel-heading">Perfiles</div>
                         <div class="panel-body">
 
                             <!--grid view -->
                             <div class="row">
-                                <div class="form-group">
-                                    <div style="overflow-y: scroll; height: 250px; border: 1px solid;">
+                                <div class="col-lg-12">                                    
+                                <asp:LinkButton ID="LBKapli" CssClass="btn btn-success" OnClick="LBKapli_Click" runat="server" Text="Aplicar a Todos"></asp:LinkButton>
+                                    <div style="overflow-y: scroll; height: 250px; border: 1px solid; padding: 15px;">
                                         <div class="table-responsive">
-                                            <asp:CheckBoxList ID="check_curso_perfil" runat="server" CssClass="table  table-hover table-striped"></asp:CheckBoxList>
+                                            <asp:CheckBoxList ID="check_curso_perfil" runat="server" CssClass="radio3 radio-check radio-info radio-inline"></asp:CheckBoxList>
                                         </div>
                                     </div>
                                 </div>
@@ -107,12 +107,12 @@
                 <div class="col-lg-12">
                     <asp:Panel ID="panel_obs" runat="server">
 
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">Perfiles</div>
+                        <div class="panel panel-primary  fresh-color">
+                            <div class="panel-heading">Observaciones</div>
                             <div class="panel-body">
                                 <div class="form-group">
                                     <label class="etiqueta">Observaciones</label>
-                                    <asp:TextBox ID="txtobservaciones" onkeypress="return isNumber(event);" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:TextBox TextMode="MultiLine" Rows="3" placeholder="Observaciones" ID="txtobservaciones" onkeypress="return isNumber(event);" CssClass="form-control" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <!--panel body -->
@@ -122,13 +122,13 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary fresh-color">
                         <div class="panel-heading" style="text-align: center;">Examenes Aplicables</div>
                         <div class="panel-body">
                             <!--grid view -->
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <asp:CheckBoxList ID="chxExamenes" runat="server"></asp:CheckBoxList>
+                                <div class="col-lg-12" style="padding: 15px;">
+                                    <asp:CheckBoxList ID="chxExamenes" CssClass="radio3 radio-check radio-info radio-inline" runat="server"></asp:CheckBoxList>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
             <div class="row">
                 <div class="col-lg-12">
 
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary  fresh-color">
                         <div class="panel-heading">Añadir Archivo</div>
                         <div class="panel-body">
                             <!-- archivo descripcion -->
@@ -173,11 +173,11 @@
                     <div class="table-responsive">
                         <asp:GridView ID="grid_cursos_archivos" runat="server" DataKeyNames="id_archi, descripcion" CssClass="table table-bordered table-hover table-striped" OnRowCommand="grid_cursos_archivos_RowCommand" AutoGenerateColumns="False" OnRowDataBound="grid_cursos_archivos_RowDataBound">
                             <Columns>
-                                <asp:ButtonField ButtonType="Image" CommandName="Editar" ImageUrl="~/imagenes/btn/icon_editar.png" HeaderText="Editar">
+                                <asp:ButtonField ButtonType="Image" CommandName="Editar" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_editar.png" HeaderText="Editar">
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:ButtonField>
-                                <asp:ButtonField ButtonType="Image" CommandName="deletearchivo" ImageUrl="~/imagenes/btn/icon_delete.png" Text="Borrar" />
-                                <asp:TemplateField HeaderText="Descargar">
+                                <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" CommandName="deletearchivo" ImageUrl="~/imagenes/btn/icon_delete.png" Text="Borrar" />
+                                <asp:TemplateField HeaderText="Descargar"  HeaderStyle-Width="40px">
                                     <ItemTemplate>
                                         <%-- <asp:HyperLink ID="linkdescarga"   runat="server">Descargar</asp:HyperLink>--%>
                                         <asp:LinkButton ID="linkdescarga" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="metodo_descarga" runat="server">Descargar</asp:LinkButton>

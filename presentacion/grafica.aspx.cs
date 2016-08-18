@@ -1,9 +1,12 @@
-﻿using negocio.Componentes;
+﻿using ClosedXML.Excel;
+using negocio.Componentes;
 using negocio.Entidades;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,6 +26,9 @@ namespace presentacion
                 GenerarDatos(fi, ff, idc_puesto, pidc_depto);
             }
         }
+
+        public List<String> meses = new List<string>();
+        public List<int> valores = new List<int>();
 
         private void GenerarDatos(DateTime fecha_i, DateTime fecha_f, int idc_puesto, int IDC_DEPTO)
         {
@@ -49,11 +55,32 @@ namespace presentacion
                 lblrango.Text = (Convert.ToDateTime(Request.QueryString["fecha_inicio"]).ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX"))).ToString() + " a " + (Convert.ToDateTime(Request.QueryString["fecha_fin"]).ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX"))).ToString();
                 ScriptManager.RegisterStartupScript(this, GetType(), "GOALERT", "GraficaSistema(" + bien_sistema + "," + mal_sistema + ");", true);
                 ScriptManager.RegisterStartupScript(this, GetType(), "GOALERT2", "GraficaUsuario(" + bien_usuario + "," + mal_usuario + ");", true);
+                int contador = 1;
+                table.Controls.Add(new Literal { Text = funciones.TableDinamic(ds.Tables[4], "t1").ToString() });
+                ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3" + contador.ToString(), "DataTa" + contador.ToString() + "('#t" + contador.ToString() + "');", true);
+                Session["ds.Tables[4]"] = ds.Tables[4];
+                DataTable dtmeses = ds.Tables[5];
+                List<string> meses1 = new List<string>();
+                List<int> valores1 = new List<int>();
+                foreach (DataRow rw in dtmeses.Rows)
+                {
+                    meses.Add(rw["mes"].ToString());
+                    valores.Add(Convert.ToInt32(rw["valor"]));
+                }
             }
             catch (Exception ex)
             {
                 Alert.ShowAlertError(ex.ToString(), this.Page);
                 Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+
+        public static class JavaScript
+        {
+            public static string Serialize(object o)
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                return js.Serialize(o);
             }
         }
 
@@ -162,6 +189,35 @@ namespace presentacion
                     break;
             }
             Response.Redirect("rendimiento_tareas_detalles.aspx?pidc_puesto=" + idc_puesto + "&pidc_depto=" + pidc_depto + "&inicio=" + fi + "&fin=" + ff + "&tipofiltrosistema=" + tipofiltro);
+        }
+
+        protected void gridconcentrado_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+        }
+
+        protected void lnkexport_Click(object sender, EventArgs e)
+        {
+            DataTable dt = (DataTable)Session["ds.Tables[4]"];
+            Export Export = new Export();
+            //array de DataTables
+            List<DataTable> ListaTables = new List<DataTable>();
+            ListaTables.Add(dt);
+            //array de nombre de sheets
+            string[] Nombres = new string[] { "Tareas" };
+            if (dt.Rows.Count == 0)
+            {
+                Alert.ShowAlertInfo("Esta Peticion no cuenta con ningun dato para crear un reporte, verifique con el departamento de Sistemas.", "", this);
+            }
+            else
+            {
+                string mensaje = Export.toExcel("Tareas", XLColor.White, XLColor.Black, 18, true, DateTime.Now.ToString(), XLColor.White,
+                                   XLColor.Black, 10, ListaTables, XLColor.Orange, XLColor.White, Nombres, 1,
+                                   "Tareas.xlsx", Page.Response);
+                if (mensaje != "")
+                {
+                    Alert.ShowAlertError(mensaje, this);
+                }
+            }
         }
     }
 }

@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="css/checkbox3.min.css" />
     <link href="css/PanelsLTE.css" rel="stylesheet" />
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="js/sweetalert.css" rel="stylesheet" />
     <link href="css/ionicons.css" rel="stylesheet" />
     <link href="css/ionicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -29,6 +28,7 @@
     <link href="css/jquery.dataTables.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.css" rel="stylesheet" />
     <script src="js/jquery.dataTables.min.js"></script>
+    <link href="js/sweetalert.css" rel="stylesheet" />
     <script src="js/sweetalert-dev.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <script type="text/javascript">
@@ -39,7 +39,6 @@
                 var tot = 15 - value
                 alert("Esta a " + tot + " clicks de ser un programador.")
             } else if (value > 14) {
-
                 window.open("easteregg.aspx");
             }
         }
@@ -198,6 +197,10 @@
             }
         }
         function nobackbutton() {
+            $("#mensaje").hide();
+            if (!navigator.onLine) {
+                $("#mensaje").show();
+            }
             ValidarTareasPendientes();
             ValidarOpciones();
             ValidarNotificaciones();
@@ -485,6 +488,10 @@
                 </div>
                 <!-- Main Content -->
                 <div class="side-body padding-top">
+                    <div class="alert alert-danger fresh-color alert-dismissible" role="alert" id="mensaje" runat="server" visible="false">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Advertencia!</strong> Actualmente NO SE DETECTA una conexion a Internet. Esto podria hacer que la carga de la pagina sea lenta.\nPor Favor, Sea paciente!!
+                    </div>
                     <asp:ContentPlaceHolder ID="Contenido" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>

@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="css/checkbox3.min.css" />
     <link href="css/PanelsLTE.css" rel="stylesheet" />
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="js/sweetalert.css" rel="stylesheet" />
     <link href="css/ionicons.css" rel="stylesheet" />
     <link href="css/ionicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -29,6 +28,7 @@
     <link href="css/jquery.dataTables.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.css" rel="stylesheet" />
     <script src="js/jquery.dataTables.min.js"></script>
+    <link href="js/sweetalert.css" rel="stylesheet" />
     <script src="js/sweetalert-dev.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <script type="text/javascript">
@@ -360,7 +360,8 @@
                                <i class="fa fa-arrow-circle-left"></i></asp:LinkButton>
                                 </li>
                                 <li id="tareas_pendi" runat="server" visible="false">SISTEMA DE PRUEBAS
-                                </li>
+                                </li> 
+                                
                             </ol>
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-th icon"></i>

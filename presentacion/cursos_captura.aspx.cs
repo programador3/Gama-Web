@@ -17,7 +17,6 @@ namespace presentacion
                 carga_examenes();
                 Session["vidc"] = null;
                 //eliminamos la carpeta temporal de este usuario
-                DeleteDirectory(Path.Combine(Server.MapPath("~/temp/cursos/"), Session["sidc_usuario"].ToString()));
                 llenar_grid_perfiles();
                 if (Request.QueryString["borrador"] == null)// si el request viene vacio iniciamos en borrador
                 {
@@ -396,7 +395,6 @@ namespace presentacion
                 }
                 else
                 {
-                    limpiar();
                     Alert.ShowAlertError(vmensaje, this.Page);
                     return;
                 }
@@ -535,7 +533,6 @@ namespace presentacion
             txtdesc.Text = "";
             txtdescarchivo_1.Text = "";
             txtobservaciones.Text = "";
-            DeleteDirectory(Path.Combine(Server.MapPath("~/temp/cursos/"), Session["sidc_usuario"].ToString()));
             DataTable tbl = (DataTable)Session["TablaCursoArc"];
             tbl.Clear();
             Session["TablaCursoArc"] = tbl;
@@ -898,8 +895,7 @@ namespace presentacion
                 {
                     DeleteDirectory(dir);
                 }
-
-                Directory.Delete(target_dir, false);
+                
             }
         }
 
@@ -997,7 +993,7 @@ namespace presentacion
             // esta linea es opcional, en donde podemos cambiar el nombre del fichero a descargar (para que sea diferente al original)
             Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(path_archivo));//Revision.pptx");
             // Escribimos el fichero a enviar
-            Response.WriteFile(path_archivo);
+            Response.WriteFile(path_archivo+nombre_archivo);
             // volcamos el stream
             Response.Flush();
             // Enviamos todo el encabezado ahora
@@ -1019,6 +1015,17 @@ namespace presentacion
                         guardar_produccion();
                     }
                     break;
+            }
+        }
+
+        protected void LBKapli_Click(object sender, EventArgs e)
+        {
+            string text = LBKapli.Text;
+            LBKapli.Text = text == "Aplicar a Todos" ? "No Aplicar a Todos" : "Aplicar a Todos";
+            bool selected = text == "Aplicar a Todos" ? true : false;
+            foreach (ListItem item in check_curso_perfil.Items)
+            {
+                item.Selected = selected;
             }
         }
     }

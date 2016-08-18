@@ -67,6 +67,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.DropDownList cbox_tipocurso;
         
         /// <summary>
+        /// Control LBKapli.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LBKapli;
+        
+        /// <summary>
         /// Control check_curso_perfil.
         /// </summary>
         /// <remarks>
