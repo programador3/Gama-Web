@@ -19,7 +19,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="js/filesaver.js"></script>
     <script src="js/html2canvas.js"></script>
-    
+
     <link href="js/sweetalert.css" rel="stylesheet" />
     <script src="js/sweetalert-dev.js"></script>
     <script src="js/sweetalert.min.js"></script>
@@ -149,44 +149,44 @@
         });
         $(function () {
             var valueda =  <%=JavaScript.Serialize(this.valores) %>
-                var categories = <%=JavaScript.Serialize(this.meses) %>
-                $('#container3').highcharts({
+            var categories = <%=JavaScript.Serialize(this.meses) %>
+            $('#container3').highcharts({
+                title: {
+                    text: 'Tareas por Mes del Año Actual',
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: '',
+                    x: -20
+                },
+                xAxis: {
+                    categories: categories
+                },
+                yAxis: {
                     title: {
-                        text: 'Tareas por Mes del Año Actual',
-                        x: -20 //center
+                        text: 'Total de Tareas'
                     },
-                    subtitle: {
-                        text: '',
-                        x: -20
-                    },
-                    xAxis: {
-                        categories: categories
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Total de Tareas'
-                        },
-                        plotLines: [{
-                            value: 0,
-                            width: 1,
-                            color: '#808080'
-                        }]
-                    },
-                    tooltip: {
-                        valueSuffix: ' Tareas'
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'middle',
-                        borderWidth: 0
-                    },
-                    series: [{
-                        name: 'GAMA',
-                        data: valueda
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
                     }]
-                });
+                },
+                tooltip: {
+                    valueSuffix: ' Tareas'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: 'GAMA',
+                    data: valueda
+                }]
             });
+        });
     </script>
 </head>
 <body>
@@ -200,10 +200,11 @@
                                 <asp:Label ID="LBLTITLE" runat="server" Text=""></asp:Label></h3>
                             <h3>
                                 <small>Se muestran resultados de
-                                    <asp:Label ID="lblrango" runat="server" Text=""></asp:Label><span>&nbsp;<button type="button" class="btn btn-primary btn-sm" onclick="Click();">
-            Ver Uso de Tarea en Este Año
-        </button></span></small>
-                                
+                                    <asp:Label ID="lblrango" runat="server" Text=""></asp:Label><span>&nbsp;
+                                        <button type="button" class="btn btn-primary btn-sm" onclick="Click();">
+                                        Ver Uso de Tareas en Este Año
+                                    </button>
+                                    </span></small>
                             </h3>
                         </div>
                     </div>
@@ -257,13 +258,12 @@
             </div>
         </div>
         <!-- Button trigger modal -->
-    
 
         <!-- Modal -->
         <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-header" style="text-align:center">
+                    <div class="modal-header" style="text-align: center">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Grafica Global de Uso</h4>
                     </div>

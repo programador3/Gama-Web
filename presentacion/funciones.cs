@@ -581,6 +581,25 @@ namespace presentacion
             return @rutaarch;
         }
 
+        public static DataTable ValidarFolio(int idc_tipo, int folio)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                CombustibleENT entidad = new CombustibleENT();
+                CombustibleCOM componente = new CombustibleCOM();
+                entidad.Pfolio = folio;
+                entidad.Ptipofolio = idc_tipo;
+                DataSet ds = componente.ComprobarFolio(entidad);
+                dt = ds.Tables[0];
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return dt;
+            }
+        }
+
         /// <summary>
         /// Crea un arhcivo de texto en la carpeta temporal de windows
         /// </summary>

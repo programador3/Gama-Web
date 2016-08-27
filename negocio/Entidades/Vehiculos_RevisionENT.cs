@@ -4,7 +4,9 @@ namespace negocio.Entidades
 {
     public class Vehiculos_RevisionENT
     {
+        private int idc_revbasherr;
         private int idc_puestorevi;
+        private int IDC_EMPLEADO;
         private int idc_puestoprebaja;
         private int idc_usuario;
         private int pidc_prebaja;
@@ -38,6 +40,62 @@ namespace negocio.Entidades
         private int focos;
         private SqlMoney focos_costo;
         private string focos_obs;
+        private string cadena;
+        private string cadena2;
+        private int numcad;
+        private int numcad2;
+        private bool basica;
+        private bool falta;
+        private decimal total;
+        private decimal monto;
+
+        public string Pcadena
+        {
+            get { return cadena; }
+            set { cadena = value; }
+        }
+
+        public string Pacedna2
+        {
+            get { return cadena2; }
+            set { cadena2 = value; }
+        }
+
+        public int Pnumcad
+        {
+            get { return numcad; }
+            set { numcad = value; }
+        }
+
+        public int Pnumcad2
+        {
+            get { return numcad2; }
+            set { numcad2 = value; }
+        }
+
+        public bool Pbasica
+        {
+            get { return basica; }
+            set { basica = value; }
+        }
+
+        public bool Pfalta
+        {
+            get { return falta; }
+            set { falta = value; }
+        }
+
+        public decimal Pmonto
+        {
+            get { return monto; }
+            set { monto = value; }
+        }
+
+        public decimal Ptotal
+        {
+            get { return total; }
+            set { total = value; }
+        }
 
         public int Focos
         {
@@ -99,6 +157,12 @@ namespace negocio.Entidades
             set { carroceria = value; }
         }
 
+        public int Pidc_revbasherr
+        {
+            get { return idc_revbasherr; }
+            set { idc_revbasherr = value; }
+        }
+
         public SqlMoney Carroceria_costo
         {
             get { return carroceria_costo; }
@@ -133,6 +197,12 @@ namespace negocio.Entidades
         {
             get { return llantas; }
             set { llantas = value; }
+        }
+
+        public int Pidc_empleado
+        {
+            get { return IDC_EMPLEADO; }
+            set { IDC_EMPLEADO = value; }
         }
 
         public SqlMoney Llantas_costo

@@ -14,6 +14,7 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.MaintainScrollPositionOnPostBack = true;
             if (Session["sidc_usuario"] == null)//si no hay session logeamos
             {
                 Response.Redirect("login.aspx");

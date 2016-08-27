@@ -54,6 +54,7 @@
     <Compile Include="Componentes\Celulares_EntregarCOM.cs" />
     <Compile Include="Componentes\Celulares_PreparacionCOM.cs" />
     <Compile Include="Componentes\Celulares_RevisionesCOM.cs" />
+    <Compile Include="Componentes\CombustibleCOM.cs" />
     <Compile Include="Componentes\CuestionariosCOM.cs" />
     <Compile Include="Componentes\CursosCOM.cs" />
     <Compile Include="Componentes\Cursos_HistorialCOM.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Componentes\PuestosCOM.cs" />
     <Compile Include="Componentes\PuestosServiciosCOM.cs" />
     <Compile Include="Componentes\Puestos_EntregarCOM.cs" />
+    <Compile Include="Componentes\QuejasCOM.cs" />
     <Compile Include="Componentes\ReportesCOM.cs" />
     <Compile Include="Componentes\RevisionesCOM.cs" />
     <Compile Include="Componentes\Revisiones_PreparacionCOM.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="Entidades\Celulares_EntregarENT.cs" />
     <Compile Include="Entidades\Celulares_PreparacionENT.cs" />
     <Compile Include="Entidades\Celulares_RevisionesENT.cs" />
+    <Compile Include="Entidades\CombustibleENT.cs" />
     <Compile Include="Entidades\CuestionariosENT.cs" />
     <Compile Include="Entidades\CursosE.cs" />
     <Compile Include="Entidades\Cursos_HistorialENT.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="Entidades\PuestosENT.cs" />
     <Compile Include="Entidades\PuestosServiciosENT.cs" />
     <Compile Include="Entidades\Puestos_EntregarENT.cs" />
+    <Compile Include="Entidades\QuejasENT.cs" />
     <Compile Include="Entidades\ReportesENT.cs" />
     <Compile Include="Entidades\RevisionesENT.cs" />
     <Compile Include="Entidades\Revisiones_ServiciosENT.cs" />

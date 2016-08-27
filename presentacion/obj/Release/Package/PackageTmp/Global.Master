@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Global.master.cs" Inherits="presentacion.Global" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Global.master.cs" Inherits="presentacion.Global"%>
 
 <!DOCTYPE html>
 
@@ -39,7 +39,6 @@
                 var tot = 15 - value
                 alert("Esta a " + tot + " clicks de ser un programador.")
             } else if (value > 14) {
-
                 window.open("easteregg.aspx");
             }
         }
@@ -197,7 +196,32 @@
                 }
             }
         }
+        function ValidateTotal(Object, val_min, val_max, error_mess) {
+            // It's a number
+
+            if (Object.value != "") {
+                numValue = parseFloat(Object.value);
+                min = parseFloat(val_min);
+                max = parseFloat(val_max);
+                if (numValue < min || numValue > max) {
+                    Object.value = "1";
+                    swal({
+                        title: "Mensaje del Sistema",
+                        text: error_mess,
+                        type: 'error',
+                        showCancelButton: false,
+                        confirmButtonColor: "#428bca",
+                        confirmButtonText: "Aceptar",
+                        closeOnConfirm: false, allowEscapeKey: false
+                    });
+                }
+            }
+        }
         function nobackbutton() {
+            $("#mensaje").hide();
+            if (!navigator.onLine) {
+                $("#mensaje").show();
+            }
             ValidarTareasPendientes();
             ValidarOpciones();
             ValidarNotificaciones();
@@ -360,8 +384,7 @@
                                <i class="fa fa-arrow-circle-left"></i></asp:LinkButton>
                                 </li>
                                 <li id="tareas_pendi" runat="server" visible="false">SISTEMA DE PRUEBAS
-                                </li> 
-                                
+                                </li>
                             </ol>
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-th icon"></i>
@@ -486,6 +509,10 @@
                 </div>
                 <!-- Main Content -->
                 <div class="side-body padding-top">
+                    <div class="alert alert-danger fresh-color alert-dismissible" role="alert" id="mensaje" runat="server" visible="false">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Advertencia!</strong> Actualmente NO SE DETECTA una conexion a Internet. Esto podria hacer que la carga de la pagina sea lenta.\nPor Favor, Sea paciente!!
+                    </div>
                     <asp:ContentPlaceHolder ID="Contenido" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>

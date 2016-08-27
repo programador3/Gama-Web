@@ -43,6 +43,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ClosedXML, Version=0.76.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.76.0\lib\net40-client\ClosedXML.dll</HintPath>
       <Private>True</Private>
@@ -92,9 +96,11 @@
     <Content Include="asignacion_lugares_puestos.aspx" />
     <Content Include="asignacion_revisiones_captura.aspx" />
     <Content Include="avisos.aspx" />
+    <Content Include="avisos_gen_m.aspx" />
     <Content Include="cambiar_fechas_compromiso.aspx" />
     <Content Include="candidatos_preparar.aspx" />
     <Content Include="candidatos_preparar_captura.aspx" />
+    <Content Include="Carga_de_Combustibles_m.aspx" />
     <Content Include="catalogo_areas.aspx" />
     <Content Include="catalogo_asignacion_revisiones.aspx" />
     <Content Include="catalogo_avisos.aspx" />
@@ -113,6 +119,7 @@
     <Content Include="confirmar_herramientas.aspx" />
     <Content Include="confirmar_revisiones.aspx" />
     <Content Include="confirmar_vehiculos.aspx" />
+    <Content Include="consulta_quejas_m.aspx" />
     <Content Include="css\bootstrap-switch.css" />
     <Content Include="css\bootstrap-switch.min.css" />
     <Content Include="css\highlight.css" />
@@ -173,6 +180,7 @@
     <Content Include="fancybox\jquery.fancybox-1.3.4.js" />
     <Content Include="fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="Folios_Autorizacion.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.dev.svg" />
     <Content Include="fonts\icomoon.svg" />
@@ -507,7 +515,11 @@
     <Content Include="prueba.aspx" />
     <Content Include="puestos.aspx" />
     <Content Include="puestos_catalogo.aspx" />
+    <Content Include="quejas_acciones.aspx" />
+    <Content Include="quejas_espera_m.aspx" />
     <Content Include="reasignacion_tareas.aspx" />
+    <Content Include="recordatorios.aspx" />
+    <Content Include="recordatorios_pendientes.aspx" />
     <Content Include="redirect.aspx" />
     <Content Include="registro_visitas.aspx" />
     <Content Include="rendimiento_tareas_asignadas.aspx" />
@@ -522,6 +534,8 @@
     <Content Include="revisiones_preparacion.aspx" />
     <Content Include="revisiones_servicios_captura.aspx" />
     <Content Include="revision_final.aspx" />
+    <Content Include="revision_herramientas.aspx" />
+    <Content Include="revision_basica_de_herramientas_pendientes_m.aspx" />
     <Content Include="seleccion_candidato.aspx" />
     <Content Include="seleccion_puestos.aspx" />
     <Content Include="services.aspx" />
@@ -659,6 +673,13 @@
     <Compile Include="avisos.aspx.designer.cs">
       <DependentUpon>avisos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="avisos_gen_m.aspx.cs">
+      <DependentUpon>avisos_gen_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="avisos_gen_m.aspx.designer.cs">
+      <DependentUpon>avisos_gen_m.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cambiar_fechas_compromiso.aspx.cs">
       <DependentUpon>cambiar_fechas_compromiso.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -679,6 +700,13 @@
     </Compile>
     <Compile Include="candidatos_preparar_captura.aspx.designer.cs">
       <DependentUpon>candidatos_preparar_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Carga_de_Combustibles_m.aspx.cs">
+      <DependentUpon>Carga_de_Combustibles_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Carga_de_Combustibles_m.aspx.designer.cs">
+      <DependentUpon>Carga_de_Combustibles_m.aspx</DependentUpon>
     </Compile>
     <Compile Include="catalogo_areas.aspx.cs">
       <DependentUpon>catalogo_areas.aspx</DependentUpon>
@@ -806,6 +834,13 @@
     <Compile Include="confirmar_vehiculos.aspx.designer.cs">
       <DependentUpon>confirmar_vehiculos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="consulta_quejas_m.aspx.cs">
+      <DependentUpon>consulta_quejas_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="consulta_quejas_m.aspx.designer.cs">
+      <DependentUpon>consulta_quejas_m.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cursos.aspx.cs">
       <DependentUpon>cursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -876,6 +911,7 @@
     <Compile Include="cursos_revisar_gerencia_detalle.aspx.designer.cs">
       <DependentUpon>cursos_revisar_gerencia_detalle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DBConnection.cs" />
     <Compile Include="disponibilidad_celulares.aspx.cs">
       <DependentUpon>disponibilidad_celulares.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -961,6 +997,13 @@
       <DependentUpon>examenes_captura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Export.cs" />
+    <Compile Include="Folios_Autorizacion.aspx.cs">
+      <DependentUpon>Folios_Autorizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Folios_Autorizacion.aspx.designer.cs">
+      <DependentUpon>Folios_Autorizacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="funciones.cs" />
     <Compile Include="Global.Master.cs">
       <DependentUpon>Global.Master</DependentUpon>
@@ -1252,12 +1295,40 @@
     <Compile Include="puestos_catalogo.aspx.designer.cs">
       <DependentUpon>puestos_catalogo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="quejas_acciones.aspx.cs">
+      <DependentUpon>quejas_acciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="quejas_acciones.aspx.designer.cs">
+      <DependentUpon>quejas_acciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="quejas_espera_m.aspx.cs">
+      <DependentUpon>quejas_espera_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="quejas_espera_m.aspx.designer.cs">
+      <DependentUpon>quejas_espera_m.aspx</DependentUpon>
+    </Compile>
     <Compile Include="reasignacion_tareas.aspx.cs">
       <DependentUpon>reasignacion_tareas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="reasignacion_tareas.aspx.designer.cs">
       <DependentUpon>reasignacion_tareas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="recordatorios.aspx.cs">
+      <DependentUpon>recordatorios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="recordatorios.aspx.designer.cs">
+      <DependentUpon>recordatorios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="recordatorios_pendientes.aspx.cs">
+      <DependentUpon>recordatorios_pendientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="recordatorios_pendientes.aspx.designer.cs">
+      <DependentUpon>recordatorios_pendientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="redirect.aspx.cs">
       <DependentUpon>redirect.aspx</DependentUpon>
@@ -1356,6 +1427,20 @@
     </Compile>
     <Compile Include="revision_final.aspx.designer.cs">
       <DependentUpon>revision_final.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="revision_herramientas.aspx.cs">
+      <DependentUpon>revision_herramientas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="revision_herramientas.aspx.designer.cs">
+      <DependentUpon>revision_herramientas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="revision_basica_de_herramientas_pendientes_m.aspx.cs">
+      <DependentUpon>revision_basica_de_herramientas_pendientes_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="revision_basica_de_herramientas_pendientes_m.aspx.designer.cs">
+      <DependentUpon>revision_basica_de_herramientas_pendientes_m.aspx</DependentUpon>
     </Compile>
     <Compile Include="seleccion_candidato.aspx.cs">
       <DependentUpon>seleccion_candidato.aspx</DependentUpon>
@@ -1635,6 +1720,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\datos\datos.csproj">
+      <Project>{13E87AF7-A6D8-4BD9-AD54-AA929CCD7375}</Project>
+      <Name>datos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\negocio\negocio.csproj">
       <Project>{077b150d-7682-49ff-becc-5cd13dfd10bd}</Project>
       <Name>negocio</Name>

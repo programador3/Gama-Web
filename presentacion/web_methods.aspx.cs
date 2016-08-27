@@ -84,6 +84,8 @@ namespace presentacion
             return total;
         }
 
+     
+
         /// <summary>
         /// Retorna el numero de tareas pendientes por usuario
         /// </summary>

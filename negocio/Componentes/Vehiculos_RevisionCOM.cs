@@ -33,6 +33,171 @@ namespace negocio.Componentes
             }
             return ds;
         }
+        public DataSet CargaVehiculos(string valor)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pvalor", SqlDbType = SqlDbType.VarChar, Value = valor });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("selecciona_vehiculo", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet CargaEmpleado(Vehiculos_RevisionENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_vehiculo", SqlDbType = SqlDbType.VarChar, Value = Entidad.Idc_vehiculo });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_empleado_ayu_revsuc", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet CargarRevisionBasicaEmpleado(Vehiculos_RevisionENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_vehiculo", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_revbasherr });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_empleado_ayu_revsuc", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet CargarHerramientasRevisionBasica(Vehiculos_RevisionENT Entidad,bool rev_basica)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_vehiculo", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_vehiculo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@prevision_basica", SqlDbType = SqlDbType.Int, Value = rev_basica });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_revision_herramientas_clasif", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet ValidaCalibracion(Vehiculos_RevisionENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_vehiculo", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_vehiculo });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_fn_calibrar_llantas", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet CargarInfoPendiente(Vehiculos_RevisionENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_revbasherr", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_revbasherr });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_datos_idc_revbasherr", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet CargarInfoPendienteCatalogo(Vehiculos_RevisionENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pautorizado", SqlDbType = SqlDbType.Int, Value = 0 });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_usuario });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_revision_herramientas_basica_pend", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+
+        public DataSet GuardarRevision(Vehiculos_RevisionENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pdirecip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnombrepc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pidc_empleado });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_vehiculo", SqlDbType = SqlDbType.VarChar, Value = Entidad.Idc_vehiculo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pcadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnum", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnumcad });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfalta", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pfalta });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotal", SqlDbType = SqlDbType.VarChar, Value = Entidad.Ptotal });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdescontar", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pmonto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena2", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pacedna2 });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnum_hall", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnumcad2 });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pbasica", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pbasica });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_revbasherr", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pidc_revbasherr });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_arevision_herramientas_todo_hall_nuevo", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
 
         /// <summary>
         /// Inserta un Revision de Pre Baja

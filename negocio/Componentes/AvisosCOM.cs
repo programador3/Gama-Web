@@ -54,5 +54,45 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
+        public DataSet EnviarAviso(AvisosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pasunto", SqlDbType = SqlDbType.Int, Value = Entidad.Pasunto }); 
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptexto", SqlDbType = SqlDbType.Int, Value = Entidad.Ptexto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ppara", SqlDbType = SqlDbType.Int, Value = Entidad.Ppara });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pregecursor", SqlDbType = SqlDbType.Bit, Value = true });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_aavisos_gen_nuevo", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet ComboUsuario(AvisosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_usuarios", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
     }
 }

@@ -116,7 +116,7 @@
                             <h4><strong><i class="fa fa-caret-right"></i>Fotografia del Pre Empleado</strong></h4>
 
                             <div class="row">
-                                                            
+
                                 <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional">
                                     <Triggers>
                                         <asp:PostBackTrigger ControlID="lnkAgregarFotoPerfil" />
@@ -150,8 +150,8 @@
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>
-                            <br />  
-                            <h4><strong><i class="fa fa-caret-right"></i>Datos Personales</strong></h4>                 
+                            <br />
+                            <h4><strong><i class="fa fa-caret-right"></i>Datos Personales</strong></h4>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-12">
                                     <asp:DropDownList ID="ddlTitulo" runat="server" CssClass="form-control">

@@ -89,3 +89,10 @@ E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\10_08_16\Puestos\datos\obj\
 E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\10_08_16\Puestos\datos\obj\Release\datos.csproj.GenerateResource.Cache
 E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\10_08_16\Puestos\datos\obj\Release\datos.dll
 E:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\10_08_16\Puestos\datos\obj\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\18_08_16\Puestos\datos\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\18_08_16\Puestos\datos\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\18_08_16\Puestos\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\18_08_16\Puestos\datos\obj\Release\datos.recursos.resources
+D:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\18_08_16\Puestos\datos\obj\Release\datos.csproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\18_08_16\Puestos\datos\obj\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\08AGOSTO\18_08_16\Puestos\datos\obj\Release\datos.pdb
