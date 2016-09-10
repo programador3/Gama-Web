@@ -3,8 +3,10 @@ using negocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Net.Mail;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,6 +17,197 @@ namespace presentacion
 {
     public class funciones
     {
+       public static DBConnection conexion = new DBConnection();
+
+        public static DataTable ExecQuery(string query)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                query = query.Replace("\t", " ");
+                dt = funciones.conexion.Datos(query);                
+                return dt;
+            }
+            catch(Exception ex)
+            {
+                funciones.EnviarError(ex.ToString());
+                string t = ex.ToString();
+                return dt;
+            }
+
+        }
+
+        public static string cuentas_correo(string query)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = funciones.conexion.Datos(query);
+                if (dt.Rows.Count > 0)
+                {
+                    return Convert.ToString(dt.Rows[0][0]);
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch
+            {
+                return "";
+            }
+
+        }
+        public static string EnviarCorreo(string username, string password, string hostnamesmtp, int portsmtp, bool useSsl, 
+            string subject, string body, string to,  List<string> listadeadjuntos, bool ishtml)
+        {
+            try
+            {
+                if (to[to.Length - 1].ToString() == ",")
+                {
+                    to = to.Remove(to.Length - 1);
+                }
+                MailMessage message = new MailMessage();
+                message.Subject = subject;
+                message.Body = body;
+                message.IsBodyHtml = ishtml;
+                message.To.Add(to);
+                message.From = new MailAddress(username, username, System.Text.Encoding.UTF8);
+                SmtpClient mailer = new SmtpClient(hostnamesmtp, portsmtp);
+                mailer.Credentials = new NetworkCredential(username, password);
+                mailer.EnableSsl = useSsl;
+                foreach (string adjunto in listadeadjuntos)
+                {
+                    System.Net.Mail.Attachment attachment;
+                    attachment = new System.Net.Mail.Attachment(adjunto);
+                    attachment.Name = Path.GetFileName(adjunto);
+                    message.Attachments.Add(attachment);
+                }                
+                mailer.Send(message);
+                message.Attachments.Dispose();
+                message.Dispose();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                funciones.EnviarError(ex.ToString());
+                return ex.ToString();
+            }
+        }
+
+        public static void EnviarError(string bodycontent)
+        {
+            try
+            {
+                string usuario = "";
+                string contraseña = "";
+
+                string body = bodycontent;
+                body = "Fecha: " + DateTime.Now.ToString("dd MMMM, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX")) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + body;
+                string hostnamesmtp = "";
+                int portsmtp = 0;
+                bool useSsl = false;
+                string subject = "ERROR EN SISTEMA GAMA";
+                string to = "programador3@gamamateriales.com.mx,";
+                List<string> listadeadjuntos = new List<string>();
+                DataTable dt = funciones.ExecQuery("SELECT top 1 LTRIM(RTRIM(CORREO)) correo,DBO.fn_desencripta(correos_gama.CONTRASEÑA) contraseña,correo_puerto.PUERTO,CORREO_PUERTO.ssl,LTRIM(RTRIM(CORREO_PUERTO.smtp)) smtp,LTRIM(RTRIM(CORREO_PUERTO.pop)) pop FROM correos_gama WITH (NOLOCK) INNER JOIN	correo_puerto WITH (NOLOCK) ON CORREOS_GAMA.idc_correopuerto = correo_puerto.idc_correopuerto inner join usuarios with(nolock) on usuarios.idc_correo = correos_gama.idc_correo where idc_usuario = 314 ");
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    usuario = row["correo"].ToString();
+                    contraseña = row["contraseña"].ToString();
+                    hostnamesmtp = row["smtp"].ToString();
+                    portsmtp = Convert.ToInt32(row["puerto"]);
+                    useSsl = Convert.ToBoolean(row["ssl"]);
+                    if (to != "" && usuario != "" && contraseña != "" && hostnamesmtp != "" && portsmtp != 0)
+                    {
+                        if (to[to.Length - 1].ToString() == ",")
+                        {
+                            to = to.Remove(to.Length - 1);
+                        }
+                        MailMessage message = new MailMessage();
+                        message.Subject = subject;
+                        message.Body = body;
+                        message.IsBodyHtml = true;
+                        message.To.Add(to);
+                        message.From = new MailAddress(usuario, "PROGRAMADOR WEB", System.Text.Encoding.UTF8);
+                        SmtpClient mailer = new SmtpClient(hostnamesmtp, portsmtp);
+                        mailer.Credentials = new NetworkCredential(usuario, contraseña);
+                        mailer.EnableSsl = useSsl;
+                        mailer.Send(message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string eed = ex.ToString();
+            }
+        }
+        /// <summary>
+        /// Descarga un archivo
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="file_name"></param>
+        public static void Download(string path, string file_name, Page page)
+        {
+            if (!File.Exists(path))
+            {
+                Alert.ShowAlertError("No tiene archivo relacionado", page);
+            }
+            else
+            {
+                // Limpiamos la salida
+                page.Response.Clear();
+                // Con esto le decimos al browser que la salida sera descargable
+                page.Response.ContentType = "application/octet-stream";
+                // esta linea es opcional, en donde podemos cambiar el nombre del fichero a descargar (para que sea diferente al original)
+                page.Response.AddHeader("Content-Disposition", "attachment; filename=" + file_name);
+                // Escribimos el fichero a enviar
+                page.Response.WriteFile(path);
+                // volcamos el stream
+                page.Response.Flush();
+                // Enviamos todo el encabezado ahora
+                page.Response.End();
+                // Response.End();
+            }
+        }
+
+        public static string obten_cadena_con(string tipo)
+        {
+            string cadena;
+            try
+            {
+                string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
+                if (tipo == "conexion")
+                {
+                    if (cs == "P")
+                        cadena = variables.cad_conexion;
+                    else
+                        cadena = variables.cad_conexion_respa;
+                }
+                else if (tipo == "phost")
+                {
+                    if (cs == "P")
+                    {
+                        cadena = variables.servidor_ima;
+                    }
+                    else
+                    {
+                        cadena = variables.servidor_ima_resp;
+                    }
+                }
+                else
+                {
+                    cadena = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return cadena;
+        }
+
         /// <summary>
         /// Convierte un Objeto tipo DataTable en FORMATO HTML
         /// </summary>

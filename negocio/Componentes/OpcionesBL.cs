@@ -8,6 +8,103 @@ namespace negocio.Componentes
 {
     public class OpcionesBL
     {
+        public DataSet menu_general()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            //listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_menu_general", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+
+        }
+
+        public DataSet get_menu2(Entidades.OpcionesE opciones)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = opciones.Idc_user });
+
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_menu_dinamico", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+
+        }
+        public string ir(Entidades.OpcionesE opciones)
+        {
+            string destino = "";
+            try
+            {
+
+                //recupero mi tabla de menu 
+                DataSet ds = new DataSet();
+                ds = menu_general();
+                //metemos en un datatable para el filtrado  recuperacion de datos
+                DataTable dt = ds.Tables[0];
+                if (dt.Rows.Count > 0)
+                {
+                    //buscamos el id de la opcion
+                    string condicion = "idc_opcion=" + opciones.Idc_opcion;
+                    //Aqui guardamos el resultado
+                    DataRow[] findrow;
+                    findrow = dt.Select(condicion);
+                    if (findrow != null)
+                    {
+                        //recupero que accion ejecuta esta opcion
+                        destino = findrow[0]["web_form"].ToString();
+                    }
+                    else
+                    {
+                        destino = "menu3.aspx";
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return destino;
+        }
+
+        public DataTable preparar_funcion(string funcion)
+        {
+            Datos data = new Datos();
+            DataTable dt = new DataTable();
+
+            try
+            {
+                dt = data.enviar_funcion(funcion);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
         public DataSet AcessosDirectos(Entidades.OpcionesE opcion)
         {
             DataSet ds = new DataSet();
@@ -92,20 +189,6 @@ namespace negocio.Componentes
             return ds;
         }
 
-        public DataTable preparar_funcion(string funcion)
-        {
-            Datos data = new Datos();
-            DataTable dt = new DataTable();
-
-            try
-            {
-                dt = data.enviar_funcion(funcion);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return dt;
-        }
+       
     }
 }

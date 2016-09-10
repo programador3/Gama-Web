@@ -1,4 +1,5 @@
-﻿using negocio.Componentes;
+﻿using negocio;
+using negocio.Componentes;
 using negocio.Entidades;
 using System;
 using System.Data;
@@ -6,7 +7,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace presentacion
 {
@@ -36,7 +36,6 @@ namespace presentacion
         {
             string user, pass;
             bool remember = false;
-            if (cbxRecordar.Checked == true) { remember = true; }
             user = txtuser.Text.Trim().ToUpper();
             pass = txtpass.Text.Trim().ToUpper();
             Login(user, pass, remember);
@@ -143,6 +142,10 @@ namespace presentacion
                         string us = funciones.deTextoa64(txtuser.Text);
                         string con = funciones.deTextoa64(txtpass.Text);
                         string response = Request.QueryString["p"] == null ? "menu.aspx" : funciones.de64aTexto(Request.QueryString["p"]);
+                        if (ValidarPantalla(65) == true && RevisionesBasicasPendientes() > 0)
+                        {
+                            response = "revision_basica_de_herramientas_pendientes_m.aspx";
+                        }
                         Response.Redirect(response);
                     }
                     else
@@ -158,6 +161,32 @@ namespace presentacion
             }
         }
 
+        private int HallazgosPendientes()
+        {
+            HallazgosENT ENTIDAD = new HallazgosENT();
+            ENTIDAD.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+            HallazgosCOM componente = new HallazgosCOM();
+            DataSet ds = componente.CargarHallazgosSinTerminar(ENTIDAD);
+            return ds.Tables[0].Rows.Count;
+        }
+        private bool ValidarPantalla(int idc_pantalla)
+        {
+            HallazgosENT ENTIDAD = new HallazgosENT();
+            ENTIDAD.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+            ENTIDAD.pidc_hallazgo = idc_pantalla;
+            HallazgosCOM componente = new HallazgosCOM();
+            DataSet ds = componente.ValidarPantalla(ENTIDAD);
+            return Convert.ToBoolean(ds.Tables[0].Rows[0]["resultado"]);
+        }
+        private int RevisionesBasicasPendientes()
+        {
+            Vehiculos_RevisionENT entidad = new Vehiculos_RevisionENT();
+            Vehiculos_RevisionCOM com = new Vehiculos_RevisionCOM();
+            entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+            DataSet ds = com.CargarInfoPendienteCatalogo(entidad);
+            return ds.Tables[0].Rows.Count;
+        }
+        
         /// <summary>
         /// Comprueba que exista una Cookie
         /// </summary>

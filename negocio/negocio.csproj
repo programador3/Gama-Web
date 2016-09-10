@@ -54,16 +54,20 @@
     <Compile Include="Componentes\Celulares_EntregarCOM.cs" />
     <Compile Include="Componentes\Celulares_PreparacionCOM.cs" />
     <Compile Include="Componentes\Celulares_RevisionesCOM.cs" />
+    <Compile Include="Componentes\ClientesBL.cs" />
     <Compile Include="Componentes\CombustibleCOM.cs" />
     <Compile Include="Componentes\CuestionariosCOM.cs" />
     <Compile Include="Componentes\CursosCOM.cs" />
     <Compile Include="Componentes\Cursos_HistorialCOM.cs" />
     <Compile Include="Componentes\Cursos_PreparacionCOM.cs" />
+    <Compile Include="Componentes\EmpleadosBS.cs" />
     <Compile Include="Componentes\Etiquetas_CM.cs" />
     <Compile Include="Componentes\ExamenesCOM.cs" />
     <Compile Include="Componentes\FaltasCOM.cs" />
+    <Compile Include="Componentes\Giros_cliBL.cs" />
     <Compile Include="Componentes\Grupos_backendBL.cs" />
     <Compile Include="Componentes\Grupos_PuestosCOM.cs" />
+    <Compile Include="Componentes\HallazgosCOM.cs" />
     <Compile Include="Componentes\herramientasCOM.cs" />
     <Compile Include="Componentes\Herramientas_EntregasCOM.cs" />
     <Compile Include="Componentes\Herramientas_PreparacionCOM.cs" />
@@ -80,11 +84,13 @@
     <Compile Include="Componentes\Pre_EmpleadosCOM.cs" />
     <Compile Include="Componentes\ProcesosCOM.cs" />
     <Compile Include="Componentes\ProgramacionCorreosCOM.cs" />
+    <Compile Include="Componentes\Prospectos_ventasBL.cs" />
     <Compile Include="Componentes\PuestosCOM.cs" />
     <Compile Include="Componentes\PuestosServiciosCOM.cs" />
     <Compile Include="Componentes\Puestos_EntregarCOM.cs" />
     <Compile Include="Componentes\QuejasCOM.cs" />
     <Compile Include="Componentes\ReportesCOM.cs" />
+    <Compile Include="Componentes\ReportingBL.cs" />
     <Compile Include="Componentes\RevisionesCOM.cs" />
     <Compile Include="Componentes\Revisiones_PreparacionCOM.cs" />
     <Compile Include="Componentes\Revisiones_ServciosCOM.cs" />
@@ -95,6 +101,7 @@
     <Compile Include="Componentes\Solicitud_PrebajaCOM.cs" />
     <Compile Include="Componentes\TareasAutomaticasCOM.cs" />
     <Compile Include="Componentes\TareasCOM.cs" />
+    <Compile Include="Componentes\Uni_archiBL.cs" />
     <Compile Include="Componentes\UsuariosBL.cs" />
     <Compile Include="Componentes\VacacionesCOM.cs" />
     <Compile Include="Componentes\Vehiculos_EntregarCOM.cs" />
@@ -118,14 +125,17 @@
     <Compile Include="Entidades\Celulares_EntregarENT.cs" />
     <Compile Include="Entidades\Celulares_PreparacionENT.cs" />
     <Compile Include="Entidades\Celulares_RevisionesENT.cs" />
+    <Compile Include="Entidades\clientesE.cs" />
     <Compile Include="Entidades\CombustibleENT.cs" />
     <Compile Include="Entidades\CuestionariosENT.cs" />
     <Compile Include="Entidades\CursosE.cs" />
     <Compile Include="Entidades\Cursos_HistorialENT.cs" />
     <Compile Include="Entidades\Cursos_PreparacionENT.cs" />
+    <Compile Include="Entidades\Empleados.cs" />
     <Compile Include="Entidades\Etiquetas_EN.cs" />
     <Compile Include="Entidades\ExamenesENT.cs" />
     <Compile Include="Entidades\FaltasENT.cs" />
+    <Compile Include="Entidades\giros_cliE.cs" />
     <Compile Include="Entidades\Grupos_backendE.cs" />
     <Compile Include="Entidades\Grupos_PuestosENT.cs" />
     <Compile Include="Entidades\herramientasENT.cs" />
@@ -145,11 +155,13 @@
     <Compile Include="Entidades\Pre_EmpleadosENT.cs" />
     <Compile Include="Entidades\ProcesosENT.cs" />
     <Compile Include="Entidades\ProgramacionCorreosENT.cs" />
+    <Compile Include="Entidades\prospectos_ventasE.cs" />
     <Compile Include="Entidades\PuestosENT.cs" />
     <Compile Include="Entidades\PuestosServiciosENT.cs" />
     <Compile Include="Entidades\Puestos_EntregarENT.cs" />
     <Compile Include="Entidades\QuejasENT.cs" />
     <Compile Include="Entidades\ReportesENT.cs" />
+    <Compile Include="Entidades\reportingE.cs" />
     <Compile Include="Entidades\RevisionesENT.cs" />
     <Compile Include="Entidades\Revisiones_ServiciosENT.cs" />
     <Compile Include="Entidades\Revision_FinalENT.cs" />
@@ -160,6 +172,7 @@
     <Compile Include="Entidades\Solicitud_PrebajaENT.cs" />
     <Compile Include="Entidades\TareasAutomaticasENT.cs" />
     <Compile Include="Entidades\TareasENT.cs" />
+    <Compile Include="Entidades\uni_archiE.cs" />
     <Compile Include="Entidades\UsuariosE.cs" />
     <Compile Include="Entidades\UsuariosGET.cs" />
     <Compile Include="Entidades\VacacionesENT.cs" />
@@ -168,6 +181,7 @@
     <Compile Include="Entidades\Vehiculos_RevisionENT.cs" />
     <Compile Include="Entidades\VendedoresENT.cs" />
     <Compile Include="Entidades\VisitasENT.cs" />
+    <Compile Include="Entidades\HallazgosENT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

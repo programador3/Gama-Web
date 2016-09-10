@@ -13,6 +13,20 @@
         private int tipo_apli;
         private string search;
 
+        int idc_opcion;
+        int idc_user;
+
+        public int Idc_opcion
+        {
+            get { return idc_opcion; }
+            set { idc_opcion = value; }
+        }
+
+        public int Idc_user
+        {
+            get { return idc_user; }
+            set { idc_user = value; }
+        }
         public string Search
         {
             get { return search; }

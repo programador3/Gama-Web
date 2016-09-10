@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Web.Services;
 using System.Web.UI.WebControls;
 
 namespace presentacion
@@ -16,6 +17,8 @@ namespace presentacion
         public static int idc_puesto = 0;
         public static string path_user_chat = "";
         public static string content = "";
+        public static Nullable<DateTime> date; 
+
 
         [Serializable]
         public class Id
@@ -184,11 +187,17 @@ namespace presentacion
         [System.Web.Services.WebMethod]
         public static List<Notificacion> GetNotificaciones(List<string> aData)
         {
+            List<Notificacion> noti = new List<Notificacion>();
+            DateTime now = DateTime.Now;
+            if (now > date && date != null)
+            {
+                date = DateTime.Now.AddMinutes(4);
+               
+            }
             String a = aData[0];
             NotificacionesENT ent = new NotificacionesENT();
             ent.Idc_usuario = Convert.ToInt32(a);
             NotificacionesCOM com = new NotificacionesCOM();
-            List<Notificacion> noti = new List<Notificacion>();
             foreach (DataRow row in com.CargaNotificaciones(ent).Tables[0].Rows)
             {
                 noti.Add(new Notificacion
@@ -220,6 +229,8 @@ namespace presentacion
             }
             return noti;
         }
+
+    
 
         [System.Web.Services.WebMethod]
         public static int GetTotalTareas()

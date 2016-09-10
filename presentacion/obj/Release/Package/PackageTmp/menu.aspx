@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Menu Principal" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="menu.aspx.cs" Inherits="presentacion.menu" %>
+﻿<%@ Page Title="Menu Inicio" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="menu.aspx.cs" Inherits="presentacion.menu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -115,8 +115,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Menu Principal
+            <h1 class="page-header">Menu Inicio
             </h1>
+          
         </div>
     </div>    
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
@@ -167,7 +168,7 @@
                         Puede Intentarlo Nuevamente.</h2>
                 </div>
             </asp:Panel>
-            <asp:Panel ID="panel_menus_repeat" runat="server">
+            <asp:Panel ID="panel_menus_repeat" runat="server" Visible="false">
                 <div class="row">
                     <asp:Repeater ID="Repeater3" runat="server">
                         <ItemTemplate>

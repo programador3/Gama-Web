@@ -40,6 +40,33 @@ namespace presentacion {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// Control upda_datetime.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upda_datetime;
+        
+        /// <summary>
+        /// Control hiddendatetime1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hiddendatetime1;
+        
+        /// <summary>
+        /// Control HiddenList.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenList;
+        
+        /// <summary>
         /// Control hdnidc_usuario.
         /// </summary>
         /// <remarks>
@@ -139,6 +166,15 @@ namespace presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pendientes_li;
         
         /// <summary>
+        /// Control tot_not.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tot_not;
+        
+        /// <summary>
         /// Control liNotPendientes.
         /// </summary>
         /// <remarks>
@@ -175,13 +211,13 @@ namespace presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl li1;
         
         /// <summary>
-        /// Control mensaje.
+        /// Control repeatmenu1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mensaje;
+        protected global::System.Web.UI.WebControls.Repeater repeatmenu1;
         
         /// <summary>
         /// Control Contenido.

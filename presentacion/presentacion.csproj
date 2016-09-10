@@ -64,6 +64,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="OpenPop, Version=2.0.6.1120, Culture=neutral, PublicKeyToken=6bdb97f144b7efc8, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenPop.NET.2.0.6.1120\lib\net40\OpenPop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
@@ -95,7 +101,7 @@
     <Content Include="asignacion_lugares.aspx" />
     <Content Include="asignacion_lugares_puestos.aspx" />
     <Content Include="asignacion_revisiones_captura.aspx" />
-    <Content Include="avisos.aspx" />
+    <Content Include="avisos_todos_m.aspx" />
     <Content Include="avisos_gen_m.aspx" />
     <Content Include="cambiar_fechas_compromiso.aspx" />
     <Content Include="candidatos_preparar.aspx" />
@@ -114,12 +120,15 @@
     <Content Include="celulares_entrega.aspx" />
     <Content Include="celulares_preparacion.aspx" />
     <Content Include="celulares_revision.aspx" />
+    <Content Include="comisiones_especiales.aspx" />
     <Content Include="confirmacion_entrega.aspx" />
     <Content Include="confirmar_celulares.aspx" />
     <Content Include="confirmar_herramientas.aspx" />
     <Content Include="confirmar_revisiones.aspx" />
     <Content Include="confirmar_vehiculos.aspx" />
+    <Content Include="consulta_hallazgos_pendientes_m.aspx" />
     <Content Include="consulta_quejas_m.aspx" />
+    <Content Include="correo.aspx" />
     <Content Include="css\bootstrap-switch.css" />
     <Content Include="css\bootstrap-switch.min.css" />
     <Content Include="css\highlight.css" />
@@ -185,14 +194,34 @@
     <Content Include="fonts\icomoon.dev.svg" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="fonts\license.txt" />
+    <Content Include="generar_embarque_de_pre-embarques_m.aspx" />
+    <Content Include="generar_embarque_de_pre-embarques_m.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="hallazgos_incumplidos_m.aspx" />
+    <Content Include="hallazgos_m.aspx" />
+    <Content Include="hallazgos_pendientes_revisar_m.aspx" />
+    <Content Include="hallazgos_pendientes_terminar_m.aspx" />
+    <Content Include="hallazgos_vobo_m.aspx" />
     <Content Include="html_dinamico.aspx" />
     <Content Include="imagenes\areas\captura\ok.png" />
     <Content Include="imagenes\areas\ok.png" />
     <Content Include="imagenes\body_page.png" />
+    <Content Include="imagenes\btn\documentation.png" />
+    <Content Include="imagenes\btn\image-x-generic.png" />
+    <Content Include="imagenes\btn\system-switch-user-3.png" />
+    <Content Include="imagenes\info.png" />
     <Content Include="imagenes\lugares\captura\ok.png" />
     <Content Include="imagenes\lugares\ok.png" />
+    <Content Include="imagenes\mapa.png" />
+    <Content Include="imagenes\phone.png" />
+    <Content Include="imagenes\rojo.jpg" />
+    <Content Include="imagenes\rotar.png" />
+    <Content Include="imagenes\verde.jpg" />
     <Content Include="img\arrastra.png" />
     <Content Include="img\page-loader.gif" />
+    <Content Include="img\profile\user.png" />
+    <Content Include="informe.aspx" />
     <Content Include="js\bootstrap-wysiwyg.js" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\jquery.dataTables.min.js" />
@@ -333,6 +362,8 @@
     <Content Include="js\html2canvas.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.mb.audio.js" />
+    <Content Include="js\jquery.rotate.js" />
+    <Content Include="js\jquery.rotate.min.js" />
     <Content Include="js\jquery.slimmenu.js" />
     <Content Include="js\jquery10.js" />
     <Content Include="js\mascara.js" />
@@ -392,6 +423,7 @@
     <Content Include="js\theming.js" />
     <Content Include="login.aspx" />
     <Content Include="lugares_captura.aspx" />
+    <Content Include="mapa.aspx" />
     <Content Include="menu.aspx" />
     <Content Include="css\animate.css" />
     <Content Include="css\pnotify.custom.min.css" />
@@ -459,6 +491,10 @@
     <Content Include="pre_bajas.aspx" />
     <Content Include="pre_bajas_bajas.aspx" />
     <Content Include="pre_bajas_cancelar.aspx" />
+    <Content Include="pre_embarques_2_elite_m.aspx" />
+    <Content Include="pre_embarques_2_elite_m.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="pre_empleados_captura.aspx" />
     <Content Include="primitive\css\bporgeditor.latest.css" />
     <Content Include="primitive\css\images\ui-bg_flat_10_000000_40x100.png" />
@@ -512,6 +548,9 @@
     <Content Include="procesos_vista_previa.aspx" />
     <Content Include="programacion_correos.aspx" />
     <Content Include="programacion_correos_d.aspx" />
+    <Content Include="prospectos_captura3.aspx" />
+    <Content Include="prospectos_datos2.aspx" />
+    <Content Include="prospectos_detalle.aspx" />
     <Content Include="prueba.aspx" />
     <Content Include="puestos.aspx" />
     <Content Include="puestos_catalogo.aspx" />
@@ -527,6 +566,7 @@
     <Content Include="rendimiento_tareas_detalles.aspx" />
     <Content Include="reportes_empleados.aspx" />
     <Content Include="reporte_faltas.aspx" />
+    <Content Include="reporte_filtro.aspx" />
     <Content Include="reporte_visitas.aspx" />
     <Content Include="retiro_ahorro.aspx" />
     <Content Include="revisiones.aspx" />
@@ -570,6 +610,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebService.asmx" />
     <Content Include="web_methods.aspx" />
     <Content Include="w_s.aspx" />
   </ItemGroup>
@@ -666,12 +707,12 @@
     <Compile Include="asignacion_revisiones_captura.aspx.designer.cs">
       <DependentUpon>asignacion_revisiones_captura.aspx</DependentUpon>
     </Compile>
-    <Compile Include="avisos.aspx.cs">
-      <DependentUpon>avisos.aspx</DependentUpon>
+    <Compile Include="avisos_todos_m.aspx.cs">
+      <DependentUpon>avisos_todos_m.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="avisos.aspx.designer.cs">
-      <DependentUpon>avisos.aspx</DependentUpon>
+    <Compile Include="avisos_todos_m.aspx.designer.cs">
+      <DependentUpon>avisos_todos_m.aspx</DependentUpon>
     </Compile>
     <Compile Include="avisos_gen_m.aspx.cs">
       <DependentUpon>avisos_gen_m.aspx</DependentUpon>
@@ -799,6 +840,13 @@
     <Compile Include="celulares_revision.aspx.designer.cs">
       <DependentUpon>celulares_revision.aspx</DependentUpon>
     </Compile>
+    <Compile Include="comisiones_especiales.aspx.cs">
+      <DependentUpon>comisiones_especiales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="comisiones_especiales.aspx.designer.cs">
+      <DependentUpon>comisiones_especiales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="confirmacion_entrega.aspx.cs">
       <DependentUpon>confirmacion_entrega.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -834,12 +882,26 @@
     <Compile Include="confirmar_vehiculos.aspx.designer.cs">
       <DependentUpon>confirmar_vehiculos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="consulta_hallazgos_pendientes_m.aspx.cs">
+      <DependentUpon>consulta_hallazgos_pendientes_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="consulta_hallazgos_pendientes_m.aspx.designer.cs">
+      <DependentUpon>consulta_hallazgos_pendientes_m.aspx</DependentUpon>
+    </Compile>
     <Compile Include="consulta_quejas_m.aspx.cs">
       <DependentUpon>consulta_quejas_m.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="consulta_quejas_m.aspx.designer.cs">
       <DependentUpon>consulta_quejas_m.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="correo.aspx.cs">
+      <DependentUpon>correo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="correo.aspx.designer.cs">
+      <DependentUpon>correo.aspx</DependentUpon>
     </Compile>
     <Compile Include="cursos.aspx.cs">
       <DependentUpon>cursos.aspx</DependentUpon>
@@ -1047,6 +1109,41 @@
     <Compile Include="grupos_puestos_captura.aspx.designer.cs">
       <DependentUpon>grupos_puestos_captura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="hallazgos_incumplidos_m.aspx.cs">
+      <DependentUpon>hallazgos_incumplidos_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hallazgos_incumplidos_m.aspx.designer.cs">
+      <DependentUpon>hallazgos_incumplidos_m.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hallazgos_m.aspx.cs">
+      <DependentUpon>hallazgos_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hallazgos_m.aspx.designer.cs">
+      <DependentUpon>hallazgos_m.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hallazgos_pendientes_revisar_m.aspx.cs">
+      <DependentUpon>hallazgos_pendientes_revisar_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hallazgos_pendientes_revisar_m.aspx.designer.cs">
+      <DependentUpon>hallazgos_pendientes_revisar_m.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hallazgos_pendientes_terminar_m.aspx.cs">
+      <DependentUpon>hallazgos_pendientes_terminar_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hallazgos_pendientes_terminar_m.aspx.designer.cs">
+      <DependentUpon>hallazgos_pendientes_terminar_m.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hallazgos_vobo_m.aspx.cs">
+      <DependentUpon>hallazgos_vobo_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hallazgos_vobo_m.aspx.designer.cs">
+      <DependentUpon>hallazgos_vobo_m.aspx</DependentUpon>
+    </Compile>
     <Compile Include="herramientas_catalogo.aspx.cs">
       <DependentUpon>herramientas_catalogo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1089,6 +1186,13 @@
     <Compile Include="html.aspx.designer.cs">
       <DependentUpon>html.aspx</DependentUpon>
     </Compile>
+    <Compile Include="informe.aspx.cs">
+      <DependentUpon>informe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="informe.aspx.designer.cs">
+      <DependentUpon>informe.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inventario.aspx.cs">
       <DependentUpon>inventario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1116,6 +1220,13 @@
     </Compile>
     <Compile Include="lugares_captura.aspx.designer.cs">
       <DependentUpon>lugares_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mapa.aspx.cs">
+      <DependentUpon>mapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mapa.aspx.designer.cs">
+      <DependentUpon>mapa.aspx</DependentUpon>
     </Compile>
     <Compile Include="menu.aspx.cs">
       <DependentUpon>menu.aspx</DependentUpon>
@@ -1274,6 +1385,27 @@
       <DependentUpon>programacion_correos_d.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="prospectos_captura3.aspx.cs">
+      <DependentUpon>prospectos_captura3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prospectos_captura3.aspx.designer.cs">
+      <DependentUpon>prospectos_captura3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="prospectos_datos2.aspx.cs">
+      <DependentUpon>prospectos_datos2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prospectos_datos2.aspx.designer.cs">
+      <DependentUpon>prospectos_datos2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="prospectos_detalle.aspx.cs">
+      <DependentUpon>prospectos_detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="prospectos_detalle.aspx.designer.cs">
+      <DependentUpon>prospectos_detalle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="prueba.aspx.cs">
       <DependentUpon>prueba.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1379,6 +1511,13 @@
     <Compile Include="reporte_faltas.aspx.designer.cs">
       <DependentUpon>reporte_faltas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="reporte_filtro.aspx.cs">
+      <DependentUpon>reporte_filtro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reporte_filtro.aspx.designer.cs">
+      <DependentUpon>reporte_filtro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="reporte_visitas.aspx.cs">
       <DependentUpon>reporte_visitas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1386,6 +1525,7 @@
     <Compile Include="reporte_visitas.aspx.designer.cs">
       <DependentUpon>reporte_visitas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="reporting.cs" />
     <Compile Include="retiro_ahorro.aspx.cs">
       <DependentUpon>retiro_ahorro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1491,6 +1631,7 @@
     <Compile Include="solicitud_horario.aspx.designer.cs">
       <DependentUpon>solicitud_horario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="solo_digitos.cs" />
     <Compile Include="subprocesos_captura.aspx.cs">
       <DependentUpon>subprocesos_captura.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1498,6 +1639,7 @@
     <Compile Include="subprocesos_captura.aspx.designer.cs">
       <DependentUpon>subprocesos_captura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="substraer.cs" />
     <Compile Include="tareas.aspx.cs">
       <DependentUpon>tareas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1575,6 +1717,8 @@
     <Compile Include="conteo.aspx.designer.cs">
       <DependentUpon>conteo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="validar_expresiones_regulares.cs" />
+    <Compile Include="variables.Designer.cs" />
     <Compile Include="vehiculos_entrega.aspx.cs">
       <DependentUpon>vehiculos_entrega.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1616,6 +1760,10 @@
     </Compile>
     <Compile Include="visualizar_perfil.aspx.designer.cs">
       <DependentUpon>visualizar_perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebService.asmx.cs">
+      <DependentUpon>WebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="web_methods.aspx.cs">
       <DependentUpon>web_methods.aspx</DependentUpon>
@@ -1708,6 +1856,27 @@
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
     <Content Include="fonts\icomoon.woff" />
+    <Content Include="ayuda\captura_de_prospectos.pdf" />
+    <Content Include="fonts\Roboto-Bold.eot" />
+    <Content Include="fonts\Roboto-Bold.ttf" />
+    <Content Include="fonts\Roboto-Bold.woff" />
+    <Content Include="fonts\Roboto-Bold.woff2" />
+    <Content Include="fonts\Roboto-Light.eot" />
+    <Content Include="fonts\Roboto-Light.ttf" />
+    <Content Include="fonts\Roboto-Light.woff" />
+    <Content Include="fonts\Roboto-Light.woff2" />
+    <Content Include="fonts\Roboto-Medium.eot" />
+    <Content Include="fonts\Roboto-Medium.ttf" />
+    <Content Include="fonts\Roboto-Medium.woff" />
+    <Content Include="fonts\Roboto-Medium.woff2" />
+    <Content Include="fonts\Roboto-Regular.eot" />
+    <Content Include="fonts\Roboto-Regular.ttf" />
+    <Content Include="fonts\Roboto-Regular.woff" />
+    <Content Include="fonts\Roboto-Regular.woff2" />
+    <Content Include="fonts\Roboto-Thin.eot" />
+    <Content Include="fonts\Roboto-Thin.ttf" />
+    <Content Include="fonts\Roboto-Thin.woff" />
+    <Content Include="fonts\Roboto-Thin.woff2" />
     <None Include="Properties\PublishProfiles\pub.pubxml" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <Content Include="StyleCop.Cache" />
@@ -1763,6 +1932,9 @@
     <Folder Include="temp\pre_alta\" />
     <Folder Include="temp\users\" />
     <Folder Include="temp\vehiculos_formato\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="variables.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

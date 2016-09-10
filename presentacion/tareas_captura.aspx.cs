@@ -1,4 +1,4 @@
-﻿using negocio.Componentes;
+﻿     using negocio.Componentes;
 using negocio.Entidades;
 using System;
 using System.Collections.Generic;
@@ -119,34 +119,7 @@ namespace presentacion
             return mensaje;
         }
 
-        /// <summary>
-        /// Descarga un archivo
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="file_name"></param>
-        public void Download(string path, string file_name)
-        {
-            if (!File.Exists(path))
-            {
-                Alert.ShowAlertError("No tiene archivo relacionado", this);
-            }
-            else
-            {
-                // Limpiamos la salida
-                Response.Clear();
-                // Con esto le decimos al browser que la salida sera descargable
-                Response.ContentType = "application/octet-stream";
-                // esta linea es opcional, en donde podemos cambiar el nombre del fichero a descargar (para que sea diferente al original)
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + file_name);
-                // Escribimos el fichero a enviar
-                Response.WriteFile(path);
-                // volcamos el stream
-                Response.Flush();
-                // Enviamos todo el encabezado ahora
-                Response.End();
-                // Response.End();
-            }
-        }
+       
 
         /// <summary>
         /// Carga las tareas pendientes
@@ -291,7 +264,7 @@ namespace presentacion
                     break;
 
                 case "Descargar":
-                    Download(ruta, Path.GetFileName(ruta));
+                    funciones.Download(ruta, Path.GetFileName(ruta), this);
                     break;
 
                 case "Editar":

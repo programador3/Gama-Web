@@ -96,6 +96,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pdescripcion", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Descripcion });
             listparameters.Add(new SqlParameter() { ParameterName = "@pfinal", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Final });
             listparameters.Add(new SqlParameter() { ParameterName = "@pgenera_vales", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Genera_Vales });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_sucursal", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Idc_sucursal });
 
             try
             {
@@ -129,6 +130,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pdescripcion", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Descripcion });
             listparameters.Add(new SqlParameter() { ParameterName = "@pfinal", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Final });
             listparameters.Add(new SqlParameter() { ParameterName = "@vales", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Genera_Vales });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_sucursal", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Idc_sucursal });
 
             try
             {

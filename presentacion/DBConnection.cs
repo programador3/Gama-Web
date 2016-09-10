@@ -869,7 +869,7 @@ public class DBConnection
         return ds;
     }
 
-    public DataSet getpre_embarques_pendientes(int id_usuario, int id_sucursal)
+    public DataSet getpre_embarques_pendientes(int id_usuario)
 
     {
         connection.Open();
@@ -879,7 +879,6 @@ public class DBConnection
         command.CommandTimeout= 6000;
 
         command.Parameters.AddWithValue("@pidc_usuario", id_usuario);
-        command.Parameters.AddWithValue("@pidc_sucursal", id_sucursal );
         SqlDataAdapter da = new SqlDataAdapter();
         da.SelectCommand = command;
         System.Data.DataSet ds = new System.Data.DataSet();

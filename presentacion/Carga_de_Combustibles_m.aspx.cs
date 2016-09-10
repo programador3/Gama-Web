@@ -87,7 +87,7 @@ namespace presentacion
         {
             try
             {
-                int idc_sucursal = Convert.ToInt32(Session["xidc_sucursal"]);
+                int idc_sucursal = Convert.ToInt32(Session["idc_sucursal"]);
                 bool todos = true;
                 if (busqueda == true)
                 {

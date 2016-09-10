@@ -49,11 +49,6 @@
     </script>
     <style type="text/css">
         .Bordeado {
-            background-color: gainsboro;
-            color: black;
-            -webkit-box-shadow: 10px 7px 29px -3px rgba(0,0,0,0.75);
-            -moz-box-shadow: 10px 7px 29px -3px rgba(0,0,0,0.75);
-            box-shadow: 10px 7px 29px -3px rgba(0,0,0,0.75);
         }
     </style>
 </asp:Content>

@@ -5,6 +5,7 @@ using System.Data;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace presentacion
@@ -17,31 +18,8 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
-            Session["redirect_pagedet"] = "menu.aspx";
-            if (Request.QueryString["value"] == null)
-            {
-                if (!Page.IsPostBack && Session["menu1"] == null)
-                {
-                    int idusuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
-                    string menu = "";
-                    menuPrincipal(menu, idusuario, 5, "0");
-                }
-                else
-                {
-                    sessionCreada();
-                    string menu = Request.QueryString["menu"];
-                    string nivel = Request.QueryString["nivel"];
-                    int idusuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
-                    menuPrincipal(menu, idusuario, 5, nivel);
-                }
-            }
-            if (Request.QueryString["value"] != null && !Page.IsPostBack)
-            {
-                string search = funciones.de64aTexto(Request.QueryString["value"]);
-                panel_menus_repeat.Visible = search == "" ? true : false;
-                panel_search.Visible = search == "" ? false : true;
-                dinamic_menu(search);
-            }
+            //dinamic_menudrop();
+            Session["redirect_pagedet"] = "menu.aspx";            
             int idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
             Session["Previus"] = HttpContext.Current.Request.Url.AbsoluteUri;
             CargaTareas();
@@ -82,91 +60,91 @@ namespace presentacion
         {
             try
             {
-                DataSet ds = new DataSet();
-                OpcionesE EntOpcion = new OpcionesE();
-                OpcionesBL menuBL = new OpcionesBL();
-                string niv;
+                //DataSet ds = new DataSet();
+                //OpcionesE EntOpcion = new OpcionesE();
+                //OpcionesBL menuBL = new OpcionesBL();
+                //string niv;
 
-                niv = nivel;
+                //niv = nivel;
 
-                //vemos que nivel estamos
-                switch (niv)
-                //switch (nivel)
-                {
-                    case "1":
-                        ocmenu1.Value = menu;
+                ////vemos que nivel estamos
+                //switch (niv)
+                ////switch (nivel)
+                //{
+                //    case "1":
+                //        ocmenu1.Value = menu;
 
-                        link1.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=1";
-                        Session["menu1"] = menu;
-                        Session["menu1_link"] = "menu.aspx?menu=" + menu + "&nivel=1";
-                        break;
+                //        link1.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=1";
+                //        Session["menu1"] = menu;
+                //        Session["menu1_link"] = "menu.aspx?menu=" + menu + "&nivel=1";
+                //        break;
 
-                    case "2":
-                        ocmenu2.Value = menu;
-                        link2.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=2";
-                        Session["menu2"] = menu;
-                        Session["menu2_link"] = "menu.aspx?menu=" + menu + "&nivel=2";
-                        break;
+                //    case "2":
+                //        ocmenu2.Value = menu;
+                //        link2.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=2";
+                //        Session["menu2"] = menu;
+                //        Session["menu2_link"] = "menu.aspx?menu=" + menu + "&nivel=2";
+                //        break;
 
-                    case "3":
-                        ocmenu3.Value = menu;
-                        link3.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=3";
-                        Session["menu3"] = menu;
-                        Session["menu3_link"] = "menu.aspx?menu=" + menu + "&nivel=3";
-                        break;
+                //    case "3":
+                //        ocmenu3.Value = menu;
+                //        link3.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=3";
+                //        Session["menu3"] = menu;
+                //        Session["menu3_link"] = "menu.aspx?menu=" + menu + "&nivel=3";
+                //        break;
 
-                    case "4":
-                        ocmenu4.Value = menu;
-                        link4.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=4";
-                        Session["menu4"] = menu;
-                        Session["menu4_link"] = "menu.aspx?menu=" + menu + "&nivel=4";
-                        break;
+                //    case "4":
+                //        ocmenu4.Value = menu;
+                //        link4.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=4";
+                //        Session["menu4"] = menu;
+                //        Session["menu4_link"] = "menu.aspx?menu=" + menu + "&nivel=4";
+                //        break;
 
-                    case "5":
-                        ocmenu5.Value = menu;
-                        link5.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=5";
-                        Session["menu5"] = menu;
-                        Session["menu5_link"] = "menu.aspx?menu=" + menu + "&nivel=5";
-                        break;
+                //    case "5":
+                //        ocmenu5.Value = menu;
+                //        link5.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=5";
+                //        Session["menu5"] = menu;
+                //        Session["menu5_link"] = "menu.aspx?menu=" + menu + "&nivel=5";
+                //        break;
 
-                    case "6":
-                        ocmenu6.Value = menu;
-                        link6.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=6";
-                        Session["menu6"] = menu;
-                        Session["menu6_link"] = "menu.aspx?menu=" + menu + "&nivel=6";
-                        break;
-                }
-                cleanBarMenu(niv);
+                //    case "6":
+                //        ocmenu6.Value = menu;
+                //        link6.PostBackUrl = "menu.aspx?menu=" + menu + "&nivel=6";
+                //        Session["menu6"] = menu;
+                //        Session["menu6_link"] = "menu.aspx?menu=" + menu + "&nivel=6";
+                //        break;
+                //}
+                //cleanBarMenu(niv);
 
-                EntOpcion.Menu1 = ocmenu1.Value;
+                //EntOpcion.Menu1 = ocmenu1.Value;
 
-                if (ocmenu2.Value != "")
-                {
-                    EntOpcion.Menu2 = ocmenu2.Value;
-                }
-                if (ocmenu3.Value != "")
-                {
-                    EntOpcion.Menu3 = ocmenu3.Value;
-                }
-                if (ocmenu4.Value != "")
-                {
-                    EntOpcion.Menu4 = ocmenu4.Value;
-                }
-                if (ocmenu5.Value != "")
-                {
-                    EntOpcion.Menu5 = ocmenu5.Value;
-                }
-                if (ocmenu6.Value != "")
-                {
-                    EntOpcion.Menu6 = ocmenu6.Value;
-                }
-                EntOpcion.Nivel = Convert.ToInt32(niv);
-                EntOpcion.Usuario_id = usuario_id;
-                EntOpcion.Tipo_apli = tipo_apli;
-                ds = menuBL.opciones_menu(EntOpcion);
+                //if (ocmenu2.Value != "")
+                //{
+                //    EntOpcion.Menu2 = ocmenu2.Value;
+                //}
+                //if (ocmenu3.Value != "")
+                //{
+                //    EntOpcion.Menu3 = ocmenu3.Value;
+                //}
+                //if (ocmenu4.Value != "")
+                //{
+                //    EntOpcion.Menu4 = ocmenu4.Value;
+                //}
+                //if (ocmenu5.Value != "")
+                //{
+                //    EntOpcion.Menu5 = ocmenu5.Value;
+                //}
+                //if (ocmenu6.Value != "")
+                //{
+                //    EntOpcion.Menu6 = ocmenu6.Value;
+                //}
+                //EntOpcion.Nivel = Convert.ToInt32(niv);
+                //EntOpcion.Usuario_id = usuario_id;
+                //EntOpcion.Tipo_apli = tipo_apli;
+                //ds = menuBL.opciones_menu(EntOpcion);
 
-                Repeater3.DataSource = ds.Tables[0];
-                Repeater3.DataBind();
+                //Repeater3.DataSource = ds.Tables[0];
+                //Repeater3.DataBind();
             }
             catch (Exception ex)
             {
@@ -337,50 +315,12 @@ namespace presentacion
             lblenc.Text = ds.Tables[0].Rows.Count.ToString();
         }
 
-        private void dinamic_menudrop(string search)
-        {
-            DataSet ds = new DataSet();
-            OpcionesE EntOpcion = new OpcionesE();
-            OpcionesBL menuBL = new OpcionesBL();
-            EntOpcion.Usuario_id = Convert.ToInt32(Session["sidc_usuario"].ToString());
-            ds = menuBL.MenuDinmaico2(EntOpcion);
-        }
-
+     
         protected void Button1_Click(object sender, EventArgs e)
         {
             //string d = htmlsummernote.InnerHtml;
             //d = d;
         }
 
-        //protected void txtfiltroarticulos_TextChanged(object sender, EventArgs e)
-        //{
-        //    string filtro = txtfiltroarticulos.Text;
-        //    if (filtro != "")
-        //    {
-        //        PlaceHolder.Visible = true;
-        //        CargaArticulos(filtro);
-        //    }
-        //    else
-        //    {
-        //        PlaceHolder.Visible = false;
-        //    }
-        //}
-
-        //private void CargaArticulos(string filtro)
-        //{
-        //    TareasENT entidad = new TareasENT();
-        //    TareasCOM componente = new TareasCOM();
-        //    entidad.Pcadena_arch = filtro;
-        //    DataSet ds = componente.CargarArticulos(entidad);
-        //    DataTable dt = ds.Tables[0];
-        //    StringBuilder html = new StringBuilder();
-        //    foreach (DataRow row in dt.Rows)
-        //    {
-        //        string nombre = row["nombre"].ToString();
-        //        string id = row["idc_categoria"].ToString();
-        //        html.Append("<a href='http://www.google.com.mx'>" + nombre + "</a><br>");
-        //    }
-        //    PlaceHolder.Controls.Add(new Literal { Text = html.ToString() });
-        //}
     }
 }

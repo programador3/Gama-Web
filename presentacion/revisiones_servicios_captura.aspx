@@ -47,11 +47,6 @@
     </script>
     <style type="text/css">
         .Bordeado {
-            background-color: gainsboro;
-            color: black;
-            -webkit-box-shadow: 10px 7px 29px -3px rgba(0,0,0,0.75);
-            -moz-box-shadow: 10px 7px 29px -3px rgba(0,0,0,0.75);
-            box-shadow: 10px 7px 29px -3px rgba(0,0,0,0.75);
         }
     </style>
 </asp:Content>
@@ -238,6 +233,25 @@
                                             <asp:Label ID="lblContentRepeat" runat="server" Text="" CssClass="label label-danger"></asp:Label>
                                             &nbsp;PUESTOS VISUALIZADOS
                                         </h5>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </asp:Panel>
+                        <asp:Panel ID="PanelSucursal" runat="server">
+                            <h4><i class="fa fa-home"></i>&nbsp;Seleccione las Sucursales<small> Sucursales a las que aplicaria la asigancion</small></h4>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="Sucur" runat="server" visible="false">
+                                    <div class="form-group">
+                                        <asp:DropDownList ID="ddlSucursales" runat="server" CssClass="form-control">
+                                        </asp:DropDownList>
+                                        <asp:Label ID="lblsucursal" CssClass="label label-danger" runat="server" Text="Seleccione una Sucursal" Visible="false"></asp:Label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="cbxSinSucursal" runat="server" Text="NO ASIGNAR SUCURSAL" AutoPostBack="true" OnCheckedChanged="cbxSinSucursal_CheckedChanged" Checked="true" />
                                     </div>
                                 </div>
                             </div>

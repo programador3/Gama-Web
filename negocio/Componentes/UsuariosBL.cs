@@ -8,6 +8,24 @@ namespace negocio.Componentes
 {
     public class UsuariosBL
     {
+        public DataSet Informacion_Correo(int IDC_USUARIO)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Char, Value = IDC_USUARIO });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_informacion_correo_web", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet validar_usuarios(Entidades.UsuariosE datos)
         {
             DataSet ds = new DataSet();

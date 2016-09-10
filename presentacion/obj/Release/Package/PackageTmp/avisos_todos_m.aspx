@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Avisos" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="avisos.aspx.cs" Inherits="presentacion.avisos" %>
+﻿<%@ Page Title="Avisos" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="avisos_todos_m.aspx.cs" Inherits="presentacion.avisos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/PanelsLTE.css" rel="stylesheet" />

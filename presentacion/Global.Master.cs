@@ -6,22 +6,34 @@ using System.Data;
 using System.IO;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace presentacion
 {
     public partial class Global : System.Web.UI.MasterPage
-    {
+    {      
+       
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["date_noti"] == null)
+            {
+                Session["date_noti"] = DateTime.Now.AddMinutes(-1);
+            }
+            DateTime datevaluesession = Convert.ToDateTime(Session["date_noti"]);
+            if (DateTime.Now > datevaluesession)
+            {
+                Session["date_noti"] = DateTime.Now.AddMinutes(0);
+                ScriptManager.RegisterStartupScript(this, GetType(), "ded", "ValidarNotificaciones();", true);
+            }
             Page.MaintainScrollPositionOnPostBack = true;
             if (Session["sidc_usuario"] == null)//si no hay session logeamos
             {
                 Response.Redirect("login.aspx");
-            }
-
+            }             
+            
             string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
-            ScriptManager.RegisterStartupScript(this, GetType(), "ded", "ChangeCss('" + cs + "');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "dedchangeedddededed", "ChangeCss('" + cs + "');", true);
             tareas_pendi.Visible = cs == "P" ? false : true;
             lnkperfil.CommandName = Convert.ToInt32(Session["login_idc_perfil"]).ToString();
             lnkperfil.Text = (string)Session["login_perfil"];
@@ -43,7 +55,7 @@ namespace presentacion
             {
                 ////COMENTADO PARA PODER PROGRAMAR
                 ////Validamos que no se la pagina menu para que no genere un bucle
-                if (user_id != 314 && user_id != 127 && user_id != 255)
+                if (user_id != 314 && user_id != 127 && user_id != 255 && user_id != 210)
                 {
                     if (!path_actual.Equals("menu.aspx"))
                     {
@@ -88,20 +100,179 @@ namespace presentacion
             lblpuestos2.Text = Puesto;
             lbluser2.Text = Usuario_Name;
             CargarHerramientasMenu();
+            dinamic_menudrop();
+
             web_methods.idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
             web_methods.idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
             DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/errores/"));//path local
             Session["error_path"] = dirInfo.ToString();
         }
+        private void dinamic_menudrop()
+        {
+            DataSet ds = new DataSet();
+            OpcionesE EntOpcion = new OpcionesE();
+            OpcionesBL menuBL = new OpcionesBL();
+            EntOpcion.Usuario_id = Convert.ToInt32(Session["sidc_usuario"].ToString());
+            ds = menuBL.MenuDinmaico(EntOpcion);
+            Session["menudrop"] = ds.Tables[0];
+            DataView view = new DataView(ds.Tables[0]);
+            DataTable distinctValues = view.ToTable(true, "menu1");
+            repeatmenu1.DataSource = Distinct(distinctValues);
+            repeatmenu1.DataBind();
+        }
+        public int contador = 1;
+        private DataTable Distinct(DataTable ds)
+        {
+            ds.Columns.Add("idc_opcion");
+            foreach (DataRow row in ds.Rows)
+            {
+                row["idc_opcion"] = contador;
+                contador++;
+            }
+            return ds;
+        }
+        private DataTable TableMenu(string query)
+        {
+            DataTable dt = new DataTable();
+            DataTable ds = Session["menudrop"] as DataTable;
+            DataView view = ds.DefaultView;
+            view.RowFilter = query;
+            dt = view.ToTable();
+            return dt;
+        }
+        protected void repeat_menu1(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView dbr = (DataRowView)e.Item.DataItem;
+            string menu1 = DataBinder.Eval(dbr, "menu1").ToString();
+            DataTable link = TableMenu("menu1 = '" + menu1 + "' and menu2=''");
+            DataTable menu2 = TableMenu("menu1 = '" + menu1 + "' and menu2 <> ''");
+            Repeater replink = (Repeater)e.Item.FindControl("repeatmenu1d");
+            Repeater Repearepeatmenu2 = (Repeater)e.Item.FindControl("Repearepeatmenu2");
+            replink.DataSource = link;
+            replink.DataBind();
+            DataView view = new DataView(menu2);
+            DataTable distinctValues = view.ToTable(true, "menu2");
+            Repearepeatmenu2.DataSource = Distinct(distinctValues);
+            Repearepeatmenu2.DataBind();
+        }
+        protected void repeat_menu2(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView dbr = (DataRowView)e.Item.DataItem;
+            string menu1 = DataBinder.Eval(dbr, "menu2").ToString();
+            DataTable link = TableMenu("menu2 = '" + menu1 + "' and menu3=''");
+            DataTable menu2 = TableMenu("menu2 = '" + menu1 + "' and menu3 <> ''");
+            Repeater replink = (Repeater)e.Item.FindControl("repeatmenu2d");
+            Repeater Repearepeatmenu3 = (Repeater)e.Item.FindControl("Repearepeatmenu3");
+            replink.DataSource = link;
+            replink.DataBind();
+            if (menu2.Rows.Count > 0)
+            {
+                DataView view = new DataView(menu2);
+                DataTable distinctValues = view.ToTable(true, "menu3");
+                Repearepeatmenu3.DataSource = Distinct(distinctValues);
+                Repearepeatmenu3.DataBind();
+                var rm4 = (HtmlGenericControl)e.Item.FindControl("rm3");
+                rm4.Visible = true;
+            }
+        }
 
+        protected void repeat_menu3(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView dbr = (DataRowView)e.Item.DataItem;
+            string menu1 = DataBinder.Eval(dbr, "menu3").ToString();
+            DataTable link = TableMenu("menu3 = '" + menu1 + "' and menu4=''");
+            DataTable menu2 = TableMenu("menu3 = '" + menu1 + "' and not menu4 = ''");
+            Repeater replink = (Repeater)e.Item.FindControl("repeatmenu3d");
+            Repeater Repearepeatmenu3 = (Repeater)e.Item.FindControl("Repearepeatmenu4");
+            replink.DataSource = link;
+            replink.DataBind();
+            if (menu2.Rows.Count > 0)
+            {
+                DataView view = new DataView(menu2);
+                DataTable distinctValues = view.ToTable(true, "menu4");
+                Repearepeatmenu3.DataSource = Distinct(distinctValues);
+                Repearepeatmenu3.DataBind();
+                var rm4 = (HtmlGenericControl)e.Item.FindControl("rm4");
+                rm4.Visible = true;
+            }
+        }
+        protected void repeat_menu4(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView dbr = (DataRowView)e.Item.DataItem;
+            string menu1 = DataBinder.Eval(dbr, "menu4").ToString();
+            DataTable link = TableMenu("menu4 = '" + menu1 + "' and menu5=''");
+            DataTable menu2 = TableMenu("menu4 = '" + menu1 + "' and menu5 <> ''");
+            Repeater replink = (Repeater)e.Item.FindControl("repeatmenu4d");
+            Repeater Repearepeatmenu3 = (Repeater)e.Item.FindControl("Repearepeatmenu5");
+            replink.DataSource = link;
+            replink.DataBind();
+            if (menu2.Rows.Count > 0)
+            {
+                DataView view = new DataView(menu2);
+                DataTable distinctValues = view.ToTable(true, "menu5");
+                Repearepeatmenu3.DataSource = Distinct(distinctValues);
+                Repearepeatmenu3.DataBind();
+                var rm4 = (HtmlGenericControl)e.Item.FindControl("rm5");
+                rm4.Visible = true;
+            }
+        }
+        protected void repeat_menu5(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView dbr = (DataRowView)e.Item.DataItem;
+            string menu1 = DataBinder.Eval(dbr, "menu5").ToString();
+            DataTable link = TableMenu("menu5 = '" + menu1 + "' and menu6=''");
+            DataTable menu2 = TableMenu("menu5 = '" + menu1 + "' and menu6 <> ''");
+            Repeater replink = (Repeater)e.Item.FindControl("repeatmenu5d");
+            Repeater Repearepeatmenu3 = (Repeater)e.Item.FindControl("Repearepeatmenu6");
+            replink.DataSource = link;
+            replink.DataBind();
+            if (menu2.Rows.Count > 0)
+            {
+                DataView view = new DataView(menu2);
+                DataTable distinctValues = view.ToTable(true, "menu6");
+                Repearepeatmenu3.DataSource = Distinct(distinctValues);
+                Repearepeatmenu3.DataBind();
+                var rm4 = (HtmlGenericControl)e.Item.FindControl("rm6");
+                rm4.Visible = true;
+            }
+        }
+        protected void repeat_menu6(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView dbr = (DataRowView)e.Item.DataItem;
+            string menu1 = DataBinder.Eval(dbr, "menu6").ToString();
+            DataTable link = TableMenu("menu6 = '" + menu1 + "' and menu7=''");
+            DataTable menu2 = TableMenu("menu6 = '" + menu1 + "' and menu7 <> ''");
+            Repeater replink = (Repeater)e.Item.FindControl("repeatmenu6d");
+            Repeater Repearepeatmenu3 = (Repeater)e.Item.FindControl("Repearepeatmenu7");
+            replink.DataSource = link;
+            replink.DataBind();           
+            var rm4 = (HtmlGenericControl)e.Item.FindControl("rm7");
+            if (menu2.Rows.Count > 0)
+            {
+                DataView view = new DataView(menu2);
+                DataTable distinctValues = view.ToTable(true, "menu7");
+                Repearepeatmenu3.DataSource = Distinct(distinctValues);
+                Repearepeatmenu3.DataBind();
+                rm4.Visible = true;
+            }
+        }
+        protected void repeat_menu7(object sender, RepeaterItemEventArgs e)
+        {
+            DataRowView dbr = (DataRowView)e.Item.DataItem;
+            string menu1 = DataBinder.Eval(dbr, "menu6").ToString();
+            DataTable link = TableMenu("menu7 = '" + menu1 + "'");
+            Repeater replink = (Repeater)e.Item.FindControl("repeatmenu7d");
+            replink.DataSource = link;
+        }
         public static void CreateFileError(string content, Page page)
         {
-            //    DateTime localDate = DateTime.Now;
-            //    string date = localDate.ToString();
-            //    date = date.Replace("/", "_");
-            //    date = date.Replace(":", "_");
-            //    content = "Nombre: " + (String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
-            //    funciones.CreateFile((string)page.Session["error_path"] + date + ".gama", content);
+            DateTime localDate = DateTime.Now;
+            string date = localDate.ToString();
+            date = date.Replace("/", "_");
+            date = date.Replace(":", "_");
+            content =(String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
+            funciones.CreateFile((string)page.Session["error_path"] + date + ".gama", content);
+            funciones.EnviarError(content);
         }
 
         private void CargarHerramientasMenu()
@@ -124,6 +295,10 @@ namespace presentacion
                 Alert.ShowAlertError("Debe cerrar esta ventana o puede perder los cambios realizados.", this.Page);
             }
             else if (path_actual2 == "rendimiento_tareas_detalles.aspx" && Request.QueryString["tipofiltro"] != null)
+            {
+                Alert.ShowAlertError("Debe cerrar esta pestaña para poder navegar por el sistema.", this.Page);
+            }
+            else if (path_actual2 == "consulta_hallazgos_pendientes_m.aspx" && Request.QueryString["s"] != null)
             {
                 Alert.ShowAlertError("Debe cerrar esta pestaña para poder navegar por el sistema.", this.Page);
             }
@@ -160,6 +335,10 @@ namespace presentacion
             String url = listas_url[index - 1];
             String path_actual2 = Request.Url.Segments[Request.Url.Segments.Length - 1];
             if (path_actual2 == "view_files.aspx" || path_actual2 == "tareas_informacion_adicional.aspx")
+            {
+                Alert.ShowAlertError("Debe cerrar esta ventana o puede perder los cambios realizados.", this.Page);
+            }
+            else if (path_actual2 == "consulta_hallazgos_pendientes_m.aspx" && Request.QueryString["s"] != null)
             {
                 Alert.ShowAlertError("Debe cerrar esta ventana o puede perder los cambios realizados.", this.Page);
             }

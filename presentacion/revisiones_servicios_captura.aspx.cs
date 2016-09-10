@@ -109,6 +109,12 @@ namespace presentacion
                 lblNOHayGrupos.Visible = false;
                 PanelGrupos.Visible = true;
             }
+            //sucursales
+            DataSet d2s = componente.CargaSucursales(entidad);
+            ddlSucursales.DataValueField = "idc_sucursal";
+            ddlSucursales.DataTextField = "nombre";
+            ddlSucursales.DataSource = d2s.Tables[0];
+            ddlSucursales.DataBind();
         }
 
         protected void lnkReturn_Click(object sender, EventArgs e)
@@ -117,6 +123,18 @@ namespace presentacion
             {
                 String PreviousPage = (String)Session["Previus"];
                 Response.Redirect(PreviousPage);
+            }
+        }
+
+        protected void cbxSinSucursal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxSinSucursal.Checked == true)
+            {
+                Sucur.Visible = false;
+            }
+            else
+            {
+                Sucur.Visible = true;
             }
         }
 
@@ -160,6 +178,8 @@ namespace presentacion
                 {
                     //indica si mostrar elegir puestos
                     bool todos_los_puestos = Convert.ToBoolean(row["mostrar_los_puestos"]);
+                    bool aplica_sucursal = Convert.ToBoolean(row["sucursal"]);
+                    PanelSucursal.Visible = aplica_sucursal;
                     //indica si solo aplica revision y no prepara,entrega
                     bool solo_revision = Convert.ToBoolean(row["aplica_rev_pre_entr"]);
                     PanelTipoApli.Visible = todos_los_puestos;
@@ -480,6 +500,19 @@ namespace presentacion
             ddlPuestorevisa.SelectedValue = revisa;
             Session["tipo_aplica"] = ds.Tables[0].Rows[0]["tipo_aplica"].ToString();
             CheckValues();
+            int idc_sucursal = Convert.ToInt32(ds.Tables[0].Rows[0]["idc_sucursal"]);
+            PanelSucursal.Visible = ddlTipoRev.SelectedValue == "R" ? true : false;
+            if (idc_sucursal > 0)
+            {
+                ddlSucursales.SelectedValue = idc_sucursal.ToString();
+                cbxSinSucursal.Checked = false;
+                Sucur.Visible = true;
+            }
+            else {
+
+                cbxSinSucursal.Checked = true;
+                Sucur.Visible = false;
+            }
         }
 
         /// <summary>
@@ -582,6 +615,11 @@ namespace presentacion
             {
                 entidad.Tipo_aplica = (string)Session["value_tipo_apli"];
             }
+            if (cbxSinSucursal.Checked != true)//SI TIENE UN VALOR DE SUCURSAL
+            {
+                entidad.Idc_sucursal = Convert.ToInt32(ddlSucursales.SelectedValue);
+            }
+            else { entidad.Idc_sucursal = 0; }
             entidad.Numcadgrupos = Convert.ToInt32(Session["Total_Grupos"]);
             entidad.Numcadpuesto = Convert.ToInt32(Session["Total_Puestos"]);
             entidad.Cad_gpos = (string)Session["Cadena_Grupos"];
