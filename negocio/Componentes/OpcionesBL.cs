@@ -1,4 +1,5 @@
 ﻿using datos;
+using negocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,7 +30,45 @@ namespace negocio.Componentes
             return ds;
 
         }
+        public DataSet OpcionFavorita(OpcionesE Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_user });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PPAGINA", SqlDbType = SqlDbType.Int, Value = Etiqueta.Search });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_aUSUARIO_OPCION_RECIENTE", listparameters, true);
+                //ds = data.enviar("sp_notificaciones", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
 
+        }
+        public DataSet OpcionFavoritaCargar(OpcionesE Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_user });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_usuarios_opciones_usadas", listparameters, false);
+                //ds = data.enviar("sp_notificaciones", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+
+        }
         public DataSet get_menu2(Entidades.OpcionesE opciones)
         {
             DataSet ds = new DataSet();

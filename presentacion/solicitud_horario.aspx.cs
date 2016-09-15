@@ -352,6 +352,8 @@ namespace presentacion
                 switch (caso)
                 {
                     case "Guardar":
+
+                        entidad.Pstatus = "N";
                         ds = componente.Solcitud(entidad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")

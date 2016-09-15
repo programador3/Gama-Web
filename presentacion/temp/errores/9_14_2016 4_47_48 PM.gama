@@ -1,0 +1,5 @@
+Isaac Humberto De La Rosa Mendez
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+No se puede insertar el valor NULL en la columna 'borrado', tabla 'GM.dbo.usuarios_opciones_usadas'. La columna no admite valores NULL. Error de INSERT.

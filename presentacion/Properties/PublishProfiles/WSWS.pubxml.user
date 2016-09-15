@@ -307,13 +307,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/29/2015 21:27:38</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>09/09/2016 17:05:11</publishTime>
+      <publishTime>09/14/2016 17:12:10</publishTime>
     </File>
     <File Include="bin/OpenPop.dll">
       <publishTime>11/21/2015 16:46:36</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>09/09/2016 17:05:15</publishTime>
+      <publishTime>09/14/2016 17:40:29</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>08/18/2016 15:57:30</publishTime>
@@ -931,7 +931,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/29/2016 10:49:46</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>09/09/2016 11:12:50</publishTime>
+      <publishTime>09/14/2016 17:38:55</publishTime>
     </File>
     <File Include="GlobalDetalle.Master">
       <publishTime>08/29/2016 15:57:50</publishTime>
@@ -1864,7 +1864,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:29:56</publishTime>
     </File>
     <File Include="perfiles.aspx">
-      <publishTime>07/14/2016 11:34:07</publishTime>
+      <publishTime>09/14/2016 12:17:36</publishTime>
     </File>
     <File Include="perfiles_captura.aspx">
       <publishTime>08/08/2016 10:13:45</publishTime>
@@ -2254,7 +2254,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/20/2016 09:33:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/09/2016 16:21:22</publishTime>
+      <publishTime>09/14/2016 17:17:24</publishTime>
     </File>
     <File Include="WebService.asmx">
       <publishTime>09/02/2016 12:15:36</publishTime>

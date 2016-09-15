@@ -29,7 +29,6 @@
         });
     </script>
 
-    <script src="js/bootbox.min.js"></script>
     <style>
         .p-produccion {
             color: #FFF;

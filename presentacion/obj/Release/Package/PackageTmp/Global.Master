@@ -34,7 +34,7 @@
     <script src="js/sweetalert.min.js" ></script>    
     <script type="text/javascript" src="js/app.js" ></script>
     <script type="text/javascript">
-        var value = 0;
+        var value = 0; 
         var valuedate = "";
         function ClicImg() {
             value++;

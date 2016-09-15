@@ -1841,7 +1841,6 @@
     <Content Include="fonts\ionicons.woff" />
     <Content Include="Login.Master" />
     <Content Include="imagenes\Sorting icons.psd" />
-    <Content Include="Global.Master" />
     <Content Include="fonts\fontello.eot" />
     <Content Include="fonts\fontello.ttf" />
     <Content Include="fonts\fontello.woff" />
@@ -1877,6 +1876,7 @@
     <Content Include="fonts\Roboto-Thin.ttf" />
     <Content Include="fonts\Roboto-Thin.woff" />
     <Content Include="fonts\Roboto-Thin.woff2" />
+    <Content Include="Global.Master" />
     <None Include="Properties\PublishProfiles\pub.pubxml" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <Content Include="StyleCop.Cache" />

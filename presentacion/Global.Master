@@ -34,7 +34,7 @@
     <script src="js/sweetalert.min.js" ></script>    
     <script type="text/javascript" src="js/app.js" ></script>
     <script type="text/javascript">
-        var value = 0;
+        var value = 0; 
         var valuedate = "";
         function ClicImg() {
             value++;
@@ -725,7 +725,31 @@
                         <ul class="nav navbar-nav navbar-right">
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                                 <i style="color: white;" class="fa fa-times icon"></i>
-                            </button>                            
+                            </button>   
+                            <li class="dropdown danger">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i>
+                                    <asp:Label ID="LBLTOTALFAVORI" runat="server" Text=""></asp:Label>
+                                </a>
+                                <ul class="dropdown-menu danger  animated fadeInDown">
+                                    <li class="title">Mis Favoritos <span class="badge pull-right">
+                                        <asp:Label ID="lbltotalfav" runat="server" Text="0"></asp:Label></span>
+                                    </li>
+                                    <li>
+                                        <ul class="list-group notifications">
+                                            <asp:Repeater ID="repeat_favoritos" runat="server">
+                                                <ItemTemplate>
+                                                    <a href='<%#Eval("web_form") %>'>
+                                                        <li class="list-group-item">
+                                                            <span class="badge"></span><%#Eval("descripcion") %>
+                                                        </li>
+                                                    </a>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>                             
                             <li class="dropdown profile">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>

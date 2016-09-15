@@ -23,6 +23,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pobservaciones });
             listparameters.Add(new SqlParameter() { ParameterName = "@pno_salida", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pno_salida });
             listparameters.Add(new SqlParameter() { ParameterName = "@pno_comida", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pno_comida });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pstatus", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pstatus });
             if (Etiqueta.Pidc_sucursal > 0)
             {
                 listparameters.Add(new SqlParameter() { ParameterName = "@pidc_sucursal", SqlDbType = SqlDbType.VarChar, Value = Etiqueta.Pidc_sucursal });
