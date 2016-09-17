@@ -17,7 +17,7 @@ namespace presentacion
 {
     public class funciones
     {
-       public static DBConnection conexion = new DBConnection();
+        public static DBConnection conexion = new DBConnection();
 
         public static DataTable ExecQuery(string query)
         {
@@ -25,16 +25,15 @@ namespace presentacion
             try
             {
                 query = query.Replace("\t", " ");
-                dt = funciones.conexion.Datos(query);                
+                dt = funciones.conexion.Datos(query);
                 return dt;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 funciones.EnviarError(ex.ToString());
                 string t = ex.ToString();
                 return dt;
             }
-
         }
 
         public static string cuentas_correo(string query)
@@ -56,10 +55,10 @@ namespace presentacion
             {
                 return "";
             }
-
         }
-        public static string EnviarCorreo(string username, string password, string hostnamesmtp, int portsmtp, bool useSsl, 
-            string subject, string body, string to,  List<string> listadeadjuntos, bool ishtml)
+
+        public static string EnviarCorreo(string username, string password, string hostnamesmtp, int portsmtp, bool useSsl,
+            string subject, string body, string to, List<string> listadeadjuntos, bool ishtml)
         {
             try
             {
@@ -82,7 +81,7 @@ namespace presentacion
                     attachment = new System.Net.Mail.Attachment(adjunto);
                     attachment.Name = Path.GetFileName(adjunto);
                     message.Attachments.Add(attachment);
-                }                
+                }
                 mailer.Send(message);
                 message.Attachments.Dispose();
                 message.Dispose();
@@ -143,6 +142,7 @@ namespace presentacion
                 string eed = ex.ToString();
             }
         }
+
         /// <summary>
         /// Descarga un archivo
         /// </summary>

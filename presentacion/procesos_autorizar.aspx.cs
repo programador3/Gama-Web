@@ -1,11 +1,7 @@
-﻿using ClosedXML.Excel;
-using negocio.Componentes;
+﻿using negocio.Componentes;
 using negocio.Entidades;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
-using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -107,6 +103,7 @@ namespace presentacion
 
                     Response.Redirect(url);
                     break;
+
                 case "comparar":
                     // Response.Redirect("perfiles_detalle.aspx?uidc_puestoperfil=" + idPerfilProd(id) + "&uidc_puestoperfil_borr=" + id);
                     break;
@@ -193,6 +190,7 @@ namespace presentacion
                     Session["url"] = "subprocesos_captura.aspx?preview=VSBIUVSBXOJQWSBXOIWJSBXIWJSBXOIJBQSIOXBQIXSBQSX&type=B&idc_proceso=" + funciones.deTextoa64(vidc.ToString()) + "&urlback=" + funciones.deTextoa64("procesos_autorizar.aspx");
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','¿Desea Visualizar el Manual de Procesos','modal fade modal-info');", true);
                     break;
+
                 case "comparar":
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','¿Desea comparar este perfil con el actualmente publicado?');", true);
                     break;

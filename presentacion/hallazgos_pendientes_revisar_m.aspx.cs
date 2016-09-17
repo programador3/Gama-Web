@@ -8,7 +8,6 @@ using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
 namespace presentacion
 {
     public partial class hallazgos_pendientes_revisar_m : System.Web.UI.Page
@@ -26,6 +25,7 @@ namespace presentacion
                 CargarUsuarios("");
             }
         }
+
         public void CargarHallazgos(int idc_sucursal)
         {
             try
@@ -33,23 +33,24 @@ namespace presentacion
                 HallazgosENT entidad = new HallazgosENT();
                 HallazgosCOM componente = new HallazgosCOM();
                 entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
-                DataSet ds = componente.CargarHallazgos(entidad);               
+                DataSet ds = componente.CargarHallazgos(entidad);
                 DataView view = new DataView(ds.Tables[0]);
                 DataTable distinctValues = view.ToTable(true, "idc_sucursal", "sucursal");
                 ddlsucursal.DataValueField = "idc_sucursal";
                 ddlsucursal.DataTextField = "sucursal";
                 ddlsucursal.DataSource = distinctValues;
                 ddlsucursal.DataBind();
-                ddlsucursal.Items.Insert(0, new ListItem("--Seleccione una Sucursal","-1"));
-                ddlsucursal.Items.Insert(1, new ListItem("**Ver Todas las Sucursales","0"));
+                ddlsucursal.Items.Insert(0, new ListItem("--Seleccione una Sucursal", "-1"));
+                ddlsucursal.Items.Insert(1, new ListItem("**Ver Todas las Sucursales", "0"));
                 if (idc_sucursal == 0)
                 {
                     gridhallazgos.DataSource = ds.Tables[0];
                     gridhallazgos.DataBind();
                 }
-                else {
+                else
+                {
                     DataView viewt = ds.Tables[0].DefaultView;
-                    viewt.RowFilter = "idc_sucursal = "+idc_sucursal+"";
+                    viewt.RowFilter = "idc_sucursal = " + idc_sucursal + "";
                     gridhallazgos.DataSource = viewt.ToTable();
                     gridhallazgos.DataBind();
                 }
@@ -60,6 +61,7 @@ namespace presentacion
                 Alert.ShowAlertError(ex.ToString(), this.Page);
             }
         }
+
         public void CargarUsuarios(string filtro)
         {
             try
@@ -88,7 +90,8 @@ namespace presentacion
                 Alert.ShowAlertError(ex.ToString(), this.Page);
             }
         }
-        String ReturnUser2(string filtro)
+
+        private String ReturnUser2(string filtro)
         {
             try
             {
@@ -113,20 +116,22 @@ namespace presentacion
                 return "";
             }
         }
-        String ReturnUser(string filtro)
+
+        private String ReturnUser(string filtro)
         {
             try
             {
                 HallazgosENT entidad = new HallazgosENT();
                 HallazgosCOM componente = new HallazgosCOM();
-                DataSet ds = componente.Usuarios(entidad);               
+                DataSet ds = componente.Usuarios(entidad);
                 DataView viewt = ds.Tables[0].DefaultView;
                 viewt.RowFilter = "idc_usuario = " + filtro + "";
                 if (viewt.ToTable().Rows.Count > 0)
                 {
                     return viewt.ToTable().Rows[0]["usuario_nombre"].ToString();
                 }
-                else {
+                else
+                {
                     return "";
                 }
             }
@@ -137,14 +142,16 @@ namespace presentacion
                 return "";
             }
         }
+
         protected void ddlsucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idc = Convert.ToInt32(ddlsucursal.SelectedValue);
             if (idc == -1)
             {
-                Alert.ShowAlertError("Seleccione una Sucursal",this);
+                Alert.ShowAlertError("Seleccione una Sucursal", this);
             }
-            else {
+            else
+            {
                 CargarHallazgos(idc);
             }
         }
@@ -161,7 +168,7 @@ namespace presentacion
             lbltipo.Text = tipo;
             idc_halla.Text = vidc;
             usuario_sol.Text = gridhallazgos.DataKeys[index].Values["usuario_sol"].ToString().Trim();
-            correo_capturo.Text = gridhallazgos.DataKeys[index].Values["correo_capturo"].ToString().Replace(";","");
+            correo_capturo.Text = gridhallazgos.DataKeys[index].Values["correo_capturo"].ToString().Replace(";", "");
             reviso.Text = gridhallazgos.DataKeys[index].Values["reviso"].ToString().Replace(";", "");
             diverror_cam.Visible = false;
             lblerror_camb.Text = "";
@@ -181,17 +188,18 @@ namespace presentacion
                             DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/img/"));//path local
                             funciones.CopiarArchivos(ruta + idc_principal.Text + Path.GetExtension(file), dirInfo + idc_principal.Text + Path.GetExtension(file), this);
                             img.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "/temp/img/" + idc_principal.Text + Path.GetExtension(file);
-
                         }
                     }
                     txthallazgo.Text = gridhallazgos.DataKeys[index].Values["observaciones"].ToString();
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessageimg", "ModalConfirmimg('Detalles del Hallazgo','modal fade modal-info');", true);
                     break;
+
                 case "Cambiar":
                     txthallazgo_camb.Text = gridhallazgos.DataKeys[index].Values["observaciones"].ToString();
                     txtsucursal_camb.Text = gridhallazgos.DataKeys[index].Values["sucursal"].ToString();
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessageimg", "ModalConfirmcamb();", true);
                     break;
+
                 case "Revisar":
                     txthallazgo_revi.Text = gridhallazgos.DataKeys[index].Values["observaciones"].ToString();
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm();", true);
@@ -210,7 +218,8 @@ namespace presentacion
                     lblerror_camb.Text = "Seleccione un Nuevo Usuario.";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirmcamb();", true);
                 }
-                else {
+                else
+                {
                     HallazgosENT entidad = new HallazgosENT();
                     HallazgosCOM componente = new HallazgosCOM();
                     entidad.pidc_hallazgo = Convert.ToInt32(idc_halla.Text);
@@ -223,12 +232,12 @@ namespace presentacion
                     string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                     if (vmensaje == "")
                     {
-                       string usuario_realizara = ReturnUser(ddlusuario.SelectedValue.Trim());
+                        string usuario_realizara = ReturnUser(ddlusuario.SelectedValue.Trim());
                         usuario_sol.Text = usuario_realizara;
                         string query = "select correos_gama.correo from usuarios with(nolock) inner join correos_gama on correos_gama.idc_correo = usuarios.idc_correo where idc_usuario = " + ddlusuario.SelectedValue.Trim() + " ";
 
                         string cod = "HALLAZ";
-                        
+
                         string ruta = funciones.GenerarRuta(cod, "unidad");
                         string path = "";
                         string[] allFiles = System.IO.Directory.GetFiles(ruta);//Change path to yours
@@ -243,8 +252,7 @@ namespace presentacion
 
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "AlertGO('El Hallazgo fue Actualizado de Manera Correcta','hallazgos_pendientes_revisar_m.aspx');", true);
                         string mess = EnviarCorreo(path, "CAMBIO DE USUARIO DE SOLUCION EN HALLAZGO", (correo_capturo.Text == "" ? "" : correo_capturo.Text + ",") + (reviso.Text == "" ? "" : reviso.Text + ","));
-                        string mess2 = EnviarCorreo(path, "CAMBIO DE USUARIO DE SOLUCION EN HALLAZGO", funciones.cuentas_correo(query)+",");
-
+                        string mess2 = EnviarCorreo(path, "CAMBIO DE USUARIO DE SOLUCION EN HALLAZGO", funciones.cuentas_correo(query) + ",");
                     }
                     else
                     {
@@ -252,7 +260,6 @@ namespace presentacion
                         lblerror_camb.Text = vmensaje;
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirmcamb();", true);
                     }
-                
                 }
             }
             catch (Exception ex)
@@ -275,7 +282,7 @@ namespace presentacion
                     lblerror.Text = "Ingrese Comentarios.";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "ModalConfirm();", true);
                 }
-                else if(txtfecha_revi.Text == "")
+                else if (txtfecha_revi.Text == "")
                 {
                     diverror.Visible = true;
                     lblerror.Text = "Ingrese la Fecha de Revisión.";
@@ -297,7 +304,7 @@ namespace presentacion
                     if (vmensaje == "")
                     {
                         string usuario_realizara = ReturnUser2(usuario_sol.Text);
-                        usuario_sol.Text= usuario_realizara;
+                        usuario_sol.Text = usuario_realizara;
                         string ruta = funciones.GenerarRuta("HALLAZ", "unidad");
                         string path = "";
                         string[] allFiles = System.IO.Directory.GetFiles(ruta);//Change path to yours
@@ -318,7 +325,6 @@ namespace presentacion
                         lblerror.Text = vmensaje;
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "ModalConfirm();", true);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -329,7 +335,8 @@ namespace presentacion
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "ModalConfirm();", true);
             }
         }
-        private string EnviarCorreo(string path,string subjectt, string correos)
+
+        private string EnviarCorreo(string path, string subjectt, string correos)
         {
             string usuario = "";
             string contraseña = "";
@@ -348,14 +355,13 @@ namespace presentacion
                 contraseña = row["contraseña"].ToString();
                 hostnamesmtp = row["smtp"].ToString();
                 portsmtp = Convert.ToInt32(row["puerto"]);
-                useSsl = Convert.ToBoolean(row["ssl"]);               
+                useSsl = Convert.ToBoolean(row["ssl"]);
                 if (to != "" && usuario != "" && contraseña != "" && hostnamesmtp != "" && portsmtp != 0)
                 {
-                   
                     body = "<p style='font-family:arial;'><strong>HALLAZGO " + idc_halla.Text + " : </strong>" + txthallazgo_revi.Text + "<br/><br/>" +
                             "<strong>SUCURSAL: </strong>" + " " + txtsucursal_camb.Text + "<br/><br/>" +
                             "<strong>FECHA DE SOLUCIÓN: </strong>" + " " + Convert.ToDateTime(txtfecha_revi.Text).ToString("MMMM dd, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX")) + "<br/><br/>" +
-                            "<strong>OBSERVACIONES: </strong>" + " " + txtcomentarios.Text.Trim() + "</p>"+"</br><strong>USUARIO SOLUCION: </strong>"+ usuario_sol.Text;
+                            "<strong>OBSERVACIONES: </strong>" + " " + txtcomentarios.Text.Trim() + "</p>" + "</br><strong>USUARIO SOLUCION: </strong>" + usuario_sol.Text;
                     if (path != "" && File.Exists(path))
                     {
                         listadeadjuntos.Add(path);
@@ -373,6 +379,7 @@ namespace presentacion
                 return "Faltan Datos";
             }
         }
+
         protected void buscarusuario_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarUsuarios(txtbuscarusuario.Text);

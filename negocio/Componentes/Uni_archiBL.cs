@@ -3,14 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 
 namespace negocio.Componentes
 {
     public class Uni_archiBL
     {
         #region methods
+
         public DataSet datos_uni_archi(Entidades.uni_archiE uni)
         {
             DataSet ds = new DataSet();
@@ -25,10 +24,10 @@ namespace negocio.Componentes
             catch (Exception ex)
             {
                 throw ex;
-
             }
             return ds;
         }
-        #endregion
+
+        #endregion methods
     }
 }

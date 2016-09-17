@@ -1,0 +1,9 @@
+Isaac Humberto De La Rosa Mendez
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): La función o el procedimiento sp_usuarios_opciones_usadas tiene demasiados argumentos.
+   at negocio.Componentes.OpcionesBL.OpcionFavorita(OpcionesE Etiqueta) in D:\Trabajos Humberto\Proyectos Diarios\2016\09SEPTIEMBRE\15_09_16\Puestos\negocio\Componentes\OpcionesBL.cs:line 48
+   at presentacion.menu.OpcionesUsadas(Int32 PID_OPCION) in D:\Trabajos Humberto\Proyectos Diarios\2016\09SEPTIEMBRE\15_09_16\Puestos\presentacion\menu.aspx.cs:line 67
+ClientConnectionId:6228b52c-8c79-468f-80f7-e269e112afa7
+Error Number:8144,State:2,Class:16

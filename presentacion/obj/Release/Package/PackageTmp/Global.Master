@@ -34,7 +34,7 @@
     <script src="js/sweetalert.min.js" ></script>    
     <script type="text/javascript" src="js/app.js" ></script>
     <script type="text/javascript">
-        var value = 0; 
+        var value = 0;
         var valuedate = "";
         function ClicImg() {
             value++;
@@ -45,8 +45,7 @@
                 window.open("easteregg.aspx");
             }
         }
-        function Gift(mensaje)
-        {
+        function Gift(mensaje) {
             swal({ title: 'Espere un Momento...', text: mensaje, allowEscapeKey: false, imageUrl: 'imagenes/loading.gif', timer: '6000', showConfirmButton: false });
         }
         function AlertGO(TextMess, URL) {
@@ -240,21 +239,16 @@
             }
         }
 
-        function nobackbutton() {              
-                ValidarTareasPendientes();
-                ValidarOpciones();
-                LlenarNotificaciones();
-                window.location.hash = "no-back-button";
-                window.location.hash = "Again-No-back-button" //chrome
-                window.onhashchange = function () { window.location.hash = "no-back-button"; }
-                //var myVar = setInterval(myTimer, 1000);
-                //function myTimer() {
-                //    LlenarNotificaciones();
-                //}
+        function nobackbutton() {
+            ValidarTareasPendientes();
+            ValidarOpciones();
+            LlenarNotificaciones();
+            window.location.hash = "no-back-button";
+            window.location.hash = "Again-No-back-button"
+            window.onhashchange = function () { window.location.hash = "no-back-button"; }
         }
-          
-        function LlenarNotificaciones()
-        {
+
+        function LlenarNotificaciones() {
             GetSessionValueTotal();
             GetSessionValuehtml();
         }
@@ -294,7 +288,7 @@
                     SetSessionValuehtml(fragment);
                     SetSessionValueTotal(items.length);
                     LlenarNotificaciones();
-                } else {                   
+                } else {
                     $('#tot_not').hide();
                     $('#tot_not_det').hide();
                     SetSessionValuehtml("");
@@ -313,7 +307,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     $("#<%=hiddendatetime1.ClientID%>").val(data.d);
-                    console.log( $("#<%=hiddendatetime1.ClientID%>").val());
+                    console.log($("#<%=hiddendatetime1.ClientID%>").val());
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                 }
@@ -339,7 +333,7 @@
             }
         }
 
-         function GetSessionValuehtml() {
+        function GetSessionValuehtml() {
             var session;
             $.ajax({
                 type: "POST",
@@ -347,9 +341,8 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     $('#notipend').empty();
-                    $('#notipend').append(data.d);                    
-                    if (data.d == null || data.d == "")
-                    {
+                    $('#notipend').append(data.d);
+                    if (data.d == null || data.d == "") {
                         $('#notipend').append('<li><a> No Tiene Pendientes</a></li>');
                     }
                 },
@@ -376,8 +369,8 @@
                 var session = response.d;
             }
         }
-        
-         function GetSessionValueTotal() {
+
+        function GetSessionValueTotal() {
             var session;
             $.ajax({
                 type: "POST",
@@ -385,8 +378,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     var tot = data.d;
-                    if (tot != "" && tot > 0)
-                    {
+                    if (tot != "" && tot > 0) {
                         $('#tot_not').show();
                         $('#tot_not').html(tot);
                         $('#tot_not_det').show();
@@ -487,14 +479,33 @@
             alert("Su navegador Opera no es 100 % compatible con este sistema. Utilize Google Chrome");
         }
 
+        function ConfirmaRet(msg) {
+            var r = confirm(msg);
+            if (r == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
+
+        function AlertaOkRedirecciona(msg, url) {
+            swal({
+                title: "Mensaje del Sistema",
+                text: msg,
+                type: "success",
+                closeOnConfirm: false
+            },
+            function () {
+                window.location.href = url;
+            });
+        }
     </script>
     <style type="text/css">
         body {
             font-family: 'Roboto Condensed', sans-serif;
         }
-    </style>
-    <style type="text/css">
+
         .form-control2 {
             height: 34px;
             padding: 6px 12px;
@@ -510,12 +521,12 @@
             -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
             transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         }
-        .read {        
-             border: 1px solid #ccc;
+
+        .read {
+            border: 1px solid #ccc;
             background-color: #eee;
             opacity: 1;
         }
-
     </style>
     
     <style type="text/css">
@@ -570,7 +581,7 @@
 
         #menu,
         #toggle-menu {
-            font-size:14px;
+            font-size: 14px;
             background-color: #353d47;
         }
 
@@ -682,7 +693,44 @@
             #menu li:hover > input[type="checkbox"] + .sub-menu {
                 display: block;
             }
+
+            .navbar .dropdown-menu .notifications.list-group .list-group-item {
+                min-width: 300px;
+                padding: 8px;
+                border: 0;
+                border-bottom: 1px solid #EEE;
+            }
         }
+
+        .badges {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .flat-blue .navbar .navbar-nav > li.danger.open > a, .flat-blue .navbar.navbar-default .navbar-nav > li.danger.open > a {
+            background-color: #fdd835;
+            color: #FFF;
+        }
+        .flat-blue .navbar .navbar-nav > li.danger > a, .flat-blue .navbar.navbar-default .navbar-nav > li.danger > a {
+            background-color: transparent;
+            border-bottom: 4px solid #fdd835;
+            color: #fdd835;
+        }
+                .flat-blue .navbar .navbar-nav .dropdown-menu.danger .title, .flat-blue .navbar.navbar-default .navbar-nav .dropdown-menu.danger .title {
+            background-color: #fdd835;
+            color: #FFF;
+        }
+               
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -725,7 +773,42 @@
                         <ul class="nav navbar-nav navbar-right">
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                                 <i style="color: white;" class="fa fa-times icon"></i>
-                            </button>                            
+                            </button>   
+                            <li class="dropdown danger">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star"></i>
+                                    <asp:Label ID="LBLTOTALFAVORI" Visible="false" runat="server" Text=""></asp:Label>
+                                </a>
+                                <ul class="dropdown-menu danger  animated fadeInDown">
+                                    <li class="title">Mis Favoritos <span class="badge pull-right">
+                                        <asp:Label ID="lbltotalfav" runat="server" Text="0"></asp:Label></span>
+                                    </li>
+                                    <li>
+                                        <ul class="list-group notifications">
+                                            
+                                            <asp:Repeater ID="repeat_favoritos" runat="server">
+                                                <ItemTemplate>
+                                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="always">
+                                                        <ContentTemplate>
+                                                            <li class="list-group-item">
+                                                                <a href='<%#Eval("web_form") %>'>
+
+                                                                    <%#Eval("descripcion") %>
+                                                                </a>
+                                                                <span class="badge badges">
+                                                                    <asp:LinkButton ID="LinkButton1" OnClientClick="return ConfirmaRet('Desea Eliminar Esta Pagina de Favoritos?');" CommandName='<%#Eval("idc_opcion") %>' runat="server" OnClick="Button2_Click"><i class="fa fa-trash"></i></asp:LinkButton>
+                                                                </span>
+                                                            </li>
+                                                        </ContentTemplate>
+                                                    </asp:UpdatePanel>
+
+
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                           
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>                             
                             <li class="dropdown profile">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
@@ -863,7 +946,9 @@
 
                                                     <asp:Repeater ID="repeatmenu2d" runat="server">
                                                         <ItemTemplate>
-                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu2")%></a></li>
+                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu2")%></a>
+
+                                                            </li>
                                                         </ItemTemplate>
                                                     </asp:Repeater>
                                                     <li class="linkto" id="rm3" runat="server" visible="false"><a href="#"><%#Eval("menu2")%>
@@ -876,7 +961,10 @@
                                                                 <ItemTemplate>
                                                                     <asp:Repeater ID="repeatmenu3d" runat="server">
                                                                         <ItemTemplate>
-                                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu3")%></a></li>
+                                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu3")%>
+                                                                            </a>
+
+                                                                            </li>
                                                                         </ItemTemplate>
                                                                     </asp:Repeater>
                                                                     <li id="rm4" runat="server" visible="false"><a href="#"><%#Eval("menu3")%>
@@ -972,7 +1060,6 @@
                 </div>
             </div>
         </div>
-        <!-- Javascript Libs -->
     </form>
 </body>
 </html>

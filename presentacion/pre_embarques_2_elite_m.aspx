@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Global.master" AutoEventWireup="false" CodeFile="pre_embarques_2_elite_m.aspx.vb" Inherits="pre_embarques_2_elite_m" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-  
-     <style type="text/css">
+
+    <style type="text/css">
         .form-control2 {
             height: 34px;
             padding: 6px 12px;
@@ -18,15 +18,16 @@
             -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
             transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         }
-        .read {        
-             border: 1px solid #ccc;
+
+        .read {
+            border: 1px solid #ccc;
             background-color: #eee;
             opacity: 1;
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content1" ContentPlaceHolderID="Contenido" Runat="Server">
-      <script type="text/javascript">
+<asp:Content ID="Content1" ContentPlaceHolderID="Contenido" runat="Server">
+    <script type="text/javascript">
         function grid2(up, inicio) {
             var GridView2 = document.getElementById('<%=GridView2.ClientID%>');
         var txtindex = document.getElementById('<%=txtindex.ClientID%>');
@@ -53,7 +54,6 @@
                     }
                 }
             }
-
 
             var txtcodigo = document.getElementById("<%=txtcodigo.ClientID%>");
             var txtdesc = document.getElementById("<%=txtdesc.ClientID%>");
@@ -86,15 +86,8 @@
         }
         return false;
     }
-
-
-
-
-
-
-
-
-    </script><script type="text/javascript" >
+    </script>
+    <script type="text/javascript">
     function grid2(up,inicio)
     {
         var GridView2 = document.getElementById('<%=GridView2.ClientID%>');
@@ -127,10 +120,9 @@
                     if(txtindex.value<1)
                     {
                         txtindex.value=1;
-                    }            
+                    }
                 }
             }
-            
 
             var txtcodigo = document.getElementById("<%=txtcodigo.ClientID%>");
             var txtdesc = document.getElementById("<%=txtdesc.ClientID%>");
@@ -143,7 +135,7 @@
             var txtdisponible = document.getElementById("<%=txtdisponible.ClientID%>");
             var txtcompras = document.getElementById("<%=txtcompras.ClientID%>");
             var txtfecha_entrega = document.getElementById("<%=txtfecha_entrega.ClientID%>");
-            
+
             for(var i=1;i<=hasta;i++)
             {
                 if(i==txtindex.value)
@@ -161,22 +153,16 @@
                     txtfecha_entrega.value = GridView2.rows[i].cells[10].textContent;
                 }
             }
-            txtitems.value = txtindex.value + ' de ' + hasta ;            
+            txtitems.value = txtindex.value + ' de ' + hasta ;
         }
-        return false;    
+        return false;
     }
-
-
-
-
-
-
-</script>
+    </script>
 
     <div class="row">
-       <div class="col-lg-12">
+        <div class="col-lg-12">
             <h3 class="page-header">Pedidos Pendientes de Entrega(Gama Elite)</h3>
-       </div>
+        </div>
     </div>
     <div id="div_contenido" runat="server" style="width: 100%;">
         <table style="width: 100%;">
@@ -185,8 +171,8 @@
 
                     <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Names="arial"
                         Font-Size="Small" Text="No. Pedido:"></asp:Label>
-                                <br /><br />
-
+                    <br />
+                    <br />
                 </td>
             </tr>
             <tr>
@@ -196,8 +182,9 @@
                             Width="100%" AutoPostBack="True">
                         </asp:DropDownList>
                     </div>
-                    
-                                <br /><br />
+
+                    <br />
+                    <br />
                 </td>
             </tr>
             <tr>
@@ -208,14 +195,15 @@
 
                                 <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Observaciones:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtobservaciones" runat="server" Width="100%" TextMode="Multiline" Rows="5"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -223,8 +211,9 @@
 
                                 <asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Saldo:"></asp:Label>
-                                
-                                <br /><br />
+
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False"
@@ -254,7 +243,8 @@
                                 <asp:TextBox ID="txtsaldo" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -262,8 +252,9 @@
 
                                 <asp:Label ID="Label8" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="% Pagado:"></asp:Label>
-                                
-                                <br /><br />
+
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
@@ -309,7 +300,8 @@
                                 <asp:TextBox ID="txtpor_pagado" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -317,14 +309,16 @@
 
                                 <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Fecha:"></asp:Label>
-                                
-                                <br /><br />
+
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtfecha" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase; resize: none' onfocus="this.blur();"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -332,14 +326,16 @@
 
                                 <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Fecha Pactada:"></asp:Label>
-                                
-                                <br /><br />
+
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtfecha_pactada" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -347,14 +343,15 @@
 
                                 <asp:Label ID="Label11" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Fecha Entrega:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtfecha_e" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -362,15 +359,16 @@
 
                                 <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Consignado:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtconsignado" runat="server" Width="100%" Height="50px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     CssClass="form-control2"
                                     TextMode="MultiLine" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -378,18 +376,18 @@
 
                                 <asp:Label ID="Label13" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Usuario:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtusu" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                     </table>
-
                 </td>
             </tr>
             <tr>
@@ -406,43 +404,35 @@
                         <tr>
                             <td style="width: 25%">
 
-
                                 <asp:Button ID="btndown" runat="server" Text="&lt;&lt;" Font-Bold="True" Font-Size="Medium"
                                     Height="35px" Width="100%"
                                     CssClass="btn btn-default"
                                     UseSubmitBehavior="False" />
-                                <br /><br />
-
-
+                                <br />
+                                <br />
                             </td>
                             <td style="width: 45%">
-
 
                                 <asp:TextBox ID="txtitems" runat="server" Width="100%" ForeColor="Blue"
                                     Style='text-transform: uppercase; text-align: center;' onfocus="this.blur();"
                                     CssClass="form-control2"
                                     Font-Bold="True" Font-Italic="False" Font-Names="arial" Font-Size="Small" />
-                                <br /><br />
-
-
+                                <br />
+                                <br />
                             </td>
                             <td style="width: 25%">
-
 
                                 <asp:Button ID="btnup" runat="server" Text="&gt;&gt;" Font-Bold="True" Font-Size="Medium"
                                     Height="35px" Width="100%"
                                     CssClass="btn btn-default"
                                     UseSubmitBehavior="False" />
-                                <br /><br />
-
-
+                                <br />
+                                <br />
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-
-
 
             <tr>
                 <td>
@@ -453,15 +443,16 @@
 
                                 <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Codigo:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtcodigo" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -469,15 +460,16 @@
 
                                 <asp:Label ID="Label18" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Desc:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtdesc" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -485,15 +477,16 @@
 
                                 <asp:Label ID="Label24" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Marca:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtmarca" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -501,15 +494,16 @@
 
                                 <asp:Label ID="Label19" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Cantidad:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtcantidad" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -517,15 +511,16 @@
 
                                 <asp:Label ID="Label25" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Pendiente:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtpendiente" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -533,15 +528,16 @@
 
                                 <asp:Label ID="Label26" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Ex. Suc. Ent:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtex_suc" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -549,15 +545,16 @@
 
                                 <asp:Label ID="Label27" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Ex. Total:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtex_total" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -565,15 +562,16 @@
 
                                 <asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Transito:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txttransito" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -581,15 +579,16 @@
 
                                 <asp:Label runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Disponible:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtdisponible" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -597,15 +596,16 @@
 
                                 <asp:Label ID="Label22" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Compras:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtcompras" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -613,40 +613,37 @@
 
                                 <asp:Label ID="Label28" runat="server" Font-Bold="True" Font-Names="arial"
                                     Font-Size="Small" Text="Fecha Entrega:"></asp:Label>
-                                <br /><br />
-
+                                <br />
+                                <br />
                             </td>
                             <td>
                                 <asp:TextBox ID="txtfecha_entrega" runat="server" Width="100%" Height="35px"
                                     Style='text-transform: uppercase' onfocus="this.blur();"
                                     onkeyup="valid(this,'special')" onblur="valid(this,'special')"
                                     CssClass="form-control2" />
-                                <br /><br />
+                                <br />
+                                <br />
                             </td>
                         </tr>
                     </table>
-
                 </td>
             </tr>
             <tr>
                 <td align="center">
                     <asp:Button ID="Button1" runat="server" Text="Cerrar" Font-Bold="True" Font-Size="Medium"
-                        Height="40px" Width="100%" 
+                        Height="40px" Width="100%"
                         CssClass="btn btn-danger btn-block" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:TextBox ID="txtindex" style="visibility:hidden;" runat="server" CssClass="Ocultar" />
+                    <asp:TextBox ID="txtindex" Style="visibility: hidden;" runat="server" CssClass="Ocultar" />
                 </td>
             </tr>
         </table>
-
     </div>
     <div align="center">
-                <asp:Label ID="Label1" runat="server" Text="No Hay Pre-Embarques Pendientes" 
+        <asp:Label ID="Label1" runat="server" Text="No Hay Pre-Embarques Pendientes"
             Visible="False" Font-Bold="True" Font-Names="arial" Font-Size="Small" ForeColor="Blue"></asp:Label>
     </div>
-       
-    </asp:Content>
-
+</asp:Content>

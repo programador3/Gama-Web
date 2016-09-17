@@ -1,11 +1,8 @@
 ﻿using negocio.Componentes;
 using negocio.Entidades;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Text.RegularExpressions;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace presentacion

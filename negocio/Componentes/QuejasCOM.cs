@@ -33,6 +33,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet DescartarRecordatorio(QuejasENT Entidad, int tipo, int idc_avisogen, int num, int tiempo)
         {
             DataSet ds = new DataSet();
@@ -45,7 +46,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@ptotreg", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_queja });
             listparameters.Add(new SqlParameter() { ParameterName = "@pmotivo", SqlDbType = SqlDbType.Int, Value = Entidad.Pobservaciones });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadena", SqlDbType = SqlDbType.Int, Value = Entidad.Pobservaciones_satisfecho });
-            listparameters.Add(new SqlParameter() { ParameterName = "@Ptipo", SqlDbType = SqlDbType.Int, Value = tipo});
+            listparameters.Add(new SqlParameter() { ParameterName = "@Ptipo", SqlDbType = SqlDbType.Int, Value = tipo });
             listparameters.Add(new SqlParameter() { ParameterName = "@PNUM", SqlDbType = SqlDbType.Int, Value = num });
             listparameters.Add(new SqlParameter() { ParameterName = "@PTIEMPO", SqlDbType = SqlDbType.Int, Value = tiempo });
             try
@@ -59,6 +60,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet CargarHistorial(QuejasENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -76,6 +78,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet CargarRecordatorio(QuejasENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -187,12 +190,13 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet SDatosQuejas(QuejasENT Entidad)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
-            
+
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_queja", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_queja });
             try
             {
@@ -205,6 +209,5 @@ namespace negocio.Componentes
             }
             return ds;
         }
-        
     }
 }

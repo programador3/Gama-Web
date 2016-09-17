@@ -96,6 +96,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet CargarSubProcesos(Aprobaciones_solicitudE entidad)
         {
             DataSet ds = new DataSet();

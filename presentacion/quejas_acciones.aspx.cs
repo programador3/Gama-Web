@@ -52,7 +52,6 @@ namespace presentacion
             {
                 txtnoqueja.ReadOnly = false;
             }
-           
         }
 
         private void CargarQuejas(int cdi)
@@ -80,12 +79,13 @@ namespace presentacion
             txtdescripcionsatis.Visible = cheched;
         }
 
-        private string ErrorSolucion(){
+        private string ErrorSolucion()
+        {
             if (txtsolucion.Text == "")
             {
                 return "La solucion no puede quedar Vacia.";
             }
-            else if (txtdescripcionsatis.Text == "" && lnksatisf.CssClass=="btn btn-default btn-block")
+            else if (txtdescripcionsatis.Text == "" && lnksatisf.CssClass == "btn btn-default btn-block")
             {
                 return "Describe aqui el motivo por el cual el cliente no quedo satisfecho.";
             }
@@ -97,15 +97,17 @@ namespace presentacion
             {
                 return "La Fecha no puede quedar vacia.";
             }
-            else {
+            else
+            {
                 return "";
             }
         }
+
         private string ErrorCancelar()
         {
             if (txtobservaciones_can.Text == "")
             {
-                return "Es necesario agregar una observacion.";            
+                return "Es necesario agregar una observacion.";
             }
             else
             {
@@ -124,6 +126,7 @@ namespace presentacion
                 return "";
             }
         }
+
         protected void lnkcerrar_Click(object sender, EventArgs e)
         {
             Response.Redirect("quejas_espera_.aspx");
@@ -148,16 +151,17 @@ namespace presentacion
             string error = ErrorSolucion();
             if (error != "")
             {
-                Alert.ShowAlertError(error,this);
+                Alert.ShowAlertError(error, this);
             }
-            else {
+            else
+            {
                 if (fupimagen.HasFile)
                 {
                     Random random = new Random();
                     int randomNumber = random.Next(0, 1000);
                     DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/"));//path local
-                    string val = dirInfo + randomNumber .ToString()+ fupimagen.FileName;
-                    funciones.UploadFile(fupimagen, val,this);
+                    string val = dirInfo + randomNumber.ToString() + fupimagen.FileName;
+                    funciones.UploadFile(fupimagen, val, this);
                     Session["url_file"] = val;
                 }
                 Session["Caso_Confirmacion"] = "Solucionar";
@@ -167,7 +171,6 @@ namespace presentacion
 
         protected void lnkcance_Click(object sender, EventArgs e)
         {
-
             string error = ErrorCancelar();
             if (error != "")
             {
@@ -179,7 +182,6 @@ namespace presentacion
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Cancelar la queja?','modal fade modal-info');", true);
             }
         }
-
 
         protected void TesClick_Click(object sender, EventArgs e)
         {
@@ -206,12 +208,14 @@ namespace presentacion
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         proceso = "Queja Cancelada Correctamente";
                         break;
+
                     case "Comentario":
                         entidad.Pobservaciones = txtcomentario.Text;
                         ds = componente.ComentarioQuejas(entidad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         proceso = "Comentario Agregado Correctamente";
                         break;
+
                     case "Solucionar":
                         entidad.Pfecha = Convert.ToDateTime(txtfecha.Text);
                         entidad.Pencargado = txtencargado.Text;
@@ -232,7 +236,7 @@ namespace presentacion
                     {
                         string origen = Session["url_file"] as string;
                         string destino = ruta + Path.GetExtension(origen);
-                        File.Copy(origen,destino,true);
+                        File.Copy(origen, destino, true);
                     }
                     Alert.ShowGiftMessage("Estamos procesando la solicitud.", "Espere un Momento", "quejas_espera_m.aspx", "imagenes/loading.gif", "2000", proceso, this);
                 }
@@ -258,7 +262,7 @@ namespace presentacion
 
         protected void lnkagregarcomentario_Click(object sender, EventArgs e)
         {
-            Response.Redirect("quejas_acciones.aspx?accion="+Request.QueryString["accion"]);
+            Response.Redirect("quejas_acciones.aspx?accion=" + Request.QueryString["accion"]);
         }
     }
 }

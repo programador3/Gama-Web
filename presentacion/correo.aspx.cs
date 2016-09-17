@@ -142,7 +142,7 @@ namespace presentacion
                                 string mail = msg.Headers.From.ToString();
                                 string title = msg.Headers.Subject;
                                 string body = "";
-                                string id = msg.Headers.MessageId==null?randomNumber.ToString(): msg.Headers.MessageId.ToString();
+                                string id = msg.Headers.MessageId == null ? randomNumber.ToString() : msg.Headers.MessageId.ToString();
                                 OpenPop.Mime.MessagePart plainText = msg.FindFirstPlainTextVersion();
                                 if (plainText != null)
                                 {
@@ -164,11 +164,10 @@ namespace presentacion
                                 row["id"] = id;
                                 foreach (var ado in att)
                                 {
-
                                     DataRow rowf = dtf.NewRow();
                                     rowf["id"] = id;
                                     rowf["name"] = ado.FileName;
-                                    rowf["path"] = dirInfo.ToString()+ ado.FileName;
+                                    rowf["path"] = dirInfo.ToString() + ado.FileName;
                                     string extension = System.IO.Path.GetExtension(ado.FileName.ToString().ToUpper());
                                     ado.Save(new System.IO.FileInfo(System.IO.Path.Combine(dirInfo.ToString(), ado.FileName)));
                                     if (Exists(dtf, "path = '" + dirInfo.ToString() + ado.FileName + "'") == false)
@@ -177,7 +176,7 @@ namespace presentacion
                                     }
                                 }
                                 //client.DeleteMessage(i);
-                                if (Exists(dt,"date = '"+date+"' and mail = '"+mail+"'") == false)
+                                if (Exists(dt, "date = '" + date + "' and mail = '" + mail + "'") == false)
                                 {
                                     dt.Rows.Add(row);
                                 }
@@ -220,14 +219,14 @@ namespace presentacion
             int t = vdtf.ToTable().Rows.Count;
             repeat_file.DataSource = vdtf.ToTable();
             repeat_file.DataBind();
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('"+title.Replace("'","")+"','"+ mail + "','modal fade modal-info');", true);
-
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('" + title.Replace("'", "") + "','" + mail + "','modal fade modal-info');", true);
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             CargarRepeat();
         }
+
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             LinkButton lnk = sender as LinkButton;

@@ -77,7 +77,6 @@
                                         <asp:Label ID="lblucursal" runat="server" Text=""></asp:Label>
                                     </h4>
                                 </div>
-                                
                             </div>
                         </div>
                     </asp:Panel>

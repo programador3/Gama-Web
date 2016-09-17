@@ -40,7 +40,6 @@
                     alert('Offline')
                 }
             });
-
         </script>
     </asp:ContentPlaceHolder>
 </head>

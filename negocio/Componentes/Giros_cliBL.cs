@@ -1,12 +1,8 @@
-﻿using System;
+﻿using datos;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using datos;
-
 
 namespace negocio.Componentes
 {
@@ -28,7 +24,6 @@ namespace negocio.Componentes
                 throw ex;
             }
             return ds;
-
         }
     }
 }

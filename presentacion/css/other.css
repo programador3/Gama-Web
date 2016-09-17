@@ -13,7 +13,7 @@
     display: block;
   }
 
-  #toggle-menu, 
+  #toggle-menu,
   #menu label.drop-icon {
     display: none;
   }
@@ -41,7 +41,7 @@
     z-index: 3000;
   }
 
-  #menu .sub-menu, 
+  #menu .sub-menu,
   #menu input[type="checkbox"]:checked + .sub-menu {
     display: none;
   }

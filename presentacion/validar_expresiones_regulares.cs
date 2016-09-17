@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace presentacion
 {
@@ -10,7 +6,7 @@ namespace presentacion
     {
         public static Match comparar(string cadena, int tipo)
         {
-            string patron,patron_rfc, patron_correo;
+            string patron, patron_rfc, patron_correo;
             patron_rfc = "[A-ZÑ&]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z0-9]?[A-Z0-9]?[0-9A-Z]?";
             patron_correo = "^([0-9a-zA-Z]+[-._+&])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$";
 
@@ -25,10 +21,8 @@ namespace presentacion
                 patron = patron_correo;
             }
 
-
             match = Regex.Match(cadena, patron);
             return match;
         }
-
     }
 }

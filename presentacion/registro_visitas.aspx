@@ -180,7 +180,7 @@
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-indent" aria-hidden="true"></i>&nbsp;Visitas Actuales en curso
                         <asp:Label ID="lbltitle" runat="server" Text=""></asp:Label></strong><span>
-                            
+
                             <asp:LinkButton Visible="true" ID="LNKUPDATE" CssClass="btn btn-info" OnClick="LNKUPDATE_Click" runat="server">Actualizar Registros <i class="fa fa-refresh" aria-hidden="true"></i></asp:LinkButton>
                             <asp:LinkButton Visible="true" ID="lnkurladicinal" CssClass="btn btn-success" OnClick="lnkurladicinal_Click" runat="server">Ver Visitas de Hoy <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
                         </span></h4>

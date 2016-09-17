@@ -33,6 +33,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet CargaVehiculos(string valor)
         {
             DataSet ds = new DataSet();
@@ -51,6 +52,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet CargaEmpleado(Vehiculos_RevisionENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -69,6 +71,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet CargarRevisionBasicaEmpleado(Vehiculos_RevisionENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -88,7 +91,7 @@ namespace negocio.Componentes
             return ds;
         }
 
-        public DataSet CargarHerramientasRevisionBasica(Vehiculos_RevisionENT Entidad,bool rev_basica)
+        public DataSet CargarHerramientasRevisionBasica(Vehiculos_RevisionENT Entidad, bool rev_basica)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
@@ -107,6 +110,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet ValidaCalibracion(Vehiculos_RevisionENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -164,7 +168,6 @@ namespace negocio.Componentes
             }
             return ds;
         }
-
 
         public DataSet GuardarRevision(Vehiculos_RevisionENT Entidad)
         {

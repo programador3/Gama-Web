@@ -49,7 +49,7 @@
         }
 
         .form-bottom {
-            padding: 25px 25px 30px 25px;
+            padding: 15px;
             background: #444;
             background: rgba(0, 0, 0, 0.3);
             -moz-border-radius: 0 0 4px 4px;

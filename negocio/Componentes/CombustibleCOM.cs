@@ -47,6 +47,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet AgregarCarga(string[] parametros, object[] valores)
         {
             DataSet ds = new DataSet();

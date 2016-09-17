@@ -1,5 +1,5 @@
  @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600);
- 
+
  @font-face {
 	font-family: 'icomoon';
 	src:url('../fonts/icomoon.eot');
@@ -111,9 +111,6 @@
 /* mobile style */
 .rmm.style .rmm-mobile li > a:not(:only-child):after {-webkit-transform: rotate(120deg)!important; transform: rotate(120deg)!important; top: 4px!important; font-size: 14px!important; float: right; margin-right: -20px;}
 .rmm.style .rmm-mobile li{background: #3ab4a6; border-bottom: 1px solid #575f6a!important; border-top: 0!important; }
-
-
-
 
 /*
  like mobile view style

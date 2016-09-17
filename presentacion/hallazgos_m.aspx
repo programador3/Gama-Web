@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="hallazgos_m.aspx.cs" Inherits="presentacion.hallazgos_m" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-      <script type="text/javascript">
+    <script type="text/javascript">
         function getImage(path) {
             $("#myImage").attr("src", path);
             //alert(path);
@@ -27,7 +28,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-      <h2 class="page-header">Captura Hallazgos</h2>
+    <h2 class="page-header">Captura Hallazgos</h2>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <ContentTemplate>
             <div class="row">
@@ -42,9 +43,9 @@
                 </div>
                 <div class="col-lg-12" id="vehi" runat="server" visible="false">
                     <h5><strong><i class="fa fa-car" aria-hidden="true"></i>&nbsp;Vehiculo</strong></h5>
-                    <asp:DropDownList ID="ddlvehiculo" CssClass="form-control2" Width="100%" runat="server"></asp:DropDownList>                    
+                    <asp:DropDownList ID="ddlvehiculo" CssClass="form-control2" Width="100%" runat="server"></asp:DropDownList>
                     <asp:TextBox ID="txtbiscar" CssClass="form-control2" Width="50%" placeholder="Buscar Vehiculo" runat="server"></asp:TextBox>
-                     <asp:LinkButton ID="lnkbuscar" CssClass="btn btn-info" Width="48%" OnClick="lnkbuscar_Click" runat="server">Buscar</asp:LinkButton>
+                    <asp:LinkButton ID="lnkbuscar" CssClass="btn btn-info" Width="48%" OnClick="lnkbuscar_Click" runat="server">Buscar</asp:LinkButton>
                 </div>
                 <div class="col-lg-12">
                     <h5><strong><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;Detalles</strong></h5>
@@ -88,7 +89,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="col-lg-6 col-xs-6">
-                        <asp:Button ID="Yes" class="btn btn-info btn-block"  OnClientClick="ModalClose(); Gift('Estamos Guardando el Hallazgo y Enviando los Correos');" runat="server" Text="Si" OnClick="Yes_Click" />
+                        <asp:Button ID="Yes" class="btn btn-info btn-block" OnClientClick="ModalClose(); Gift('Estamos Guardando el Hallazgo y Enviando los Correos');" runat="server" Text="Si" OnClick="Yes_Click" />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="No" />

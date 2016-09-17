@@ -19,7 +19,8 @@
     <asp:FileUpload runat="server" ID="fuArchivos" AllowMultiple="true" CssClass="fu" />
     <asp:Button runat="server" CssClass="btn btn-info" ID="btnSubir" Text="Subir" OnClick="btnSubir_Click" />
     <br />
-    <h5>Tamaño de todos los archivos: <asp:Label ID="Label1" runat="server" Text="0"></asp:Label></h5>
-        <h5>Lista de Archivos</h5>
+    <h5>Tamaño de todos los archivos:
+        <asp:Label ID="Label1" runat="server" Text="0"></asp:Label></h5>
+    <h5>Lista de Archivos</h5>
     <asp:BulletedList ID="blist" runat="server"></asp:BulletedList>
 </asp:Content>

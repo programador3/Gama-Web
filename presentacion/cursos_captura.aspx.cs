@@ -895,7 +895,6 @@ namespace presentacion
                 {
                     DeleteDirectory(dir);
                 }
-                
             }
         }
 
@@ -993,7 +992,7 @@ namespace presentacion
             // esta linea es opcional, en donde podemos cambiar el nombre del fichero a descargar (para que sea diferente al original)
             Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(path_archivo));//Revision.pptx");
             // Escribimos el fichero a enviar
-            Response.WriteFile(path_archivo+nombre_archivo);
+            Response.WriteFile(path_archivo + nombre_archivo);
             // volcamos el stream
             Response.Flush();
             // Enviamos todo el encabezado ahora

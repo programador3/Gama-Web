@@ -256,7 +256,7 @@ namespace presentacion
         {
             if (Request.QueryString["sidc_prospecto"] != null)
             {
-                Response.Redirect("prospectos_captura3.aspx?sidc_prospecto="+Request.QueryString["sidc_prospecto"]);
+                Response.Redirect("prospectos_captura3.aspx?sidc_prospecto=" + Request.QueryString["sidc_prospecto"]);
             }
             else
             {
@@ -1734,7 +1734,7 @@ namespace presentacion
                         pagina = "prospectos_captura3.aspx";
                     }
                     Alert.ShowGiftMessage("Estamos Detectando su Ubicación y Subiendo el Prospecto...",
-                        "Espere un Momento", pagina, "imagenes/loading.gif", "3000", "Datos del Propecto Guardados Correctamente.", this);                  
+                        "Espere un Momento", pagina, "imagenes/loading.gif", "3000", "Datos del Propecto Guardados Correctamente.", this);
                 }
                 else
                 {

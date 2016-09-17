@@ -80,7 +80,7 @@
                             <HeaderStyle HorizontalAlign="Center" Width="30px" />
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:ButtonField>
-                        
+
                         <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Borrar" CommandName="Borrar">
                             <HeaderStyle HorizontalAlign="Center" Width="30px" />
                             <ItemStyle HorizontalAlign="Center" />
@@ -95,13 +95,13 @@
                                 <asp:Button ID="Button1" CssClass="btn btn-info btn-block" runat="server" Text='<%#Eval("lugares") %>' CommandName="Lugares" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        
+
                         <asp:BoundField DataField="lugares_coupado" ItemStyle-CssClass="btn btn-danger btn-block" HeaderText="Lugares Ocupados" Visible="false"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
-    </div>    
+    </div>
     <div class="modal fade modal-info" id="myModalImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always">
@@ -134,7 +134,6 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-           
         </div>
     </div>
     <div id="myModalArea" class="modal fade" role="dialog">
@@ -149,7 +148,7 @@
                 </Triggers>
                 <ContentTemplate>
                     <div class="modal-content">
-                        <div class="modal-header" style="text-align:center ;background-color: #428bca; color: white">
+                        <div class="modal-header" style="text-align: center; background-color: #428bca; color: white">
                             <h4><strong id="confirmTituloa" class="modal-title"></strong></h4>
                         </div>
                         <div class="modal-body">

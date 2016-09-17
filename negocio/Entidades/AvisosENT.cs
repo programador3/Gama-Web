@@ -4,9 +4,9 @@
     {
         private int pidc_puesto;
         private int pidc_avisoweb;
-        string asunto;
-        string texto;
-        string para;
+        private string asunto;
+        private string texto;
+        private string para;
         private string pdirecip;
         private string pnombrepc;
         private string pusuariopc;
@@ -29,26 +29,31 @@
             get { return pnombrepc; }
             set { pnombrepc = value; }
         }
+
         public string Pasunto
         {
             get { return asunto; }
             set { asunto = value; }
         }
+
         public string Ppara
         {
             get { return para; }
             set { para = value; }
         }
+
         public string Ptexto
         {
             get { return texto; }
             set { texto = value; }
         }
+
         public string Pusuariopc
         {
             get { return pusuariopc; }
             set { pusuariopc = value; }
         }
+
         public int Pidc_avisoweb
         {
             get { return pidc_avisoweb; }

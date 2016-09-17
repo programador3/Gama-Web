@@ -12,8 +12,7 @@ using System.Web.UI.WebControls;
 namespace presentacion
 {
     public partial class Global : System.Web.UI.MasterPage
-    {      
-       
+    {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["date_noti"] == null)
@@ -30,8 +29,8 @@ namespace presentacion
             if (Session["sidc_usuario"] == null)//si no hay session logeamos
             {
                 Response.Redirect("login.aspx");
-            }             
-            
+            }
+
             string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
             ScriptManager.RegisterStartupScript(this, GetType(), "dedchangeedddededed", "ChangeCss('" + cs + "');", true);
             tareas_pendi.Visible = cs == "P" ? false : true;
@@ -101,12 +100,74 @@ namespace presentacion
             lbluser2.Text = Usuario_Name;
             CargarHerramientasMenu();
             dinamic_menudrop();
-
             web_methods.idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
             web_methods.idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
             DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/errores/"));//path local
             Session["error_path"] = dirInfo.ToString();
+            OpcionesUsadas();
         }
+
+        public void OpcionesUsadas()
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                OpcionesE EntOpcion = new OpcionesE();
+                OpcionesBL menuBL = new OpcionesBL();
+                EntOpcion.Idc_user = Convert.ToInt32(Session["sidc_usuario"]);
+                //EntOpcion.Search = Request.Url.Segments[Request.Url.Segments.Length - 1].Trim();
+                //ds = menuBL.OpcionFavorita(EntOpcion);
+                //if (Request.Url.Segments[Request.Url.Segments.Length - 1].Trim() != "menu.aspx" && Request.QueryString.Count == 0)
+                //{
+                //    string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                //    if (vmensaje != "")
+                //    {
+                //        Global.CreateFileError(vmensaje, this.Page);
+                //    }
+                //}
+                ds = menuBL.OpcionFavoritaCargar(EntOpcion);
+                repeat_favoritos.DataSource = ds.Tables[0];
+                repeat_favoritos.DataBind();
+                lbltotalfav.Text = ds.Tables[0].Rows.Count.ToString();
+                LBLTOTALFAVORI.Text = ds.Tables[0].Rows.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                Global.CreateFileError(ex.ToString(), this.Page);
+            }
+        }
+
+        private void OpcionesUsadasEliminar(int PID_OPCION)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                OpcionesE EntOpcion = new OpcionesE();
+                OpcionesBL menuBL = new OpcionesBL();
+                EntOpcion.Idc_user = Convert.ToInt32(Session["sidc_usuario"]);
+                EntOpcion.Idc_opcion = PID_OPCION;
+                ds = menuBL.EliminarOpcionFavorita(EntOpcion);
+                string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                if (vmensaje != "")
+                {
+                    Alert.ShowAlertError(vmensaje, this.Page);
+                    Global.CreateFileError(vmensaje, this.Page);
+                }
+                else
+                {
+                    String path_actual = Request.Url.Segments[Request.Url.Segments.Length - 1];
+                    String queyrstring = Request.Url.Query;
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "noti5qsqsq33W3", "AlertaOkRedirecciona('Pagina Eliminada de Favoritos','" + path_actual + queyrstring + "');", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this.Page);
+            }
+        }
+
         private void dinamic_menudrop()
         {
             DataSet ds = new DataSet();
@@ -120,7 +181,9 @@ namespace presentacion
             repeatmenu1.DataSource = Distinct(distinctValues);
             repeatmenu1.DataBind();
         }
+
         public int contador = 1;
+
         private DataTable Distinct(DataTable ds)
         {
             ds.Columns.Add("idc_opcion");
@@ -131,6 +194,7 @@ namespace presentacion
             }
             return ds;
         }
+
         private DataTable TableMenu(string query)
         {
             DataTable dt = new DataTable();
@@ -140,6 +204,7 @@ namespace presentacion
             dt = view.ToTable();
             return dt;
         }
+
         protected void repeat_menu1(object sender, RepeaterItemEventArgs e)
         {
             DataRowView dbr = (DataRowView)e.Item.DataItem;
@@ -155,6 +220,7 @@ namespace presentacion
             Repearepeatmenu2.DataSource = Distinct(distinctValues);
             Repearepeatmenu2.DataBind();
         }
+
         protected void repeat_menu2(object sender, RepeaterItemEventArgs e)
         {
             DataRowView dbr = (DataRowView)e.Item.DataItem;
@@ -196,6 +262,7 @@ namespace presentacion
                 rm4.Visible = true;
             }
         }
+
         protected void repeat_menu4(object sender, RepeaterItemEventArgs e)
         {
             DataRowView dbr = (DataRowView)e.Item.DataItem;
@@ -216,6 +283,7 @@ namespace presentacion
                 rm4.Visible = true;
             }
         }
+
         protected void repeat_menu5(object sender, RepeaterItemEventArgs e)
         {
             DataRowView dbr = (DataRowView)e.Item.DataItem;
@@ -236,6 +304,7 @@ namespace presentacion
                 rm4.Visible = true;
             }
         }
+
         protected void repeat_menu6(object sender, RepeaterItemEventArgs e)
         {
             DataRowView dbr = (DataRowView)e.Item.DataItem;
@@ -245,7 +314,7 @@ namespace presentacion
             Repeater replink = (Repeater)e.Item.FindControl("repeatmenu6d");
             Repeater Repearepeatmenu3 = (Repeater)e.Item.FindControl("Repearepeatmenu7");
             replink.DataSource = link;
-            replink.DataBind();           
+            replink.DataBind();
             var rm4 = (HtmlGenericControl)e.Item.FindControl("rm7");
             if (menu2.Rows.Count > 0)
             {
@@ -256,6 +325,7 @@ namespace presentacion
                 rm4.Visible = true;
             }
         }
+
         protected void repeat_menu7(object sender, RepeaterItemEventArgs e)
         {
             DataRowView dbr = (DataRowView)e.Item.DataItem;
@@ -264,13 +334,14 @@ namespace presentacion
             Repeater replink = (Repeater)e.Item.FindControl("repeatmenu7d");
             replink.DataSource = link;
         }
+
         public static void CreateFileError(string content, Page page)
         {
             DateTime localDate = DateTime.Now;
             string date = localDate.ToString();
             date = date.Replace("/", "_");
             date = date.Replace(":", "_");
-            content =(String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
+            content = (String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
             funciones.CreateFile((string)page.Session["error_path"] + date + ".gama", content);
             funciones.EnviarError(content);
         }
@@ -317,6 +388,13 @@ namespace presentacion
                     ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "window.open('" + url + "');", true);
                 }
             }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = sender as LinkButton;
+            int idc_opcion = Convert.ToInt32(lnk.CommandName);
+            OpcionesUsadasEliminar(idc_opcion);
         }
 
         protected void lnkSalir_Click(object sender, EventArgs e)

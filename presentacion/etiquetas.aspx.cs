@@ -347,7 +347,7 @@ namespace presentacion
             foreach (DataRow roww in table.Rows)
             {
                 if (roww["nombre"].ToString() == Item)
-                { 
+                {
                     //CAMBIO  STATUS(BOOL) A TRUE
                     Alert.ShowAlertError("No se pueden repetir Etiquetas", this.Page);
                     statusetiqueta = true;
@@ -380,7 +380,7 @@ namespace presentacion
                     //SE PARA EL CICLO
                     break;
                 }
-            }          
+            }
         }
 
         /*
@@ -394,7 +394,7 @@ namespace presentacion
         public void ComprobarTableTwoColum(String Item1, String Item2)
         {
             int l = tablebloqueo.Rows.Count;
-           
+
             for (int i = 0; i < l; i++)
             {
                 /*Tomo el indice iterado por el ciclo*/
@@ -576,7 +576,7 @@ namespace presentacion
                     //Paso valores de columnas a variables
                     foreach (DataRow roww in table.Rows)
                     {
-                        if (roww["Descripcion"].ToString() == item && roww["nombre"].ToString() == itemetiqueta && Convert.ToBoolean(roww["borrado"])==false)
+                        if (roww["Descripcion"].ToString() == item && roww["nombre"].ToString() == itemetiqueta && Convert.ToBoolean(roww["borrado"]) == false)
                         {
                             roww["borrado"] = true;
                             break;

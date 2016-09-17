@@ -234,14 +234,15 @@ namespace presentacion
                 TareasENT entidad = new TareasENT();
                 TareasCOM componente = new TareasCOM();
                 bool cambio = Convert.ToBoolean(Session["CAMBIO_MASIVO"]);
-                if ( cambio== false)
+                if (cambio == false)
                 {
-                    entidad.Pidc_tarea =Convert.ToInt32(Session["idc_tarea_r"]);
+                    entidad.Pidc_tarea = Convert.ToInt32(Session["idc_tarea_r"]);
                     entidad.Pfecha = Convert.ToDateTime(Session["fo"]);
-                    entidad.Pidc_puesto = realiza.Visible == true ? Convert.ToInt32(ddlpuestorealiza.SelectedValue):0;
-                    entidad.Pidc_puesto_asigna =asigna.Visible==true? Convert.ToInt32(ddlPuesto.SelectedValue):0;
+                    entidad.Pidc_puesto = realiza.Visible == true ? Convert.ToInt32(ddlpuestorealiza.SelectedValue) : 0;
+                    entidad.Pidc_puesto_asigna = asigna.Visible == true ? Convert.ToInt32(ddlPuesto.SelectedValue) : 0;
                 }
-                else {
+                else
+                {
                     entidad.Pidc_tarea = 0;
                     entidad.Pfecha = DateTime.Today;
                     entidad.Pidc_puesto = 0;

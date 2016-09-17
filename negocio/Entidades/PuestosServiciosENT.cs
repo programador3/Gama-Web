@@ -16,6 +16,7 @@
         private string pusuariopc;
         private int idc_usuario;
         private decimal retiro;
+
         public int Idc_usuario
         {
             get { return idc_usuario; }

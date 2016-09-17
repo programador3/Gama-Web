@@ -5,28 +5,29 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
 
-
+/// <summary>
+/// Esta Clase fue agregada al proyecto PUESTOS (17/09/2016) por la migracion que hubo de GamaWEB a Puestos
+/// </summary>
 public class DBConnection
 {
     private SqlConnection connection;
     private string str;
-    
-    //Opciones Ventas (Agentes): 618 agenda, 1163 pedidos, 257 actividades 
-    private int[] salesOptions = { 618, 257}; //Proximamente considerar cambiar la asignacion por DB
+
+    //Opciones Ventas (Agentes): 618 agenda, 1163 pedidos, 257 actividades
+    private int[] salesOptions = { 618, 257 }; //Proximamente considerar cambiar la asignacion por DB
 
     //Opciones Revision de Herramientas :1094 Revision Herramientas,1367 Revision Basica, 1369 Revisiones Pendientes
-    private int[] RevisionOptions = {1367,1094,1369 }; //
+    private int[] RevisionOptions = { 1367, 1094, 1369 }; //
 
     //Opciones Main Menu: 1252 Inventario, 1249 Hallazgos (Movida, Menu Hallazgos), 1344 Revision Fisica de Vehiculos, 1357 Revision de Sucursales, Revision Taller
     private int[] mainMenuOptions = { 1344, 524, 1408, 623, 121, 994 };   ///se quito 1252 paso a InventarioOptions
 
     //Opciones Revision de Sucursales: 1357 Revision de Sucursal
-    private int[] RevisionOptionsSuc = {1357};
+    private int[] RevisionOptionsSuc = { 1357 };
 
-    private int[] InventarioOptions = {1252};
+    private int[] InventarioOptions = { 1252 };
 
-    private int[] opc_hallazgos = { 1249,1433,1412,1519,1566,1567,1568};
-
+    private int[] opc_hallazgos = { 1249, 1433, 1412, 1519, 1566, 1567, 1568 };
 
     public DBConnection()
     {
@@ -40,7 +41,7 @@ public class DBConnection
             cadena = recursos.cadena_conexion_respa;
         connection = new SqlConnection(cadena);
     }
-     
+
     #region "Conectar/Desconectar"
 
     public void conectar()
@@ -53,12 +54,12 @@ public class DBConnection
         connection.Close();
     }
 
-    #endregion
+    #endregion "Conectar/Desconectar"
 
     //private string strHostName = System.Net.Dns.GetHostName();
 
     //private string clientIPAddress = System.Net.Dns.GetHostAddresses(strHostName).GetValue(1).ToString();
-    
+
     #region "Funciones del Inventario"
 
     public Int32 ChecarConteo(Int32 idarticulo, Int32 idsucursal, string conteo, string usuario, string nombrepc, string userip)
@@ -71,7 +72,7 @@ public class DBConnection
         cmd.Parameters.AddWithValue("@pidc_sucursal", idsucursal);
         cmd.Parameters.AddWithValue("@pidc_usuario", usuario);
         cmd.Parameters.AddWithValue("@pconteo", Convert.ToDecimal(conteo));
-        cmd.Parameters.AddWithValue("@pdirecip", userip );
+        cmd.Parameters.AddWithValue("@pdirecip", userip);
         cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
 
         SqlDataReader reader = cmd.ExecuteReader();
@@ -90,7 +91,6 @@ public class DBConnection
         connection.Close();
 
         return vbien;
-
     }
 
     public DataSet getSucursales()
@@ -109,7 +109,6 @@ public class DBConnection
         da.Fill(ds);
         connection.Close();
         return ds;
-
     }
 
     public DataSet getcamiones_rev(Int16 idc_sucursal)
@@ -125,7 +124,7 @@ public class DBConnection
         da.Fill(ds);
         connection.Close();
         return ds;
-            }
+    }
 
     public DataSet getrevtaller_gpos()
     {
@@ -149,7 +148,7 @@ public class DBConnection
         command.CommandType = System.Data.CommandType.StoredProcedure;
 
         command.CommandTimeout = 10;
-        command.Parameters.AddWithValue("@pidc_gporevtaller", vidc_gporevtaller );
+        command.Parameters.AddWithValue("@pidc_gporevtaller", vidc_gporevtaller);
 
         SqlDataAdapter da = new SqlDataAdapter();
         da.SelectCommand = command;
@@ -158,7 +157,7 @@ public class DBConnection
         connection.Close();
         return ds;
     }
-    
+
     public DataSet getcamiones_suc(Int16 idc_sucursal)
     {
         connection.Open();
@@ -174,7 +173,6 @@ public class DBConnection
         return ds;
     }
 
-
     public DataSet getcamiones_reparto()
     {
         connection.Open();
@@ -189,7 +187,6 @@ public class DBConnection
         connection.Close();
         return ds;
     }
-
 
     public DataSet getempleados_suc(int vidc_sucursal)
     {
@@ -208,11 +205,9 @@ public class DBConnection
         return ds;
     }
 
-
     public DataSet getModulos(Int16 idalmacen)
-           
-    {
 
+    {
         connection.Open();
         SqlCommand command = new SqlCommand("sp_combo_modulos_almacen", connection);
         command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -224,16 +219,14 @@ public class DBConnection
         da.Fill(ds);
         connection.Close();
         return ds;
-
     }
 
-    #endregion
+    #endregion "Funciones del Inventario"
 
-    #region "Funcion del Login" 
+    #region "Funcion del Login"
 
     public SqlDataReader checarInicioSesion(string usuario, string password)
     {
-
         SqlCommand command = new SqlCommand("select * FROM fn_usuario_contraseña_detalles_IVA(@PUSUARIO,@PCONTRASEÑA) as pasa", connection);
         command.CommandType = System.Data.CommandType.Text;
         command.CommandTimeout = 10;
@@ -241,32 +234,26 @@ public class DBConnection
         command.Parameters.AddWithValue("@pCONTRASEÑA", password);
 
         return command.ExecuteReader();
-
     }
 
-    #endregion
+    #endregion "Funcion del Login"
 
     #region "Funciones Menu Principal"
 
- 
-
     public string direccion_ip()
     {
-    
-    ///string strHostName = System.Net.Dns.GetHostName();
-   // string clientIPAddress = System.Net.Dns.GetHostAddresses(strHostName).GetValue(1).ToString();
-    ///string ipAddress = System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName()).GetValue(0).ToString(); 
-    //   string ipAddressObsolete = System.Net.Dns.GetHostByName(System.Net.Dns.GetHostName()).AddressList.GetValue(0).ToString();
+        ///string strHostName = System.Net.Dns.GetHostName();
+        // string clientIPAddress = System.Net.Dns.GetHostAddresses(strHostName).GetValue(1).ToString();
+        ///string ipAddress = System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName()).GetValue(0).ToString();
+        //   string ipAddressObsolete = System.Net.Dns.GetHostByName(System.Net.Dns.GetHostName()).AddressList.GetValue(0).ToString();
 
-    string ipAddressObsolete = "127.0.0.1";
-        
-    return ipAddressObsolete;
+        string ipAddressObsolete = "127.0.0.1";
 
+        return ipAddressObsolete;
     }
-        
+
     public string getOptionName(int optionID)
     {
-
         connection.Open();
         SqlCommand command = new SqlCommand("select descripcion from opciones where idc_opcion=" + optionID.ToString(), connection);
         command.CommandType = System.Data.CommandType.Text;
@@ -293,7 +280,7 @@ public class DBConnection
 
     public string getnomsuc(int vidc_sucursal)
     {
-                connection.Open();
+        connection.Open();
         SqlCommand command = new SqlCommand("select nombre from sucursales where idc_sucursal=" + vidc_sucursal.ToString(), connection);
         command.CommandType = System.Data.CommandType.Text;
         SqlDataReader reader = command.ExecuteReader();
@@ -313,7 +300,7 @@ public class DBConnection
     }
 
     public string gettipo_revele(int vidc_elerev)
-            {
+    {
         connection.Open();
 
         SqlCommand command = new SqlCommand("select tipo from revsuc_elementos where idc_elerev=" + vidc_elerev.ToString(), connection);
@@ -322,7 +309,7 @@ public class DBConnection
 
         SqlDataReader reader = command.ExecuteReader();
 
-        string vtipo  = "";
+        string vtipo = "";
 
         if ((reader.HasRows))
         {
@@ -358,7 +345,7 @@ public class DBConnection
 
         return name;
     }
-    
+
     public string getnom_empleado(int vidc_empleado)
     {
         connection.Open();
@@ -411,7 +398,7 @@ public class DBConnection
 
         foreach (int c in salesOptions)
         {
-            SqlCommand command = new SqlCommand("select * from opciones_usuarios where idc_opcion=" + 
+            SqlCommand command = new SqlCommand("select * from opciones_usuarios where idc_opcion=" +
             c.ToString() + " and idc_usuario=" + userID.ToString() + " and activo=1", connection);
 
             command.CommandType = System.Data.CommandType.Text;
@@ -490,7 +477,7 @@ public class DBConnection
 
         return optionAvailable;
     }
-    
+
     public bool userCanViewRevisionSuc(int userID)
     {
         bool optionAvailable = false;
@@ -550,13 +537,10 @@ public class DBConnection
                     dt.Rows.Add(row);
                 }
             }
-               
-                    
+
             //        row["descripcion"] = reader["descripcion"];
             //        row["web_form"] = reader["web_form"];
             //row = reader[0];
-                    
-                 
 
             reader.Close();
             reader.Dispose();
@@ -567,7 +551,6 @@ public class DBConnection
 
     public int[] getRevisionSubmenuByUser(int userID)
     {
-
         int[] opciones = new int[RevisionOptions.Length];
         int i = 0;
         connection.Open();
@@ -594,16 +577,12 @@ public class DBConnection
         return opciones;
     }
 
-
-
-
-
     /// <summary>
     /// //
     /// </summary>
     /// <param name="userID"></param>
     /// <returns></returns>
-    public DataTable  menuhallazgos(int userID)
+    public DataTable menuhallazgos(int userID)
     {
         DataTable dt = new DataTable();
         DataRow row = dt.NewRow();
@@ -632,12 +611,9 @@ public class DBConnection
                 }
             }
 
-
             //        row["descripcion"] = reader["descripcion"];
             //        row["web_form"] = reader["web_form"];
             //row = reader[0];
-
-
 
             reader.Close();
             reader.Dispose();
@@ -645,8 +621,8 @@ public class DBConnection
         connection.Close();
         return dt;
     }
-//
 
+    //
 
     public DataTable sub_generales(int userID)
     {
@@ -677,12 +653,9 @@ public class DBConnection
                 }
             }
 
-
             //        row["descripcion"] = reader["descripcion"];
             //        row["web_form"] = reader["web_form"];
             //row = reader[0];
-
-
 
             reader.Close();
             reader.Dispose();
@@ -690,8 +663,6 @@ public class DBConnection
         connection.Close();
         return dt;
     }
-
-
 
     public DataTable getinventarioSubmenuByUser(int userID)
     {
@@ -722,12 +693,9 @@ public class DBConnection
                 }
             }
 
-
             //        row["descripcion"] = reader["descripcion"];
             //        row["web_form"] = reader["web_form"];
             //row = reader[0];
-
-
 
             reader.Close();
             reader.Dispose();
@@ -736,11 +704,8 @@ public class DBConnection
         return dt;
     }
 
-
-
     public int[] getRevisionSucSubmenuByUser(int userID)
     {
-
         int[] opciones = new int[RevisionOptions.Length];
         int i = 0;
         connection.Open();
@@ -800,13 +765,10 @@ public class DBConnection
                     dt.Rows.Add(row);
                 }
             }
-               
-                    
+
             //        row["descripcion"] = reader["descripcion"];
             //        row["web_form"] = reader["web_form"];
             //row = reader[0];
-                    
-                 
 
             reader.Close();
             reader.Dispose();
@@ -814,8 +776,8 @@ public class DBConnection
         connection.Close();
         return dt;
     }
-        
-    #endregion
+
+    #endregion "Funciones Menu Principal"
 
     #region "Funciones de Hallazgos"
 
@@ -833,9 +795,7 @@ public class DBConnection
         return ds;
     }
 
-
-   
-    public DataSet getSucursalesDisponibles_ip(string direcip,int id_usuario)
+    public DataSet getSucursalesDisponibles_ip(string direcip, int id_usuario)
     {
         connection.Open();
         SqlCommand command = new SqlCommand("sp_sucursales_combo_disponibles_ip", connection);
@@ -876,7 +836,7 @@ public class DBConnection
         SqlCommand command = new SqlCommand("sp_pre_embarques_pendientes_modi_usuario_web", connection);
         //SqlCommand command = new SqlCommand("sp_pre_embarques_pendientes_modi_usuario", connection);
         command.CommandType = System.Data.CommandType.StoredProcedure;
-        command.CommandTimeout= 6000;
+        command.CommandTimeout = 6000;
 
         command.Parameters.AddWithValue("@pidc_usuario", id_usuario);
         SqlDataAdapter da = new SqlDataAdapter();
@@ -896,11 +856,10 @@ public class DBConnection
         cmd.Parameters.AddWithValue("@pidc_sucursal", idsucursal);
         cmd.Parameters.AddWithValue("@phallazgo", hallazgo);
         cmd.Parameters.AddWithValue("@pidc_usuario", idusuario);
-        cmd.Parameters.AddWithValue("@pdirecip",ipusuario ) ;
+        cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
         cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
-        cmd.Parameters.AddWithValue("@pidc_vehiculo",idc_vehiculo);
-        cmd.Parameters.AddWithValue("@pidc_usuario_sol", idc_usuario_sol);         
-    
+        cmd.Parameters.AddWithValue("@pidc_vehiculo", idc_vehiculo);
+        cmd.Parameters.AddWithValue("@pidc_usuario_sol", idc_usuario_sol);
 
         SqlDataAdapter da = new SqlDataAdapter();
         da.SelectCommand = cmd;
@@ -918,7 +877,7 @@ public class DBConnection
         cmd.Parameters.AddWithValue("@pidc_revtallercheck", idc_revtallercheck);
         cmd.Parameters.AddWithValue("@pidc_elerevtaller", idc_elerevtaller);
         cmd.Parameters.AddWithValue("@pidc_usuario", idusuario);
-        cmd.Parameters.AddWithValue("@pdirecip", ipusuario  );
+        cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
         cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
 
         SqlDataAdapter da = new SqlDataAdapter();
@@ -929,19 +888,19 @@ public class DBConnection
         return ds;
     }
 
-    public DataSet alta_revision(Int16 id_requerirveh,Int16 id_empleado,Int16 id_vehiculo,Int16 idusuario,
-                                 string cadg,Int16 numg,string cadh,Int16 numh,
-                                 string cado,Int16 numo,string ipusuario, string nombrepc)
+    public DataSet alta_revision(Int16 id_requerirveh, Int16 id_empleado, Int16 id_vehiculo, Int16 idusuario,
+                                 string cadg, Int16 numg, string cadh, Int16 numh,
+                                 string cado, Int16 numo, string ipusuario, string nombrepc)
     {
         connection.Open();
         SqlCommand cmd = new SqlCommand("sp_aasignacion_veh_requerir_revision_rev_web", connection);
         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
         cmd.Parameters.AddWithValue("@pidc_requerirveh", id_requerirveh);
-        cmd.Parameters.AddWithValue("@pidc_empleado", id_empleado );
+        cmd.Parameters.AddWithValue("@pidc_empleado", id_empleado);
         cmd.Parameters.AddWithValue("@pidc_vehiculo", id_vehiculo);
         cmd.Parameters.AddWithValue("@pidc_usuario", idusuario);
-        cmd.Parameters.AddWithValue("@pdirecip", ipusuario  );
+        cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
         cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
         cmd.Parameters.AddWithValue("@pcadenag", cadg);
         cmd.Parameters.AddWithValue("@pnumg", numg);
@@ -957,31 +916,31 @@ public class DBConnection
         connection.Close();
         return ds;
     }
-    
-    public DataSet alta_revision_herra(Int16 id_empleado, Int16 id_vehiculo, Int16 idusuario,Int16 id_sucursal,
-                             string cadena, Int16 num, string cadena2, Int16 num_hall,bool falta,decimal total,decimal descontar,
-                              string ipusuario, string nombrepc,bool basica,int idc_revbasherr)
+
+    public DataSet alta_revision_herra(Int16 id_empleado, Int16 id_vehiculo, Int16 idusuario, Int16 id_sucursal,
+                             string cadena, Int16 num, string cadena2, Int16 num_hall, bool falta, decimal total, decimal descontar,
+                              string ipusuario, string nombrepc, bool basica, int idc_revbasherr)
     {
         connection.Open();
 
         SqlCommand cmd = new SqlCommand("sp_arevision_herramientas_todo_hall_web", connection);
         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-         cmd.Parameters.AddWithValue("@pidc_empleado", id_empleado);
+        cmd.Parameters.AddWithValue("@pidc_empleado", id_empleado);
         cmd.Parameters.AddWithValue("@pidc_vehiculo", id_vehiculo);
         cmd.Parameters.AddWithValue("@pidc_usuario", idusuario);
-        cmd.Parameters.AddWithValue("@pdirecip", ipusuario  );
+        cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
         cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
         cmd.Parameters.AddWithValue("@pcadena", cadena);
         cmd.Parameters.AddWithValue("@pnum", num);
         cmd.Parameters.AddWithValue("@pfalta", falta);
-        cmd.Parameters.AddWithValue("@pidc_sucursal",id_sucursal);
+        cmd.Parameters.AddWithValue("@pidc_sucursal", id_sucursal);
         cmd.Parameters.AddWithValue("@ptotal", total);
         cmd.Parameters.AddWithValue("@pdescontar", descontar);
         cmd.Parameters.AddWithValue("@pcadena2", cadena2);
         cmd.Parameters.AddWithValue("@pnum_hall", num_hall);
         cmd.Parameters.AddWithValue("@pbasica", basica);
         cmd.Parameters.AddWithValue("@pidc_revbasherr", idc_revbasherr);
-                       
+
         SqlDataAdapter da = new SqlDataAdapter();
         da.SelectCommand = cmd;
 
@@ -990,12 +949,11 @@ public class DBConnection
         connection.Close();
         return ds;
     }
-    
-        public DataSet alta_revision_suc(Int16 id_usuario,Int16 id_sucursal,
-       string ipusuario,string nombrepc,string vobservaciones,bool aplica_solucion,
-        bool bien,Int32 vidc_elerev)
-       {
 
+    public DataSet alta_revision_suc(Int16 id_usuario, Int16 id_sucursal,
+   string ipusuario, string nombrepc, string vobservaciones, bool aplica_solucion,
+    bool bien, Int32 vidc_elerev)
+    {
         connection.Open();
         SqlCommand cmd = new SqlCommand("sp_arevsuc_checkd_web", connection);
         cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -1004,10 +962,10 @@ public class DBConnection
         cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
         cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
         cmd.Parameters.AddWithValue("@ppobservaciones", vobservaciones);
-        cmd.Parameters.AddWithValue("@ppaplica_solucion", aplica_solucion );
+        cmd.Parameters.AddWithValue("@ppaplica_solucion", aplica_solucion);
         cmd.Parameters.AddWithValue("@pidc_elerev", vidc_elerev);
         cmd.Parameters.AddWithValue("@ppbien", bien);
-            
+
         SqlDataAdapter da = new SqlDataAdapter();
         da.SelectCommand = cmd;
 
@@ -1016,8 +974,7 @@ public class DBConnection
         connection.Close();
         return ds;
     }
-       
-    
+
     public DataSet alta_revision_taller_mod(Int16 id_usuario, Int16 id_vehiculo, string ipusuario, string nombrepc, string vobservaciones, bool pendiente,
             bool bien, Int32 vidc_elerevtaller, int vidc_revtallercheckd)
     {
@@ -1046,137 +1003,132 @@ public class DBConnection
         return ds;
     }
 
+    public DataSet alta_revision_taller(Int16 id_usuario, Int16 id_vehiculo, string ipusuario, string nombrepc, string vobservaciones, bool pendiente,
+    bool bien, Int32 vidc_elerevtaller, int vidc_revtallercheckd)
+    {
+        connection.Open();
+        SqlCommand cmd = new SqlCommand("sp_arevtaller_checkd_web", connection);
 
+        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@pidc_vehiculo", id_vehiculo);
+        cmd.Parameters.AddWithValue("@pidc_usuario", id_usuario);
+        cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
+        cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
+        cmd.Parameters.AddWithValue("@pobservaciones", vobservaciones);
+        cmd.Parameters.AddWithValue("@ppendiente", pendiente);
+        cmd.Parameters.AddWithValue("@pidc_elerevtaller", vidc_elerevtaller);
 
+        cmd.Parameters.AddWithValue("@pidc_revtallercheckd", vidc_revtallercheckd);
 
+        cmd.Parameters.AddWithValue("@pbien", bien);
 
-        public DataSet alta_revision_taller(Int16 id_usuario, Int16 id_vehiculo,string ipusuario, string nombrepc, string vobservaciones, bool pendiente,
-        bool bien, Int32 vidc_elerevtaller, int vidc_revtallercheckd)
-        {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("sp_arevtaller_checkd_web", connection);
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
 
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@pidc_vehiculo", id_vehiculo);
-            cmd.Parameters.AddWithValue("@pidc_usuario", id_usuario);
-            cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
-            cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
-            cmd.Parameters.AddWithValue("@pobservaciones", vobservaciones);
-            cmd.Parameters.AddWithValue("@ppendiente", pendiente);
-            cmd.Parameters.AddWithValue("@pidc_elerevtaller", vidc_elerevtaller);
-                      
-            cmd.Parameters.AddWithValue("@pidc_revtallercheckd", vidc_revtallercheckd);
+        System.Data.DataSet ds = new System.Data.DataSet();
+        da.Fill(ds);
+        connection.Close();
+        return ds;
+    }
 
-            cmd.Parameters.AddWithValue("@pbien", bien);
+    public DataSet alta_revision_suc_unidades(Int16 id_usuario, Int16 id_sucursal,
+    string ipusuario, string nombrepc, string vobservaciones, bool aplica_solucion,
+    bool bien, Int32 vidc_elerev, Int16 vidc_vehiculo)
+    {
+        connection.Open();
+        SqlCommand cmd = new SqlCommand("sp_arevsuc_checkd_veh2_web", connection);
+        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@pidc_sucursal", id_sucursal);
+        cmd.Parameters.AddWithValue("@pidc_usuario", id_usuario);
+        cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
+        cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
+        cmd.Parameters.AddWithValue("@pobservaciones", vobservaciones);
+        cmd.Parameters.AddWithValue("@paplica_solucion", aplica_solucion);
+        cmd.Parameters.AddWithValue("@pidc_elerev", vidc_elerev);
+        cmd.Parameters.AddWithValue("@pbien", bien);
+        cmd.Parameters.AddWithValue("@pidc_vehiculo", vidc_vehiculo);
 
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
 
-            System.Data.DataSet ds = new System.Data.DataSet();
-            da.Fill(ds);
-            connection.Close();
-            return ds;
-        }
+        System.Data.DataSet ds = new System.Data.DataSet();
+        da.Fill(ds);
+        connection.Close();
+        return ds;
+    }
 
-        public DataSet alta_revision_suc_unidades(Int16 id_usuario, Int16 id_sucursal,
-        string ipusuario, string nombrepc, string vobservaciones, bool aplica_solucion,
-        bool bien, Int32 vidc_elerev,Int16 vidc_vehiculo)
-        {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("sp_arevsuc_checkd_veh2_web", connection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@pidc_sucursal", id_sucursal);
-            cmd.Parameters.AddWithValue("@pidc_usuario", id_usuario);
-            cmd.Parameters.AddWithValue("@pdirecip",ipusuario );
-            cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
-            cmd.Parameters.AddWithValue("@pobservaciones", vobservaciones);
-            cmd.Parameters.AddWithValue("@paplica_solucion", aplica_solucion);
-            cmd.Parameters.AddWithValue("@pidc_elerev", vidc_elerev);
-            cmd.Parameters.AddWithValue("@pbien", bien);
-            cmd.Parameters.AddWithValue("@pidc_vehiculo", vidc_vehiculo);
-            
-            SqlDataAdapter da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
+    public DataSet alta_revision_suc_unidades_herramientas(Int16 id_usuario, Int16 id_sucursal,
+    string ipusuario, string nombrepc, string vobservaciones, bool aplica_solucion,
+    bool bien, Int32 vidc_elerev, Int16 vidc_vehiculo, int vidc_empleado, int vnum, bool vfalta,
+    string vcadena, Int16 vidc_sucursalv, float vtotal, float descontar)
+    {
+        connection.Open();
 
-            System.Data.DataSet ds = new System.Data.DataSet();
-            da.Fill(ds);
-            connection.Close();
-            return ds;
-        }
+        SqlCommand cmd = new SqlCommand("sp_arevsuc_checkd_veh2_vale_web", connection);
 
-            public DataSet alta_revision_suc_unidades_herramientas(Int16 id_usuario, Int16 id_sucursal,
-            string ipusuario, string nombrepc, string vobservaciones, bool aplica_solucion,
-            bool bien, Int32 vidc_elerev, Int16 vidc_vehiculo,int vidc_empleado,int vnum,bool vfalta,
-            string vcadena,Int16 vidc_sucursalv,float vtotal,float descontar)
-            {
-                connection.Open();
+        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@pidc_sucursal", id_sucursal);
+        cmd.Parameters.AddWithValue("@pidc_usuario", id_usuario);
+        cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
+        cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
+        cmd.Parameters.AddWithValue("@pobservaciones", vobservaciones);
+        cmd.Parameters.AddWithValue("@paplica_solucion", aplica_solucion);
+        cmd.Parameters.AddWithValue("@pidc_elerev", vidc_elerev);
+        cmd.Parameters.AddWithValue("@pbien", bien);
+        cmd.Parameters.AddWithValue("@pidc_vehiculo", vidc_vehiculo);
+        cmd.Parameters.AddWithValue("@pidc_empleado", vidc_empleado);
+        cmd.Parameters.AddWithValue("@pnum", vnum);
+        cmd.Parameters.AddWithValue("@pfalta", vfalta);
+        cmd.Parameters.AddWithValue("@pcadena", vcadena);
+        cmd.Parameters.AddWithValue("@PIDC_SUCURSALv", vidc_sucursalv);
+        cmd.Parameters.AddWithValue("@ptotal", vtotal);
+        cmd.Parameters.AddWithValue("@Pdescontar", descontar);
 
-                SqlCommand cmd = new SqlCommand("sp_arevsuc_checkd_veh2_vale_web", connection);
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
 
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@pidc_sucursal", id_sucursal);
-                cmd.Parameters.AddWithValue("@pidc_usuario", id_usuario);
-                cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
-                cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
-                cmd.Parameters.AddWithValue("@pobservaciones", vobservaciones);
-                cmd.Parameters.AddWithValue("@paplica_solucion", aplica_solucion);
-                cmd.Parameters.AddWithValue("@pidc_elerev", vidc_elerev);
-                cmd.Parameters.AddWithValue("@pbien", bien);
-                cmd.Parameters.AddWithValue("@pidc_vehiculo", vidc_vehiculo);
-                cmd.Parameters.AddWithValue("@pidc_empleado", vidc_empleado);
-                cmd.Parameters.AddWithValue("@pnum", vnum);
-                cmd.Parameters.AddWithValue("@pfalta", vfalta);
-                cmd.Parameters.AddWithValue("@pcadena", vcadena);
-                cmd.Parameters.AddWithValue("@PIDC_SUCURSALv", vidc_sucursalv);
-                cmd.Parameters.AddWithValue("@ptotal", vtotal);
-                cmd.Parameters.AddWithValue("@Pdescontar", descontar);
-                                                
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.SelectCommand = cmd;
+        System.Data.DataSet ds = new System.Data.DataSet();
+        da.Fill(ds);
+        connection.Close();
+        return ds;
+    }
 
-                System.Data.DataSet ds = new System.Data.DataSet();
-                da.Fill(ds);
-                connection.Close();
-                return ds;
-            }
+    public DataSet alta_revision_suc_patio(Int16 id_usuario, Int16 id_sucursal,
+    string ipusuario, string nombrepc, string vobservaciones, bool aplica_solucion,
+    bool bien, Int32 vidc_elerev, Int16 vidc_modulo, int vidc_empleado)
+    {
+        connection.Open();
+        SqlCommand cmd = new SqlCommand("sp_arevsuc_checkd_mod2_web", connection);
+        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@pidc_sucursal", id_sucursal);
+        cmd.Parameters.AddWithValue("@pidc_usuario", id_usuario);
+        cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
+        cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
+        cmd.Parameters.AddWithValue("@pobservaciones", vobservaciones);
+        cmd.Parameters.AddWithValue("@paplica_solucion", aplica_solucion);
+        cmd.Parameters.AddWithValue("@pidc_elerev", vidc_elerev);
+        cmd.Parameters.AddWithValue("@pbien", bien);
+        cmd.Parameters.AddWithValue("@pidc_modulo", vidc_modulo);
+        cmd.Parameters.AddWithValue("@pidc_empleado", vidc_empleado);
 
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
 
-            public DataSet alta_revision_suc_patio(Int16 id_usuario, Int16 id_sucursal,
-            string ipusuario, string nombrepc, string vobservaciones, bool aplica_solucion,
-            bool bien, Int32 vidc_elerev, Int16 vidc_modulo,int vidc_empleado)
-            {
-                connection.Open();
-                SqlCommand cmd = new SqlCommand("sp_arevsuc_checkd_mod2_web", connection);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@pidc_sucursal", id_sucursal);
-                cmd.Parameters.AddWithValue("@pidc_usuario", id_usuario);
-                cmd.Parameters.AddWithValue("@pdirecip", ipusuario );
-                cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
-                cmd.Parameters.AddWithValue("@pobservaciones", vobservaciones);
-                cmd.Parameters.AddWithValue("@paplica_solucion", aplica_solucion);
-                cmd.Parameters.AddWithValue("@pidc_elerev", vidc_elerev);
-                cmd.Parameters.AddWithValue("@pbien", bien);
-                cmd.Parameters.AddWithValue("@pidc_modulo", vidc_modulo);
-                cmd.Parameters.AddWithValue("@pidc_empleado", vidc_empleado);
-                
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.SelectCommand = cmd;
+        System.Data.DataSet ds = new System.Data.DataSet();
+        da.Fill(ds);
+        connection.Close();
+        return ds;
+    }
 
-                System.Data.DataSet ds = new System.Data.DataSet();
-                da.Fill(ds);
-                connection.Close();
-                return ds;
-            }
-
-    public DataSet alta_pedido(Int16 ventrar,int idusuario,int id_cliente,decimal monto,int id_sucursal, 
-        bool vdesiva,Int16 vidc_iva,Int16 vidc_almacen,string vdsinexi,string VDCOSBAJO,string VDETALLES,
-	    bool vbitlla,int SIPASA2,decimal VFLETE,bool vbitcro,string VRECOGE,Int16 vidc_occli,
-        string vdarti,string vdarti2,Int16 vtota,string vocc,Int32 vfoliocp,
-	    string vfechaent,bool vpro,Int16 vidpro,string vobs,int sipasa,Int16 vidc_sucursal_recoge,
-	    int vidcc,string vcalle,string vnumero,int vcp,Int16 ventdir,bool VBITOCC,
-	    Int32 vplazo,Int16 vtipopago,string votro,string vcanminima,string vcontacto,string vtelefono,
-	    string vmail,Int16 VTIPOP,int vidc_banco,decimal vmonto_pago,string vobservaciones_pago,
-	    bool vconfirmar_pago,string vfecha_deposito,string ipusuario, string nombrepc,string vtipog,string vsp)
+    public DataSet alta_pedido(Int16 ventrar, int idusuario, int id_cliente, decimal monto, int id_sucursal,
+        bool vdesiva, Int16 vidc_iva, Int16 vidc_almacen, string vdsinexi, string VDCOSBAJO, string VDETALLES,
+        bool vbitlla, int SIPASA2, decimal VFLETE, bool vbitcro, string VRECOGE, Int16 vidc_occli,
+        string vdarti, string vdarti2, Int16 vtota, string vocc, Int32 vfoliocp,
+        string vfechaent, bool vpro, Int16 vidpro, string vobs, int sipasa, Int16 vidc_sucursal_recoge,
+        int vidcc, string vcalle, string vnumero, int vcp, Int16 ventdir, bool VBITOCC,
+        Int32 vplazo, Int16 vtipopago, string votro, string vcanminima, string vcontacto, string vtelefono,
+        string vmail, Int16 VTIPOP, int vidc_banco, decimal vmonto_pago, string vobservaciones_pago,
+        bool vconfirmar_pago, string vfecha_deposito, string ipusuario, string nombrepc, string vtipog, string vsp)
     {
         connection.Open();
 
@@ -1190,55 +1142,55 @@ public class DBConnection
         cmd.Parameters.AddWithValue("@pidc_usuario", idusuario);
         cmd.Parameters.AddWithValue("@pdirecip", ipusuario);
         cmd.Parameters.AddWithValue("@pnombrepc", nombrepc);
-        cmd.Parameters.AddWithValue("@pdesiva", vdesiva );
+        cmd.Parameters.AddWithValue("@pdesiva", vdesiva);
         cmd.Parameters.AddWithValue("@pidc_iva", vidc_iva);
         cmd.Parameters.AddWithValue("@pidc_almacen", vidc_almacen);
         cmd.Parameters.AddWithValue("@pdsinexi", vdsinexi);
-        cmd.Parameters.AddWithValue("@pdcosbajo", VDCOSBAJO );
+        cmd.Parameters.AddWithValue("@pdcosbajo", VDCOSBAJO);
         cmd.Parameters.AddWithValue("@PMENSAJE", VDETALLES);
-        cmd.Parameters.AddWithValue("@pbitlla",vbitlla);
-        cmd.Parameters.AddWithValue("@psipasa2", SIPASA2 );
-        cmd.Parameters.AddWithValue("@pflete", VFLETE );
+        cmd.Parameters.AddWithValue("@pbitlla", vbitlla);
+        cmd.Parameters.AddWithValue("@psipasa2", SIPASA2);
+        cmd.Parameters.AddWithValue("@pflete", VFLETE);
         cmd.Parameters.AddWithValue("@ptipom ", "A");
-        cmd.Parameters.AddWithValue("@pcambios", "" );
-        cmd.Parameters.AddWithValue("@pbitcro", vbitcro );
+        cmd.Parameters.AddWithValue("@pcambios", "");
+        cmd.Parameters.AddWithValue("@pbitcro", vbitcro);
         cmd.Parameters.AddWithValue("@precoge", VRECOGE);
         cmd.Parameters.AddWithValue("@pidc_occli ", vidc_occli);
         cmd.Parameters.AddWithValue("@ptotart ", vtota);
-        cmd.Parameters.AddWithValue("@pfolio", 0 );
-        cmd.Parameters.AddWithValue("@pocc", vocc );
-        cmd.Parameters.AddWithValue("@pidc_folioprecp", vfoliocp );
+        cmd.Parameters.AddWithValue("@pfolio", 0);
+        cmd.Parameters.AddWithValue("@pocc", vocc);
+        cmd.Parameters.AddWithValue("@pidc_folioprecp", vfoliocp);
         cmd.Parameters.AddWithValue("@pfecha_ent", vfechaent);
         cmd.Parameters.AddWithValue("@pproye", vpro);
         cmd.Parameters.AddWithValue("@pidpro ", vidpro);
-        cmd.Parameters.AddWithValue("@pobs", vobs );
-        cmd.Parameters.AddWithValue("@psipasa ", sipasa );
+        cmd.Parameters.AddWithValue("@pobs", vobs);
+        cmd.Parameters.AddWithValue("@psipasa ", sipasa);
         cmd.Parameters.AddWithValue("@pidc_sucursal_recoge ", vidc_sucursal_recoge);
         cmd.Parameters.AddWithValue("@pidc_colonia ", vidcc);
-        cmd.Parameters.AddWithValue("@pcalle ", vcalle );
-        cmd.Parameters.AddWithValue("@pnumero ", vnumero );
-        cmd.Parameters.AddWithValue("@pcod_postal ", vcp );
-        cmd.Parameters.AddWithValue("@pentdir ", ventdir );
-        cmd.Parameters.AddWithValue("@pbitocc ", VBITOCC );
+        cmd.Parameters.AddWithValue("@pcalle ", vcalle);
+        cmd.Parameters.AddWithValue("@pnumero ", vnumero);
+        cmd.Parameters.AddWithValue("@pcod_postal ", vcp);
+        cmd.Parameters.AddWithValue("@pentdir ", ventdir);
+        cmd.Parameters.AddWithValue("@pbitocc ", VBITOCC);
         cmd.Parameters.AddWithValue("@pusuariopc ", "USUARIO");
-             
+
         if (!ventrar.Equals(3))
         {
-             cmd.Parameters.AddWithValue("@ptipo ",vtipog );
-        }
- 
-         if (ventrar.Equals(4))
-        {
-             cmd.Parameters.AddWithValue("@pplazo ", vplazo );
-             cmd.Parameters.AddWithValue("@ptipopago ", vtipopago);
-             cmd.Parameters.AddWithValue("@potro ", votro );
-             cmd.Parameters.AddWithValue("@pcanminima ", vcanminima);
-             cmd.Parameters.AddWithValue("@pcontacto ", vcontacto);
-             cmd.Parameters.AddWithValue("@ptelefono ", vtelefono);
-             cmd.Parameters.AddWithValue("@pmail ", vmail);
+            cmd.Parameters.AddWithValue("@ptipo ", vtipog);
         }
 
-        if (vconfirmar_pago==true )
+        if (ventrar.Equals(4))
+        {
+            cmd.Parameters.AddWithValue("@pplazo ", vplazo);
+            cmd.Parameters.AddWithValue("@ptipopago ", vtipopago);
+            cmd.Parameters.AddWithValue("@potro ", votro);
+            cmd.Parameters.AddWithValue("@pcanminima ", vcanminima);
+            cmd.Parameters.AddWithValue("@pcontacto ", vcontacto);
+            cmd.Parameters.AddWithValue("@ptelefono ", vtelefono);
+            cmd.Parameters.AddWithValue("@pmail ", vmail);
+        }
+
+        if (vconfirmar_pago == true)
         {
             cmd.Parameters.AddWithValue("@vtipop ", VTIPOP);
             cmd.Parameters.AddWithValue("@pidc_banco ", vidc_banco);
@@ -1247,16 +1199,16 @@ public class DBConnection
             cmd.Parameters.AddWithValue("@pconfirmar_pago ", vconfirmar_pago);
             cmd.Parameters.AddWithValue("@pfecha_deposito ", vfecha_deposito);
         }
-        
+
         if ((ventrar.Equals(2)) || (ventrar.Equals(3)))
         {
-            cmd.Parameters.AddWithValue("@pdarti", vdarti2 );
+            cmd.Parameters.AddWithValue("@pdarti", vdarti2);
         }
         else
         {
             cmd.Parameters.AddWithValue("@pdarti", vdarti);
         }
-        
+
         SqlDataAdapter da = new SqlDataAdapter();
         da.SelectCommand = cmd;
 
@@ -1265,6 +1217,7 @@ public class DBConnection
         connection.Close();
         return ds;
     }
+
     public string getFilePathByCode(string pcod_archivo)
     {
         connection.Open();
@@ -1326,13 +1279,12 @@ public class DBConnection
     //    return path;
     //}
 
-    #endregion
+    #endregion "Funciones de Hallazgos"
 
     #region "Funciones Cliente x Agente"
 
     public SqlDataReader getClientDetails(string clientID)
     {
-
         SqlCommand command = new SqlCommand("sp_ver_fichacliente", connection);
         command.CommandType = CommandType.StoredProcedure;
         command.CommandTimeout = 10;
@@ -1351,7 +1303,7 @@ public class DBConnection
 
         command.Parameters.Add(new SqlParameter("@pidc_cliente", SqlDbType.Int)).Value = clientID;
         SqlDataReader rdr = command.ExecuteReader();
-        bool locked=false;
+        bool locked = false;
         if (rdr.HasRows)
         {
             while (rdr.Read())
@@ -1373,12 +1325,11 @@ public class DBConnection
 
         command.Parameters.Add(new SqlParameter("@pidc_cliente", SqlDbType.Int)).Value = clientID;
         SqlDataReader rdr = command.ExecuteReader();
-        bool confirmation=false;
+        bool confirmation = false;
         if (rdr.HasRows)
         {
             while (rdr.Read())
                 confirmation = Convert.ToBoolean(rdr["confirmacion"]);
-
         }
         rdr.Close();
         rdr.Dispose();
@@ -1386,8 +1337,7 @@ public class DBConnection
         return confirmation;
     }
 
-
-      public int calibrar_llantas(string vidc_vehiculo)
+    public int calibrar_llantas(string vidc_vehiculo)
     {
         connection.Open();
 
@@ -1396,7 +1346,7 @@ public class DBConnection
         SqlCommand commandm = new SqlCommand(query, connection);
         commandm.CommandType = CommandType.Text;
 
-        int  calibrar = 0  ;
+        int calibrar = 0;
 
         SqlDataReader rdr3 = commandm.ExecuteReader();
         if (rdr3.HasRows)
@@ -1409,9 +1359,8 @@ public class DBConnection
 
         return calibrar;
     }
-       
 
-     public decimal checkAuthorizedMoney(int clientID)
+    public decimal checkAuthorizedMoney(int clientID)
     {
         connection.Open();
 
@@ -1425,7 +1374,7 @@ public class DBConnection
         if (rdr.HasRows)
         {
             while (rdr.Read())
-                if(rdr["AUTORIZADO"] != DBNull.Value)
+                if (rdr["AUTORIZADO"] != DBNull.Value)
                     monto = Convert.ToDecimal(rdr["AUTORIZADO"]);
         }
         rdr.Close();
@@ -1434,11 +1383,9 @@ public class DBConnection
         return monto;
     }
 
-
-
     public SqlDataReader getClientSaldos(string clientID)
     {
-        SqlCommand command = new SqlCommand("select * from dbo.fn_saldos_ficha_cliente(" + clientID + " )",connection);
+        SqlCommand command = new SqlCommand("select * from dbo.fn_saldos_ficha_cliente(" + clientID + " )", connection);
         command.CommandType = CommandType.Text;
         command.CommandTimeout = 10;
         return command.ExecuteReader();
@@ -1501,7 +1448,7 @@ public class DBConnection
         return ds;
     }
 
-    #endregion
+    #endregion "Funciones Cliente x Agente"
 
     #region "Funciones Pedidos"
 
@@ -1537,7 +1484,6 @@ public class DBConnection
         command.Parameters.Add(new SqlParameter("@pidc_cliente", SqlDbType.Int)).Value = clientID;
         command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = branchID;
 
-
         decimal costo = 0;
         SqlDataReader rdr = command.ExecuteReader();
         if (rdr.HasRows)
@@ -1550,7 +1496,6 @@ public class DBConnection
         return costo;
     }
 
-
     public int CountableFieldCount()
     {
         connection.Open();
@@ -1561,15 +1506,14 @@ public class DBConnection
 
         int fieldCount = 0;
         SqlDataReader rdr = command.ExecuteReader();
-        if(rdr.HasRows)
-            while(rdr.Read())
+        if (rdr.HasRows)
+            while (rdr.Read())
                 fieldCount = Convert.ToInt32(rdr["TotalPorcentajes"]);
 
         rdr.Close();
         rdr.Dispose();
         connection.Close();
         return fieldCount;
-
     }
 
     public SqlDataReader searchForItemPrice(string itemID, string clientID, string branchID)
@@ -1582,8 +1526,6 @@ public class DBConnection
         command.Parameters.AddWithValue("@pidc_sucursal", branchID);
 
         return command.ExecuteReader();
-
-
     }
 
     public SqlDataReader searchForItem(string searchValue, int sucursalID, int userID)
@@ -1625,7 +1567,7 @@ public class DBConnection
         //value not found
         return null;
     }
-    
+
     public SqlDataReader searchforvehiculo(string searchValue)
     {
         SqlCommand command = new SqlCommand("selecciona_vehiculo", connection);
@@ -1634,9 +1576,9 @@ public class DBConnection
         command.CommandTimeout = 50;
 
         command.Parameters.Add(new SqlParameter("@pvalor", SqlDbType.VarChar)).Value = searchValue;
-        
+
         SqlDataReader rdr = null;
-        
+
         rdr = command.ExecuteReader();
         if (rdr.HasRows)
             return rdr;
@@ -1646,7 +1588,7 @@ public class DBConnection
             rdr.Dispose();
             ;
         }
-        
+
         //value not found
         return null;
     }
@@ -1695,7 +1637,7 @@ public class DBConnection
         command.CommandTimeout = 50;
 
         command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.VarChar)).Value = vidc_vehiculo;
-        
+
         SqlDataReader rdr = null;
 
         rdr = command.ExecuteReader();
@@ -1739,7 +1681,7 @@ public class DBConnection
         return existe;
     }
 
-    public bool saveOrder(int clientID, int sucursalID, decimal monto, bool desIVA, int idIVA, 
+    public bool saveOrder(int clientID, int sucursalID, decimal monto, bool desIVA, int idIVA,
         int userID, int almacenID, string VC, int totalItems, string vocc, ref int vfolio)
     {
         connection.Open();
@@ -1781,7 +1723,7 @@ public class DBConnection
     public void saveOrderImage(string filePath, byte[] image, int fileLength, int folio)
     {
         connection.Open();
-        SqlCommand command = new SqlCommand("INSERT INTO Imagenes (nombre, length, imagen,id) " + 
+        SqlCommand command = new SqlCommand("INSERT INTO Imagenes (nombre, length, imagen,id) " +
             "VALUES (@name, @length, @imagen,@vfolio)", connection);
         command.CommandTimeout = 10;
         command.CommandType = CommandType.Text;
@@ -1794,7 +1736,6 @@ public class DBConnection
         command.ExecuteNonQuery();
 
         connection.Close();
-
     }
 
     public DataSet getArticleDetails(int articleID, int storageID)
@@ -1826,17 +1767,14 @@ public class DBConnection
 
         command.Parameters.Add(new SqlParameter("@pidc_articulo", SqlDbType.Int)).Value = itemID;
         command.Parameters.Add(new SqlParameter("@pcantidad", SqlDbType.Int)).Value = count;
-        
+
         bool bien = false;
         SqlDataReader rdr = command.ExecuteReader();
-        if(rdr.HasRows)
+        if (rdr.HasRows)
             while (rdr.Read())
             {
-                               
-
-                if(!(bien = Convert.ToBoolean(rdr["pconv"])))
+                if (!(bien = Convert.ToBoolean(rdr["pconv"])))
                     pckCount = Convert.ToDecimal(rdr["RCONVERSION"]);
-                
             }
         rdr.Close();
         rdr.Dispose();
@@ -1856,7 +1794,7 @@ public class DBConnection
         command.Parameters.Add(new SqlParameter("@PEXIF", SqlDbType.Int)).Value = 0;
 
         SqlDataReader rdr = command.ExecuteReader();
-        if(rdr.HasRows)
+        if (rdr.HasRows)
             while (rdr.Read())
             {
                 stock = Convert.ToDecimal(rdr["EXISTENCIA"]);
@@ -1880,7 +1818,7 @@ public class DBConnection
 
         bool note = false;
         SqlDataReader rdr = command.ExecuteReader();
-        if(rdr.HasRows)
+        if (rdr.HasRows)
             while (rdr.Read())
             {
                 precio_real = Convert.ToDecimal(rdr["precio_real"]);
@@ -1894,7 +1832,7 @@ public class DBConnection
         return note;
     }
 
-    public bool checkrevelemento_unidad(int vidc_elerev, int vidc_usuario, int vidc_sucursal,int vidc_vehiculo)
+    public bool checkrevelemento_unidad(int vidc_elerev, int vidc_usuario, int vidc_sucursal, int vidc_vehiculo)
     {
         connection.Open();
 
@@ -1904,14 +1842,14 @@ public class DBConnection
         command.CommandTimeout = 10;
 
         command.Parameters.Add(new SqlParameter("@pidc_elerev", SqlDbType.Int)).Value = vidc_elerev;
-        command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario ;
-        command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = vidc_sucursal ;
+        command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
+        command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = vidc_sucursal;
         command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
 
         bool revisado = false;
 
         SqlDataReader rdr = command.ExecuteReader();
-        if(rdr.HasRows)
+        if (rdr.HasRows)
             while (rdr.Read())
             {
                 revisado = Convert.ToBoolean(rdr["revisado"]);
@@ -1920,10 +1858,9 @@ public class DBConnection
         rdr.Close();
         rdr.Dispose();
         connection.Close();
-                return revisado;
+        return revisado;
     }
-    
-    
+
     public int revelemento_unidad_idc(int vidc_elerev, int vidc_usuario, int vidc_sucursal, int vidc_vehiculo)
     {
         connection.Open();
@@ -1952,7 +1889,6 @@ public class DBConnection
         return idc_revsuccheckdv;
     }
 
-    
     public SqlDataReader getClientHistory(int clientID)
     {
         SqlCommand command = new SqlCommand("sp_selecciona_consignado_cliente", connection);
@@ -1975,7 +1911,7 @@ public class DBConnection
 
         SqlDataReader rdr = command.ExecuteReader();
         string[] dasParams = new string[8];
-        if(rdr.HasRows)
+        if (rdr.HasRows)
             while (rdr.Read())
             {
                 dasParams[0] = rdr["idc_colonia"].ToString().Trim();
@@ -1989,8 +1925,7 @@ public class DBConnection
         return dasParams;
     }
 
-    
-    public string[] getelemento_rev(int vidc_elerev,int vidc_usuario,int vidc_sucursal)
+    public string[] getelemento_rev(int vidc_elerev, int vidc_usuario, int vidc_sucursal)
     {
         connection.Open();
 
@@ -2009,13 +1944,13 @@ public class DBConnection
         if (rdr7.HasRows)
             while (rdr7.Read())
             {
-                dasParams7[0] = rdr7["elemento"].ToString() ;
-                dasParams7[1] = rdr7["grupo"].ToString() ;
+                dasParams7[0] = rdr7["elemento"].ToString();
+                dasParams7[1] = rdr7["grupo"].ToString();
                 dasParams7[2] = rdr7["revisado"].ToString();
                 dasParams7[3] = rdr7["bien"].ToString();
                 dasParams7[4] = rdr7["observaciones"].ToString();
                 dasParams7[5] = rdr7["aplica_solucion"].ToString();
-                dasParams7[6] = rdr7["idc_revsuccheckd"].ToString();                               
+                dasParams7[6] = rdr7["idc_revsuccheckd"].ToString();
             }
 
         rdr7.Close();
@@ -2025,12 +1960,12 @@ public class DBConnection
         return dasParams7;
     }
 
-    public string[] getelemento_rev_unidades(int vidc_elerev, int vidc_usuario, int vidc_sucursal,int vidc_vehiculo)
+    public string[] getelemento_rev_unidades(int vidc_elerev, int vidc_usuario, int vidc_sucursal, int vidc_vehiculo)
     {
         connection.Open();
 
         SqlCommand command = new SqlCommand("sp_elemento_revsuc_unidad", connection);
-                command.CommandType = CommandType.StoredProcedure;
+        command.CommandType = CommandType.StoredProcedure;
 
         command.CommandTimeout = 15;
 
@@ -2048,7 +1983,7 @@ public class DBConnection
                 dasParams7[1] = rdr7["grupo"].ToString();
                 dasParams7[2] = rdr7["revisado"].ToString();
                 dasParams7[3] = rdr7["bien"].ToString();
-                 dasParams7[4] = rdr7["observaciones"].ToString();
+                dasParams7[4] = rdr7["observaciones"].ToString();
                 dasParams7[5] = rdr7["aplica_solucion"].ToString();
                 dasParams7[6] = rdr7["idc_revsuccheckdv"].ToString();
                 dasParams7[7] = rdr7["tipo"].ToString();
@@ -2061,9 +1996,8 @@ public class DBConnection
         return dasParams7;
     }
 
-    public string[] getelemento_rev_patio(int vidc_elerev, int vidc_usuario, int vidc_sucursal, int vidc_modulo,int vidc_empleado)
+    public string[] getelemento_rev_patio(int vidc_elerev, int vidc_usuario, int vidc_sucursal, int vidc_modulo, int vidc_empleado)
     {
-
         connection.Open();
 
         SqlCommand command = new SqlCommand("sp_elemento_revsuc_patio", connection);
@@ -2096,7 +2030,7 @@ public class DBConnection
         return dasParams7;
     }
 
-    public string[] getelemento_rev_taller (int vidc_elerevtaller, int vidc_usuario, int vidc_vehiculo)
+    public string[] getelemento_rev_taller(int vidc_elerevtaller, int vidc_usuario, int vidc_vehiculo)
     {
         connection.Open();
 
@@ -2106,7 +2040,7 @@ public class DBConnection
         command.Parameters.Add(new SqlParameter("@pidc_elerevtaller", SqlDbType.Int)).Value = vidc_elerevtaller;
         command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
         command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
-               
+
         SqlDataReader rdr7 = command.ExecuteReader();
         string[] dasParams7 = new string[8];
         if (rdr7.HasRows)
@@ -2135,7 +2069,7 @@ public class DBConnection
         command.CommandType = CommandType.StoredProcedure;
         command.CommandTimeout = 15;
         command.Parameters.Add(new SqlParameter("@pidc_revtallercheckd", SqlDbType.Int)).Value = vidc_revtallercheckd;
-        
+
         SqlDataReader rdr7 = command.ExecuteReader();
         string[] dasParams7 = new string[8];
         if (rdr7.HasRows)
@@ -2156,10 +2090,8 @@ public class DBConnection
         return dasParams7;
     }
 
-
     public string getnextfolio_pedidos()
     {
-
         connection.Open();
 
         SqlCommand command = new SqlCommand("sp_folio_preped_pedidos", connection);
@@ -2179,57 +2111,52 @@ public class DBConnection
         rdr.Dispose();
         connection.Close();
         return folio;
-               
     }
-
-
 
     public string tiempo_dias_corto(int xdife)
     {
         //string tiempo_texto="";
-        ////double xdifed=xdife; 
-        
-        int tdias= Convert.ToInt32(xdife/86400);
+        ////double xdifed=xdife;
+
+        int tdias = Convert.ToInt32(xdife / 86400);
         ///double r1d=Math.IEEERemainder(xdifed,86400);
         int r1 = xdife % 86400; ////Convert.ToInt32(r1d);
-                                                        
-        int thora = Convert.ToInt32(r1/3600);
+
+        int thora = Convert.ToInt32(r1 / 3600);
         ///double r2d = Math.IEEERemainder(xdifed,3600);
-        int r2 = Convert.ToInt32(xdife%3600); 
+        int r2 = Convert.ToInt32(xdife % 3600);
         int tmin = Convert.ToInt32(r2 / 60);
-        
+
         ////double r3d = Math.IEEERemainder(r2d, 60);
-        int r3 = Convert.ToInt32(r2%60);
-        
+        int r3 = Convert.ToInt32(r2 % 60);
+
         int tseg = r3;
 
-        string xtiempo ="";
+        string xtiempo = "";
 
-        if (tdias>0)
+        if (tdias > 0)
         {
-              xtiempo=tdias.ToString().Trim()+"d ";
-        } 
-        
-        if (thora>0)
+            xtiempo = tdias.ToString().Trim() + "d ";
+        }
+
+        if (thora > 0)
         {
             xtiempo = xtiempo + thora.ToString().Trim() + "h ";
-        } 
-        
-        if (tmin>0)
-        {
-              xtiempo=xtiempo+tmin.ToString().Trim()+"m ";
-        } 
+        }
 
-        if (tseg>0)
+        if (tmin > 0)
+        {
+            xtiempo = xtiempo + tmin.ToString().Trim() + "m ";
+        }
+
+        if (tseg > 0)
         {
             xtiempo = xtiempo + tseg.ToString().Trim() + "s ";
-        } 
+        }
 
         return xtiempo;
-        
     }
-    
-    
+
     public decimal getdisponible(int clientID)
     {
         connection.Open();
@@ -2247,7 +2174,6 @@ public class DBConnection
             while (rdr1.Read())
             {
                 disponible = Convert.ToDecimal(rdr1["disponible"]);
-
             }
 
         rdr1.Close();
@@ -2255,9 +2181,9 @@ public class DBConnection
         connection.Close();
 
         return disponible;
-        }
+    }
 
-     public string[] getruta(string vbus)
+    public string[] getruta(string vbus)
     {
         connection.Open();
         SqlCommand command = new SqlCommand("sp_uni_archi", connection);
@@ -2272,7 +2198,6 @@ public class DBConnection
             while (rdr.Read())
             {
                 dasParams2[0] = rdr["unidad"].ToString().Trim();
-             
             }
 
         rdr.Close();
@@ -2281,103 +2206,99 @@ public class DBConnection
 
         return dasParams2;
     }
-    
-            public string[] getvehrev(int vidc_requerirveh)
-        {
-            connection.Open();
-            SqlCommand command = new SqlCommand("sp_datos_idc_requerirveh", connection);
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandTimeout = 15;
 
-            command.Parameters.Add(new SqlParameter("@pidc_requerirveh", SqlDbType.Int)).Value = vidc_requerirveh;
+    public string[] getvehrev(int vidc_requerirveh)
+    {
+        connection.Open();
+        SqlCommand command = new SqlCommand("sp_datos_idc_requerirveh", connection);
+        command.CommandType = CommandType.StoredProcedure;
+        command.CommandTimeout = 15;
 
-            SqlDataReader rdr = command.ExecuteReader();
-            string[] dasParams3 = new string[3];
-            if (rdr.HasRows)
-                while (rdr.Read())
-                {
-                    dasParams3[0] = rdr["idc_vehiculo"].ToString().Trim();
-                    dasParams3[1] = rdr["idc_formatorev"].ToString().Trim();
-                    dasParams3[2] = rdr["idc_empleado"].ToString().Trim();
-                }
+        command.Parameters.Add(new SqlParameter("@pidc_requerirveh", SqlDbType.Int)).Value = vidc_requerirveh;
 
-            rdr.Close();
-            rdr.Dispose();
-            connection.Close();
+        SqlDataReader rdr = command.ExecuteReader();
+        string[] dasParams3 = new string[3];
+        if (rdr.HasRows)
+            while (rdr.Read())
+            {
+                dasParams3[0] = rdr["idc_vehiculo"].ToString().Trim();
+                dasParams3[1] = rdr["idc_formatorev"].ToString().Trim();
+                dasParams3[2] = rdr["idc_empleado"].ToString().Trim();
+            }
 
-            return dasParams3;
-        }
+        rdr.Close();
+        rdr.Dispose();
+        connection.Close();
 
-        public string[] getvehrevbas(int vidc_revbasherr)
-        {
-            connection.Open();
-            SqlCommand command = new SqlCommand("sp_datos_idc_revbasherr", connection);
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandTimeout = 15;
+        return dasParams3;
+    }
 
-            command.Parameters.Add(new SqlParameter("@pidc_revbasherr", SqlDbType.Int)).Value = vidc_revbasherr;
+    public string[] getvehrevbas(int vidc_revbasherr)
+    {
+        connection.Open();
+        SqlCommand command = new SqlCommand("sp_datos_idc_revbasherr", connection);
+        command.CommandType = CommandType.StoredProcedure;
+        command.CommandTimeout = 15;
 
-            SqlDataReader rdr = command.ExecuteReader();
-            string[] dasParams3 = new string[3];
-            if (rdr.HasRows)
-                while (rdr.Read())
-                {
-                    dasParams3[0] = rdr["idc_vehiculo"].ToString().Trim();
-                    dasParams3[1] = rdr["num_economico"].ToString().Trim();
-                    dasParams3[2] = rdr["idc_empleado"].ToString().Trim();
-                }
+        command.Parameters.Add(new SqlParameter("@pidc_revbasherr", SqlDbType.Int)).Value = vidc_revbasherr;
 
-            rdr.Close();
-            rdr.Dispose();
-            connection.Close();
+        SqlDataReader rdr = command.ExecuteReader();
+        string[] dasParams3 = new string[3];
+        if (rdr.HasRows)
+            while (rdr.Read())
+            {
+                dasParams3[0] = rdr["idc_vehiculo"].ToString().Trim();
+                dasParams3[1] = rdr["num_economico"].ToString().Trim();
+                dasParams3[2] = rdr["idc_empleado"].ToString().Trim();
+            }
 
-            return dasParams3;
-        }
-    
-        public string[] getempleado_vehiculo(int vidc_vehiculo)
-        {
-            connection.Open();
+        rdr.Close();
+        rdr.Dispose();
+        connection.Close();
 
-            SqlCommand command = new SqlCommand("sp_empleado_ayu_revsuc", connection);
+        return dasParams3;
+    }
 
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandTimeout = 15;
+    public string[] getempleado_vehiculo(int vidc_vehiculo)
+    {
+        connection.Open();
 
-            command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
+        SqlCommand command = new SqlCommand("sp_empleado_ayu_revsuc", connection);
 
-            SqlDataReader rdr = command.ExecuteReader();
+        command.CommandType = CommandType.StoredProcedure;
+        command.CommandTimeout = 15;
 
-            string[] dasParams3 = new string[2];
-            if (rdr.HasRows)
-                while (rdr.Read())
-                {
-                    dasParams3[0] = rdr["idc_empleado"].ToString().Trim();
-                    dasParams3[1] = rdr["chofer"].ToString().Trim();
-                    
-                }
+        command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
 
-            rdr.Close();
-            rdr.Dispose();
-            connection.Close();
+        SqlDataReader rdr = command.ExecuteReader();
 
-            return dasParams3;
-        }
-        
-    public SqlDataReader getelementos_revision(int  vidc_vehiculo)
+        string[] dasParams3 = new string[2];
+        if (rdr.HasRows)
+            while (rdr.Read())
+            {
+                dasParams3[0] = rdr["idc_empleado"].ToString().Trim();
+                dasParams3[1] = rdr["chofer"].ToString().Trim();
+            }
 
+        rdr.Close();
+        rdr.Dispose();
+        connection.Close();
 
-        {
-            SqlCommand command = new SqlCommand("sp_elementos_revision_vehiculo", connection);
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandTimeout = 10;
+        return dasParams3;
+    }
 
-            command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
-        
-            return command.ExecuteReader();
-        }
+    public SqlDataReader getelementos_revision(int vidc_vehiculo)
 
-    
-    
+    {
+        SqlCommand command = new SqlCommand("sp_elementos_revision_vehiculo", connection);
+        command.CommandType = CommandType.StoredProcedure;
+        command.CommandTimeout = 10;
+
+        command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
+
+        return command.ExecuteReader();
+    }
+
     public SqlDataReader getherramientas_revision(int vidc_vehiculo)
     {
         SqlCommand command = new SqlCommand("sp_revision_herramientas_clasif", connection);
@@ -2389,7 +2310,7 @@ public class DBConnection
         return command.ExecuteReader();
     }
 
-      public SqlDataReader getherramientas_revision_basica(int vidc_vehiculo)
+    public SqlDataReader getherramientas_revision_basica(int vidc_vehiculo)
     {
         SqlCommand command = new SqlCommand("sp_revision_herramientas_clasif", connection);
         command.CommandType = CommandType.StoredProcedure;
@@ -2401,70 +2322,68 @@ public class DBConnection
         return command.ExecuteReader();
     }
 
+    public SqlDataReader getelementos_revision_suc(int vidc_sucursal, int vidc_usuario)
+    {
+        SqlCommand command = new SqlCommand("sp_predatos_revsuc_check", connection);
 
-      public SqlDataReader getelementos_revision_suc(int vidc_sucursal,int vidc_usuario)
-      {
-          SqlCommand command = new SqlCommand("sp_predatos_revsuc_check", connection);
+        command.CommandType = CommandType.StoredProcedure;
 
-          command.CommandType = CommandType.StoredProcedure;
+        command.CommandTimeout = 10;
 
-          command.CommandTimeout = 10;
+        command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = vidc_sucursal;
 
-          command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = vidc_sucursal;
+        command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
 
-          command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
+        return command.ExecuteReader();
+    }
 
-          return command.ExecuteReader();
-      }
+    public SqlDataReader getelementos_revision_taller(int vidc_vehiculo, int vidc_usuario)
+    {
+        SqlCommand command = new SqlCommand("sp_datos_revtaller_check", connection);
+        command.CommandType = CommandType.StoredProcedure;
+        command.CommandTimeout = 10;
+        command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
+        command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
+        return command.ExecuteReader();
+    }
 
-      public SqlDataReader getelementos_revision_taller(int vidc_vehiculo, int vidc_usuario)
-      {
-          SqlCommand command = new SqlCommand("sp_datos_revtaller_check", connection);
-          command.CommandType = CommandType.StoredProcedure;
-          command.CommandTimeout = 10;
-          command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
-          command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
-          return command.ExecuteReader();
-      }
-    
-     public SqlDataReader getrevision_herramientas(int vidc_revsuccheckdv)
-     {
-          SqlCommand command = new SqlCommand("sp_datos_revsuc_checkd_veh_revh", connection);
-          command.CommandType = CommandType.StoredProcedure;
+    public SqlDataReader getrevision_herramientas(int vidc_revsuccheckdv)
+    {
+        SqlCommand command = new SqlCommand("sp_datos_revsuc_checkd_veh_revh", connection);
+        command.CommandType = CommandType.StoredProcedure;
 
-          command.CommandTimeout = 10;
-          command.Parameters.Add(new SqlParameter("@pidc_revsuccheckdv", SqlDbType.Int)).Value = vidc_revsuccheckdv;
+        command.CommandTimeout = 10;
+        command.Parameters.Add(new SqlParameter("@pidc_revsuccheckdv", SqlDbType.Int)).Value = vidc_revsuccheckdv;
 
-          return command.ExecuteReader();
-     }
-    
+        return command.ExecuteReader();
+    }
 
-     public SqlDataReader getelementos_revision_suc_unidades(int vidc_sucursal, int vidc_usuario,int vidc_vehiculo)
-      {
-          SqlCommand command = new SqlCommand("sp_prerevsuc_checkd_veh", connection);
-          command.CommandType = CommandType.StoredProcedure;
-          command.CommandTimeout = 10;
-          command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = vidc_sucursal;
-          command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
-          command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
-          
-          return command.ExecuteReader();
-      }
-    
-    public SqlDataReader getelementos_revision_suc_patio(int vidc_sucursal, int vidc_usuario, int vidc_modulo,int vidc_empleado)
-      {
-          SqlCommand command = new SqlCommand("sp_prerevsuc_checkd_mod", connection);
-          command.CommandType = CommandType.StoredProcedure;
-          command.CommandTimeout = 10;
+    public SqlDataReader getelementos_revision_suc_unidades(int vidc_sucursal, int vidc_usuario, int vidc_vehiculo)
+    {
+        SqlCommand command = new SqlCommand("sp_prerevsuc_checkd_veh", connection);
+        command.CommandType = CommandType.StoredProcedure;
+        command.CommandTimeout = 10;
+        command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = vidc_sucursal;
+        command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
+        command.Parameters.Add(new SqlParameter("@pidc_vehiculo", SqlDbType.Int)).Value = vidc_vehiculo;
 
-          command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = vidc_sucursal;
-          command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
-          command.Parameters.Add(new SqlParameter("@pidc_modulo", SqlDbType.Int)).Value = vidc_modulo;
-          command.Parameters.Add(new SqlParameter("@pidc_empleado", SqlDbType.Int)).Value = vidc_empleado;
+        return command.ExecuteReader();
+    }
 
-          return command.ExecuteReader();
-      }
-    
+    public SqlDataReader getelementos_revision_suc_patio(int vidc_sucursal, int vidc_usuario, int vidc_modulo, int vidc_empleado)
+    {
+        SqlCommand command = new SqlCommand("sp_prerevsuc_checkd_mod", connection);
+        command.CommandType = CommandType.StoredProcedure;
+        command.CommandTimeout = 10;
+
+        command.Parameters.Add(new SqlParameter("@pidc_sucursal", SqlDbType.Int)).Value = vidc_sucursal;
+        command.Parameters.Add(new SqlParameter("@pidc_usuario", SqlDbType.Int)).Value = vidc_usuario;
+        command.Parameters.Add(new SqlParameter("@pidc_modulo", SqlDbType.Int)).Value = vidc_modulo;
+        command.Parameters.Add(new SqlParameter("@pidc_empleado", SqlDbType.Int)).Value = vidc_empleado;
+
+        return command.ExecuteReader();
+    }
+
     public SqlDataReader getColonias(string searchValue)
     {
         SqlCommand command = new SqlCommand("sp_bcolonias", connection);
@@ -2510,7 +2429,7 @@ public class DBConnection
         return command.ExecuteReader();
     }
 
-    public decimal getFleteAmount(string cadena, string total, string truckID, string sucursalID, string coloniaID, 
+    public decimal getFleteAmount(string cadena, string total, string truckID, string sucursalID, string coloniaID,
         string clientID, string desgloseIVA, string IVA, string cadena2)
     {
         connection.Open();
@@ -2547,15 +2466,15 @@ public class DBConnection
         connection.Open();
 
         string query = "select gm.dbo.FN_CAMBIO_PRECIOS(";
-        query += "'"+VDARTI+"',";
-        query += VTOTA+",";
-        query += PIDC_CLIENTE+",";
+        query += "'" + VDARTI + "',";
+        query += VTOTA + ",";
+        query += PIDC_CLIENTE + ",";
         query += PIDC_SUCURSAL;
         query += ") as cambio";
 
-        SqlCommand command = new SqlCommand(query,connection);
+        SqlCommand command = new SqlCommand(query, connection);
         command.CommandType = CommandType.Text;
-        
+
         bool cambio = false;
         SqlDataReader rdr = command.ExecuteReader();
         if (rdr.HasRows)
@@ -2569,12 +2488,11 @@ public class DBConnection
         return cambio;
     }
 
-
     public bool cliente_bloqueado(string PIDC_CLIENTE)
     {
         connection.Open();
 
-        string query = "select gm.dbo.fn_cliente_bloqueado("+PIDC_CLIENTE+") as bloqueado";
+        string query = "select gm.dbo.fn_cliente_bloqueado(" + PIDC_CLIENTE + ") as bloqueado";
 
         SqlCommand command = new SqlCommand(query, connection);
         command.CommandType = CommandType.Text;
@@ -2592,7 +2510,7 @@ public class DBConnection
         return bloqueado;
     }
 
-    public bool tiene_revtaller(string pidc_vehiculo,string pidc_usuario)
+    public bool tiene_revtaller(string pidc_vehiculo, string pidc_usuario)
     {
         connection.Open();
 
@@ -2606,7 +2524,7 @@ public class DBConnection
         if (rdr.HasRows)
             while (rdr.Read())
 
-                tiene  = Convert.ToBoolean(rdr["tiene"]);
+                tiene = Convert.ToBoolean(rdr["tiene"]);
 
         rdr.Close();
         rdr.Dispose();
@@ -2637,12 +2555,11 @@ public class DBConnection
         return idc_revtallercheck;
     }
 
-
-    public bool rev_taller_continuar(string vidc_vehiculo,string vidc_usuario)
+    public bool rev_taller_continuar(string vidc_vehiculo, string vidc_usuario)
     {
         connection.Open();
 
-        string query = "select gm.dbo.fn_vrevtaller_check(" + vidc_usuario +","+vidc_vehiculo+ ") as continuar" ;
+        string query = "select gm.dbo.fn_vrevtaller_check(" + vidc_usuario + "," + vidc_vehiculo + ") as continuar";
 
         SqlCommand command = new SqlCommand(query, connection);
 
@@ -2654,21 +2571,20 @@ public class DBConnection
 
         if (rdr.HasRows)
             while (rdr.Read())
-                continuar  = Convert.ToBoolean(rdr["continuar"]);
+                continuar = Convert.ToBoolean(rdr["continuar"]);
 
         rdr.Close();
         rdr.Dispose();
         connection.Close();
 
-        return continuar; 
+        return continuar;
     }
-    
 
     public string usuario_empleado(string vidc_usuario)
     {
         connection.Open();
 
-        string query = "select gm.dbo.FN_USUARIO_EMPLEADO(" + vidc_usuario +") as empleado";
+        string query = "select gm.dbo.FN_USUARIO_EMPLEADO(" + vidc_usuario + ") as empleado";
 
         SqlCommand command = new SqlCommand(query, connection);
 
@@ -2680,16 +2596,14 @@ public class DBConnection
 
         if (rdr.HasRows)
             while (rdr.Read())
-               empleado = Convert.ToString(rdr["empleado"]);
+                empleado = Convert.ToString(rdr["empleado"]);
 
         rdr.Close();
         rdr.Dispose();
         connection.Close();
 
-        return empleado; 
-
+        return empleado;
     }
-
 
     public string GetIPAddress(string HttpVia, string HttpXForwardedFor, string RemoteAddr)
     {
@@ -2715,25 +2629,18 @@ public class DBConnection
 
                 foreach (System.Net.IPAddress ip in System.Net.Dns.GetHostAddresses(hostName))
                 {
-
                     if (IsIPV4(ip))
                     {
                         result = ip.ToString();
                         break;
                     }
                 }
-
             }
-
             catch { }
-
         }
         return result;
-
     }
 
-    
-    
     public bool IsIPV4(string input)
     {
         bool result = false;
@@ -2745,20 +2652,14 @@ public class DBConnection
             result = IsIPV4(address);
 
         return result;
-
     }
-
 
     public bool IsIPV4(System.Net.IPAddress address)
     {
-
         bool result = false;
-
-
 
         switch (address.AddressFamily)
         {
-
             case System.Net.Sockets.AddressFamily.InterNetwork:   // we have IPv4
 
                 result = true;
@@ -2772,16 +2673,12 @@ public class DBConnection
             default:
 
                 break;
-
         }
 
-
-
         return result;
-
     }
 
-    public bool pasa_limite(string PIDC_CLIENTE,string total)
+    public bool pasa_limite(string PIDC_CLIENTE, string total)
     {
         connection.Open();
 
@@ -2790,12 +2687,12 @@ public class DBConnection
         SqlCommand commandm = new SqlCommand(query, connection);
         commandm.CommandType = CommandType.Text;
 
-        bool pasa_limite = true ;
+        bool pasa_limite = true;
 
         SqlDataReader rdr3 = commandm.ExecuteReader();
         if (rdr3.HasRows)
             while (rdr3.Read())
-                pasa_limite = Convert.ToBoolean(rdr3["pasa_limite"])==false ?true:false        ;
+                pasa_limite = Convert.ToBoolean(rdr3["pasa_limite"]) == false ? true : false;
 
         rdr3.Close();
         rdr3.Dispose();
@@ -2825,8 +2722,8 @@ public class DBConnection
 
         bool cargo = false;
 
-        if(rdr.HasRows)
-            while(rdr.Read())
+        if (rdr.HasRows)
+            while (rdr.Read())
                 cargo = Convert.ToBoolean(rdr["cargo_cheque"]);
 
         rdr.Close();
@@ -2834,7 +2731,6 @@ public class DBConnection
         connection.Close();
 
         return cargo;
-
     }
 
     public SqlDataReader checarCambioIVA(int sucursalID, int coloniaID)
@@ -2850,22 +2746,20 @@ public class DBConnection
         return rdr;
     }
 
-    #endregion
+    #endregion "Funciones Pedidos"
 
     #region "Misc Functions"
 
     public string getConnectionString()
     {
-        str =Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["strDeConexion"]); 
+        str = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["strDeConexion"]);
         return str;
     }
 
-    #endregion
-
+    #endregion "Misc Functions"
 
     public DataSet Cargar_Combustible_Folio(int idc_tabla)
     {
-        
         connection.Open();
         SqlCommand command = new SqlCommand("sp_busca_folio", connection);
         command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -2879,9 +2773,8 @@ public class DBConnection
         return ds;
     }
 
-    public DataSet Buscar_Vehiculos(int idc_vehiculo,Boolean pweb)
+    public DataSet Buscar_Vehiculos(int idc_vehiculo, Boolean pweb)
     {
-
         connection.Open();
         SqlCommand command = new SqlCommand("sp_selecciona_vehiculos_todos", connection);
         command.CommandType = System.Data.CommandType.StoredProcedure;
@@ -2897,7 +2790,6 @@ public class DBConnection
         connection.Close();
         return ds;
     }
-
 
     public DataSet Buscar_Chofer(int idc_vehiculo)
     {
@@ -2920,7 +2812,7 @@ public class DBConnection
         SqlCommand command = new SqlCommand("sp_combo_tipo_combustible", connection);
         command.CommandType = System.Data.CommandType.StoredProcedure;
         command.CommandTimeout = 10;
-       // command.Parameters.AddWithValue("@pidc_vehiculo", idc_vehiculo);
+        // command.Parameters.AddWithValue("@pidc_vehiculo", idc_vehiculo);
         SqlDataAdapter da = new SqlDataAdapter();
         da.SelectCommand = command;
         DataSet ds = new DataSet();
@@ -2946,7 +2838,7 @@ public class DBConnection
         return ds;
     }
 
-    public DataTable  Datos(string consulta)
+    public DataTable Datos(string consulta)
     {
         try
         {
@@ -2971,8 +2863,6 @@ public class DBConnection
         }
     }
 
-
-
     public DataSet Buscar_Chofer_Vehiculo(string valor)
     {
         connection.Open();
@@ -2987,7 +2877,6 @@ public class DBConnection
         connection.Close();
         return ds;
     }
-
 
     public DataSet Kilometraje_anterior(int idc_vehiculo)
     {
@@ -3004,7 +2893,6 @@ public class DBConnection
         return ds;
     }
 
-
     public DataSet Datos_Tanque_Vehiculo(int idc_vehiculo)
     {
         connection.Open();
@@ -3019,7 +2907,6 @@ public class DBConnection
         connection.Close();
         return ds;
     }
-
 
     public DataSet Tanque_Sucursal(int idc_usuario)
     {
@@ -3036,9 +2923,8 @@ public class DBConnection
         return ds;
     }
 
-
     public DataSet DescripcionAutorizacion(int TipoAutorizacion)
-    { 
+    {
         connection.Open();
         SqlCommand command = new SqlCommand("sp_descripcion_AUTORIZACION", connection);
         command.CommandType = CommandType.StoredProcedure;
@@ -3052,7 +2938,7 @@ public class DBConnection
         return ds;
     }
 
-    public DataRow  Validar_Folio_Aut(int tipoFolio, int Folio)
+    public DataRow Validar_Folio_Aut(int tipoFolio, int Folio)
     {
         connection.Open();
         SqlCommand command = new SqlCommand("sp_checar_folio_AUTORIZACION", connection);
@@ -3067,14 +2953,13 @@ public class DBConnection
         DataRow row = null;
         if (ds.Tables.Count > 0)
         {
-             row = ds.Tables[0].Rows[0];
-   
+            row = ds.Tables[0].Rows[0];
         }
         connection.Close();
         return row;
     }
 
-    public DataSet Guardar_Carga_Combustible(string[]parametros, object[] valores)
+    public DataSet Guardar_Carga_Combustible(string[] parametros, object[] valores)
     {
         try
         {
@@ -3084,7 +2969,6 @@ public class DBConnection
             command.CommandTimeout = 10;
             if (parametros.Length > 0)
             {
-
                 for (int i = 0; i <= (parametros.Length - 1); i++)
                 {
                     command.Parameters.AddWithValue(parametros[i], valores[i]);
@@ -3097,7 +2981,6 @@ public class DBConnection
             connection.Close();
             return ds;
         }
-
         catch (Exception ex)
         {
             throw ex;
@@ -3107,13 +2990,14 @@ public class DBConnection
             connection.Close();
         }
     }
+
     public DataSet Leer_avisos_nuevos(int idc_usuario)
     {
         try
         {
             connection.Open();
             SqlCommand comando = new SqlCommand("sp_avisos_nuevo", connection);
-            comando.CommandType=CommandType.StoredProcedure;
+            comando.CommandType = CommandType.StoredProcedure;
             comando.CommandTimeout = 10;
             comando.Parameters.AddWithValue("@pidc_usuario", idc_usuario);
             SqlDataAdapter da = new SqlDataAdapter();
@@ -3121,11 +3005,11 @@ public class DBConnection
             DataSet ds = new DataSet();
             da.Fill(ds);
             connection.Close();
-            return ds;        
+            return ds;
         }
         catch (Exception ex)
         {
-            throw ex;        
+            throw ex;
         }
     }
 
@@ -3143,18 +3027,15 @@ public class DBConnection
             DataSet ds = new DataSet();
             da.Fill(ds);
             connection.Close();
-            return ds;   
+            return ds;
         }
         catch (Exception ex)
         {
             throw ex;
         }
-    
-    
-    
     }
 
-    public DataSet Ejecuta_SP(string sp,string[] parametros, object[] valores)
+    public DataSet Ejecuta_SP(string sp, string[] parametros, object[] valores)
     {
         try
         {
@@ -3162,9 +3043,8 @@ public class DBConnection
             SqlCommand command = new SqlCommand(sp, connection);
             command.CommandType = CommandType.StoredProcedure;
             command.CommandTimeout = 60000;
-            if (parametros != null )
+            if (parametros != null)
             {
-
                 for (int i = 0; i <= (parametros.Length - 1); i++)
                 {
                     command.Parameters.AddWithValue(parametros[i], valores[i]);
@@ -3181,29 +3061,27 @@ public class DBConnection
         {
             connection.Close();
             throw ex;
-            
         }
     }
 
     public void Enviar_Correo(MailMessage correo, int idc_usuario, int tipo)
-    {   
+    {
         DataSet ds = new DataSet();
         string[] parametros = { "@pidc_usuario", "@PTIPO" };
-        object[] valores = { idc_usuario ,tipo };
+        object[] valores = { idc_usuario, tipo };
         string nombre_mostrar = "";
         string cuenta = "";
-        string contraseña="";
-        int puerto=0;
+        string contraseña = "";
+        int puerto = 0;
         try
         {
             ds = Ejecuta_SP("sp_correo_contraseña", parametros, valores);
             if (ds.Tables[0].Rows.Count > 0)
-            { 
-                nombre_mostrar= Convert.ToString(ds.Tables[0].Rows[0][2]);
+            {
+                nombre_mostrar = Convert.ToString(ds.Tables[0].Rows[0][2]);
                 cuenta = Convert.ToString(ds.Tables[0].Rows[0][0]);
                 contraseña = desencripta(Convert.ToString(ds.Tables[0].Rows[0][1]));
             }
-
             else
             {
                 if (ds.Tables[1].Rows.Count > 0)
@@ -3211,10 +3089,10 @@ public class DBConnection
                     nombre_mostrar = Convert.ToString(ds.Tables[1].Rows[0][2]);
                     cuenta = Convert.ToString(ds.Tables[1].Rows[0][0]);
                     contraseña = desencripta(Convert.ToString(ds.Tables[1].Rows[0][1]));
-                }            
+                }
             }
-            
-            if(cuenta!="")
+
+            if (cuenta != "")
             {
                 puerto = correo_puerto();
                 correo.From = new MailAddress(cuenta, nombre_mostrar, System.Text.Encoding.UTF8);
@@ -3230,15 +3108,13 @@ public class DBConnection
                 smtp.Send(correo);
                 correo.Attachments.Dispose();
                 correo.Dispose();
-                correo = null;            
+                correo = null;
             }
-
         }
-
         catch (Exception ex)
         {
             throw ex;
-        }    
+        }
     }
 
     public void enviar_correo_local(MailMessage correo, int idc_sucursal)
@@ -3247,7 +3123,7 @@ public class DBConnection
         try
         {
             correo.To.Add(new MailAddress(mail_suc)); // destino
-            correo.To.Add(new MailAddress("insumos@gamamateriales.mx")); 
+            correo.To.Add(new MailAddress("insumos@gamamateriales.mx"));
             correo.From = new MailAddress("administrador@gamamateriales.mx", "administrador", System.Text.Encoding.UTF8); // origen
             correo.Bcc.Add("gersistemas@gamamateriales.mx");
             SmtpClient smtp = new SmtpClient("192.168.0.2");
@@ -3256,7 +3132,7 @@ public class DBConnection
             correo.Dispose();
             correo = null;
         }
-        catch (Exception ex) { throw ex; }    
+        catch (Exception ex) { throw ex; }
     }
 
     public void enviar_correo_local_usuario(MailMessage correo, int idc_usuario)
@@ -3282,7 +3158,6 @@ public class DBConnection
         catch (Exception ex) { throw ex; }
     }
 
-
     public string correo_usu(int idc_usuario)
     {
         DataTable dt = new DataTable();
@@ -3303,25 +3178,24 @@ public class DBConnection
         {
             throw ex;
         }
-    
     }
 
     public string correo_suc(int idc_sucursal)
     {
-        string[] parametros = {"@pidc_sucursal"};
-        object[] valores = {idc_sucursal};
+        string[] parametros = { "@pidc_sucursal" };
+        object[] valores = { idc_sucursal };
         DataSet ds = new DataSet();
-        string mail = ""; 
+        string mail = "";
         try
         {
-               ds = Ejecuta_SP("sp_correo_vale_tablet", parametros, valores);
-               mail = Convert.ToString(ds.Tables[0].Rows[0][0]);
-               return mail;        
+            ds = Ejecuta_SP("sp_correo_vale_tablet", parametros, valores);
+            mail = Convert.ToString(ds.Tables[0].Rows[0][0]);
+            return mail;
         }
         catch (Exception ex)
         {
-            throw ex;        
-        }    
+            throw ex;
+        }
     }
 
     public int correo_puerto()
@@ -3332,8 +3206,8 @@ public class DBConnection
         {
             dt = Datos("SELECT TOP 1 puerto FROM correo_puerto WITH (nolock)");
             if (dt.Rows.Count > 0)
-            { 
-               puerto = Convert.ToInt32(dt.Rows[0][0]);
+            {
+                puerto = Convert.ToInt32(dt.Rows[0][0]);
             }
 
             return puerto;
@@ -3341,14 +3215,11 @@ public class DBConnection
         catch (Exception ex)
         {
             throw ex;
-        }    
+        }
     }
-
-
 
     public string desencripta(string contra)
     {
-
         DataSet ds = new DataSet();
         string vclave2 = "";
         string vclave1 = "";
@@ -3364,14 +3235,13 @@ public class DBConnection
                 vclave2 = Convert.ToString(ds.Tables[0].Rows[0][0]);
                 vclave1 = Convert.ToString(ds.Tables[0].Rows[0][1]);
             }
-            for (int i = 0; i <= (contra.Length ) - 1; i++)
+            for (int i = 0; i <= (contra.Length) - 1; i++)
             {
                 vcar = contra.Substring(i, 1);
                 vbus = vclave1.IndexOf(vcar);
                 vncar = vncar + vclave2.Substring(vbus, 1);
             }
             return vncar.Trim();
-
         }
         catch (Exception ex)
         {
@@ -3391,7 +3261,7 @@ public class DBConnection
         }
     }
 
-    public DataTable menu_submenu(int userID,int[] opciones_menu)
+    public DataTable menu_submenu(int userID, int[] opciones_menu)
     {
         DataTable dt = new DataTable();
         DataRow row = dt.NewRow();
@@ -3420,12 +3290,9 @@ public class DBConnection
                 }
             }
 
-
             //        row["descripcion"] = reader["descripcion"];
             //        row["web_form"] = reader["web_form"];
             //row = reader[0];
-
-
 
             reader.Close();
             reader.Dispose();
@@ -3478,17 +3345,9 @@ public class DBConnection
         catch
         {
             Exception ex = new Exception("Error al Calcular Tiempo Tiempo.");
-            throw(ex);
+            throw (ex);
         }
     }
-
-
-
-
-
-
-
-
 
     public void Ejecuta_SP(string p)
     {

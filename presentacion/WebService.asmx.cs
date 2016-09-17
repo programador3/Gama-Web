@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 
 namespace presentacion
@@ -12,18 +10,16 @@ namespace presentacion
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
+    // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente.
     [System.Web.Script.Services.ScriptService]
     public class WebService : System.Web.Services.WebService
     {
-
         [System.Web.Services.WebMethod(EnableSession = true)]
         public void SetSessionValue(List<string> aData)
         {
             String Value = aData[0];
             Session["date_noti"] = Value;
         }
-
 
         [System.Web.Services.WebMethod(EnableSession = true)]
         public string GetSessionValue()
@@ -44,8 +40,6 @@ namespace presentacion
             Session["list_not"] = Value;
         }
 
-
-
         [System.Web.Services.WebMethod(EnableSession = true)]
         public string GetSessionValueHTML()
         {
@@ -63,8 +57,6 @@ namespace presentacion
             String Value = aData[0];
             Session["tot_not"] = Value;
         }
-
-
 
         [System.Web.Services.WebMethod(EnableSession = true)]
         public string GetSessionValueTotal()

@@ -13,8 +13,8 @@
         private int tipo_apli;
         private string search;
 
-        int idc_opcion;
-        int idc_user;
+        private int idc_opcion;
+        private int idc_user;
 
         public int Idc_opcion
         {
@@ -27,6 +27,7 @@
             get { return idc_user; }
             set { idc_user = value; }
         }
+
         public string Search
         {
             get { return search; }

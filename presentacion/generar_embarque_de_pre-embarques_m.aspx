@@ -1,56 +1,44 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Global.master" AutoEventWireup="false" CodeFile="generar_embarque_de_pre-embarques_m.aspx.vb" Inherits="generar_embarque_de_pre_embarques_m" title="" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Global.master" AutoEventWireup="false" CodeFile="generar_embarque_de_pre-embarques_m.aspx.vb" Inherits="generar_embarque_de_pre_embarques_m" Title="" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Contenido" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Contenido" runat="Server">
 
-<script type="text/javascript" >
-    function grid2(up,inicio)
-    {
-        var GridView2 = document.getElementById('<%=GridView2.ClientID%>');
+    <script type="text/javascript">
+        function grid2(up, inicio) {
+            var GridView2 = document.getElementById('<%=GridView2.ClientID%>');
         var txtindex = document.getElementById('<%=txtindex.ClientID%>');
-        if(GridView2==null)
-        {
+        if (GridView2 == null) {
             return false;
         }
-        else
-        {
-            var hasta = GridView2.rows.length-1;
+        else {
+            var hasta = GridView2.rows.length - 1;
             var txtitems = document.getElementById('<%=txtitems.ClientID%>');
-            if(inicio==1)
-            {
-                txtindex.value=1;
+            if (inicio == 1) {
+                txtindex.value = 1;
             }
-            else
-            {
-                 if(up==true)
-                {
+            else {
+                if (up == true) {
                     txtindex.value++;
-                    if(txtindex.value>hasta)
-                    {
-                        txtindex.value=hasta;
+                    if (txtindex.value > hasta) {
+                        txtindex.value = hasta;
                     }
                 }
-                else
-                {
-                    txtindex.value= txtindex.value-1;
-                    if(txtindex.value<1)
-                    {
-                        txtindex.value=1;
-                    }            
+                else {
+                    txtindex.value = txtindex.value - 1;
+                    if (txtindex.value < 1) {
+                        txtindex.value = 1;
+                    }
                 }
             }
-            
 
             var txtcodigo = document.getElementById("<%=txtcodigo.ClientID%>");
-            var  txtdesc = document.getElementById("<%=txtdesc.ClientID%>");
+            var txtdesc = document.getElementById("<%=txtdesc.ClientID%>");
             var txtum = document.getElementById("<%=txtum.ClientID%>");
             var txtpe = document.getElementById("<%=txtpe.ClientID%>");
             var txtexistencia = document.getElementById("<%=txtexistencia.ClientID%>");
             var txtoc = document.getElementById("<%=txtoc.ClientID%>");
-            
-            for(var i=1;i<=hasta;i++)
-            {
-                if(i==txtindex.value)
-                {
+
+            for (var i = 1; i <= hasta; i++) {
+                if (i == txtindex.value) {
                     txtcodigo.value = GridView2.rows[i].cells[0].textContent;
                     txtdesc.value = GridView2.rows[i].cells[1].textContent;
                     txtum.value = GridView2.rows[i].cells[2].textContent;
@@ -59,18 +47,12 @@
                     txtoc.value = GridView2.rows[i].cells[5].textContent;
                 }
             }
-            txtitems.value = txtindex.value + ' de ' + hasta ;
-            
+            txtitems.value = txtindex.value + ' de ' + hasta;
+
         }
-        return false;    
+        return false;
     }
-
-
-
-
-
-
-</script>
+    </script>
     <style type="text/css">
         .form-control2 {
             height: 34px;
@@ -87,23 +69,20 @@
             -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
             transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         }
-        .read {        
-             border: 1px solid #ccc;
+
+        .read {
+            border: 1px solid #ccc;
             background-color: #eee;
             opacity: 1;
         }
     </style>
 
-    
-<div class="row">
-    <div class="col-lg-12">
-        <h3 class="page-header">Generar Embarque de Pre-Embarque</h3>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">Generar Embarque de Pre-Embarque</h3>
+        </div>
     </div>
-</div>
-       
-       
-       
-        
+
     <div id="div_contenido" runat="server" style="width: 100%;">
         <table style="width: 100%;">
             <tr>
@@ -136,7 +115,6 @@
                             </td>
                         </tr>
                     </table>
-
                 </td>
             </tr>
             <tr>
@@ -146,7 +124,6 @@
                         Font-Size="Small" Text="No. Pre Embarque:"></asp:Label>
                     <br />
                     <br />
-
                 </td>
             </tr>
             <tr>
@@ -158,7 +135,6 @@
                         <br />
                         <br />
                     </div>
-
                 </td>
             </tr>
             <tr>
@@ -171,7 +147,6 @@
                                     Font-Size="Small" Text="Fecha:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td style="height: 47px">
                                 <asp:TextBox ID="txtfecha" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -187,7 +162,6 @@
                                     Font-Size="Small" Text="Fec. Entrega:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtfecha_e" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -203,7 +177,6 @@
                                     Font-Size="Small" Text="T. Camion:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txttipocamion" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -219,7 +192,6 @@
                                     Font-Size="Small" Text="Obs:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtobs" runat="server" Width="100%" Height="60px"
@@ -237,7 +209,6 @@
                                     Font-Size="Small" Text="Tiempo:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txttiempo" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -253,7 +224,6 @@
                                     Font-Size="Small" Text="Tiempo Entrega:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txttiempoe" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -269,7 +239,6 @@
                                     Font-Size="Small" Text="Suc. Entrega:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtsuc_e" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -285,7 +254,6 @@
                                     Font-Size="Small" Text="Nivel:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtnivel" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -301,7 +269,6 @@
                                     Font-Size="Small" Text="Proveedor:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtproveedor" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -317,7 +284,6 @@
                                     Font-Size="Small" Text="Usuario:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtusuario" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -333,7 +299,6 @@
                                     Font-Size="Small" Text="T. Entrega:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txttipoe" runat="server" Width="100%" Height="35px" Style='text-transform: uppercase' onfocus="this.blur();"
@@ -343,7 +308,6 @@
                             </td>
                         </tr>
                     </table>
-
                 </td>
             </tr>
             <tr>
@@ -362,18 +326,14 @@
                         <tr>
                             <td style="width: 25%">
 
-
                                 <asp:Button ID="btndown" runat="server" Text="&lt;&lt;" Font-Bold="True" Font-Size="Medium"
                                     Height="35px" Width="100%"
                                     CssClass="btn btn-default"
                                     UseSubmitBehavior="False" />
                                 <br />
                                 <br />
-
-
                             </td>
                             <td style="width: 45%">
-
 
                                 <asp:TextBox ID="txtitems" runat="server" Width="100%" ForeColor="Blue"
                                     Style='text-transform: uppercase; text-align: center;' onfocus="this.blur();"
@@ -381,11 +341,8 @@
                                     Font-Bold="True" Font-Italic="False" Font-Names="arial" Font-Size="Small" />
                                 <br />
                                 <br />
-
-
                             </td>
                             <td style="width: 25%">
-
 
                                 <asp:Button ID="btnup" runat="server" Text="&gt;&gt;" Font-Bold="True" Font-Size="Medium"
                                     Height="35px" Width="100%"
@@ -393,15 +350,11 @@
                                     UseSubmitBehavior="False" />
                                 <br />
                                 <br />
-
-
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-
-
 
             <tr>
                 <td>
@@ -414,7 +367,6 @@
                                     Font-Size="Small" Text="Codigo:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtcodigo" runat="server" Width="100%" Height="35px"
@@ -432,7 +384,6 @@
                                     Font-Size="Small" Text="Desc:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtdesc" runat="server" Width="100%" Height="35px"
@@ -450,7 +401,6 @@
                                     Font-Size="Small" Text="UM:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtum" runat="server" Width="100%" Height="35px"
@@ -468,7 +418,6 @@
                                     Font-Size="Small" Text="Pre-Embarque:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtpe" runat="server" Width="100%" Height="35px"
@@ -486,7 +435,6 @@
                                     Font-Size="Small" Text="Existencia:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtexistencia" runat="server" Width="100%" Height="35px"
@@ -504,7 +452,6 @@
                                     Font-Size="Small" Text="Orden Compra:"></asp:Label>
                                 <br />
                                 <br />
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtoc" runat="server" Width="100%" Height="35px"
@@ -516,7 +463,6 @@
                             </td>
                         </tr>
                     </table>
-
                 </td>
             </tr>
             <tr>
@@ -598,21 +544,19 @@
                 </td>
             </tr>
         </table>
-
     </div>
     <div align="center">
-                <asp:Label ID="Label1" runat="server" Text="No Hay Pre-Embarques Pendientes" 
+        <asp:Label ID="Label1" runat="server" Text="No Hay Pre-Embarques Pendientes"
             Visible="False" Font-Bold="True" Font-Names="arial" Font-Size="Small" ForeColor="Blue"></asp:Label>
     </div>
-    <asp:SqlDataSource ID="dsNoSearch2" runat="server" 
-        SelectCommand="sp_pre_embarques_pendientes_modi_usuario" 
-        SelectCommandType="StoredProcedure" 
+    <asp:SqlDataSource ID="dsNoSearch2" runat="server"
+        SelectCommand="sp_pre_embarques_pendientes_modi_usuario"
+        SelectCommandType="StoredProcedure"
         UpdateCommand="update update_grid set campo=1">
         <SelectParameters>
-            <asp:SessionParameter DefaultValue="" Name="pidc_sucursal" 
+            <asp:SessionParameter DefaultValue="" Name="pidc_sucursal"
                 SessionField="xidc_sucursal" />
             <asp:SessionParameter Name="pidc_usuario" SessionField="xidc_usuario" />
         </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>
-

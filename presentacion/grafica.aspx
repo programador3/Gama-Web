@@ -202,8 +202,8 @@
                                 <small>Se muestran resultados de
                                     <asp:Label ID="lblrango" runat="server" Text=""></asp:Label><span>&nbsp;
                                         <button type="button" class="btn btn-primary btn-sm" onclick="Click();">
-                                        Ver Uso de Tareas en Este Año
-                                    </button>
+                                            Ver Uso de Tareas en Este Año
+                                        </button>
                                     </span></small>
                             </h3>
                         </div>

@@ -30,7 +30,6 @@
     }
 
     Plugin.prototype = {
-
         init: function () {
             var $window = $(window),
                 options = this.options,
@@ -145,5 +144,4 @@
             }
         });
     };
-
 }(jQuery, window, document));

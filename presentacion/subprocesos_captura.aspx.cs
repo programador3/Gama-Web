@@ -1,10 +1,8 @@
-﻿using ClosedXML.Excel;
-using negocio.Componentes;
+﻿using negocio.Componentes;
 using negocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.IO;
 using System.Web;
 using System.Web.UI;

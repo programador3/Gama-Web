@@ -169,6 +169,7 @@ namespace presentacion
             DataSet ds = componente.CargarHallazgosSinTerminar(ENTIDAD);
             return ds.Tables[0].Rows.Count;
         }
+
         private bool ValidarPantalla(int idc_pantalla)
         {
             HallazgosENT ENTIDAD = new HallazgosENT();
@@ -178,6 +179,7 @@ namespace presentacion
             DataSet ds = componente.ValidarPantalla(ENTIDAD);
             return Convert.ToBoolean(ds.Tables[0].Rows[0]["resultado"]);
         }
+
         private int RevisionesBasicasPendientes()
         {
             Vehiculos_RevisionENT entidad = new Vehiculos_RevisionENT();
@@ -186,7 +188,7 @@ namespace presentacion
             DataSet ds = com.CargarInfoPendienteCatalogo(entidad);
             return ds.Tables[0].Rows.Count;
         }
-        
+
         /// <summary>
         /// Comprueba que exista una Cookie
         /// </summary>

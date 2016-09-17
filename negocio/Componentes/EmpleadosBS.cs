@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-
 
 namespace negocio.Componentes
 {
@@ -25,7 +22,6 @@ namespace negocio.Componentes
             catch (Exception ex)
             {
                 throw ex;
-
             }
             return ds;
         }

@@ -235,9 +235,7 @@
                                         </h5>
                                     </div>
                                 </div>
-
                             </div>
-
                         </asp:Panel>
                         <asp:Panel ID="PanelSucursal" runat="server">
                             <h4><i class="fa fa-home"></i>&nbsp;Seleccione las Sucursales<small> Sucursales a las que aplicaria la asigancion</small></h4>

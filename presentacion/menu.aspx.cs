@@ -2,10 +2,8 @@
 using negocio.Entidades;
 using System;
 using System.Data;
-using System.Text;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace presentacion
@@ -19,7 +17,7 @@ namespace presentacion
                 Response.Redirect("login.aspx");
             }
             //dinamic_menudrop();
-            Session["redirect_pagedet"] = "menu.aspx";            
+            Session["redirect_pagedet"] = "menu.aspx";
             int idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
             Session["Previus"] = HttpContext.Current.Request.Url.AbsoluteUri;
             CargaTareas();
@@ -53,6 +51,36 @@ namespace presentacion
             if (ds.Tables[1].Rows.Count == 0)
             {
                 tareasasig.Visible = true;
+            }
+        }
+
+        private void OpcionesUsadas(int PID_OPCION)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                OpcionesE EntOpcion = new OpcionesE();
+                OpcionesBL menuBL = new OpcionesBL();
+                EntOpcion.Idc_user = Convert.ToInt32(Session["sidc_usuario"]);
+                EntOpcion.Idc_opcion = PID_OPCION;
+                ds = menuBL.OpcionFavorita(EntOpcion);
+                string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                if (vmensaje != "")
+                {
+                    Alert.ShowAlertError(vmensaje, this);
+                    Global.CreateFileError(vmensaje, this.Page);
+                }
+                else
+                {
+                    String path_actual = Request.Url.Segments[Request.Url.Segments.Length - 1];
+                    String queyrstring = Request.Url.Query;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "noti5qsqsq33W3", "AlertaOkRedirecciona('Pagina Agregada a Favoritos','" + path_actual + queyrstring + "');", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
+                Global.CreateFileError(ex.ToString(), this.Page);
             }
         }
 
@@ -315,12 +343,11 @@ namespace presentacion
             lblenc.Text = ds.Tables[0].Rows.Count.ToString();
         }
 
-     
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //string d = htmlsummernote.InnerHtml;
-            //d = d;
+            LinkButton lnk = sender as LinkButton;
+            int idc_opcion = Convert.ToInt32(lnk.CommandName);
+            OpcionesUsadas(idc_opcion);
         }
-
     }
 }

@@ -4,7 +4,6 @@
 
     <%--Plugin Org--%>
 
-
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="org/js/jquery/jquery-ui-1.10.2.custom.min.js"></script>
     <script type="text/javascript" src="org/js/primitives.min.js"></script>
@@ -27,7 +26,7 @@
             var href = $(location).attr('href');
             window.location.replace(href);
         });
-     
+
         function Abrir() {
             var id_puesto = jQuery('#ValueIDE').val();
             var id_descripcion = jQuery('#ValueDescripcion').val();

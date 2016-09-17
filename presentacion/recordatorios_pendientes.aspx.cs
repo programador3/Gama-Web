@@ -32,21 +32,23 @@ namespace presentacion
             entidad.Idc_usuario = idc_usuario;
             DataSet ds = com.CargarRecordatorio(entidad);
             DataView view = ds.Tables[0].DefaultView;
-            view.RowFilter = "fecha_hora <= '"+DateTime.Now+"'";
+            view.RowFilter = "fecha_hora <= '" + DateTime.Now + "'";
             Session["dt_recor"] = view.ToTable();
             repeat.DataSource = view.ToTable();
             repeat.DataBind();
         }
+
         private void CargarHistorial(int idc)
         {
             QuejasENT entidad = new QuejasENT();
             QuejasCOM com = new QuejasCOM();
             entidad.Pidc_queja = idc;
-            DataSet ds = com.CargarHistorial(entidad);          
-            gridgistorial.DataSource =ds.Tables[0];
+            DataSet ds = com.CargarHistorial(entidad);
+            gridgistorial.DataSource = ds.Tables[0];
             gridgistorial.DataBind();
             historial.Visible = ds.Tables[0].Rows.Count == 0 ? false : true;
         }
+
         protected void lnktodas_Click(object sender, EventArgs e)
         {
             recor.Visible = false;
@@ -56,8 +58,9 @@ namespace presentacion
             historial.Visible = false;
             Session["Caso_Confirmacion"] = "Descartar Todo";
             DataTable dt = (DataTable)Session["dt_recor"];
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessreerdcdcage", "ModalConfirm('Mensaje del Sistema','Desea Descartar los "+dt.Rows.Count.ToString()+" recordatorios? ','modal fade modal-info');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessreerdcdcage", "ModalConfirm('Mensaje del Sistema','Desea Descartar los " + dt.Rows.Count.ToString() + " recordatorios? ','modal fade modal-info');", true);
         }
+
         protected void btnver_Click(object sender, EventArgs e)
         {
             LinkButton lnk = sender as LinkButton;
@@ -65,22 +68,23 @@ namespace presentacion
             Session["idc_recor"] = idc;
             DataTable dt = (DataTable)Session["dt_recor"];
             DataView view = dt.DefaultView;
-            view.RowFilter = "idc_avisogen = "+idc+"";
+            view.RowFilter = "idc_avisogen = " + idc + "";
             DataRow row = view.ToTable().Rows[0];
             lbldescripcion.Text = row["descripcion"].ToString();
-            lnlcorreo.Text = row["correo_relacionado"].ToString() == "" ?"No relaciono Correo" : row["correo_relacionado"].ToString();
+            lnlcorreo.Text = row["correo_relacionado"].ToString() == "" ? "No relaciono Correo" : row["correo_relacionado"].ToString();
             string asunto = row["descripcion"].ToString().Replace(" ", "%20");
-            correoto.HRef = row["correo_relacionado"].ToString() == "" ?"":"mailto:" + row["correo_relacionado"].ToString()+"&subject=SEGUIMIENTO%20A%20LA%20TAREA%20'"+asunto+"'";
+            correoto.HRef = row["correo_relacionado"].ToString() == "" ? "" : "mailto:" + row["correo_relacionado"].ToString() + "&subject=SEGUIMIENTO%20A%20LA%20TAREA%20'" + asunto + "'";
             Session["fecha_record"] = Convert.ToDateTime(row["fecha_hora"]);
             Yes.Visible = false;
             recor.Visible = true;
             txtobsr.Visible = false;
             CargarHistorial(idc);
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessdcdcage", "ModalConfirm('Mensaje del Sistema','"+ row["asunto"].ToString() + "','modal fade modal-info');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessdcdcage", "ModalConfirm('Mensaje del Sistema','" + row["asunto"].ToString() + "','modal fade modal-info');", true);
         }
+
         protected void Fecha_Click(object sender, EventArgs e)
         {
-            recor.Visible = false;           
+            recor.Visible = false;
             Yes.Visible = true;
             txtobsr.Visible = false;
             cambio.Visible = true;
@@ -88,6 +92,7 @@ namespace presentacion
             Session["Caso_Confirmacion"] = "Cambio";
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessreerdcdcage", "ModalConfirm('Mensaje del Sistema','Ingrese el tiempo que se pospondra,'modal fade modal-info');", true);
         }
+
         protected void pospo_Click(object sender, EventArgs e)
         {
             LinkButton lnk = sender as LinkButton;
@@ -113,7 +118,6 @@ namespace presentacion
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessreerdcdcage", "ModalConfirm('Mensaje del Sistema','Ingrese el tiempo que se pospondra','modal fade modal-info');", true);
         }
 
-
         protected void historial_Click(object sender, EventArgs e)
         {
             LinkButton lnk = sender as LinkButton;
@@ -126,6 +130,7 @@ namespace presentacion
             CargarHistorial(idc);
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessreerdcdcage", "ModalConfirm('Mensaje del Sistema','Historial de Cambios','modal fade modal-info');", true);
         }
+
         protected void btndesc_Click(object sender, EventArgs e)
         {
             LinkButton lnk = sender as LinkButton;
@@ -160,19 +165,19 @@ namespace presentacion
                 foreach (RepeaterItem item in repeat.Items)
                 {
                     LinkButton lnk = (LinkButton)item.FindControl("lnksolucionar");
-                    cadena = cadena + lnk.CommandArgument.ToString()+ ";";
-                    total ++;
+                    cadena = cadena + lnk.CommandArgument.ToString() + ";";
+                    total++;
                 }
                 switch (caso)
                 {
-
                     case "Descartar Todo":
                         entidad.Pobservaciones = txtobsr.Text;
                         entidad.Pobservaciones_satisfecho = cadena;
                         entidad.Pidc_queja = total;
-                        ds = com.DescartarRecordatorio(entidad,2,0,0,0);
+                        ds = com.DescartarRecordatorio(entidad, 2, 0, 0, 0);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         break;
+
                     case "Descartar":
                         entidad.Pobservaciones = txtobsr.Text;
                         entidad.Pobservaciones_satisfecho = cadena_uno;
@@ -180,6 +185,7 @@ namespace presentacion
                         ds = com.DescartarRecordatorio(entidad, 2, 0, 0, 0);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         break;
+
                     case "Cambio":
                         if (txtnum.Text == "" || txtnum.Text == "0")
                         {
@@ -192,7 +198,7 @@ namespace presentacion
                             entidad.Pobservaciones_satisfecho = cadena_uno;
                             entidad.Pidc_queja = 1;
                             ds = com.DescartarRecordatorio(entidad, 1, 0, Convert.ToInt32(txtnum.Text), Convert.ToInt32(ddltipo.SelectedValue));
-                            vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString(); 
+                            vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         }
                         break;
 
@@ -220,10 +226,8 @@ namespace presentacion
                     }
                     else
                     {
-
                         Alert.ShowAlertError(vmensaje, this.Page);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -231,6 +235,5 @@ namespace presentacion
                 Alert.ShowAlertError(ex.ToString(), this.Page);
             }
         }
-
     }
 }

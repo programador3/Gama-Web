@@ -6,7 +6,6 @@ using System.Data;
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Web.Services;
 using System.Web.UI.WebControls;
 
 namespace presentacion
@@ -17,8 +16,7 @@ namespace presentacion
         public static int idc_puesto = 0;
         public static string path_user_chat = "";
         public static string content = "";
-        public static Nullable<DateTime> date; 
-
+        public static Nullable<DateTime> date;
 
         [Serializable]
         public class Id
@@ -86,8 +84,6 @@ namespace presentacion
             int total = Convert.ToInt32(com.CargaAvisos(ent).Tables[0].Rows[0]["total"].ToString());
             return total;
         }
-
-     
 
         /// <summary>
         /// Retorna el numero de tareas pendientes por usuario
@@ -192,7 +188,6 @@ namespace presentacion
             if (now > date && date != null)
             {
                 date = DateTime.Now.AddMinutes(4);
-               
             }
             String a = aData[0];
             NotificacionesENT ent = new NotificacionesENT();
@@ -229,8 +224,6 @@ namespace presentacion
             }
             return noti;
         }
-
-    
 
         [System.Web.Services.WebMethod]
         public static int GetTotalTareas()

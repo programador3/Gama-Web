@@ -1,10 +1,7 @@
-﻿using ClosedXML.Excel;
-using negocio.Componentes;
+﻿using negocio.Componentes;
 using negocio.Entidades;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -57,10 +54,11 @@ namespace presentacion
                 {
                     correos.Visible = true;
                 }
-                else {
+                else
+                {
                     correos.Visible = false;
                 }
-                if(Convert.ToBoolean(ds.Tables[0].Rows[0]["todos"]) == true)
+                if (Convert.ToBoolean(ds.Tables[0].Rows[0]["todos"]) == true)
                 {
                     correos.Visible = false;
                 }

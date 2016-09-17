@@ -508,8 +508,8 @@ namespace presentacion
                 cbxSinSucursal.Checked = false;
                 Sucur.Visible = true;
             }
-            else {
-
+            else
+            {
                 cbxSinSucursal.Checked = true;
                 Sucur.Visible = false;
             }

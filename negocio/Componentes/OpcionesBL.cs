@@ -17,7 +17,6 @@ namespace negocio.Componentes
 
             //listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
 
-
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -28,19 +27,19 @@ namespace negocio.Componentes
                 throw ex;
             }
             return ds;
-
         }
+
         public DataSet OpcionFavorita(OpcionesE Etiqueta)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_user });
-            listparameters.Add(new SqlParameter() { ParameterName = "@PPAGINA", SqlDbType = SqlDbType.Int, Value = Etiqueta.Search });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_opcion", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_opcion });
             try
             {
-                //ds = data.datos_Clientes(listparameters);
-                ds = data.enviar("sp_aUSUARIO_OPCION_RECIENTE", listparameters, true);
+                //ds = data.datos_Clientes(listparameters);sp_ausuario_opcion_reciente
+                ds = data.enviar("sp_ausuario_opcion_reciente", listparameters, true);
                 //ds = data.enviar("sp_notificaciones", listparameters, false);
             }
             catch (Exception ex)
@@ -48,8 +47,28 @@ namespace negocio.Componentes
                 throw ex;
             }
             return ds;
-
         }
+
+        public DataSet EliminarOpcionFavorita(OpcionesE Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_user });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_opcion", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_opcion });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);sp_ausuario_opcion_reciente
+                ds = data.enviar("sp_eusuario_opcion_reciente", listparameters, true);
+                //ds = data.enviar("sp_notificaciones", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet OpcionFavoritaCargar(OpcionesE Etiqueta)
         {
             DataSet ds = new DataSet();
@@ -67,8 +86,8 @@ namespace negocio.Componentes
                 throw ex;
             }
             return ds;
-
         }
+
         public DataSet get_menu2(Entidades.OpcionesE opciones)
         {
             DataSet ds = new DataSet();
@@ -76,7 +95,6 @@ namespace negocio.Componentes
             Datos data = new Datos();
 
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = opciones.Idc_user });
-
 
             try
             {
@@ -88,15 +106,14 @@ namespace negocio.Componentes
                 throw ex;
             }
             return ds;
-
         }
+
         public string ir(Entidades.OpcionesE opciones)
         {
             string destino = "";
             try
             {
-
-                //recupero mi tabla de menu 
+                //recupero mi tabla de menu
                 DataSet ds = new DataSet();
                 ds = menu_general();
                 //metemos en un datatable para el filtrado  recuperacion de datos
@@ -117,7 +134,6 @@ namespace negocio.Componentes
                     {
                         destino = "menu3.aspx";
                     }
-
                 }
             }
             catch (Exception ex)
@@ -136,7 +152,6 @@ namespace negocio.Componentes
             try
             {
                 dt = data.enviar_funcion(funcion);
-
             }
             catch (Exception ex)
             {
@@ -144,6 +159,7 @@ namespace negocio.Componentes
             }
             return dt;
         }
+
         public DataSet AcessosDirectos(Entidades.OpcionesE opcion)
         {
             DataSet ds = new DataSet();
@@ -227,7 +243,5 @@ namespace negocio.Componentes
             }
             return ds;
         }
-
-       
     }
 }

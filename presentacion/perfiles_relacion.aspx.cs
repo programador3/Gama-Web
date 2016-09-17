@@ -2,7 +2,6 @@
 using negocio.Entidades;
 using System;
 using System.Data;
-using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -124,7 +123,6 @@ namespace presentacion
                     }
                 }
             }
-            
         }
 
         /// <summary>

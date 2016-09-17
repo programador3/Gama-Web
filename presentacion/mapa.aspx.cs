@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using negocio.Componentes;
-using negocio.Entidades;
 
 namespace presentacion
 {
@@ -19,7 +13,7 @@ namespace presentacion
                 {
                     Response.Redirect("login.aspx");
                     return;
-                }          
+                }
                 //fin
                 string lat, lon;
                 lat = funciones.de64aTexto(Request.QueryString["latitud"]);

@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="revision_herramientas.aspx.cs" Inherits="presentacion.revision_herramientas"  MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="revision_herramientas.aspx.cs" Inherits="presentacion.revision_herramientas" MaintainScrollPositionOnPostback="true" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <script type="text/javascript">
+    <script type="text/javascript">
         function getImage(path) {
             $("#myImage").attr("src", path);
             //alert(path);
@@ -58,8 +59,9 @@
             -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
             transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         }
-        .read {        
-             border: 1px solid #ccc;
+
+        .read {
+            border: 1px solid #ccc;
             background-color: #eee;
             opacity: 1;
         }
@@ -88,16 +90,16 @@
                     <asp:TextBox placeholder="Empleado" ID="txtempleado" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
                     <asp:Label ID="idc_empleado" runat="server" Text="" Visible="false"></asp:Label>
                 </div>
-                    <h4 style="text-align:center;"><strong><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;Herramientas a Revisar</strong>
-                        <span>
-                            <asp:LinkButton ID="lnkver" CssClass="btn btn-success" runat="server" Visible="false" OnClick="lnkver_Click">Ver Herramientas <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></asp:LinkButton>
-                            <asp:LinkButton ID="lnkocultar" CssClass="btn btn-danger" runat="server" Visible="false" OnClick="lnkocultar_Click">Ocultar Herramientas <i class="fa fa-chevron-circle-up" aria-hidden="true"></i></asp:LinkButton>
-                        </span>
-                    </h4>
+                <h4 style="text-align: center;"><strong><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;Herramientas a Revisar</strong>
+                    <span>
+                        <asp:LinkButton ID="lnkver" CssClass="btn btn-success" runat="server" Visible="false" OnClick="lnkver_Click">Ver Herramientas <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></asp:LinkButton>
+                        <asp:LinkButton ID="lnkocultar" CssClass="btn btn-danger" runat="server" Visible="false" OnClick="lnkocultar_Click">Ocultar Herramientas <i class="fa fa-chevron-circle-up" aria-hidden="true"></i></asp:LinkButton>
+                    </span>
+                </h4>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="table table-responsive">
-                        <asp:GridView Style="text-align: center; font-size: 11px" ID="gridherramientas" runat="server" 
-                            AutoGenerateColumns="false" CssClass="table table-bordered table-condensed" 
+                        <asp:GridView Style="text-align: center; font-size: 11px" ID="gridherramientas" runat="server"
+                            AutoGenerateColumns="false" CssClass="table table-bordered table-condensed"
                             DataKeyNames="descripcion, idc_tipoherramienta,cantidad,revision,costo,observaciones" OnRowCommand="gridherramientas_RowCommand" OnRowDataBound="gridherramientas_RowDataBound">
                             <HeaderStyle HorizontalAlign="center" />
                             <Columns>
@@ -116,9 +118,9 @@
                         </asp:GridView>
                     </div>
                 </div>
-                    <asp:Repeater ID="repeat_herramientas" runat="server" Visible="true">
-                        <ItemTemplate>
-                           <%-- <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="font-size:11px">
+                <asp:Repeater ID="repeat_herramientas" runat="server" Visible="true">
+                    <ItemTemplate>
+                        <%-- <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="font-size:11px">
                                 <asp:UpdatePanel ID="aa" UpdateMode="always" runat="server">
                                     <ContentTemplate>
                                         <asp:Label ID="lblidc_tipo" runat="server" Text='<%#Eval("idc_tipoherramienta") %>' Visible="false"></asp:Label>
@@ -131,7 +133,7 @@
                                                 <strong>
                                                     <asp:Label style="text-align:left;" Height="25px" ID="Label2" runat="server" Text="Costo Uni:" Width="22%"></asp:Label></strong>
                                                     <i class="fa fa-usd" aria-hidden="true"></i>&nbsp;<asp:Label style="text-align:left;" Height="25px" ID="lblcosto" runat="server" Text='<%#Eval("costo") %>' Width="25%"></asp:Label>
-                                               
+
                                                 <br />
                                                 <strong>
                                                     <asp:Label Height="25px" ID="idc" runat="server" Text="Entrego: " Width="18%"></asp:Label></strong>
@@ -148,40 +150,38 @@
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>--%>
-                        </ItemTemplate>
+                    </ItemTemplate>
                 </asp:Repeater>
-                
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h5><strong><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Total Vale</strong></h5>
                     <asp:TextBox placeholder="0" ID="txttotalvale" Text="0" Style="color: red;" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
-
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h5><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Descontar por Semana</strong></h5>
-                    <asp:TextBox placeholder="0"  onkeypress="return validarEnteros(event);" ID="txtporsemana" Text="0" AutoPostBack="true" CssClass="form-control" ReadOnly="false" runat="server" OnTextChanged="txtporsemana_TextChanged"></asp:TextBox>
-
+                    <asp:TextBox placeholder="0" onkeypress="return validarEnteros(event);" ID="txtporsemana" Text="0" AutoPostBack="true" CssClass="form-control" ReadOnly="false" runat="server" OnTextChanged="txtporsemana_TextChanged"></asp:TextBox>
                 </div>
-                
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h5><strong><i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;Capturar Hallazgo o Golpe</strong></h5>
-                    <asp:TextBox TextMode="Multiline" Rows="2"  placeholder="Ingrese Comentarios acerca del hallazgo" ID="txtcomenthallazgo" CssClass="form-control" ReadOnly="false" runat="server"></asp:TextBox>
+                    <asp:TextBox TextMode="Multiline" Rows="2" placeholder="Ingrese Comentarios acerca del hallazgo" ID="txtcomenthallazgo" CssClass="form-control" ReadOnly="false" runat="server"></asp:TextBox>
                     <br />
                     <asp:FileUpload ID="fuparchivo" CssClass="form-control" runat="server" />
-                    <br /> 
+                    <br />
                     <asp:LinkButton ID="lnkGuardarPape" CssClass="btn btn-primary btn-block" OnClick="lnkGuardarPape_Click" runat="server">Agregar Golpe <i class="fa fa-plus-circle"></i> </asp:LinkButton>
                 </div>
                 <div class="col-lg-12 col-xs-12">
                     <div class="table table-responsive">
                         <asp:GridView ID="gridPapeleria" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed" DataKeyNames="descripcion, ruta, extension" OnRowCommand="gridPapeleria_RowCommand">
-                            <Columns>                                
+                            <Columns>
                                 <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Eliminar" CommandName="Eliminar">
                                     <HeaderStyle HorizontalAlign="Center" />
                                     <ItemStyle HorizontalAlign="Center" Width="60px" />
-                                </asp:ButtonField>     
-                                 <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Descargar" CommandName="Descargar" Text="Descargar">
+                                </asp:ButtonField>
+                                <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Descargar" CommandName="Descargar" Text="Descargar">
                                     <HeaderStyle HorizontalAlign="Center" />
                                     <ItemStyle HorizontalAlign="Center" Width="60px" />
-                                </asp:ButtonField>                           
+                                </asp:ButtonField>
                                 <asp:BoundField DataField="extension" HeaderText="extension" Visible="false"></asp:BoundField>
                                 <asp:BoundField DataField="ruta" HeaderText="Ruta Fisica Web" Visible="false"></asp:BoundField>
                                 <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
@@ -192,14 +192,12 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h5><strong><i class="fa fa-car" aria-hidden="true"></i>&nbsp;Revisar Calibracion de Llantas</strong></h5>
                     <asp:LinkButton ID="blkcalibracion" CssClass="btn btn-default btn-block" runat="server" OnClick="blkcalibracion_Click">Revisado</asp:LinkButton>
-
                 </div>
-                 
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    
-            <br />
+
+    <br />
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-info btn-block" OnClick="btnGuardar_Click" />
@@ -259,7 +257,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                     <strong style="text-align: right;">
                                         <asp:Label Style="text-align: right;" ID="Label5" runat="server" Text="Entrego: " Width="20%"></asp:Label></strong>
-                                    <asp:TextBox ID="txtentrego" OnTextChanged="texcosto_Click"  onkeypress="return validarEnteros(event);" AutoPostBack="true" onfocus="$(this).select();" ReadOnly="false" TextMode="Number" Width="75%" CssClass="form-control2" runat="server" autofocus></asp:TextBox>
+                                    <asp:TextBox ID="txtentrego" OnTextChanged="texcosto_Click" onkeypress="return validarEnteros(event);" AutoPostBack="true" onfocus="$(this).select();" ReadOnly="false" TextMode="Number" Width="75%" CssClass="form-control2" runat="server" autofocus></asp:TextBox>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <strong style="text-align: right;">
@@ -271,7 +269,7 @@
                                     <asp:TextBox Style="resize: none; font-size: 11px" Width="100%" ID="txtobservaciones" CssClass="form-control" placeholder="Observaciones" TextMode="Multiline" Rows="5" runat="server"></asp:TextBox>
                                 </div>
                                 <asp:Label Visible="false" ID="lblidc_herramienta" runat="server" Text=""></asp:Label>
-                                 <asp:Label Visible="false" style="font-size:20px; color:red; font:bold;" ID="lblerror" runat="server" Text=""></asp:Label>
+                                <asp:Label Visible="false" Style="font-size: 20px; color: red; font: bold;" ID="lblerror" runat="server" Text=""></asp:Label>
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -281,7 +279,7 @@
                         <asp:Button ID="Button1f" class="btn btn-info btn-block" runat="server" Text="Editar" OnClick="Yesh_Click" />
                     </div>
                     <div class="col-lg-6 col-xs-6">
-                         <asp:Button ID="Button1" class="btn btn-danger btn-block" runat="server" Text="Cerrar" OnClick="cerr_Click" />
+                        <asp:Button ID="Button1" class="btn btn-danger btn-block" runat="server" Text="Cerrar" OnClick="cerr_Click" />
                     </div>
                 </div>
             </div>

@@ -103,7 +103,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <h5><strong><i class="fa fa-use" aria-hidden="true"></i>&nbsp;Usuario que Solicito</strong></h5>
-                        <asp:TextBox ID="txtusuario" ReadOnly="true"  CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtusuario" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
                 </div>
             </div>

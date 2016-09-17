@@ -206,6 +206,7 @@
     <Content Include="html_dinamico.aspx" />
     <Content Include="imagenes\areas\captura\ok.png" />
     <Content Include="imagenes\areas\ok.png" />
+    <Content Include="imagenes\background.png" />
     <Content Include="imagenes\body_page.png" />
     <Content Include="imagenes\btn\documentation.png" />
     <Content Include="imagenes\btn\image-x-generic.png" />

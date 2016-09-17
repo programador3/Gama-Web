@@ -8,7 +8,6 @@ using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
 namespace presentacion
 {
     public partial class hallazgos_incumplidos_m : System.Web.UI.Page
@@ -25,6 +24,7 @@ namespace presentacion
                 CargarHallazgos(0);
             }
         }
+
         public void CargarHallazgos(int idc_sucursal)
         {
             try
@@ -60,9 +60,8 @@ namespace presentacion
                 Alert.ShowAlertError(ex.ToString(), this.Page);
             }
         }
-    
 
-        String ReturnUser(string filtro)
+        private String ReturnUser(string filtro)
         {
             try
             {
@@ -87,6 +86,7 @@ namespace presentacion
                 return "";
             }
         }
+
         protected void ddlsucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idc = Convert.ToInt32(ddlsucursal.SelectedValue);
@@ -106,7 +106,7 @@ namespace presentacion
             string vidc = gridhallazgos.DataKeys[index].Values["idc"].ToString();
             string ruta = funciones.GenerarRuta("HALLAZ", "unidad");
             idc_halla.Text = vidc;
-            lbltipo.Text= gridhallazgos.DataKeys[index].Values["tipo"].ToString();
+            lbltipo.Text = gridhallazgos.DataKeys[index].Values["tipo"].ToString();
             lbltipoh.Text = gridhallazgos.DataKeys[index].Values["tipoh"].ToString();
             correo_capturo.Text = gridhallazgos.DataKeys[index].Values["correo_sol"].ToString().Replace(";", "");
             reviso.Text = gridhallazgos.DataKeys[index].Values["reviso"].ToString().Replace(";", "");
@@ -126,12 +126,12 @@ namespace presentacion
                             DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/img/"));//path local
                             funciones.CopiarArchivos(ruta + vidc + Path.GetExtension(file), dirInfo + vidc + Path.GetExtension(file), this);
                             img.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "/temp/img/" + vidc + Path.GetExtension(file);
-
                         }
                     }
                     txthallazgo.Text = gridhallazgos.DataKeys[index].Values["observaciones"].ToString();
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessageimg", "ModalConfirmimg('Detalles del Hallazgo','modal fade modal-info');", true);
                     break;
+
                 case "Revisar":
                     txthallazgo_revi.Text = gridhallazgos.DataKeys[index].Values["observaciones"].ToString();
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm();", true);
@@ -164,7 +164,6 @@ namespace presentacion
                     {
                         cod = "RSCMOD";
                     }
-
                 }
                 else if (lbltipoh.Text == "G")
                 {
@@ -178,7 +177,6 @@ namespace presentacion
                     correos = funciones.cuentas_correo("select dbo.fn_hallazgos_correos_avisos(144) as correos").Replace(";", ",");
                     cod = "HALLVTE";
                 }
-
 
                 diverror.Visible = false;
                 if (txtcomentarios.Text == "")
@@ -230,7 +228,7 @@ namespace presentacion
                     {
                         int total = Convert.ToInt32(ds.Tables[0].Rows[0]["incumplidas"]);
                         List<string> Adjuntos = new List<string>();
-                        string url = "";                        
+                        string url = "";
                         string ruta = funciones.GenerarRuta("HALLAZ", "unidad");
                         string[] allFiles2 = System.IO.Directory.GetFiles(ruta);//Change path to yours
                         foreach (string file in allFiles2)
@@ -245,9 +243,9 @@ namespace presentacion
                         bool incumplido = false;
                         if (total > 3) { subject = "(HALLAZGO INCUMPLIDO) " + subject; incumplido = true; }
                         string message = total > 3 ? "SUPERO EL LIMITE DE INTENTO INCUMPLIDOS, EL HALLAZGO TERMINO COMO INCUMPLIDO" : "El Hallazgo fue Actualizado de Manera Correcta";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "AlertGO('"+message+"','hallazgos_incumplidos_m.aspx');", true);
-                     
-                        string mess = EnviarCorreo(path, subject,correos, incumplido);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "AlertGO('" + message + "','hallazgos_incumplidos_m.aspx');", true);
+
+                        string mess = EnviarCorreo(path, subject, correos, incumplido);
                     }
                     else
                     {
@@ -255,7 +253,6 @@ namespace presentacion
                         lblerror.Text = vmensaje;
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "ModalConfirm();", true);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -266,6 +263,7 @@ namespace presentacion
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "ModalConfirm();", true);
             }
         }
+
         private string EnviarCorreo(string path, string subjectt, string correos, bool incumplido)
         {
             string usuario = "";
@@ -288,7 +286,6 @@ namespace presentacion
                 useSsl = Convert.ToBoolean(row["ssl"]);
                 if (to != "" && usuario != "" && contraseña != "" && hostnamesmtp != "" && portsmtp != 0)
                 {
-
                     body = "<p style='font-family:arial;'><strong>HALLAZGO " + idc_halla.Text + " : </strong>" + txthallazgo_revi.Text + "<br/><br/>" +
                           "<strong>SUCURSAL: </strong>" + " " + lblsucursal.Text + "<br/><br/>" +
                             "<strong>NUEVA FECHA: </strong>" + " " + Convert.ToDateTime(txtfecha_revi.Text).ToString("MMMM dd, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX")) + "<br/><br/>" +
@@ -314,6 +311,5 @@ namespace presentacion
                 return "Faltan Datos";
             }
         }
-    
     }
 }

@@ -87,7 +87,7 @@ namespace presentacion
             idc_halla.Text = vidc;
             lbltipoh.Text = tipoh;
             lbltipo.Text = tipo;
-            lblsucursal.Text= gridhallazgos.DataKeys[index].Values["sucursal"].ToString(); ;
+            lblsucursal.Text = gridhallazgos.DataKeys[index].Values["sucursal"].ToString(); ;
             diverror.Visible = false;
             lblerror.Text = "";
             txtcomentarios.Text = "";
@@ -127,7 +127,7 @@ namespace presentacion
                 if (lbltipoh.Text == "S")
                 {
                     subject = "TERMINACIÓN DE HALLAZGO DE SUCURSAL";
-                    correos = funciones.cuentas_correo("select dbo.fn_hallazgos_correos_avisos(143) as correos").Replace(";",",") ;
+                    correos = funciones.cuentas_correo("select dbo.fn_hallazgos_correos_avisos(143) as correos").Replace(";", ",");
                     if (lbltipo.Text == "1")
                     {
                         cod = "RSC";
@@ -142,7 +142,6 @@ namespace presentacion
                     {
                         cod = "RSCMOD";
                     }
-                    
                 }
                 else if (lbltipoh.Text == "G")
                 {
@@ -156,7 +155,6 @@ namespace presentacion
                     correos = funciones.cuentas_correo("select dbo.fn_hallazgos_correos_avisos(144) as correos").Replace(";", ",");
                     cod = "HALLVTE";
                 }
-
 
                 diverror.Visible = false;
                 if (txtcomentarios.Text == "")
@@ -230,15 +228,14 @@ namespace presentacion
                         {
                             if (Path.GetFileNameWithoutExtension(file) == idc_principal.Text)
                             {
-                                url = ruta + idc_principal.Text.Trim() + Path.GetExtension(file);                               
+                                url = ruta + idc_principal.Text.Trim() + Path.GetExtension(file);
                                 Adjuntos.Add(url);
                                 break;
                             }
                         }
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "AlertGO('El Hallazgo fue Terminado de Manera Correcta','hallazgos_pendientes_terminar_m.aspx');", true);
                         //Alert.ShowGiftMessage("Estamos Terminando el Hallazgo", "Espere un Momento", "hallazgos_pendientes_terminar_m.aspx", "imagenes/loading.gif", "2000", "El Hallazgo fue Terminado de Manera Correcta", this);
-                        string mess = EnviarCorreo(Adjuntos,subject, correos);
-
+                        string mess = EnviarCorreo(Adjuntos, subject, correos);
                     }
                     else
                     {
@@ -256,6 +253,7 @@ namespace presentacion
                 funciones.EnviarError("Pagina:" + Session["page_name_asp"] as string + ex.ToString());
             }
         }
+
         private string EnviarCorreo(List<string> path, string subjectt, string correos)
         {
             string usuario = "";
@@ -290,7 +288,6 @@ namespace presentacion
                          "<strong>Sucursal: </strong>" + lblsucursal.Text + " <br/><br/>" +
                              "<strong>FECHA DE SOLUCIÓN: </strong>" + " " + DateTime.Now.ToString("dd MMMM, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX")) + "<br/><br/>" +
                              "<strong>OBSERVACIONES DE SOLUCIÓN: </strong>" + " " + txtcomentarios.Text.Trim() + "</p>";
-
                     }
                     else if (lbltipoh.Text == "V")
                     {
@@ -302,7 +299,7 @@ namespace presentacion
                     int i = 1;
                     foreach (string item in path)
                     {
-                        body = body + @"<br/><br/><img id='img" + i.ToString()+"' src='"+item+ "'/><br/><br/>";
+                        body = body + @"<br/><br/><img id='img" + i.ToString() + "' src='" + item + "'/><br/><br/>";
                         i++;
                     }
 
@@ -318,6 +315,7 @@ namespace presentacion
                 return "Faltan Datos";
             }
         }
+
         public bool getValidatedExtension(string tempExt)
         {
             if (!(tempExt.Equals(".jpg")) && !(tempExt.Equals(".png")) && !(tempExt.Equals(".bmp")) &&

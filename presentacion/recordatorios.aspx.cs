@@ -16,7 +16,6 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
-
             }
         }
 
@@ -49,8 +48,8 @@ namespace presentacion
                     string url = Session["post"] == null ? "menu.aspx" : Session["post"] as string;
                     Alert.ShowGiftMessage("Estamos procesando la solicitud", "Espere un Momento", url, "imagenes/loading.gif", "2000", "Recordatorio Agregado Correctamente", this);
                 }
-                else {
-
+                else
+                {
                     Alert.ShowAlertError(vmensaje, this.Page);
                 }
             }

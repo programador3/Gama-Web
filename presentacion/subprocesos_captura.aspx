@@ -24,7 +24,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-    <h1 class="page-header"> Manual de Procesos
+    <h1 class="page-header">Manual de Procesos
         <asp:Label ID="lblname" runat="server" Text=""></asp:Label>
         <span>
             <asp:Label ID="lnltipo" runat="server" Text=" Tipo Borrador" CssClass="btn btn-primary"></asp:Label></span>
@@ -53,8 +53,7 @@
                                     <asp:LinkButton ID="lnkaddfile" Style="color: #fff; background-color: #1ABC9C;" OnClick="lnkaddfile_Click" runat="server">Agregar Archivo  <i class="fa fa-plus-circle" aria-hidden="true"></i></asp:LinkButton>
                                 </span>
                             </div>
-                           
-                         
+
                             <br />
                             <div class="table table-responsive">
                                 <asp:GridView ID="gridarchivos" runat="server" DataKeyNames="idc_procesosarc,url,observaciones" CssClass="table table-responsive table-bordered" OnRowCommand="gridarchivos_RowCommand" AutoGenerateColumns="False">

@@ -132,6 +132,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet RevisarHallazgoVbno(HallazgosENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -179,6 +180,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet RevisarHallazgoGIncm(HallazgosENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -203,6 +205,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet RevisarHallazgoGvb(HallazgosENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -328,6 +331,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet ValidarPantalla(HallazgosENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -346,6 +350,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet CargarHallazgos(HallazgosENT Entidad)
         {
             DataSet ds = new DataSet();

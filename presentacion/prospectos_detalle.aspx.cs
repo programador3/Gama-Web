@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using negocio.Componentes;
+using negocio.Entidades;
+using System;
+using System.Data;
+using System.Drawing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Text.RegularExpressions;
-using negocio.Entidades;
-using System.Data;
-using negocio.Componentes;
-using System.IO;
-using System.Drawing;
-using System.Resources;
-
 
 namespace presentacion
 {
@@ -37,7 +30,7 @@ namespace presentacion
                     vidc = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["sidc_prospecto"]));
                     //cargar datos
                     prospectos_ventasE llenar_datos = new prospectos_ventasE();
-                   
+
                     llenar_datos.Idc_prospecto = vidc;
                     //para saber de donde recuperar la ruta de la imagen.
                     //string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
@@ -50,13 +43,13 @@ namespace presentacion
                     string phost = funciones.obten_cadena_con("phost");
                     llenar_datos.P_host = phost;
                     DataSet ds = new DataSet();
-                    
+
                     Prospectos_ventasBL pros = new Prospectos_ventasBL();
                     try
                     {
                         ds = pros.datos_prospectos_ventas(llenar_datos);
                         int total = ds.Tables[0].Rows.Count;
-                        
+
                         if (total == 0)
                         {
                             msgbox.show("No se Encontraron Datos del Prospecto", this.Page);
@@ -65,7 +58,7 @@ namespace presentacion
                         {
                             lblid.Text = Convert.ToString(ds.Tables[0].Rows[0]["idc_prospecto"]);
                             lbldir.Text = Convert.ToString(ds.Tables[0].Rows[0]["direccion"]);
-                            lbletapaob.Text= Convert.ToString(ds.Tables[0].Rows[0]["etapa_obra"]);
+                            lbletapaob.Text = Convert.ToString(ds.Tables[0].Rows[0]["etapa_obra"]);
                             lblrsocial.Text = Convert.ToString(ds.Tables[0].Rows[0]["nombre_razon_social"]);
                             lblobs.Text = Convert.ToString(ds.Tables[0].Rows[0]["observacion"]);
                             lbltamobra.Text = Convert.ToString(ds.Tables[0].Rows[0]["tamaño_obra"]).Trim();
@@ -73,11 +66,11 @@ namespace presentacion
                             lblregistro.Text = Convert.ToString(ds.Tables[0].Rows[0]["fecha_registro"]);
                             lblusuario.Text = Convert.ToString(ds.Tables[0].Rows[0]["usuario"]);
                             //mas obras
-                            
+
                             GridObras.DataSource = ds.Tables[1];
                             GridObras.DataBind();
 
-                           //contactos
+                            //contactos
 
                             GridContacto.DataSource = ds.Tables[2];
                             GridContacto.DataBind();
@@ -100,10 +93,10 @@ namespace presentacion
                             //IMAGENES
                             //miniatura
                             img1small.ImageUrl = Convert.ToString(ds.Tables[0].Rows[0]["ima1"]);
-                            img2small.ImageUrl = Convert.ToString(ds.Tables[0].Rows[0]["ima2"]); 
+                            img2small.ImageUrl = Convert.ToString(ds.Tables[0].Rows[0]["ima2"]);
                             //tamaño original
                             img1.ImageUrl = Convert.ToString(ds.Tables[0].Rows[0]["ima1"]);
-                            img2.ImageUrl = Convert.ToString(ds.Tables[0].Rows[0]["ima2"]); 
+                            img2.ImageUrl = Convert.ToString(ds.Tables[0].Rows[0]["ima2"]);
 
                             //latitud y longitud
                             string latitud, longitud;
@@ -119,7 +112,8 @@ namespace presentacion
                                 lbllongitudval.Visible = true;
                                 btnimgmap.Visible = true;
                             }
-                            else {
+                            else
+                            {
                                 lbllatitud.Visible = false;
                                 lbllongitud.Visible = false;
                                 lbllatitudval.Text = "";
@@ -140,14 +134,11 @@ namespace presentacion
                             grid_famart_det.DataSource = tbl_famart_det;
                             grid_famart_det.DataBind();
                         }
-
-
                     }
                     catch (Exception ex)
                     {
                         msgbox.show(ex.Message, this.Page);
                     }
-
                 }
             }
         }
@@ -157,11 +148,12 @@ namespace presentacion
             //recuperamos el id del registro seleccionado del grid de Contacto
             int index = Convert.ToInt32(e.CommandArgument);
             int contacto_id = Convert.ToInt32(GridContacto.DataKeys[index].Value);
-            switch (e.CommandName) {
+            switch (e.CommandName)
+            {
                 case "verTelefono":
                     verDetalle(contacto_id);
                     //pintamos el grid
-                    GridContacto.Rows[index].BackColor = Color.FromName("#D7E8D7"); 
+                    GridContacto.Rows[index].BackColor = Color.FromName("#D7E8D7");
                     break;
             }
         }
@@ -172,7 +164,7 @@ namespace presentacion
             //pintamos el grid
             //GridContacto.SelectedRow.BackColor = Color.FromName("#D7E8D7");
 
-            //cargamos el datagrid de telefono 
+            //cargamos el datagrid de telefono
             DataTable tbl_telefonos = (System.Data.DataTable)(Session["TablaTelefono"]);
             //filtramos y llenamos el GridView
             DataView dv = new DataView(tbl_telefonos);
@@ -180,24 +172,23 @@ namespace presentacion
             GridTelefono.DataSource = dv;
             GridTelefono.DataBind();
             //CODIGO DE CORREO
-            //cargamos el datagrid de telefono 
+            //cargamos el datagrid de telefono
             DataTable tbl_correos = (System.Data.DataTable)(Session["TablaCorreo"]);
-            //filtramos y llenamos el GridView 
+            //filtramos y llenamos el GridView
             DataView dvcorreo = new DataView(tbl_correos);
             dvcorreo.RowFilter = "contacto_id = " + contacto_id;
             GridCorreo.DataSource = dvcorreo;
             GridCorreo.DataBind();
             //FIN
-
         }
 
-        
         protected void btnimgmap_Click1(object sender, ImageClickEventArgs e)
         {
             string pagina;
-            pagina = "mapa.aspx?longitud="+ funciones.deTextoa64(lbllongitudval.Text)+"&latitud="+funciones.deTextoa64(lbllatitudval.Text);
+            pagina = "mapa.aspx?longitud=" + funciones.deTextoa64(lbllongitudval.Text) + "&latitud=" + funciones.deTextoa64(lbllatitudval.Text);
             Response.Redirect(pagina);
         }
+
         //add 13-10-2015
         protected void grid_famart_det_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -213,9 +204,9 @@ namespace presentacion
                     //ocultamos el index del grid
                     oc_gridfamartdet.Value = index.ToString();
                     grid_famart_det.Rows[index].BackColor = Color.FromName("#D7E8D7");
-                    
+
                     refreshGrid_FamartMarca();
-                    
+
                     break;
             }
         }
@@ -225,18 +216,15 @@ namespace presentacion
             int id_filtro = 0;
             if (grid_famart_det.Rows.Count > 0)
             {
-
                 int index = Convert.ToInt32(oc_gridfamartdet.Value);
                 if (index > -1)
                 {
                     int seleccionado = Convert.ToInt32(grid_famart_det.DataKeys[index].Value);
                     if (seleccionado > 0)
                     {
-                       
                         id_filtro = seleccionado;
                     }
                 }
-
             }
 
             DataTable tbl_famartdetmar = (DataTable)(Session["TablaFamartDetmar"]);
@@ -245,9 +233,5 @@ namespace presentacion
             grid_famart_detmar.DataSource = dv;
             grid_famart_detmar.DataBind();
         }
-
-        
-
-        
     }
 }

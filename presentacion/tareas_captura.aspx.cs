@@ -1,4 +1,4 @@
-﻿     using negocio.Componentes;
+﻿using negocio.Componentes;
 using negocio.Entidades;
 using System;
 using System.Collections.Generic;
@@ -39,7 +39,7 @@ namespace presentacion
         }
 
         /// <summary>
-        /// Carga Puestos en Filtro
+        /// Carga Puestos en ComboBox con Filtro
         /// </summary>
         public void CargaPuestos(string filtro)
         {
@@ -119,8 +119,6 @@ namespace presentacion
             return mensaje;
         }
 
-       
-
         /// <summary>
         /// Carga las tareas pendientes
         /// </summary>
@@ -185,10 +183,12 @@ namespace presentacion
             bool error = false;
 
             string id_archi = "0";
+            //si hay en session un  id de archivo quiere decir que lo estamos editando
             id_archi = Session["id_archi"] != null ? (string)Session["id_archi"] : "0";
             if (txtNombreArchivo.Text == "") { error = true; Alert.ShowAlertError("Debe ingresar un comentario.", this); }
             Random random = new Random();
             int randomNumber = random.Next(0, 1000);
+            //si no subio archivo, solo esta subiendo un comentario
             if (fupPapeleria.HasFile && error == false)
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/tareas/"));//path local
@@ -371,7 +371,7 @@ namespace presentacion
                         {
                             ds = componente.AgregarTarea(entidad);
                         }
-
+                        //mensaje de error o abortado
                         string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {

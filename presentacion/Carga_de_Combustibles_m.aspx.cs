@@ -530,7 +530,7 @@ namespace presentacion
             {
                 DataSet ds = new DataSet();
                 ds = conexion.Tanque_Sucursal(idc_usuario);
-                
+
                 cbotanque.DataTextField = "descripcion";
                 cbotanque.DataValueField = "idc_tanque";
                 if (ds.Tables.Count > 0)
@@ -800,7 +800,7 @@ namespace presentacion
             if (cbotipocombustible.SelectedIndex <= 0)
             {
                 CargarMsgBox("Selecciona un Tipo de Combustible.");
-              
+
                 return false;
             }
             else if (txtidc_vehiculo.Text == "")
@@ -987,15 +987,17 @@ namespace presentacion
             Session["Caso_Confirmacion"] = "Guardar";
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Guardar?','modal fade modal-info');", true);
         }
+
         protected void Yesfolio_Click(object sender, EventArgs e)
         {
             if (txtfolio.Text == "")
             {
-                Alert.ShowAlertError("Ingrese el folio",this);
+                Alert.ShowAlertError("Ingrese el folio", this);
             }
-            else {
+            else
+            {
                 int folio = Convert.ToInt32(txtfolio.Text);
-                DataTable dt = funciones.ValidarFolio(58,folio);
+                DataTable dt = funciones.ValidarFolio(58, folio);
                 if (dt.Rows.Count > 0)
                 {
                     DataRow row = dt.Rows[0];
@@ -1003,7 +1005,7 @@ namespace presentacion
                     {
                         txtidc_Folio.Text = row["id_autoriza"].ToString();
                         txtfolio.Text = "";
-                        Alert.ShowAlert("Folio Correcto, Ya puede Guardar.","Mensaje del Sistema",this);
+                        Alert.ShowAlert("Folio Correcto, Ya puede Guardar.", "Mensaje del Sistema", this);
                     }
                     else
                     {
@@ -1014,6 +1016,7 @@ namespace presentacion
                 }
             }
         }
+
         protected void lnknuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect("Carga_de_Combustibles_m.aspx");
@@ -1049,7 +1052,6 @@ namespace presentacion
                     {
                         if (txtcombustibleutilizado.Text == "0")
                         {
-
                             CargarMsgBox("Es Requerido Ingresar el Combustible Utilizado.");
                             return;
                         }
@@ -1080,7 +1082,7 @@ namespace presentacion
                     }
                     int vidc_tanque = Convert.ToInt32(cbotanque.SelectedValue);
                     string vobs = txtobservaciones.Text;
-                    
+
                     if ((Convert.ToDouble(txtkmactual.Text) <= Convert.ToDouble(txtkmanterior.Text)) && txtidc_Folio.Text == "" && Convert.ToBoolean(Session["Folio"]) == false)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "confirmar(2); ", true);
@@ -1149,10 +1151,10 @@ namespace presentacion
                     string[] parametros = {"@pidc_usuario","@pdirecip","@pnombrepc","@pusuariopc" ,"@pidc_tcombustible","@pidc_vehiculo","@pidc_empleado","@pfecha","@pkilometraje","@plitros","@pcombustible",
                                       "@pdistancia","@ptiempo_relenti","@pcomb_relenti","@psipasa","@pidc_tanque","@POBSERVACIONES","@pcandado_seguridad","@PCINCHO_SEGURIDAD","@PESPUMA_SEGURIDAD","@PFRENO_MOTOR","@PCALIBRACION_LLANTAS"};
                     object[] valores = { Session["sidc_usuario"], ip, pc, usuariopc, vtc, idc_camion, vchofer, vfecha, Convert.ToInt32(vkm), vlitros, vcombustible, vdistancia, vtr, vcr, 0, vidc_tanque, vobs, vcanseg, vcinseg, espseg, fremot, vcallla };
-                    
+
                     DataSet ds = new DataSet();
                     CombustibleCOM componente = new CombustibleCOM();
-                    ds = componente.AgregarCarga(parametros,valores);
+                    ds = componente.AgregarCarga(parametros, valores);
                     DataRow row = ds.Tables[0].Rows[0];
                     string msg = row["mensaje"].ToString();
                     if (msg == "")
@@ -1161,11 +1163,10 @@ namespace presentacion
                         string mensaje = "Se Guardo el Registro con Exito.\\n \\u000B \\nNo.Folio:\\n" + Convert.ToString(row["folio"].ToString());
                         Alert.ShowGiftMessage("Estamos procesando la solicitud.", "Espere un Momento", "Carga_de_Combustibles_m.aspx", "imagenes/loading.gif", "2000", mensaje, this);
                     }
-                    else {
-
+                    else
+                    {
                         CargarMsgBox(msg);
                     }
-
                 }
                 catch (Exception ex)
                 {

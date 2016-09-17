@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace presentacion
+﻿namespace presentacion
 {
     public class solo_digitos
     {
@@ -22,6 +17,5 @@ namespace presentacion
 
             return resultado;
         }
-
     }
 }

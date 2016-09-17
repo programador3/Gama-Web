@@ -60,7 +60,7 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
-            listparameters.Add(new SqlParameter() { ParameterName = "@pasunto", SqlDbType = SqlDbType.Int, Value = Entidad.Pasunto }); 
+            listparameters.Add(new SqlParameter() { ParameterName = "@pasunto", SqlDbType = SqlDbType.Int, Value = Entidad.Pasunto });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptexto", SqlDbType = SqlDbType.Int, Value = Entidad.Ptexto });
             listparameters.Add(new SqlParameter() { ParameterName = "@ppara", SqlDbType = SqlDbType.Int, Value = Entidad.Ppara });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_usuario });
@@ -93,6 +93,5 @@ namespace negocio.Componentes
             }
             return ds;
         }
-
     }
 }

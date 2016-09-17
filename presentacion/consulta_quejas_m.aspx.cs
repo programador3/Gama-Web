@@ -3,9 +3,6 @@ using negocio.Entidades;
 using System;
 using System.Data;
 using System.Globalization;
-using System.IO;
-using System.Web.UI;
-
 
 namespace presentacion
 {
@@ -25,7 +22,8 @@ namespace presentacion
                     CargarQuejas(cdi);
                 }
             }
-            else {
+            else
+            {
                 txtnoqueja.ReadOnly = false;
             }
         }
@@ -88,7 +86,8 @@ namespace presentacion
                     }
                 }
             }
-            else {
+            else
+            {
                 txtnoqueja.Text = cdi.ToString();
                 txtcliente.Text = "";
                 txtfrc.Text = "";
@@ -113,7 +112,7 @@ namespace presentacion
                 txtmunicipio.Text = "";
                 griddatos.DataSource = null;
                 griddatos.DataBind();
-                Alert.ShowAlertInfo("No se encontraron resultados","Mensaje del sistema",this);
+                Alert.ShowAlertInfo("No se encontraron resultados", "Mensaje del sistema", this);
             }
         }
 

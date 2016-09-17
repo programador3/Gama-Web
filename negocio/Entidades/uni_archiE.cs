@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace negocio.Entidades
+﻿namespace negocio.Entidades
 {
     public class uni_archiE
     {
-        string cod_archivo;
-        int idc_usuario;
-
+        private string cod_archivo;
+        private int idc_usuario;
 
         public string Cod_archivo
         {

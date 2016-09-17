@@ -17,11 +17,13 @@ namespace presentacion
                 Response.Redirect("login.aspx");
             }
             if (!IsPostBack)
-            {int idc_sucursal = Request.QueryString["s"]==null?0: Convert.ToInt32(funciones.de64aTexto(Request.QueryString["s"]));
+            {
+                int idc_sucursal = Request.QueryString["s"] == null ? 0 : Convert.ToInt32(funciones.de64aTexto(Request.QueryString["s"]));
                 lnk.Visible = idc_sucursal == 0 ? false : true;
                 CargaSucursales(idc_sucursal);
             }
         }
+
         public void CargaSucursales(int idc_sucursal)
         {
             try
@@ -49,23 +51,20 @@ namespace presentacion
             string[] allFiles = System.IO.Directory.GetFiles(ruta);//Change path to yours
             foreach (string file in allFiles)
             {
-                if (Path.GetFileNameWithoutExtension(file)==vidc)
+                if (Path.GetFileNameWithoutExtension(file) == vidc)
                 {
                     DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/img/"));//path local
-                    funciones.CopiarArchivos(ruta + vidc + Path.GetExtension(file), dirInfo + vidc + Path.GetExtension(file),this);
-                    img.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"]+"/temp/img/" + vidc + Path.GetExtension(file);
-                    
+                    funciones.CopiarArchivos(ruta + vidc + Path.GetExtension(file), dirInfo + vidc + Path.GetExtension(file), this);
+                    img.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "/temp/img/" + vidc + Path.GetExtension(file);
                 }
             }
             txthallazgo.Text = gridhallazgos.DataKeys[index].Values["observaciones"].ToString();
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Detalles del Hallazgo','modal fade modal-info');", true);
-
         }
 
         protected void lnk_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMesswwwwage", "window.close();", true);
-            
         }
     }
 }

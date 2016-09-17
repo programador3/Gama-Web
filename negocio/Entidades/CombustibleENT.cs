@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace negocio.Entidades
 {
     public class CombustibleENT
     {
-        string valor;
-        bool todos;
-        int idc_sucursal;
-        int tipofolio;
-        int folio;
+        private string valor;
+        private bool todos;
+        private int idc_sucursal;
+        private int tipofolio;
+        private int folio;
         private string pdirecip;
         private string pnombrepc;
         private string pusuariopc;
@@ -40,11 +37,13 @@ namespace negocio.Entidades
             get { return pusuariopc; }
             set { pusuariopc = value; }
         }
+
         public string Pvalor
         {
             get { return valor; }
             set { valor = value; }
         }
+
         public Boolean Ptodos
         {
             get { return todos; }
@@ -62,6 +61,7 @@ namespace negocio.Entidades
             get { return tipofolio; }
             set { idc_sucursal = value; }
         }
+
         public int Pfolio
         {
             get { return folio; }

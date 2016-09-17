@@ -24,6 +24,7 @@ namespace presentacion
                 CargarUsuarios("");
             }
         }
+
         private void CargarGrid()
         {
             DataTable dt = Session["dt_usuarios"] as DataTable;
@@ -32,6 +33,7 @@ namespace presentacion
             gridperfiles.DataBind();
             ScriptManager.RegisterStartupScript(this, GetType(), "notwssswswsi5eded33W3", "DataTa1();", true);
         }
+
         private void InsertInTable(string idc, string usuario)
         {
             DataTable dt = Session["dt_usuarios"] as DataTable;
@@ -39,10 +41,10 @@ namespace presentacion
             view.RowFilter = "idc_usuario = " + idc.Trim() + "";
             if (view.ToTable().Rows.Count > 0)
             {
-                Alert.ShowAlertError("El usuario "+usuario+" ya esta en la lista.",this);
+                Alert.ShowAlertError("El usuario " + usuario + " ya esta en la lista.", this);
             }
-            else {
-
+            else
+            {
                 DataRow row = dt.NewRow();
                 row["idc_usuario"] = idc;
                 row["usuario_nombre"] = usuario;
@@ -135,12 +137,12 @@ namespace presentacion
             }
             else
             {
-                InsertInTable(idc,usuario);
+                InsertInTable(idc, usuario);
                 CargarGrid();
             }
         }
 
-        string Cadena()
+        private string Cadena()
         {
             string cadena = "";
             DataTable dt = Session["dt_usuarios"] as DataTable;
@@ -151,6 +153,7 @@ namespace presentacion
             }
             return cadena;
         }
+
         protected void lnkagregarTodo_Click(object sender, EventArgs e)
         {
             string cssclas = lnkagregarTodo.CssClass;

@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using negocio.Componentes;
+﻿using negocio.Componentes;
 using negocio.Entidades;
-using System.Data.SqlClient;
+using System;
 using System.Data;
-using Microsoft.Reporting.WebForms;
 
 namespace presentacion
 
 {
     public class reporting
     {
-        
-
-        public static string  get_reporte(int idc_reporting)
+        public static string get_reporte(int idc_reporting)
         {
             DataSet ds = new DataSet();
             string path;
@@ -30,16 +23,13 @@ namespace presentacion
                 ds = datos.path_reporte(llenar_datos);
                 //formamos la cadena
                 path = ds.Tables[0].Rows[0]["ruta"].ToString() + ds.Tables[0].Rows[0]["nombre"].ToString();
-
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            
-                return path;
-            
 
+            return path;
         }
     }
 }

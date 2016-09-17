@@ -9,7 +9,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    box-sizing:content-box;
+    box-sizing: content-box;
 }
 
 .bp-corner-all {
@@ -95,8 +95,7 @@
     vertical-align: middle;
 }
 
-.bp-readmore
-{
+.bp-readmore {
     font-size: 10px;
     line-height: 12px;
     text-align: right;
@@ -109,28 +108,25 @@
     vertical-align: middle;
 }
 
-.bp-connector-label
-{
+.bp-connector-label {
     font-size: 12px;
     line-height: 14px;
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
     color: black;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.bp-label-annotation 
-{
-    font-size: 16px; 
-    text-align:center;
+.bp-label-annotation {
+    font-size: 16px;
+    text-align: center;
 }
 
-.bp-badge
-{
-    -moz-border-radius: 10px; 
-    -webkit-border-radius: 10px; 
-    -khtml-border-radius: 10px; 
+.bp-badge {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
     border-radius: 10px;
     font-size: 12px;
     line-height: 12px;
@@ -140,7 +136,7 @@
     font-weight: bold;
     font-family: Arial;
     padding: 4px;
-    float:left;
+    float: left;
 }
 
 .bp-printpreview {
@@ -148,8 +144,8 @@
     overflow: hidden;
     border-right: 1px;
     border-bottom: 1px;
-    border-right-style:dotted;
-    border-bottom-style:dotted;
-    border-right-color:#cccccc;
-    border-bottom-color:#cccccc;
+    border-right-style: dotted;
+    border-bottom-style: dotted;
+    border-right-color: #cccccc;
+    border-bottom-color: #cccccc;
 }

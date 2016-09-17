@@ -97,7 +97,7 @@ namespace presentacion
             ddlvehiculo.Items.Insert(0, new ListItem("--Seleccione un Vehiculo"));
             if (dt.Rows.Count == 0)
             {
-                Alert.ShowAlertInfo("No se encontraron resultados, intentelo de nuevo","Mensaje del sistema",this);
+                Alert.ShowAlertInfo("No se encontraron resultados, intentelo de nuevo", "Mensaje del sistema", this);
             }
         }
 
@@ -157,7 +157,8 @@ namespace presentacion
             herramientas.Rows.Add(row);
             Session["herramientas"] = herramientas;
         }
-        private void UpdateIntoHerramientas(string idc_tipoherramienta,string revision, string observaciones)
+
+        private void UpdateIntoHerramientas(string idc_tipoherramienta, string revision, string observaciones)
         {
             DataTable herramientas = (DataTable)Session["herramientas"];
             foreach (DataRow row in herramientas.Rows)
@@ -166,10 +167,11 @@ namespace presentacion
                 {
                     row["revision"] = revision;
                     row["observaciones"] = observaciones;
-                }               
+                }
             }
             Session["herramientas"] = herramientas;
         }
+
         private int CalibraLlanta(int idc_vehiculo)
         {
             Vehiculos_RevisionENT entidad = new Vehiculos_RevisionENT();
@@ -198,6 +200,7 @@ namespace presentacion
                 HerramientasRevision(idc);
             }
         }
+
         protected void Yesh_Click(object sender, EventArgs e)
         {
             int cantidad = Convert.ToInt32(txtcantidad.Text);
@@ -227,10 +230,11 @@ namespace presentacion
                 CargaGridHerr();
             }
         }
+
         protected void texcosto_Click(object sender, EventArgs e)
         {
             int cantidad = Convert.ToInt32(txtcantidad.Text);
-            int revision = txtentrego.Text==""?0:Convert.ToInt32(txtentrego.Text);
+            int revision = txtentrego.Text == "" ? 0 : Convert.ToInt32(txtentrego.Text);
             if (revision > cantidad) { revision = cantidad; }
             decimal costo = Convert.ToDecimal(txtcosto.Text);
             decimal costovale = (cantidad - revision) * costo;
@@ -431,6 +435,7 @@ namespace presentacion
             }
             return cadena;
         }
+
         private int TotalCadenaHerramientas()
         {
             int cadena = 0;
@@ -445,6 +450,7 @@ namespace presentacion
             }
             return cadena;
         }
+
         private string CadenaHallazgos()
         {
             string cadena = "";
@@ -578,6 +584,7 @@ namespace presentacion
         {
             blkcalibracion.CssClass = blkcalibracion.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
         }
+
         protected void cerr_Click(object sender, EventArgs e)
         {
             txtcantidad.Text = "";
@@ -603,7 +610,7 @@ namespace presentacion
         protected void gridherramientas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int index = Convert.ToInt32(e.CommandArgument);
-            string idc_tipoherramienta =gridherramientas.DataKeys[index].Values["idc_tipoherramienta"].ToString();
+            string idc_tipoherramienta = gridherramientas.DataKeys[index].Values["idc_tipoherramienta"].ToString();
             string descripcion = gridherramientas.DataKeys[index].Values["descripcion"].ToString();
             string cantidad = gridherramientas.DataKeys[index].Values["cantidad"].ToString();
             string revision = gridherramientas.DataKeys[index].Values["revision"].ToString();
@@ -615,7 +622,7 @@ namespace presentacion
             txtcostovale.Text = "0";
             txtentrego.Text = revision;
             txtobservaciones.Text = observaciones;
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirmh('"+descripcion+"');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirmh('" + descripcion + "');", true);
             CargaGridHerr();
         }
 

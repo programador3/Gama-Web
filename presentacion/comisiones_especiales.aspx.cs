@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using negocio.Componentes;
+using negocio.Entidades;
+using System;
+using System.Data;
+using System.Drawing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using negocio.Componentes;
-using negocio.Entidades;
-using System.Drawing;
 
 namespace presentacion
 {
@@ -17,7 +14,7 @@ namespace presentacion
         {
             if (!Page.IsPostBack)
             {
-                //fecha al dia de hoy 
+                //fecha al dia de hoy
                 DateTime hoy = DateTime.Today;
 
                 txtfecha1.Text = hoy.AddDays(-15).ToString("yyyy-MM-dd");
@@ -36,10 +33,10 @@ namespace presentacion
             string fechaf = txtfecha2.Text;
             int idc_user = Convert.ToInt32(Session["sidc_usuario"].ToString());
             cargar_dataset(fechai, fechaf, 127);
-           
         }
 
-        protected void cargar_dataset(string fechai, string fechaf, int idc_usuario) {
+        protected void cargar_dataset(string fechai, string fechaf, int idc_usuario)
+        {
             if (funciones.EsFecha(fechai) == false || funciones.EsFecha(fechaf) == false)
             {
                 msgbox.show("Solo se aceptan fechas validas.", this.Page);
@@ -66,11 +63,9 @@ namespace presentacion
                 grid_primario.DataBind();
 
                 //mandamos a session las tablas
-                Session.Add("TablaPrimario",tbl_primario);
+                Session.Add("TablaPrimario", tbl_primario);
                 Session.Add("TablaDetalle", tbl_detalle);
                 Session.Add("TablaComisionFinal", tbl_comision_final);
-                
-
             }
             catch (Exception ex)
             {
@@ -93,7 +88,7 @@ namespace presentacion
                     DataTable tbl_detalle = (DataTable)Session["TablaDetalle"];
                     DataView dv = new DataView(tbl_detalle);
                     //HACEMOS FILTRO
-                    dv.RowFilter = "idc_usuario ="+vidc;
+                    dv.RowFilter = "idc_usuario =" + vidc;
                     //CARGAMOS DATOS
                     grid_detalle.DataSource = dv;
                     grid_detalle.DataBind();
@@ -101,12 +96,11 @@ namespace presentacion
                     gridse.Visible = true;
                     //comision total
                     DataTable tbl_comision_final = (DataTable)Session["TablaComisionFinal"];
-                    lblcomisiontotal.Text =String.Format("{0:c}",tbl_comision_final.Rows[0]["total_comision"].ToString()); //string.Format(tbl_comision_final.Rows[0]["total_comision"].ToString(), "{0:c}");
+                    lblcomisiontotal.Text = String.Format("{0:c}", tbl_comision_final.Rows[0]["total_comision"].ToString()); //string.Format(tbl_comision_final.Rows[0]["total_comision"].ToString(), "{0:c}");
                     //
                     GridViewRow row = grid_primario.Rows[index];
                     row.BackColor = Color.FromName("#C7EED8");
                     break;
-               
             }
         }
 
@@ -121,7 +115,8 @@ namespace presentacion
             }
         }
 
-        protected void limpiar() {
+        protected void limpiar()
+        {
             //limpiar primero el grid de residuos
             DataTable tbl_clean = new DataTable();
             grid_detalle.DataSource = tbl_clean;
@@ -129,7 +124,5 @@ namespace presentacion
             lblcomisiontotal.Text = "";
             gridse.Visible = false;
         }
-
-       
     }
 }

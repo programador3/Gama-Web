@@ -21,7 +21,7 @@
             audio.play();
             $('#myModalMov').modal('show');
             $('#modal_titlemov').text(cTitulo);
-        } 
+        }
         function ModalCF() {
             var audio = new Audio('sounds/modal.wav');
             audio.play();

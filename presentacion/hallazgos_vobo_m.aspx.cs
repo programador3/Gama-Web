@@ -3,7 +3,6 @@ using negocio.Componentes;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -83,7 +82,7 @@ namespace presentacion
             idc_principal.Text = gridhallazgos.DataKeys[index].Values["idc_revsuccheck"].ToString();
             correo_capturo.Text = gridhallazgos.DataKeys[index].Values["correo_termino"].ToString().Replace(";", "");
             fecha.Text = gridhallazgos.DataKeys[index].Values["fecha_string"].ToString();
-            observaciones.Text= gridhallazgos.DataKeys[index].Values["observaciones"].ToString();
+            observaciones.Text = gridhallazgos.DataKeys[index].Values["observaciones"].ToString();
             idc_halla.Text = vidc;
             lbltipoh.Text = tipoh;
             lbltipo.Text = tipo;
@@ -138,7 +137,7 @@ namespace presentacion
                         if (Path.GetFileNameWithoutExtension(file) == idc_principal.Text)
                         {
                             DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/img/"));//path local
-                            funciones.CopiarArchivos(path + idc_principal.Text + Path.GetExtension(file), dirInfo + idc_principal.Text+"_2" + Path.GetExtension(file), this);
+                            funciones.CopiarArchivos(path + idc_principal.Text + Path.GetExtension(file), dirInfo + idc_principal.Text + "_2" + Path.GetExtension(file), this);
                             img2.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "/temp/img/" + idc_principal.Text + "_2" + Path.GetExtension(file);
                         }
                     }
@@ -180,7 +179,6 @@ namespace presentacion
                     {
                         cod = "RSCMOD";
                     }
-
                 }
                 else if (lbltipoh.Text == "G")
                 {
@@ -194,8 +192,6 @@ namespace presentacion
                     correos = (correo_capturo.Text == "" ? "" : correo_capturo.Text + ",");
                     cod = "HALLVTE";
                 }
-
-
 
                 diverror.Visible = false;
                 if (txtcomentarios.Text == "")
@@ -263,7 +259,6 @@ namespace presentacion
                         }
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "AlertGO('El Hallazgo fue Terminado de Manera Correcta','hallazgos_vobo_m.aspx');", true);
                         string mess = EnviarCorreo(Adjuntos, subject, correos);
-
                     }
                     else
                     {
@@ -281,6 +276,7 @@ namespace presentacion
                 funciones.EnviarError(ex.ToString());
             }
         }
+
         private string EnviarCorreo(List<string> path, string subjectt, string correos)
         {
             string usuario = "";
@@ -317,7 +313,6 @@ namespace presentacion
                              "<strong>FECHA DE SOLUCIÓN: </strong>" + " " + fecha + "<br/><br/>" +
                            "<strong>OBSERVACIONES DE SOLUCIÓN: </strong>" + " " + observaciones + "</p>" +
                            "<strong>OBSERVACIONES DE VISTO BUENO: </strong>" + " " + txtcomentarios.Text.Trim() + "</p><br/><br/><b>LA ACTIVIDAD TIENE EL Vo.Bo.</b>";
-
                     }
                     else if (lbltipoh.Text == "V")
                     {

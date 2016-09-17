@@ -165,7 +165,7 @@ namespace presentacion
                         string path = ds.Tables[0].Rows[0]["ruta"].ToString() + extension;
                         funciones.UploadFile(fuparchivos, path, this);
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMessagecamb", "AlertGO('El Hallazgo fue Guardado de Manera Correcta','hallazgos_m.aspx');", true);
-                        string mess = EnviarCorreo(path);                        
+                        string mess = EnviarCorreo(path);
                     }
                     else
                     {

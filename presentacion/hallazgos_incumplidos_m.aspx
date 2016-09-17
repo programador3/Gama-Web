@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="hallazgos_incumplidos_m.aspx.cs" Inherits="presentacion.hallazgos_incumplidos_m" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     p:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -36,16 +37,17 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-       <h2 class="page-header">Hallazgos Incumplidos</h2>
+    <h2 class="page-header">Hallazgos Incumplidos</h2>
     <div class="row">
         <div class="col-lg-12">
             <h4><strong>Sucursal</strong></h4>
-            <asp:DropDownList ID="ddlsucursal" AutoPostBack="true" OnSelectedIndexChanged="ddlsucursal_SelectedIndexChanged" CssClass="form-control" 
-                runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddlsucursal" AutoPostBack="true" OnSelectedIndexChanged="ddlsucursal_SelectedIndexChanged" CssClass="form-control"
+                runat="server">
+            </asp:DropDownList>
         </div>
         <div class="col-lg-12">
-            <div class="table table-responsive" style="font-size:12px;">
-                <asp:GridView style="text-align:center;" ID="gridhallazgos" DataKeyNames="idc,observaciones, sucursal,correo_sol,reviso, USUARIO_SOL,tipoh,tipo" AutoGenerateColumns="false" CssClass="gvv table table-responsive table-bordered table-condensed" runat="server" OnRowCommand="gridhallazgos_RowCommand">
+            <div class="table table-responsive" style="font-size: 12px;">
+                <asp:GridView Style="text-align: center;" ID="gridhallazgos" DataKeyNames="idc,observaciones, sucursal,correo_sol,reviso, USUARIO_SOL,tipoh,tipo" AutoGenerateColumns="false" CssClass="gvv table table-responsive table-bordered table-condensed" runat="server" OnRowCommand="gridhallazgos_RowCommand">
                     <Columns>
                         <asp:TemplateField HeaderStyle-Width="50px">
                             <ItemTemplate>
@@ -111,7 +113,7 @@
             </div>
         </div>
     </div>
-     <div class="modal fade modal-danger" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade modal-danger" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="text-align: center;">
@@ -122,23 +124,23 @@
                     <div class="row" style="text-align: center;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <h5><strong>Hallazgo</strong></h5>
-                            <asp:TextBox style="font-size:11px; resize:none;" ReadOnly="true" ID="txthallazgo_revi" CssClass="form-control" TextMode="MultiLine" Rows="3" runat="server"></asp:TextBox>
+                            <asp:TextBox Style="font-size: 11px; resize: none;" ReadOnly="true" ID="txthallazgo_revi" CssClass="form-control" TextMode="MultiLine" Rows="3" runat="server"></asp:TextBox>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                            <asp:TextBox style="font-size:11px; resize:none;" ReadOnly="false" ID="txtcomentarios" placeholder="Comentarios" CssClass="form-control" TextMode="MultiLine" Rows="3" runat="server"></asp:TextBox>
-                        </div>                        
+                            <asp:TextBox Style="font-size: 11px; resize: none;" ReadOnly="false" ID="txtcomentarios" placeholder="Comentarios" CssClass="form-control" TextMode="MultiLine" Rows="3" runat="server"></asp:TextBox>
+                        </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <asp:TextBox ID="txtfecha_revi" CssClass="form-control" TextMode="DateTimeLocal" runat="server"></asp:TextBox>
                         </div>
-                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                             <div class="alert fresh-color alert-danger alert-dismissible" role="alert" runat="server" id="diverror" visible="false">
-                            <strong>ERROR</strong>
-                            <asp:Label ID="lblerror" runat="server" Text=""></asp:Label>
+                                <strong>ERROR</strong>
+                                <asp:Label ID="lblerror" runat="server" Text=""></asp:Label>
+                            </div>
                         </div>
-                       </div>
                     </div>
                 </div>
-                <div class="modal-footer"> 
+                <div class="modal-footer">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <asp:LinkButton ID="LinkButton1" OnClick="RevisarHallazgo" OnClientClick="ModalClose(); Gift('Estamos Actualizando el Hallazgo y Enviando los Correos');" CssClass="btn btn-danger btn-block" runat="server">Cambiar Fecha</asp:LinkButton>
                     </div>
@@ -149,5 +151,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>

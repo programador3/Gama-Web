@@ -110,6 +110,15 @@
                     -moz-border-radius: 6px 0 6px 6px;
                     border-radius: 6px 0 6px 6px;
                 }
+      
+       .caja a {
+            color: white;
+        }
+       .caja h5 {
+            font-size: 14px;
+            text-align: -webkit-right;
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -143,23 +152,24 @@
             <!-- /.row -->
 
             <asp:Panel ID="panel_search" runat="server">
-                <div class="row">
+                <div class="row"  id="linkv">
                     <asp:Repeater ID="Repeater2" runat="server">
                         <ItemTemplate>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                <a href='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  DataBinder.Eval(Container.DataItem, "web_form").ToString():string.Format("menu.aspx?menu={0}&nivel={1}", DataBinder.Eval(Container.DataItem, "menu").ToString().Trim(), DataBinder.Eval(Container.DataItem, "nivel"))  %>'>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 caja">
+                                <a href='<%#Eval("web_form") %>'>
                                     <div class="card green summary-inline">
                                         <div class="card-body">
-                                            <i class="icon fa fa-chevron-circle-right fa-4x"></i>
+                                            <i class="icon fa fa-chevron-circle-right fa-5x"></i>
                                             <div class="content">
-                                                <h5>
-                                                    <asp:Label ID="lbl" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, "descripcion").ToString() %>'></asp:Label>
-                                                </h5>
+                                                <h5><%# Eval("descripcion") %></h5>
+                                                <h5><asp:LinkButton CommandName='<%#Eval("idc_opcion") %>' ID="LinkButton2" OnClick="Button1_Click" runat="server"><i class="icon fa fa-star fa-2x"></i></asp:LinkButton></h5>
                                             </div>
                                             <div class="clear-both"></div>
                                         </div>
                                     </div>
                                 </a>
+
+                              
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -226,16 +236,16 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="card">
-                        <div class="card-header" style="background-color: #1ABC9C; color: white;">
-                            <div class="card-title" style="background-color: #1ABC9C; color: white;">
-                                <div class="title" style="background-color: #1ABC9C; color: white;">
-                                    <h3 style="background-color: #1ABC9C; color: white;">Mis Tareas Asignadas <small style="background-color: #1ABC9C; color: white;" id="Small1" runat="server">
+                        <div class="card-header" style="background-color: #19B5FE; color: white;">
+                            <div class="card-title" style="background-color: #19B5FE; color: white;">
+                                <div class="title" style="background-color: #19B5FE; color: white;">
+                                    <h3 style="background-color: #19B5FE; color: white;">Mis Tareas Asignadas <small style="background-color: #19B5FE; color: white;" id="Small1" runat="server">
                                         <asp:Label ID="lblasi" runat="server" Text=""></asp:Label></small></h3>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-success btn-block" href="tareas_asignadas_lista.aspx">Ver Todas Mis Tareas <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                            <a class="btn btn-info btn-block" href="tareas_asignadas_lista.aspx">Ver Todas Mis Tareas <i class="fa fa-wrench" aria-hidden="true"></i></a>
                             <h3 style="text-align: center" id="tareasasig" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
                             <div class="list-group">
                                 <asp:Repeater ID="repeatasignadas" runat="server">
