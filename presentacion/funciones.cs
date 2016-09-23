@@ -19,6 +19,24 @@ namespace presentacion
     {
         public static DBConnection conexion = new DBConnection();
 
+        public static string ContenidoArchivo(string ruta)
+        {
+            string value = "";
+            try
+            {
+                if (File.Exists(ruta))
+                {
+                    StreamReader file = new StreamReader(ruta);
+                    value = file.ReadToEnd();
+                    file.Close();
+                }
+                return value;
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+        }
         public static DataTable ExecQuery(string query)
         {
             DataTable dt = new DataTable();

@@ -95,16 +95,16 @@ namespace presentacion
                     Session["lista"] = listas_url;
                 }
             }
-            lblUserName.Text = Usuario_Name;
-            lblpuestos2.Text = Puesto;
-            lbluser2.Text = Usuario_Name;
+
+            lblUserName.Text = (String)(Session["nombre"]);
+            lblpuestos2.Text = (String)(Session["puesto_login"]) == "" ? "Sin puesto Asignado" : (String)(Session["puesto_login"]);
+            lbluser2.Text = (String)(Session["nombre"]);
             CargarHerramientasMenu();
-            dinamic_menudrop();
             web_methods.idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
             web_methods.idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
             DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/errores/"));//path local
             Session["error_path"] = dirInfo.ToString();
-            OpcionesUsadas();
+            OpcionesUsadas();          
         }
 
         public void OpcionesUsadas()
@@ -115,16 +115,6 @@ namespace presentacion
                 OpcionesE EntOpcion = new OpcionesE();
                 OpcionesBL menuBL = new OpcionesBL();
                 EntOpcion.Idc_user = Convert.ToInt32(Session["sidc_usuario"]);
-                //EntOpcion.Search = Request.Url.Segments[Request.Url.Segments.Length - 1].Trim();
-                //ds = menuBL.OpcionFavorita(EntOpcion);
-                //if (Request.Url.Segments[Request.Url.Segments.Length - 1].Trim() != "menu.aspx" && Request.QueryString.Count == 0)
-                //{
-                //    string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
-                //    if (vmensaje != "")
-                //    {
-                //        Global.CreateFileError(vmensaje, this.Page);
-                //    }
-                //}
                 ds = menuBL.OpcionFavoritaCargar(EntOpcion);
                 repeat_favoritos.DataSource = ds.Tables[0];
                 repeat_favoritos.DataBind();
@@ -170,16 +160,16 @@ namespace presentacion
 
         private void dinamic_menudrop()
         {
-            DataSet ds = new DataSet();
-            OpcionesE EntOpcion = new OpcionesE();
-            OpcionesBL menuBL = new OpcionesBL();
-            EntOpcion.Usuario_id = Convert.ToInt32(Session["sidc_usuario"].ToString());
-            ds = menuBL.MenuDinmaico(EntOpcion);
-            Session["menudrop"] = ds.Tables[0];
-            DataView view = new DataView(ds.Tables[0]);
-            DataTable distinctValues = view.ToTable(true, "menu1");
-            repeatmenu1.DataSource = Distinct(distinctValues);
-            repeatmenu1.DataBind();
+        //    DataSet ds = new DataSet();
+        //    OpcionesE EntOpcion = new OpcionesE();
+        //    OpcionesBL menuBL = new OpcionesBL();
+        //    EntOpcion.Usuario_id = Convert.ToInt32(Session["sidc_usuario"].ToString());
+        //    ds = menuBL.MenuDinmaico(EntOpcion);
+        //    Session["menudrop"] = ds.Tables[0];
+        //    DataView view = new DataView(ds.Tables[0]);
+        //    DataTable distinctValues = view.ToTable(true, "menu1");
+        //    repeatmenu1.DataSource = Distinct(distinctValues);
+        //    repeatmenu1.DataBind();
         }
 
         public int contador = 1;
@@ -343,7 +333,12 @@ namespace presentacion
             date = date.Replace(":", "_");
             content = (String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
             funciones.CreateFile((string)page.Session["error_path"] + date + ".gama", content);
-            funciones.EnviarError(content);
+
+            string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
+            if (cs == "P")
+            {
+                funciones.EnviarError(content);
+            }
         }
 
         private void CargarHerramientasMenu()

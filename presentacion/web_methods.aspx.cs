@@ -226,16 +226,6 @@ namespace presentacion
         }
 
         [System.Web.Services.WebMethod]
-        public static int GetTotalTareas()
-        {
-            TareasENT entidad = new TareasENT();
-            TareasCOM componente = new TareasCOM();
-            entidad.Pidc_puesto = idc_puesto;
-            DataSet ds = componente.CargarPendientesHoy(entidad);
-            return Convert.ToInt32(ds.Tables[0].Rows[0]["total"]);
-        }
-
-        [System.Web.Services.WebMethod]
         public string LearMsg()
         {
             string val = "";

@@ -112,6 +112,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Label lbltotaltt;
         
         /// <summary>
+        /// Control lblpendientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpendientes;
+        
+        /// <summary>
         /// Control notareas.
         /// </summary>
         /// <remarks>
@@ -146,6 +155,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblasi;
+        
+        /// <summary>
+        /// Control lblasignadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblasignadas;
         
         /// <summary>
         /// Control tareasasig.

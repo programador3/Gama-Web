@@ -6,7 +6,7 @@
         $(document).ready(function () {
             if (!navigator.onLine) {
                 swal("Mensaje del Sistema", "Actualmente NO SE DETECTA una conexion a Internet.\nEsto podria hacer que la carga de la pagina sea lenta.\nPor Favor, Sea paciente!!", "info");
-            } 
+            }
         });
         var value = 0;
         function ClicImg() {

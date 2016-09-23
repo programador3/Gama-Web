@@ -11,19 +11,19 @@
   display: block;
 }
 
-#menu input[type="checkbox"], 
+#menu input[type="checkbox"],
 #menu ul span.drop-icon {
   display: none;
 }
 
-#menu li, 
-#toggle-menu, 
+#menu li,
+#toggle-menu,
 #menu .sub-menu {
   border-style: solid;
   border-color: rgba(0, 0, 0, .05);
 }
 
-#menu li, 
+#menu li,
 #toggle-menu {
   border-width: 0 0 1px;
 }
@@ -38,8 +38,8 @@
   border-width: 0;
 }
 
-#menu li, 
-#toggle-menu, 
+#menu li,
+#toggle-menu,
 #menu a {
   position: relative;
   display: block;
@@ -47,12 +47,12 @@
   text-shadow: 1px 1px 0 rgba(0, 0, 0, .125);
 }
 
-#menu, 
+#menu,
 #toggle-menu {
   background-color: #09c;
 }
 
-#toggle-menu, 
+#toggle-menu,
 #menu a {
   padding: 1em 1.5em;
 }
@@ -79,7 +79,7 @@
   color: #444;
 }
 
-#toggle-menu .drop-icon, 
+#toggle-menu .drop-icon,
 #menu li label.drop-icon {
   position: absolute;
   right: 1.5em;

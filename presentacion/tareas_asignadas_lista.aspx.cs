@@ -29,7 +29,7 @@ namespace presentacion
             entidad.Pcorrecto = true;
             entidad.Parchivo = false;
             DataSet ds = componente.CargarPendientesHoy(entidad);
-            DataTable dt = ds.Tables[1];
+            DataTable dt = ds.Tables[0];
             DataTable filter = new DataTable();
             DataView view = dt.DefaultView;
             if (filtro != "")
@@ -62,10 +62,10 @@ namespace presentacion
                 filter = dt;
             }
             TAREAS_IND.Visible = true;
-            repeat_tareas.DataSource = ds.Tables[1];
+            repeat_tareas.DataSource = ds.Tables[0];
             repeat_tareas.DataBind();
             lbltotaltt.Text = " Tiene un total de " + filter.Rows.Count.ToString() + " Tarea(s)";
-            Session["tabla_excel"] = ds.Tables[1];
+            Session["tabla_excel"] = ds.Tables[0];
         }
 
         protected void txtpuesto_filtro_TextChanged(object sender, EventArgs e)

@@ -87,7 +87,7 @@
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:BoundField>
                                         <asp:ButtonField DataTextField="nombre" HeaderText="Aprobación" CommandName="Vista" />
-                                        <asp:BoundField DataField="des_puesto" HeaderText="Firma Requerida" Visible="true"  HeaderStyle-Width="220px" />
+                                        <asp:BoundField DataField="des_puesto" HeaderText="Firma Requerida" Visible="true" HeaderStyle-Width="220px" />
                                         <%-- <asp:BoundField DataField="pagina" HeaderText="pagina" Visible="false" />--%>
 
                                         <asp:TemplateField ShowHeader="False" HeaderText="Aprobar" Visible="false">

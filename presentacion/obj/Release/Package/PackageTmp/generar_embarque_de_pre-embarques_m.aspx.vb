@@ -3,9 +3,7 @@ Imports System.Data
 Partial Class generar_embarque_de_pre_embarques_m
     Inherits System.Web.UI.Page
 
-
     Protected connection As New DBConnection()
-
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
@@ -15,7 +13,6 @@ Partial Class generar_embarque_de_pre_embarques_m
             If Session("sidc_usuario") Is Nothing Then
                 Response.Redirect("login.aspx")
             End If
-
 
             InitializeDataTable2()
             ViewState("SortExpression") = "fecha ASC"
@@ -79,7 +76,6 @@ Partial Class generar_embarque_de_pre_embarques_m
 
         Response.Redirect("menu.aspx")
 
-
     End Sub
 
     Private Sub InitializeDataTable2()
@@ -107,7 +103,7 @@ Partial Class generar_embarque_de_pre_embarques_m
         dcKeys(0) = dtpre_embarques.Columns("idc_preemb")
         dtpre_embarques.PrimaryKey = dcKeys
 
-        ' Store the DataTable in ViewState. 
+        ' Store the DataTable in ViewState.
         ViewState("dtpre_embarques") = dtpre_embarques
 
     End Sub
@@ -138,17 +134,15 @@ Partial Class generar_embarque_de_pre_embarques_m
         column.ColumnName = "existencia"
         dtarticulos.Columns.Add(column)
 
-
         column = New DataColumn()
         column.DataType = System.Type.GetType("System.Decimal")
         column.ColumnName = "cantidad_oc"
         dtarticulos.Columns.Add(column)
 
-        ' Store the DataTable in ViewState. 
+        ' Store the DataTable in ViewState.
         ViewState("dtarticulos") = dtarticulos
 
     End Sub
-
 
     Private Sub BindGridView2()
 
@@ -175,7 +169,6 @@ Partial Class generar_embarque_de_pre_embarques_m
             If cboembarques.Items.Count > 0 Then
                 cboembarques_SelectedIndexChanged(Nothing, EventArgs.Empty)
             End If
-
 
         End If
 
@@ -342,7 +335,6 @@ Partial Class generar_embarque_de_pre_embarques_m
         '    vtipo_entrega = Convert.ToString(row("tipo_entrega")).Trim()
         '    vcamion = Convert.ToBoolean(row("camion"))
 
-
         '    dtpre_embarques.Rows.Add(vidc_preemb, vfecha, vfecha_entrega, vtipo_camion, vobserv, vtiempo, vtiempo_entrega, vsuc_entrega, vnivel, vproveedor, vusuario, vtipo_entrega, vcamion)
 
         'Next
@@ -354,7 +346,6 @@ Partial Class generar_embarque_de_pre_embarques_m
     Protected Sub TextBox2_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs)
 
     End Sub
-
 
     Protected Sub cboembarques_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboembarques.SelectedIndexChanged
         Dim dt As New DataTable

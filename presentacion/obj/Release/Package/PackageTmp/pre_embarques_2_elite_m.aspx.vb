@@ -12,7 +12,6 @@ Partial Class pre_embarques_2_elite_m
             btnup.Attributes("onclick") = "return grid2(true,0)"
             cargar_datos(0, Session("sidc_usuario"), 1)
 
-
         End If
     End Sub
 

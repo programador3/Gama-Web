@@ -26,8 +26,8 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h4><strong><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;Numero de Queja</strong>&nbsp;<span><asp:LinkButton  ID="lnkagregarcomentario" CssClass="btn btn-info" runat="server" OnClick="lnkagregarcomentario_Click">Otra Queja <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton></span></h4>
-            <asp:TextBox ID="txtnoqueja" autofocus AutoPostBack="true"  Style="color: cornflowerblue;" CssClass="form-control" ReadOnly="true" runat="server" OnTextChanged="txtnoqueja_TextChanged" TextMode="Number"></asp:TextBox>
+            <h4><strong><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;Numero de Queja</strong>&nbsp;<span><asp:LinkButton ID="lnkagregarcomentario" CssClass="btn btn-info" runat="server" OnClick="lnkagregarcomentario_Click">Otra Queja <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton></span></h4>
+            <asp:TextBox ID="txtnoqueja" autofocus AutoPostBack="true" Style="color: cornflowerblue;" CssClass="form-control" ReadOnly="true" runat="server" OnTextChanged="txtnoqueja_TextChanged" TextMode="Number"></asp:TextBox>
         </div>
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Cliente</strong></h4>
@@ -37,13 +37,13 @@
     <div class="row">
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>&nbsp;Problema</strong></h4>
-            <asp:TextBox ID="txtproblema" CssClass="form-control" TextMode="MultiLine" Rows="5" ReadOnly="true" style="font-size:11px;" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtproblema" CssClass="form-control" TextMode="MultiLine" Rows="5" ReadOnly="true" Style="font-size: 11px;" runat="server"></asp:TextBox>
         </div>
     </div>
     <div class="row" id="solucionar" runat="server" visible="false">
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;Solución</strong></h4>
-            <asp:TextBox ID="txtsolucion" CssClass="form-control" TextMode="MultiLine" Rows="5" style="font-size:11px;" ReadOnly="false" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtsolucion" CssClass="form-control" TextMode="MultiLine" Rows="5" Style="font-size: 11px;" ReadOnly="false" runat="server"></asp:TextBox>
         </div>
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Encargado</strong></h4>
@@ -70,18 +70,17 @@
             <h4><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Fecha de Solución</strong></h4>
             <asp:TextBox ID="txtfecha" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
         </div>
-        
     </div>
     <div class="row" id="cancelar" runat="server" visible="false">
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-comment" aria-hidden="true"></i>&nbsp;Observaciones</strong></h4>
-            <asp:TextBox ID="txtobservaciones_can" onblur="return imposeMaxLength(this, 253);" placeholder="Describe aqui el motivo de la cancelacion" Visible="true" CssClass="form-control" TextMode="MultiLine" Rows="5" style="font-size:11px;"  runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtobservaciones_can" onblur="return imposeMaxLength(this, 253);" placeholder="Describe aqui el motivo de la cancelacion" Visible="true" CssClass="form-control" TextMode="MultiLine" Rows="5" Style="font-size: 11px;" runat="server"></asp:TextBox>
         </div>
     </div>
     <div class="row" id="comentario" runat="server" visible="false">
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-comment" aria-hidden="true"></i>&nbsp;Comentario</strong></h4>
-            <asp:TextBox ID="txtcomentario" placeholder="Comentario" Visible="true" CssClass="form-control" TextMode="MultiLine" Rows="5" style="font-size:11px;"  runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtcomentario" placeholder="Comentario" Visible="true" CssClass="form-control" TextMode="MultiLine" Rows="5" Style="font-size: 11px;" runat="server"></asp:TextBox>
         </div>
     </div>
     <div class="row">
@@ -113,7 +112,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="col-lg-6 col-xs-6">
-                        <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="TesClick_Click"/>
+                        <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="TesClick_Click" />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />

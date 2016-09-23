@@ -240,7 +240,6 @@
         }
 
         function nobackbutton() {
-            ValidarTareasPendientes();
             ValidarOpciones();
             LlenarNotificaciones();
             window.location.hash = "no-back-button";
@@ -447,25 +446,7 @@
                 $("#navbartop2").addClass("side-menu sidebar-default");
             }
         }
-        function ValidarTareasPendientes() {
-            $('#tareas_pendi').hide();
-            $.ajax({
-                type: "POST",
-                url: "web_methods.aspx/GetTotalTareas",
-                contentType: "application/json; charset=utf-8",
-                success: OnSuccess,
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
-
-            function OnSuccess(response) {
-                var total = response.d;
-                if (total > 0) {
-                    $('#tareas_pendi').show();
-                }
-            }
-
-        }
+      
 
         // convertimos en minusculas la cadena devuelta por navigator.userAgent
         var nav = navigator.userAgent.toLowerCase();
@@ -749,7 +730,7 @@
         <div class="app-container">
             <div class="row content-container">
                 <%-- BARRA DE INICIO--%>
-                <nav class="navbar navbar-inverse navbar-fixed-top navbar-top" id="navbartop">
+                <nav class="navbar navbar-inverse navbar-fixed-top navbar-top" id="navbartop" runat="server">
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <button type="button" class="navbar-expand-toggle">
@@ -831,7 +812,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="side-menu sidebar-inverse" id="navbartop2">
+                <div class="side-menu sidebar-inverse" id="navbartop2" runat="server">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="side-menu-container">
                             <div class="navbar-header">
@@ -919,7 +900,7 @@
                 </div>
                 <!-- Main Content -->
                 <div class="side-body">
-                    <nav id="menu">
+                    <nav id="menu" runat="server">
                         <label for="tm" id="toggle-menu">Menu <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></label>
                         <input type="checkbox" id="tm" />
                         <ul class="main-menu clearfix">

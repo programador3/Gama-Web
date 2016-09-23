@@ -47,9 +47,9 @@
                                     <p style="font-size: 12px; height: 70px"><%#Eval("problema_resumido") %></p>
                                     <p>
                                         <asp:LinkButton ID="lnksolucionar" CommandName="sol" CommandArgument='<%#Eval("idc_queja") %>' OnClick="lnksolu_Click" CssClass="btn btn-success" runat="server">Solucionar <i class="fa fa-check" aria-hidden="true"></i></asp:LinkButton>
-                                        <asp:LinkButton  ID="lnkcancelar" CommandName="can" CommandArgument='<%#Eval("idc_queja") %>' OnClick="lnksolu_Click" CssClass="btn btn-danger" runat="server">Cancelar <i class="fa fa-times" aria-hidden="true"></i></asp:LinkButton>
-                                        <asp:LinkButton  ID="lnkagregarcomentario" CommandName="add" CommandArgument='<%#Eval("idc_queja") %>' OnClick="lnksolu_Click" CssClass="btn btn-primary" runat="server">Comentario <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton>
-                                        <asp:LinkButton  ID="lnkinformacion" CommandName="info" CommandArgument='<%#Eval("idc_queja") %>' OnClick="lnkinfo_Click" CssClass="btn btn-info" runat="server">Información <i class="fa fa-info" aria-hidden="true"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="lnkcancelar" CommandName="can" CommandArgument='<%#Eval("idc_queja") %>' OnClick="lnksolu_Click" CssClass="btn btn-danger" runat="server">Cancelar <i class="fa fa-times" aria-hidden="true"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="lnkagregarcomentario" CommandName="add" CommandArgument='<%#Eval("idc_queja") %>' OnClick="lnksolu_Click" CssClass="btn btn-primary" runat="server">Comentario <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="lnkinformacion" CommandName="info" CommandArgument='<%#Eval("idc_queja") %>' OnClick="lnkinfo_Click" CssClass="btn btn-info" runat="server">Información <i class="fa fa-info" aria-hidden="true"></i></asp:LinkButton>
                                     </p>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-     <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="text-align: center;">
@@ -69,7 +69,6 @@
                 <div class="modal-body">
                     <div class="row" style="text-align: center;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                            
                         </div>
                     </div>
                 </div>

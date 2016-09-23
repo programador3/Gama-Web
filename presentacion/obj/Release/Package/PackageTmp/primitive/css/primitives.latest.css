@@ -120,17 +120,17 @@
     font-weight:bold;
 }
 
-.bp-label-annotation 
+.bp-label-annotation
 {
-    font-size: 16px; 
+    font-size: 16px;
     text-align:center;
 }
 
 .bp-badge
 {
-    -moz-border-radius: 10px; 
-    -webkit-border-radius: 10px; 
-    -khtml-border-radius: 10px; 
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
     border-radius: 10px;
     font-size: 12px;
     line-height: 12px;

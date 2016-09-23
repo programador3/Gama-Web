@@ -57,6 +57,7 @@ namespace presentacion
                 file_guardar.Visible = true;
                 row_desccambio.Visible = false;
                 lnkCambiarFechaF.Visible = true;
+                lnkreasigna.Visible = true;
                 CargarTareas(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"])));
                 url_back = "tareas_detalles.aspx?termina=1&idc_tarea=" + Request.QueryString["idc_tarea"];
             }
@@ -1036,12 +1037,32 @@ namespace presentacion
                         txtfecha_pasada.Visible = false;
                         lnksolicitar_cam.Visible = false;
                         break;
+
+                    case "Reasignacion Tarea":
+                        entidad.Pcorrecto = btnreasignamalresultado.CssClass == "btn btn-success btn-block" ? false : true;
+                        entidad.Pfecha = Convert.ToDateTime(txtfecha_reasigna.Text);
+                        entidad.Pdescripcion = txtmotivo.Text.ToUpper();
+                        entidad.Pcorrecto = btncorrectvbno.CssClass == "btn btn-success btn-block" ? true : false;
+                        entidad.Pidc_puesto = Convert.ToInt32(ddlPuesto.SelectedValue);
+                        ds = componente.ReasignarTareaManual(entidad);
+                        vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                        break;
                 }
 
                 if (vmensaje == "")
                 {
-                    string url = ds.Tables[0].Rows[0]["url"].ToString();
-                    ScriptManager.RegisterStartupScript(this, GetType(), "noti533sededW3", "SendSlack('" + url + "');", true);
+                    if (ds.Tables.Count > 1)
+                    {
+                        DataTable tabla_archivos = ds.Tables[1];
+                        bool correct = true;
+                        foreach (DataRow row_archi in tabla_archivos.Rows)
+                        {
+                            string ruta_det = row_archi["ruta_destino"].ToString();
+                            string ruta_origen = row_archi["ruta_origen"].ToString();
+                            correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
+                            if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
+                        }
+                    }         
                     if (Session["redirect"] != null && Session["redirect_pagedet"] == null)
                     {
                         Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", (string)Session["redirect"], "imagenes/loading.gif", "2000", "El movimiento fue Guardado Correctamente", this);
@@ -1251,5 +1272,85 @@ namespace presentacion
         {
             Response.Redirect("tareas_arbol.aspx?idc_tarea=" + Request.QueryString["idc_tarea"]);
         }
+
+        protected void lnkreasigna_Click(object sender, EventArgs e)
+        {
+            DateTime TIMEST = Convert.ToDateTime(Session["tarea_sin_f"]);
+            txtfecha_reasigna.Text = TIMEST.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+            CargaPuestos("");
+            ScriptManager.RegisterStartupScript(this, GetType(), "noti533Wsswws3", "ModalReasignaTarea();", true);
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            bool error = false;
+            if (ddlPuesto.SelectedValue == "0")
+            {
+                Alert.ShowAlertError("Seleccione un Puesto", this);
+                error = true;
+            }
+            if (txtfecha_reasigna.Text == "")
+            {
+                txtfecha_reasigna.Text = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                Alert.ShowAlertError("Ingrese la fecha en el formato establecido.", this);
+                error = true;
+            }
+            else
+            {
+                DateTime caption = Convert.ToDateTime(txtfecha_reasigna.Text.Replace('T', ' '));
+                if (caption < DateTime.Now)
+                {
+                    txtfecha_reasigna.Text = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                    Alert.ShowAlertError("No puede estipular una fecha menor a hoy..", this);
+                    error = true;
+                }
+            }
+
+
+            if (error == false)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMesededessssdesage", "ModalClose();", true);
+                Session["Caso_Confirmacion"] = "Reasignacion Tarea";
+                Session["tipo_conf"] = "Y";
+                Yes_Click(null,null);
+            }
+        }
+
+
+        protected void lnkbuscarpuestos_Click(object sender, EventArgs e)
+        {
+            CargaPuestos(txtpuesto_filtro.Text);
+        }
+        /// <summary>
+        /// Carga Puestos en ComboBox con Filtro
+        /// </summary>
+        public void CargaPuestos(string filtro)
+        {
+            try
+            {
+                Asignacion_RevisionesENT entidad = new Asignacion_RevisionesENT();
+                Asignacion_RevisionesCOM componente = new Asignacion_RevisionesCOM();
+                entidad.Filtro = filtro;
+                entidad.Idc_puesto_revisa = Convert.ToInt32(Session["sidc_puesto_login"]);
+                DataSet ds = componente.CargaComboDinamicoServicios(entidad);
+                ddlPuesto.DataValueField = "idc_puesto";
+                ddlPuesto.DataTextField = "descripcion_puesto_completa";
+                ddlPuesto.DataSource = ds.Tables[0];
+                ddlPuesto.DataBind();
+                //si no hay filtro insertamos una etiqueta inicial
+                if (filtro == "")
+                {
+                    ddlPuesto.Items.Insert(0, new ListItem("Seleccione un Puesto", "0")); //updated code}
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+
+
+
+        }
+
     }
 }

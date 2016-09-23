@@ -88,8 +88,8 @@
 
                             <!--grid view -->
                             <div class="row">
-                                <div class="col-lg-12">                                    
-                                <asp:LinkButton ID="LBKapli" CssClass="btn btn-success" OnClick="LBKapli_Click" runat="server" Text="Aplicar a Todos"></asp:LinkButton>
+                                <div class="col-lg-12">
+                                    <asp:LinkButton ID="LBKapli" CssClass="btn btn-success" OnClick="LBKapli_Click" runat="server" Text="Aplicar a Todos"></asp:LinkButton>
                                     <div style="overflow-y: scroll; height: 250px; border: 1px solid; padding: 15px;">
                                         <div class="table-responsive">
                                             <asp:CheckBoxList ID="check_curso_perfil" runat="server" CssClass="radio3 radio-check radio-info radio-inline"></asp:CheckBoxList>
@@ -177,7 +177,7 @@
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:ButtonField>
                                 <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" CommandName="deletearchivo" ImageUrl="~/imagenes/btn/icon_delete.png" Text="Borrar" />
-                                <asp:TemplateField HeaderText="Descargar"  HeaderStyle-Width="40px">
+                                <asp:TemplateField HeaderText="Descargar" HeaderStyle-Width="40px">
                                     <ItemTemplate>
                                         <%-- <asp:HyperLink ID="linkdescarga"   runat="server">Descargar</asp:HyperLink>--%>
                                         <asp:LinkButton ID="linkdescarga" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="metodo_descarga" runat="server">Descargar</asp:LinkButton>

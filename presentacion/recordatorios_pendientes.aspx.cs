@@ -27,12 +27,13 @@ namespace presentacion
 
         private void CargarPendientes(int idc_usuario)
         {
+
             QuejasENT entidad = new QuejasENT();
             QuejasCOM com = new QuejasCOM();
             entidad.Idc_usuario = idc_usuario;
             DataSet ds = com.CargarRecordatorio(entidad);
             DataView view = ds.Tables[0].DefaultView;
-            view.RowFilter = "fecha_hora <= '" + DateTime.Now + "'";
+            view.RowFilter =Request.QueryString["all"]==null ? "fecha_hora <= '" + DateTime.Now + "'":"fecha_hora = fecha_hora";
             Session["dt_recor"] = view.ToTable();
             repeat.DataSource = view.ToTable();
             repeat.DataBind();

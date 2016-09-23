@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="consulta_hallazgos_pendientes_m.aspx.cs" Inherits="presentacion.consulta_hallazgos_pendientes_m" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         function ModalClose() {
@@ -27,12 +28,12 @@
         </div>
         <div class="col-lg-12">
             <div class="table table-responsive">
-                <asp:GridView ID="gridhallazgos" style="font-size:11px;text-align:center;" OnRowCommand="gridhallazgos_RowCommand" DataKeyNames="idc,observaciones" CssClass="gvv table table-responsive table-bordered table-condensed" AutoGenerateColumns="false" runat="server">
+                <asp:GridView ID="gridhallazgos" Style="font-size: 11px; text-align: center;" OnRowCommand="gridhallazgos_RowCommand" DataKeyNames="idc,observaciones" CssClass="gvv table table-responsive table-bordered table-condensed" AutoGenerateColumns="false" runat="server">
                     <Columns>
-                           <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Imagen" CommandName="Ver" Text="Ver">
-                                                <HeaderStyle HorizontalAlign="Center" Width="40px" />
-                                                <ItemStyle HorizontalAlign="Center" />
-                                            </asp:ButtonField>
+                        <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Imagen" CommandName="Ver" Text="Ver">
+                            <HeaderStyle HorizontalAlign="Center" Width="40px" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:ButtonField>
                         <asp:BoundField DataField="sucursal" HeaderText="Sucursal">
                             <HeaderStyle Width="90px"></HeaderStyle>
                         </asp:BoundField>
@@ -51,13 +52,10 @@
                         <asp:BoundField DataField="vehiculo" HeaderText="Vehiculo">
                             <HeaderStyle Width="130px"></HeaderStyle>
                         </asp:BoundField>
-                        <asp:BoundField DataField="observaciones" HeaderText="Hallazgo" Visible="false">
-                        </asp:BoundField>
-                        <asp:BoundField DataField="hallazgo_corto" HeaderText="Hallazgo">
-                        </asp:BoundField>
-                       
-                        <asp:BoundField DataField="idc" Visible="false" HeaderText="Hallazgo">
-                        </asp:BoundField>
+                        <asp:BoundField DataField="observaciones" HeaderText="Hallazgo" Visible="false"></asp:BoundField>
+                        <asp:BoundField DataField="hallazgo_corto" HeaderText="Hallazgo"></asp:BoundField>
+
+                        <asp:BoundField DataField="idc" Visible="false" HeaderText="Hallazgo"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
             </div>

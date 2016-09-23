@@ -91,6 +91,26 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet CargaComboDinamicoServiciosRapida(Asignacion_RevisionesENT Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfiltro", SqlDbType = SqlDbType.Int, Value = Etiqueta.Filtro });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Etiqueta.Idc_puesto_revisa });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Int, Value = "T" });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptarea_rapida", SqlDbType = SqlDbType.Int, Value=true });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_filtro_puestos_servicios", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         /// <summary>
         /// Rgresa tabla de revisiones
         /// </summary>

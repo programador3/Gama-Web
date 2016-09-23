@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="recordatorios_pendientes.aspx.cs" Inherits="presentacion.recordatorios_pendientes" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <script type="text/javascript">
+    <script type="text/javascript">
         function ModalClose() {
             $('#modalPreviewView').modal('hide');
             $('#myModalrec').modal('hide');
@@ -37,9 +38,10 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Recordatorios Pendientes <span>
-                                <asp:LinkButton ID="lnksolucionar" CssClass="btn btn-info" runat="server" PostBackUrl="recordatorios.aspx">
+                <asp:LinkButton ID="lnksolucionar" CssClass="btn btn-info" runat="server" PostBackUrl="recordatorios.aspx">
                                     Nuevo Recordatorio <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                </asp:LinkButton>   </span></h1>
+                </asp:LinkButton>
+            </span></h1>
         </div>
     </div>
     <div class="row">
@@ -59,16 +61,16 @@
                             <p>
                                 <asp:LinkButton ID="lnksolucionar" CommandName="sol" OnClick="btnver_Click" CommandArgument='<%#Eval("idc_avisogen") %>' CssClass="btn btn-info" runat="server">
                                     Visualizar <i class="fa fa-eye" aria-hidden="true"></i>
-                                </asp:LinkButton>   
+                                </asp:LinkButton>
                                 <asp:LinkButton ID="lnkdescartar" CommandName="sol" OnClick="btndesc_Click" CommandArgument='<%#Eval("idc_avisogen") %>' CssClass="btn btn-danger" runat="server">
                                     Descartar <i class="fa fa-times" aria-hidden="true"></i>
-                                </asp:LinkButton>     
+                                </asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton1" CommandName="sol" OnClick="pospo_Click" CommandArgument='<%#Eval("idc_avisogen") %>' CssClass="btn btn-success" runat="server">
                                     Posponer <i class="fa fa-calendar" aria-hidden="true"></i>
-                                </asp:LinkButton>  
+                                </asp:LinkButton>
                                 <asp:LinkButton Visible='<%#Convert.ToInt32(Eval("pospuesto"))==0?false:true %>' ID="lnkpospuesta" CommandName="sol" OnClick="historial_Click" CommandArgument='<%#Eval("idc_avisogen") %>' CssClass="btn btn-primary" runat="server">
                                     Historial <i class="fa fa-database" aria-hidden="true"></i>
-                                </asp:LinkButton>                   
+                                </asp:LinkButton>
                             </p>
                         </div>
                     </div>
@@ -112,13 +114,13 @@
                         <br />
                         <br />
                     </div>
-                    <div style="padding:5px;">
+                    <div style="padding: 5px;">
                         <asp:TextBox ID="txtobsr" Width="100%" TextMode="Multiline" Rows="3" placeholder="Ingrese Observaciones" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
-                       
+
                     <div class="row" id="historial" runat="server" visible="false">
                         <div class="col-12 col-md-12 col-sm-12 col-xs-12">
-                            <h5 style="text-align:center;"><strong>Historial de Movimientos</strong></h5>
+                            <h5 style="text-align: center;"><strong>Historial de Movimientos</strong></h5>
                             <asp:GridView Style="font-size: 9px;" ID="gridgistorial" CssClass="table table-responsive table-bordered table-condensed" AutoGenerateColumns="false" runat="server">
                                 <Columns>
                                     <asp:BoundField DataField="tipo" HeaderText="Movimiento">

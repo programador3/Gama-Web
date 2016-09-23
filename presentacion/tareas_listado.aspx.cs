@@ -36,7 +36,7 @@ namespace presentacion
                 entidad.Pcorrecto = true;
                 entidad.Parchivo = Request.QueryString["lectura"] != null ? true : false;
                 DataSet ds = componente.CargarPendientesHoy(entidad);
-                DataTable dt = ds.Tables[1];
+                DataTable dt = ds.Tables[0];
                 DataTable filter = new DataTable();
                 DataView view = dt.DefaultView;
                 if (filtro != "")
@@ -71,7 +71,7 @@ namespace presentacion
                 if (Request.QueryString["lectura"] != null)
                 {
                     tareas_todas.Visible = true;
-                    repeatglobal.DataSource = ds.Tables[1];
+                    repeatglobal.DataSource = ds.Tables[0];
                     repeatglobal.DataBind();
                     lbltotaltt.Text = " Todas las Tareas";
                     lbtot_global.Text = " Visualizando " + filter.Rows.Count.ToString() + " Tarea(s)";
@@ -79,11 +79,11 @@ namespace presentacion
                 else
                 {
                     TAREAS_IND.Visible = true;
-                    repeat_tareas.DataSource = ds.Tables[1];
+                    repeat_tareas.DataSource = ds.Tables[0];
                     repeat_tareas.DataBind();
                     lbltotaltt.Text = " Tiene un total de " + filter.Rows.Count.ToString() + " Tarea(s)";
                 }
-                Session["tabla_excel"] = ds.Tables[1];
+                Session["tabla_excel"] = ds.Tables[0];
             }
             catch (Exception ex)
             {

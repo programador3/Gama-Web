@@ -8,7 +8,7 @@
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -31,7 +31,7 @@
             lineWidth: 2,
             lineType: primitives.common.LineType.Dashed
         },
-        { 
+        {
             annotationType: primitives.common.AnnotationType.Background,
             items: [81, 82, 83, 84, 85],
             borderColor: "#f8e5f9",
@@ -227,7 +227,7 @@ var famdata2 = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -289,7 +289,7 @@ var sideBySide = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -393,7 +393,7 @@ var crossShape = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -443,7 +443,7 @@ var rombusShape = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -491,7 +491,7 @@ var sandClockShape = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -542,7 +542,7 @@ var skippedMembers = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -594,7 +594,7 @@ var horizontalChain = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -642,7 +642,7 @@ var alignmentData = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -687,7 +687,7 @@ var famdataCascade = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -735,7 +735,7 @@ var famdataLoops = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -787,7 +787,7 @@ var famdataOwnership = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -851,7 +851,7 @@ var famdataWorld = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -937,7 +937,7 @@ var famSpouses = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -997,7 +997,7 @@ var famdataLoopsTest = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -1053,7 +1053,7 @@ var famdataCharless2 = {
         { lineColor: "#A5A5A5", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //4
         { lineColor: "#848484", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //7
         { lineColor: "#646464", lineWidth: 1, lineType: primitives.common.LineType.Solid }, //10
-        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13            
+        { lineColor: "#454545", lineWidth: 1, lineType: primitives.common.LineType.Solid } //13
     ],
     itemTitleFirstFontColor: primitives.common.Colors.White,
     itemTitleSecondFontColor: primitives.common.Colors.White,
@@ -1109,7 +1109,6 @@ var famdataCharless2 = {
         { id: 29, parents: [25, 28], title: "Charles II of Spain", label: "Charles II of Spain", description: "29, 1661-1700", image: "demo/images/photos/c.png", itemTitleColor: "#ff0000" }
     ]
 };
-
 
 var dataSetNames = {
     crossShape: "2 Cross Relations",

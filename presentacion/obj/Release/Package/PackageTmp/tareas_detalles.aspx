@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         function ModalClose() {
+            $('#myModalReasigna').modal('hide');
             $('#myModal').modal('hide');
             $('#myModalMov').modal('hide');
             $('#myModalCF').modal('hide');
@@ -16,12 +17,18 @@
             $('#modal_title').text(cTitulo);
             $('#content_modal').text(cContenido);
         }
+        function ModalReasignaTarea() {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModalReasigna').modal('show');
+        }
+        
         function ModalMov(cTitulo) {
             var audio = new Audio('sounds/modal.wav');
             audio.play();
             $('#myModalMov').modal('show');
             $('#modal_titlemov').text(cTitulo);
-        } 
+        }
         function ModalCF() {
             var audio = new Audio('sounds/modal.wav');
             audio.play();
@@ -91,7 +98,12 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <h4><i class="fa fa-wrench"></i>&nbsp;Puesto Que realizara la Tarea</h4>
+                    <h4><i class="fa fa-wrench"></i>&nbsp;Puesto Que realizara la Tarea
+                         <span>
+                            <asp:LinkButton Visible="false" ID="lnkreasigna" CssClass="btn btn-danger" runat="server" OnClick="lnkreasigna_Click">
+                                Reasignar Tarea <i class="fa fa-refresh" aria-hidden="true"></i></asp:LinkButton>
+                        </span>
+                    </h4>
                     <asp:TextBox ID="txtpuesto" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
@@ -99,7 +111,8 @@
                 <div class="col-lg-12">
                     <h4><i class="fa fa-level-down"></i>&nbsp;Tareas que se generaron a partir de esta Tarea <small>Esta Tarea depende de la siguientes: </small>
                         <span>
-                            <asp:LinkButton Visible="false" ID="lnkarbol" CssClass="btn btn-success" OnClick="lnkarbol_Click" runat="server">Ver Arbol de Tareas <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton>
+                            <asp:LinkButton Visible="false" ID="lnkarbol" CssClass="btn btn-success" OnClick="lnkarbol_Click" runat="server">Ver Arbol de Tareas 
+                                <i class="fa fa-pencil" aria-hidden="true"></i></asp:LinkButton>
                         </span>
                     </h4>
                     <h4 id="no_apen" runat="server" style="text-align: center;">No hay tareas anidadas <i class="fa fa-thumbs-o-up"></i></h4>
@@ -434,6 +447,62 @@
                                 </div>
                                 <div class="col-lg-6 col-xs-6">
                                     <input id="Ndddo" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade modal-info" id="myModalReasigna" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="text-align: center;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4><strong>Mensaje del Sistema</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                                    <label>Como solicitante de la tarea usted puede cambiar la Fecha Compromiso Directamente
+                                                    </label>
+                                                    <asp:TextBox ID="txtfecha_reasigna" runat="server" TextMode="DateTimeLocal" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <label>Selecciona un Empleado </label>
+                                                    <asp:DropDownList ID="ddlPuesto" runat="server" CssClass="form-control">
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                    <label>Escriba un Filtro</label>
+                                                    <asp:TextBox ID="txtpuesto_filtro" runat="server" TextMode="SingleLine" CssClass="form-control" AutoPostBack="true" OnTextChanged="lnkbuscarpuestos_Click" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                    <label></label>
+                                                    <asp:LinkButton ID="lnkbuscarpuestos" runat="server" CssClass="btn btn-success btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label>Motivo de la Reasignacion</label>
+                                                    <asp:TextBox ID="txtmotivo" runat="server" CssClass="form-control" TextMode="Multiline" placeholder="Motivo" Rows="3" style="resize:none;"></asp:TextBox>
+                                                </div>                                                
+                                                <div class="col-lg-12 col-xs-12">
+                                                     <label><strong>¿Contar como MAL RESULTADO a el empleado?</strong></label>
+                                                    <asp:Button ID="btnreasignamalresultado" runat="server" Text="Si contar como mal resultado" CssClass="btn btn-default btn-block" OnClick="btncorrectvbno_Click" />
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+
+                                    <asp:Button ID="Button2" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="Button2_Click" />
+                                </div>
+                                <div class="col-lg-6 col-xs-6">
+                                    <input id="Ndddoss" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                                 </div>
                             </div>
                         </div>

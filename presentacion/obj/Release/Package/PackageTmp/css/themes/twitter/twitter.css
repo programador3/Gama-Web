@@ -39,7 +39,6 @@
     .sweet-alert[data-has-confirm-button=false][data-has-cancel-button=false] .sa-button-container {
       display: none; }
   .sweet-alert button {
-
     border-radius: 2px;
     box-shadow: none !important;
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);

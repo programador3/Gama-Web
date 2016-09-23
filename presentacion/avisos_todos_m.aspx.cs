@@ -53,7 +53,8 @@ namespace presentacion
                 Response.Redirect(PreviousPage);
             }
         }
-
+        
+      
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             LinkButton lnk = (LinkButton)sender;
@@ -65,8 +66,16 @@ namespace presentacion
                 {
                     lblNombre.Text = (row["nombre"].ToString());
                     lblFecha.Text = " " + (row["fecha_form"].ToString());
-                    txtContenido.Text = (row["descripcion"].ToString());
-                    // GenerarRuta(Convert.ToInt32(row["idc_empleado"]), "fot_emp");
+                    string contenido = "";
+                    contenido = row["descripcion"].ToString();
+                    if (Convert.ToString(row["descripcion"]) == "")
+                    {
+
+                        string ruta = funciones.GenerarRuta("AVIHTML", "UNIDAD");
+                        ruta = ruta + row["idc_aviso"].ToString().Trim() + ".html";
+                        contenido = funciones.ContenidoArchivo(ruta);
+                    }
+                    plccontenido.Controls.Add(new Literal { Text = contenido });
                     break;
                 }
             }

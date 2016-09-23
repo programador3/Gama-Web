@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Global.master.cs" Inherits="presentacion.Global"%>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Global.master.cs" Inherits="presentacion.Global" %>
 
 <!DOCTYPE html>
 
@@ -26,13 +26,13 @@
     <link href="css/jquery.dataTables.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.css" rel="stylesheet" />
     <link href="js/sweetalert.css" rel="stylesheet" />
-    <script src="js/jquery10.js" ></script>
-    <script src="js/pnotify.custom.min.js" ></script>
-    <script type="text/javascript" src="js/bootstrap.min.js" ></script>
-    <script src="js/jquery.dataTables.min.js" ></script>
-    <script src="js/sweetalert-dev.js" ></script>
-    <script src="js/sweetalert.min.js" ></script>    
-    <script type="text/javascript" src="js/app.js" ></script>
+    <script src="js/jquery10.js"></script>
+    <script src="js/pnotify.custom.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/sweetalert-dev.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript">
         var value = 0;
         var valuedate = "";
@@ -240,7 +240,6 @@
         }
 
         function nobackbutton() {
-            ValidarTareasPendientes();
             ValidarOpciones();
             LlenarNotificaciones();
             window.location.hash = "no-back-button";
@@ -439,7 +438,6 @@
             }
         }
 
-
         function ChangeCss(value) {
             if (value != "P") {
                 $("#navbartop").removeClass("navbar navbar-inverse navbar-fixed-top navbar-top");
@@ -448,25 +446,7 @@
                 $("#navbartop2").addClass("side-menu sidebar-default");
             }
         }
-        function ValidarTareasPendientes() {
-            $('#tareas_pendi').hide();
-            $.ajax({
-                type: "POST",
-                url: "web_methods.aspx/GetTotalTareas",
-                contentType: "application/json; charset=utf-8",
-                success: OnSuccess,
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
-
-            function OnSuccess(response) {
-                var total = response.d;
-                if (total > 0) {
-                    $('#tareas_pendi').show();
-                }
-            }
-
-        }
+      
 
         // convertimos en minusculas la cadena devuelta por navigator.userAgent
         var nav = navigator.userAgent.toLowerCase();
@@ -487,7 +467,6 @@
                 return false;
             }
         }
-
 
         function AlertaOkRedirecciona(msg, url) {
             swal({
@@ -528,7 +507,7 @@
             opacity: 1;
         }
     </style>
-    
+
     <style type="text/css">
         #menu ul {
             margin: 0;
@@ -721,16 +700,17 @@
             background-color: #fdd835;
             color: #FFF;
         }
+
         .flat-blue .navbar .navbar-nav > li.danger > a, .flat-blue .navbar.navbar-default .navbar-nav > li.danger > a {
             background-color: transparent;
             border-bottom: 4px solid #fdd835;
             color: #fdd835;
         }
-                .flat-blue .navbar .navbar-nav .dropdown-menu.danger .title, .flat-blue .navbar.navbar-default .navbar-nav .dropdown-menu.danger .title {
+
+        .flat-blue .navbar .navbar-nav .dropdown-menu.danger .title, .flat-blue .navbar.navbar-default .navbar-nav .dropdown-menu.danger .title {
             background-color: #fdd835;
             color: #FFF;
         }
-               
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -738,7 +718,7 @@
 <body class="flat-blue" onload="nobackbutton();">
     <form id="form1" runat="server">
 
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager> 
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <input type="hidden" id="HiddenInputD" name="HiddenInput" value="" />
         <asp:UpdatePanel ID="upda_datetime" runat="server" UpdateMode="always">
             <ContentTemplate>
@@ -750,7 +730,7 @@
         <div class="app-container">
             <div class="row content-container">
                 <%-- BARRA DE INICIO--%>
-                <nav class="navbar navbar-inverse navbar-fixed-top navbar-top" id="navbartop">
+                <nav class="navbar navbar-inverse navbar-fixed-top navbar-top" id="navbartop" runat="server">
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <button type="button" class="navbar-expand-toggle">
@@ -768,12 +748,11 @@
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-th icon"></i>
                             </button>
-
                         </div>
                         <ul class="nav navbar-nav navbar-right">
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                                 <i style="color: white;" class="fa fa-times icon"></i>
-                            </button>   
+                            </button>
                             <li class="dropdown danger">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star"></i>
                                     <asp:Label ID="LBLTOTALFAVORI" Visible="false" runat="server" Text=""></asp:Label>
@@ -784,7 +763,7 @@
                                     </li>
                                     <li>
                                         <ul class="list-group notifications">
-                                            
+
                                             <asp:Repeater ID="repeat_favoritos" runat="server">
                                                 <ItemTemplate>
                                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="always">
@@ -800,15 +779,12 @@
                                                             </li>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
-
-
                                                 </ItemTemplate>
                                             </asp:Repeater>
-                                           
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>                             
+                            </li>
                             <li class="dropdown profile">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
@@ -836,7 +812,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="side-menu sidebar-inverse" id="navbartop2">
+                <div class="side-menu sidebar-inverse" id="navbartop2" runat="server">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="side-menu-container">
                             <div class="navbar-header">
@@ -868,7 +844,7 @@
                                     <a data-toggle="collapse" href="#dropdown-element_not">
                                         <span class="icon fa fa-wrench">
                                             <label id="tot_not" runat="server" class="label label-danger"></label>
-                                        </span><span class="title" >Mis Pendientes</span>
+                                        </span><span class="title">Mis Pendientes</span>
                                     </a>
                                     <!-- Dropdown level 1 -->
                                     <div id="dropdown-element_not" class="panel-collapse collapse">
@@ -924,7 +900,7 @@
                 </div>
                 <!-- Main Content -->
                 <div class="side-body">
-                    <nav id="menu">
+                <%--    <nav id="menu" runat="server">
                         <label for="tm" id="toggle-menu">Menu <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></label>
                         <input type="checkbox" id="tm" />
                         <ul class="main-menu clearfix">
@@ -947,7 +923,6 @@
                                                     <asp:Repeater ID="repeatmenu2d" runat="server">
                                                         <ItemTemplate>
                                                             <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu2")%></a>
-
                                                             </li>
                                                         </ItemTemplate>
                                                     </asp:Repeater>
@@ -963,7 +938,6 @@
                                                                         <ItemTemplate>
                                                                             <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu3")%>
                                                                             </a>
-
                                                                             </li>
                                                                         </ItemTemplate>
                                                                     </asp:Repeater>
@@ -1019,17 +993,14 @@
                                                                                                                                             <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu7")%></a></li>
                                                                                                                                         </ItemTemplate>
                                                                                                                                     </asp:Repeater>
-
                                                                                                                                 </ItemTemplate>
                                                                                                                             </asp:Repeater>
                                                                                                                         </ul>
                                                                                                                     </li>
-
                                                                                                                 </ItemTemplate>
                                                                                                             </asp:Repeater>
                                                                                                         </ul>
                                                                                                     </li>
-
                                                                                                 </ItemTemplate>
                                                                                             </asp:Repeater>
                                                                                         </ul>
@@ -1038,23 +1009,18 @@
                                                                             </asp:Repeater>
                                                                         </ul>
                                                                     </li>
-
-
-
                                                                 </ItemTemplate>
                                                             </asp:Repeater>
                                                         </ul>
                                                     </li>
                                                 </ItemTemplate>
                                             </asp:Repeater>
-
                                         </ul>
                                     </li>
                                 </ItemTemplate>
                             </asp:Repeater>
-
                         </ul>
-                    </nav>
+                    </nav>--%>
                     <asp:ContentPlaceHolder ID="Contenido" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>

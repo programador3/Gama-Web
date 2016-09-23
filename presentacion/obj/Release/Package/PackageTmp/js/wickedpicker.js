@@ -5,7 +5,6 @@
  */
 
 (function ($, window, document) {
-
     "use strict";
 
     if (typeof String.prototype.endsWith != 'function') {
@@ -78,7 +77,6 @@
     }
 
     $.extend(Wickedpicker.prototype, {
-
         /*
          * Show given input's timepicker
          *
@@ -86,7 +84,7 @@
          */
         showPicker: function (element) {
             var timepickerPos = $(element).offset();
-            $(element).attr({'aria-showingpicker': 'true', 'tabindex': -1});
+            $(element).attr({ 'aria-showingpicker': 'true', 'tabindex': -1 });
             this.setText(element);
             this.showHideMeridiemControl();
             if (this.getText(element) !== this.getTime()) {
@@ -186,7 +184,7 @@
             $(element).on('click focus', function (event) {
                 self.showPicker($(this));
             });
-            
+
             //Handle click events for closing Wickedpicker
             var clickHandler = function (event) {
                 //Clicking the X
@@ -199,7 +197,7 @@
                 }
             };
             $(document).off('click', clickHandler).on('click', clickHandler);
-            
+
             $(element).on('focus', function () {
                 $('.wickedpicker__controls__control--hours').focus();
             });
@@ -326,7 +324,6 @@
             return minutes.getMinutes();
         },
 
-
         /*
          * Return a human-readable minutes/seconds value
          *
@@ -419,7 +416,7 @@
                 if (event.type == 'mousedown') {
                     timeOut = setInterval($.proxy(function (args) {
                         args.Wickedpicker.changeValue(operator, args.input, this);
-                    }, this, {'Wickedpicker': passedData.Wickedpicker, 'input': passedData.input}), 200);
+                    }, this, { 'Wickedpicker': passedData.Wickedpicker, 'input': passedData.input }), 200);
                 } else {
                     passedData.Wickedpicker.changeValue(operator, passedData.input, this);
                 }
@@ -450,7 +447,6 @@
             }
             this.setText(input);
         },
-
 
         /*
          * Sets the give input's text to the current timepicker's time
@@ -553,5 +549,4 @@
             }
         }
     };
-
 })(jQuery, window, document);

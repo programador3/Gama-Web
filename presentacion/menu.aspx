@@ -2,61 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
-        function Search() {
-            var value = document.getElementById('<%=txtsearch.ClientID%>').value;
-            var panel_menus_repeat_js = document.getElementById("<%=panel_menus_repeat.ClientID%>");
-            var panel_search_js = document.getElementById("<%=panel_search.ClientID%>");
-            if (value = "") {
-                panel_menus_repeat_js.style.visibility = "visible";
-                panel_search_js.style.visibility = "hidden";
-
-            } else {
-                panel_menus_repeat_js.style.visibility = "hidden";
-                panel_search_js.style.visibility = "visible";
-            }
-        }
+       
         function DeleteFocus(txt) {
             txt.value = "";
         }
-        $(document).ready(function () {
-
-            $("#Listado").empty();
-            $("#Listado").hide();
-            var consulta;
-
-            //hacemos focus al campo de búsqueda
-            $("#busqueda").focus();
-
-            //comprobamos si se pulsa una tecla
-            $("#busqueda").keyup(function (e) {
-
-                //obtenemos el texto introducido en el campo de búsqueda
-                consulta = $("#busqueda").val();
-
-                //hace la búsqueda
-
-                $.ajax({
-                    type: "POST",
-                    url: "buscar.php",
-                    data: "b=" + consulta,
-                    dataType: "html",
-                    beforeSend: function () {
-                        //imagen de carga
-                        $("#resultado").html("<p align='center'><img src='ajax-loader.gif' /></p>");
-                    },
-                    error: function () {
-                        alert("error petición ajax");
-                    },
-                    success: function (data) {
-                        $("#resultado").empty();
-                        $("#resultado").append(data);
-
-                    }
-                });
-
-            });
-
-        });
     </script>
     <style type="text/css">
         a, a:active {
@@ -119,6 +68,45 @@
             font-size: 14px;
             text-align: -webkit-right;
         }
+     
+           
+       .aa:link {
+            color: white;
+        }
+
+        /* visited link */
+        .aa:visited {
+            color: white;
+        }
+
+        /* mouse over link */
+        .aa:hover {
+            color: white;
+        }
+
+        /* selected link */
+        .aa:active {
+            color: white;
+        }
+           
+        .cardlk:link {
+            color: yellow;
+        }
+
+        /* visited link */
+        .cardlk:visited {
+            color: yellow;
+        }
+
+        /* mouse over link */
+        .cardlk:hover {
+            color: yellow;
+        }
+
+        /* selected link */
+        .cardlk:active {
+            color: yellow;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -129,13 +117,17 @@
         </div>
     </div>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+        <Triggers>
+            <asp:PostBackTrigger ControlID="txtsearch" />
+        </Triggers>
         <ContentTemplate>
-
+            
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group has-feedback">
-                        <asp:TextBox ID="txtsearch" onkeypress="Search()" onfocus="DeleteFocus(this);" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="txtsearch_TextChanged" placeholder="Buscar Pagina"></asp:TextBox>
+                        <asp:TextBox ID="txtsearch" CssClass="form-control" runat="server" AutoPostBack="true" 
+                            OnTextChanged="txtsearch_TextChanged" placeholder="Buscar Pagina"></asp:TextBox>
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                 </div>
@@ -155,14 +147,15 @@
                     <asp:Repeater ID="Repeater2" runat="server">
                         <ItemTemplate>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 caja">
-                                <a href='<%#Eval("web_form") %>'>
+                                <a class="aa" href='<%#Eval("web_form") %>'>
                                     <div class="card green summary-inline">
                                         <div class="card-body">
                                             <i class="icon fa fa-chevron-circle-right fa-5x"></i>
                                             <div class="content">
                                                 <h5><%# Eval("descripcion") %></h5>
                                                 <h5>
-                                                    <asp:LinkButton CommandName='<%#Eval("idc_opcion") %>' ID="LinkButton2" OnClick="Button1_Click" runat="server"><i class="icon fa fa-star fa-2x"></i></asp:LinkButton></h5>
+                                                    <asp:LinkButton CommandName='<%#Eval("idc_opcion") %>' ID="LinkButton2" CssClass='<%#Convert.ToBoolean(Eval("favorita"))==false ? "aa":"cardlk" %>'
+                                                        OnClick="Button1_Click" runat="server"><i class="icon fa fa-star fa-2x"></i></asp:LinkButton></h5>
                                             </div>
                                             <div class="clear-both"></div>
                                         </div>
@@ -176,11 +169,11 @@
                         Puede Intentarlo Nuevamente.</h2>
                 </div>
             </asp:Panel>
-            <asp:Panel ID="panel_menus_repeat" runat="server" Visible="false">
+            <asp:Panel ID="panel_menus_repeat" runat="server">
                 <div class="row">
                     <asp:Repeater ID="Repeater3" runat="server">
                         <ItemTemplate>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  DataBinder.Eval(Container.DataItem, "web_form").ToString():string.Format("menu.aspx?menu={0}&nivel={1}", DataBinder.Eval(Container.DataItem, "menu").ToString().Trim(), DataBinder.Eval(Container.DataItem, "nivel"))  %>'>
                                     <div class='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "card green summary-inline":"card blue summary-inline"  %>'>
                                         <div class="card-body">
@@ -189,8 +182,10 @@
                                                 <h5>
                                                     <asp:Label ID="lbl" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, "menu").ToString() %>'></asp:Label>
                                                     </h4>
-                                                <h6><%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "Pagina":"Menu"  %>
-                                                </h6>
+                                                <h6 style="text-align:right;">
+                                                    <asp:Label ID="Label1" Visible="true"
+                                                         runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "Pagina":"Menu"  %>'></asp:Label>
+                                                    </h6>
                                             </div>
                                             <div class="clear-both"></div>
                                         </div>
@@ -213,7 +208,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-primary btn-block" href="tareas_listado.aspx">Ver Todas Mis Tareas <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                            <a class="btn btn-primary btn-block" href="tareas_listado.aspx"><asp:Label ID="lblpendientes" runat="server" Text="Label"></asp:Label> <i class="fa fa-wrench" aria-hidden="true"></i></a>
                             <h3 style="text-align: center" id="notareas" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
 
                             <div class="list-group">
@@ -243,7 +238,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-info btn-block" href="tareas_asignadas_lista.aspx">Ver Todas Mis Tareas <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                            <a class="btn btn-info btn-block" href="tareas_asignadas_lista.aspx">
+                                <asp:Label ID="lblasignadas" runat="server" Text="Label"></asp:Label> <i class="fa fa-wrench" aria-hidden="true"></i></a>
                             <h3 style="text-align: center" id="tareasasig" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
                             <div class="list-group">
                                 <asp:Repeater ID="repeatasignadas" runat="server">

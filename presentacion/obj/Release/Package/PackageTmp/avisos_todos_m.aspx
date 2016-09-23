@@ -21,10 +21,26 @@
             });
         });
     </script>
+    <style type="text/css">
+        #row_modal {            
+            height:auto;
+            overflow: scroll;
+        }
+        @media (min-width: 768px) {
+            .modal-dialog {
+            width: 95%;
+            margin: 30px auto;
+        }
+        }
+         @media (max-width: 768px) {
+            .modal-dialog {
+            width:  95%;
+            margin: 30px auto;
+        }
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
-        <ContentTemplate>
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -68,26 +84,26 @@
                     </div>
                 </div>
             </div>
-            <div id="modalPreviewView" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                <div class="modal-dialog modal-md">
+            <div id="modalPreviewView" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color: #428bca; color: white; text-align: center;">
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 style="text-align: center;"><strong>
-                                <asp:Label ID="lblNombre" runat="server" Text=""></asp:Label></strong></h4>
+                                <asp:Label ID="lblNombre" runat="server" Text=""></asp:Label></strong>
+                                <span><input id="btnModalAcept" type="button" class="btn btn-primary" value="Aceptar" onclick="ModalClose();" /></span>
+                            </h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <h4 style="text-align: center;"><strong>Aviso emitido desde
-                                        <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label></strong></h4>
-                                    <asp:TextBox ID="txtContenido" TextMode="MultiLine" Rows="10" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <input id="btnModalAcept" type="button" class="btn btn-primary btn-block" value="Aceptar" onclick="ModalClose();" />
+                              <div class="col-lg-12">
+                                    <label style="text-align: center;"><strong>Aviso emitido desde
+                                        <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label></strong>                                              
+                                    </label>
+                           
+                              </div>
+                                <div class="col-lg-12" id="row_modal">
+                                    <asp:PlaceHolder ID="plccontenido" runat="server"></asp:PlaceHolder>
                                 </div>
                             </div>
                         </div>
@@ -95,6 +111,4 @@
                     <!-- /.CONFIRMA -->
                 </div>
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
 </asp:Content>

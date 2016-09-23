@@ -9,7 +9,6 @@
  *  jquery.ui.mouse.js
  */
 (function ($) {
-
     // Detect touch support
     $.support.touch = 'ontouchend' in document;
 
@@ -29,7 +28,6 @@
      * @param {String} simulatedType The corresponding mouse event
      */
     function simulateMouseEvent(event, simulatedType) {
-
         // Ignore multi-touch events
         if (event.originalEvent.touches.length > 1) {
             return;
@@ -43,20 +41,20 @@
         // Initialize the simulated mouse event using the touch event's coordinates
         simulatedEvent.initMouseEvent(
           simulatedType,    // type
-          true,             // bubbles                    
-          true,             // cancelable                 
-          window,           // view                       
-          1,                // detail                     
-          touch.screenX,    // screenX                    
-          touch.screenY,    // screenY                    
-          touch.clientX,    // clientX                    
-          touch.clientY,    // clientY                    
-          false,            // ctrlKey                    
-          false,            // altKey                     
-          false,            // shiftKey                   
-          false,            // metaKey                    
-          0,                // button                     
-          null              // relatedTarget              
+          true,             // bubbles
+          true,             // cancelable
+          window,           // view
+          1,                // detail
+          touch.screenX,    // screenX
+          touch.screenY,    // screenY
+          touch.clientX,    // clientX
+          touch.clientY,    // clientY
+          false,            // ctrlKey
+          false,            // altKey
+          false,            // shiftKey
+          false,            // metaKey
+          0,                // button
+          null              // relatedTarget
         );
 
         // Dispatch the simulated event to the target element
@@ -68,7 +66,6 @@
      * @param {Object} event The widget element's touchstart event
      */
     mouseProto._touchStart = function (event) {
-
         var self = this;
 
         // Ignore the event if another widget is already being handled
@@ -100,7 +97,6 @@
      * @param {Object} event The document's touchmove event
      */
     mouseProto._touchMove = function (event) {
-
         var self = this;
 
         // Ignore event if not handled
@@ -123,7 +119,6 @@
      * @param {Object} event The document's touchend event
      */
     mouseProto._touchEnd = function (event) {
-
         // Ignore event if not handled
         if (!touchHandled) {
             return;
@@ -137,7 +132,6 @@
 
         // If the touch interaction did not move, it should trigger a click
         if (!this._touchMoved) {
-
             // Simulate the click event
             simulateMouseEvent(event, 'click');
         }
@@ -153,7 +147,6 @@
      * original mouse event handling methods.
      */
     mouseProto._mouseInit = function () {
-
         var self = this;
 
         // Delegate the touch handlers to the widget's element
@@ -171,7 +164,6 @@
      * Remove the touch event handlers
      */
     mouseProto._mouseDestroy = function () {
-
         var self = this;
 
         // Delegate the touch handlers to the widget's element
@@ -184,5 +176,4 @@
         // Call the original $.ui.mouse destroy method
         _mouseDestroy.call(self);
     };
-
 })(jQuery);
