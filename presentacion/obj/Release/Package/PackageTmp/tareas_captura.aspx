@@ -51,7 +51,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h4><i class="fa fa-list-alt"></i>&nbsp;Descripción de la tarea</h4>
-                            <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 1000);" placeholder="Descripcion" CssClass="form-control" TextMode="MultiLine" Rows="4" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
+                            <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 1000);" placeholder="Descripcion" CssClass="form-control" 
+                                TextMode="MultiLine" Rows="5" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -62,7 +63,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4><i class="fa fa-user"></i>&nbsp;Seleccione el puesto que realizara la tarea o servicio. <small>Tambien puede elegir varios empleados si quiere crear varias tareas iguaoles para diferentes puestos.</small></h4>
+                            <h4><i class="fa fa-user"></i>&nbsp;Seleccione el puesto que realizara la tarea o servicio. <small>Tambien puede elegir varios empleados si quiere crear varias tareas iguales para diferentes puestos.</small></h4>
                         </div>
                     </div>
                     <div class="row">

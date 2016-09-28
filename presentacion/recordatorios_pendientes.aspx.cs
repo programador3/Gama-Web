@@ -72,6 +72,7 @@ namespace presentacion
             view.RowFilter = "idc_avisogen = " + idc + "";
             DataRow row = view.ToTable().Rows[0];
             lbldescripcion.Text = row["descripcion"].ToString();
+            lblfecha.Text = row["fecha_aviso"].ToString();
             lnlcorreo.Text = row["correo_relacionado"].ToString() == "" ? "No relaciono Correo" : row["correo_relacionado"].ToString();
             string asunto = row["descripcion"].ToString().Replace(" ", "%20");
             correoto.HRef = row["correo_relacionado"].ToString() == "" ? "" : "mailto:" + row["correo_relacionado"].ToString() + "&subject=SEGUIMIENTO%20A%20LA%20TAREA%20'" + asunto + "'";
@@ -130,6 +131,12 @@ namespace presentacion
             cambio.Visible = false;
             CargarHistorial(idc);
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessreerdcdcage", "ModalConfirm('Mensaje del Sistema','Historial de Cambios','modal fade modal-info');", true);
+        }
+        protected void editar_Click(object sender, EventArgs e)
+        {
+            LinkButton lnk = sender as LinkButton;
+            int idc = Convert.ToInt32(lnk.CommandArgument);
+            Response.Redirect("recordatorios.aspx?idc_aviso=" + funciones.deTextoa64(idc.ToString()));
         }
 
         protected void btndesc_Click(object sender, EventArgs e)
@@ -223,7 +230,8 @@ namespace presentacion
                 {
                     if (vmensaje == "")
                     {
-                        Alert.ShowGiftMessage("Estamos procesando la solicitud", "Espere un Momento", "recordatorios_pendientes.aspx", "imagenes/loading.gif", "2000", "Recordatorio Procesado Correctamente", this);
+                        string url = Request.QueryString["all"] == null ? "recordatorios_pendientes.aspx" : "recordatorios_pendientes.aspx?all=1";
+                        Alert.ShowGiftMessage("Estamos procesando la solicitud", "Espere un Momento", url, "imagenes/loading.gif", "2000", "Recordatorio Procesado Correctamente", this);
                     }
                     else
                     {

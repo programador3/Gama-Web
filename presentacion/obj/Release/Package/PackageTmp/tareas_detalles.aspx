@@ -91,13 +91,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <h4><i class="fa fa-pencil-square-o"></i>&nbsp;Puesto que Asigno la Tarea</h4>
                     <asp:TextBox ID="txtpuesto_asigna" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <h4><i class="fa fa-wrench"></i>&nbsp;Puesto Que realizara la Tarea
                          <span>
                             <asp:LinkButton Visible="false" ID="lnkreasigna" CssClass="btn btn-danger" runat="server" OnClick="lnkreasigna_Click">

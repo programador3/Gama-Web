@@ -6,7 +6,7 @@
     <h1 class="page-header">Reportes de Tareas Asignadas</h1>
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <h4><strong>Selecciona el puesto que realiza la Tarea</strong> <small>Deje en blanco para ver todo.</small></h4>
+            <h4><strong>Puesto que realiza la Tarea</strong></h4>
             <asp:DropDownList ID="ddlPuestoAsigna" OnSelectedIndexChanged="ddlPuesto_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
             </asp:DropDownList>
         </div>

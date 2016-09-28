@@ -14,13 +14,17 @@ namespace negocio
         private string pusuariopc;
         private int idc_usuario;
         private int idc_usuario_sol;
-
+        private bool envia;
         public int Idc_usuario_sol
         {
             get { return idc_usuario_sol; }
             set { idc_usuario_sol = value; }
         }
-
+        public bool penvia
+        {
+            get { return envia; }
+            set { envia = value; }
+        }
         public int Idc_usuario
         {
             get { return idc_usuario; }

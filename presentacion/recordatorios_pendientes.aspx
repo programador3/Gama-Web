@@ -57,6 +57,7 @@
                     <div class="thumbnail no-margin-bottom">
                         <div class="caption">
                             <h5 id="thumbnail-label"><strong><%#Eval("asunto") %></strong></h5>
+                            <p style="font-size: 12px; height: 15px"><strong>Fecha de Aviso:</strong>&nbsp;<%#Eval("fecha_aviso") %></p>
                             <p style="font-size: 12px; height: 70px"><%#Eval("descripcion_resumido") %></p>
                             <p>
                                 <asp:LinkButton ID="lnksolucionar" CommandName="sol" OnClick="btnver_Click" CommandArgument='<%#Eval("idc_avisogen") %>' CssClass="btn btn-info" runat="server">
@@ -70,6 +71,9 @@
                                 </asp:LinkButton>
                                 <asp:LinkButton Visible='<%#Convert.ToInt32(Eval("pospuesto"))==0?false:true %>' ID="lnkpospuesta" CommandName="sol" OnClick="historial_Click" CommandArgument='<%#Eval("idc_avisogen") %>' CssClass="btn btn-primary" runat="server">
                                     Historial <i class="fa fa-database" aria-hidden="true"></i>
+                                </asp:LinkButton>
+                                   <asp:LinkButton Visible='<%#Request.QueryString["all"]==null?false:true %>' ID="LinkButton3" CommandArgument='<%#Eval("idc_avisogen") %>' OnClick="editar_Click" CommandName="editar"  CssClass="btn btn-default" runat="server">
+                                    Editar <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </asp:LinkButton>
                             </p>
                         </div>
@@ -91,7 +95,8 @@
                             <label id="content_modal"></label>
                         </h4>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: left;" id="recor" runat="server" visible="false">
-
+                            <h5><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Fecha de Aviso:</strong>
+                                <asp:Label ID="lblfecha" Visible="true" runat="server" Text=""></asp:Label></h5>
                             <h5><strong><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;Descripcion:</strong>
                                 <asp:Label ID="lbldescripcion" Visible="true" runat="server" Text=""></asp:Label></h5>
                             <h5>

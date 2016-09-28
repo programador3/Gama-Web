@@ -115,7 +115,6 @@
                 setTimeout(function () {
                     notification.close();
                 }, 8000);
-                mis
             }
             else if (Notification.permission !== 'denied') {
                 Notification.requestPermission(function (permission) {
@@ -245,240 +244,243 @@
             window.location.hash = "no-back-button";
             window.location.hash = "Again-No-back-button"
             window.onhashchange = function () { window.location.hash = "no-back-button"; }
+            setTimeout(function () {
+                swal("Advertencia!!!","Por seguridad, si usted deja de utilizar el sistema por un lapso de mas de 2 horas, tendra que iniciar sesion de nuevo y sus cambios podrian perderse.","info");
+            }, 600000);
         }
-
-        function LlenarNotificaciones() {
-            GetSessionValueTotal();
-            GetSessionValuehtml();
-        }
-        function ValidarNotificaciones() {
-            $('#notipend').empty();
-            var aData = [];
-            aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
-            var jsonData = JSON.stringify({ aData: aData });
-            $.ajax({
-                type: "POST",
-                url: "web_methods.aspx/GetNotificaciones",
-                data: jsonData,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json", // dataType is json format
-                success: OnSuccess,
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
-
-            function OnSuccess(response) {
-                var items = response.d;
-                if (items.length > 0) {
-                    $('#tot_not').show();
-                    $('#tot_not').html(items.length);
-                    $('#tot_not_det').show();
-                    $('#tot_not_det').html(items.length);
-                    var fragment = "";
-                    $.each(items, function (index, val) {
-                        var urlpost = val.url;
-                        var Titulopost = val.Titulo;
-                        var idcpost = val.idc_usuario;
-                        if (idcpost == $('#<%= hdnidc_usuario.ClientID%>').val()) {
-                            $('#notipend').append('<li><a href=' + urlpost + '>' + Titulopost + '</a></li>');
-                            fragment = fragment + '<li><a href=' + urlpost + '>' + Titulopost + '</a></li>';
-                        }
-                    });
-                    SetSessionValuehtml(fragment);
-                    SetSessionValueTotal(items.length);
-                    LlenarNotificaciones();
-                } else {
-                    $('#tot_not').hide();
-                    $('#tot_not_det').hide();
-                    SetSessionValuehtml("");
-                    SetSessionValueTotal(0);
-                }
-
+    
+            function LlenarNotificaciones() {
+                GetSessionValueTotal();
+                GetSessionValuehtml();
             }
-
-        }
-
-        function GetSessionValue() {
-            var session;
-            $.ajax({
-                type: "POST",
-                url: "WebService.asmx/GetSessionValue",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    $("#<%=hiddendatetime1.ClientID%>").val(data.d);
-                    console.log($("#<%=hiddendatetime1.ClientID%>").val());
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
-        }
-
-        function SetSessionValue(value) {
-            var aData = [];
-            aData[0] = value;
-            var jsonData = JSON.stringify({ aData: aData });
-            $.ajax({
-                type: "POST",
-                url: "WebService.asmx/SetSessionValue",
-                data: jsonData,
-                contentType: "application/json; charset=utf-8",
-                success: OnSuccess,
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
-
-            function OnSuccess(response) {
-                var session = response.d;
-            }
-        }
-
-        function GetSessionValuehtml() {
-            var session;
-            $.ajax({
-                type: "POST",
-                url: "WebService.asmx/GetSessionValueHTML",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    $('#notipend').empty();
-                    $('#notipend').append(data.d);
-                    if (data.d == null || data.d == "") {
-                        $('#notipend').append('<li><a> No Tiene Pendientes</a></li>');
+            function ValidarNotificaciones() {
+                $('#notipend').empty();
+                var aData = [];
+                aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
+                var jsonData = JSON.stringify({ aData: aData });
+                $.ajax({
+                    type: "POST",
+                    url: "web_methods.aspx/GetNotificaciones",
+                    data: jsonData,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json", // dataType is json format
+                    success: OnSuccess,
+                    error: function (xhr, ajaxOptions, thrownError) {
                     }
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
-        }
+                });
 
-        function SetSessionValuehtml(value) {
-            var aData = [];
-            aData[0] = value;
-            var jsonData = JSON.stringify({ aData: aData });
-            $.ajax({
-                type: "POST",
-                url: "WebService.asmx/SetSessionValueHTML",
-                data: jsonData,
-                contentType: "application/json; charset=utf-8",
-                success: OnSuccess,
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
-
-            function OnSuccess(response) {
-                var session = response.d;
-            }
-        }
-
-        function GetSessionValueTotal() {
-            var session;
-            $.ajax({
-                type: "POST",
-                url: "WebService.asmx/GetSessionValueTotal",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    var tot = data.d;
-                    if (tot != "" && tot > 0) {
+                function OnSuccess(response) {
+                    var items = response.d;
+                    if (items.length > 0) {
                         $('#tot_not').show();
-                        $('#tot_not').html(tot);
+                        $('#tot_not').html(items.length);
                         $('#tot_not_det').show();
-                        $('#tot_not_det').html(tot);
+                        $('#tot_not_det').html(items.length);
+                        var fragment = "";
+                        $.each(items, function (index, val) {
+                            var urlpost = val.url;
+                            var Titulopost = val.Titulo;
+                            var idcpost = val.idc_usuario;
+                            if (idcpost == $('#<%= hdnidc_usuario.ClientID%>').val()) {
+                                $('#notipend').append('<li><a href=' + urlpost + '>' + Titulopost + '</a></li>');
+                                fragment = fragment + '<li><a href=' + urlpost + '>' + Titulopost + '</a></li>';
+                            }
+                        });
+                        SetSessionValuehtml(fragment);
+                        SetSessionValueTotal(items.length);
+                        LlenarNotificaciones();
+                    } else {
+                        $('#tot_not').hide();
+                        $('#tot_not_det').hide();
+                        SetSessionValuehtml("");
+                        SetSessionValueTotal(0);
                     }
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
-        }
 
-        function SetSessionValueTotal(value) {
-            var aData = [];
-            aData[0] = value;
-            var jsonData = JSON.stringify({ aData: aData });
-            $.ajax({
-                type: "POST",
-                url: "WebService.asmx/SetSessionValueTotal",
-                data: jsonData,
-                contentType: "application/json; charset=utf-8",
-                success: OnSuccess,
-                error: function (xhr, ajaxOptions, thrownError) {
                 }
-            });
 
-            function OnSuccess(response) {
-                var session = response.d;
             }
-        }
-        function ValidarOpciones() {
 
-            $('#ul_opciones').empty();
-            var aData = [];
-            aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
-            var jsonData = JSON.stringify({ aData: aData });
-            $.ajax({
-                type: "POST",
-                url: "web_methods.aspx/GetOpciones",
-                data: jsonData,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json", // dataType is json format
-                success: OnSuccess,
-                error: function (xhr, ajaxOptions, thrownError) {
-                }
-            });
+            function GetSessionValue() {
+                var session;
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/GetSessionValue",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $("#<%=hiddendatetime1.ClientID%>").val(data.d);
+                        console.log($("#<%=hiddendatetime1.ClientID%>").val());
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
+            }
 
-            function OnSuccess(response) {
-                var items = response.d;
-                if (items.length > 0) {
-                    var fragment = "<ul>"
-                    $.each(items, function (index, val) {
-                        var urlpost = val.url;
-                        var Titulopost = val.descripcion;
-                        var iconopost = val.icono;
-                        $('#ul_opciones').append('<li><a href=' + urlpost + '>' + iconopost + ' ' + Titulopost + '</a></li>');
-                    });
+            function SetSessionValue(value) {
+                var aData = [];
+                aData[0] = value;
+                var jsonData = JSON.stringify({ aData: aData });
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/SetSessionValue",
+                    data: jsonData,
+                    contentType: "application/json; charset=utf-8",
+                    success: OnSuccess,
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
+
+                function OnSuccess(response) {
+                    var session = response.d;
                 }
             }
-        }
 
-        function ChangeCss(value) {
-            if (value != "P") {
-                $("#navbartop").removeClass("navbar navbar-inverse navbar-fixed-top navbar-top");
-                $("#navbartop").addClass("navbar navbar-default navbar-fixed-top navbar-top");
-                $("#navbartop2").removeClass("side-menu sidebar-inverse");
-                $("#navbartop2").addClass("side-menu sidebar-default");
+            function GetSessionValuehtml() {
+                var session;
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/GetSessionValueHTML",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $('#notipend').empty();
+                        $('#notipend').append(data.d);
+                        if (data.d == null || data.d == "") {
+                            $('#notipend').append('<li><a> No Tiene Pendientes</a></li>');
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
             }
-        }
+
+            function SetSessionValuehtml(value) {
+                var aData = [];
+                aData[0] = value;
+                var jsonData = JSON.stringify({ aData: aData });
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/SetSessionValueHTML",
+                    data: jsonData,
+                    contentType: "application/json; charset=utf-8",
+                    success: OnSuccess,
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
+
+                function OnSuccess(response) {
+                    var session = response.d;
+                }
+            }
+
+            function GetSessionValueTotal() {
+                var session;
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/GetSessionValueTotal",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        var tot = data.d;
+                        if (tot != "" && tot > 0) {
+                            $('#tot_not').show();
+                            $('#tot_not').html(tot);
+                            $('#tot_not_det').show();
+                            $('#tot_not_det').html(tot);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
+            }
+
+            function SetSessionValueTotal(value) {
+                var aData = [];
+                aData[0] = value;
+                var jsonData = JSON.stringify({ aData: aData });
+                $.ajax({
+                    type: "POST",
+                    url: "WebService.asmx/SetSessionValueTotal",
+                    data: jsonData,
+                    contentType: "application/json; charset=utf-8",
+                    success: OnSuccess,
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
+
+                function OnSuccess(response) {
+                    var session = response.d;
+                }
+            }
+            function ValidarOpciones() {
+
+                $('#ul_opciones').empty();
+                var aData = [];
+                aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
+                var jsonData = JSON.stringify({ aData: aData });
+                $.ajax({
+                    type: "POST",
+                    url: "web_methods.aspx/GetOpciones",
+                    data: jsonData,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json", // dataType is json format
+                    success: OnSuccess,
+                    error: function (xhr, ajaxOptions, thrownError) {
+                    }
+                });
+
+                function OnSuccess(response) {
+                    var items = response.d;
+                    if (items.length > 0) {
+                        var fragment = "<ul>"
+                        $.each(items, function (index, val) {
+                            var urlpost = val.url;
+                            var Titulopost = val.descripcion;
+                            var iconopost = val.icono;
+                            $('#ul_opciones').append('<li><a href=' + urlpost + '>' + iconopost + ' ' + Titulopost + '</a></li>');
+                        });
+                    }
+                }
+            }
+
+            function ChangeCss(value) {
+                if (value != "P") {
+                    $("#navbartop").removeClass("navbar navbar-inverse navbar-fixed-top navbar-top");
+                    $("#navbartop").addClass("navbar navbar-default navbar-fixed-top navbar-top");
+                    $("#navbartop2").removeClass("side-menu sidebar-inverse");
+                    $("#navbartop2").addClass("side-menu sidebar-default");
+                }
+            }
       
 
-        // convertimos en minusculas la cadena devuelta por navigator.userAgent
-        var nav = navigator.userAgent.toLowerCase();
-        //buscamos dentro de la cadena mediante indexOf() el identificador del navegador
-        if (nav.indexOf("msie") != -1) {
-            alert("Su navegador Internet Explorer no es 100 % compatible con este sistema. Utilize Google Chrome");
-        } else if (nav.indexOf("firefox") != -1) {
-            alert("Su navegador Firefox no es 100 % compatible con este sistema. Utilize Google Chrome");
-        } else if (nav.indexOf("opera") != -1) {
-            alert("Su navegador Opera no es 100 % compatible con este sistema. Utilize Google Chrome");
-        }
-
-        function ConfirmaRet(msg) {
-            var r = confirm(msg);
-            if (r == true) {
-                return true;
-            } else {
-                return false;
+            // convertimos en minusculas la cadena devuelta por navigator.userAgent
+            var nav = navigator.userAgent.toLowerCase();
+            //buscamos dentro de la cadena mediante indexOf() el identificador del navegador
+            if (nav.indexOf("msie") != -1) {
+                alert("Su navegador Internet Explorer no es 100 % compatible con este sistema. Utilize Google Chrome");
+            } else if (nav.indexOf("firefox") != -1) {
+                alert("Su navegador Firefox no es 100 % compatible con este sistema. Utilize Google Chrome");
+            } else if (nav.indexOf("opera") != -1) {
+                alert("Su navegador Opera no es 100 % compatible con este sistema. Utilize Google Chrome");
             }
-        }
 
-        function AlertaOkRedirecciona(msg, url) {
-            swal({
-                title: "Mensaje del Sistema",
-                text: msg,
-                type: "success",
-                closeOnConfirm: false
-            },
-            function () {
-                window.location.href = url;
-            });
-        }
+            function ConfirmaRet(msg) {
+                var r = confirm(msg);
+                if (r == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function AlertaOkRedirecciona(msg, url) {
+                swal({
+                    title: "Mensaje del Sistema",
+                    text: msg,
+                    type: "success",
+                    closeOnConfirm: false
+                },
+                function () {
+                    window.location.href = url;
+                });
+            }
     </script>
     <style type="text/css">
         body {
@@ -900,7 +902,7 @@
                 </div>
                 <!-- Main Content -->
                 <div class="side-body">
-                    <nav id="menu" runat="server">
+                    <nav id="menu" runat="server" visible="false">
                         <label for="tm" id="toggle-menu">Menu <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></label>
                         <input type="checkbox" id="tm" />
                         <ul class="main-menu clearfix">

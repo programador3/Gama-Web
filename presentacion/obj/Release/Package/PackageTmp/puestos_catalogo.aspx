@@ -52,6 +52,11 @@
             });
         });
     </script>
+    <style type="text/css">
+        .row > [class*="col-"] {
+            margin-bottom: 1px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div id="page-wrapper">

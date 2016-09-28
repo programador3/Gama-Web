@@ -58,7 +58,7 @@ namespace presentacion
             DataSet ds = componente.CargarPendientesHoy(entidad);
             repeat_tareas.DataSource = ds.Tables[0];
             repeat_tareas.DataBind();
-            lbltotaltt.Text = " Tiene un total de " + ds.Tables[0].Rows.Count.ToString() + " Tarea(s)";
+            lbltotaltt.Text = "(" + ds.Tables[0].Rows.Count.ToString() + ")";
             if (ds.Tables[0].Rows.Count == 0)
             {
                 notareas.Visible = true;
@@ -73,7 +73,7 @@ namespace presentacion
             DataSet ds = componente.CargarPendientesHoy(entidad);
             repeatasignadas.DataSource = ds.Tables[0];
             repeatasignadas.DataBind();
-            lblasi.Text = " Tiene un total de " + ds.Tables[0].Rows.Count.ToString();
+            lblasi.Text = "(" + ds.Tables[0].Rows.Count.ToString() + ")";
             if (ds.Tables[0].Rows.Count == 0)
             {
                 tareasasig.Visible = true;
@@ -433,6 +433,16 @@ namespace presentacion
                 Global.CreateFileError(ex.ToString(), this);
                 return "";
             }
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            cardmias.Visible = cardmias.Visible == true ? false : true;
+        }
+
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+            cardasignadas.Visible = cardasignadas.Visible == true ? false : true;
         }
     }
 }

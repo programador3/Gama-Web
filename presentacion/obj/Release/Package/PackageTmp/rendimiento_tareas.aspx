@@ -6,12 +6,12 @@
     <h1 class="page-header">Reportes de rendimiento por Puesto</h1>
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="DEPTO" runat="server">
-            <h4><strong>Selecciona el Departamento</strong><small> Deje en blanco para ver todo.</small></h4>
+            <h4><strong>Departamento</strong></h4>
             <asp:DropDownList ID="ddldeptos" OnSelectedIndexChanged="ddldeptos_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
             </asp:DropDownList>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <h4><strong>Selecciona el puesto que realiza la Tarea</strong><small> Deje en blanco para ver todo.</small></h4>
+            <h4><strong>Puesto que realiza la Tarea</strong></h4>
             <asp:DropDownList ID="ddlPuestoAsigna" OnSelectedIndexChanged="ddlPuesto_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
             </asp:DropDownList>
         </div>

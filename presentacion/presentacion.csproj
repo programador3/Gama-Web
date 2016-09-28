@@ -423,12 +423,15 @@
     <Content Include="js\sweetalert.min.js" />
     <Content Include="js\theming.js" />
     <Content Include="login.aspx" />
+    <Content Include="login\css\style.css" />
+    <Content Include="login\js\index.js" />
     <Content Include="lugares_captura.aspx" />
     <Content Include="mapa.aspx" />
     <Content Include="menu.aspx" />
     <Content Include="css\animate.css" />
     <Content Include="css\pnotify.custom.min.css" />
     <Content Include="js\pnotify.custom.min.js" />
+    <Content Include="oc_clientes.aspx" />
     <Content Include="organigrama.aspx" />
     <Content Include="org\css\bporgeditor.latest.css" />
     <Content Include="org\css\images\ui-bg_flat_10_000000_40x100.png" />
@@ -555,6 +558,7 @@
     <Content Include="prueba.aspx" />
     <Content Include="puestos.aspx" />
     <Content Include="puestos_catalogo.aspx" />
+    <Content Include="puestos_equi.aspx" />
     <Content Include="quejas_acciones.aspx" />
     <Content Include="quejas_espera_m.aspx" />
     <Content Include="reasignacion_tareas.aspx" />
@@ -1239,6 +1243,13 @@
     </Compile>
     <Compile Include="metodos.cs" />
     <Compile Include="msgbox.cs" />
+    <Compile Include="oc_clientes.aspx.cs">
+      <DependentUpon>oc_clientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oc_clientes.aspx.designer.cs">
+      <DependentUpon>oc_clientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="organigrama.aspx.cs">
       <DependentUpon>organigrama.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1428,6 +1439,13 @@
     </Compile>
     <Compile Include="puestos_catalogo.aspx.designer.cs">
       <DependentUpon>puestos_catalogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="puestos_equi.aspx.cs">
+      <DependentUpon>puestos_equi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="puestos_equi.aspx.designer.cs">
+      <DependentUpon>puestos_equi.aspx</DependentUpon>
     </Compile>
     <Compile Include="quejas_acciones.aspx.cs">
       <DependentUpon>quejas_acciones.aspx</DependentUpon>

@@ -60,6 +60,56 @@ namespace presentacion
                 lnkreasigna.Visible = true;
                 CargarTareas(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"])));
                 url_back = "tareas_detalles.aspx?termina=1&idc_tarea=" + Request.QueryString["idc_tarea"];
+                if (Request.QueryString["command"] != null)
+                {
+                    string comm = Request.QueryString["command"];
+                    switch (comm)
+                    {
+                        case "C":
+                            btnCancelarTodo_Click(null, null);
+                            break;
+
+                        case "B":
+                            CONETNIDO.Visible = false;
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertMesededessssdesage", "ModalClose();", true);
+                            Session["Caso_Confirmacion"] = "Visto Bueno";
+                            Session["tipo_conf"] = "B";
+                            row_vbno.Visible = true;
+                            btnfecha_est.Text = "Estipulada: " + txtfecha_solicompromiso.Text;
+                            DataTable dt = funciones.ExecQuery("SELECT a.fecha as fecha_movimiento FROM DBO.fn_ultimo_movimiento_tarea() as a	WHERE a.idc_tarea = " + Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"])).ToString() + "");
+                            if (dt.Rows.Count > 0)
+                            {
+                                Session["fecha_termi_mov"] = Convert.ToDateTime(dt.Rows[0]["fecha_movimiento"]);
+                                btnfecha_term.Text = "Terminada: " + Convert.ToDateTime(dt.Rows[0]["fecha_movimiento"]).ToString("dd MMMM, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX"));
+                            }
+                            else
+                            {
+                                btnfecha_term.Text = "Terminada: " + Convert.ToDateTime(Session["tarea_sin_f"]).ToString("dd MMMM, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX"));
+                            }
+
+                            DateTime TIMEST = Convert.ToDateTime(Session["tarea_sin_f"]);
+                            if (TIMEST < Convert.ToDateTime(Session["fecha_termi_mov"]))
+                            {
+                                btnfecha_term.CssClass = "btn btn-danger btn-block";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Se Dara el Visto Bueno para la Terminacion de la tarea. Puede Ingresar una descripcion o comentarios','','modal fade modal-danger');", true);
+                            }
+                            else
+                            {
+                                btnfecha_term.CssClass = "btn btn-success btn-block";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Se Dara el Visto Bueno para la Terminacion de la tarea. Puede Ingresar una descripcion o comentarios.','','modal fade modal-success');", true);
+                            }
+                            break;
+                        case "AF":
+                            DataTable dt2 = funciones.ExecQuery("SELECT a.IDC_TAREA_HISTORIAL  FROM DBO.fn_ultimo_movimiento_tarea() as a	WHERE a.idc_tarea = " + Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"])).ToString() + "");
+                            int idc_th = 0;
+                            idc_th = dt2.Rows.Count > 0 ? Convert.ToInt32(dt2.Rows[0]["idc_tarea_historial"]) : 0;
+                            if (idc_th > 0)
+                            {
+                                CambiarFecha(idc_th, "C");
+                            }
+                            break;
+                    }
+                }
             }
             //si es quien realiza la tarea
             if (!IsPostBack && Request.QueryString["idc_tarea"] != null && Request.QueryString["acepta"] != null)
@@ -77,6 +127,25 @@ namespace presentacion
                 Session["idc_tarea_hist"] = 0;
                 url_back = "tareas_detalles.aspx?acepta=1&idc_tarea=" + Request.QueryString["idc_tarea"];
                 panel_avance.Visible = true;
+                if (Request.QueryString["command"] != null)
+                {
+                    DataTable dt = funciones.ExecQuery("SELECT a.IDC_TAREA_HISTORIAL  FROM DBO.fn_ultimo_movimiento_tarea() as a	WHERE a.idc_tarea = " + Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"])).ToString() + "");
+                    int idc_th = 0;
+                    idc_th = dt.Rows.Count > 0? Convert.ToInt32(dt.Rows[0]["idc_tarea_historial"]):0;
+                    string comm = Request.QueryString["command"];
+                    switch (comm)
+                    {
+                        case "T":
+                            btnTerminar_Click(null, null);
+                            break;
+                        case "F":
+                            if (idc_th > 0)
+                            {
+                                CambiarFecha(idc_th, "N");
+                            }
+                            break;
+                    }
+                }
             }
             if (!IsPostBack && Request.QueryString["termina"] == null && Request.QueryString["acepta"] == null)
             {
@@ -101,6 +170,51 @@ namespace presentacion
             }
         }
 
+        void CambiarFecha(int idc_ultimo_mov, string TIPO)
+        {
+
+            row_vbno.Visible = false;
+            int idc_hist = idc_ultimo_mov;
+            Session["idc_tarea_historial"] = idc_hist;
+            Session["tipo_movimiento"] = TIPO;
+
+            CargarTareas(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"])));
+            DataTable dt = (DataTable)Session["tabla_movimientos"];
+            foreach (DataRow row in dt.Rows)
+            {
+                int idc_tarea_historial = Convert.ToInt32(row["idc_tarea_historial"]);
+                if (idc_hist == idc_tarea_historial)
+                {
+                    lbldes.Text = row["descripcion"].ToString();
+                    lblempleado.Text = row["empleado"].ToString();
+                    lblfecha.Text = txtnueva_fecha.Text == "" ? row["fecha_compromiso"].ToString() : Convert.ToDateTime(txtnueva_fecha.Text).ToString("MMMM dd, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX"));
+                    lblfecha_original.Text = row["fecha_original"].ToString();
+                    lbltipo.Text = row["tipo_completo"].ToString();
+                    lblpuesto.Text = row["puesto"].ToString();
+                    lbldinamico.Text = row["columna_dinamica"].ToString();
+                    lbldinamico.Visible = row["columna_dinamica"].ToString() == "" ? false : true;
+                    ldinamico.Visible = row["columna_dinamica"].ToString() == "" ? false : true;
+                    //  Session["fecha"] = Convert.ToDateTime(row["fecha_sin_f"]);
+                    Session["fecha_termi_mov"] = Convert.ToDateTime(row["fecha_terminado"]);
+                    DateTime DT = Convert.ToDateTime(Session["fecha"]);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMesededessssdesage", "ModalClose();", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMesedededesage", "ModalMov('Mensaje del Sistema');", true);
+                    break;
+                }
+            }           
+            panel_captura_fecha.Visible = false;
+            upda_proovc.Visible = false;
+            if (TIPO == "N" || TIPO == "R" || TIPO == "G" && Request.QueryString["acepta"] != null)
+            {
+                panel_captura_fecha.Visible = true;
+                upda_proovc.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 355);
+                upda_proovc.Visible = repeat_proovedores.Items.Count == 0 ? false : true;
+                txtcomentarios_proo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 355);
+                txtcomentarios_proo.Visible = repeat_proovedores.Items.Count == 0 ? false : true;
+            }
+
+            
+        }
         /// <summary>
         /// Carga las tareas pendientes
         /// </summary>
@@ -1062,7 +1176,7 @@ namespace presentacion
                             correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
                             if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
                         }
-                    }         
+                    }
                     if (Session["redirect"] != null && Session["redirect_pagedet"] == null)
                     {
                         Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", (string)Session["redirect"], "imagenes/loading.gif", "2000", "El movimiento fue Guardado Correctamente", this);
@@ -1280,6 +1394,7 @@ namespace presentacion
             CargaPuestos("");
             ScriptManager.RegisterStartupScript(this, GetType(), "noti533Wsswws3", "ModalReasignaTarea();", true);
         }
+
         protected void Button2_Click(object sender, EventArgs e)
         {
             bool error = false;
@@ -1305,21 +1420,20 @@ namespace presentacion
                 }
             }
 
-
             if (error == false)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMesededessssdesage", "ModalClose();", true);
                 Session["Caso_Confirmacion"] = "Reasignacion Tarea";
                 Session["tipo_conf"] = "Y";
-                Yes_Click(null,null);
+                Yes_Click(null, null);
             }
         }
-
 
         protected void lnkbuscarpuestos_Click(object sender, EventArgs e)
         {
             CargaPuestos(txtpuesto_filtro.Text);
         }
+
         /// <summary>
         /// Carga Puestos en ComboBox con Filtro
         /// </summary>
@@ -1347,10 +1461,6 @@ namespace presentacion
                 Alert.ShowAlertError(ex.ToString(), this.Page);
                 Global.CreateFileError(ex.ToString(), this);
             }
-
-
-
         }
-
     }
 }

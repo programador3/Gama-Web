@@ -1,6 +1,62 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="tareas_asignadas_lista.aspx.cs" Inherits="presentacion.tareas_asignadas_lista" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
+        <script type="text/javascript">
+        function Press(id, url, estado, desc)
+        {
+            $("#Listado").empty();
+            if (estado == "ACEPTADO" || estado == "SOLICITUD DE CAMBIO DE FECHA") {
+                var html_v = "";
+                html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
+                html_v = html_v + "<a class='btn btn-primary btn-block' href='" + url + "&command=T'>Terminar Tarea</a>";
+                $("#Listado").html(html_v);
+                $("#Listado").show();
+                ModalConfirm(desc);
+                return false;
+            }
+            else if (estado == "TAREA ASIGNADA SIN RESPUESTA") {
+                var html_v = "";
+                html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
+                html_v = html_v + "<a class='btn btn-primary btn-block' href='" + url + "&command=F'>Aceptar Tarea</a>";
+                html_v = html_v + "<a class='btn btn-info btn-block' href='" + url + "&command=F'>Cambiar Fecha Compromiso</a>";
+                $("#Listado").html(html_v);
+                $("#Listado").show();
+                ModalConfirm(desc);
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function PressRev(id, url, estado, desc) {
+            $("#Listado").empty();
+            var html_v = "";
+            html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
+            html_v = html_v + "<a class='btn btn-danger btn-block' href='" + url + "&command=C'>Cancelar Tarea</a>";            
+            if (estado == "TERMINADA EN ESPERA DE VISTO BUENO")
+            {
+                html_v = html_v + "<a class='btn btn-success btn-block fresh-color' href='" + url + "&command=B'>Visto Bueno Tarea</a>";
+            }
+            if (estado == "SOLICITUD DE CAMBIO DE FECHA") {
+                html_v = html_v + "<a class='btn btn-primary btn-block fresh-color' href='" + url + "&command=AF'>AcePtar Nueva Fecha Compromiso</a>";
+            }
+            $("#Listado").html(html_v);
+            $("#Listado").show();
+            var var2 = desc.replace("\n", " ");
+            ModalConfirm(desc);
+            return false;
+        }
+        $(document).ready(function(){
+            $("#Listado").empty();
+            $("#Listado").hide();
+        });
+        function ModalConfirm(cTitulo) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModal').modal('show');
+            $('#modal_title').text(cTitulo);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div id="page-wrapper">
@@ -18,13 +74,11 @@
                         </div>
                         <div class="card-body" id="TAREAS_IND" runat="server" visible="false">
                             <div class="row">
-                                <div class="col-lg-10 col-xs-8">
+                                <div class="col-lg-12">
                                     <h4>Escriba un Filtro<small> Ingrese "/" para Buscar Departamento, "+" para Buscar Empleados y "*" para Buscar Estado</small></h4>
                                     <asp:TextBox ID="TextBox1" runat="server" TextMode="SingleLine" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtpuesto_filtro_TextChanged" placeholder="Buscar"></asp:TextBox>
-                                </div>
-                                <div class="col-lg-2 col-xs-4">
-                                    <h4>.</h4>
-                                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-success btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                              
                                 </div>
                             </div>
                             <h3 style="text-align: center" id="notareas" runat="server" visible="false">No tiene Tareas Asignadas Pendientes <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
@@ -33,7 +87,8 @@
                                 <asp:Repeater ID="repeat_tareas" runat="server">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
-                                            <span class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
+                                                <span onclick="return PressRev('<%#Eval("idc_tarea")%>','<%#Eval("url")%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine," ")%>')" 
+                                                class="badge btn btn-default btn-xs"><%#Eval("icono")%></span><h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
                                                 <p class="list-group-item-text"><%#Eval("descripcion")%></p>
                                                 <p class="list-group-item-text"><strong>Realiza</strong>: <%#Eval("empleado")%></p>
                                                 <p class="list-group-item-text"><strong>Depto</strong>: <%#Eval("depto")%></p>
@@ -45,11 +100,7 @@
                         </div>
                         <div class="card-body" id="tareas_todas" runat="server" visible="false">
                             <h3 style="text-align: center" id="H1" runat="server" visible="false">No tiene Tareas Pendientes <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
-                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
-                                <Triggers>
-                                    <asp:PostBackTrigger ControlID="LinkButton1" />
-                                </Triggers>
-                                <ContentTemplate>
+                          
                                     <div class="row">
                                         <div class="col-lg-10 col-xs-8">
                                             <h4>Escriba un Filtro <small>Ingrese "/" para Buscar Departamento, "+" para Buscar Empleados y "*" para Buscar Estado</small></h4>
@@ -67,7 +118,8 @@
                                         <asp:Repeater ID="repeatglobal" runat="server">
                                             <ItemTemplate>
                                                 <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
-                                            <span class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
+                                               <span onclick="return PressRev('<%#Eval("idc_tarea")%>','<%#Eval("url")%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine," ")%>')" 
+                                                class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
                                                 <p class="list-group-item-text"><%#Eval("descripcion")%></p>
                                                 <p class="list-group-item-text"><strong>Estado</strong>: <%#Eval("empleado")%></p>
                                                 <p class="list-group-item-text"><strong>Depto</strong>: <%#Eval("depto")%></p>
@@ -75,12 +127,28 @@
                                             </ItemTemplate>
                                         </asp:Repeater>
                                     </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+                        <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="text-align: center;">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 id="modal_title"><strong>Mensaje del Sistema</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="text-align: center;">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                                 <div id="Listado" class="ListadoR">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 </asp:Content>

@@ -280,13 +280,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/29/2015 21:27:38</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>09/21/2016 09:30:05</publishTime>
+      <publishTime>09/26/2016 15:18:13</publishTime>
     </File>
     <File Include="bin/OpenPop.dll">
       <publishTime>11/21/2015 16:46:36</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>09/22/2016 11:58:12</publishTime>
+      <publishTime>09/27/2016 10:01:36</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
       <publishTime>09/19/2016 09:16:57</publishTime>
@@ -892,7 +892,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:34:52</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>09/22/2016 11:20:06</publishTime>
+      <publishTime>09/27/2016 08:23:37</publishTime>
     </File>
     <File Include="grafica.aspx">
       <publishTime>09/17/2016 10:34:58</publishTime>
@@ -1648,10 +1648,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/16/2016 15:33:56</publishTime>
     </File>
     <File Include="login.aspx">
-      <publishTime>09/17/2016 10:38:29</publishTime>
+      <publishTime>09/28/2016 08:56:31</publishTime>
     </File>
     <File Include="Login.Master">
-      <publishTime>09/17/2016 10:38:34</publishTime>
+      <publishTime>09/26/2016 16:16:40</publishTime>
+    </File>
+    <File Include="login/css/style.css">
+      <publishTime>09/28/2016 09:00:20</publishTime>
+    </File>
+    <File Include="login/js/index.js">
+      <publishTime>09/26/2016 16:14:52</publishTime>
     </File>
     <File Include="log_vendedores.aspx">
       <publishTime>03/17/2016 08:17:19</publishTime>
@@ -1663,7 +1669,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:38:40</publishTime>
     </File>
     <File Include="menu.aspx">
-      <publishTime>09/22/2016 08:51:18</publishTime>
+      <publishTime>09/27/2016 09:47:16</publishTime>
+    </File>
+    <File Include="oc_clientes.aspx">
+      <publishTime>09/26/2016 15:28:49</publishTime>
     </File>
     <File Include="org/css/bporgeditor.latest.css">
       <publishTime>04/29/2016 07:33:07</publishTime>
@@ -2041,7 +2050,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:42:30</publishTime>
     </File>
     <File Include="puestos_catalogo.aspx">
-      <publishTime>09/17/2016 10:42:35</publishTime>
+      <publishTime>09/27/2016 10:00:24</publishTime>
+    </File>
+    <File Include="puestos_equi.aspx">
+      <publishTime>09/23/2016 12:13:44</publishTime>
     </File>
     <File Include="quejas_acciones.aspx">
       <publishTime>09/17/2016 10:42:42</publishTime>
@@ -2056,7 +2068,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:42:59</publishTime>
     </File>
     <File Include="recordatorios_pendientes.aspx">
-      <publishTime>09/17/2016 10:43:02</publishTime>
+      <publishTime>09/24/2016 09:08:27</publishTime>
     </File>
     <File Include="redirect.aspx">
       <publishTime>09/17/2016 10:43:06</publishTime>
@@ -2065,10 +2077,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:43:09</publishTime>
     </File>
     <File Include="rendimiento_tareas.aspx">
-      <publishTime>09/17/2016 10:43:14</publishTime>
+      <publishTime>09/26/2016 10:32:45</publishTime>
     </File>
     <File Include="rendimiento_tareas_asignadas.aspx">
-      <publishTime>09/17/2016 10:43:18</publishTime>
+      <publishTime>09/26/2016 10:34:34</publishTime>
     </File>
     <File Include="rendimiento_tareas_detalles.aspx">
       <publishTime>09/17/2016 10:43:22</publishTime>
@@ -2161,7 +2173,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:45:29</publishTime>
     </File>
     <File Include="tareas_asignadas_lista.aspx">
-      <publishTime>09/17/2016 10:45:33</publishTime>
+      <publishTime>09/26/2016 10:17:17</publishTime>
     </File>
     <File Include="tareas_automaticas.aspx">
       <publishTime>09/17/2016 10:45:40</publishTime>
@@ -2170,16 +2182,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:45:45</publishTime>
     </File>
     <File Include="tareas_captura.aspx">
-      <publishTime>09/19/2016 10:23:51</publishTime>
+      <publishTime>09/26/2016 09:16:25</publishTime>
     </File>
     <File Include="tareas_detalles.aspx">
-      <publishTime>09/22/2016 08:16:48</publishTime>
+      <publishTime>09/27/2016 09:08:36</publishTime>
     </File>
     <File Include="tareas_informacion_adicional.aspx">
       <publishTime>09/19/2016 14:18:02</publishTime>
     </File>
     <File Include="tareas_listado.aspx">
-      <publishTime>09/17/2016 10:46:16</publishTime>
+      <publishTime>09/26/2016 10:14:06</publishTime>
     </File>
     <File Include="tareas_rapidas.aspx">
       <publishTime>09/19/2016 10:38:46</publishTime>
@@ -2215,7 +2227,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:47:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/22/2016 11:22:43</publishTime>
+      <publishTime>09/28/2016 09:01:37</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>03/03/2016 15:01:50</publishTime>

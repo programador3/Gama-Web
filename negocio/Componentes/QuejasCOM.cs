@@ -33,7 +33,31 @@ namespace negocio.Componentes
             }
             return ds;
         }
-
+        public DataSet ModificarRecordatorio(QuejasENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pdirecip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnombrepc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptexto", SqlDbType = SqlDbType.Int, Value = Entidad.Pobservaciones_satisfecho });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pasunto", SqlDbType = SqlDbType.Int, Value = Entidad.Pobservaciones });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcorreo", SqlDbType = SqlDbType.Int, Value = Entidad.Pencargado });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfecha", SqlDbType = SqlDbType.Int, Value = Entidad.Pfecha });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_aviso", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_queja });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_mavisos_generales_nuevo", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet DescartarRecordatorio(QuejasENT Entidad, int tipo, int idc_avisogen, int num, int tiempo)
         {
             DataSet ds = new DataSet();

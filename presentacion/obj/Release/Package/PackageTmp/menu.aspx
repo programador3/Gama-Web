@@ -68,9 +68,9 @@
             font-size: 14px;
             text-align: -webkit-right;
         }
-     
-           
-       .aa:link {
+
+
+        .aa:link {
             color: white;
         }
 
@@ -88,7 +88,7 @@
         .aa:active {
             color: white;
         }
-           
+
         .cardlk:link {
             color: yellow;
         }
@@ -107,7 +107,80 @@
         .cardlk:active {
             color: yellow;
         }
+        .btr {
+            position:relative;
+            float:right;
+        }
+        .h5n {
+            font-size: 17px;
+            text-align:center;
+        }
+        .flat-blue .btn.btn-info {
+            background-color: #22A7F0;
+            color: #FFF;
+            border-color: white;
+        }
+        .flat-blue .btn.btn-primary {
+            background-color: #353d47;
+            color: #FFF;
+            border-color: white;
+        }
     </style>
+    <script type="text/javascript">
+        function Press(id, url, estado, desc)
+        {
+            $("#Listado").empty();
+            if (estado == "ACEPTADO" || estado == "SOLICITUD DE CAMBIO DE FECHA") {
+                var html_v = "";
+                html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
+                html_v = html_v + "<a class='btn btn-primary btn-block' href='" + url + "&command=T'>Terminar Tarea</a>";
+                $("#Listado").html(html_v);
+                $("#Listado").show();
+                ModalConfirm(desc);
+                return false;
+            }
+            else if (estado == "TAREA ASIGNADA SIN RESPUESTA") {
+                var html_v = "";
+                html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
+                html_v = html_v + "<a class='btn btn-primary btn-block' href='" + url + "&command=F'>Aceptar Tarea</a>";
+                html_v = html_v + "<a class='btn btn-info btn-block' href='" + url + "&command=F'>Cambiar Fecha Compromiso</a>";
+                $("#Listado").html(html_v);
+                $("#Listado").show();
+                ModalConfirm(desc);
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function PressRev(id, url, estado, desc) {
+            $("#Listado").empty();
+            var html_v = "";
+            html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
+            html_v = html_v + "<a class='btn btn-danger btn-block' href='" + url + "&command=C'>Cancelar Tarea</a>";            
+            if (estado == "TERMINADA EN ESPERA DE VISTO BUENO")
+            {
+                html_v = html_v + "<a class='btn btn-success btn-block fresh-color' href='" + url + "&command=B'>Visto Bueno Tarea</a>";
+            }
+            if (estado == "SOLICITUD DE CAMBIO DE FECHA") {
+                html_v = html_v + "<a class='btn btn-primary btn-block fresh-color' href='" + url + "&command=AF'>AcePtar Nueva Fecha Compromiso</a>";
+            }
+            $("#Listado").html(html_v);
+            $("#Listado").show();
+            var var2 = desc.replace("\n", " ");
+            ModalConfirm(desc);
+            return false;
+        }
+        $(document).ready(function(){
+            $("#Listado").empty();
+            $("#Listado").hide();
+        });
+        function ModalConfirm(cTitulo) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModal').modal('show');
+            $('#modal_title').text(cTitulo);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="row">
@@ -121,12 +194,12 @@
             <asp:PostBackTrigger ControlID="txtsearch" />
         </Triggers>
         <ContentTemplate>
-            
+
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group has-feedback">
-                        <asp:TextBox ID="txtsearch" CssClass="form-control" runat="server" AutoPostBack="true" 
+                        <asp:TextBox ID="txtsearch" CssClass="form-control" runat="server" AutoPostBack="true"
                             OnTextChanged="txtsearch_TextChanged" placeholder="Buscar Pagina"></asp:TextBox>
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
@@ -139,23 +212,23 @@
                     </div>
                 </div>
             </div>
-
             <!-- /.row -->
-
+            
+        
             <asp:Panel ID="panel_search" runat="server">
                 <div class="row" id="linkv">
                     <asp:Repeater ID="Repeater2" runat="server">
                         <ItemTemplate>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 caja">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 caja">
                                 <a class="aa" href='<%#Eval("web_form") %>'>
                                     <div class="card green summary-inline">
                                         <div class="card-body">
-                                            <i class="icon fa fa-chevron-circle-right fa-5x"></i>
+                                            <i class="icon fa fa-chevron-circle-right fa-4x"></i>
                                             <div class="content">
-                                                <h5><%# Eval("descripcion") %></h5>
-                                                <h5>
+                                                <h6><%# Eval("descripcion") %></h6>
+                                                <h6>
                                                     <asp:LinkButton CommandName='<%#Eval("idc_opcion") %>' ID="LinkButton2" CssClass='<%#Convert.ToBoolean(Eval("favorita"))==false ? "aa":"cardlk" %>'
-                                                        OnClick="Button1_Click" runat="server"><i class="icon fa fa-star fa-2x"></i></asp:LinkButton></h5>
+                                                        OnClick="Button1_Click" runat="server"><i class="icon fa fa-star fa-2x"></i></asp:LinkButton></h6>
                                             </div>
                                             <div class="clear-both"></div>
                                         </div>
@@ -168,24 +241,24 @@
                         <br />
                         Puede Intentarlo Nuevamente.</h2>
                 </div>
-            </asp:Panel>
-            <asp:Panel ID="panel_menus_repeat" runat="server">
+            </asp:Panel>        
+            <asp:Panel ID="panel_menus_repeat" runat="server" Visible="true">
                 <div class="row">
                     <asp:Repeater ID="Repeater3" runat="server">
                         <ItemTemplate>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                 <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  DataBinder.Eval(Container.DataItem, "web_form").ToString():string.Format("menu.aspx?menu={0}&nivel={1}", DataBinder.Eval(Container.DataItem, "menu").ToString().Trim(), DataBinder.Eval(Container.DataItem, "nivel"))  %>'>
                                     <div class='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "card green summary-inline":"card blue summary-inline"  %>'>
                                         <div class="card-body">
                                             <i class="icon fa fa-chevron-circle-right fa-4x"></i>
                                             <div class="content">
-                                                <h5>
+                                                <h6>
                                                     <asp:Label ID="lbl" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, "menu").ToString() %>'></asp:Label>
-                                                    </h4>
-                                                <h6 style="text-align:right;">
-                                                    <asp:Label ID="Label1" Visible="true"
-                                                         runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "Pagina":"Menu"  %>'></asp:Label>
                                                     </h6>
+                                                <h6 style="text-align: right;">
+                                                    <asp:Label ID="Label1" Visible="true"
+                                                        runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "Pagina":"Menu"  %>'></asp:Label>
+                                                </h6>
                                             </div>
                                             <div class="clear-both"></div>
                                         </div>
@@ -202,25 +275,40 @@
                         <div class="card-header" style="background-color: #353d47; color: white;">
                             <div class="card-title" style="background-color: #353d47; color: white;">
                                 <div class="title" style="background-color: #353d47; color: white;">
-                                    <h3 style="background-color: #353d47; color: white;">Mis Tareas Pendientes para hoy <small style="background-color: #353d47; color: white;" id="total_tareas" runat="server">
-                                        <asp:Label ID="lbltotaltt" runat="server" Text=""></asp:Label></small></h3>
+                                    <h5 class="h5n" style="background-color: #353d47; color: white;">Tareas Pendientes para hoy<small style="background-color: #353d47; color: white;" id="total_tareas" runat="server">
+                                        <asp:Label ID="lbltotaltt" runat="server" Text=""></asp:Label></small></h5>
+
                                 </div>
                             </div>
+                            <div class="pull-right card-action">
+                                <div class="btn-group" role="group">
+                                    <asp:LinkButton ID="LinkButton3" CssClass="btn btn-primary" runat="server" OnClick="LinkButton3_Click"><i class="fa fa-chevron-down" aria-hidden="true"></i>
+
+                                    </asp:LinkButton>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="card-body">
-                            <a class="btn btn-primary btn-block" href="tareas_listado.aspx"><asp:Label ID="lblpendientes" runat="server" Text="Label"></asp:Label> <i class="fa fa-wrench" aria-hidden="true"></i></a>
-                            <h3 style="text-align: center" id="notareas" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
+                        <div class="card-body" id="cardmias" runat="server">
+                            <a class="btn btn-primary btn-block" href="tareas_listado.aspx">
+                                <asp:Label ID="lblpendientes" runat="server" Text="Label"></asp:Label>
+                                <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                            <h5 style="text-align: center" id="notareas" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h5>
 
                             <div class="list-group">
                                 <asp:Repeater ID="repeat_tareas" runat="server">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
-                                            <span class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
-                                                <p class="list-group-item-text"><%#Eval("descripcion")%></p>
+                                            <span onclick="return Press('<%#Eval("idc_tarea")%>','<%#Eval("url")%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine,"")%>')" 
+                                                class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> 
+                                             
+                                            <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>                                             
+                                                <p class="list-group-item-text"><%#Eval("descripcion")%></p>                                           
                                                 <p class="list-group-item-text"><strong>Asigno</strong>: <%#Eval("empleado_asigna")%></p>
                                                 <p class="list-group-item-text"><strong>Depto</strong>: <%#Eval("depto_asigna")%></p>
                                                 <p class="list-group-item-text"><strong>Estado</strong>: <%#Eval("tipo")%></p>
                                         </asp:LinkButton>
+
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div>
@@ -232,21 +320,30 @@
                         <div class="card-header" style="background-color: #19B5FE; color: white;">
                             <div class="card-title" style="background-color: #19B5FE; color: white;">
                                 <div class="title" style="background-color: #19B5FE; color: white;">
-                                    <h3 style="background-color: #19B5FE; color: white;">Mis Tareas Asignadas <small style="background-color: #19B5FE; color: white;" id="Small1" runat="server">
-                                        <asp:Label ID="lblasi" runat="server" Text=""></asp:Label></small></h3>
+                                    <h5  class="h5n" style="background-color: #19B5FE; color: white;">Tareas Asignadas para hoy<small style="background-color: #19B5FE; color: white;" id="Small1" runat="server">
+                                        <asp:Label ID="lblasi" runat="server" Text="" ></asp:Label></small></h5>
+                                </div>
+                            </div>                            
+                            <div class="pull-right card-action">
+                                <div class="btn-group" role="group">
+                                    <asp:LinkButton ID="LinkButton4" OnClick="LinkButton4_Click" CssClass="btn btn-info" runat="server"><i class="fa fa-chevron-down" aria-hidden="true"></i>
+
+                                    </asp:LinkButton>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" id="cardasignadas" runat="server">
                             <a class="btn btn-info btn-block" href="tareas_asignadas_lista.aspx">
-                                <asp:Label ID="lblasignadas" runat="server" Text="Label"></asp:Label> <i class="fa fa-wrench" aria-hidden="true"></i></a>
-                            <h3 style="text-align: center" id="tareasasig" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h3>
+                                <asp:Label ID="lblasignadas" runat="server" Text="Label"></asp:Label>
+                                <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                            <h5 style="text-align: center" id="tareasasig" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h5>
                             <div class="list-group">
                                 <asp:Repeater ID="repeatasignadas" runat="server">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
-                                            <span class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
-                                                <p class="list-group-item-text"><%#Eval("descripcion")%></p>
+                                            <span onclick="return PressRev('<%#Eval("idc_tarea")%>','<%#Eval("url")%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine," ")%>')" 
+                                                class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
+                                                <p class="list-group-item-text"><%#Eval("descripcion")%></p>                                            
                                                 <p class="list-group-item-text"><strong>Realiza</strong>: <%#Eval("empleado")%></p>
                                                 <p class="list-group-item-text"><strong>Depto</strong>: <%#Eval("depto")%></p>
                                                 <p class="list-group-item-text"><strong>Estado</strong>: <%#Eval("tipo")%></p>
@@ -259,7 +356,24 @@
                 </div>
             </div>
             </div>
-
+                        <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="text-align: center;">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 id="modal_title"><strong>Mensaje del Sistema</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" style="text-align: center;">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                                <div id="Listado" class="ListadoR">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
             <!--campos ocultos -->
             <asp:HiddenField ID="ocmenu1" runat="server" />
             <asp:HiddenField ID="ocmenu2" runat="server" />

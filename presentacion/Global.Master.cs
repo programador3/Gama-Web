@@ -30,9 +30,8 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
-
             string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
-            ScriptManager.RegisterStartupScript(this, GetType(), "dedchangeedddededed", "ChangeCss('" + cs + "');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "dedchangeedddededed", "ChangeCss('" + cs + "');", true);  
             tareas_pendi.Visible = cs == "P" ? false : true;
             lnkperfil.CommandName = Convert.ToInt32(Session["login_idc_perfil"]).ToString();
             lnkperfil.Text = (string)Session["login_perfil"];
@@ -43,9 +42,14 @@ namespace presentacion
             path_actual_COMPLETO = path_actual_COMPLETO.Replace("%20", "+");
             path_actual_COMPLETO = funciones.ChangeValue(path_actual_COMPLETO);
             string PreviousPage = Request.ServerVariables["HTTP_REFERER"];
-            int user_id = Convert.ToInt32(Session["sidc_usuario"]);
-            string Puesto = (String)(Session["puesto_login"]) == "" ? "Sin puesto Asignado" : (String)(Session["puesto_login"]);
-            string Usuario_Name = (String)(Session["nombre"]);
+            int user_id = Convert.ToInt32(Session["sidc_usuario"]);           
+            lblUserName.Text = (String)(Session["nombre"]);
+            lblpuestos2.Text = (String)(Session["puesto_login"]) == "" ? "Sin puesto Asignado" : (String)(Session["puesto_login"]);
+            lbluser2.Text = (String)(Session["nombre"]);
+            CargarHerramientasMenu();
+            OpcionesUsadas();
+            DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/errores/"));//path local
+            Session["error_path"] = dirInfo.ToString();
             if (Session["sidc_usuario"] == null && Session["lista"] == null)//si no hay session logeamos
             {
                 Response.Redirect("login.aspx");
@@ -54,7 +58,7 @@ namespace presentacion
             {
                 ////COMENTADO PARA PODER PROGRAMAR
                 ////Validamos que no se la pagina menu para que no genere un bucle
-                if (user_id != 314 && user_id != 127 && user_id != 255 && user_id != 210)
+                if (user_id != 314 && user_id != 127 && user_id != 255 && user_id != 210 && user_id != 452)
                 {
                     if (!path_actual.Equals("menu.aspx"))
                     {
@@ -96,15 +100,6 @@ namespace presentacion
                 }
             }
 
-            lblUserName.Text = (String)(Session["nombre"]);
-            lblpuestos2.Text = (String)(Session["puesto_login"]) == "" ? "Sin puesto Asignado" : (String)(Session["puesto_login"]);
-            lbluser2.Text = (String)(Session["nombre"]);
-            CargarHerramientasMenu();
-            web_methods.idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
-            web_methods.idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
-            DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/errores/"));//path local
-            Session["error_path"] = dirInfo.ToString();
-            OpcionesUsadas();          
         }
 
         public void OpcionesUsadas()
@@ -160,16 +155,16 @@ namespace presentacion
 
         private void dinamic_menudrop()
         {
-        //    DataSet ds = new DataSet();
-        //    OpcionesE EntOpcion = new OpcionesE();
-        //    OpcionesBL menuBL = new OpcionesBL();
-        //    EntOpcion.Usuario_id = Convert.ToInt32(Session["sidc_usuario"].ToString());
-        //    ds = menuBL.MenuDinmaico(EntOpcion);
-        //    Session["menudrop"] = ds.Tables[0];
-        //    DataView view = new DataView(ds.Tables[0]);
-        //    DataTable distinctValues = view.ToTable(true, "menu1");
-        //    repeatmenu1.DataSource = Distinct(distinctValues);
-        //    repeatmenu1.DataBind();
+            DataSet ds = new DataSet();
+            OpcionesE EntOpcion = new OpcionesE();
+            OpcionesBL menuBL = new OpcionesBL();
+            EntOpcion.Usuario_id = Convert.ToInt32(Session["sidc_usuario"].ToString());
+            ds = menuBL.MenuDinmaico(EntOpcion);
+            Session["menudrop"] = ds.Tables[0];
+            DataView view = new DataView(ds.Tables[0]);
+            DataTable distinctValues = view.ToTable(true, "menu1");
+            repeatmenu1.DataSource = Distinct(distinctValues);
+            repeatmenu1.DataBind();
         }
 
         public int contador = 1;
@@ -333,12 +328,7 @@ namespace presentacion
             date = date.Replace(":", "_");
             content = (String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
             funciones.CreateFile((string)page.Session["error_path"] + date + ".gama", content);
-
-            string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
-            if (cs == "P")
-            {
-                funciones.EnviarError(content);
-            }
+            funciones.EnviarError(content);
         }
 
         private void CargarHerramientasMenu()

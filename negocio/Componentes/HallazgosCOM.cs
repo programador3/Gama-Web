@@ -8,6 +8,66 @@ namespace negocio.Componentes
 {
     public class HallazgosCOM
     {
+        public DataSet AddOCClientes(HallazgosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.Int, Value = Entidad.Pdirecip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.Int, Value = Entidad.Pnombrepc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.Int, Value = Entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_CLIENTE", SqlDbType = SqlDbType.Int, Value = Entidad.pidc_hallazgo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PNO_OCC", SqlDbType = SqlDbType.Int, Value = Entidad.Phallazgo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcantidad", SqlDbType = SqlDbType.Int, Value = Entidad.pidc_sucursal });
+            listparameters.Add(new SqlParameter() { ParameterName = "@penviar_aviso", SqlDbType = SqlDbType.Int, Value = Entidad.penvia });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("SP_AOC_CLIENTES_NUEVO", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet MaximoOXClientes(HallazgosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_maximo_oc_clientes", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet CargarClientes(HallazgosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            listparameters.Add(new SqlParameter() { ParameterName = "@pvalor", SqlDbType = SqlDbType.Int, Value = Entidad.Phallazgo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_usuario });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_bclientes_ventas", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet RevisarHallazgoSIncumplido(HallazgosENT Entidad)
         {
             DataSet ds = new DataSet();

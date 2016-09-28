@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El procedimiento sp_maximo_oc_clientes no tiene parámetros y se han proporcionado argumentos.
+   at negocio.Componentes.HallazgosCOM.AddOCClientes(HallazgosENT Entidad) in D:\Trabajos Humberto\Proyectos Diarios\2016\09SEPTIEMBRE\26_09_16\Puestos\negocio\Componentes\HallazgosCOM.cs:line 31
+   at presentacion.oc_clientes.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:beddc363-de6e-4885-ba37-284ba576df01
+Error Number:8146,State:1,Class:16
