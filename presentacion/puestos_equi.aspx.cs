@@ -41,6 +41,19 @@ namespace presentacion
 
         }
 
+        public void Cargar_Grid_Modal(int id)
+        {
+            entidad = new Puesto_EquiENT();
+            componente = new Puesto_EquiCOM();
+            entidad.Pidc_puesto_equi = id;
+            ds = componente.CargarPuestos(entidad);
+            GridPuestoRelacionado.DataSource = ds.Tables[0];
+            GridPuestoRelacionado.DataBind();
+
+            if (ds.Tables[0].Rows.Count == 0) { VacioGrid_modal.Visible = true; }
+
+        }
+
         protected void lnkReturn_Click(object sender, EventArgs e)
         {
             if (Session["Previus"] != null)
@@ -62,18 +75,26 @@ namespace presentacion
                 case "Editar":
                     Session["Caso_Confirmacion"] = "Editar";
                     txtDescripcion.Text = gridEquivalente.DataKeys[index].Values["pdescripcion"].ToString();
-                    btnCancelar.Text = "Nuevo";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Editar la Asignacion " + gridEquivalente.DataKeys[index].Values["pdescripcion"].ToString() + "?','modal fade modal-info');", true);
+                    
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalEditar('Mensaje del Sistema','¿Desea Editar la Asignacion " + gridEquivalente.DataKeys[index].Values["pdescripcion"].ToString() + "?','modal fade modal-info');", true);
+                    //Session["Caso_Confirmacion"] = "Guardar";
+                    
                     break;
 
                 case "Eliminar":
                     Session["Caso_Confirmacion"] = "Eliminar";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Esta seguro de Eliminar la Descripcion: " + gridEquivalente.DataKeys[index].Values["pdescripcion"].ToString() + "?','modal fade modal-info');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Esta seguro de Eliminar la Descripcion: " + gridEquivalente.DataKeys[index].Values["pdescripcion"].ToString() + "?  Al borrar este registro tambien se borraran las relaciones que existan con los puestos ','modal fade modal-info');", true);
+                    break;
+                case "puestos_relacionados":
+                    Cargar_Grid_Modal(Convert.ToInt32( Session["pidc_puestoequi_edit"]));
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalGrid('Mensaje del Sistema','----','modal fade modal-info');", true);
+
                     break;
             }
         }
 
-        protected void Yes_Click(object sender, EventArgs e)
+        protected void Guardar_Click(object sender, EventArgs e)
         {
             string caso = (string)Session["Caso_Confirmacion"];
             //string idc_puesto_gpo = Session["pidc_puestoequi_edit"].ToString();
@@ -87,24 +108,22 @@ namespace presentacion
                 entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
                 entidad.Pusuariopc = funciones.GetUserName();//usuario pc
                 entidad.Pidc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
-
+                entidad.Pactivo = true;
                 ds = new DataSet();
                 string vmensaje = "";
                 switch (caso)
                 {
                     case "Guardar":
                         entidad.Pdescripcion = txtDescripcion.Text;
-                        entidad.Pmov = "A";
                         
+
                         ds = componente.AltaPuestos_Equi(entidad);
                         break;
 
                     case "Editar":
 
                         entidad.Pdescripcion = txtDescripcion.Text;
-                        entidad.Pidc_puesto_equi = Convert.ToInt32(Session["pidc_puestoequi_edit"]);
-                        entidad.Pmov = "M";
-                        entidad.Pactivo = true;
+                        entidad.Pidc_puesto_equi = Convert.ToInt32(Session["pidc_puestoequi_edit"]);                        
                         ds = componente.ModificarDatos(entidad);
 
                         Session["pidc_puestoequi_edit"] = null;
@@ -115,7 +134,7 @@ namespace presentacion
                     case "Eliminar":
 
                         entidad.Pdescripcion = txtDescripcion.Text;
-                        entidad.Pmov = "M";
+                        
                         entidad.Pactivo = false;
                         entidad.Pidc_puesto_equi = Convert.ToInt32(Session["pidc_puestoequi_edit"]);
                         ds = componente.ModificarDatos(entidad);
@@ -144,33 +163,15 @@ namespace presentacion
             }
         }
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            
-            if (txtDescripcion.Text == "")
-            {
-                Alert.ShowAlertError("El campo esta vacio", this);
-            }
-
-            else if (Session["pidc_puestoequi_edit"] == null)
-            {
+            txtDescripcion.Text = "";
                 Session["Caso_Confirmacion"] = "Guardar";
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Guardar esta Descripcion?','modal fade modal-info');", true);
-            }
-            else
-            {
-                Session["Caso_Confirmacion"] = "Editar";
-                //gridEquivalente.DataKeys[index].Values["pdescripcion"].ToString()
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Editar la Asignacion: " +  (Session["pdescripcion_edit"]) + " ?','modal fade modal-info');", true);
-
-            }
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalEditar('Mensaje del Sistema','Nueva Descripcion','modal fade modal-info');", true);
+           
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("puestos_equi.aspx");
-        }
+       
 
 
     }

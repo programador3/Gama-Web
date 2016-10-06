@@ -78,7 +78,7 @@ namespace presentacion
                extension != ".jpg" && extension != ".dib" &&
                extension != ".jpeg")
             {
-                Alert.ShowAlertError("Formato de archivo invalido.", this);
+                Alert.ShowAlertError("Formato de archivo invalido. Solo se permiten los formato de IMAGEN: .bmp, .gif, .jpg, .dib", this);
             }
             else {
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/tareas/"));//path local
@@ -90,7 +90,7 @@ namespace presentacion
                 if (pape == true)
                 {
                     string server = System.Configuration.ConfigurationManager.AppSettings["server"];
-                    img.ImageUrl = server +"temp/tareas/" + randomNumber.ToString() + fuparchivo.FileName;
+                    img.ImageUrl = server +"/temp/tareas/" + randomNumber.ToString() + fuparchivo.FileName;
                     Alert.ShowGift("Estamos subiendo el archivo.", "Espere un Momento", "imagenes/loading.gif", "2000", "Comentario Guardardo Correctamente", this);
                     
                 }

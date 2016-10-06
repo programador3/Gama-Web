@@ -75,7 +75,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h4><i class="fa fa-list-alt"></i>&nbsp;Descripcion de la tarea<span>
-                        <asp:LinkButton Visible="false" ID="lnkurladicinal" CssClass="btn btn-success" OnClick="lnkurladicinal_Click" runat="server">Ver Información Adicional <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
+                        <asp:LinkButton Visible="false" ID="lnkurladicinal" CssClass="btn btn-success" OnClick="lnkurladicinal_Click" runat="server">
+                            Ver Información Adicional <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
                     </span></h4>
                     <asp:TextBox ID="txtdescripcion" ReadOnly="true" placeholder="Descripcion" CssClass="form-control" TextMode="MultiLine" Rows="3" onblur="return imposeMaxLength(this, 1000);" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
                 </div>
@@ -91,11 +92,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                     <h4><i class="fa fa-pencil-square-o"></i>&nbsp;Puesto que Asigno la Tarea</h4>
                     <asp:TextBox ID="txtpuesto_asigna" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                     <h4><i class="fa fa-wrench"></i>&nbsp;Puesto Que realizara la Tarea
                          <span>
                             <asp:LinkButton Visible="false" ID="lnkreasigna" CssClass="btn btn-danger" runat="server" OnClick="lnkreasigna_Click">

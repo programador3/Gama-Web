@@ -1,0 +1,10 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at presentacion.captura_actividades_agentes2_m.cargar_grid(Int32 idc_agente, Boolean aldia, Int32 dia_int)
+   at presentacion.captura_actividades_agentes2_m.cargar_agentes_vs_usurios()

@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El procedimiento o la función 'sp_aagentes_act_cotizacion_nueva_web' esperaba el parámetro '@vfolioa', que no se ha especificado.
+   at negocio.Componentes.AgentesCOM.sp_aagentes_act_cotizacion_nueva_web(AgentesENT entidad)
+   at presentacion.cotizacion_clientes2_m.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:a3e8a5ea-2823-4a16-98b1-3ffeb8cc5ec3
+Error Number:201,State:4,Class:16

@@ -1,0 +1,8 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Thursday is neither a DataColumn nor a DataRelation for table Table.
+   at System.Data.DataRowView.get_Item(String property)
+   at presentacion.captura_actividades_agentes2_m.cargar_grid(Int32 idc_agente, Boolean aldia, Int32 dia_int)
+   at presentacion.captura_actividades_agentes2_m.cargar_agentes_vs_usurios()

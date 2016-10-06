@@ -42,6 +42,7 @@
     <div class="row">
         <div class="col-lg-12">
             <asp:FileUpload ID="fuparchivo" CssClass="form-control" runat="server" />
+            <label style="color:red;"><strong>Solo se permiten los formato de IMAGEN: .bmp, .gif, .jpg, .dib</strong></label>
             <asp:LinkButton ID="lnksubir"  CssClass="btn btn-info btn-block" runat="server" OnClick="lnksubir_Click">Subir Archivo</asp:LinkButton>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">

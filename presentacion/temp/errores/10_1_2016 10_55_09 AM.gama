@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El procedimiento o la función 'sp_buscar_articulos_sencillo_unimed' esperaba el parámetro '@pvalor', que no se ha especificado.
+   at negocio.Componentes.AgentesCOM.sp_buscar_articulos_sencillo_UNIMED(String pfiltro) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\01_10_16\Puestos\negocio\Componentes\AgentesCOM.cs:line 42
+   at presentacion.articulos_master_cliente2.cargar_nuevos_articulos(Int32 idc_cliente, String filtro) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\01_10_16\Puestos\presentacion\articulos_master_cliente2.aspx.cs:line 360
+ClientConnectionId:7c55b4a6-d826-4bd0-94d3-63799ec249f7
+Error Number:201,State:4,Class:16

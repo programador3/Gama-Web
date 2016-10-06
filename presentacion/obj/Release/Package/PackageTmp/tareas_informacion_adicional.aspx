@@ -26,7 +26,9 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-    <h1 class="page-header" style="text-align: center;">Información Adicional</h1>
+    <h1 class="page-header" style="text-align: center;">Información Adicional <span>
+          <asp:Button ID="close" runat="server" Text="Cerrar Reporte" OnClick="close_Click" CssClass="btn btn-danger" ToolTip="Limpiar" />
+                                                                              </span></h1>
     <asp:Repeater ID="repeat" runat="server" OnItemDataBound="repeat_ItemDataBound">
         <ItemTemplate>
             <asp:UpdatePanel ID="aa" runat="server" UpdateMode="Always">
@@ -49,7 +51,7 @@
                                     <asp:Label ID="lblgridname" runat="server" Text=""></asp:Label></strong><span>
                                         <asp:LinkButton ID="lnkexport" runat="server" CssClass="btn btn-success" OnClick="lnkexport_Click">Exportar a Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></asp:LinkButton></span></h4>
                                 <div class="table table-responsive">
-                                    <asp:GridView ID="grid" CssClass="gvv table table-responsive" runat="server" Visible="false">
+                                    <asp:GridView ID="grid" CssClass="gvv table table-responsive table-bordered table-condensed" runat="server" Visible="false">
                                     </asp:GridView>
                                     <asp:PlaceHolder ID="PlaceHolder" runat="server" />
                                 </div>
@@ -60,4 +62,5 @@
             </asp:UpdatePanel>
         </ItemTemplate>
     </asp:Repeater>
+
 </asp:Content>

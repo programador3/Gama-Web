@@ -22,6 +22,10 @@ namespace presentacion
             if (!IsPostBack)
             { CargarTareas(); }
         }
+        protected void close_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "noti53SSSSsssS3W3", "window.close();", true);
+        }
 
         private void CargarTareas()
         {

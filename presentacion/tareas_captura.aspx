@@ -130,7 +130,8 @@
             <div class="row" style="padding: 5px; border-radius: 0px 0px 0px 0px; -moz-border-radius: 0px 0px 0px 0px; -webkit-border-radius: 0px 0px 0px 0px; border: 1px solid #000000;">
                 <div class="col-lg-12">
                     <h4><i class="fa fa-file-archive-o"></i>&nbsp;Agregar Comentarios <small>Puede anexar la cantidad de archivos que usted requiera</small></h4>
-                    <asp:TextBox ID="txtNombreArchivo" onfocus="$(this).select();" runat="server" CssClass="form-control" placeholder="Descripcion del documento" onkeypress="return isNumber(event);"></asp:TextBox>
+                    <asp:TextBox ID="txtNombreArchivo" onfocus="$(this).select();" runat="server" CssClass="form-control" placeholder="Descripcion del documento" 
+                        onkeypress="return isNumber(event);"></asp:TextBox>
                 </div>
                 <div class="col-lg-12">
                     <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />

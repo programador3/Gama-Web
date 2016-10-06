@@ -168,10 +168,11 @@
         //valida un correo
         function validarEmail(Object) {
             var valor = Object.value;
-            if (!(/\S+@\S+\.\S+/.test(valor))) {
-                alert("La dirección de email " + valor + " es incorrecta.");
-                Object.focus();
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(valor)) {
+                return (true)
             }
+            alert("La dirección de email " + valor + " es incorrecta.")
+            return (false)
         }
         function imposeMaxLength(Object, MaxLen) {
             if (Object.value.length > MaxLen) {
@@ -246,7 +247,7 @@
             window.onhashchange = function () { window.location.hash = "no-back-button"; }
             setTimeout(function () {
                 swal("Advertencia!!!","Por seguridad, si usted deja de utilizar el sistema por un lapso de mas de 2 horas, tendra que iniciar sesion de nuevo y sus cambios podrian perderse.","info");
-            }, 600000);
+            }, 3600000);
         }
     
             function LlenarNotificaciones() {

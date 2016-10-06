@@ -314,7 +314,9 @@
   .flat-blue .btn.btn-danger {
     background-color: #FA2A00;
     color: #FFF;
-    border-color: #FA2A00; }
+    border-color: #FA2A00;
+    height: 34px;
+}
   .flat-blue .btn.btn-link {
     color: #353d47; }
   .flat-blue .progress .progress-bar {

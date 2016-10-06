@@ -11,31 +11,11 @@
     <script type="text/javascript">
 
         function ver(lat, lon) {
-            $("#mapcanvas").height($(window).height() - 220);
-            //if (navigator.geolocation) {
-            //    var success = function (position) {
-            //        var latlng = new google.maps.LatLng(lat, lon)
-            //        var myOptions = {
-            //            zoom: 15,
-            //            center: latlng,
-            //            mapTypeControl: false,
-            //            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
-            //            mapTypeId: google.maps.MapTypeId.ROADMAP
-            //        }
-            //        var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions)
-            //        var marker = new google.maps.Marker({
-            //            position: latlng,
-            //            map: map,
-            //            title: "Estás aquí! (en un radio de " + position.coords.accuracy + " metros)"
-            //        })
-            //    }
-            //    navigator.geolocation.getCurrentPosition(success, function (msg) {
-            //        console.error(msg);
-            //    });
-            //}
+            $("#mapcanvas").height($(window).height() - 250);
+            
             L.mapbox.accessToken = 'pk.eyJ1IjoicHJvZ3JhbWFkb3IzIiwiYSI6ImNpc2hwN3JoNjAwNXczM3BpZ3ZocmUwamMifQ.Qpennd5geuMVwKlgUBb69w';
             var map = L.mapbox.map('mapcanvas', 'mapbox.streets')
-                .setView([lat, lon], 16);
+                .setView([lat, lon], 15);
             var marker = L.marker([lat, lon], {
                 icon: L.mapbox.marker.icon({
                     'marker-color': '#f86767'
@@ -53,11 +33,13 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h2>Ubicación Del Prospecto </h2>
+            <h2>Ubicación<span>
+          <asp:Button ID="close" runat="server" Text="Cerrar Mapa" CssClass="btn btn-danger" ToolTip="Limpiar" OnClick="close_Click" />
+                                                                              </span></h2>
             <h5>La Ubicación esta en un radio de 30 metros.</h5>
+            <strong><asp:Label ID="lbldetalles" runat="server" Text="" Visible="false"></asp:Label></strong>
         </div>
         <div class="col-lg-12 col-xs-12">
-
             <div id="mapcanvas" style="width: 100%;"></div>
         </div>
     </div>

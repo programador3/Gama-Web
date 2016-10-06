@@ -42,8 +42,10 @@
     <Compile Include="Componentes\AdministradorPrebajasCOM.cs" />
     <Compile Include="Componentes\Administrador_EntregasCOM.cs" />
     <Compile Include="Componentes\Administrador_PreparacionCOM.cs" />
+    <Compile Include="Componentes\AgentesCOM.cs" />
     <Compile Include="Componentes\AprobacionesCOM.cs" />
     <Compile Include="Componentes\Aprobaciones_solicitudBL.cs" />
+    <Compile Include="Componentes\Area_TrabajoCOM.cs" />
     <Compile Include="Componentes\Asignacion_RevisionesCOM.cs" />
     <Compile Include="Componentes\AvisosCOM.cs" />
     <Compile Include="Componentes\BajasCOM.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Componentes\Celulares_RevisionesCOM.cs" />
     <Compile Include="Componentes\ClientesBL.cs" />
     <Compile Include="Componentes\CombustibleCOM.cs" />
+    <Compile Include="Componentes\Compromisos_ClienteCOM.cs" />
     <Compile Include="Componentes\CuestionariosCOM.cs" />
     <Compile Include="Componentes\CursosCOM.cs" />
     <Compile Include="Componentes\Cursos_HistorialCOM.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="Componentes\Herramientas_PreparacionCOM.cs" />
     <Compile Include="Componentes\Herramientas_RevisionCOM.cs" />
     <Compile Include="Componentes\HtmlCOM.cs" />
+    <Compile Include="Componentes\Inconvenientes_ClienteCOM.cs" />
     <Compile Include="Componentes\InventariosCOM.cs" />
     <Compile Include="Componentes\LugaresCOM.cs" />
     <Compile Include="Componentes\NotificacionesCOM.cs" />
@@ -113,9 +117,11 @@
     <Compile Include="Entidades\AdministradorPrebajasENT.cs" />
     <Compile Include="Entidades\Administrador_EntregasENT.cs" />
     <Compile Include="Entidades\Administrador_PreparacionesENT.cs" />
+    <Compile Include="Entidades\AgentesENT.cs" />
     <Compile Include="Entidades\AprobacionesENT.cs" />
     <Compile Include="Entidades\Aprobaciones_solicitudE.cs" />
     <Compile Include="Entidades\ArbolTareas.cs" />
+    <Compile Include="Entidades\Area_TrabajoENT.cs" />
     <Compile Include="Entidades\Asignacion_RevisionesENT.cs" />
     <Compile Include="Entidades\AvisosENT.cs" />
     <Compile Include="Entidades\BajasENT.cs" />
@@ -128,10 +134,12 @@
     <Compile Include="Entidades\Celulares_RevisionesENT.cs" />
     <Compile Include="Entidades\clientesE.cs" />
     <Compile Include="Entidades\CombustibleENT.cs" />
+    <Compile Include="Entidades\Compromisos_ClienteENT.cs" />
     <Compile Include="Entidades\CuestionariosENT.cs" />
     <Compile Include="Entidades\CursosE.cs" />
     <Compile Include="Entidades\Cursos_HistorialENT.cs" />
     <Compile Include="Entidades\Cursos_PreparacionENT.cs" />
+    <Compile Include="Entidades\Datos_Usuario_logENT.cs" />
     <Compile Include="Entidades\Empleados.cs" />
     <Compile Include="Entidades\Etiquetas_EN.cs" />
     <Compile Include="Entidades\ExamenesENT.cs" />
@@ -144,6 +152,7 @@
     <Compile Include="Entidades\Herramientas_PreparacionENT.cs" />
     <Compile Include="Entidades\Herramientas_RevisionENT.cs" />
     <Compile Include="Entidades\HtmlENT.cs" />
+    <Compile Include="Entidades\Inconvenientes_ClienteENT.cs" />
     <Compile Include="Entidades\InventariosENT.cs" />
     <Compile Include="Entidades\LugaresENT.cs" />
     <Compile Include="Entidades\Notificacion.cs" />

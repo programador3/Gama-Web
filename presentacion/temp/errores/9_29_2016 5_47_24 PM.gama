@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): @pidc_proceso no es un parámetro del procedimiento sp_reporte_articulos_sinventa.
+   at negocio.Componentes.TareasCOM.InformacionAdicional(TareasENT Etiqueta) in D:\Trabajos Humberto\Proyectos Diarios\2016\09SEPTIEMBRE\29_09_16\Puestos\negocio\Componentes\TareasCOM.cs:line 486
+   at presentacion.tareas_informacion_adicional.CargarTareas() in D:\Trabajos Humberto\Proyectos Diarios\2016\09SEPTIEMBRE\29_09_16\Puestos\presentacion\tareas_informacion_adicional.aspx.cs:line 47
+ClientConnectionId:6616f935-9994-46b9-9aff-97ac874d0c79
+Error Number:8145,State:1,Class:16

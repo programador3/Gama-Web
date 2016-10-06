@@ -14,11 +14,12 @@ namespace negocio.Componentes
         List<SqlParameter> listparameters = new List<SqlParameter>();
 
 
-        public DataSet CargarPuestos(Puesto_EquiENT Etiqueta)
+        public DataSet CargarPuestos(Puesto_EquiENT Entidad)
         {
             ds = new DataSet();
             listparameters = new List<SqlParameter>();
             data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTOEQUI", Value = Entidad.Pidc_puesto_equi });
             try
             {
                 ds = data.enviar("sp_Puestos_Equi", listparameters, false);
@@ -39,7 +40,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTOEQUI",  Value = Entidad.Pidc_puesto_equi });
             listparameters.Add(new SqlParameter() { ParameterName = "@PDESCRIPCION",  Value = Entidad.Pdescripcion });
             listparameters.Add(new SqlParameter() { ParameterName = "@PACTIVO",  Value = Entidad.Pactivo });
-            listparameters.Add(new SqlParameter() { ParameterName = "@PMOV",  Value = Entidad.Pmov });
+            //listparameters.Add(new SqlParameter() { ParameterName = "@PMOV",  Value = Entidad.Pmov });
 
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", Value = Entidad.Pidc_usuario });
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", Value = Entidad.Pdirecip });
@@ -66,7 +67,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTOEQUI", Value = Entidad.Pidc_puesto_equi });
             listparameters.Add(new SqlParameter() { ParameterName = "@pdescripcion",  Value = Entidad.Pdescripcion });
             listparameters.Add(new SqlParameter() { ParameterName = "@pactivo", Value = Entidad.Pactivo });
-            listparameters.Add(new SqlParameter() { ParameterName = "@pmov", Value = Entidad.Pmov });
+            //listparameters.Add(new SqlParameter() { ParameterName = "@pmov", Value = Entidad.Pmov });
             
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", Value = Entidad.Pidc_usuario });
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", Value = Entidad.Pdirecip });

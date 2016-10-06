@@ -2846,7 +2846,7 @@ public class DBConnection
             SqlCommand command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = System.Data.CommandType.Text;
-            command.CommandTimeout = 10;
+            command.CommandTimeout = 120000;
             command.CommandText = consulta;
             SqlDataReader da;
             da = command.ExecuteReader();

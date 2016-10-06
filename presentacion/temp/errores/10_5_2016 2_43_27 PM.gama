@@ -1,0 +1,16 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: The string was not recognized as a valid DateTime. There is an unknown word starting at index 4.Couldn't store <05, octubre 2016 14:43:25> in ULTIMA_VENTA Column.  Expected type is DateTime. ---> System.FormatException: The string was not recognized as a valid DateTime. There is an unknown word starting at index 4.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.Convert.ToDateTime(String value, IFormatProvider provider)
+   at System.String.System.IConvertible.ToDateTime(IFormatProvider provider)
+   at System.Data.Common.DateTimeStorage.Set(Int32 record, Object value)
+   at System.Data.DataColumn.set_Item(Int32 record, Object value)
+   --- End of inner exception stack trace ---
+   at System.Data.DataColumn.set_Item(Int32 record, Object value)
+   at System.Data.DataRow.set_Item(DataColumn column, Object value)
+   at System.Data.DataRowView.SetColumnValue(DataColumn column, Object value)
+   at System.Data.DataRowView.set_Item(String property, Object value)
+   at presentacion.precios_cotizados.cargar_datos_cliente(Int32 idc_cliente) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\05_10_16\Puestos\presentacion\precios_cotizados.aspx.cs:line 77

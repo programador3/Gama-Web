@@ -18,7 +18,18 @@ namespace presentacion
     public class funciones
     {
         public static DBConnection conexion = new DBConnection();
-
+        public static string Redondeo_Dos_Decimales(decimal valor)
+        {
+            try
+            {
+                valor = Math.Round(valor, 2);
+                return valor.ToString("#.##");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static string ContenidoArchivo(string ruta)
         {
             string value = "";

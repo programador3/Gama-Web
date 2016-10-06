@@ -91,6 +91,7 @@
     <Content Include="administrador_entregas.aspx" />
     <Content Include="administrador_prebajas.aspx" />
     <Content Include="administrador_preparaciones.aspx" />
+    <Content Include="agendar_llamada.aspx" />
     <Content Include="aprobaciones.aspx" />
     <Content Include="aprobaciones_captura.aspx" />
     <Content Include="aprobaciones_firma.aspx" />
@@ -98,6 +99,8 @@
     <Content Include="arbol_tareas.aspx" />
     <Content Include="areas.aspx" />
     <Content Include="areas_captura.aspx" />
+    <Content Include="Area_Trabajo.aspx" />
+    <Content Include="articulos_master_cliente2.aspx" />
     <Content Include="asignacion_lugares.aspx" />
     <Content Include="asignacion_lugares_puestos.aspx" />
     <Content Include="asignacion_revisiones_captura.aspx" />
@@ -106,6 +109,7 @@
     <Content Include="cambiar_fechas_compromiso.aspx" />
     <Content Include="candidatos_preparar.aspx" />
     <Content Include="candidatos_preparar_captura.aspx" />
+    <Content Include="captura_actividades_agentes2.aspx" />
     <Content Include="Carga_de_Combustibles_m.aspx" />
     <Content Include="catalogo_areas.aspx" />
     <Content Include="catalogo_asignacion_revisiones.aspx" />
@@ -120,7 +124,9 @@
     <Content Include="celulares_entrega.aspx" />
     <Content Include="celulares_preparacion.aspx" />
     <Content Include="celulares_revision.aspx" />
+    <Content Include="chat.aspx" />
     <Content Include="comisiones_especiales.aspx" />
+    <Content Include="Compromisos_Cliente.aspx" />
     <Content Include="confirmacion_entrega.aspx" />
     <Content Include="confirmar_celulares.aspx" />
     <Content Include="confirmar_herramientas.aspx" />
@@ -129,6 +135,7 @@
     <Content Include="consulta_hallazgos_pendientes_m.aspx" />
     <Content Include="consulta_quejas_m.aspx" />
     <Content Include="correo.aspx" />
+    <Content Include="cotizacion_clientes2_m.aspx" />
     <Content Include="css\bootstrap-switch.css" />
     <Content Include="css\bootstrap-switch.min.css" />
     <Content Include="css\highlight.css" />
@@ -162,6 +169,7 @@
     <Content Include="css\jquery.dataTables.css" />
     <Content Include="css\jquery.dataTables.min.css" />
     <Content Include="easteregg.aspx" />
+    <Content Include="editar_contacto.aspx" />
     <Content Include="empleados_reportes.aspx" />
     <Content Include="empleados_reportes_pendientes.aspx" />
     <Content Include="fancybox\blank.gif" />
@@ -189,6 +197,7 @@
     <Content Include="fancybox\jquery.fancybox-1.3.4.js" />
     <Content Include="fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="ficha_cliente_m.aspx" />
     <Content Include="Folios_Autorizacion.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.dev.svg" />
@@ -204,6 +213,7 @@
     <Content Include="hallazgos_pendientes_terminar_m.aspx" />
     <Content Include="hallazgos_vobo_m.aspx" />
     <Content Include="html_dinamico.aspx" />
+    <Content Include="imagenes\128.png" />
     <Content Include="imagenes\areas\captura\ok.png" />
     <Content Include="imagenes\areas\ok.png" />
     <Content Include="imagenes\background.png" />
@@ -211,17 +221,23 @@
     <Content Include="imagenes\btn\documentation.png" />
     <Content Include="imagenes\btn\image-x-generic.png" />
     <Content Include="imagenes\btn\system-switch-user-3.png" />
+    <Content Include="imagenes\calendar3.gif" />
+    <Content Include="imagenes\Facebook_Logo-19.gif" />
     <Content Include="imagenes\info.png" />
+    <Content Include="imagenes\insert-link.png" />
     <Content Include="imagenes\lugares\captura\ok.png" />
     <Content Include="imagenes\lugares\ok.png" />
     <Content Include="imagenes\mapa.png" />
+    <Content Include="imagenes\maps.jpg" />
     <Content Include="imagenes\phone.png" />
     <Content Include="imagenes\rojo.jpg" />
     <Content Include="imagenes\rotar.png" />
+    <Content Include="imagenes\twitter_logo.jpg" />
     <Content Include="imagenes\verde.jpg" />
     <Content Include="img\arrastra.png" />
     <Content Include="img\page-loader.gif" />
     <Content Include="img\profile\user.png" />
+    <Content Include="Inconvenientes_Cliente.aspx" />
     <Content Include="informe.aspx" />
     <Content Include="js\bootstrap-wysiwyg.js" />
     <Content Include="js\jquery.dataTables.js" />
@@ -491,6 +507,7 @@
     <Content Include="perfiles_pendiente.aspx" />
     <Content Include="pmd.aspx" />
     <Content Include="pmd_rh.aspx" />
+    <Content Include="precios_cotizados.aspx" />
     <Content Include="preparaciones.aspx" />
     <Content Include="pre_bajas.aspx" />
     <Content Include="pre_bajas_bajas.aspx" />
@@ -600,13 +617,14 @@
     <Content Include="tareas_automaticas.aspx" />
     <Content Include="tareas_automaticas_captura.aspx" />
     <Content Include="tareas_captura.aspx" />
+    <Content Include="tareas_clientes_cap.aspx" />
+    <Content Include="tareas_clientes_rev.aspx" />
     <Content Include="tareas_detalles.aspx" />
     <Content Include="tareas_informacion_adicional.aspx" />
     <Content Include="tareas_listado.aspx" />
     <Content Include="tareas_rapidas.aspx" />
-    <Content Include="temp\tareas\js.js" />
     <Content Include="vacaciones.aspx" />
-    <Content Include="conteo.aspx" />
+    <Content Include="conteo_m.aspx" />
     <Content Include="vehiculos_entrega.aspx" />
     <Content Include="vehiculos_preparacion.aspx" />
     <Content Include="vehiculos_revision.aspx" />
@@ -641,6 +659,13 @@
     </Compile>
     <Compile Include="administrador_preparaciones.aspx.designer.cs">
       <DependentUpon>administrador_preparaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agendar_llamada.aspx.cs">
+      <DependentUpon>agendar_llamada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agendar_llamada.aspx.designer.cs">
+      <DependentUpon>agendar_llamada.aspx</DependentUpon>
     </Compile>
     <Compile Include="Alert.cs" />
     <Compile Include="aprobaciones.aspx.cs">
@@ -691,6 +716,20 @@
     </Compile>
     <Compile Include="areas_captura.aspx.designer.cs">
       <DependentUpon>areas_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Area_Trabajo.aspx.cs">
+      <DependentUpon>Area_Trabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Area_Trabajo.aspx.designer.cs">
+      <DependentUpon>Area_Trabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="articulos_master_cliente2.aspx.cs">
+      <DependentUpon>articulos_master_cliente2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="articulos_master_cliente2.aspx.designer.cs">
+      <DependentUpon>articulos_master_cliente2.aspx</DependentUpon>
     </Compile>
     <Compile Include="asignacion_lugares.aspx.cs">
       <DependentUpon>asignacion_lugares.aspx</DependentUpon>
@@ -747,6 +786,13 @@
     </Compile>
     <Compile Include="candidatos_preparar_captura.aspx.designer.cs">
       <DependentUpon>candidatos_preparar_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="captura_actividades_agentes2.aspx.cs">
+      <DependentUpon>captura_actividades_agentes2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="captura_actividades_agentes2.aspx.designer.cs">
+      <DependentUpon>captura_actividades_agentes2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Carga_de_Combustibles_m.aspx.cs">
       <DependentUpon>Carga_de_Combustibles_m.aspx</DependentUpon>
@@ -846,12 +892,26 @@
     <Compile Include="celulares_revision.aspx.designer.cs">
       <DependentUpon>celulares_revision.aspx</DependentUpon>
     </Compile>
+    <Compile Include="chat.aspx.cs">
+      <DependentUpon>chat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chat.aspx.designer.cs">
+      <DependentUpon>chat.aspx</DependentUpon>
+    </Compile>
     <Compile Include="comisiones_especiales.aspx.cs">
       <DependentUpon>comisiones_especiales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="comisiones_especiales.aspx.designer.cs">
       <DependentUpon>comisiones_especiales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compromisos_Cliente.aspx.cs">
+      <DependentUpon>Compromisos_Cliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compromisos_Cliente.aspx.designer.cs">
+      <DependentUpon>Compromisos_Cliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="confirmacion_entrega.aspx.cs">
       <DependentUpon>confirmacion_entrega.aspx</DependentUpon>
@@ -908,6 +968,13 @@
     </Compile>
     <Compile Include="correo.aspx.designer.cs">
       <DependentUpon>correo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cotizacion_clientes2_m.aspx.cs">
+      <DependentUpon>cotizacion_clientes2_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cotizacion_clientes2_m.aspx.designer.cs">
+      <DependentUpon>cotizacion_clientes2_m.aspx</DependentUpon>
     </Compile>
     <Compile Include="cursos.aspx.cs">
       <DependentUpon>cursos.aspx</DependentUpon>
@@ -1001,6 +1068,13 @@
     <Compile Include="easteregg.aspx.designer.cs">
       <DependentUpon>easteregg.aspx</DependentUpon>
     </Compile>
+    <Compile Include="editar_contacto.aspx.cs">
+      <DependentUpon>editar_contacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editar_contacto.aspx.designer.cs">
+      <DependentUpon>editar_contacto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ejemplo_menu.aspx.cs">
       <DependentUpon>ejemplo_menu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1065,6 +1139,13 @@
       <DependentUpon>examenes_captura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Export.cs" />
+    <Compile Include="ficha_cliente_m.aspx.cs">
+      <DependentUpon>ficha_cliente_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ficha_cliente_m.aspx.designer.cs">
+      <DependentUpon>ficha_cliente_m.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Folios_Autorizacion.aspx.cs">
       <DependentUpon>Folios_Autorizacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1191,6 +1272,13 @@
     </Compile>
     <Compile Include="html.aspx.designer.cs">
       <DependentUpon>html.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inconvenientes_Cliente.aspx.cs">
+      <DependentUpon>Inconvenientes_Cliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inconvenientes_Cliente.aspx.designer.cs">
+      <DependentUpon>Inconvenientes_Cliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="informe.aspx.cs">
       <DependentUpon>informe.aspx</DependentUpon>
@@ -1333,6 +1421,13 @@
     </Compile>
     <Compile Include="pmd_rh.aspx.designer.cs">
       <DependentUpon>pmd_rh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="precios_cotizados.aspx.cs">
+      <DependentUpon>precios_cotizados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="precios_cotizados.aspx.designer.cs">
+      <DependentUpon>precios_cotizados.aspx</DependentUpon>
     </Compile>
     <Compile Include="preparaciones.aspx.cs">
       <DependentUpon>preparaciones.aspx</DependentUpon>
@@ -1702,6 +1797,20 @@
     <Compile Include="tareas_captura.aspx.designer.cs">
       <DependentUpon>tareas_captura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tareas_clientes_cap.aspx.cs">
+      <DependentUpon>tareas_clientes_cap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tareas_clientes_cap.aspx.designer.cs">
+      <DependentUpon>tareas_clientes_cap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tareas_clientes_rev.aspx.cs">
+      <DependentUpon>tareas_clientes_rev.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tareas_clientes_rev.aspx.designer.cs">
+      <DependentUpon>tareas_clientes_rev.aspx</DependentUpon>
+    </Compile>
     <Compile Include="tareas_detalles.aspx.cs">
       <DependentUpon>tareas_detalles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1737,12 +1846,12 @@
     <Compile Include="vacaciones.aspx.designer.cs">
       <DependentUpon>vacaciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="conteo.aspx.cs">
-      <DependentUpon>conteo.aspx</DependentUpon>
+    <Compile Include="conteo_m.aspx.cs">
+      <DependentUpon>conteo_m.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="conteo.aspx.designer.cs">
-      <DependentUpon>conteo.aspx</DependentUpon>
+    <Compile Include="conteo_m.aspx.designer.cs">
+      <DependentUpon>conteo_m.aspx</DependentUpon>
     </Compile>
     <Compile Include="validar_expresiones_regulares.cs" />
     <Compile Include="variables.Designer.cs" />
@@ -1957,6 +2066,7 @@
     <Folder Include="temp\perfiles_temp\" />
     <Folder Include="temp\prep_cursos\" />
     <Folder Include="temp\pre_alta\" />
+    <Folder Include="temp\tareas\" />
     <Folder Include="temp\users\" />
     <Folder Include="temp\vehiculos_formato\" />
   </ItemGroup>

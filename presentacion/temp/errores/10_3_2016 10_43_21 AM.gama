@@ -1,0 +1,7 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.InvalidCastException: Unable to cast object of type 'System.Web.UI.WebControls.TextBox' to type 'System.IConvertible'.
+   at System.Convert.ToDateTime(Object value)
+   at presentacion.editar_contacto.Yes_Click(Object sender, EventArgs e)
