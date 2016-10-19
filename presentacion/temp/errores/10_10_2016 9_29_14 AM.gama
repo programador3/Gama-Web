@@ -1,0 +1,8 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'no_folios' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at presentacion.check_plus_pre_m.cargar_folio_gama() in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\10_10_16\Puestos\presentacion\check_plus_pre_m.aspx.cs:line 162

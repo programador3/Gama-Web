@@ -2,6 +2,8 @@
 {
     public class PuestosServiciosENT
     {
+        int totalcad;
+        string cadenaser;
         private int idc_puesto;
         private int totalcadena;
         private string cadena;
@@ -82,7 +84,17 @@
             get { return cadena; }
             set { cadena = value; }
         }
+        public int Ptotal_cadenaser
+        {
+            get { return totalcad; }
+            set { totalcad = value; }
+        }
 
+        public string Pcadenaser
+        {
+            get { return cadenaser; }
+            set { cadenaser = value; }
+        }
         public int Pstatus
         {
             get { return status; }

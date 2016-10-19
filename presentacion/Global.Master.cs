@@ -52,6 +52,7 @@ namespace presentacion
             Session["error_path"] = dirInfo.ToString();
             if (Session["sidc_usuario"] == null && Session["lista"] == null)//si no hay session logeamos
             {
+                CreateFileError("ERROR DE LOGIN",this.Page);
                 Response.Redirect("login.aspx");
             }
             else

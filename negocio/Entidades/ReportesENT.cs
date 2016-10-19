@@ -4,11 +4,15 @@ namespace negocio.Entidades
 {
     public class ReportesENT
     {
+        bool reasigna;
+        string cerrado;
         private int idc_tiporep;
         private int idc_empleado;
         private int idc_empleadorep;
+        private int idc_empleadoalta;
         private int idc_puesto;
         private DateTime fecha;
+        private DateTime fechafin;
         private string Observaciones;
         private string cadena;
         private int total_cadena;
@@ -40,7 +44,16 @@ namespace negocio.Entidades
             get { return pusuariopc; }
             set { pusuariopc = value; }
         }
-
+        public string PCERRADO
+        {
+            get { return cerrado; }
+            set { cerrado = value; }
+        }
+        public bool preasigna
+        {
+            get { return reasigna; }
+            set { reasigna = value; }
+        }
         public string Pcadena
         {
             get { return cadena; }
@@ -76,11 +89,26 @@ namespace negocio.Entidades
             get { return total_cadena; }
             set { total_cadena = value; }
         }
-
+        
+             public int Pidc_empleadoalta
+        {
+            get { return idc_empleadoalta; }
+            set { idc_empleadoalta = value; }
+        }
         public int Pidc_puesto
         {
             get { return idc_puesto; }
             set { idc_puesto = value; }
+        }
+        public DateTime Pfecha
+        {
+            get { return fecha; }
+            set { fecha = value; }
+        }
+        public DateTime Pfechafin
+        {
+            get { return fechafin; }
+            set { fechafin = value; }
         }
     }
 }

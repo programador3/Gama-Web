@@ -733,7 +733,7 @@ namespace presentacion
 
                 decimal porc = 0;
                 decimal margen = 0;
-                //margen = (1 - ((row("precio") / row("costo")))) * 100
+                //margen = (1 - ((row["precio") / row["costo")))) * 100
                 margen = Math.Round((1 - (Convert.ToDecimal(row["costo"]) / Convert.ToDecimal(row["precio"]))) * 100, 2);
 
                 porc = (((Convert.ToDecimal(2.5) / Convert.ToDecimal(22)) / 100) * margen) * 100;

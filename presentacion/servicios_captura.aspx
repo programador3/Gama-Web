@@ -43,10 +43,38 @@
             $('#confirmContenido').text(cContenido);
         }
         $(document).ready(function () {
-            $(".gvv").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
-                "lengthMenu": [[15, 25, -1], [15, 25, "Todos"]] //value:item pair
-            });
+            DataTa1();
+            DataTa2();
         });
+        function DataTa1() {
+            var dTable = $('#Contenido_grisservicios');
+            $('#Contenido_gridPuestos').dataTable({
+                'bSort': false,
+                'aoColumns': [
+                      { sWidth: "85%", bSearchable: false, bSortable: false },
+                      { sWidth: "15%", bSearchable: false, bSortable: false }
+                ],
+                "scrollCollapse": false,
+                "info": true,
+                "paging": true
+            });
+        }
+        function DataTa2() {
+            $('#Contenido_grisservicios').dataTable({
+                'bSort': false,
+                'aoColumns': [
+                      { sWidth: "10%", bSearchable: false, bSortable: false },
+                      { sWidth: "90%", bSearchable: false, bSortable: false }
+                ],
+                "scrollCollapse": false,
+                "info": true,
+                "paging": true
+            });
+        }
+        function Gifts(mensaje) {
+            swal({ title: 'Espere un Momento...', text: mensaje, allowEscapeKey: false, imageUrl: 'imagenes/loading.gif', timer: '2000', showConfirmButton: false });
+        }
+       
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -84,6 +112,33 @@
             </div>
             <asp:Panel ID="panel_puestos" runat="server">
                 <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 style="text-align: center;" class=" panel-title">Agregar Servicios Predefinidos <small style="color: white;">
+                                    <asp:Label ID="Label1" runat="server" Text="Seleccione los Servicios que el Empleado puede realizar de manera predeterminada"></asp:Label></small></h4>
+                            </div>
+                            <div class=" panel-body">
+                                <div class="table table-responsive">
+                                    <asp:GridView style=" font-size:10px;" ID="grisservicios" DataKeyNames="idc_tareaser" CssClass="table table-responsive table-bordered table-condensed" runat="server"
+                                        AutoGenerateColumns="false" OnRowDataBound="grisservicios_RowDataBound" OnRowCommand="grisservicios_RowCommand">                                       
+                                        <HeaderStyle ForeColor="White" BackColor="Gray" />
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="" HeaderStyle-Width="30px">
+                                                <ItemTemplate>
+                                                      <asp:CheckBox OnCheckedChanged="CheckBoxProcess_OnCheckedChanged" AutoPostBack="true" ID="cbxeditable" CssClass="radio3 radio-check radio-info radio-inline" 
+                                                           Text="Seleccionar" runat="server" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                             <asp:ButtonField DataTextField="descripcion" ControlStyle-CssClass="btn btn-default btn-block" HeaderText="Servicio" CommandName="verservicio" />
+                                            <asp:BoundField DataField="idc_tareaser" Visible="false"></asp:BoundField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -146,7 +201,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="table table-responsive">
-                                            <asp:GridView ID="gridPuestos" runat="server" AutoGenerateColumns="False" CssClass="gvv table table-responsive table-bordered table-condensed" OnRowCommand="gridPuestos_RowCommand">
+                                            <asp:GridView ID="gridPuestos" runat="server" AutoGenerateColumns="False" CssClass="table table-responsive table-bordered table-condensed" OnRowCommand="gridPuestos_RowCommand">
                                                 <Columns>
                                                     <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Borrar" CommandName="Borrar" HeaderStyle-Width="50px" Visible="false">
                                                         <HeaderStyle HorizontalAlign="Center" />
@@ -155,8 +210,6 @@
                                                     <asp:BoundField DataField="idc_puesto" HeaderText="id" Visible="False"></asp:BoundField>
                                                     <asp:BoundField DataField="descripcion_puesto_completa" HeaderText="Puesto || Empleado Actual"></asp:BoundField>
                                                     <asp:BoundField DataField="depto" HeaderText="Departamento"></asp:BoundField>
-                                                </Columns>
-                                                <Columns>
                                                 </Columns>
                                             </asp:GridView>
                                         </div>

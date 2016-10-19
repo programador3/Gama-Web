@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El nombre de columna 'idc_usuario' no es válido.
+   at negocio.Componentes.TareasCOM.sp_catalogo_reportes_empleados(Int32 idc_tipo_rep) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\19_10_16\Puestos\negocio\Componentes\TareasCOM.cs:line 188
+   at presentacion.catalogo_reportes.TareasServicios() in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\19_10_16\Puestos\presentacion\catalogo_reportes.aspx.cs:line 32
+ClientConnectionId:70741884-927c-4445-8a11-a3c5051fc096
+Error Number:207,State:1,Class:16

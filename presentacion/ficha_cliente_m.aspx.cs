@@ -193,7 +193,7 @@ namespace presentacion
                     //}
                     //if (ord_entrada > 0)
                     //{
-                    //    if (row("ord_entrada") == false)
+                    //    if (row["ord_entrada") == false)
                     //    {
                     //        txtoe.Text = "NO";
 
@@ -208,9 +208,9 @@ namespace presentacion
                     //    txtoe.Text = "NO";
                     //}
 
-                    //if (!Information.IsDBNull(row("croquis")))
+                    //if (!Information.IsDBNull(row["croquis")))
                     //{
-                    //    if (row("croquis") == true)
+                    //    if (row["croquis") == true)
                     //    {
                     //        //txtcroquis.Text = "NO"
                     //        chkcroquis.Checked = true;
@@ -228,9 +228,9 @@ namespace presentacion
                     //    chkcroquis.Visible = false;
                     //}
 
-                    //if (!Information.IsDBNull(row("sello")))
+                    //if (!Information.IsDBNull(row["sello")))
                     //{
-                    //    if (row("sello") == true)
+                    //    if (row["sello") == true)
                     //    {
                     //        //txtsello.Text = "NO"
                     //        chksello.Checked = true;
@@ -249,7 +249,7 @@ namespace presentacion
                     //    chksello.Visible = false;
                     //}
 
-                    //txtultimaventa.Text = (!Information.IsDBNull(row("ult_venta")) ? row("ult_venta") : "");
+                    //txtultimaventa.Text = (!Information.IsDBNull(row["ult_venta")) ? row["ult_venta") : "");
                     int idc_listap = 0;
                     if (row["idc_listap"] != null)
                     {
@@ -506,6 +506,15 @@ namespace presentacion
                     break;
                 case "4"://ALTA INCONVENIENTE
                     Response.Redirect("inconvenientes_cliente.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    break;
+                case "9"://cotizacion
+                    Response.Redirect("cotizaciones_correo.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    break;
+                case "10"://check plus
+                    Response.Redirect("check_plus_pre_m.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    break;
+                case "8"://GENERRAR PEDIDO
+                    Response.Redirect("pedidos7.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
             }
         }

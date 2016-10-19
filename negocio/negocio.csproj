@@ -59,6 +59,7 @@
     <Compile Include="Componentes\ClientesBL.cs" />
     <Compile Include="Componentes\CombustibleCOM.cs" />
     <Compile Include="Componentes\Compromisos_ClienteCOM.cs" />
+    <Compile Include="Componentes\consulta_precios_mCOM.cs" />
     <Compile Include="Componentes\CuestionariosCOM.cs" />
     <Compile Include="Componentes\CursosCOM.cs" />
     <Compile Include="Componentes\Cursos_HistorialCOM.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Entidades\clientesE.cs" />
     <Compile Include="Entidades\CombustibleENT.cs" />
     <Compile Include="Entidades\Compromisos_ClienteENT.cs" />
+    <Compile Include="Entidades\consulta_precios_mENT.cs" />
     <Compile Include="Entidades\CuestionariosENT.cs" />
     <Compile Include="Entidades\CursosE.cs" />
     <Compile Include="Entidades\Cursos_HistorialENT.cs" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Cotizacion" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="cotizacion_clientes2_m.aspx.cs" Inherits="presentacion.cotizacion_clientes2_m" %>
+﻿<%@ Page Title="Negociación" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="cotizacion_clientes2_m.aspx.cs" Inherits="presentacion.cotizacion_clientes2_m" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">

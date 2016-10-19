@@ -100,6 +100,8 @@ namespace presentacion
             int idc_sucursal = Convert.ToInt32(gridareas.DataKeys[index].Values["idc_sucursal"].ToString());
             string nombre = gridareas.DataKeys[index].Values["nombre"].ToString();
             string ruta = gridareas.DataKeys[index].Values["ruta"].ToString();
+            string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "imagenes\\areas\\" + Path.GetFileName(ruta);
+            string path = System.Web.HttpContext.Current.Request.PhysicalApplicationPath;
             Session["idc_area"] = idc_area.ToString();
             Session["idc_areaed"] = idc_area;
             switch (e.CommandName)
@@ -113,13 +115,15 @@ namespace presentacion
                     Sucursales();
                     txtnombre.Text = nombre;
                     ddldeptos.SelectedValue = idc_sucursal.ToString();
+                    imgUpdate.ImageUrl =  url;                    
+                    imgUpdate.Visible = (File.Exists( path + url));                    
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalA('Edición del Area " + nombre + "');", true);
                     break;
 
                 case "Ver":
-                    string file = Path.GetFileName(ruta);
-                    string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/areas/" + file;
                     imgmodal.ImageUrl = url;
+                    imgmodal.Visible = (File.Exists(path + url));
+                    
                     ScriptManager.RegisterStartupScript(this, GetType(), "aleecececcecrtMessage", "ModalImgc('" + nombre + "','modal fade modal-info');", true);
                     break;
 
@@ -129,6 +133,8 @@ namespace presentacion
                     break;
             }
         }
+
+       
 
         protected void Yes_Click(object sender, EventArgs e)
         {
@@ -148,7 +154,9 @@ namespace presentacion
                 switch (confirma)
                 {
                     case "Lugares":
-                        Response.Redirect("lugares_captura.aspx?idc_area=" + funciones.deTextoa64((string)Session["idc_area"]));
+                        string url = "lugares_captura.aspx?idc_area=" + funciones.deTextoa64(idc_area.ToString().Trim());
+                        Response.Redirect(url, false);
+                        Context.ApplicationInstance.CompleteRequest();
                         break;
 
                     case "Area":
@@ -161,7 +169,11 @@ namespace presentacion
                             bool correct = true;
                             string ruta_det = ds.Tables[1].Rows[0]["ruta_destino"].ToString();
                             string ruta_origen = (string)Session["url_origen"];
-                            correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this);
+                            if (ruta_origen != null && ruta_origen != "")
+                            {
+                                correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this);
+                            }
+                           
                             if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
                             Session["idc_areaed"] = null;
                             txtnombre.Text = "";
@@ -207,6 +219,7 @@ namespace presentacion
         protected void lnk_Click(object sender, EventArgs e)
         {
             Sucursales();
+            imgUpdate.Visible = false;
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalA('Ágregar Nueva Area');", true);
         }
 
@@ -223,7 +236,6 @@ namespace presentacion
 
         protected void aceptar_Click(object sender, EventArgs e)
         {
-            String FileExtension = fupPapeleria.HasFile == true ? System.IO.Path.GetExtension(fupPapeleria.FileName) : "";
             error.Visible = false;
             lblmensajeerror.Text = "";
             if (txtnombre.Text == "")
@@ -239,26 +251,27 @@ namespace presentacion
                 lblmensajeerror.Text = "Seleccione una Sucursal";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalA('Ágregar Nueva Area');", true);
                 // Alert.ShowAlertError("Seleccione una Sucursal", this);
-            }
-            else if (!fupPapeleria.HasFile)
-            {
-                error.Visible = true;
-                lblmensajeerror.Text = "Debe subir la imagen del area";
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalA('Ágregar Nueva Area');", true);
-                //Alert.ShowAlertError("Debe subir la imagen del area", this);
-            }
-            else if (FileExtension != ".jpg")
-            {
-                error.Visible = true;
-                lblmensajeerror.Text = "La Imagen debe ser en formato JPG";
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalA('Ágregar Nueva Area');", true);
-                //Alert.ShowAlertError("La Imagen debe ser en formato JPG", this);
-            }
+            }                        
             else
             {
-                DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/imagenes/areas/captura/"));//path local
-                bool pape = funciones.UploadFile(fupPapeleria, dirInfo + fupPapeleria.FileName, this.Page);
-                Session["url_origen"] = dirInfo + fupPapeleria.FileName;
+                
+                if (fupPapeleria.HasFile)
+                {
+                    if (Path.GetExtension(fupPapeleria.FileName) != ".jpg")
+                    {
+                        error.Visible = true;             
+                        lblmensajeerror.Text = "La Imagen debe ser en formato JPG";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalA('Ágregar Nueva Area');", true);
+                    }
+                    else
+                    {
+                        DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/imagenes/areas/captura/"));//path local
+                        funciones.UploadFile(fupPapeleria, dirInfo + fupPapeleria.FileName, this.Page);
+                        Session["url_origen"] = dirInfo + fupPapeleria.FileName;
+                    }
+                    
+                }
+                
                 Session["confirma"] = "Area";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Guardar los Cambios para esta Area?');", true);
             }

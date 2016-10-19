@@ -1,0 +1,139 @@
+﻿/*GridViewCSS Soft Grey Style*/
+.GridViewStyle
+{
+	/*text-align:center;
+    font-family: Arial, Sans-Serif;
+    font-size:small;
+    table-layout: auto;
+    border-collapse: collapse;
+    border:#91a7b4 1px solid;
+    background-image: url(Images/HeaderWhiteChrome.jpg);*/
+	background-color: #9ab2ca;
+	background-image: url(Images/HeaderWhiteChrome.jpg);
+    background-position:0 -80px;
+    background-repeat:repeat-x;
+    text-align:center;
+    
+}
+/*Header and Pager styles*/
+
+.HeaderStyle, .PagerStyle
+{
+    background-image: url(Images/Style/header_g.png);
+   /* background-image: url(Images/YahooSprite.gif);
+   background-position:top;*/
+    background-repeat:repeat-x;
+    background-color:#d1dbe0;
+    text-align:center;
+ }
+
+.HeaderStyle th
+{
+    padding: 3px;
+    color: #16387c;
+}
+
+.HeaderStyle a
+{
+	text-decoration:none;
+    color:#16387c;
+    display:block;
+    font-weight:normal;    
+}
+
+.PagerStyle table
+{
+    text-align:center;
+    margin:auto;
+}
+.PagerStyle table td
+{
+    border:0px;
+    padding:0px;
+}
+.PagerStyle td
+{
+    border-top: #91a7b4 1px solid;
+}
+.PagerStyle a
+{
+    color:#16387c;
+    text-decoration:none;
+    padding:1px 8px 1px 8px;
+    border-top:solid 1px #fff;
+    border-right:solid 1px #91a7b4;
+    border-bottom:solid 1px #91a7b4;
+    border-left:solid 1px #fff;
+}
+.PagerStyle span
+{
+    font-weight:bold;
+    color:#16387c;
+    text-decoration:none;
+    padding:1px 8px 1px 8px;
+}
+/*RowStyles*/
+.AltRowStyle td, .AltRowStyle td, .SelectedRowStyle td, .EditRowStyle td /*Common Styles*/
+{
+    padding: 3px;
+    border-right: solid 1px #91a7b4;
+    text-align:center;
+}
+.RowStyle td
+{
+    background-image: url(Images/HeaderWhiteChrome.jpg);
+    background-position:top;
+    background-repeat:repeat-x;
+    background-color:#d1dbe0;
+    color:#16387c;
+    text-align:center;
+    font-weight:bold;
+    background-size:contain;
+    -webkit-background-size:contain;
+}
+.AltRowStyle td
+{
+    background-color: #9ab2ca;
+	/*background-image: url(Images/YahooSprite.gif);*/
+	background-image: url(Images/Style/row_b_r.png);
+    /*background-repeat:inherit;*/
+    background-repeat:repeat-x;
+   /* background-position:0 -80px;*/
+    text-align:center;  
+     
+}
+
+.AltRowStyle2 td
+{
+	
+    background-color: #9ab2ca;
+	/*background-image: url(Images/YahooSprite.gif);*/
+	background-image: url(Images/Style/row_w.png);
+	background-attachment:inherit;
+    background-repeat:repeat;
+   /* background-position:40px -50px;*/
+     
+}
+
+.SelectedRowStyle td
+{
+    background-color: #fcb814;
+	background-image: url(Images/YahooSprite.gif);
+    background-position:center;
+    background-repeat:repeat-x;
+}
+.Button
+{
+	background-image: url(Images/YahooSprite.gif);	
+}
+.StyleTXT 
+{
+	text-align:left;
+	font-family:Arial;
+	font-size:x-small;
+	/*background-image: url(Images/FireworksNative/HeaderWhiteChrome.png);*/
+	background-image: url(Images/YahooSprite.gif);
+    background-position:top;
+    background-repeat:repeat;
+    color: #16387c;
+}

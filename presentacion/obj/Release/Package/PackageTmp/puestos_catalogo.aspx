@@ -254,45 +254,48 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="mperfil">
-                            <asp:LinkButton ID="lnkMPerfil" runat="server" Visible="true" CssClass="btn btn-success btn-block" OnClick="lnkMPerfil_Click">Ver Perfil <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkMPerfil" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkMPerfil_Click">Ver Perfil <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="mverherr">
-                            <asp:LinkButton ID="lnkMVerHerramientas" runat="server" Visible="true" CssClass="btn btn-success btn-block" OnClick="lnkMVerHerramientas_Click">Ver Herramientas <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkMVerHerramientas" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkMVerHerramientas_Click">Ver Herramientas <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="asignarperfil">
-                            <asp:LinkButton ID="lnkasignarperfil" runat="server" Visible="true" CssClass="btn btn-info btn-block" OnClick="lnkasignarperfil_Click">Asignar Perfil <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkasignarperfil" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkasignarperfil_Click">Asignar Perfil <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="prebaja">
                             <asp:LinkButton ID="lnkprebaja" runat="server" Visible="true" CssClass="btn btn-danger btn-block" OnClick="lnkprebaja_Click">Solicitar Baja <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="reemplazo">
-                            <asp:LinkButton ID="lnkreemplazo" runat="server" Visible="true" CssClass="btn btn-info btn-block" OnClick="lnkreemplazo_Click">Solicitar Reemplazo <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkreemplazo" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkreemplazo_Click">Solicitar Reemplazo <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="pmd">
-                            <asp:LinkButton ID="lnkpmd" runat="server" Visible="true" CssClass="btn btn-success btn-block" OnClick="lnkpmd_Click">PMD <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkpmd" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkpmd_Click">PMD <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="servicios">
                             <asp:LinkButton ID="lnkservicios" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkservicios_Click">Asignar Servicios <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="servicios_medan">
-                            <asp:LinkButton ID="lnkservicios_medan" runat="server" Visible="true" CssClass="btn btn-info btn-block" OnClick="lnkservicios_medan_Click">Servicios Asignados <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkservicios_medan" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkservicios_medan_Click">Servicios Asignados <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="permiso">
-                            <asp:LinkButton ID="lnkpermiso" runat="server" Visible="true" CssClass="btn btn-success btn-block" OnClick="LinkButton1_Click">Permiso Cambio de Horario <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkpermiso" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="LinkButton1_Click">Permiso Cambio de Horario <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="vacaiones">
                             <asp:LinkButton ID="lnkvacaciones" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkvacaciones_Click">Solicitar Vacaciones <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="lugartrabajo">
-                            <asp:LinkButton ID="lnklugar" runat="server" Visible="true" CssClass="btn btn-info btn-block" OnClick="lnklugar_Click">Asignar Lugar de Trabajo <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnklugar" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnklugar_Click">Asignar Lugar de Trabajo <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="reportes">
-                            <asp:LinkButton ID="lnkreporte" runat="server" Visible="true" CssClass="btn btn-info btn-block" OnClick="lnkreporte_Click">Reportes de Empleados <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkreporte" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkreporte_Click">Reportes de Empleados <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="ahorro">
-                            <asp:LinkButton ID="lnkretiroahorro" runat="server" Visible="true" CssClass="btn btn-danger btn-block" OnClick="lnkretiroahorro_Click">Solicitar Retiro de Ahorro <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkretiroahorro" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkretiroahorro_Click">Solicitar Retiro de Ahorro <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="incidencia">
+                            <asp:LinkButton ID="LinkButton1" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkinciden_Click">Incidencia <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                     </div>
                 </div>

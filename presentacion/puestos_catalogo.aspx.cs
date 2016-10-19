@@ -187,6 +187,7 @@ namespace presentacion
                     reemplazo.Visible = true;
                     pmd.Visible = true;
                     ahorro.Visible = true;
+                    incidencia.Visible = true;
                 }
             }
             else//si no tiene el permiso de ver todo, y lo puede ver, quiere decir que es su jefe directo o depende de el
@@ -201,6 +202,7 @@ namespace presentacion
                 reemplazo.Visible = true;
                 pmd.Visible = true;
                 ahorro.Visible = true;
+                incidencia.Visible = true;
             }
 
             if (status == 4 | status == 3)//SI EL STATUS ES VACANTE O VACANTE NO CONTRATAR, EL PUESTO NO CONTIENE NINGUN EMPLEADO
@@ -680,6 +682,11 @@ namespace presentacion
             string idc_puesto = Convert.ToInt32(Session["idc_puesto"]).ToString();
             string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
             Response.Redirect("retiro_ahorro.aspx?idc_puesto=" + funciones.deTextoa64(idc_puesto));
+        }
+        protected void lnkinciden_Click(object sender, EventArgs e)
+        {
+            string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
+            Response.Redirect("empleados_reportes.aspx?idc_empleado=" + funciones.deTextoa64(val));
         }
     }
 }

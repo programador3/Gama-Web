@@ -1,0 +1,11 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.EvaluateException: Cannot find column [idc_tareser].
+   at System.Data.NameNode.Bind(DataTable table, List`1 list)
+   at System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   at System.Data.DataExpression.Bind(DataTable table)
+   at System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   at System.Data.DataView.set_RowFilter(String value)
+   at presentacion.tareas_captura.TareasServiciosDetalles(Int32 idc_tareaser) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\11_10_16\Puestos\presentacion\tareas_captura.aspx.cs:line 77

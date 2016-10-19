@@ -1,0 +1,11 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.FormatException: Input string was not in a correct format.
+   at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Convert.ToDouble(String value)
+   at presentacion.cotizaciones_correo.cargar_subtotal_iva_total(Double t_iva)
+   at presentacion.cotizaciones_correo.Ajustes_iva(Decimal nuevo_iva, Decimal iva_ant)
+   at presentacion.cotizaciones_correo.actualizar_precios(Int32 idc_cliente, Int32 idc_colonia)
+   at presentacion.cotizaciones_correo.lnkcaptura_Click(Object sender, EventArgs e)

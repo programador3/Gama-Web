@@ -44,10 +44,13 @@ namespace presentacion
             }
             int idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
             Session["Previus"] = HttpContext.Current.Request.Url.AbsoluteUri;
-            CargaTareas();
-            CargaTareasAsignadas();
-            lblasignadas.Text = MisTareasAsignadas();
-            lblpendientes.Text = MisTareas();
+            if (idc_puesto > 0)
+            {
+                CargaTareas();
+                CargaTareasAsignadas();
+                lblasignadas.Text = MisTareasAsignadas();
+                lblpendientes.Text = MisTareas();
+            }
         }
 
         private void CargaTareas()

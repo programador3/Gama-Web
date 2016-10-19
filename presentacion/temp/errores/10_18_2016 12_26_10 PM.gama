@@ -1,0 +1,7 @@
+Vacante
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.MissingMethodException: Method not found: 'System.Data.DataSet negocio.Componentes.PuestosServiciosCOM.CargaPuestosREPORTE(negocio.Entidades.PuestosServiciosENT)'.
+   at presentacion.empleados_reportes.CargarGridPrincipal(Int32 idc_empleado)
+   at presentacion.empleados_reportes.CargaPuestos(String filtro)

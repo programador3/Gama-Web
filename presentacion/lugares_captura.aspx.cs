@@ -12,12 +12,16 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["sidc_usuario"] == null || Request.QueryString["idc_area"] == null)//si no hay session logeamos
+            if (Session["sidc_usuario"] == null )//si no hay session logeamos
             {
                 Response.Redirect("login.aspx");
             }
+            if (Request.QueryString["idc_area"] == null) {
+                Response.Redirect("areas.aspx");
+            }
             if (!IsPostBack)
             {
+               // lblmsgError.Text = "Puede descargar la IMAGEN original del AREA y marcar el area con un editor de imagenes, para usarla como imagen representativa del lugar de trabajo.";
                 Session["idc_lugartedit"] = null;
                 Session["nombre_lugar"] = null;
                 DataTable dt = new DataTable();
@@ -48,8 +52,11 @@ namespace presentacion
             CopyTofolder(ds.Tables[0], "~/imagenes/areas/", "idc_area");
             lbltitle.Text = "Lugares de Trabajo del Area '" + row["nombre"].ToString() + "'";
             lblareaname.Text = row["nombre"].ToString();
-            string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/areas/" + row["idc_area"].ToString() + ".jpg";
+            string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "imagenes\\areas\\" + row["idc_area"].ToString() + ".jpg";
+
             imgarea.ImageUrl = url;
+            string path = System.Web.HttpContext.Current.Request.PhysicalApplicationPath;
+            imgarea.Visible = File.Exists(path + url);
             foreach (DataRow rows in ds.Tables[1].Rows)
             {
                 AddToTable(Convert.ToInt32(rows["idc_lugart"]), rows["alias"].ToString(), rows["nombre"].ToString(), rows["ruta"].ToString(), rows["img"].ToString(), Convert.ToInt32(rows["lugar"]));
@@ -85,11 +92,7 @@ namespace presentacion
             DataTable tbl = (DataTable)Session["tabla_lugares"];
             foreach (DataRow rows in tbl.Rows)
             {
-                //if (Convert.ToInt32(rows["idc_lugart"]) == idc_lugart && idc_lugart > 0)
-                //{
-                //    rows.Delete();
-                //    break;
-                //}
+                
                 if (Session["nombre_lugar"] != null && rows["nombre"].ToString() == (string)Session["nombre_lugar"])
                 {
                     rows.Delete();
@@ -165,7 +168,7 @@ namespace presentacion
         {
             try
             {
-                DirectoryInfo dirInfo2 = new DirectoryInfo(Server.MapPath("~/imagenes/lugares/"));//path local
+                //DirectoryInfo dirInfo2 = new DirectoryInfo(Server.MapPath("~/imagenes/lugares/"));//path local
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath(folder));//path local
                 foreach (DataRow row in tbl.Rows)
                 {
@@ -228,6 +231,9 @@ namespace presentacion
             string nombre = gridlugares.DataKeys[index].Values["nombre"].ToString();
             string alias = gridlugares.DataKeys[index].Values["alias"].ToString();
             string ruta = gridlugares.DataKeys[index].Values["ruta"].ToString();
+            string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "imagenes\\lugares\\captura\\" + Path.GetFileName(ruta);
+            string path = System.Web.HttpContext.Current.Request.PhysicalApplicationPath;
+            //DirectoryInfo dir =DirectoryInfo(Server.MapPath("~/imagenes/lugares/captura/"));
             switch (e.CommandName)
             {
                 case "Editar":
@@ -235,6 +241,12 @@ namespace presentacion
                     Session["nombre_lugar"] = nombre;
                     txtalias.Text = alias;
                     txtnombre.Text = nombre;
+                    //Session["accion"] = "Editar";
+                    imgUpdate.ImageUrl = url;
+                    imgUpdate.Visible = (File.Exists(path + url));
+                    lblmsgError.Text = "Puede descargar la IMAGEN original del AREA y marcar el area con un editor de imagenes, para usarla como imagen representativa del lugar de trabajo.";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalA('Edición del Area " + nombre + "');", true);
+
                     break;
 
                 case "Borrar":
@@ -249,9 +261,9 @@ namespace presentacion
                     break;
 
                 case "Ver":
-                    string file = Path.GetFileName(ruta);
-                    string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "/imagenes/lugares/captura/" + file;
                     imgmodal.ImageUrl = url;
+                    //string dir = path + url;
+                    imgmodal.Visible = (File.Exists(path + url));
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalImgc('" + nombre + "','modal fade modal-info');", true);
                     break;
             }
@@ -259,42 +271,65 @@ namespace presentacion
 
         protected void lnkguardar_Click(object sender, EventArgs e)
         {
-            String FileExtension = fupPapeleria.HasFile == true ? System.IO.Path.GetExtension(fupPapeleria.FileName) : "";
-            if (!fupPapeleria.HasFile)
+            
+            divError.Visible = true;
+            int idc_lugart = 0;
+            string Registro = "ModalA('Ágregar Nueva Area');";
+            if (Session["idc_lugartedit"] != null)
             {
-                Alert.ShowAlertError("Ingrese la Imagen del Lugar", this);
+                idc_lugart = Convert.ToInt32(Session["idc_lugartedit"]);
+                Registro = "ModalA('Edición del Area " + txtnombre.Text + "');";
+
             }
-            else if (FileExtension != ".jpg")
+
+            if (txtnombre.Text == "")
             {
-                Alert.ShowAlertInfo("Solo se permiten formatos de imagen JPG || PNG", "Mensaje del sistema", this);
+                lblmsgError.Text = "Escriba el nombre completo del lugar";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", Registro, true);
             }
-            else if (txtalias.Text == "")
-            {
-                Alert.ShowAlertInfo("Escriba un Alias para el lugar", "Mensaje del sistema", this);
+            else 
+             if (txtalias.Text == "")
+            {                
+                lblmsgError.Text = "Escriba un Alias para el lugar";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", Registro, true);
             }
-            else if (txtnombre.Text == "")
+            else 
+            if (ExistsinTable(txtnombre.Text, txtalias.Text  ) & idc_lugart==0)
             {
-                Alert.ShowAlertInfo("Escriba el nombre completo del lugar", "Mensaje del sistema", this);
-            }
-            else if (ExistsinTable(txtnombre.Text, txtalias.Text) == true)
-            {
-                Alert.ShowAlertError("Ya existe un  Lugar con el nombre o alias.", this);
+                lblmsgError.Text = "Ya existe un  Lugar con el nombre o alias.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", Registro, true);
             }
             else
-            {
-                int idc_lugart = Session["idc_lugartedit"] == null ? 0 : Convert.ToInt32(Session["idc_lugartedit"]);
+            {                
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/imagenes/lugares/captura/"));//path local
-                AddToTable(idc_lugart, txtalias.Text, txtnombre.Text, dirInfo + fupPapeleria.FileName, "imagenes/btn/inchecked.png", 0);
-                bool pape = funciones.UploadFile(fupPapeleria, dirInfo + fupPapeleria.FileName, this.Page);
-                if (pape == true)
+                bool pape = false;
+                if (fupPapeleria.HasFile)
                 {
-                    Alert.ShowGift("Estamos subiendo el archivo.", "Espere un Momento", "imagenes/loading.gif", "2000", "Lugar Guardardo Correctamente", this);
-                    Session["idc_lugartedit"] = null;
-                    Session["nombre_lugar"] = null;
-                    txtnombre.Text = "";
-                    txtalias.Text = "";
+                    if (Path.GetExtension(fupPapeleria.FileName) != ".jpg")
+                    {
+                        lblmsgError.Text = "Solo se permiten formatos de imagen JPG";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", Registro, true);
+                    }
+                    else
+                    {                        
+                        pape = funciones.UploadFile(fupPapeleria, dirInfo + fupPapeleria.FileName, this.Page);                        
+                    }
                 }
+            AddToTable(idc_lugart, txtalias.Text, txtnombre.Text, dirInfo + fupPapeleria.FileName, "imagenes/btn/inchecked.png", 0);
+            Alert.ShowGift((pape ? "Estamos subiendo el archivo.":"Guardando informacion" ), "Espere un Momento", "imagenes/loading.gif", "2000", "Lugar Guardardo Correctamente", this);
+            Session["idc_lugartedit"] = null;
+            Session["nombre_lugar"] = null;
+            txtnombre.Text = "";
+            txtalias.Text = "";
             }
+        }
+
+        protected void lkbAgregar(object sender, EventArgs e)
+        {
+            //Session["accion"]= "Nuevo";
+            imgUpdate.Visible = false;
+            lblmsgError.Text = "Puede descargar la IMAGEN original del AREA y marcar el area con un editor de imagenes, para usarla como imagen representativa del lugar de trabajo.";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalA('Ágregar Nueva Area');", true);
         }
 
         protected void Yes_Click(object sender, EventArgs e)
@@ -329,10 +364,7 @@ namespace presentacion
                             {
                                 string ruta_det = row_archi["ruta_destino"].ToString();
                                 string ruta_origen = row_archi["ruta_origen"].ToString();
-                                if (ruta_det != ruta_origen)
-                                {
-                                    correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
-                                }
+                                if (ruta_det != ruta_origen){correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page); }
                                 if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
                             }
                             Alert.ShowGiftMessage("Estamos procesando la cantidad de " + tabla_archivos.Rows.Count.ToString() + " archivo(s) al Servidor.", "Espere un Momento", "areas.aspx", "imagenes/loading.gif", "4000", "Movimiento realizado correctamente", this);

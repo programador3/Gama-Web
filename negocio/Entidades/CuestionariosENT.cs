@@ -8,6 +8,7 @@ namespace negocio.Entidades
         private int idc_tipocliente;
         private int idc_cuestionario;
         private int idc_cuestionario_elite;
+        private int idc_cuestionario_extra;
         private int pidc_pregunta;
         private int pidc_cliente;
         private int idc_cotizacion;
@@ -22,6 +23,7 @@ namespace negocio.Entidades
         private string cadena_respuestas;
         private string cuestionario;
         private string ptipo;
+        private string ptiposoli;
         private string nombre;
         private string telefono;
         private string correo;
@@ -30,9 +32,16 @@ namespace negocio.Entidades
         private string pdirecip;
         private string pnombrepc;
         private string pusuariopc;
+        private string dominio;
         private int idc_usuario;
         private SqlDateTime inicio;
         private SqlDateTime fin;
+        bool prod_esp;
+        public bool Prod_esp
+        {
+            get { return prod_esp; }
+            set { prod_esp = value; }
+        }
 
         public SqlDateTime Pinicio
         {
@@ -45,7 +54,11 @@ namespace negocio.Entidades
             get { return fin; }
             set { fin = value; }
         }
-
+        public string Pdominio
+        {
+            get { return dominio; }
+            set { dominio = value; }
+        }
         public int Pidc_coti
         {
             get { return idc_cotizacion; }
@@ -87,7 +100,11 @@ namespace negocio.Entidades
             get { return idc_cuestionario_elite; }
             set { idc_cuestionario_elite = value; }
         }
-
+        public int Pidc_cuestionario_extra
+        {
+            get { return idc_cuestionario_extra; }
+            set { idc_cuestionario_extra = value; }
+        }
         public int Pidc_cuestionario_tipo
         {
             get { return pidc_cuestionario_tipo; }
@@ -177,7 +194,11 @@ namespace negocio.Entidades
             get { return ptipo; }
             set { ptipo = value; }
         }
-
+        public string Ptipo_soli
+        {
+            get { return ptiposoli; }
+            set { ptiposoli = value; }
+        }
         public string Ptelefono
         {
             get { return telefono; }

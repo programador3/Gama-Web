@@ -17,17 +17,152 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
+                DataTable dt2 = new DataTable();
+                dt2.Columns.Add("descripcion");
+                dt2.Columns.Add("idc_tareaser");
+                dt2.Columns.Add("seleccionado");
+                ViewState["dt_puestos_rel"] = dt2;
                 DataTable dt = new DataTable();
                 dt.Columns.Add("idc_puesto");
                 Session["tabla_puestos"] = dt;
                 CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
-                cargarpuestos("");
+                
                 lnktodo.Visible = Request.QueryString["val"] != null ? false : true;
+                TareasServiciosTodos();
+                TareasServicios(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
             }
             if (Request.QueryString["val"] != null)
             {
                 lbltext.Text = "Seleccione los puestos que le daran servicio";
                 lnktodo.Visible = false;
+            }
+        }
+
+        public void TareasServiciosTodos()
+        {
+            try
+            {
+                TareasCOM componente = new TareasCOM();
+                DataSet ds = componente.sp_tareas_servicios_puestos(0);
+                DataTable dt = ds.Tables[0];
+                DataTable dt2 = ViewState["dt_puestos_rel"] as DataTable;
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string puesto = row["descripcion"].ToString();
+                        int idc_tareaser = Convert.ToInt32(row["idc_tareaser"]);
+                        DataRow rowa = dt2.NewRow();
+                        rowa["descripcion"] = puesto;
+                        rowa["idc_tareaser"] = idc_tareaser;
+                        rowa["seleccionado"] = 0;
+                        dt2.Rows.Add(rowa);
+                    }
+                    ViewState["dt_puestos_rel"] = dt2;
+                    CargarGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+        private string Cadena()
+        {
+            string cadena = "";
+            DataTable dt = ViewState["dt_puestos_rel"] as DataTable;
+            foreach (DataRow row in dt.Rows)
+            {
+                cadena = cadena + row["idc_tareaser"].ToString().Trim() + ";";
+            }
+            return cadena;
+        }
+
+        private int totalcadena()
+        {
+            DataTable dt = ViewState["dt_puestos_rel"] as DataTable;
+            return dt.Rows.Count;
+        }
+        public void TareasServicios(int idc_puesto)
+        {
+            try
+            {
+                TareasCOM componente = new TareasCOM();
+                DataSet ds = componente.sp_tareas_servicios_puestos(idc_puesto);
+                DataTable dt = ds.Tables[0];
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string puesto = row["descripcion"].ToString();
+                        int idc_tareaser = Convert.ToInt32(row["idc_tareaser"]);
+                        DeleteDT(idc_tareaser);
+                        AddDt(puesto, idc_tareaser);
+                    }
+                }
+                CargarGrid();
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+        private void CargarGrid()
+        {
+            DataTable dt = ViewState["dt_puestos_rel"] as DataTable;
+            DataTable dtc = dt.Copy();
+            grisservicios.DataSource = dtc;
+            grisservicios.DataBind();
+
+            //ScriptManager.RegisterStartupScript(this, GetType(), "noti533swswW3", "DataTa2();", true);
+        }
+        private void AddDt(string puesto, int idc_puesto)
+        {
+            try
+            {
+                DataTable dt = ViewState["dt_puestos_rel"] as DataTable;
+                foreach (DataRow row in dt.Rows)
+                {
+                    int idc_p = Convert.ToInt32(row["idc_tareaser"]);
+                    if (idc_p == idc_puesto)
+                    {
+                        row["descripcion"] = puesto;
+                        row["idc_tareaser"] = idc_puesto;
+                        row["seleccionado"] = 1;
+                        break;
+                    }
+                }
+                ViewState["dt_puestos_rel"] = dt;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+
+        private void DeleteDT(int idc_puesto)
+        {
+            try
+            {
+                DataTable dt = ViewState["dt_puestos_rel"] as DataTable;
+                foreach (DataRow row in dt.Rows)
+                {
+                    int idc_p = Convert.ToInt32(row["idc_tareaser"]);
+                    if (idc_p == idc_puesto)
+                    {
+                        row["seleccionado"] = 0;
+                        break;
+                    }
+                }
+                ViewState["dt_puestos_rel"] = dt;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
             }
         }
 
@@ -50,6 +185,7 @@ namespace presentacion
                 {
                     gridPuestos.DataSource = ds.Tables[1];
                     gridPuestos.DataBind();
+                   // ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "DataTa1();", true);
                     lnktodo.CssClass = Convert.ToBoolean(ds.Tables[0].Rows[0]["todos"]) == true ? "btn btn-success btn-block" : "btn btn-default btn-block";
                     panel_puestos.Visible = Convert.ToBoolean(ds.Tables[0].Rows[0]["todos"]) == true ? false : true;
                     if (Convert.ToBoolean(ds.Tables[0].Rows[0]["todos"]) == false)
@@ -99,6 +235,10 @@ namespace presentacion
                 repeat_pues.DataSource = dss.Tables[0];
                 repeat_pues.DataBind();
                 DataTable dt = Session["tabla_puestos"] as DataTable;
+                if (dss.Tables[0].Rows.Count > 100)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Gifts('Estamos Cargando " + dss.Tables[0].Rows.Count.ToString() + " Puestos');", true);
+                }
                 foreach (RepeaterItem item in repeat_pues.Items)
                 {
                     foreach (DataRow row in dt.Rows)
@@ -185,6 +325,8 @@ namespace presentacion
                 entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
                 entidad.Ptodos = lnktodo.CssClass == "btn btn-success btn-block" ? true : false;
                 entidad.PReves = Request.QueryString["val"] != null ? true : false;
+                entidad.Ptotal_cadenaser = totalcadena();
+                entidad.Pcadenaser = Cadena();
                 string mensaje = "";
                 DataSet ds = new DataSet();
                 switch (Confirma_a)
@@ -274,6 +416,42 @@ namespace presentacion
                 LinkButton btn = (LinkButton)item.FindControl("lnkpuesto");
                 btn.CssClass = btnsele.CssClass;
             }
+        }
+
+        protected void grisservicios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DataRowView rowView = (DataRowView)e.Row.DataItem;
+                CheckBox cbx = e.Row.FindControl("cbxeditable") as CheckBox;
+                int empleado = Convert.ToInt32(rowView["seleccionado"]);
+                int idc_tareaser = Convert.ToInt32(rowView["idc_tareaser"]);
+                string descripcion = rowView["descripcion"].ToString();
+                cbx.Checked = empleado == 1 ? true : false;
+                cbx.Attributes["idc"] = idc_tareaser.ToString();
+                cbx.Attributes["descripcion"] = descripcion.ToString();
+            }
+        }
+        protected void CheckBoxProcess_OnCheckedChanged(object sender, EventArgs args)
+        {
+            CheckBox cbx = sender as CheckBox;
+            bool check = cbx.Checked;
+            int idc = Convert.ToInt32(cbx.Attributes["idc"].ToString());
+            string descripcion = cbx.Attributes["descripcion"].ToString();
+            DeleteDT(idc);
+            if (check == true)
+            {
+                AddDt(descripcion,idc);
+            }
+            CargarGrid();
+        }
+
+        protected void grisservicios_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            int idc_tareaser = Convert.ToInt32(grisservicios.DataKeys[index].Values["idc_tareaser"]);
+            string url = "tareas_servicios_captura.aspx?view=HEHEHASISEVE&solo_lista=KNWODBWODBWOEBDOWDOWKDBOWEKDBEWBDOWEPOP&idc_tareaser=" + funciones.deTextoa64(idc_tareaser.ToString());
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMesededsage", "window.open('"+url+"');", true);
         }
     }
 }

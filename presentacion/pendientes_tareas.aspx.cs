@@ -9,6 +9,7 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["redirect_pagedet"] = "pendientes_tareas.aspx";
             TareasENT entidad = new TareasENT();
             TareasCOM componente = new TareasCOM();
             entidad.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);

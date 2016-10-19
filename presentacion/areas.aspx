@@ -122,13 +122,16 @@
                                     </h4>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                    <asp:Image ID="imgmodal" CssClass="image img-responsive" runat="server" />
+                                    <a class="thumbnail" style="text-decoration:none; font-weight: bold; border:0; background-color:transparent">
+                                    <br />
+                                    <asp:Image ID="imgmodal" CssClass="image img-responsive" runat="server"  ImageAlign="Middle" Height="200px"/>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <div class="col-lg-12">
-                                <input id="Nwwwwwwo" class="btn btn-info btn-block" onclick="ModalClose();" value="Cerrar" />
+                                <input id="Nwwwwwwo" type="button" class="btn btn-info btn-block" onclick="ModalClose();" value="Cerrar" />
                             </div>
                         </div>
                     </div>
@@ -145,6 +148,7 @@
                     <asp:PostBackTrigger ControlID="Button3" />
                     <asp:AsyncPostBackTrigger ControlID="gridareas" EventName="RowCommand" />
                     <asp:AsyncPostBackTrigger ControlID="lnk" EventName="Click" />
+                    <%--<asp:PostBackTrigger ControlID="imgUpdate" />--%>
                 </Triggers>
                 <ContentTemplate>
                     <div class="modal-content">
@@ -161,15 +165,20 @@
                                     </asp:DropDownList>
                                     <h5><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;Imagen del Area</h5>
                                     <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
-                                    <br />
-                                    <div class="alert alert-info fade in">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <strong>NOTA:</strong>&nbsp;Imagen debe ser JPG
-                                    </div>
-                                    <div class="alert alert-danger fade in" id="error" runat="server" visible="false">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <strong>Error:</strong>&nbsp;<asp:Label ID="lblmensajeerror" runat="server" Text=""></asp:Label>
-                                    </div>
+                                    <a class="thumbnail" style="text-decoration:none; font-weight: bold; border:0; background-color:transparent">
+                                    <br />                                                    
+                                    <asp:Image ID="imgUpdate" CssClass="image img-responsive" runat="server"  Height="180px" />
+                                    </a>                                    
+                                        <div class="alert alert-info">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>NOTA:</strong>&nbsp;Imagen debe ser JPG
+                                        </div>
+                                        <div class="alert alert-danger fade in" id="error" runat="server" visible="false">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>Error:</strong>&nbsp;
+                                            <asp:Label ID="lblmensajeerror" runat="server" Text=""></asp:Label>
+                                        </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -211,7 +220,7 @@
                             <asp:Button ID="Button2" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
                         </div>
                         <div class="col-lg-6 col-xs-6">
-                            <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
+                            <input id="No" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                         </div>
                     </div>
                 </div>

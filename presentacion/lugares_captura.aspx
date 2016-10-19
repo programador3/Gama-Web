@@ -12,6 +12,7 @@
         function ModalClose() {
             $('#myModal').modal('hide');
             $('#myModalImg').modal('hide');
+            $('#myModalArea').modal('hide');
         }
         function ModalConfirm(cTitulo, cContenido, ctype) {
             var audio = new Audio('sounds/modal.wav');
@@ -30,6 +31,13 @@
             $('#myModalImg').addClass(ctype);
             $('#content_modali').text(cContenido);
         }
+
+        function ModalA(cTitulo) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModalArea').modal('show');
+            $('#confirmTituloa').text(cTitulo);
+        }
         function AlertGO(TextMess, URL) {
             swal({
                 title: "Mensaje del Sistema",
@@ -44,23 +52,33 @@
                    location.href = URL;
                });
         }
+
+        //window.onbeforeunload = function () {   return "?"; }
+   
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <asp:UpdatePanel ID="u" runat="server" UpdateMode="Always">
         <Triggers>
-            <asp:PostBackTrigger ControlID="lnkguardar" />
-            <asp:PostBackTrigger ControlID="gridlugares" />
+            <%--<asp:PostBackTrigger ControlID="lnkguardar" />--%>
+            <%--<asp:PostBackTrigger ControlID="gridlugares" />--%>
         </Triggers>
         <ContentTemplate>
             <h1 class="page-header">
                 <asp:Label ID="lbltitle" runat="server" Text="lbltitle"></asp:Label></h1>
-            <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12" style="text-align: center;">
-                    <h4><i class="fa fa-user" aria-hidden="true"></i>&nbsp;<asp:Label ID="lblareaname" runat="server" Text=""></asp:Label></h4>
+           <%-- <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12" ><!--style="text-align: center;"-->
+                    <h4><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Area:
+                        
+                        <asp:Label ID="lblareaname" runat="server" Text=""></asp:Label>
+                    </h4>
                     <asp:Image ID="imgarea" CssClass="image img-responsive" runat="server" />
                 </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="col-lg-6 col-md-12 col-sm-12" >
+                    <asp:Image ID="Image1" CssClass="image img-responsive" runat="server" />
+
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12"  >
                     <h4><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Agregar Lugar</h4>
                     <h5><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Nombre</h5>
                     <asp:TextBox ID="txtnombre" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 250);" CssClass="form-control" placeholder="Nombre del Lugar" runat="server"></asp:TextBox>
@@ -76,7 +94,31 @@
                         <strong>NOTA:</strong>&nbsp;Puede descargar la IMAGEN original del AREA y marcar el area con un editor de imagenes, para usarla como imagen representativa del lugar de trabajo.
                     </div>
                 </div>
+            </div>--%>
+            <div class="row">
+                <div class="col-lg-12" style="text-align: center;">
+                    <a class="thumbnail" style="text-decoration:none; font-weight: bold; border:0; background-color:transparent">
+                        <h4><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Area:                        
+                            <asp:Label ID="lblareaname" runat="server" Text=""></asp:Label>
+                        </h4>                    
+                        <br />
+                        <asp:Image ID="imgarea" AlternateText="Area de Trabajo"  CssClass="image img-responsive" runat="server"  Height="200px" />                     
+                    </a>
+                </div>
+                <div class="col-lg-12" style="align-content:center">
+                    <asp:LinkButton ID="lnk" CssClass="btn btn-info btn-block" OnClick="lkbAgregar" runat="server"><i class="fa fa-plus-circle" aria-hidden="true" ></i>&nbsp;Agregar Nueva Area </asp:LinkButton>
+                </div>                                
             </div>
+            <div class="row col-lg-12">
+                <div class="alert alert-danger fade in" id="div1" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>NOTA:</strong>&nbsp;
+                    <asp:Label ID="Label1" runat="server" Text="Para guardar los cambios debe realizar un guardado global."></asp:Label>                                    
+                </div>            
+            </div>
+            <!-- -->
+
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table table-responsive">
@@ -110,6 +152,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="modal fade modal-info" id="myModalImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -125,18 +168,23 @@
                                     </h4>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                    <asp:Image ID="imgmodal" CssClass="image img-responsive" runat="server" />
+                                    <a class="thumbnail" style="text-decoration:none; font-weight: bold; border:0; background-color:transparent">
+                                    <br />
+                                    <asp:Image ID="imgmodal" CssClass="image img-responsive" runat="server" Height="200px" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <div class="col-lg-12">
-                                <input id="Nwwwwwwo" class="btn btn-info btn-block" onclick="ModalClose();" value="Cerrar" />
+                                <input id="Nwwwwwwo" type="button" class="btn btn-info btn-block" onclick="ModalClose();" value="Cerrar" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="row">
@@ -147,6 +195,64 @@
             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
         </div>
     </div>
+
+    <div id="myModalArea" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                <Triggers>
+                    <asp:PostBackTrigger ControlID="lnkguardar" />
+                    <%--<asp:PostBackTrigger ControlID="Button3" />--%>
+                    <asp:AsyncPostBackTrigger ControlID="gridlugares" />
+                    <asp:AsyncPostBackTrigger ControlID="lnk" EventName="Click" />
+                    <%--<asp:PostBackTrigger ControlID="imgUpdate" />--%>
+                </Triggers>
+                <ContentTemplate>
+                    <div class="modal-content">
+                        <div class="modal-header" style="text-align: center; background-color: #428bca; color: white">
+                            <h4><strong id="confirmTituloa" class="modal-title"></strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="text-align: left;">
+                                <div class="col-lg-12">
+                                    <%--<h4><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Agregar Lugar</h4>--%>
+                                    <h5><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Nombre</h5>
+                                    <asp:TextBox ID="txtnombre" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 250);" CssClass="form-control" placeholder="Nombre del Lugar" runat="server"></asp:TextBox>
+                                    <h5><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Alias</h5>
+                                    <asp:TextBox ID="txtalias" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 10);" CssClass="form-control" placeholder="Alias del Lugar" runat="server"></asp:TextBox>
+                                    <h5><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;Imagen del Lugar</h5>
+                                    <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
+                                    <a class="thumbnail" style="text-decoration:none; font-weight: bold; border:0; background-color:transparent">
+                                    <br />                                                    
+                                    <asp:Image ID="imgUpdate" CssClass="image img-responsive" runat="server"  Height="200px" />
+                                    </a>                                   
+                                    
+                                    <div class="alert alert-danger fade in" id="divError" runat="server">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>NOTA:</strong>&nbsp;
+                                        <asp:Label ID="lblmsgError" runat="server" Text=""></asp:Label>                                    
+                                    </div>
+                                                                        
+                                     
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <asp:LinkButton ID="lnkguardar" CssClass="btn btn-info btn-block" runat="server" OnClick="lnkguardar_Click">Guardar Lugar <i class="fa fa-floppy-o" aria-hidden="true"></i></asp:LinkButton>
+                                </div>
+                                <div class="col-lg-6 col-xs-6">
+                                <input id="btnNo" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
+
     <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -168,7 +274,7 @@
                         <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
                     </div>
                     <div class="col-lg-6 col-xs-6">
-                        <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
+                        <input id="No" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                     </div>
                 </div>
             </div>

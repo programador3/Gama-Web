@@ -8,6 +8,7 @@ namespace negocio.Entidades
         private int idc_tipoi;
         private int idc_proceso;
         private int avance;
+        private int idc_tareaser;
         private string tipofiltro;
         private string tipofiltros;
         private int idc_tarea_h;
@@ -101,7 +102,11 @@ namespace negocio.Entidades
             get { return idc_tarea_h; }
             set { idc_tarea_h = value; }
         }
-
+        public int Pidc_tareaser
+        {
+            get { return idc_tareaser; }
+            set { idc_tareaser = value; }
+        }
         public int Pidc_puesto
         {
             get { return idc_puesto; }

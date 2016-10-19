@@ -8,6 +8,21 @@ namespace negocio.Componentes
 {
     public class UsuariosBL
     {
+        public DataSet CargaInformacionInicial()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                ds = data.enviar("sp_informacion_checkmail", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet Informacion_Correo(int IDC_USUARIO)
         {
             DataSet ds = new DataSet();

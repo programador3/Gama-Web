@@ -44,6 +44,23 @@ namespace presentacion
             ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "sounderror", "PlaySound('sounds/error.wav');", true);
         }
 
+        public static void ShowAlertAutoCloseTimer(String Title, String Mensaje,String Tiempo,bool botonConfirmar,String img, Page mypage)
+        {
+           
+            Mensaje = Mensaje.Replace("'", "");
+            char cr = (char)13;
+            char lf = (char)10;
+            char tab = (char)9;
+            Mensaje = Mensaje.Replace(cr.ToString(), "");
+            Mensaje = Mensaje.Replace(lf.ToString(), "");
+            Mensaje = Mensaje.Replace(tab.ToString(), "");            
+            string Str_Atrib = string.Format("title: '{0}', text: '{1}', timer: {2}, showConfirmButton: {3}, imageUrl: '{4}'",
+                Title, Mensaje, Tiempo, botonConfirmar.ToString().ToLower(),img);
+            string Str_js = "swal({" + Str_Atrib +"});";
+            ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "showalert", Str_js, true);
+            ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "sounderror", "PlaySound('sounds/info.wav');", true);
+        }
+
         /// <summary>
         /// Alerta Info SweetAlert. Parametros: Mensaje,Titulo, Contexto
         /// </summary>
@@ -98,6 +115,8 @@ namespace presentacion
             ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "showalert",
                 "swal({   title: '" + Title + "',   text: '" + Mensaje + "', allowEscapeKey:false,imageUrl: '" + IMG + "',   timer: " + Timer + ",   showConfirmButton: false }, function(){swal({  title: 'Mensaje del Sistema', allowEscapeKey:false,text: '" + MensajeOK + "',type: 'success',showCancelButton: false,confirmButtonColor: '#428bca',confirmButtonText: 'Aceptar',closeOnConfirm: false }, function () {location.href = '" + URL + "';});});", true);
         }
+
+
 
         /// <summary>
         /// Alerta Gift y Redireccion

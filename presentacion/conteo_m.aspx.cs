@@ -188,24 +188,22 @@ namespace presentacion
                 int idC_articulo = Convert.ToInt32(row["idc_articulo"]);
                 int idc_artimodprog = Convert.ToInt32(row["idc_artimodprog"]);
                 int conteo_total = Convert.ToInt32(row["conteo_total"]);
-                int decimales = Convert.ToInt32(row["decimales"]);
+                bool decimales = Convert.ToBoolean(row["decimales"]);
                 string estado = row["estado"].ToString();
                 string valuetext = txt.Text;
                 if (estado.Trim() == "EN PROCESO" && conteo_total < 4)
                 {
+                    string mensaje = "";
                     string reg = "";
                     switch (decimales)
                     {
-                        case 0:
+                        case false:
+                            mensaje = "No Ingrese Decimales.";
                             reg = @"^\d+$";
                             break;
-
-                        case 1:
-                            reg = @"^\d+([,\.]\d{1})?$";
-                            break;
-
-                        case 2:
-                            reg = @"^\d+([,\.]\d{1,2})?$";
+                        case true:
+                            mensaje = "Ingrese solo la cantidad de 3 decimales.";
+                            reg = @"^\d+([,\.]\d{1,3})?$";
                             break;
                     }
 
@@ -232,11 +230,13 @@ namespace presentacion
                             if (vmensaje == "") { vmensaje = bien == 1 ? "" : "Conteo Incorrecto"; }
                             if (vmensaje != "")
                             {
+
                                 CargarArticulos(id, "");
                                 Alert.ShowAlertError(vmensaje, this);
                             }
                             else
                             {
+                                Alert.ShowAlert("Conteo Correcto","Mensaje del Sistema", this);
                                 CargarArticulos(id, "");
                             }
                         }
@@ -244,7 +244,7 @@ namespace presentacion
                     else
                     {
                         txt.Text = "";
-                        Alert.ShowAlertError("Ingrese solo la cantidad de " + decimales.ToString() + " decimales.", this.Page);
+                        Alert.ShowAlertError("", this.Page);
                     }
                 }
             }

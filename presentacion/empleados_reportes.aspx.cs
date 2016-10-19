@@ -17,36 +17,94 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
+
             //SI ES UN ALTA
-            if (!IsPostBack && Request.QueryString["autoriza"] == null)
-            {
-                DataTable papeleria = new DataTable();
-                papeleria.Columns.Add("descripcion");
-                papeleria.PrimaryKey = new DataColumn[] { papeleria.Columns["descripcion"] };
-                papeleria.Columns.Add("ruta");
-                papeleria.Columns.Add("extension");
-                papeleria.Columns.Add("id_archi");
-                Session["papeleria"] = papeleria;
-                Session["idc_empleado"] = null;
-                CargarReportes();
-                CargaPuestos("");
-                btnGuardar.Visible = true;
-                btnvistobueno.Visible = false;
-                obsrva.Visible = false;
-            }
-            if (!IsPostBack && Request.QueryString["autoriza"] != null)
+            if (!IsPostBack && Request.QueryString["termina"] != null)
             {
                 Session["idc_empleado"] = null;
                 int idc_emplado = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"]));
                 int pidc_empleadorep = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleadorep"]));
+                CargarReportes(idc_emplado);
                 CargaPuestos("");
-                CargarReportes();
                 CargarGridPrincipal(idc_emplado);
                 CargarPendientes(pidc_empleadorep);
                 btnGuardar.Visible = false;
-                btnvistobueno.Visible = true;
+                btnterminar.Visible = true;
+                obsrvobo.Visible = true;
+                div_empleadoalta.Visible = false;
+                div_busqueda.Visible = false;
+                FILTRO.Visible = true;
+                txtpuesto_filtro.Visible = true;
+                lnkbuscarpuestos.Visible = true;
+                txtcomentarios.ReadOnly = true;
+                txtobservaciones_auto.Visible = true;
                 obsrva.Visible = true;
+                lnlvalido.Visible = true;
+                lbltitle.Attributes["style"] = "color:orangered;";
+                lbltitle.Text = "Puede Reasignar el Reporte a un empleado";
+                FILTRO.Visible = false;
+                if (Request.QueryString["view"] != null)
+                {
+                    ddlPuestoAsigna.Enabled = false;
+                    txtpuesto_filtro.ReadOnly = true;
+                    lnkbuscarpuestos.Visible = false;
+                    btnterminar.Visible = false;
+                    btnCancelar.Text = "Regresar";
+                    if (Request.QueryString["WINOPENER"] != null)
+                    {
+                        btnCancelar.Visible = false;
+                        BTNCERRAR.Visible = true;
+                    }
+                }
             }
+            else
+            {
+                if (!IsPostBack && Request.QueryString["autoriza"] == null)
+                {
+                    DataTable papeleria = new DataTable();
+                    papeleria.Columns.Add("descripcion");
+                    papeleria.PrimaryKey = new DataColumn[] { papeleria.Columns["descripcion"] };
+                    papeleria.Columns.Add("ruta");
+                    papeleria.Columns.Add("extension");
+                    papeleria.Columns.Add("id_archi");
+                    Session["papeleria"] = papeleria;
+                    Session["idc_empleado"] = null;
+                    CargaPuestos("");
+                    btnGuardar.Visible = true;
+                    btnvistobueno.Visible = false;
+                    obsrvobo.Visible = false;
+                    int idc_empleado = Convert.ToInt32(Session["sidc_empleado"]);
+                    if (idc_empleado == 0)//quiere decir que es un usuario sin empleado
+                    {
+                        div_empleadoalta.Visible = true;
+                        txtbuscar.Focus();
+                    }
+                    obsrva.Visible = true;
+                    if (Request.QueryString["idc_empleado"] != null)
+                    {
+                        int idc_empleadoe = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"]));
+                        CargarGridPrincipal(idc_empleadoe);
+                        txtpuesto_filtro.ReadOnly = true;
+                        lnkbuscarpuestos.Visible = false;
+                        ddlPuestoAsigna.Enabled = false;
+                    }
+                }
+                if (!IsPostBack && Request.QueryString["autoriza"] != null)
+                {
+                    Session["idc_empleado"] = null;
+                    int idc_emplado = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"]));
+                    int pidc_empleadorep = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleadorep"]));
+                    CargaPuestos("");
+                    CargarGridPrincipal(idc_emplado);
+                    CargarPendientes(pidc_empleadorep);
+                    btnGuardar.Visible = false;
+                    btnvistobueno.Visible = true;
+                    obsrvobo.Visible = true;
+                    lnlvalido.Visible = true;
+                    lnlvalido.Text = "Estoy Deacuerdo con el Reporte";
+                }
+            }
+            
         }
 
         /// <summary>
@@ -59,21 +117,18 @@ namespace presentacion
                 Asignacion_RevisionesENT entidad = new Asignacion_RevisionesENT();
                 Asignacion_RevisionesCOM componente = new Asignacion_RevisionesCOM();
                 entidad.Filtro = filtro;
-                entidad.Ptipo = "R";
+                entidad.Ptipo = "";
                 entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
                 DataSet ds = componente.CargaComboDinamicoOrgn(entidad);
                 ddlPuestoAsigna.DataValueField = "idc_empleado";
                 ddlPuestoAsigna.DataTextField = "descripcion_puesto_completa";
                 ddlPuestoAsigna.DataSource = ds.Tables[0];
                 ddlPuestoAsigna.DataBind();
-                if (filtro == "")
+                ddlPuestoAsigna.Items.Insert(0, new ListItem("--Seleccione un Empleado", "0")); //updated code}
+                if (Request.QueryString["idc_empleado"] != null && filtro == "")
                 {
-                    ddlPuestoAsigna.Items.Insert(0, new ListItem("--Seleccione un Empleado", "0")); //updated code}
-                }
-                else
-                {
-                    int idc_emplado = Convert.ToInt32(ddlPuestoAsigna.SelectedValue);
-                    CargarGridPrincipal(idc_emplado);
+                    int idc_empleadoe = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"]));
+                    ddlPuestoAsigna.SelectedValue = idc_empleadoe.ToString();
                 }
             }
             catch (Exception ex)
@@ -115,6 +170,11 @@ namespace presentacion
                         ScriptManager.RegisterStartupScript(this, GetType(), "img", "getImage('" + url + "');", true);
                         imgEmpleado.ImageUrl = url;
                     }
+                    
+                }
+                if (Request.QueryString["termina"] == null)
+                {
+                    CargarReportes(idc_empleado);
                 }
             }
             catch (Exception ex)
@@ -127,11 +187,12 @@ namespace presentacion
         /// <summary>
         /// Carga Combo con los tipos de reportes
         /// </summary>
-        private void CargarReportes()
+        private void CargarReportes(int IDC_EMPLEADO)
         {
             try
             {
                 ReportesENT entidad = new ReportesENT();
+                entidad.Pidc_empleado = IDC_EMPLEADO; 
                 ReportesCOM componentes = new ReportesCOM();
                 ddltiporeporte.DataValueField = "idc_tiporep";
                 ddltiporeporte.DataTextField = "descripcion";
@@ -159,13 +220,27 @@ namespace presentacion
                     DataRow row = dt.Rows[0];
                     lblfecha.Visible = true;
                     lblfecha.Text = "Reporte Realizado el dia " + row["fecha_reporte"].ToString();
-                    txtobservaciones_auto.Text = row["observaciones_completa"].ToString();
+                    txtobservaciones_auto.Text = row["usuario"].ToString().Trim()+": "+ row["observaciones_completa"].ToString();
+                    txtcomentarios.Text = row["usuario_vobo"].ToString().Trim() + ": " + row["observaciones_vobo"].ToString().Replace("Sin Visto Bueno:", "");
+                    txtcomentarios.Text = txtcomentarios.Text.Replace("Sin Visto Bueno: ","");
                     FILTRO.Visible = false;
-                    txtobservaciones_auto.Enabled = false;
+                    txtobservaciones_auto.Visible = true;
                     lnkbuscarpuestos.Visible = false;
                     txtpuesto_filtro.Visible = false;
                     ddltiporeporte.SelectedValue = row["IDC_TIPOREP"].ToString();
                     ddltiporeporte.Enabled = false;
+                    txtobservaciones_auto.ReadOnly = true;
+                    if (Request.QueryString["view"] != null)
+                    {
+                        lnlvalido.CssClass = row["estado"].ToString().Trim() == "T" ? "btn btn-success btn-block" : "btn btn-default btn-block";
+                    }
+                    int idc_original = Convert.ToInt32(row["idc_empleadorep_orig"]);
+                    if (idc_original > 0)
+                    {
+                        lnkoriginal.Visible = true;
+                        lblreportereasignado.Visible = true;
+                        txtidoriginal.Text = idc_original.ToString().Trim();
+                    }//es reasignada
                 }
                 else
                 {
@@ -188,24 +263,38 @@ namespace presentacion
                 DataSet ds = new DataSet();
                 string vmensaje = "";
                 string caso = (string)Session["Caso_Confirmacion"];
+                string url = Session["backurl"] != null ? Session["backurl"] as string : "menu.aspx";
                 switch (caso)
                 {
                     case "Guardar":
 
                         entiddad.Pidc_empleado = Convert.ToInt32(Session["idc_empleado"]);
                         entiddad.Pidc_tiporep = Convert.ToInt32(ddltiporeporte.SelectedValue);
-                        entiddad.PObservaciones = txtcomentarios.Text.ToUpper();
+                        entiddad.PObservaciones = txtobservaciones_auto.Text.ToUpper();
                         entiddad.Pcadena = CadenaArchivos();
                         entiddad.Ptotal_cadena = TotalCadenaArchivos();
                         entiddad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
                         entiddad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
                         entiddad.Pusuariopc = funciones.GetUserName();//usuario pc
                         entiddad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                        int idc_empleado = Convert.ToInt32(Session["sidc_empleado"]);
+                        if (idc_empleado == 0)//quiere decir que es un usuario sin empleado
+                        {
+                            if (txtidc_empleado.Text  == "")//quiere decir que es un usuario sin empleado
+                            {
+                                Alert.ShowAlertError("Para Guardar el reporte, Debe seleccionar quien es usted",this);
+                                return;
+                            }
+                            else {
+                                idc_empleado = Convert.ToInt32(txtidc_empleado.Text.Trim());
+                            }
+                        }
+                        entiddad.Pidc_empleadoalta = idc_empleado;
                         ds = componente.AgregarReporte(entiddad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
-                            Alert.ShowGiftMessage("Estamos Guardando el Reporte.", "Espere un Momento", "menu.aspx", "imagenes/loading.gif", "2000", "El Reporte fue Guardado correctamente ", this);
+                            Alert.ShowGiftMessage("Estamos Guardando el Reporte.", "Espere un Momento", url, "imagenes/loading.gif", "2000", "El Reporte fue Guardado correctamente ", this);
                         }
                         else
                         {
@@ -214,10 +303,12 @@ namespace presentacion
                         break;
 
                     case "Cancelar":
-                        Response.Redirect("menu.aspx");
+                       
+                        Response.Redirect(url);
                         break;
 
                     case "Revizar":
+                        entiddad.PCERRADO = lnlvalido.CssClass == "btn btn-success btn-block" ? "T" : "R";
                         entiddad.Pidc_empleado = Convert.ToInt32(Session["sidc_empleado"]);
                         entiddad.Pidc_empleadorep = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleadorep"]));
                         entiddad.PObservaciones = txtcomentarios.Text.ToUpper();
@@ -229,7 +320,31 @@ namespace presentacion
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
-                            Alert.ShowGiftMessage("Estamos Autorizando el Reporte.", "Espere un Momento", "menu.aspx", "imagenes/loading.gif", "2000", "El Reporte fue Revisado correctamente ", this);
+                            Alert.ShowGiftMessage("Estamos Autorizando el Reporte.", "Espere un Momento", url, "imagenes/loading.gif", "2000", "El Reporte fue Revisado correctamente ", this);
+                        }
+                        else
+                        {
+                            Alert.ShowAlertError(vmensaje, this);
+                        }
+                        break;
+                    case "Terminar":
+                        int idc_empleado_nuevo = Convert.ToInt32(ddlPuestoAsigna.SelectedValue);
+                        string masstring = idc_empleado_nuevo > 0 ? " y Reasignando" : "";
+                        entiddad.PCERRADO = lnlvalido.CssClass == "btn btn-success btn-block" ? "T" : "R";
+                        entiddad.preasigna = idc_empleado_nuevo > 0 ? true : false;
+                        entiddad.Pidc_empleado = idc_empleado_nuevo > 0 ? idc_empleado_nuevo: Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"])); 
+                        entiddad.Pidc_empleadorep = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleadorep"]));
+                        entiddad.Pidc_empleadoalta = Convert.ToInt32(Session["sidc_empleado"]);
+                        entiddad.PObservaciones = txtcomentarios.Text.ToUpper();
+                        entiddad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
+                        entiddad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
+                        entiddad.Pusuariopc = funciones.GetUserName();//usuario pc
+                        entiddad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                        ds = componente.TerminarReporte(entiddad);
+                        vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                        if (vmensaje == "")
+                        {
+                            Alert.ShowGiftMessage("Estamos Terminando "+ masstring + " el Reporte.", "Espere un Momento", url, "imagenes/loading.gif", "2000", "El Reporte fue Terminado "+ masstring + " correctamente ", this);
                         }
                         else
                         {
@@ -248,7 +363,8 @@ namespace presentacion
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             int idc_tiporev = Convert.ToInt32(ddltiporeporte.SelectedValue);
-            int idc_empleado = Convert.ToInt32(ddltiporeporte.SelectedValue);
+            int idc_empleado = Session["idc_empleado"] == null ? 0: Convert.ToInt32(Session["idc_empleado"]);
+          
             if (idc_tiporev == 0)
             {
                 Alert.ShowAlertError("Seleccione un Tipo de Reporte", this);
@@ -267,7 +383,15 @@ namespace presentacion
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Session["Caso_Confirmacion"] = "Cancelar";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Cancelar este Reporte?','modal fade modal-danger');", true);
+            if (Request.QueryString["view"] != null)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Cerrar este Reporte?','modal fade modal-danger');", true);
+
+            }
+            else {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Cancelar este Reporte?','modal fade modal-danger');", true);
+
+            }
         }
 
         protected void lnkGuardarPape_Click(object sender, EventArgs e)
@@ -439,10 +563,13 @@ namespace presentacion
             int idc_puesto = Convert.ToInt32(ddlPuestoAsigna.SelectedValue);
             if (idc_puesto == 0)
             {
-                Alert.ShowAlertError("Seleccione un Puesto Valido, o intente buscando uno.", this);
+                Alert.ShowAlertError("Seleccione un Puesto con Empleado Activo, o intente buscando uno.", this);
             }
             else
             {
+                if (Request.QueryString["termina"] != null) {
+                    Alert.ShowAlertInfo("SI SELECCIONA UN EMPLEADO, EL REPORTE SERA REASIGNADO.","Mensaje del Sistema", this);
+                }
                 CargarGridPrincipal(idc_puesto);
             }
         }
@@ -456,6 +583,170 @@ namespace presentacion
         {
             Session["Caso_Confirmacion"] = "Revizar";
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea dar el Visto Bueno a este Reporte?','modal fade modal-info');", true);
+        }
+
+        void BuscarEmpleadoYo(string value)
+        {
+            try
+            {
+                TareasCOM componenete = new TareasCOM();
+                DataSet ds = componenete.sp_combo_empleados_nomina();
+                DataTable dt = ds.Tables[0];
+                ddlseleccionar.DataTextField = "nombre";
+                ddlseleccionar.DataValueField = "idc_empleado";
+                if (dt.Rows.Count > 0)
+                {
+                    DataView view = dt.DefaultView;
+                    if (funciones.isNumeric(value.Trim()))
+                    {
+                        view.RowFilter = "nombre like '%" + value + "%' or num_nomina = " + value.Trim() + "";
+
+                    }
+                    else {
+
+
+                        view.RowFilter = "nombre like '%" + value + "%'";
+                    }
+                    if (view.ToTable().Rows.Count > 0)
+                    {
+                        ddlseleccionar.DataSource = view.ToTable();
+                        ddlseleccionar.DataBind();
+                    }
+                    else {
+                        txtbuscar.Text = "";
+                        Alert.ShowAlertInfo("La Busqueda no Encontro Resultados. Intentelo Nuevamente","Mensaje del Sistema", this);
+                    }
+                }
+                ViewState["dt_yo"] = dt;
+                ddlseleccionar.Items.Insert(0,new ListItem("--Seleccione un Empleado", "0"));
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+
+        protected void txtbuscar_TextChanged(object sender, EventArgs e)
+        {
+            BuscarEmpleadoYo(txtbuscar.Text);
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            BuscarEmpleadoYo(txtbuscar.Text);
+        }
+
+        protected void ddlseleccionar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idc = Convert.ToInt32(ddlseleccionar.SelectedValue);
+            if (idc > 0)
+            {
+                DataTable dt = ViewState["dt_yo"] as DataTable;
+                DataView view = dt.DefaultView;
+                view.RowFilter = "idc_empleado = " + idc + "";
+                if (view.ToTable().Rows.Count > 0)
+                {
+                    txtidc_empleado.Text = idc.ToString().Trim();
+                    lblnombremepleadoalta.Text = view.ToTable().Rows[0]["nombre"].ToString();
+                    lblnomina.Text = view.ToTable().Rows[0]["num_nomina"].ToString();
+                    div_busqueda.Visible = false;
+                    string rutaimagen = funciones.GenerarRuta("fot_emp", "rw_carpeta");
+                    var domn = Request.Url.Host;
+                    if (domn == "localhost")
+                    {
+                        var url = "imagenes/btn/default_employed.png";
+                        imgempleadoalta.ImageUrl = url;
+                    }
+                    else
+                    {
+                        var url = "http://" + domn + rutaimagen + idc.ToString() + ".jpg";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "img", "getImage('" + url + "');", true);
+                        imgempleadoalta.ImageUrl = url;
+                    }
+                }
+                else
+                {
+                    txtbuscar.Text = "";
+                    Alert.ShowAlertInfo("La Busqueda no Encontro Resultados. Intentelo Nuevamente", "Mensaje del Sistema", this);
+                }
+            }
+            else {
+
+                Alert.ShowAlertError("Seleccione un Empleado",this);
+            }
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            imgempleadoalta.ImageUrl = "";
+            lblnomina.Text = "";
+            txtidc_empleado.Text = "";
+            div_busqueda.Visible = true;
+            txtbuscar.Text = "";
+            txtbuscar.Focus();
+        }
+
+        protected void btnterminar_Click(object sender, EventArgs e)
+        {
+            int idc_tiporev = Convert.ToInt32(ddltiporeporte.SelectedValue);
+            int idc_empleado = Convert.ToInt32(ddlPuestoAsigna.SelectedValue);
+            int idc_emplado = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"]));
+            if (idc_empleado > 0 && idc_tiporev == 0)
+            {
+                Alert.ShowAlertError("Si desea reasignar el Reporte, seleccione un Tipo de Reporte", this);
+            }
+            else if (idc_emplado == idc_empleado)
+            {
+                Alert.ShowAlertError("No puede reasignar el reporte al mismo empleado. ("+ddlPuestoAsigna.SelectedItem.ToString()+")", this);
+            }
+            else
+            {
+                Session["Caso_Confirmacion"] = "Terminar";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Terminar este Reporte?','modal fade modal-info');", true);
+            }
+        }
+
+        protected void lnlvalido_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["view"] == null)
+            {
+                lnlvalido.CssClass = lnlvalido.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
+                if (Request.QueryString["termina"] != null && lnlvalido.CssClass == "btn btn-default btn-block")
+                {
+
+
+                    Alert.ShowAlertInfo("Puede Reasignar el Reporte", "Mensaje del Sistema", this);
+                }
+                if (Request.QueryString["termina"] != null)
+                {
+                    FILTRO.Visible = lnlvalido.CssClass == "btn btn-default btn-block" ? true : false;
+                }
+            }
+           
+          
+           
+        }
+
+        protected void lnkoriginal_Click(object sender, EventArgs e)
+        {
+            if (txtidoriginal.Text != "")
+            {
+                ReportesCOM componente = new ReportesCOM();
+                ReportesENT wntida = new ReportesENT();
+                DataSet ds = componente.CargaJefe(wntida);
+                DataTable dt = ds.Tables[0];
+                DataView dv = dt.DefaultView;
+                dv.RowFilter = "idc_empleadorep = "+ txtidoriginal.Text.Trim() + "";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    string idc2 = dv.ToTable().Rows[0]["idc_empleado"].ToString().Trim();
+                    string url = "empleados_reportes.aspx?WINOPENER=JSJQSBJQBSJQBSJQBSQ&view=KASKJOKXXBKQMBXOQKBXOQBXQJBXQJBJBKJ&termina=KJBKJBWQOWJBOQKBWDOQBOWKOKQNKOOKBAOBQDOKQND&idc_empleadorep=" +
+                        funciones.deTextoa64(txtidoriginal.Text.Trim()) + "&idc_empleado=" + funciones.deTextoa64(idc2);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMewswswsssage", "window.open('" + url + "');", true);
+                }
+
+            }
         }
     }
 }

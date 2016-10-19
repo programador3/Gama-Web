@@ -34,14 +34,13 @@ namespace presentacion
                 AgentesCOM com = new AgentesCOM();
                 entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
                 DataSet ds = com.cargar_agentesusuarios(entidad);
-                ds.Tables[0].Columns.Add("nombre2");
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    row["nombre2"] = row["idc_agente"].ToString() + " .- " + row["nombre"].ToString();
+                    row["nombre3"] = row["idc_agente"].ToString() + " .- " + row["nombre"].ToString();
                 }
                 cboagente.DataSource = ds.Tables[0];
                 cboagente.DataValueField = "idc_agente";
-                cboagente.DataTextField = "nombre2";
+                cboagente.DataTextField = "nombre3";
                 cboagente.DataBind();
                 clientes.Visible = ds.Tables[0].Rows.Count > 1 ? true : false;
                 if (ds.Tables[0].Rows.Count == 1)

@@ -14,6 +14,8 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
+
+            Session["backurl"] = "empleados_reportes_pendientes.aspx";
             CargarPendientes();
         }
 

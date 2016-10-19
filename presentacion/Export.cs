@@ -228,13 +228,12 @@ namespace presentacion
                         document.Add(table);
                     }
                 }
-
                 document.Close();
                 //response para guardar
                 response.ContentType = "application/octet-stream";
                 response.AddHeader("Content-Disposition", "attachment; filename=" + NameDoc + ".pdf");
                 response.Clear();
-                response.BinaryWrite(mStream.ToArray());
+                response.BinaryWrite(mStream.ToArray()); 
                 // volcamos el stream
                 response.Flush();
                 response.End();

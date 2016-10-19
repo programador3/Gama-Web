@@ -125,10 +125,15 @@ namespace presentacion
                         Session["sidc_empleado"] = (ds.Tables[0].Rows[0]["idc_empleado"].ToString());
                         //creamos la sesion y lo redireccionamos al menu de opciones.
                         Session["sidc_usuario"] = idc_usuario;
+                        Session["idc_usuario"] = idc_usuario;
                         Session["login_idc_perfil"] = ds.Tables[0].Rows[0]["idc_puestoperfil"].ToString();
                         Session["login_perfil"] = ds.Tables[0].Rows[0]["perfil"].ToString();
                         Session["susuario"] = user;
                         Session["xusuario"] = user;
+                        Session["idc_sucursal"]= ds.Tables[0].Rows[0]["idc_sucursal"].ToString();
+                        Session["Xiva"] = ds.Tables[0].Rows[0]["IVA"];
+                        Session["Xidc_iva"] = ds.Tables[0].Rows[0]["IDC_iva"];
+                        Session["xidc_almacen"] = ds.Tables[0].Rows[0]["IDC_ALMACEN"];
                         ////idc_puesto
                         string idc_puesto = ds.Tables[0].Rows[0]["idc_puesto"].ToString();
                         Session.Add("sidc_puesto_login", idc_puesto);

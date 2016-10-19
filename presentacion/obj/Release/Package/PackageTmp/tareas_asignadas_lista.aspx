@@ -5,46 +5,10 @@
         <script type="text/javascript">
         function Press(id, url, estado, desc)
         {
-            $("#Listado").empty();
-            if (estado == "ACEPTADO" || estado == "SOLICITUD DE CAMBIO DE FECHA") {
-                var html_v = "";
-                html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
-                html_v = html_v + "<a class='btn btn-primary btn-block' href='" + url + "&command=T'>Terminar Tarea</a>";
-                $("#Listado").html(html_v);
-                $("#Listado").show();
-                ModalConfirm(desc);
-                return false;
-            }
-            else if (estado == "TAREA ASIGNADA SIN RESPUESTA") {
-                var html_v = "";
-                html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
-                html_v = html_v + "<a class='btn btn-primary btn-block' href='" + url + "&command=F'>Aceptar Tarea</a>";
-                html_v = html_v + "<a class='btn btn-info btn-block' href='" + url + "&command=F'>Cambiar Fecha Compromiso</a>";
-                $("#Listado").html(html_v);
-                $("#Listado").show();
-                ModalConfirm(desc);
-                return false;
-            } else {
-                return true;
-            }
+            return true;
         }
         function PressRev(id, url, estado, desc) {
-            $("#Listado").empty();
-            var html_v = "";
-            html_v = html_v + "<h5 style='text-align:center;'><strong>Movimientos Rapidos <i class='fa fa-bolt' aria-hidden='true'></i></strong></h5>";
-            html_v = html_v + "<a class='btn btn-danger btn-block' href='" + url + "&command=C'>Cancelar Tarea</a>";            
-            if (estado == "TERMINADA EN ESPERA DE VISTO BUENO")
-            {
-                html_v = html_v + "<a class='btn btn-success btn-block fresh-color' href='" + url + "&command=B'>Visto Bueno Tarea</a>";
-            }
-            if (estado == "SOLICITUD DE CAMBIO DE FECHA") {
-                html_v = html_v + "<a class='btn btn-primary btn-block fresh-color' href='" + url + "&command=AF'>AcePtar Nueva Fecha Compromiso</a>";
-            }
-            $("#Listado").html(html_v);
-            $("#Listado").show();
-            var var2 = desc.replace("\n", " ");
-            ModalConfirm(desc);
-            return false;
+            return true;
         }
         $(document).ready(function(){
             $("#Listado").empty();

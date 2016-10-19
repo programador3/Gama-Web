@@ -2,6 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
+        function Gift(mensaje) {
+            swal({ title: 'Espere un Momento...', text: mensaje, allowEscapeKey: false, imageUrl: 'imagenes/loading.gif', timer: '800', showConfirmButton: false });
+        }
         function getImage(path) {
             $("#myImage").attr("src", path);
             //alert(path);
@@ -50,9 +53,14 @@
                 <ContentTemplate>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4><i class="fa fa-list-alt"></i>&nbsp;Descripción de la tarea</h4>
-                            <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 1000);" placeholder="Descripcion" CssClass="form-control" 
-                                TextMode="MultiLine" Rows="5" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
+                            <h3 id="titleserv" runat="server" visible="false" style="color: orangered;"><strong>La Tarea fue solicitada a partir de un servicio con un tiempo de respuesta predefinido de 
+                                <asp:Label Style="color: navy;" ID="lblhoras_tarea_serv" runat="server" Text="0"></asp:Label>
+                                hora(s).
+                            </strong></h3>
+                            <h4><i class="fa fa-list-alt"></i>&nbsp;Descripción de la tarea
+                            </h4>
+                            <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 1000);" placeholder="Descripcion" CssClass="form-control"
+                                TextMode="MultiLine" Rows="5" runat="server" Style="resize: none; text-transform: uppercase; font-size: 12px;"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -67,28 +75,41 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <label>Selecciona un Empleado <small>Si solo es un Empleado, NO ES NECESARIO que se agrege a la tabla.</small></label>
                             <asp:DropDownList ID="ddlPuesto" OnSelectedIndexChanged="ddlPuesto_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
                             </asp:DropDownList>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-8 col-xs-8">
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                             <label>Escriba un Filtro</label>
-                            <asp:TextBox ID="txtpuesto_filtro" runat="server" TextMode="SingleLine" CssClass="form-control" AutoPostBack="true" OnTextChanged="lnkbuscarpuestos_Click" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
+                            <asp:TextBox  style="font-size:12px;" ID="txtpuesto_filtro" runat="server" TextMode="SingleLine" CssClass="form-control" 
+                                AutoPostBack="true" OnTextChanged="lnkbuscarpuestos_Click" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
-                            <label></label>
-                            <asp:LinkButton ID="lnkbuscarpuestos" runat="server" CssClass="btn btn-success btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <label style="width:100%"></label>
+                            <asp:LinkButton ID="lnkbuscarpuestos" runat="server" CssClass="btn btn-success" Width="49%" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkadd" runat="server" CssClass="btn btn-info" OnClick="lnkadd_Click" Width="49%">Agregar <i class="fa fa-plus-circle" aria-hidden="true"></i></asp:LinkButton>
+                    
                         </div>
-                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                            <label></label>
-                            <asp:LinkButton ID="lnkadd" runat="server" CssClass="btn btn-info btn-block" OnClick="lnkadd_Click">Agregar <i class="fa fa-plus-circle" aria-hidden="true"></i></asp:LinkButton>
+                    </div>
+                    <div class="row" id="tareaservicios" runat="server" visible="false">
+                        <div class=" col-lg-12">
+                            <h4 style="color:orangered;text-align:center;"><strong>El Empleado Cuenta con la siguiente lista de Servicios Disponibles</strong></h4>
+                            <asp:DropDownList style="font-size:12px;" Width="86%" ID="ddlservicios" runat="server" CssClass="form-control2" AutoPostBack="true" OnSelectedIndexChanged="ddlservicios_SelectedIndexChanged">
+                            </asp:DropDownList>
+                            <asp:LinkButton ID="LinkButton1"  runat="server" CssClass="btn btn-success" Width="38px" OnClick="LinkButton1_Click" >
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+
+                            </asp:LinkButton>
+                       
+                                <br />
+                                <asp:Label ID="lblobservacionesser" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-xs-12">
-                            <div class="table table-responsive">
-                                <asp:GridView ID="grid_puestpos" DataKeyNames="idc_puesto" CssClass="table table-responsive table-bordered table-hover" OnRowCommand="grid_puestpos_RowCommand" runat="server" AutoGenerateColumns="False">
+                            <div class="table table-responsive"  style="text-align:center;">
+                                <asp:GridView style="text-align:center;" ID="grid_puestpos" DataKeyNames="idc_puesto" CssClass="table table-responsive table-bordered table-hover" OnRowCommand="grid_puestpos_RowCommand" runat="server" AutoGenerateColumns="False">
                                     <Columns>
                                         <asp:CommandField ButtonType="Image" EditText="" HeaderText="Eliminar" SelectImageUrl="~/imagenes/btn/icon_delete.png" SelectText="" ShowSelectButton="True">
                                             <HeaderStyle HorizontalAlign="Center" Width="40px" />
@@ -112,10 +133,10 @@
                                         </Triggers>
                                         <ContentTemplate>
                                             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                                <asp:LinkButton ID="lnkmistarea" CssClass='<%#Eval("cssclass") %>' runat="server" CommandName='<%#Eval("idc_tarea") %>' OnClick="lnkmistarea_Click1" ToolTip='<%#Eval("desc_completa") %>'>
-                                             <h5> <%#Eval("descripcion") %> </h5>
-                                    <h5>Fecha Compromiso: <%#Eval("fecha_compromiso") %> </h5>
-                                     <h5>Avance: <%#Eval("avance") %> %</h5>
+                                                <asp:LinkButton Style="font-size: 11px;" ID="lnkmistarea" CssClass='<%#Eval("cssclass") %>' runat="server" CommandName='<%#Eval("idc_tarea") %>' OnClick="lnkmistarea_Click1" ToolTip='<%#Eval("desc_completa") %>'>
+                                                     <h5 style="font-size:11px;"> <%#Eval("descripcion") %> </h5>
+                                                     <h5 style="font-size:11px;">Fecha Compromiso: <%#Eval("fecha_compromiso") %> </h5>
+                                                     <h5 style="font-size:11px;">Avance: <%#Eval("avance") %> %</h5>
                                                 </asp:LinkButton>
                                             </div>
                                         </ContentTemplate>
@@ -124,6 +145,7 @@
                             </asp:Repeater>
                         </div>
                     </div>
+                    <asp:TextBox ID="txtidc_tareaser" Visible="false" runat="server"></asp:TextBox>
                 </ContentTemplate>
             </asp:UpdatePanel>
             <br />

@@ -34,7 +34,26 @@ namespace negocio.Componentes
             }
             return ds;
         }
-
+        public DataSet CargaPuestosREPORTE(PuestosServiciosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_Puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_pre_empleado });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Int, Value = "R" });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_reves", SqlDbType = SqlDbType.Int, Value = Entidad.PReves });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_filtro_puestos_servicios", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet cARGARAHORROINFO(PuestosServiciosENT Entidad)
         {
             DataSet ds = new DataSet();
@@ -125,6 +144,8 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@ptotalcadena", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptotal_cadena });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptodos", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptodos });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_reves", SqlDbType = SqlDbType.Int, Value = Etiqueta.PReves });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadenaser", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pcadenaser });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotcadenaser", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptotal_cadenaser });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

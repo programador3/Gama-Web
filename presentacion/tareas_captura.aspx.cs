@@ -19,6 +19,7 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
+                ViewState["tabla_servicios"] = null;
                 CargaPuestos("");
                 //iniciamos tabla en session
                 DataTable papeleria = new DataTable();
@@ -38,6 +39,80 @@ namespace presentacion
             }
         }
 
+        public void TareasServicios(int idc_puesto)
+        {
+            try
+            {
+                TareasCOM componente = new TareasCOM();
+                DataSet ds = componente.sp_tareas_servicios_puestos(idc_puesto);
+                DataTable dt = ds.Tables[0];
+                if (dt.Rows.Count > 0)
+                {
+                    ViewState["tabla_servicios"] = dt;
+                    tareaservicios.Visible = true;
+                    ddlservicios.DataTextField = "desc_corta";
+                    ddlservicios.DataValueField = "idc_tareaser";
+                    ddlservicios.DataSource = dt;
+                    ddlservicios.DataBind();
+                    ddlservicios.Items.Insert(0, new ListItem("--Ningun Servicio", "0"));
+                    ddlservicios.SelectedIndex = 1;
+                    TareasServiciosDetalles(Convert.ToInt32(dt.Rows[0]["idc_tareaser"]));
+                }
+                else
+                {
+                    ViewState["tabla_servicios"] = null;
+                    ddlservicios.Items.Clear();
+                    tareaservicios.Visible = false;
+                    txtdescripcion.ReadOnly = false;
+                    txtfecha_solicompromiso.ReadOnly = false;
+                    txtfecha_solicompromiso.Text = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+        public void TareasServiciosDetalles(int idc_tareaser)
+        {
+            try
+            {
+                DataTable dt = ViewState["tabla_servicios"] as DataTable;
+                DataView view = dt.DefaultView;
+                view.RowFilter = "idc_tareaser = "+idc_tareaser+"";
+                DataTable dt2 = view.ToTable();
+                if (dt2.Rows.Count > 0)
+                {
+                    DataRow row = dt2.Rows[0];
+                    titleserv.Visible = true;
+                    lblhoras_tarea_serv.Text= row["intervalo_tiempo"].ToString();
+                    lblobservacionesser.Text = row["observaciones"].ToString();
+                    txtdescripcion.Text = row["descripcion"].ToString();
+                    txtfecha_solicompromiso.Text = Convert.ToDateTime(row["fecha_compromiso"]).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                    bool editable = Convert.ToBoolean(row["editable"]);
+                    txtdescripcion.ReadOnly = editable == true ? false : true;
+                    txtfecha_solicompromiso.ReadOnly = editable == true ? false : true;
+                    txtidc_tareaser.Text = idc_tareaser.ToString().Trim();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "DededededE", "Gift('Estamos Cargando la Tarea');", true);
+                }
+                else
+                {
+                    titleserv.Visible = false;
+                    txtidc_tareaser.Text = "";
+
+                    lblhoras_tarea_serv.Text = "";
+                    lblobservacionesser.Text = "";
+                    ddlservicios.Items.Clear();
+                    tareaservicios.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
         /// <summary>
         /// Carga Puestos en ComboBox con Filtro
         /// </summary>
@@ -63,6 +138,7 @@ namespace presentacion
                 if (idc_puesto > 0)
                 {
                     CargarTareas(idc_puesto);
+                    TareasServicios(idc_puesto);
                 }
             }
             catch (Exception ex)
@@ -358,6 +434,10 @@ namespace presentacion
                         entidad.Pfecha = (Convert.ToDateTime(txtfecha_solicompromiso.Text).AddMilliseconds(-msec)).AddSeconds(-second);
                         entidad.Ptotal_cadena_arch = TotalCadenaArchivos();
                         entidad.Pcadena_arch = CadenaArchivos();
+                        if (txtidc_tareaser.Text != "")
+                        {
+                            entidad.Pidc_tareaser = Convert.ToInt32(txtidc_tareaser.Text.Trim());
+                        }
                         if (Request.QueryString["idc_tarea"] != null)
                         {
                             entidad.Pidc_tarea = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tarea"]));
@@ -417,6 +497,7 @@ namespace presentacion
             else
             {
                 CargarTareas(idc_puesto);
+                TareasServicios(idc_puesto);
             }
         }
 
@@ -504,6 +585,39 @@ namespace presentacion
         {
             DataTable dt = (DataTable)Session["puestos_tareas"];
             return dt.Rows.Count;
+        }
+
+        protected void ddlservicios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idc_tareaser = Convert.ToInt32(ddlservicios.SelectedValue);
+            if (idc_tareaser == 0)
+            {
+                ViewState["tabla_servicios"] = null;
+                ddlservicios.Items.Clear();
+                titleserv.Visible = false;
+                tareaservicios.Visible = false;
+                txtdescripcion.ReadOnly = false;
+                txtfecha_solicompromiso.ReadOnly = false;
+                lblhoras_tarea_serv.Text = "";
+                lblobservacionesser.Text = "";
+                txtfecha_solicompromiso.Text = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+            }
+            else
+            {
+                TareasServiciosDetalles(idc_tareaser);
+            }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            int idc_tareaser = Convert.ToInt32(ddlservicios.SelectedValue);
+            if (idc_tareaser > 0)
+            {
+                string url = "tareas_servicios_captura.aspx?view=HEHEHASISEVE&solo_lista=KNWODBWODBWOEBDOWDOWKDBOWEKDBEWBDOWEPOP&idc_tareaser=" + funciones.deTextoa64(idc_tareaser.ToString());
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMesededsage", "window.open('" + url + "');", true);
+            }
+            
+     
         }
     }
 }

@@ -1010,7 +1010,7 @@ namespace presentacion
                     REV.Enabled = false;
                     imgdeletefoto.Visible = true;
                     btnVer.Visible = true;
-                    imgpreempleado.ImageUrl = "/temp/pre_alta/personal/" + fupFotoPerfil.FileName;
+                    imgpreempleado.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "temp/pre_alta/personal/" + fupFotoPerfil.FileName;
                 }
             }
         }

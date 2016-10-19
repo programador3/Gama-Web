@@ -14,7 +14,7 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
-            //listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_empleados });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_empleado });
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -60,6 +60,35 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pdirecip });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleadomio", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pidc_empleadoalta });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_areportes_empleados", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet TerminarReporte(ReportesENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleadorep", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_empleadorep });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_empleado });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tiporep", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_tiporep });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.Int, Value = Entidad.PObservaciones });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pdirecip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnombrepc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleadomio", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pidc_empleadoalta });
+            listparameters.Add(new SqlParameter() { ParameterName = "@preasigna", SqlDbType = SqlDbType.VarChar, Value = Entidad.preasigna });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTIPOTERMINA", SqlDbType = SqlDbType.VarChar, Value = "T" });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcerrado", SqlDbType = SqlDbType.Char, Value =Entidad.PCERRADO });
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -84,6 +113,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pdirecip });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcerrado", SqlDbType = SqlDbType.Char, Value = Entidad.PCERRADO });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

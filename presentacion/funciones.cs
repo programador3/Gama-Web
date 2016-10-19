@@ -18,6 +18,41 @@ namespace presentacion
     public class funciones
     {
         public static DBConnection conexion = new DBConnection();
+        /// <summary>
+        /// Regresa el filtro de una tabla
+        /// </summary>
+        /// <param name="idc_pregunta"></param>
+        public static DataTable FiltrarDataTable(DataTable dt, string query)
+        {
+            DataView dv = dt.DefaultView;
+            dv.RowFilter = query;
+            return dv.ToTable();
+        }
+
+        /// <summary>
+        /// Traduce una fecha al español (BETHA)
+        /// </summary>
+        /// <returns></returns>
+        public static string TradFecha(string fecha)
+        {
+            string val = "";
+            val = fecha.Replace("January", "Enero");
+            val = fecha.Replace("February", "Fecbrero");
+            val = fecha.Replace("March ", "Marzo");
+            val = fecha.Replace("April", "Abril");
+            val = fecha.Replace("May", "Mayp");
+            val = fecha.Replace("June", "Junio");
+            val = fecha.Replace("July", "Julio");
+            val = fecha.Replace("August", "Agosto");
+            val = fecha.Replace("September", "Septiembre");
+            val = fecha.Replace("October", "Octubre");
+            val = fecha.Replace("November", "Noviembre");
+            val = fecha.Replace("December", "Diciembre");
+            val = fecha.Replace(",", "");
+            val = fecha.Replace(".", "");
+            return val;
+        }
+
         public static string Redondeo_Dos_Decimales(decimal valor)
         {
             try
@@ -29,6 +64,12 @@ namespace presentacion
             {
                 throw ex;
             }
+        }
+
+        public static bool isNumeric(string s)
+        {
+            decimal i = 0;
+            return decimal.TryParse(s, out i);
         }
         public static string ContenidoArchivo(string ruta)
         {
@@ -48,23 +89,7 @@ namespace presentacion
                 return "";
             }
         }
-        public static DataTable ExecQuery(string query)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                query = query.Replace("\t", " ");
-                dt = funciones.conexion.Datos(query);
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                funciones.EnviarError(ex.ToString());
-                string t = ex.ToString();
-                return dt;
-            }
-        }
-
+        
         public static string cuentas_correo(string query)
         {
             DataTable dt = new DataTable();
@@ -83,6 +108,26 @@ namespace presentacion
             catch
             {
                 return "";
+            }
+        }
+        public static DataTable ExecQuery(string query)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                query = query.Replace("\t", " ");
+                AgentesENT enti = new AgentesENT();
+                enti.Pcadenaarti = query;
+                AgentesCOM com = new AgentesCOM();
+                DataSet ds = com.sp_exec_query_web(enti);
+                dt = ds.Tables[0];
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                funciones.EnviarError(ex.ToString());
+                string t = ex.ToString();
+                return dt;
             }
         }
 

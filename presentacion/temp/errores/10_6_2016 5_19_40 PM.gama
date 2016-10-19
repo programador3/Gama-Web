@@ -1,0 +1,8 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'procentaje' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at presentacion.cotizaciones_correo.prep_cargar_grid_prod_master_cliente(Int32 idc_cliente) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\06_10_16\Puestos\presentacion\cotizaciones_correo.aspx.cs:line 380

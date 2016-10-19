@@ -51,12 +51,7 @@
                    location.href = URL;
                });
         }
-        $(document).ready(function () {
-            $(".gvv").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
-                "lengthMenu": [[15, 25, -1], [15, 25, "Todos"]] //value:item pair
-            });
-        });
-
+     
         function ReturnValue() {
             var txt;
             var r = confirm("Se Validara el Conteo. Desea Continuar?");
@@ -109,18 +104,19 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="table table-responsive" style="font-size:11px;">
-                <asp:GridView ID="gridprocesos" CssClass="gvv table table-responsive table-bordered" runat="server" DataKeyNames="idc_artimod,estado,conteo_total,idc_articulo,idc_artimodprog " OnRowDataBound="gridprocesos_RowDataBound" AutoGenerateColumns="false" OnRowCommand="gridprocesos_RowCommand">
-                    <Columns>
+                <asp:GridView ID="gridprocesos" CssClass="table table-responsive table-bordered" runat="server" DataKeyNames="idc_artimod,estado,conteo_total,idc_articulo,idc_artimodprog " OnRowDataBound="gridprocesos_RowDataBound" AutoGenerateColumns="false" OnRowCommand="gridprocesos_RowCommand">
+                   <HeaderStyle ForeColor="White" BackColor="Gray" />
+                     <Columns>
                         <asp:BoundField DataField="idc_artimod" HeaderStyle-Width="30px" HeaderText="Codigo" Visible="false"></asp:BoundField>
                         <asp:BoundField DataField="idc_articulo" HeaderStyle-Width="30px" HeaderText="Codigo" Visible="false"></asp:BoundField>
                         <asp:BoundField DataField="idc_artimodprog " HeaderStyle-Width="30px" HeaderText="Codigo" Visible="false"></asp:BoundField>
                         <asp:BoundField DataField="codigo" HeaderStyle-Width="70px" HeaderText="Codigo" Visible="true"></asp:BoundField>
                         <asp:BoundField DataField="desart" HeaderText="Descripcion" Visible="true"></asp:BoundField>
                         <asp:BoundField DataField="um" HeaderText="UM" Visible="true" HeaderStyle-Width="20px"></asp:BoundField>
-                        <asp:TemplateField HeaderText="Conteo" HeaderStyle-Width="150px">
+                        <asp:TemplateField HeaderText="Conteo" HeaderStyle-Width="170px">
                             <ItemTemplate>
-                                <asp:TextBox Width="70%"  ReadOnly="false" ID="txtconteo" TextMode="Number" CssClass="form-control2" runat="server"></asp:TextBox>
-                                <asp:LinkButton ID="lnkir" Width="28%" CssClass="btn btn-primary" OnClientClick="return ReturnValue();" OnClick="txtconteo_TextChanged" runat="server"><i class="fa fa-check-circle" aria-hidden="true"></i></asp:LinkButton>
+                                <asp:TextBox Width="100px"  ReadOnly="false" ID="txtconteo" TextMode="Number" CssClass="form-control2" runat="server"></asp:TextBox>
+                                <asp:LinkButton ID="lnkir" Width="35px" CssClass="btn btn-primary" OnClientClick="return ReturnValue();" OnClick="txtconteo_TextChanged" runat="server"><i class="fa fa-check-circle" aria-hidden="true"></i></asp:LinkButton>
                                 <asp:RegularExpressionValidator ID="YourRegularExpressionValidator"
                                     ControlToValidate="txtconteo"
                                     runat="server"
@@ -130,9 +126,9 @@
                                 </asp:RegularExpressionValidator>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="conteo_total" HeaderText="Total Conteo" Visible="true" HeaderStyle-Width="30px"></asp:BoundField>
-                        <asp:BoundField DataField="estado" HeaderText="Estado" Visible="true" HeaderStyle-Width="50px"></asp:BoundField>
-                        <asp:BoundField DataField="decimales" HeaderText="Estado" Visible="false"></asp:BoundField>
+                        <asp:BoundField DataField="conteo_total" HeaderText="Total Conteo" Visible="true" HeaderStyle-Width="80px"></asp:BoundField>
+                        <asp:BoundField DataField="estado" HeaderText="Estado" Visible="true" HeaderStyle-Width="90px"></asp:BoundField>
+                        <asp:BoundField DataField="decimales" HeaderText="Estadddeo" Visible="false"></asp:BoundField>
                     </Columns>
                 </asp:GridView>
             </div>

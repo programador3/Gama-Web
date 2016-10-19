@@ -1,0 +1,7 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at presentacion.cotizaciones_correo.actualizar_precios(Int32 idc_cliente, Int32 idc_colonia)
+   at presentacion.cotizaciones_correo.lnkcaptura_Click(Object sender, EventArgs e)

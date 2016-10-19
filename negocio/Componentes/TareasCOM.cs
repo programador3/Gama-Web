@@ -9,6 +9,224 @@ namespace negocio.Componentes
 {
     public class TareasCOM
     {
+        
+            public DataSet sp_mtareas_servicios(int idc_tareaser,string descripcion, string observaciones, bool editable, int intervalo, string cadena, int total, int pidc_usuario, string ip, string nompc, string usuariopc)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdescripcion", SqlDbType = SqlDbType.Int, Value = descripcion });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pintervalo", SqlDbType = SqlDbType.Int, Value = intervalo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.Int, Value = observaciones });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PEDITABLE", SqlDbType = SqlDbType.Int, Value = editable });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTOTALCAD", SqlDbType = SqlDbType.Int, Value = total });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PCADENA", SqlDbType = SqlDbType.Int, Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.Int, Value = ip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.Int, Value = nompc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.Int, Value = usuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tareaser", SqlDbType = SqlDbType.Int, Value = idc_tareaser });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_mtareas_servicios", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+         public DataSet sp_combo_empleados_nomina()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_empleados_nomina", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_mreportes_tipos_empleados(int idc_tareaser, string descripcion,  bool editable,  string cadena, int total, int pidc_usuario, string ip, string nompc, string usuariopc)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdescripcion", SqlDbType = SqlDbType.Int, Value = descripcion });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptodo", SqlDbType = SqlDbType.Int, Value = editable });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTOTALCAD", SqlDbType = SqlDbType.Int, Value = total });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PCADENA", SqlDbType = SqlDbType.Int, Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.Int, Value = ip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.Int, Value = nompc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.Int, Value = usuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tiporep", SqlDbType = SqlDbType.Int, Value = idc_tareaser });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_mreportes_tipos_empleados", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_areportes_tipos_empleados(string descripcion, bool editable, string cadena, int total, int pidc_usuario, string ip, string nompc, string usuariopc)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdescripcion", SqlDbType = SqlDbType.Int, Value = descripcion });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptodo", SqlDbType = SqlDbType.Int, Value = editable });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTOTALCAD", SqlDbType = SqlDbType.Int, Value = total });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PCADENA", SqlDbType = SqlDbType.Int, Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.Int, Value = ip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.Int, Value = nompc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.Int, Value = usuariopc });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_areportes_tipos_empleados", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet sp_atareas_servicios(string descripcion, string observaciones, bool editable, int intervalo, string cadena, int total, int pidc_usuario, string ip, string nompc, string usuariopc)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdescripcion", SqlDbType = SqlDbType.Int, Value = descripcion });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pintervalo", SqlDbType = SqlDbType.Int, Value = intervalo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.Int, Value = observaciones });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PEDITABLE", SqlDbType = SqlDbType.Int, Value = editable });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTOTALCAD", SqlDbType = SqlDbType.Int, Value = total });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PCADENA", SqlDbType = SqlDbType.Int, Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.Int, Value = ip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.Int, Value = nompc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.Int, Value = usuariopc });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_atareas_servicios", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        
+              public DataSet sp_ereportes_empleados(int pidc_tiporep, int pidc_usuario, string ip, string nompc, string usuariopc)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@Ppidc_tiporep", SqlDbType = SqlDbType.Int, Value = pidc_tiporep });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.Int, Value = ip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.Int, Value = nompc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.Int, Value = usuariopc });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_ereportes_empleados", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_etareas_servicios(int IDC_TAREASER, int pidc_usuario, string ip, string nompc, string usuariopc)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_TAREASER", SqlDbType = SqlDbType.Int, Value = IDC_TAREASER });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.Int, Value = ip });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.Int, Value = nompc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.Int, Value = usuariopc });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_etareas_servicios", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_catalogo_reportes_empleados(int idc_tipo_rep)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tipo_rep", SqlDbType = SqlDbType.Int, Value = idc_tipo_rep });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_catalogo_reportes_empleados", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet sp_tareas_servicios_puestos(int idc_puesto)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = idc_puesto });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_tareas_servicios_puestos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+ 
+
+        public DataSet sp_tareas_servicios_puestos_SERVICO(int IDC_TAREASER)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_TAREASER", SqlDbType = SqlDbType.Int, Value = IDC_TAREASER });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_tareas_servicios_puestos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet CargarArbolTareas(TareasENT entidad)
         {
             DataSet ds = new DataSet();
@@ -138,6 +356,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet ReasignarTareaManual(TareasENT Etiqueta)
         {
             DataSet ds = new DataSet();
@@ -179,6 +398,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pfecha", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puestoasigna", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto_asigna });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tareaser", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_tareaser });
             if (Etiqueta.Pidc_tarea != 0)
             {
                 listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tarea", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_tarea });
