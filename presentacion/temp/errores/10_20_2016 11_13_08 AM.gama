@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): @ptotcadenaser no es un parámetro del procedimiento sp_apuestos_servicios.
+   at negocio.Componentes.PuestosServiciosCOM.AgregarPuesto(PuestosServiciosENT Etiqueta) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\19_10_16\Puestos\negocio\Componentes\PuestosServiciosCOM.cs:line 156
+   at presentacion.servicios_captura.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:3ec224c5-c1cf-4d65-a73d-31640cf00b44
+Error Number:8145,State:1,Class:16

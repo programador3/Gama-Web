@@ -30,7 +30,10 @@ namespace presentacion
                 DateTime end = Convert.ToDateTime(funciones.de64aTexto(Request.QueryString["fin"]));
                 int pidc_puesto = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_puesto"]));
                 int pidc_depto = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_depto"]));
+                H_casoFiltor.Value = Request.QueryString["casoFiltro"] == null ? "0":funciones.de64aTexto(Request.QueryString["casoFiltro"]);
+                H_casoFiltor.Value = H_casoFiltor.Value == "" ? "0" : H_casoFiltor.Value;
                 CargaTareas(start, end, pidc_puesto, 0, pidc_depto);
+
             }
         }
 
@@ -43,11 +46,14 @@ namespace presentacion
             {
                 TareasENT entidad = new TareasENT();
                 TareasCOM componente = new TareasCOM();
+                bool junta = Request.QueryString["junta"] != null;
+                entidad.Pcorrecto = junta;
                 entidad.Pfecha = start;
                 entidad.Pfecha_fin = end;
                 entidad.Pidc_puesto = pidc_puesto;
                 entidad.Pidc_tarea = pidc_tarea;
                 entidad.Pidc_depto = idc_depto;
+                entidad.PcasoFiltro = Convert.ToInt32(H_casoFiltor.Value);
                 entidad.Idc_usuario = Request.QueryString["ver_solo_asignadas"] != null ? 0 : Convert.ToInt32(Session["sidc_usuario"]);
                 entidad.Pidc_puesto_asigna = Convert.ToInt32(Session["sidc_puesto_login"]);
                 if (Request.QueryString["tipofiltro"] != null)
@@ -59,7 +65,17 @@ namespace presentacion
                     entidad.Ptipofs = Request.QueryString["tipofiltrosistema"];
                 }
                 DataSet ds = componente.TareasResultadoDetalles(entidad);
-                lblhead.Text = ds.Tables[0].Rows[0]["encabezado"].ToString();
+                if (junta)
+                {
+                    lblhead.Text = ds.Tables[0].Rows[0]["encabezado"].ToString() + System.Environment.NewLine + " TODOS LOS PENDIENTES "+
+                   " AL " + DateTime.Now.AddDays(7).ToString("dd MMMM, yyyy", CultureInfo.CreateSpecificCulture("es-MX")).ToUpper();
+                }
+                else {
+                    lblhead.Text = ds.Tables[0].Rows[0]["encabezado"].ToString() + System.Environment.NewLine + " DEL " + start.ToString("dd MMMM, yyyy", CultureInfo.CreateSpecificCulture("es-MX")).ToUpper() +
+                   " AL " + end.ToString("dd MMMM, yyyy", CultureInfo.CreateSpecificCulture("es-MX")).ToUpper();
+                }
+               
+
                 gridtareas.DataSource = ds.Tables[1];
                 gridtareas.DataBind();
                 DataTable dt = ds.Tables[1];
@@ -313,15 +329,20 @@ namespace presentacion
                 string estado = rowView["estado"].ToString();
                 string externostr = rowView["externo"].ToString();
                 string css_class_arbol = rowView["css_class_arbol"].ToString();
+                string fc = rowView["forecolor"].ToString();
+                string bc = rowView["backcolor"].ToString();
                 if (css_class_arbol == "")
                 {
                     e.Row.Cells[1].Controls.Clear();
                 }
+                e.Row.ForeColor = System.Drawing.Color.FromName(fc);
+                e.Row.BackColor = System.Drawing.Color.FromName(bc);
 
                 externo.ImageUrl = externostr;
                 usuario.ImageUrl = usuario_value;
                 sistema.ImageUrl = sistema_value;
                 edo.ImageUrl = estado.TrimEnd();
+                externo.Visible = externostr == "" ? false : true;
                 e.Row.Cells[10].CssClass = rowView["css_class"].ToString();
             }
         }

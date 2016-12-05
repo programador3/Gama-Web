@@ -6,6 +6,7 @@ namespace negocio.Entidades
     {
         private DateTime fi;
         private DateTime fs;
+        string URL;
         private string nombre;
         private string nombreempresa;
         private string motivo;
@@ -41,7 +42,11 @@ namespace negocio.Entidades
             get { return pusuariopc; }
             set { pusuariopc = value; }
         }
-
+        public string PURL
+        {
+            get { return URL; }
+            set { URL = value; }
+        }
         public String Pnombre
         {
             get { return nombre; }

@@ -54,9 +54,12 @@
             <asp:TextBox Width="49%" TextMode="Date" CssClass=" form-control2" ID="txtfechainicio" runat="server"></asp:TextBox>
             <asp:TextBox Width="49%" TextMode="Date" CssClass=" form-control2" ID="txtfechafin" runat="server"></asp:TextBox>
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-info btn-block"  runat="server" OnClick="LinkButton1_Click">Ver Reportes(Incidencias)</asp:LinkButton>
+            <asp:LinkButton ID="lnkcerrar" Visible="false" CssClass="btn btn-danger btn-block"  runat="server"  OnClick="lnkcerrar_Click">Cerrar Ventana</asp:LinkButton>
             <asp:LinkButton ID="LinkButton2" CssClass="btn btn-success"  runat="server" OnClick="LinkButton2_Click">Exportar a Excel&nbsp;<i class="fa fa-file-excel-o" aria-hidden="true"></i></asp:LinkButton>
+
+
             <div class="table table-responsive">
-                <asp:GridView Style="font-size: 12px;" ID="gridservicios" DataKeyNames="idc_empleadorep,empleado,idc_empleado" 
+                <asp:GridView Style="font-size: 11px;" ID="gridservicios" DataKeyNames="idc_empleadorep,empleado,idc_empleado" 
                     CssClass=" gvv table table-responsive table-bordered table-condensed" AutoGenerateColumns="false" runat="server" OnRowCommand="gridservicios_RowCommand">
                     <Columns>
                         <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_buscar.png" HeaderText="Ver" CommandName="Editar">
@@ -66,6 +69,7 @@
                         <asp:BoundField DataField="empleado" HeaderText="Empleado" HeaderStyle-Width="180px"></asp:BoundField>
                         <asp:BoundField DataField="puesto" HeaderText="Puesto" HeaderStyle-Width="90px"></asp:BoundField>
                         <asp:BoundField DataField="reporte" HeaderText="Reporte"></asp:BoundField>
+                        <asp:BoundField DataField="observaciones" HeaderText="Descripcion"></asp:BoundField>
                         <asp:BoundField DataField="fecha_reporte" HeaderText="Fecha Reporte" HeaderStyle-Width="110px"></asp:BoundField>
                         <asp:BoundField DataField="empleado_vobo" HeaderText="Empleado VoBo" HeaderStyle-Width="110px"></asp:BoundField>
                         <asp:BoundField DataField="idc_empleadorep" HeaderText="idc_tiporep" Visible="FALSE"></asp:BoundField>
@@ -73,6 +77,45 @@
                     </Columns>
                 </asp:GridView>
             </div>
+        </div>
+        <div class="col-lg-12" runat="server" id="concentrado" visible="false">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="always">
+                <ContentTemplate>
+
+                    <asp:LinkButton ID="lnkconcentrado" Visible="false" CssClass="btn btn-info btn-block" runat="server" OnClick="lnkconcentrado_Click">Ver Reportes(Incidencias)</asp:LinkButton>
+                    <asp:TextBox ID="txtbuscar" CssClass=" form-control" AutoPostBack="true"
+                        placeholder="Buscar Empleado" runat="server" OnTextChanged="txtbuscar_TextChanged"></asp:TextBox>
+                    <br />
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active"><strong>Empleado</strong><span class="badge">Total Reportes</span></a>
+                        <asp:Repeater ID="repeat_principal" runat="server" OnItemCommand="repeat_principal_ItemCommand">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lnkview" CssClass="list-group-item" CommandName="View" CommandArgument='<%#Eval("idc_empleado") %>' runat="server">
+                                    <%#Eval("empleado") %>
+                                    <span class="badge"><%#Eval("total_reportes") %></span>                                  
+                                </asp:LinkButton>
+                                  <div class="table table-responsive" style="padding:10px;" runat="server" id="detalles" visible="false">
+                                        <asp:GridView ID="griddet" DataKeyNames="idc_empleado,idc_tiporep" AutoGenerateColumns="false" CssClass="table table-responsive table-condensed table-bordered" 
+                                            runat="server"  OnRowCommand="griddet_RowCommand">
+                                            <HeaderStyle ForeColor="White" BackColor="Gray" />
+                                            <Columns>
+                                                <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_buscar.png" HeaderText="Ver" CommandName="Editar">
+                                                    <HeaderStyle HorizontalAlign="Center" Width="30px" />
+                                                    <ItemStyle HorizontalAlign="Center" />
+                                                </asp:ButtonField>
+                                                <asp:BoundField DataField="descripcion" HeaderText="Reporte"></asp:BoundField>
+                                                <asp:BoundField DataField="total" HeaderText="Total" HeaderStyle-Width="50px"></asp:BoundField>
+                                                <asp:BoundField DataField="idc_empleado" Visible="false"></asp:BoundField>
+                                                <asp:BoundField DataField="idc_tiporep" Visible="false"></asp:BoundField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
     <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

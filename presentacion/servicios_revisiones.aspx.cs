@@ -107,6 +107,7 @@ namespace presentacion
                     lblPuesto.Text = row["descripcion"].ToString();
                     lblnomina.Text = row["num_nomina"].ToString();
                     lblmotivo.Text = row["motivo"].ToString();
+                    lblsucursal.Text = row["sucursal"].ToString();
                     idc_prebaja = Convert.ToInt32(row["idc_prebaja"].ToString());
                     GenerarRuta(Convert.ToInt32(row["idc_empleado"].ToString()), "fot_emp");
                 }

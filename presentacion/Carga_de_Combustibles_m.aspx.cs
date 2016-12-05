@@ -1,4 +1,5 @@
 ﻿using negocio.Componentes;
+using negocio.Entidades;
 using System;
 using System.Data;
 using System.Web.UI;
@@ -303,9 +304,15 @@ namespace presentacion
                         cbochoferes.DataBind();
                         txtbchofer.Text = "";
                         txtbchofer.Enabled = false;
+
+                        lnkreporte.Visible = true;
+                        lnkreporte.CssClass = "btn btn-default btn-block";
+                        div_Reporte.Visible = false;
+                        CargarReportes(Convert.ToInt32(cbovehiculos.SelectedValue));
                     }
                     else
                     {
+                        lnkreporte.Visible = false;
                         //btnagregarchofer.Visible = true;
                         txtbchofer.Enabled = true;
                         cbochoferes.Items.Clear();
@@ -539,10 +546,9 @@ namespace presentacion
                     {
                         cbotanque.DataSource = ds;
                         cbotanque.DataBind();
-                        ViewState["ds"] = ds.Tables[0];
+                        ViewState["ds_tanque"] = ds.Tables[0];
                     }
                 }
-                cbotanque.Items.Insert(0, "---Seleccionar---");
             }
             catch (Exception ex)
             {
@@ -560,7 +566,7 @@ namespace presentacion
                 }
 
                 DataTable dt = new DataTable();
-                dt = (DataTable)ViewState["ds"];
+                dt = (DataTable)ViewState["ds_tanque"];
                 DataRow[] idc_tanque = dt.Select("idc_tanque=" + cbotanque.SelectedValue);
                 Boolean fisico = Convert.ToBoolean(idc_tanque[0].ItemArray[4]);
                 if (fisico == false)
@@ -576,6 +582,31 @@ namespace presentacion
             }
         }
 
+        protected void lnkreporte_Click(object sender, EventArgs e)
+        {
+            lnkreporte.CssClass = lnkreporte.CssClass == "btn btn-default btn-block" ? "btn btn-info btn-block" : "btn btn-default btn-block";
+            div_Reporte.Visible = lnkreporte.CssClass == "btn btn-info btn-block";
+        }
+
+        private void CargarReportes(int IDC_EMPLEADO)
+        {
+            try
+            {
+                ReportesENT entidad = new ReportesENT();
+                entidad.Pidc_empleado = IDC_EMPLEADO;
+                ReportesCOM componentes = new ReportesCOM();
+                ddltiporeporte.DataValueField = "idc_tiporep";
+                ddltiporeporte.DataTextField = "descripcion";
+                ddltiporeporte.DataSource = componentes.Carga(entidad);
+                ddltiporeporte.DataBind();
+                ddltiporeporte.Items.Insert(0, new ListItem("--Seleccione un Reporte", "0")); //updated code}
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
         protected void txtlitrosanterior_TextChanged(object sender, EventArgs e)
         {
         }
@@ -825,7 +856,7 @@ namespace presentacion
                 CargarMsgBox("Debes Capturar la Cantidad de Litros.");
                 return false;
             }
-            else if (cbotanque.SelectedIndex <= 0)
+            else if (cbotanque.SelectedIndex < 0)
             {
                 CargarMsgBox("Debes Seleccionar el Tanque");
                 return false;
@@ -963,9 +994,14 @@ namespace presentacion
                         cbochoferes.DataValueField = "idc_empleado";
                         cbochoferes.DataBind();
                         txtidc_empleado.Text = Convert.ToString(cbovehiculos.SelectedValue);
+                        lnkreporte.Visible = true;
+                        lnkreporte.CssClass = "btn btn-default btn-block";
+                        div_Reporte.Visible = false;
+                        CargarReportes(Convert.ToInt32(cbovehiculos.SelectedValue));
                     }
                     else
                     {
+                        lnkreporte.Visible = false;
                         CargarMsgBox("No se encontro Chofer.");
                         cbochoferes.Items.Clear();
                     }
@@ -1047,7 +1083,11 @@ namespace presentacion
                 try
                 {
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), "alert ('Funciona');", true);
-
+                    if (div_Reporte.Visible && ddltiporeporte.SelectedValue =="0")
+                    {
+                        CargarMsgBox("Seleccione un tipo de reporte para asignarlo.");
+                        return;
+                    }
                     if (txt_tipo_camion.Text == "8" || txt_tipo_camion.Text == "7")
                     {
                         if (txtcombustibleutilizado.Text == "0")
@@ -1147,10 +1187,12 @@ namespace presentacion
                     bool vcallla = chkcalibracion.Checked;
                     int intentos = 0;
                     bool dem_int = false;
-
-                    string[] parametros = {"@pidc_usuario","@pdirecip","@pnombrepc","@pusuariopc" ,"@pidc_tcombustible","@pidc_vehiculo","@pidc_empleado","@pfecha","@pkilometraje","@plitros","@pcombustible",
+                    int Pidc_tiporep = div_Reporte.Visible ? Convert.ToInt32(ddltiporeporte.SelectedValue):0;
+                    string POBSERVACIONES = txtcomentarios.Text.ToUpper();
+                    int Pidc_Empleadomio = Convert.ToInt32(Session["sidc_empleado"]);
+                    string[] parametros = {"@PIDC_TIPOREP","@pidc_empleadomio","@POBSERVACIONESREP","@pidc_usuario","@pdirecip","@pnombrepc","@pusuariopc" ,"@pidc_tcombustible","@pidc_vehiculo","@pidc_empleado","@pfecha","@pkilometraje","@plitros","@pcombustible",
                                       "@pdistancia","@ptiempo_relenti","@pcomb_relenti","@psipasa","@pidc_tanque","@POBSERVACIONES","@pcandado_seguridad","@PCINCHO_SEGURIDAD","@PESPUMA_SEGURIDAD","@PFRENO_MOTOR","@PCALIBRACION_LLANTAS"};
-                    object[] valores = { Session["sidc_usuario"], ip, pc, usuariopc, vtc, idc_camion, vchofer, vfecha, Convert.ToInt32(vkm), vlitros, vcombustible, vdistancia, vtr, vcr, 0, vidc_tanque, vobs, vcanseg, vcinseg, espseg, fremot, vcallla };
+                    object[] valores = {Pidc_tiporep, Pidc_Empleadomio, POBSERVACIONES, Session["sidc_usuario"], ip, pc, usuariopc, vtc, idc_camion, vchofer, vfecha, Convert.ToInt32(vkm), vlitros, vcombustible, vdistancia, vtr, vcr, 0, vidc_tanque, vobs, vcanseg, vcinseg, espseg, fremot, vcallla };
 
                     DataSet ds = new DataSet();
                     CombustibleCOM componente = new CombustibleCOM();
@@ -1160,7 +1202,7 @@ namespace presentacion
                     if (msg == "")
                     {
                         limpiar_campos();
-                        string mensaje = "Se Guardo el Registro con Exito.\\n \\u000B \\nNo.Folio:\\n" + Convert.ToString(row["folio"].ToString());
+                        string mensaje = "Se Guardo el Registro con Exito.\\n \\u000B \\nNo.Folio:\\n";
                         Alert.ShowGiftMessage("Estamos procesando la solicitud.", "Espere un Momento", "Carga_de_Combustibles_m.aspx", "imagenes/loading.gif", "2000", mensaje, this);
                     }
                     else

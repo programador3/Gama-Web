@@ -188,10 +188,6 @@ namespace presentacion
             {
                 Alert.ShowAlertError("Escriba una fecha", this);
             }
-            else if (Convert.ToDateTime(txtfecha.Text) <= DateTime.Today)
-            {
-                Alert.ShowAlertError("Escriba una fecha mayor a hoy", this);
-            }
             else if (ValidarFechas(Convert.ToDateTime(txtfecha.Text)) != "")
             {
                 Alert.ShowAlertError(ValidarFechas(Convert.ToDateTime(txtfecha.Text)), this);

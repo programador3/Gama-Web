@@ -1,0 +1,7 @@
+Vacante
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'mensaje' does not belong to table Table.
+   at negocio.Componentes.TicketsCapturaCOM.sp_aticketserv(Int32 idc_puesto, Int32 idc_tareaser, String observaciones, Int32 idc_usuario) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\31_10_16\Puestos\negocio\Componentes\TicketsCapturaCOM.cs:line 46
+   at presentacion.ticket_serv_captura.Yes_Click(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\31_10_16\Puestos\presentacion\ticket_serv_captura.aspx.cs:line 117

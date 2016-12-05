@@ -9,6 +9,25 @@ namespace negocio.Componentes
 {
     public class PerfilesBL
     {
+        public DataSet sp_perfileS_funciones_listado(int idc_perfil, bool produccion)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_perfil", SqlDbType = SqlDbType.Int, Value = idc_perfil });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pproduccion", SqlDbType = SqlDbType.Int, Value = produccion });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_perfileS_funciones_listado", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet perfiles(PerfilesE entidad)
         {
             DataSet ds = new DataSet();

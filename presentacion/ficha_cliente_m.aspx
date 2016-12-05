@@ -23,7 +23,10 @@
         }
        </style>
     <script type="text/javascript">
-       
+        function Gifted(mensaje) {
+            swal({ title: 'Espere un Momento...', text: mensaje, allowEscapeKey: false, imageUrl: 'imagenes/loading.gif', timer: '3000', showConfirmButton: false });
+            return true;
+        }
         window.onload = obtenUbicacion;
         function obtenUbicacion() {
             getCoordenadas();
@@ -42,14 +45,13 @@
                 var coordenadas = position.coords;
                 var lat = coordenadas.latitude;
                 var lon = coordenadas.latitude;
-                 $('#<%=oclatitud.ClientID%>').val(lat);
+                $('#<%=oclatitud.ClientID%>').val(lat);
                 $('#<%=oclongitud.ClientID%>').val(lon);
 
             };
 
             function error(error) {
-                if (error.code != "3")
-                {
+                if (error.code != "3") {
                     if (error.code == "1") {
 
                         alert('ERROR EN EL GPS(' + error.code + '): EL NAVEGADOR ACTUAL NO ES COMPATIBLE CON EL GPS, UTILIZE EL NAVEGADOR POR DEFECTO DE SU EQUIPO CELULAR');
@@ -60,13 +62,13 @@
             };
 
         }
-          function ver_detalles() {
+        function ver_detalles() {
             var tabla = document.getElementById("<%=gridcontactos.ClientID%>");
-            var cell;
-            if (tabla == null) {
-                return false;
-            }
-              var mybutton=document.getElementById ("<%=LinkButton6.ClientID %>");
+              var cell;
+              if (tabla == null) {
+                  return false;
+              }
+              var mybutton = document.getElementById("<%=LinkButton6.ClientID %>");
             if (tabla.rows[0].cells[1].className == "Ocultar") {
                 mybutton.innerHTML = "Ver Menos";
                 tabla.rows[0].cells[1].className = "";
@@ -116,27 +118,6 @@
                 return false;
             }
         }
-          <%--function estado(index) {
-            index++;
-            var tabla = document.getElementById("<%=gridcontactos.ClientID%>");
-            var imgedit_contacto = document.getElementById("<%=imgedit_contacto.ClientID%>");
-            for (var i = 1; i <= tabla.rows.length - 1; i++) {
-                if (index == i) {
-                    tabla.rows[i].className = "SelectedRowStyle";
-                    if (tabla.rows[i].cells[13].textContent == "True") {
-                        imgedit_contacto.className = "";
-                        var txtidc_telcli = document.getElementById("<%=txtidc_telcli.ClientID%>");
-                        txtidc_telcli.value = tabla.rows[i].cells[11].textContent;
-                    }
-                    else {
-                        imgedit_contacto.className = "Ocultar";
-                    }
-                }
-                else {
-                    tabla.rows[i].className = "AltRowStyle";
-                }
-            }
-        }--%>
 
     </script>
 </asp:Content>
@@ -165,7 +146,7 @@
         </div>
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Registrar Visita</strong></h4>
-             <asp:LinkButton ID="lnkyaregis" CssClass="btn btn-success btn-block" runat="server">
+             <asp:LinkButton ID="lnkyaregis" CssClass="btn btn-success btn-block" runat="server" OnClientClick="return false;">
                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Visita Registrada</asp:LinkButton>
             <asp:LinkButton ID="lnkregistrarvisita" CssClass="btn btn-danger btn-block" runat="server" OnClick="lnkregistrarvisita_Click">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Registrar</asp:LinkButton>
@@ -330,11 +311,11 @@
                             Ver Ubicación <i class="fa fa-map-marker" aria-hidden="true"></i></asp:LinkButton>
                 <asp:LinkButton  ID="lnkReporte" CssClass="btn btn-info btn-block"  runat="server" OnClick="lnkReporte_Click">
                             Facturas Pendientes <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
-                <asp:Button ID="btnverprecios0" runat="server" ForeColor="Black" Width="100%"
+                <asp:Button ID="btnverprecios" runat="server" ForeColor="Black" Width="100%"
                                 Height="35px" Font-Bold="True" Text="Ver Lista de Precios" OnClientClick="return lista_precios();"
                                 CssClass="btn btn-primary btn-block Ocultar" />
                        
-                 <asp:LinkButton  ID="lnkenviarlista" CssClass="btn btn-primary btn-block"  runat="server">
+                 <asp:LinkButton OnClientClick="return Gifted('Estamos Enviando la Lista');"  ID="lnkenviarlista" CssClass="btn btn-primary btn-block"  runat="server" OnClick="lnkenviarlista_Click">
                             Enviar Lista de Precios <i class="fa fa-bars" aria-hidden="true"></i></asp:LinkButton>
             </div>
            
@@ -474,6 +455,185 @@
                             </tr>
                         </table>
                     </div>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="chkoc" runat="server" Text="OC"  CssClass="radio3 radio-check radio-info radio-inline"
+                                    onclick="return false;" Enabled="False" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="chkcroquis" runat="server" Text="Croquis" CssClass="radio3 radio-check radio-info radio-inline"
+                                    onclick="return false;" Enabled="False" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="chksello" runat="server" Text="Sello" CssClass="radio3 radio-check radio-info radio-inline"
+                                    onclick="return false;" Enabled="False" />
+                            </td>
+                        </tr>
+                    </table>
+                    <br />                    
+                    <table style="width: 100%;">
+                        <tr>
+                            <td align="right" style="width: 10%">
+                                <asp:Label ID="Label17" runat="server" Text="Orden de Entrada:"
+                                    ForeColor="Black" Font-Bold="True" Font-Names="arial"
+                                    Font-Size="Small" Visible="False"></asp:Label>
+                            </td>
+                            <td style="width: 90%">
+                                <asp:TextBox ID="txtoe" runat="server" Width="100%"
+                                    onfocus="this.blur()" ReadOnly="True"
+                                    CssClass="form-control3"
+                                    Visible="False"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <asp:Label ID="Label21" runat="server" Text="Sello:" Font-Bold="True"
+                                    ForeColor="Black" Font-Names="arial" Font-Size="Small" Visible="False"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtsello" runat="server" Width="100%"
+                                    onfocus="this.blur()" ReadOnly="True"
+                                    CssClass="form-control3"
+                                    Visible="False"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <asp:Label ID="Label43" runat="server" Text="Zona:" Font-Bold="True"
+                                    ForeColor="Black" Font-Names="arial" Font-Size="Small" Visible="False"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtzona" runat="server" Width="100%"
+                                    onfocus="this.blur()" ReadOnly="True"
+                                    CssClass="form-control3"
+                                    Visible="False"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <asp:Label ID="Label44" runat="server" Text="Modelo:" Font-Bold="True"
+                                    ForeColor="Black" Font-Names="arial" Font-Size="Small"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtmodelo" runat="server" Width="100%"
+                                    onfocus="this.blur()" ReadOnly="True"
+                                    CssClass="form-control3"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+                                <asp:Label ID="Label22" runat="server" Text="Ultima Venta:" Font-Bold="True"
+                                    ForeColor="Black" Font-Names="arial" Font-Size="Small" Visible="False"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtultimaventa" runat="server"
+                                    Width="100%" onfocus="this.blur()" ReadOnly="True"
+                                    CssClass="form-control3"
+                                    Visible="False"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+
+                                <asp:Label ID="Label45" runat="server" Font-Bold="True" ForeColor="Black"
+                                    Text="Observaciones:" Font-Names="arial" Font-Size="Small" Visible="False"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtobs" runat="server" Height="54px"
+                                    TextMode="MultiLine" Width="100%" MaxLength="50" Style="resize: none;"
+                                    onfocus="this.blur()" ReadOnly="True"
+                                    CssClass="form-control3"
+                                    Visible="False"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+
+                                <asp:Label ID="Label46" runat="server" Font-Bold="True" ForeColor="Black"
+                                    Text="Observaciones Ordenes de  Compra:" Font-Names="arial" Font-Size="Small"
+                                    Visible="False"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtobsoc" runat="server" Height="55px"
+                                    TextMode="MultiLine" Width="100%" Style="resize: none;" onfocus="this.blur()"
+                                    ReadOnly="True"
+                                    CssClass="form-control3"
+                                    Visible="False"></asp:TextBox>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <asp:Label ID="lblidc_cliente" runat="server" CssClass="Ocultar"></asp:Label>
+                        <asp:Button ID="btncot_cli" runat="server" CssClass="Ocultar" />
+                        <table style="width: 100%; height: 89px;" class="Ocultar">
+                            <tr>
+                                <td style="width: 5px">&nbsp;</td>
+                                <td>
+                                    <asp:ImageButton ID="imgagendar" runat="server" Height="37px" Width="37px"
+                                        OnClientClick="return iframe_agendarllamadas();"
+                                        ImageUrl="~/imagenes/btn/agendar_llamada.png" ToolTip="Agendar Llamada" />
+                                </td>
+                                <td>
+                                    <asp:ImageButton ID="imgcotizacionesguardadas" runat="server" Height="37px"
+                                        ImageUrl="~/imagenes/btn/btn_cotguards.png" Width="120px" />
+                                </td>
+                                <td>
+                                    <asp:ImageButton ID="imgpublicidad" runat="server" Height="37px"
+                                        OnClientClick="return iframe_publicidad();" Width="120px"
+                                        ImageUrl="~/imagenes/btn/btnobservaciones.png" ToolTip="Observaciones Publicidad" />
+                                </td>
+                                <td>
+                                    <asp:ImageButton ID="imginconvenientes" runat="server" Height="37px"
+                                        Width="120px" OnClientClick="return iframe_inconvenientes();"
+                                        ImageUrl="~/imagenes/btn/btninconvenientes.png" ToolTip="Alta de Inconvenientes" />
+                                </td>
+                                <td align="right">
+                                    <asp:ImageButton ID="imgcompromisos" runat="server" Height="37px"
+                                        Width="120px" ImageUrl="~/imagenes/btn/btn_compromisos.png"
+                                        ToolTip="Compromisos" />
+                                </td>
+                                <td style="width: 130">
+                                    <asp:ImageButton ID="imgcotizar" runat="server" Height="38px"
+                                        ImageUrl="~/imagenes/btn/Button_cotizar.png" Width="85px"
+                                        ToolTip="Realizar Cotización" />
+                                </td>
+                                <td style="width: 200">
+                                    <asp:ImageButton ID="imgpedidos_lista" runat="server" Height="37px" Width="109px"
+                                        ImageUrl="~/imagenes/btn/Button_ListaP.png" ToolTip="Pedidos Lista" />
+                                </td>
+                                <td>
+                                    <asp:ImageButton ID="imgpedidos" runat="server" Height="38px"
+                                        ImageUrl="~/imagenes/btn/Button_GenerarP2.png" Width="126px"
+                                        ToolTip="Generar Pedido" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 5px">&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td align="right">&nbsp;</td>
+                                <td style="width: 130">&nbsp;</td>
+                                <td style="width: 200">&nbsp;</td>
+                                <td>
+                                    <asp:ImageButton ID="ImageButton2" runat="server" Height="37px" Width="126px"
+                                        ImageUrl="~/imagenes/btn/btncotic.png" OnClick="ImageButton2_Click" />
+                                </td>
+                            </tr>
+                        </table>
+
+                        <asp:Button ID="btnsalir" runat="server" Text="Salir" Width="100%"
+                            CssClass="btn btn-danger btn-block"
+                            UseSubmitBehavior="False" OnClick="btnsalir_Click" />
+
+                        <asp:Button ID="btnref" runat="server" CssClass="Ocultar" OnClick="btnref_Click" />
+                        <asp:TextBox ID="txtidc_telcli" runat="server" CssClass="Ocultar" />
+                        <asp:TextBox ID="txtnew" runat="server" CssClass="Ocultar" />
+                        <asp:TextBox runat="server" ID="txtlatitud" CssClass="Ocultar" />
+                        <asp:TextBox runat="server" ID="txtlongitud" CssClass="Ocultar" />
                 </div>
             </div>
         </div>

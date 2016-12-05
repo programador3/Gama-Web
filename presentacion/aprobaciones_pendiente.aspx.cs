@@ -188,11 +188,7 @@ namespace presentacion
                     //levantamos la solicitud.
 
                     res = solicitudAprobacion(Convert.ToInt32(Session["sidc_puestoperfil_borr"]), 1, sidc_aprobacion_soli);
-                    if (TotalCadena(Repeater1) == 0 && lnktodo.CssClass == "btn btn-default btn-block")
-                    {
-                        Alert.ShowAlertError("Seleccione una opcion", this.Page);
-                    }
-                    else if (string.IsNullOrEmpty(res.Trim().Replace(" ", "")))
+                    if (string.IsNullOrEmpty(res.Trim().Replace(" ", "")))
                     {
                         if (TotalCadena(Repeater1) > 0)
                         {
@@ -265,6 +261,7 @@ namespace presentacion
         private String Cadena(Repeater Repeater)
         {
             string cadena = "";
+            int tcadena = 0;
             if (lnktodo.CssClass != "btn btn-info btn-block")
             {
                 foreach (RepeaterItem item in Repeater.Items)
@@ -273,8 +270,13 @@ namespace presentacion
                     if (lnk.CssClass == "btn btn-success btn-block")
                     {
                         cadena = cadena + lnk.CommandName + ";";
+                        tcadena = tcadena + 1;
                     }
                 }
+            }
+            if (Repeater.Items.Count == tcadena)
+            {
+                cadena = "";
             }
             return cadena;
         }
@@ -292,6 +294,10 @@ namespace presentacion
                         cadena = cadena + 1;
                     }
                 }
+            }
+            if (Repeater.Items.Count == cadena)
+            {
+                cadena = 0;
             }
             return cadena;
         }

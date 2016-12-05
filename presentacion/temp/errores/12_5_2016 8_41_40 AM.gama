@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): No se encontró el procedimiento almacenado 'sp_atareas_clientes_nuevo'.
+   at negocio.Componentes.AgentesCOM.sp_atareas_clientes_nuevo(AgentesENT entidad) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\negocio\Componentes\AgentesCOM.cs:line 1752
+   at presentacion.tareas_clientes_cap.Yes_Click(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\05_12_16\Puestos\presentacion\tareas_clientes_cap.aspx.cs:line 607
+ClientConnectionId:abcf72fe-331d-465d-abbc-54c235902766
+Error Number:2812,State:62,Class:16

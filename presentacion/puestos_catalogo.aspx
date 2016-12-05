@@ -97,11 +97,16 @@
                                 </div>
                             </div>
                             <div class="table table-responsive" style="text-align: center;">
-                                <asp:GridView ID="gridPuestos" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [6]}" AutoGenerateColumns="False" DataKeyNames="idc_puesto_reemplazo,perfil_solicitud,idc_herramienta,idc_puesto,idc_puestoperfil,idc_statuso,idc_empleado, descripcion,idc_prepara,idc_puesto_jefe,abajo_de_mi,lugares" OnRowDataBound="gridPuestos_RowDataBound" OnRowCommand="gridPuestos_RowCommand" Font-Size="Smaller">
+                                <asp:GridView ID="gridPuestos" runat="server" CssClass="gvv table table-bordered table-hover table-condensed grid sortable {disableSortCols: [6]}" 
+                                    AutoGenerateColumns="False" 
+                                    DataKeyNames="idc_puesto_reemplazo,perfil_solicitud,idc_herramienta,idc_puesto,idc_puestoperfil,idc_statuso,idc_empleado, descripcion,idc_prepara,idc_puesto_jefe,abajo_de_mi,lugares" 
+                                    OnRowDataBound="gridPuestos_RowDataBound" OnRowCommand="gridPuestos_RowCommand" Font-Size="Smaller">
                                     <Columns>
 
-                                        <asp:ButtonField Visible="false" Text="Acciones" ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Pre-Baja" HeaderStyle-Width="40px" CommandName="Acciones" />
+                                        <asp:ButtonField Visible="false" Text="Acciones" ButtonType="Button" ControlStyle-CssClass="btn btn-info" 
+                                            HeaderText="Pre-Baja" HeaderStyle-Width="40px" CommandName="Acciones" />
                                         <asp:BoundField DataField="idc_puesto" HeaderText="idc_puesto" Visible="False" />
+                                        <asp:BoundField DataField="num_nomina" HeaderText="Nomina" HeaderStyle-Width="40px"/>
                                         <asp:ButtonField DataTextField="descripcion" ControlStyle-CssClass="btn btn-default btn-block" HeaderText="Puesto" CommandName="Puesto" />
                                         <asp:BoundField DataField="idc_puestoperfil" HeaderText="idc_puestoperfil" Visible="False" />
                                         <asp:ButtonField DataTextField="perfil" HeaderText="Perfil" CommandName="Vista" />
@@ -224,7 +229,12 @@
     </div>
     <div id="modalPreviewView" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always">
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="gridPuestos" EventName="RowCommand" />
+                </Triggers>
+                <ContentTemplate>
+                    <div class="modal-content">
                 <div class="modal-header" style="background-color: #428bca; color: white; text-align: center;">
                     <h3>
                         <asp:Label ID="lblMPuesto" runat="server" Text=""></asp:Label>
@@ -295,11 +305,13 @@
                             <asp:LinkButton ID="lnkretiroahorro" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkretiroahorro_Click">Solicitar Retiro de Ahorro <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="incidencia">
-                            <asp:LinkButton ID="LinkButton1" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkinciden_Click">Incidencia <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton1" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkinciden_Click">Incidencia(Reporte) <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                     </div>
                 </div>
             </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 </asp:Content>

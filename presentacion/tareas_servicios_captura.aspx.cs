@@ -27,6 +27,8 @@ namespace presentacion
                     {
                         txtdescripcion.ReadOnly = true;
                         txthoras.ReadOnly = true;
+                        txthorasl.ReadOnly = true;
+                        txthorasf.ReadOnly = true;
                         txtobservaciones.ReadOnly = true;
                         cbxeditable.Enabled = false;
                     }
@@ -155,6 +157,8 @@ namespace presentacion
                 {
                     txtdescripcion.Text = dt.Rows[0]["descripcion"].ToString();
                     txthoras.Text = dt.Rows[0]["intervalo_tiempo"].ToString();
+                    txthorasf.Text = dt.Rows[0]["intervalo_tiempo_foraneo"].ToString();
+                    txthorasl.Text = dt.Rows[0]["intervalo_tiempo_local"].ToString();
                     txtobservaciones.Text = dt.Rows[0]["observaciones"].ToString();
                     cbxeditable.Checked = Convert.ToBoolean(dt.Rows[0]["editable"]);
 
@@ -236,11 +240,19 @@ namespace presentacion
         {
             if (txtdescripcion.Text == "")
             {
-                Alert.ShowAlertError("Escriba una descripcion",this);
+                Alert.ShowAlertInfo("Escriba una descripcion","Mensaje del Sistema",this);
             }
             else if (txthoras.Text == "" || txthoras.Text =="0")
             {
-                Alert.ShowAlertError("Escriba un tiempo de respuesta que se encuentre entre 1 - 240 horas", this);
+                Alert.ShowAlertInfo("Escriba un tiempo de respuesta para el CORPORATIVO que se encuentre entre 1 - 240 horas", "Mensaje del Sistema", this);
+            }
+            else if (txthorasl.Text == "" || txthorasl.Text == "0")
+            {
+                Alert.ShowAlertInfo("Escriba un tiempo de respuesta para CEDIS LOCALES que se encuentre entre 1 - 240 horas", "Mensaje del Sistema", this);
+            }
+            else if (txthorasf.Text == "" || txthorasf.Text == "0")
+            {
+                Alert.ShowAlertInfo("Escriba un tiempo de respuesta para CEDIS FORANEOS que se encuentre entre 1 - 240 horas", "Mensaje del Sistema", this);
             }
             else 
             {
@@ -261,12 +273,14 @@ namespace presentacion
                 switch (caso)
                 {
                     case "Editar":
-                        ds = componente.sp_mtareas_servicios(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tareaser"])), txtdescripcion.Text.Trim().ToUpper(), txtobservaciones.Text, cbxeditable.Checked, Convert.ToInt32(txthoras.Text.Trim()),
+                        ds = componente.sp_mtareas_servicios(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tareaser"])), txtdescripcion.Text.Trim().ToUpper(), 
+                            txtobservaciones.Text, cbxeditable.Checked, Convert.ToInt32(txthoras.Text.Trim()), Convert.ToInt32(txthorasl.Text.Trim()), Convert.ToInt32(txthorasf.Text.Trim()),
                            Cadena(), totalcadena(), Convert.ToInt32(Session["sidc_usuario"]),
                        funciones.GetLocalIPAddress(), funciones.GetPCName(), funciones.GetUserName());
                         break;
                     case "Guardar":
-                       ds = componente.sp_atareas_servicios(txtdescripcion.Text.Trim().ToUpper(),txtobservaciones.Text, cbxeditable.Checked, Convert.ToInt32(txthoras.Text.Trim()),
+                       ds = componente.sp_atareas_servicios(txtdescripcion.Text.Trim().ToUpper(),txtobservaciones.Text, cbxeditable.Checked, 
+                           Convert.ToInt32(txthoras.Text.Trim()), Convert.ToInt32(txthorasl.Text.Trim()), Convert.ToInt32(txthorasf.Text.Trim()),
                             Cadena(),totalcadena(), Convert.ToInt32(Session["sidc_usuario"]),
                         funciones.GetLocalIPAddress(), funciones.GetPCName(), funciones.GetUserName());
                         break;

@@ -8,6 +8,72 @@ namespace negocio.Componentes
 {
     public class UsuariosBL
     {
+        public DataSet TicketsiNFOALL(int IDC_PUESTO)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO", SqlDbType = SqlDbType.Char, Value = IDC_PUESTO });
+            try
+            {
+                ds = data.enviar("sp_ticketsinfo_android", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet TicketsiNFOHistorial(int IDC_PUESTO)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO", SqlDbType = SqlDbType.Char, Value = IDC_PUESTO });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ONLYPENDIENTE", SqlDbType = SqlDbType.Char, Value = 0 });
+            try
+            {
+                ds = data.enviar("sp_ticketsinfo_android", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet TicketsiNFO(int idc_ticketserv)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_ticketserv", SqlDbType = SqlDbType.Char, Value = idc_ticketserv });
+            try
+            {
+                ds = data.enviar("sp_ticketsinfo_android", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet TicketsPendietes(int idc_puesto)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Char, Value = idc_puesto });
+            try
+            {
+                ds = data.enviar("sp_ticketspendietes_android", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet CargaInformacionInicial()
         {
             DataSet ds = new DataSet();

@@ -1,0 +1,8 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'nombre3' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.set_Item(String columnName, Object value)
+   at presentacion.captura_actividades_agentes2_m.cargar_agentes_vs_usurios() in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\presentacion\captura_actividades_agentes2.aspx.cs:line 39

@@ -189,6 +189,9 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pnum_hall", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnumcad2 });
             listparameters.Add(new SqlParameter() { ParameterName = "@pbasica", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pbasica });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_revbasherr", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pidc_revbasherr });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_TIPOREP", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pidc_tiporep });
+            listparameters.Add(new SqlParameter() { ParameterName = "@POBSERVACIONESREP", SqlDbType = SqlDbType.VarChar, Value = Entidad.POBSERVACIONES });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleadomio", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pidc_Empleadomio });
 
             try
             {

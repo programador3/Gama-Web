@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Informacion Adicional" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="tareas_informacion_adicional.aspx.cs" Inherits="presentacion.tareas_informacion_adicional" %>
+﻿<%@ Page Title="Informacion Adicional" Language="C#" MasterPageFile="~/Adicional.Master" AutoEventWireup="true" CodeBehind="tareas_informacion_adicional.aspx.cs" Inherits="presentacion.tareas_informacion_adicional" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css" rel="stylesheet" />
@@ -21,6 +21,18 @@
             $(value).DataTable();
         }
         function DataTa4(value) {
+            $(value).DataTable();
+        }
+        function DataTa5(value) {
+            $(value).DataTable();
+        }
+        function DataTa6(value) {
+            $(value).DataTable();
+        }
+        function DataTa7(value) {
+            $(value).DataTable();
+        }
+        function DataTa8(value) {
             $(value).DataTable();
         }
     </script>

@@ -23,6 +23,18 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
+                if (Request.QueryString["trasnformadirect"] != null && Request.QueryString["idc_tarea"] != null)
+                {
+                    string idc_tb64 = funciones.deTextoa64(Request.QueryString["idc_tarea"]);
+                    System.Reflection.PropertyInfo isreadonly =
+                      typeof(System.Collections.Specialized.NameValueCollection).GetProperty(
+                      "IsReadOnly", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                    // make collection editable
+                    isreadonly.SetValue(this.Request.QueryString, false, null);
+                    // remove
+                    this.Request.QueryString.Remove("idc_tarea");
+                    Request.QueryString.Add("idc_tarea", idc_tb64);
+                }
                 DataTable papeleria = new DataTable();
                 papeleria.Columns.Add("descripcion");
                 papeleria.PrimaryKey = new DataColumn[] { papeleria.Columns["descripcion"] };
@@ -1173,8 +1185,11 @@ namespace presentacion
                         {
                             string ruta_det = row_archi["ruta_destino"].ToString();
                             string ruta_origen = row_archi["ruta_origen"].ToString();
-                            correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
-                            if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
+                            if (File.Exists(ruta_origen))
+                            {
+                                correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
+                                if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
+                            }
                         }
                     }
                     if (Session["redirect"] != null && Session["redirect_pagedet"] == null)

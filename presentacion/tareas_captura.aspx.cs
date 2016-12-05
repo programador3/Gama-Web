@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ClosedXML.Excel;
 
 namespace presentacion
 {
@@ -36,6 +37,8 @@ namespace presentacion
                 Session["id_archi"] = null;
                 //iniciamos textbox de fecha
                 txtfecha_solicompromiso.Text = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+                div_puestoasigna.Visible= funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 386);
+                CargaPuestosAsigna("");
             }
         }
 
@@ -54,9 +57,7 @@ namespace presentacion
                     ddlservicios.DataValueField = "idc_tareaser";
                     ddlservicios.DataSource = dt;
                     ddlservicios.DataBind();
-                    ddlservicios.Items.Insert(0, new ListItem("--Ningun Servicio", "0"));
-                    ddlservicios.SelectedIndex = 1;
-                    TareasServiciosDetalles(Convert.ToInt32(dt.Rows[0]["idc_tareaser"]));
+                    ddlservicios.Items.Insert(0, new ListItem("--Ningun Servicio Seleccionado", "0"));
                 }
                 else
                 {
@@ -65,7 +66,6 @@ namespace presentacion
                     tareaservicios.Visible = false;
                     txtdescripcion.ReadOnly = false;
                     txtfecha_solicompromiso.ReadOnly = false;
-                    txtfecha_solicompromiso.Text = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
                 }
             }
             catch (Exception ex)
@@ -147,7 +147,31 @@ namespace presentacion
                 Global.CreateFileError(ex.ToString(), this);
             }
         }
-
+        public void CargaPuestosAsigna(string filtro)
+        {
+            try
+            {
+                Asignacion_RevisionesENT entidad = new Asignacion_RevisionesENT();
+                Asignacion_RevisionesCOM componente = new Asignacion_RevisionesCOM();
+                entidad.Filtro = filtro;
+                entidad.Idc_puesto_revisa = Convert.ToInt32(Session["sidc_puesto_login"]);
+                DataSet ds = componente.CargaComboDinamico(entidad);
+                ddlpuestoasigna.DataValueField = "idc_puesto";
+                ddlpuestoasigna.DataTextField = "descripcion_puesto_completa";
+                ddlpuestoasigna.DataSource = ds.Tables[0];
+                ddlpuestoasigna.DataBind();
+                //si no hay filtro insertamos una etiqueta inicial
+                if (filtro == "")
+                {
+                    ddlpuestoasigna.Items.Insert(0, new ListItem("Seleccione un Puesto", "0")); //updated code}
+                }               
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
         /// <summary>
         /// Agrega filas tabla de papeleria global
         /// </summary>
@@ -263,7 +287,7 @@ namespace presentacion
             id_archi = Session["id_archi"] != null ? (string)Session["id_archi"] : "0";
             if (txtNombreArchivo.Text == "") { error = true; Alert.ShowAlertError("Debe ingresar un comentario.", this); }
             Random random = new Random();
-            int randomNumber = random.Next(0, 1000);
+            int randomNumber = random.Next(0, 100000);
             //si no subio archivo, solo esta subiendo un comentario
             if (fupPapeleria.HasFile && error == false)
             {
@@ -420,14 +444,25 @@ namespace presentacion
                         entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
                         entidad.Pusuariopc = funciones.GetUserName();//usuario pc
                         entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
-                        entidad.Pidc_puesto_asigna = Convert.ToInt32(Session["sidc_puesto_login"]);
+                        int idc_puestoasigna = div_puestoasigna.Visible ? Convert.ToInt32(ddlpuestoasigna.SelectedValue) : 0;
+                        entidad.Pidc_puesto_asigna = idc_puestoasigna > 0 ? idc_puestoasigna:Convert.ToInt32(Session["sidc_puesto_login"]);
                         entidad.Pdescripcion = txtdescripcion.Text.ToUpper();
                         int TO = TotalCadenaPuestos();
+                        bool OTROPUESTO = false;
+                        if (div_puestoasigna.Visible == true && Convert.ToInt32(ddlPuesto.SelectedValue) == Convert.ToInt32(Session["sidc_puesto_login"]))
+                        {
+                            OTROPUESTO = true;
+                        }
+                        if (Convert.ToInt32(ddlpuestoasigna.SelectedValue) == Convert.ToInt32(Session["sidc_puesto_login"]))
+                        {
+                            OTROPUESTO = false;
+                        }
                         if (TO > 1)
                         {
                             entidad.Ptotal_cadena_pro = TotalCadenaPuestos();
                             entidad.Pcadena_pro = CadenaPuestos();
                         }
+                        entidad.POTROPUESTO = OTROPUESTO;
                         entidad.Pidc_puesto = Convert.ToInt32(ddlPuesto.SelectedValue);
                         int msec = Convert.ToDateTime(txtfecha_solicompromiso.Text).Millisecond;
                         int second = Convert.ToDateTime(txtfecha_solicompromiso.Text).Second;
@@ -470,7 +505,8 @@ namespace presentacion
                             int total = (((tabla_archivos.Rows.Count) * 1) + 1) * 1000;
                             string t = total.ToString();
                             string url_back = Request.QueryString["idc_tarea"] != null ? (string)Session["Back_Page"] : "tareas.aspx";
-                            Alert.ShowGiftMessage("Estamos procesando la cantidad de " + tabla_archivos.Rows.Count.ToString() + " archivo(s) al Servidor.", "Espere un Momento", url_back, "imagenes/loading.gif", t, "La tarea fue Guardada Correctamente con una Fecha de compromiso para el dia " + FECHA, this);
+                            Alert.ShowGiftMessage("Estamos procesando la cantidad de " + tabla_archivos.Rows.Count.ToString() + " archivo(s) al Servidor.", "Espere un Momento", url_back,
+                                "imagenes/loading.gif", t, "La tarea fue Guardada Correctamente con una Fecha de compromiso para el dia " + FECHA, this);
                         }
                         else
                         {
@@ -618,6 +654,11 @@ namespace presentacion
             }
             
      
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            CargaPuestosAsigna(txtpuesto_asigna.Text);
         }
     }
 }

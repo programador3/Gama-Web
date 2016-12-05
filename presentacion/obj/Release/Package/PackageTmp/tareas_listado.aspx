@@ -49,8 +49,8 @@
                             <div class="list-group">
                                 <asp:Repeater ID="repeat_tareas" runat="server">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
-                                               <span onclick="return Press('<%#Eval("idc_tarea")%>','<%#Eval("url")%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine,"")%>')" 
+                                        <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
+                                               <span onclick="return Press('<%#Eval("idc_tarea")%>','<%#Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine,"")%>')" 
                                                 class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> 
                                             <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
                                                 <p class="list-group-item-text"><%#Eval("descripcion")%></p>
@@ -81,8 +81,8 @@
                                     <div class="list-group">
                                         <asp:Repeater ID="repeatglobal" runat="server">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
-                                              <span onclick="return Press('<%#Eval("idc_tarea")%>','<%#Eval("url")%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine,"")%>')" 
+                                                <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
+                                              <span onclick="return Press('<%#Eval("idc_tarea")%>','<%#Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine,"")%>')" 
                                                 class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> 
                                                     <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
                                                 <p class="list-group-item-text"><%#Eval("descripcion")%></p>

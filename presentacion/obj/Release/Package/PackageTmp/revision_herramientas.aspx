@@ -193,6 +193,19 @@
                     <h5><strong><i class="fa fa-car" aria-hidden="true"></i>&nbsp;Revisar Calibracion de Llantas</strong></h5>
                     <asp:LinkButton ID="blkcalibracion" CssClass="btn btn-default btn-block" runat="server" OnClick="blkcalibracion_Click">Revisado</asp:LinkButton>
                 </div>
+                <div class="col-lg-12">
+                    <asp:LinkButton ID="lnkreporte" CssClass="btn btn-default btn-block" runat="server" OnClick="lnkreporte_Click">Generar Reporte a Empleado</asp:LinkButton>
+                </div>
+                <div class="col-lg-12" id="div_Reporte" runat="server" visible="false">
+
+                    <h4><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;<strong>Seleccione un Tipo de Reporte</strong>&nbsp;<small style="color: orangered;">Para seleccionar un reporte, seleccione un empleado</small></h4>
+                    <asp:DropDownList ID="ddltiporeporte" CssClass="form-control" runat="server"></asp:DropDownList>
+
+                    <h4><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;<strong>Observaciones para el Reporte</strong></h4>
+                    <asp:TextBox ID="txtcomentarios" CssClass="form-control" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 200);" TextMode="MultiLine" placeholder="Ingrese Observaciones" Rows="4" runat="server"></asp:TextBox>
+
+
+                </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>

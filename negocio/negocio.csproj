@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Componentes\comidasCOM.cs" />
     <Compile Include="Componentes\AdministradorPrebajasCOM.cs" />
     <Compile Include="Componentes\Administrador_EntregasCOM.cs" />
     <Compile Include="Componentes\Administrador_PreparacionCOM.cs" />
@@ -47,6 +48,7 @@
     <Compile Include="Componentes\Aprobaciones_solicitudBL.cs" />
     <Compile Include="Componentes\Area_TrabajoCOM.cs" />
     <Compile Include="Componentes\Asignacion_RevisionesCOM.cs" />
+    <Compile Include="Componentes\AsistenciaCOM.cs" />
     <Compile Include="Componentes\AvisosCOM.cs" />
     <Compile Include="Componentes\BajasCOM.cs" />
     <Compile Include="Componentes\CandidatosCOM.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Componentes\Celulares_RevisionesCOM.cs" />
     <Compile Include="Componentes\ClientesBL.cs" />
     <Compile Include="Componentes\CombustibleCOM.cs" />
+    <Compile Include="Componentes\comisiones_mCOM.cs" />
     <Compile Include="Componentes\Compromisos_ClienteCOM.cs" />
     <Compile Include="Componentes\consulta_precios_mCOM.cs" />
     <Compile Include="Componentes\CuestionariosCOM.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Componentes\QuejasCOM.cs" />
     <Compile Include="Componentes\ReportesCOM.cs" />
     <Compile Include="Componentes\ReportingBL.cs" />
+    <Compile Include="Componentes\reproductor_llamadasCOM.cs" />
     <Compile Include="Componentes\RevisionesCOM.cs" />
     <Compile Include="Componentes\Revisiones_PreparacionCOM.cs" />
     <Compile Include="Componentes\Revisiones_ServciosCOM.cs" />
@@ -107,6 +111,8 @@
     <Compile Include="Componentes\Solicitud_PrebajaCOM.cs" />
     <Compile Include="Componentes\TareasAutomaticasCOM.cs" />
     <Compile Include="Componentes\TareasCOM.cs" />
+    <Compile Include="Componentes\TicketsCapturaCOM.cs" />
+    <Compile Include="Componentes\ticket_servCOM.cs" />
     <Compile Include="Componentes\Uni_archiBL.cs" />
     <Compile Include="Componentes\UsuariosBL.cs" />
     <Compile Include="Componentes\VacacionesCOM.cs" />
@@ -135,6 +141,8 @@
     <Compile Include="Entidades\Celulares_RevisionesENT.cs" />
     <Compile Include="Entidades\clientesE.cs" />
     <Compile Include="Entidades\CombustibleENT.cs" />
+    <Compile Include="Entidades\comidasENT.cs" />
+    <Compile Include="Entidades\comisiones_mENT.cs" />
     <Compile Include="Entidades\Compromisos_ClienteENT.cs" />
     <Compile Include="Entidades\consulta_precios_mENT.cs" />
     <Compile Include="Entidades\CuestionariosENT.cs" />
@@ -175,6 +183,7 @@
     <Compile Include="Entidades\QuejasENT.cs" />
     <Compile Include="Entidades\ReportesENT.cs" />
     <Compile Include="Entidades\reportingE.cs" />
+    <Compile Include="Entidades\reproductor_llamadasENT.cs" />
     <Compile Include="Entidades\RevisionesENT.cs" />
     <Compile Include="Entidades\Revisiones_ServiciosENT.cs" />
     <Compile Include="Entidades\Revision_FinalENT.cs" />
@@ -185,6 +194,7 @@
     <Compile Include="Entidades\Solicitud_PrebajaENT.cs" />
     <Compile Include="Entidades\TareasAutomaticasENT.cs" />
     <Compile Include="Entidades\TareasENT.cs" />
+    <Compile Include="Entidades\ticket_servENT.cs" />
     <Compile Include="Entidades\uni_archiE.cs" />
     <Compile Include="Entidades\UsuariosE.cs" />
     <Compile Include="Entidades\UsuariosGET.cs" />

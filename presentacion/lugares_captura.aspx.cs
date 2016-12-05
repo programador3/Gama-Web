@@ -233,7 +233,6 @@ namespace presentacion
             string ruta = gridlugares.DataKeys[index].Values["ruta"].ToString();
             string url = System.Configuration.ConfigurationManager.AppSettings["server"] + "imagenes\\lugares\\captura\\" + Path.GetFileName(ruta);
             string path = System.Web.HttpContext.Current.Request.PhysicalApplicationPath;
-            //DirectoryInfo dir =DirectoryInfo(Server.MapPath("~/imagenes/lugares/captura/"));
             switch (e.CommandName)
             {
                 case "Editar":

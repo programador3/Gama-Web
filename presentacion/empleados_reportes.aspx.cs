@@ -19,8 +19,14 @@ namespace presentacion
             }
 
             //SI ES UN ALTA
-            if (!IsPostBack && Request.QueryString["termina"] != null)
+            if (!IsPostBack && Request.QueryString["termina"] != null)//contraparte
             {
+                DataTable papeleria = new DataTable();
+                papeleria.Columns.Add("descripcion");
+                papeleria.PrimaryKey = new DataColumn[] { papeleria.Columns["descripcion"] };
+                papeleria.Columns.Add("ruta");
+                papeleria.Columns.Add("extension");
+                Session["papeleria"] = papeleria;
                 Session["idc_empleado"] = null;
                 int idc_emplado = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"]));
                 int pidc_empleadorep = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleadorep"]));
@@ -43,6 +49,7 @@ namespace presentacion
                 lbltitle.Attributes["style"] = "color:orangered;";
                 lbltitle.Text = "Puede Reasignar el Reporte a un empleado";
                 FILTRO.Visible = false;
+                archi.Visible = false;
                 if (Request.QueryString["view"] != null)
                 {
                     ddlPuestoAsigna.Enabled = false;
@@ -56,17 +63,30 @@ namespace presentacion
                         BTNCERRAR.Visible = true;
                     }
                 }
+                else {
+                    string queyr = "idc_empleado = " + idc_emplado + " and idc_usuario = " + Convert.ToInt32(Session["sidc_usuario"]).ToString().Trim() + "";
+                    if (TengoHistorialConEsteBato(DateTime.Now.AddDays(-1000), DateTime.Today, queyr))
+                    {
+                        lblmihis.Visible = true;
+                        lnkverhisto.Visible = true;
+                        lnkverhisto.OnClientClick = "window.open('empleados_incidencias_reporte.aspx?desglo=1&report=JBAKJSBKJSBJABSJABSJABS&query=" + funciones.deTextoa64(queyr) + "')";
+                    }
+                }
+               
             }
             else
             {
-                if (!IsPostBack && Request.QueryString["autoriza"] == null)
+                if (!IsPostBack && Request.QueryString["autoriza"] == null)//nuevo reporte
                 {
+                    if (Request.QueryString["backurl"] != null)
+                    {
+                        txturl_back.Text = funciones.de64aTexto(Request.QueryString["backurl"]);
+                    }
                     DataTable papeleria = new DataTable();
                     papeleria.Columns.Add("descripcion");
                     papeleria.PrimaryKey = new DataColumn[] { papeleria.Columns["descripcion"] };
                     papeleria.Columns.Add("ruta");
                     papeleria.Columns.Add("extension");
-                    papeleria.Columns.Add("id_archi");
                     Session["papeleria"] = papeleria;
                     Session["idc_empleado"] = null;
                     CargaPuestos("");
@@ -87,10 +107,26 @@ namespace presentacion
                         txtpuesto_filtro.ReadOnly = true;
                         lnkbuscarpuestos.Visible = false;
                         ddlPuestoAsigna.Enabled = false;
+                        string queyr = "idc_empleado = "+idc_empleadoe+" and idc_usuario = "+Convert.ToInt32(Session["sidc_usuario"]).ToString().Trim()+"";
+                        if (TengoHistorialConEsteBato(DateTime.Now.AddDays(-1000), DateTime.Today, queyr))
+                        {
+                            lblmihis.Visible = true;
+                            lnkverhisto.Visible = true;
+                            lnkverhisto.OnClientClick = "window.open('empleados_incidencias_reporte.aspx?desglo=1&report=JBAKJSBKJSBJABSJABSJABS&query=" + funciones.deTextoa64(queyr)+"')";
+                        }
+
                     }
+                    archi.Visible = true;
+
                 }
-                if (!IsPostBack && Request.QueryString["autoriza"] != null)
+                if (!IsPostBack && Request.QueryString["autoriza"] != null)//vobo reporte
                 {
+                    DataTable papeleria = new DataTable();
+                    papeleria.Columns.Add("descripcion");
+                    papeleria.PrimaryKey = new DataColumn[] { papeleria.Columns["descripcion"] };
+                    papeleria.Columns.Add("ruta");
+                    papeleria.Columns.Add("extension");
+                    Session["papeleria"] = papeleria;
                     Session["idc_empleado"] = null;
                     int idc_emplado = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"]));
                     int pidc_empleadorep = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleadorep"]));
@@ -101,10 +137,40 @@ namespace presentacion
                     btnvistobueno.Visible = true;
                     obsrvobo.Visible = true;
                     lnlvalido.Visible = true;
+
+                    archi.Visible = false;
                     lnlvalido.Text = "Estoy Deacuerdo con el Reporte";
+                    string queyr = "idc_empleado = " + idc_emplado + " and idc_usuario = " + Convert.ToInt32(Session["sidc_usuario"]).ToString().Trim() + "";
+                    if (TengoHistorialConEsteBato(DateTime.Now.AddDays(-1000), DateTime.Today, queyr))
+                    {
+                        lblmihis.Visible = true;
+                        lnkverhisto.Visible = true;
+                        lnkverhisto.OnClientClick = "window.open('empleados_incidencias_reporte.aspx?desglo=1&report=JBAKJSBKJSBJABSJABSJABS&query=" + funciones.deTextoa64(queyr) + "')";
+                    }
                 }
             }
             
+        }
+
+        private bool TengoHistorialConEsteBato(DateTime f1, DateTime f2, string query)
+        {
+            try
+            {
+                ReportesENT entidad = new ReportesENT();
+                entidad.Pfecha = f1;
+                entidad.Pfechafin = f2;
+                ReportesCOM componente = new ReportesCOM();
+                DataTable DT = componente.CargaJefe(entidad).Tables[0];
+                DataView dv = DT.DefaultView;
+                dv.RowFilter = query;
+                return dv.ToTable().Rows.Count > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+                return false;
+            }
         }
 
         /// <summary>
@@ -214,7 +280,8 @@ namespace presentacion
                 ReportesENT entidad = new ReportesENT();
                 entidad.Pidc_empleadorep = pidc_empleadorep;
                 ReportesCOM componente = new ReportesCOM();
-                DataTable dt = componente.CargaJefe(entidad).Tables[0];
+                DataSet ds = componente.CargaJefe(entidad);
+                DataTable dt = ds.Tables[0];
                 if (dt.Rows.Count > 0)
                 {
                     DataRow row = dt.Rows[0];
@@ -241,6 +308,15 @@ namespace presentacion
                         lblreportereasignado.Visible = true;
                         txtidoriginal.Text = idc_original.ToString().Trim();
                     }//es reasignada
+                    DataTable dt2 = ds.Tables[1];
+                    foreach (DataRow rows in dt2.Rows)
+                    {
+                        string ruta = rows["ruta"].ToString();
+                        string extension = rows["extension"].ToString();
+                        string descripcion = rows["descripcion"].ToString();
+                        AddPapeleriaToTable(ruta,extension,descripcion);
+                      
+                    }
                 }
                 else
                 {
@@ -259,11 +335,17 @@ namespace presentacion
             try
             {
                 ReportesENT entiddad = new ReportesENT();
+                entiddad.Pcadena = CadenaArchivos();
+                entiddad.Ptotal_cadena = TotalCadenaArchivos();
                 ReportesCOM componente = new ReportesCOM();
                 DataSet ds = new DataSet();
                 string vmensaje = "";
                 string caso = (string)Session["Caso_Confirmacion"];
-                string url = Session["backurl"] != null ? Session["backurl"] as string : "menu.aspx";
+                string url = Session["backurl"] != null ? Session["backurl"] as string : "empleados_reportes.aspx";
+                if (txturl_back.Text != "")
+                {
+                    url = txturl_back.Text;
+                }
                 switch (caso)
                 {
                     case "Guardar":
@@ -294,7 +376,18 @@ namespace presentacion
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
-                            Alert.ShowGiftMessage("Estamos Guardando el Reporte.", "Espere un Momento", url, "imagenes/loading.gif", "2000", "El Reporte fue Guardado correctamente ", this);
+                            DataTable tabla_archivos = ds.Tables[1];
+                            bool correct = true;
+                            foreach (DataRow row_archi in tabla_archivos.Rows)
+                            {
+                                string ruta_det = row_archi["ruta_destino"].ToString();
+                                string ruta_origen = row_archi["ruta_origen"].ToString();
+                                correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
+                                if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
+                            }
+                            int total = (((tabla_archivos.Rows.Count) * 1) + 1) * 1000;
+                            string t = total.ToString();
+                            Alert.ShowGiftMessage("Estamos Guardando el Reporte.", "Espere un Momento", url, "imagenes/loading.gif", t, "El Reporte fue Guardado correctamente", this);
                         }
                         else
                         {
@@ -303,7 +396,8 @@ namespace presentacion
                         break;
 
                     case "Cancelar":
-                       
+
+                        Session["backurl"] = null;
                         Response.Redirect(url);
                         break;
 
@@ -320,7 +414,7 @@ namespace presentacion
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
-                            Alert.ShowGiftMessage("Estamos Autorizando el Reporte.", "Espere un Momento", url, "imagenes/loading.gif", "2000", "El Reporte fue Revisado correctamente ", this);
+                            Alert.ShowGiftMessage("Estamos Autorizando el Reporte.", "Espere un Momento", "empleados_reportes_pendientes.aspx", "imagenes/loading.gif", "2000", "El Reporte fue Revisado correctamente ", this);
                         }
                         else
                         {
@@ -343,8 +437,19 @@ namespace presentacion
                         ds = componente.TerminarReporte(entiddad);
                         vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
-                        {
-                            Alert.ShowGiftMessage("Estamos Terminando "+ masstring + " el Reporte.", "Espere un Momento", url, "imagenes/loading.gif", "2000", "El Reporte fue Terminado "+ masstring + " correctamente ", this);
+                        {                           
+                            DataTable tabla_archivos = ds.Tables[1];
+                            bool correct = true;
+                            foreach (DataRow row_archi in tabla_archivos.Rows)
+                            {
+                                string ruta_det = row_archi["ruta_destino"].ToString();
+                                string ruta_origen = row_archi["ruta_origen"].ToString();
+                                correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
+                                if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo " + ruta_origen + "a la ruta " + ruta_det, this); }
+                            }
+                            int total = (((tabla_archivos.Rows.Count) * 1) + 1) * 1000;
+                            string t = total.ToString();
+                            Alert.ShowGiftMessage("Estamos Terminando "+ masstring + " el Reporte.", "Espere un Momento", "empleados_reportes_contra.aspx", "imagenes/loading.gif", t, "El Reporte fue Terminado "+ masstring + " correctamente ", this);
                         }
                         else
                         {
@@ -396,10 +501,9 @@ namespace presentacion
 
         protected void lnkGuardarPape_Click(object sender, EventArgs e)
         {
-            string id_archi = "0";
-            id_archi = Session["id_archi"] != null ? (string)Session["id_archi"] : "0";
+          
             Random random = new Random();
-            int randomNumber = random.Next(0, 1000);
+            int randomNumber = random.Next(0, 100000);
             if (!fupPapeleria.HasFile)
             {
                 Alert.ShowAlertError("Seleccione un archivo", this);
@@ -411,14 +515,13 @@ namespace presentacion
             else
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/tareas/"));//path local
-                string mensaje = AddPapeleriaToTable(dirInfo + randomNumber.ToString() + fupPapeleria.FileName, Path.GetExtension(fupPapeleria.FileName).ToString(), txtNombreArchivo.Text.ToUpper(), id_archi);
+                string mensaje = AddPapeleriaToTable(dirInfo + randomNumber.ToString() + fupPapeleria.FileName, Path.GetExtension(fupPapeleria.FileName).ToString(), txtNombreArchivo.Text.ToUpper());
                 if (mensaje.Equals(string.Empty))
                 {
                     bool pape = funciones.UploadFile(fupPapeleria, dirInfo + randomNumber.ToString() + fupPapeleria.FileName, this.Page);
                     if (pape == true)
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "DE", "GoSection('" + "#" + lnkGuardarPape.ClientID.ToString() + "');", true);
-                        Alert.ShowGift("Estamos subiendo el archivo.", "Espere un Momento", "imagenes/loading.gif", "2000", "Comentario Guardardo Correctamente", this);
+                        Alert.ShowGift("Estamos subiendo el archivo.", "Espere un Momento", "imagenes/loading.gif", "2000", "Archivo Guardardo Correctamente", this);
                         //agregamos a tabla global de papelera
                         fupPapeleria.Visible = true;
                     }
@@ -436,8 +539,6 @@ namespace presentacion
             string ruta = gridPapeleria.DataKeys[index].Values["ruta"].ToString();
             string extension = gridPapeleria.DataKeys[index].Values["extension"].ToString();
             string descripcion = gridPapeleria.DataKeys[index].Values["descripcion"].ToString();
-            string id_archi = gridPapeleria.DataKeys[index].Values["id_archi"].ToString();
-            Session["id_archivo"] = id_archi;
             DataTable papeleria = (DataTable)Session["papeleria"];
             int papeleriat = papeleria.Rows.Count;
             switch (e.CommandName)
@@ -492,7 +593,7 @@ namespace presentacion
         /// </summary>
         /// <param name="ruta"></param>
         /// <param name="nombre"></param>
-        public string AddPapeleriaToTable(string ruta, string extension, string descripcion, string id_archi)
+        public string AddPapeleriaToTable(string ruta, string extension, string descripcion)
         {
             string mensaje = "";
             bool exists = false;
@@ -501,12 +602,11 @@ namespace presentacion
                 DataTable papeleria = (DataTable)Session["papeleria"];
                 foreach (DataRow check in papeleria.Rows)
                 {
-                    if (check["ruta"].Equals(ruta) && check["id_archi"].Equals(id_archi))
+                    if (check["ruta"].Equals(ruta) && check["descripcion"].Equals(descripcion))
                     {
                         check["ruta"] = ruta;
                         check["extension"] = extension;
                         check["descripcion"] = descripcion;
-                        check["id_archi"] = id_archi;
                         exists = true;
                         break;
                     }
@@ -517,7 +617,6 @@ namespace presentacion
                     new_row["ruta"] = ruta;
                     new_row["extension"] = extension;
                     new_row["descripcion"] = descripcion;
-                    new_row["id_archi"] = id_archi;
                     papeleria.Rows.Add(new_row);
                     gridPapeleria.DataSource = papeleria;
                     gridPapeleria.DataBind();
@@ -571,6 +670,14 @@ namespace presentacion
                     Alert.ShowAlertInfo("SI SELECCIONA UN EMPLEADO, EL REPORTE SERA REASIGNADO.","Mensaje del Sistema", this);
                 }
                 CargarGridPrincipal(idc_puesto);
+                string queyr = "idc_empleado = " + idc_puesto + " and idc_usuario = " + Convert.ToInt32(Session["sidc_usuario"]).ToString().Trim() + "";
+                if (TengoHistorialConEsteBato(DateTime.Now.AddDays(-1000), DateTime.Today, queyr))
+                {
+                    lblmihis.Visible = true;
+                    lnkverhisto.Visible = true;
+                    lnkverhisto.OnClientClick = "window.open('empleados_incidencias_reporte.aspx?desglo=1&report=JBAKJSBKJSBJABSJABSJABS&query=" + funciones.deTextoa64(queyr) + "')";
+                }
+
             }
         }
 
@@ -711,11 +818,11 @@ namespace presentacion
         {
             if (Request.QueryString["view"] == null)
             {
+                archi.Visible = false;
                 lnlvalido.CssClass = lnlvalido.CssClass == "btn btn-default btn-block" ? "btn btn-success btn-block" : "btn btn-default btn-block";
                 if (Request.QueryString["termina"] != null && lnlvalido.CssClass == "btn btn-default btn-block")
                 {
-
-
+                    archi.Visible = true;
                     Alert.ShowAlertInfo("Puede Reasignar el Reporte", "Mensaje del Sistema", this);
                 }
                 if (Request.QueryString["termina"] != null)

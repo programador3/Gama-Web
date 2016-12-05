@@ -27,6 +27,11 @@
 
 
     </script>
+    <style type="text/css">
+        .Ocultar {
+            display:none;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">

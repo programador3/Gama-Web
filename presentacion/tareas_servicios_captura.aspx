@@ -35,8 +35,14 @@
                     <h4><i class="fa fa-list-alt"></i>&nbsp;Descripción del Servicio</h4>
                     <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 1000);" placeholder="Descripcion" CssClass="form-control"
                         TextMode="MultiLine" Rows="5" runat="server" Style="resize: none; text-transform: uppercase; font-size: 12px;"></asp:TextBox>
-                    <h4><i class="fa fa-clock-o"></i>&nbsp;Tiempo de Respuesta en horas</h4>
+                    <h4><i class="fa fa-clock-o"></i>&nbsp;Tiempo de Respuesta en horas para CORPORATIVO</h4>
                     <asp:TextBox ID="txthoras" CssClass=" form-control" TextMode="Number" onkeypress="return validarEnteros(event);" onfocus="$(this).select();"
+                        runat="server"></asp:TextBox>
+                    <h4><i class="fa fa-clock-o"></i>&nbsp;Tiempo de Respuesta en horas para CEDIS LOCALES</h4>
+                    <asp:TextBox ID="txthorasl" CssClass=" form-control" TextMode="Number" onkeypress="return validarEnteros(event);" onfocus="$(this).select();"
+                        runat="server"></asp:TextBox>
+                    <h4><i class="fa fa-clock-o"></i>&nbsp;Tiempo de Respuesta en horas para CEDIS FORANEOS</h4>
+                    <asp:TextBox ID="txthorasf" CssClass=" form-control" TextMode="Number" onkeypress="return validarEnteros(event);" onfocus="$(this).select();"
                         runat="server"></asp:TextBox>
                     <h4><i class="fa fa-bars"></i>&nbsp;Observaciones Generales</h4>
                     <asp:TextBox ID="txtobservaciones" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 240);" placeholder="Observaciones" CssClass="form-control"

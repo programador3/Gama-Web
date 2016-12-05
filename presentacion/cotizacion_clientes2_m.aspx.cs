@@ -21,8 +21,8 @@ namespace presentacion
             if (!IsPostBack)
             {
                 txtfecha.Text = DateTime.Today.ToString("yyyy-MM-dd");
-                int idc_cliente = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_cliente"]));
-                int idc_agente = Request.QueryString["idc_agente"] == null ? Convert.ToInt32(funciones.de64aTexto(Request.QueryString["IDA"])) : Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_agente"]));
+                int idc_cliente = Convert.ToInt32(Session["idc_cliente"]);
+                int idc_agente = Session["idc_agente"] == null ? Convert.ToInt32(funciones.de64aTexto(Request.QueryString["IDA"])) : Convert.ToInt32(Session["idc_agente"]);
                 txtagente.Text = idc_agente.ToString();
                 txtid.Text = idc_cliente.ToString();
                 cargar_datos_cliente(idc_cliente);

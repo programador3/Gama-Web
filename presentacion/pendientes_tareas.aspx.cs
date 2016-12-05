@@ -2,6 +2,7 @@
 using negocio.Entidades;
 using System;
 using System.Data;
+using System.Web.UI.WebControls;
 
 namespace presentacion
 {
@@ -14,8 +15,21 @@ namespace presentacion
             TareasCOM componente = new TareasCOM();
             entidad.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
             DataSet ds = componente.CargarPendientes(entidad);
-            Repeater3.DataSource = ds.Tables[0];
-            Repeater3.DataBind();
+            gridservicios.DataSource = ds.Tables[0];
+            gridservicios.DataBind();
+        }
+
+        protected void gridservicios_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DataRowView rowView = (DataRowView)e.Row.DataItem;
+                string bc = rowView["backcolor"].ToString();
+                string fc = rowView["forecolor"].ToString();
+                e.Row.Cells[1].ForeColor = System.Drawing.Color.FromName(fc);
+                e.Row.Cells[1].BackColor = System.Drawing.Color.FromName(bc);
+
+            }
         }
     }
 }

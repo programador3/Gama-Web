@@ -49,8 +49,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <asp:Label ID="lblsession" runat="server" Text="" Visible="false"></asp:Label>
-    <h1 class="page-header" style="text-align: center;">
-        <asp:Label ID="lblhead" runat="server" Text=""></asp:Label></h1>
+    <h3 class="page-header" style="text-align: center;">
+        <strong><asp:Label ID="lblhead" runat="server" Text=""></asp:Label></strong></h3>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <Triggers>
             <asp:PostBackTrigger ControlID="lnkexcel" />
@@ -69,45 +69,65 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="table table-responsive">
-                            <asp:GridView ID="gridtareas" DataKeyNames="idc_tarea,desc_completa,descripcion" OnRowCommand="gridtareas_RowCommand" CssClass="gvv table table-responsive table-bordered table-condensed" OnRowDataBound="gridtareas_RowDataBound" runat="server" AutoGenerateColumns="False" ShowHeader="true">
+                            <asp:GridView style="font-size:11px;" ID="gridtareas" DataKeyNames="idc_tarea,desc_completa,descripcion" OnRowCommand="gridtareas_RowCommand" 
+                                CssClass="gvv table table-responsive table-bordered table-condensed" OnRowDataBound="gridtareas_RowDataBound" 
+                                runat="server" AutoGenerateColumns="False" ShowHeader="true">
                                 <RowStyle HorizontalAlign="Center"></RowStyle>
                                 <Columns>
                                     <asp:ButtonField ControlStyle-CssClass="btn btn-info btn-block" ItemStyle-Width="50px" Text="Detalles" CommandName="Detalles" ButtonType="Button"></asp:ButtonField>
                                     <asp:ButtonField ControlStyle-CssClass="btn btn-success btn-block" Visible="true" ItemStyle-Width="50px" Text="Arbol" CommandName="Arbol" ButtonType="Button"></asp:ButtonField>
                                     <asp:BoundField DataField="idc_tarea" Visible="false"></asp:BoundField>
-                                    <asp:TemplateField HeaderText="Externo" HeaderStyle-Width="200px">
+                                    <asp:TemplateField HeaderText="Tarea">
                                         <ItemTemplate>
-                                            <asp:Label ID="lbldesc" CssClass="btn btn-default btn-block" runat="server" Text='<%#Eval("descripcion") %>' ToolTip='<%#Eval("desc_completa") %>'></asp:Label>
+                                            <asp:Label ID="lbldesc" runat="server" Text='<%#Eval("descripcion") %>' ToolTip='<%#Eval("desc_completa") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="desc_completa" HeaderText="Tarea" Visible="false"></asp:BoundField>
                                     <asp:BoundField DataField="puesto_realizo" HeaderText="Realizo"></asp:BoundField>
                                     <asp:BoundField DataField="puesto_solicito" HeaderText="Solicito"></asp:BoundField>
+                                    <asp:BoundField DataField="fecha_registro" HeaderText="F. Registro" HeaderStyle-Width="150px"></asp:BoundField>
                                     <asp:BoundField DataField="fecha_compromiso" HeaderText="F. Compromiso" HeaderStyle-Width="150px"></asp:BoundField>
                                     <asp:BoundField DataField="fecha_terminado" HeaderText="F. Terminado" HeaderStyle-Width="150px"></asp:BoundField>
-                                    <asp:TemplateField HeaderText="Externo" HeaderStyle-Width="40px">
+                                    <asp:TemplateField HeaderText="Externo" HeaderStyle-Width="30px">
                                         <ItemTemplate>
-                                            <asp:Image ID="externo" runat="server" ImageUrl="~/imagenes/btn/inchecked.png" />
+                                            <asp:Image ID="externo" runat="server" Width="20px" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="avance" HeaderText="% Avance" HeaderStyle-Width="50px"></asp:BoundField>
-                                    <asp:TemplateField HeaderText="Estado" HeaderStyle-Width="30px">
+                                    <asp:TemplateField HeaderText="Estado" HeaderStyle-Width="20px">
                                         <ItemTemplate>
-                                            <asp:Image ID="edo" runat="server" Width="30px" ImageUrl="~/imagenes/btn/inchecked.png" />
+                                            <asp:Image ID="edo" runat="server" Width="20px" ImageUrl="~/imagenes/btn/inchecked.png" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="R. Solicitante" HeaderStyle-Width="80px">
+                                    <asp:TemplateField HeaderText="R. Solicitante" HeaderStyle-Width="60px">
                                         <ItemTemplate>
-                                            <asp:Image ID="r_usuarios" runat="server" Width="30px" ImageUrl="~/imagenes/btn/inchecked.png" />
+                                            <asp:Image ID="r_usuarios" runat="server" Width="20px" ImageUrl="~/imagenes/btn/inchecked.png" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="R. Sistema" HeaderStyle-Width="80px">
+                                    <asp:TemplateField HeaderText="R. Sistema" HeaderStyle-Width="60px">
                                         <ItemTemplate>
-                                            <asp:Image ID="r_sistema" runat="server" Width="30px" ImageUrl="~/imagenes/btn/inchecked.png" />
+                                            <asp:Image ID="r_sistema" runat="server" Width="20px" ImageUrl="~/imagenes/btn/inchecked.png" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+                            <div class="col-lg-12">
+                                <table class="table table-responsive table-bordered">
+                                    <tr>
+                                        <td style="width: 30%">
+                                            <asp:Image Width="30px" ID="externo" runat="server" ImageUrl="~/imagenes/ok.png" />
+                                            <label style="font-size:18px;"><strong>Terminada</strong></label>
+                                        </td>
+                                        <td style="width: 30%">
+                                            <asp:Image Width="30px" ID="Image1" runat="server" ImageUrl="~/imagenes/cogs.png" /> 
+                                            <label style="font-size:16px;"><strong>En Proceso</strong></label>                                       </td>
+                                        <td style="width: 30%; color:black;background-color:#ef9a9a;">
+                                            <asp:Image Width="30px" ID="Image2" runat="server" ImageUrl="~/imagenes/btn/cancel.png" />
+                                            <label style="font-size:18px;"><strong>Cancelada</strong></label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -178,4 +198,5 @@
             </asp:Panel>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <input runat="server" type="hidden" id="H_casoFiltor" />
 </asp:Content>

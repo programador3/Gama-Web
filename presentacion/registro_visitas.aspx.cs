@@ -2,9 +2,15 @@
 using negocio.Entidades;
 using System;
 using System.Data;
+using System.IO;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Globalization;
+using System.Collections;
 
 namespace presentacion
 {
@@ -16,17 +22,70 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
+
+            string imguri = Session["url_imagen_visitante"]==null?"": Session["url_imagen_visitante"] as string;
+            
             if (!IsPostBack)
             {
+                Session["url_imagen_visitante"] = null;
                 Session["idc_visitap"] = null;
                 Session["idc_visitaemp"] = null;
                 Session["idc_visitareg"] = null;
                 txtpbservaciones.Visible = false;
                 CargaPuestos("");
                 CargarVisitas(0);
+                if (Request.InputStream.Length > 0 && imguri == "")
+                {
+                    using (StreamReader reader = new StreamReader(Request.InputStream))
+                    {
+                        string hexString = Server.UrlEncode(reader.ReadToEnd());
+                        string imageName = DateTime.Now.ToString("dd-MM-yy hh-mm-ss");
+
+                        Random random_edit = new Random();
+                        int randomNumber_live = random_edit.Next(0, 100000);
+                        DateTime localDate = DateTime.Now;
+                        string date = localDate.ToString();
+                        date = date.Replace("/", "_");
+                        date = date.Replace(":", "_");
+                        int idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                        string name = idc_usuario.ToString().Trim() + "_" + date;
+                        string imagePath = string.Format("~/temp/files/{0}.png", name);
+                        File.WriteAllBytes(Server.MapPath(imagePath), ConvertHexToBytes(hexString));
+                        Session["CapturedImage"] = ResolveUrl(imagePath);
+                        Session["url_imagen_visitante"] = imagePath;
+                        txtimgurl.Text = imagePath;
+                        imgCapture.Visible = true;
+                    }
+                }
+
             }
+            if (imguri != "")
+            {
+                imgCapture.Attributes["src"] = ResolveUrl(imguri);
+                imgCapture.Style.Clear();
+                imgCapture.Style.Add("display", "block");
+                imgCapture.Style.Add("height", "300");
+            }
+
+
+        }
+        private static byte[] ConvertHexToBytes(string hex)
+        {
+            byte[] bytes = new byte[hex.Length / 2];
+            for (int i = 0; i < hex.Length; i += 2)
+            {
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            }
+            return bytes;
         }
 
+        [WebMethod(EnableSession = true)]
+        public static string GetCapturedImage()
+        {
+            string url = HttpContext.Current.Session["CapturedImage"].ToString();
+            HttpContext.Current.Session["CapturedImage"] = null;
+            return url;
+        }
         /// <summary>
         /// Regresa tabla con coincidencias de visitantes
         /// </summary>
@@ -93,7 +152,7 @@ namespace presentacion
                 ddlPuestoAsigna.DataBind();
                 if (filtro == "")
                 {
-                    ddlPuestoAsigna.Items.Insert(0, new ListItem("--Seleccione un Empleado", "0")); //updated code}
+                    ddlPuestoAsigna.Items.Insert(0, new System.Web.UI.WebControls.ListItem("--Seleccione un Empleado", "0")); //updated code}
                 }
                 else
                 {
@@ -233,12 +292,15 @@ namespace presentacion
                 entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
                 entidad.Pusuariopc = funciones.GetUserName();//usuario pc
                 entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                string imgurl = Session["url_imagen_visitante"] == null ? "" : Session["url_imagen_visitante"] as string;
                 DataSet ds = new DataSet();
                 string vmensaje = "";
                 string vmensajee = "";
                 switch (caso)
                 {
                     case "Guardar":
+                        if (imgurl != "")
+                        { entidad.PURL = imgurl; }
                         ds = componente.AgregarVisita(entidad);
                         break;
 
@@ -250,10 +312,21 @@ namespace presentacion
                 }
 
                 vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                bool copiar = Convert.ToBoolean(ds.Tables[0].Rows[0]["COPIAR_FOTO"]);
+                if (copiar)
+                {
+                    DirectoryInfo dirInfo2 = new DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
+                    string origen = dirInfo2 + Path.GetFileName(imgurl);
+                    string destino = ds.Tables[0].Rows[0]["ruta_destino"].ToString();
+                    File.Copy(origen, destino,true);
+                    Gaffete(dirInfo2.ToString(), origen);
+                }
 
                 vmensajee = ds.Tables[0].Rows[0]["mensaje_extra"].ToString() == "" ? "Visita Procesada Correctamente" : ds.Tables[0].Rows[0]["mensaje_extra"].ToString();
                 if (vmensaje == "")
                 {
+                    Session["url_imagen_visitante"] = null;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMeededssage", "ModalClose();", true);
                     Alert.ShowGiftMessage("Estamos procesando la visita.", "Espere un Momento", "registro_visitas.aspx", "imagenes/loading.gif", "2000", vmensajee, this);
                 }
                 else
@@ -329,6 +402,104 @@ namespace presentacion
         protected void LNKUPDATE_Click(object sender, EventArgs e)
         {
             CargarVisitas(0);
+        }
+
+        public string Gaffete(string NameDoc, string img)
+        {
+            try
+            {
+                iTextSharp.text.Font myfont = FontFactory.GetFont("Tahoma", BaseFont.IDENTITY_H, 12, iTextSharp.text.Font.NORMAL, iTextSharp.text.BaseColor.BLACK);
+                DateTime localDate = DateTime.Now;
+                string date = localDate.ToString();
+                date = date.Replace("/", "_");
+                date = date.Replace(":", "_");
+                int idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                string name = idc_usuario.ToString().Trim() + "_" + date;
+                FileStream fs = new FileStream(NameDoc + name + ".pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+                Document document = new Document(PageSize.A4, 20f, 20f, 5f, 20f);
+                System.IO.MemoryStream mStream = new System.IO.MemoryStream();
+                PdfWriter writer = PdfWriter.GetInstance(document, fs);
+                iTextSharp.text.Font titlefont = FontFactory.GetFont("Tahoma", BaseFont.IDENTITY_H, 7, iTextSharp.text.Font.BOLD, iTextSharp.text.BaseColor.BLACK);
+                iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 6);
+                document.Open();
+
+                iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 38,
+                    iTextSharp.text.Font.BOLD, iTextSharp.text.BaseColor.BLACK);//LA FUENTE DE NUESTRO TEXTO
+                iTextSharp.text.Font fuente_subtitle = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD, iTextSharp.text.BaseColor.BLACK);//LA FUENTE DE NUESTRO TEXTO
+                iTextSharp.text.Font fuente_p = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);//LA FUENTE DE NUESTRO TEXTO
+                iTextSharp.text.Font fuente_F = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10);//LA FUENTE DE NUESTRO TEXTO
+                iTextSharp.text.Font fuente_Fp = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);//LA FUENTE DE NUESTRO TEXTO
+                Paragraph Titulo = new Paragraph("  VISITANTE", fuente);
+                Titulo.Alignment = Element.ALIGN_LEFT;
+                Paragraph Fecha = new Paragraph("    "+DateTime.Now.ToString("dddd dd MMMM, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX")).ToUpper(), fuente_Fp);
+                Fecha.Alignment = Element.ALIGN_LEFT;
+                Paragraph espacio = new Paragraph(" ");
+                Paragraph nombre = new Paragraph("    "+txtnombre.Text.ToUpper(),fuente_F);
+                Paragraph EMPRESA = new Paragraph("    " + txtempresa.Text.ToUpper(), fuente_F);
+
+                DirectoryInfo dirInfo2 = new DirectoryInfo(Server.MapPath("~/imagenes/"));//path local
+                iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance(img);
+                float percentage = 1f;
+                percentage = 150 / jpg.Width;
+                jpg.ScalePercent(percentage * 150);
+                PdfContentByte canvas = writer.DirectContentUnder;
+                jpg.SetAbsolutePosition(25, 580);
+                string img2 = dirInfo2+ "fondo_gaffete.png";
+                iTextSharp.text.Image jpg2 = iTextSharp.text.Image.GetInstance(img2);
+                float percentage2 = 1f;
+                percentage2 = 150 / jpg2.Width;
+                jpg2.ScalePercent(percentage2 * 150);
+                jpg2.SetAbsolutePosition(25, 450);
+                canvas.SaveState();
+                PdfGState state = new PdfGState();
+                state.FillOpacity = (.2f);
+                canvas.SetGState(state);
+                canvas.AddImage(jpg);
+                canvas.RestoreState();
+                PdfContentByte canvas2 = writer.DirectContentUnder;
+                canvas2.SaveState();
+                PdfGState state2 = new PdfGState();
+                state.FillOpacity = (.2f);
+                canvas2.SetGState(state2);
+                canvas2.AddImage(jpg2);
+                canvas2.RestoreState();
+                document.Add(jpg);
+                document.Add(jpg2);
+                document.Add(Titulo);
+                document.Add(Fecha);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(espacio);
+                document.Add(nombre);
+                document.Add(EMPRESA);
+                document.Close();
+                string pageName = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
+                pageName = pageName.Replace("registro_visitas.aspx", "");
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "window.open('" + pageName+ "temp/files/" + name + ".pdf" + "');", true);
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string imgurl = Session["url_imagen_visitante"] == null ? "" : Session["url_imagen_visitante"] as string;
+            DirectoryInfo dirInfo2 = new DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
+            string origen = dirInfo2 + Path.GetFileName(imgurl);
+
+            Gaffete(dirInfo2.ToString(), origen);
         }
     }
 }

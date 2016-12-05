@@ -4904,7 +4904,7 @@ namespace presentacion
                     string vtipom = "A";
                     string vcambios = "";
                     bool vdesiva = (txtrfc.Text.Trim().StartsWith("*") ? false : true);
-                    System.DateTime vFechaEntrega = Convert.ToDateTime(cbofechas.SelectedValue);
+                    System.DateTime vFechaEntrega = DateTime.ParseExact(cbofechas.SelectedValue.ToString(), "dd/MM/yyyy", null);
                     string vocc = txtnumeroOC.Text.Trim();
                     int vidpro = 0;
                     bool vpro = false;
@@ -5172,15 +5172,16 @@ namespace presentacion
                         vtipog = "V";
                     }
                     string vmensaje = "";
+                    char value_char_Def= default(char);
                     switch (ventrar)
                     {
                         case 1:
-                            ds = componente.sp_apreped_CAMBIO_PRECIOS3_nuevo(Convert.ToInt32(txtid.Text.Trim()), Convert.ToInt32(txtpretotal.Text.Trim()), 
+                            ds = componente.sp_apreped_CAMBIO_PRECIOS3_nuevo(Convert.ToInt32(txtid.Text.Trim()), Convert.ToDouble(txtpretotal.Text.Trim()), 
                                 Convert.ToInt32(Session["idc_sucursal"]), vdesiva,  Convert.ToInt32(Session["Xidc_iva"]), 
                                 Convert.ToInt32(Session["idc_usuario"]), Convert.ToInt32(Session["xidc_almacen"]), ip, pc, usuariopc,
-                            Convert.ToChar(vtipom), vcambios, vdarti, vtotal, Convert.ToDateTime(cbofechas.SelectedValue), vpro, vidpro, txtnumeroOC.Text.Trim(), idc_colonia, calle,
+                          ( vtipom.Length > 0 ?Convert.ToChar(vtipom):value_char_Def), vcambios, vdarti, vtotal, DateTime.ParseExact(cbofechas.SelectedValue.ToString(), "dd/MM/yyyy", null), vpro, vidpro, txtnumeroOC.Text.Trim(), idc_colonia, calle,
                             numero, Convert.ToInt32(cp), txtobservaciones.Text.Trim(), folioCHP, sipasa, ventdir, bitcroquis, bitocc, vsin_exis, vcosbajo,
-                            0, bitllamada, mensaje, sipasa2, Convert.ToChar(vtipog), Convert.ToDouble(txtmaniobras.Text.Trim()), vrecoge, Convert.ToInt32(txtidOc.Text.Trim()), 
+                            0, bitllamada, mensaje, sipasa2, (vtipog.Length > 0 ? Convert.ToChar(vtipog) : value_char_Def), Convert.ToDouble(txtmaniobras.Text.Trim()), vrecoge, Convert.ToInt32(txtidOc.Text.Trim()), 
                             Convert.ToInt32(txtsucursalr.Text.Trim()), tipopago,
                             idc_banco, fecha_deposito, monto, observacionesP, vconfirmar_pago, vcadena, vtacti.ToString().Trim(), 0, null, vdarti_nueva,
                             VTOTA_NUEVO, (!string.IsNullOrEmpty(pdetalles) ? pdetalles : ""), (pfleteaut > 0 ? pfleteaut : 0));
@@ -5189,20 +5190,20 @@ namespace presentacion
                             ds = componente.sp_apreped_creditos4_nuevo(Convert.ToInt32(txtid.Text.Trim()), Convert.ToInt32(txtpretotal.Text.Trim()),
                                 Convert.ToInt32(Session["idc_sucursal"]), vdesiva, Convert.ToInt32(Session["Xidc_iva"]),
                                 Convert.ToInt32(Session["idc_usuario"]), Convert.ToInt32(Session["xidc_almacen"]), ip, pc, usuariopc,
-                            Convert.ToChar(vtipom), vcambios, vdarti, vtotal, Convert.ToDateTime(cbofechas.SelectedValue), vpro, vidpro, txtnumeroOC.Text.Trim(), idc_colonia, calle,
+                            (vtipom.Length > 0 ? Convert.ToChar(vtipom) : value_char_Def), vcambios, vdarti, vtotal, DateTime.ParseExact(cbofechas.SelectedValue.ToString(), "dd/MM/yyyy", null), vpro, vidpro, txtnumeroOC.Text.Trim(), idc_colonia, calle,
                             numero, Convert.ToInt32(cp), txtobservaciones.Text.Trim(), folioCHP, sipasa, ventdir, bitcroquis, bitocc, vsin_exis, vcosbajo,
-                            0, bitllamada, mensaje, Convert.ToChar(vtipog), sipasa2, Convert.ToDouble(txtmaniobras.Text.Trim()), vrecoge, Convert.ToInt32(txtidOc.Text.Trim()),
+                            0, bitllamada, mensaje, (vtipog.Length > 0 ? Convert.ToChar(vtipog) : value_char_Def), sipasa2, Convert.ToDouble(txtmaniobras.Text.Trim()), vrecoge, Convert.ToInt32(txtidOc.Text.Trim()),
                             Convert.ToInt32(txtsucursalr.Text.Trim()), tipopago,
                             idc_banco, fecha_deposito, monto, observacionesP, vconfirmar_pago, vcadena, vtacti.ToString().Trim(), 0, null, vdarti_nueva,
                             VTOTA_NUEVO);
                             break;
                         case 3:
-                            ds = componente.sp_apreped_creditos4_nuevo(Convert.ToInt32(txtid.Text.Trim()), Convert.ToInt32(txtpretotal.Text.Trim()),
+                            ds = componente.sp_apreped_creditos4_nuevo(Convert.ToInt32(txtid.Text.Trim()), Convert.ToDouble(txtpretotal.Text.Trim()),
                                 Convert.ToInt32(Session["idc_sucursal"]), vdesiva, Convert.ToInt32(Session["Xidc_iva"]),
                                 Convert.ToInt32(Session["idc_usuario"]), Convert.ToInt32(Session["xidc_almacen"]), ip, pc, usuariopc,
-                            Convert.ToChar(vtipom), vcambios, vdarti, vtotal, Convert.ToDateTime(cbofechas.SelectedValue), vpro, vidpro, txtnumeroOC.Text.Trim(), idc_colonia, calle,
+                           (vtipom.Length > 0 ? Convert.ToChar(vtipom) : value_char_Def), vcambios, vdarti, vtotal, DateTime.ParseExact(cbofechas.SelectedValue.ToString(), "dd/MM/yyyy", null), vpro, vidpro, txtnumeroOC.Text.Trim(), idc_colonia, calle,
                             numero, Convert.ToInt32(cp), txtobservaciones.Text.Trim(), folioCHP, sipasa, ventdir, bitcroquis, bitocc, vsin_exis, vcosbajo,
-                            0, bitllamada, mensaje, Convert.ToChar(vtipog), sipasa2, Convert.ToDouble(txtmaniobras.Text.Trim()), vrecoge, Convert.ToInt32(txtidOc.Text.Trim()),
+                            0, bitllamada, mensaje, (vtipog.Length > 0 ? Convert.ToChar(vtipog) : value_char_Def), sipasa2, Convert.ToDouble(txtmaniobras.Text.Trim()), vrecoge, Convert.ToInt32(txtidOc.Text.Trim()),
                             Convert.ToInt32(txtsucursalr.Text.Trim()), tipopago,
                             idc_banco, fecha_deposito, monto, observacionesP, vconfirmar_pago, vcadena, vtacti.ToString().Trim(), 0, null, vdarti_nueva,
                             VTOTA_NUEVO);
@@ -5210,10 +5211,10 @@ namespace presentacion
                         case 4:
                             ds = componente.sp_apreped_creditos_especial_nc3_ESP_nuevo(Convert.ToInt32(txtid.Text.Trim()), Convert.ToDouble(txtpretotal.Text.Trim()),
                                 Convert.ToInt32(Session["idc_sucursal"]), vdesiva, Convert.ToInt32(Session["Xidc_iva"]), Convert.ToInt32(Session["idc_usuario"]), 
-                                Convert.ToInt32(Session["xidc_almacen"]),   ip, pc, usuariopc, Convert.ToChar(vtipom), vcambios, vdarti, vtotal, 
-                                Convert.ToDateTime(cbofechas.SelectedValue), vpro, vidpro, txtnumeroOC.Text.Trim(), idc_colonia, calle,
+                                Convert.ToInt32(Session["xidc_almacen"]),   ip, pc, usuariopc, (vtipom.Length > 0 ? Convert.ToChar(vtipom) : value_char_Def), vcambios, vdarti, vtotal,
+                                DateTime.ParseExact(cbofechas.SelectedValue.ToString(), "dd/MM/yyyy", null), vpro, vidpro, txtnumeroOC.Text.Trim(), idc_colonia, calle,
                             numero, Convert.ToInt32(cp), observaciones, folioCHP, sipasa, ventdir, bitcroquis, bitocc, vsin_exis, vcosbajo,
-                            0, bitllamada, mensaje, Convert.ToChar(vtipog), sipasa2, Convert.ToDouble(txtmaniobras.Text.Trim()), vrecoge, 
+                            0, bitllamada, mensaje, (vtipog.Length > 0 ? Convert.ToChar(vtipog) : value_char_Def), sipasa2, Convert.ToDouble(txtmaniobras.Text.Trim()), vrecoge, 
                             Convert.ToInt32(txtplazo.Text.Trim()), Convert.ToInt32(txtformaP.Text.Trim()), txtotro.Text.Trim(),
                             txtcminima.Text.Trim(), txtcontacto.Text.Trim(), txttelefono.Text.Trim(), txtcorreo.Text.Trim(), 
                             Convert.ToInt32(txtidOc.Text.Trim()), Convert.ToInt32(txtsucursalr.Text.Trim()), vcadena, vtacti.ToString(), 0, null,
@@ -5235,24 +5236,29 @@ namespace presentacion
                         {
                             //AQUI ME QUEDE
                             GuardarArchivos(resultado, bitllamada, bitocc, bitcroquis, vleyo);
-                            cargar_consecutivo_folio();
-                            colores_clear();
-                            btnnuevoprepedido_Click(null, EventArgs.Empty);
-                            cboentrega.SelectedValue = "1";
-                            if (Convert.ToInt16(Request.QueryString["tipo"]) == 1)
-                            {
-                                Session["actividad_agente"] = null;
-                                ScriptManager.RegisterStartupScript(this, typeof(Page), "", "<script>alert('Se Guardo el " + vleyo 
-                                    + " con Exito \\n No. " + vleyo + ": " + resultado.ToString() + "'); </script>", false);
-                                ScriptManager.RegisterStartupScript(this, typeof(Page), "cerrarpagina", "<script>redirecting();</script>", false);
-                            }
-                            else
-                            {
-                                //CargarMsgbox("", "Se Guardo el " & vleyo & " con Exito <BR/> No. " & vleyo & ": " & resultado, False, 2)
-                                string msj = "Se Guardo el " + vleyo + " con Exito \\n \\u000b \\n No. " + vleyo + ": " + resultado.ToString();
-                                WriteMsgBox(msj);
-                                ScriptManager.RegisterStartupScript(this, typeof(Page), "cerrar_guardando", "<script>myStopFunction_guard();</script>", false);
-                            }
+                            //cargar_consecutivo_folio();
+                            //colores_clear();
+                            //btnnuevoprepedido_Click(null, EventArgs.Empty);
+                            //cboentrega.SelectedValue = "1";
+                            string url = Request.QueryString["idc_cliente"] != null ? "ficha_cliente_m.aspx" : "menu.aspx";
+                            Alert.ShowGiftMessage("Estamos procesando la solicitud.", "Espere un Momento", url,
+                                     "imagenes/loading.gif", "1000", "Se Guardo el " + vleyo
+                                     + "  No. " + vleyo + ": " + resultado.ToString() + " con Exito", this);
+                            //if (Convert.ToInt32(Request.QueryString["tipo"]) == 1)
+                            //{
+                            //    Alert.ShowGiftMessage("Estamos procesando la solicitud.", "Espere un Momento", url, 
+                            //        "imagenes/loading.gif", "1000", "Se Guardo el " + vleyo 
+                            //        + "  No. " + vleyo + ": " + resultado.ToString() + " con Exito", this);
+
+                            //}
+                            //else
+                            //{
+
+                            //    ////CargarMsgbox("", "Se Guardo el " & vleyo & " con Exito <BR/> No. " & vleyo & ": " & resultado, False, 2)
+                            //    //string msj = "Se Guardo el " + vleyo + " con Exito \\n \\u000b \\n No. " + vleyo + ": " + resultado.ToString();
+                            //    //WriteMsgBox(msj);
+                            //    //ScriptManager.RegisterStartupScript(this, typeof(Page), "cerrar_guardando", "<script>myStopFunction_guard();</script>", false);
+                            //}
                         }
                     }
                     else {
@@ -5263,7 +5269,6 @@ namespace presentacion
                 {
                     //CargarMsgbox("", ex.Message, False, 4)
                     WriteMsgBox("Error: \\n" + ex.Message.Replace("'", ""));
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "cerrar_guardando", "<script>myStopFunction_guard();</script>", false);
 
                 }
 
@@ -5310,7 +5315,7 @@ namespace presentacion
                             if (!string.IsNullOrEmpty(unidad))
                             {
                                 unidad = unidad + NoPedido + ext2[i];
-                                funciones.CopiarArchivos(unidad, ruta, this.Page);
+                                funciones.CopiarArchivos(ruta, unidad, this.Page);
                                 unidad = "";
                                 break; // TODO: might not be correct. Was : Exit For
                             }
@@ -5338,7 +5343,7 @@ namespace presentacion
                             if (!string.IsNullOrEmpty(unidad))
                             {
                                 unidad = unidad + NoPedido + ext[i];
-                                funciones.CopiarArchivos(unidad, ruta, this.Page);
+                                funciones.CopiarArchivos(ruta, unidad, this.Page);
                                 unidad = "";
                                 break; // TODO: might not be correct. Was : Exit For
                             }
@@ -5364,7 +5369,7 @@ namespace presentacion
                             if (!string.IsNullOrEmpty(unidad))
                             {
                                 unidad = unidad + NoPedido + ext2[i];
-                                funciones.CopiarArchivos(unidad, ruta,this.Page);
+                                funciones.CopiarArchivos(ruta, unidad,this.Page);
                                 unidad = "";
                                 break; // TODO: might not be correct. Was : Exit For
                             }
@@ -5387,6 +5392,13 @@ namespace presentacion
             {
                 throw ex;
             }
+        }
+
+        protected void btnsalir_Click(object sender, EventArgs e)
+        {
+            string url = Request.QueryString["idc_cliente"] != null ? "ficha_cliente_m.aspx" : "menu.aspx";
+            Response.Redirect(url,false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

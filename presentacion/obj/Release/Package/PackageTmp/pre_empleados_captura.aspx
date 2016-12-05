@@ -173,9 +173,6 @@
                                         <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                     </div>
                                 </div>
-
-                                <%--           </ContentTemplate>
-                               </asp:UpdatePanel>--%>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -366,7 +363,7 @@
                                                 <asp:GridView ID="gridTelefonos" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed" OnRowCommand="gridTelefonos_RowCommand" DataKeyNames="telefono">
                                                     <Columns>
                                                         <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Eliminar" CommandName="Eliminar" CausesValidation="false">
-                                                            <HeaderStyle HorizontalAlign="Center" />
+                                                            <HeaderStyle HorizontalAlign="Center" Width="50px" />
                                                             <ItemStyle HorizontalAlign="Center" />
                                                         </asp:ButtonField>
                                                         <asp:BoundField DataField="telefono" HeaderText="Numeros de Telefono"></asp:BoundField>
@@ -376,8 +373,41 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </ContentTemplate>
                             </asp:UpdatePanel>
+                            <div class="row">
+                                <div class=" col-lg-12">
+                                    <h4><strong><i class="fa fa-caret-right"></i>Referencias Laborales </strong><small>&nbsp;Minimo 2</small></h4>
+                                    <asp:Label ID="Label1" runat="server" Text="Empresa"></asp:Label>
+                                    <asp:TextBox ID="txtempresa" placeholder="Empresa Referencia" CssClass=" form-control"
+                                        onfocus="$(this).select();" onblur="return imposeMaxLength(this, 99);" runat="server"></asp:TextBox>
+                                    <asp:Label ID="Label2" runat="server" Text="Nombre Contacto"></asp:Label>
+                                    <asp:TextBox ID="txtcontacto" placeholder="Nombre del Contacto" CssClass=" form-control"
+                                        onfocus="$(this).select();" onblur="return imposeMaxLength(this, 149);" runat="server"></asp:TextBox>
+                                    <asp:Label ID="Label3" runat="server" Text="Telefono"></asp:Label>
+                                    <asp:TextBox ID="txttelefonoref" CssClass=" form-control"
+                                        onfocus="$(this).select();" TextMode="Number" runat="server"></asp:TextBox>                                    
+                                    <asp:Label ID="Label4" runat="server" Text="Grabación de Llamada"></asp:Label>
+                                    <asp:FileUpload ID="fupreferencia" CssClass=" form-control" runat="server" />
+                                    <asp:LinkButton ID="lnksubirref" CssClass=" btn btn-success btn-block"  runat="server" OnClick="lnksubirref_Click">Guardar Referencia</asp:LinkButton>
+                                    <div class="table table-responsive">
+                                        <asp:GridView ID="gridreferencias" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed"
+                                             DataKeyNames="telefono, contacto" OnRowCommand="gridreferencias_RowCommand">
+                                            <Columns>
+                                                <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Eliminar" CommandName="Eliminar" CausesValidation="false">
+                                                    <HeaderStyle HorizontalAlign="Center" Width="50px" />
+                                                    <ItemStyle HorizontalAlign="Center" />
+                                                </asp:ButtonField>
+                                                <asp:BoundField DataField="empresa" HeaderText="Empresa"></asp:BoundField>
+                                                <asp:BoundField DataField="contacto" HeaderText="Contacto"></asp:BoundField>
+                                                <asp:BoundField DataField="telefono" HeaderText="Numero de Telefono"></asp:BoundField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+
+                            </div>
                             <ul class="pager">
                                 <li class="next">
                                     <asp:LinkButton ID="lnkSiguientePDatosP" Style="color: #fff; background-color: #22A7F0;" CssClass="next" OnClick="lnkSiguientePDatosP_Click" runat="server">Continuar <i class="fa fa-arrow-right"></i></asp:LinkButton>

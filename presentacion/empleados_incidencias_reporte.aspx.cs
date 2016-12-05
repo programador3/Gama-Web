@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace presentacion
@@ -19,12 +20,85 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
+
+                Session["backurl"] = "empleados_incidencias_reporte.aspx";
                 txtfechainicio.Text = DateTime.Now.AddDays(-15).ToString("yyyy-MM-dd");
                 txtfechafin.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                if (Request.QueryString["desglo"] != null)
+                {
+                    if (Request.QueryString["report"] != null)
+                    {
+                        Session["backurl"] = "empleados_incidencias_reporte.aspx?desglo=1&report=JBSKJXBKJQBXKJQBKJQBKJBXJQBXKJSBXK&query=" + Request.QueryString["query"];
+                        txtfechainicio.Text = DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd");
+                        LinkButton1.Visible = false;
+                        txtfechainicio.ReadOnly = true;
+                        txtfechafin.ReadOnly = true;
+                        lnkcerrar.Visible = true;
+                        CargarPendientesFiltro(DateTime.Now.AddDays(-1000), DateTime.Today, funciones.de64aTexto(Request.QueryString["query"]));
+                    }
+                }
+                else {
+                    concentrado.Visible = true;
+                    LinkButton1.Visible = false;
+                    LinkButton2.Visible = false;
+                    lnkconcentrado.Visible = true;
+                    if (Request.QueryString["report"] != null)
+                    {
+                        Session["backurl"] = "empleados_incidencias_reporte.aspx?report=JBSKJXBKJQBXKJQBKJQBKJBXJQBXKJSBXK&query=" + Request.QueryString["query"];
+                        txtfechainicio.Text = DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd");                        
+                        txtfechainicio.ReadOnly = true;
+                        txtfechafin.ReadOnly = true;
+                        lnkcerrar.Visible = true;
+                       
+                    }
+                }
             }
-            Session["backurl"] = "empleados_incidencias_reporte.aspx";
         }
 
+        private void CargarConcentradosFiltro(DateTime f1, DateTime f2, string query)
+        {
+            try
+            {
+                ReportesENT entidad = new ReportesENT();
+                entidad.Pfecha = f1;
+                entidad.Pfechafin = f2;
+                ReportesCOM componente = new ReportesCOM();
+                DataTable DT = componente.sp_reporte_incidencias_concentrado(entidad).Tables[0];
+                DataView dv = DT.DefaultView;
+                dv.RowFilter = query;
+                repeat_principal.DataSource = dv.ToTable();
+                repeat_principal.DataBind();
+                ViewState["tabla_det"] = componente.sp_reporte_incidencias_concentrado(entidad).Tables[1];
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+
+
+        private void CargarPendientesFiltro(DateTime f1, DateTime f2, string query)
+        {
+            try
+            {
+                ReportesENT entidad = new ReportesENT();
+                entidad.Pfecha = f1;
+                entidad.Pfechafin = f2;
+                ReportesCOM componente = new ReportesCOM();
+                DataTable DT = componente.CargaJefe(entidad).Tables[0];
+                DataView dv = DT.DefaultView;
+                dv.RowFilter = query;
+                gridservicios.DataSource = dv.ToTable();
+                gridservicios.DataBind();
+                ViewState["dt_toexcel"] = dv.ToTable();
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
         /// <summary>
         /// Carga los pendientes de mi puesto
         /// </summary>
@@ -36,7 +110,7 @@ namespace presentacion
                 entidad.Pfecha = f1;
                 entidad.Pfechafin = f2;
                 ReportesCOM componente = new ReportesCOM();
-                DataTable DT = componente.CargaJefe(entidad).Tables[0];
+                DataTable DT = componente.CargaJefeFechas(entidad).Tables[0];
                 gridservicios.DataSource = DT;
                 gridservicios.DataBind();
                 ViewState["dt_toexcel"] = DT;
@@ -58,9 +132,15 @@ namespace presentacion
             switch (e.CommandName)
             {
                 case "Editar":
-                    Session["Caso_Confirmacion"] = e.CommandName;
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','Desea Ver el Reporte de " + gridservicios.DataKeys[index].Values["empleado"].ToString() + "?','modal fade modal-info');", true);
-
+                    int idc = Convert.ToInt32(ViewState["idc_empleadorep"]);
+                    int idc2 = Convert.ToInt32(ViewState["idc_empleado"]);
+                    Session["backurl"] = "empleados_incidencias_reporte.aspx";
+                    if (Request.QueryString["report"] != null)
+                    {
+                        Session["backurl"] = "empleados_incidencias_reporte.aspx?report=JBSKJXBKJQBXKJQBKJQBKJBXJQBXKJSBXK&query=" + Request.QueryString["query"];
+                    }
+                    string url = "empleados_reportes.aspx?view=KASKJOKXXBKQMBXOQKBXOQBXQJBXQJBJBKJ&termina=KJBKJBWQOWJBOQKBWDOQBOWKOKQNKOOKBAOBQDOKQND&idc_empleadorep=" + funciones.deTextoa64(idc.ToString()) + "&idc_empleado=" + funciones.deTextoa64(idc2.ToString());
+                    Response.Redirect(url);
                     break;
 
             }
@@ -73,6 +153,11 @@ namespace presentacion
             switch (caso)
             {
                 case "Editar":
+                    Session["backurl"] = "empleados_incidencias_reporte.aspx";
+                    if (Request.QueryString["report"] != null)
+                    {
+                        Session["backurl"] = "empleados_incidencias_reporte.aspx?report=JBSKJXBKJQBXKJQBKJQBKJBXJQBXKJSBXK&query=" + Request.QueryString["query"];
+                    }
                     string url = "empleados_reportes.aspx?view=KASKJOKXXBKQMBXOQKBXOQBXQJBXQJBJBKJ&termina=KJBKJBWQOWJBOQKBWDOQBOWKOKQNKOOKBAOBQDOKQND&idc_empleadorep=" + funciones.deTextoa64(idc.ToString()) + "&idc_empleado=" + funciones.deTextoa64(idc2.ToString());
                     Response.Redirect(url);
                     break;
@@ -139,6 +224,96 @@ namespace presentacion
             }
             else {
                 Alert.ShowAlertError("Seleccione un filtro.",this);
+            }
+        }
+
+        protected void lnkcerrar_Click(object sender, EventArgs e)
+        {
+            Session["backurl"] = null;
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMerfrfrssage", "window.close();", true);
+
+        }
+
+        protected void lnkconcentrado_Click(object sender, EventArgs e)
+        {
+            if (txtfechafin.Text == "")
+            {
+                Alert.ShowAlertError("Escriba una Fecha de Inicio", this);
+            }
+            else if (txtfechainicio.Text == "")
+            {
+                Alert.ShowAlertError("Escriba una Fecha de Fin", this);
+            }
+            else
+            {
+                DateTime f1 = Convert.ToDateTime(txtfechainicio.Text);
+                DateTime f2 = Convert.ToDateTime(txtfechafin.Text);
+                CargarConcentradosFiltro(f1, f2,"");
+            }
+        }
+
+        protected void txtbuscar_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtfechafin.Text == "")
+            {
+                Alert.ShowAlertError("Escriba una Fecha de Inicio", this);
+            }
+            else if (txtfechainicio.Text == "")
+            {
+                Alert.ShowAlertError("Escriba una Fecha de Fin", this);
+            }
+            else
+            {
+                DateTime f1 = Convert.ToDateTime(txtfechainicio.Text);
+                DateTime f2 = Convert.ToDateTime(txtfechafin.Text);
+                string queyr = "empleado like '%"+txtbuscar.Text.Trim()+"%'";
+                CargarConcentradosFiltro(f1, f2, queyr);
+            }
+        }
+
+        protected void repeat_principal_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            HtmlGenericControl detalles = e.Item.FindControl("detalles") as HtmlGenericControl;
+            GridView griddet = (GridView)e.Item.FindControl("griddet");
+            LinkButton lnkview = (LinkButton)e.Item.FindControl("lnkview");
+            switch (e.CommandName)
+            {
+                case "View":
+                    if (detalles.Visible)
+                    {
+                        detalles.Visible = false;
+                        lnkview.CssClass = "list-group-item";
+                    }
+                    else {
+                        DataTable dt = ViewState["tabla_det"] as DataTable;
+                        DataView dv = dt.DefaultView;
+                        string idc = lnkview.CommandArgument.ToCamel().Trim();
+                        dv.RowFilter = "idc_empleado = " + idc + "";
+                        griddet.DataSource = dv.ToTable();
+                        griddet.DataBind();
+                        detalles.Visible = dv.ToTable().Rows.Count > 0 ? true : false;
+                        lnkview.CssClass= dv.ToTable().Rows.Count > 0 ? "list-group-item list-group-item-info" : "list-group-item";
+                    }
+                    break;
+            }
+        }
+
+        protected void griddet_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridView grid = sender as GridView;
+            ViewState["idc_empleado"] = Convert.ToInt32(grid.DataKeys[index].Values["idc_empleado"].ToString());
+            int idc_tiporep = Convert.ToInt32(grid.DataKeys[index].Values["idc_tiporep"].ToString());
+            switch (e.CommandName)
+            {
+                case "Editar":
+                    int idc2 = Convert.ToInt32(ViewState["idc_empleado"]);
+                    string queyr = "idc_tiporep = "+ idc_tiporep .ToInvariantString().Trim()+ " and idc_empleado = " + idc2 + "";
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMrfrfrferfrfrssage", "window.open('empleados_incidencias_reporte.aspx?desglo=1&report=JBAKJSBKJSBJABSJABSJABS&query=" + funciones.deTextoa64(queyr) + "')", true);
+                    break;
+
             }
         }
     }

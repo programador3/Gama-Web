@@ -351,8 +351,11 @@ namespace presentacion
             LinkButton lnkver = (LinkButton)sender;
             int idc_prepara = Convert.ToInt32(lnkver.CommandArgument);
             int idc_pre_empleado = Convert.ToInt32(lnkver.CommandName);
-            DataPrep(0, idc_prepara, idc_pre_empleado);
-            ScriptManager.RegisterStartupScript(this, GetType(), "preherr", "ModalPreBaja();", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(),
+                       "window.open('pre_empleados_info.aspx?idc_pre_empleado=" + funciones.deTextoa64(idc_pre_empleado.ToString().Trim()) + "&idc_prepara=" + funciones.deTextoa64(idc_prepara.ToString().Trim()) + "');", true);
+
+            //DataPrep(0, idc_prepara, idc_pre_empleado);
+            //ScriptManager.RegisterStartupScript(this, GetType(), "preherr", "ModalPreBaja();", true);
         }
 
         protected void lnkdownload_Click(object sender, EventArgs e)

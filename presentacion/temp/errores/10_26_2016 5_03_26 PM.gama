@@ -1,0 +1,9 @@
+Gerardo Vega Espinoza
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El procedimiento o la función 'sp_autorizar_asistencias_varios_nuevo' esperaba el parámetro '@pdirecip', que no se ha especificado.
+   at negocio.Componentes.AsistenciaCOM.sp_autorizar_asistencias_varios_nuevo(String tipomov, String cadena, Int32 totalcadena, String observaciones, Int32 idc_usuario) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\25_10_16\Puestos\negocio\Componentes\AsistenciaCOM.cs:line 47
+   at presentacion.solicitudes_asistencia_pendientes.Yes_Click(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\25_10_16\Puestos\presentacion\solicitudes_asistencia_pendientes.aspx.cs:line 274
+ClientConnectionId:f5ede1f3-a23e-4ee9-957a-8ba204db3074
+Error Number:201,State:4,Class:16

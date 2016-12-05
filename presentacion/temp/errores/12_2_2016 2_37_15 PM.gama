@@ -1,0 +1,9 @@
+Lic. David Silva
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): Error de conversión al convertir el valor nvarchar 'Infracción de la restricción PRIMARY KEY 'PK_asistencia'. No se puede insertar una clave duplicada en el objeto 'dbo.asistencia'. El valor de la clave duplicada es (66637).sp_autorizar_asistencias_varios_nuevo' al tipo de datos int.
+   at negocio.Componentes.AsistenciaCOM.sp_autorizar_asistencias_varios_nuevo(String tipomov, String cadena, Int32 totalcadena, String observaciones, Int32 idc_usuario) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\negocio\Componentes\AsistenciaCOM.cs:line 102
+   at presentacion.solicitudes_asistencia_pendientes.Yes_Click(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\presentacion\solicitudes_asistencia_pendientes.aspx.cs:line 298
+ClientConnectionId:a91f6ec1-6498-4d80-96a2-cd023fa3cc47
+Error Number:245,State:1,Class:16

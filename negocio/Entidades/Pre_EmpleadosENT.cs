@@ -4,6 +4,8 @@ namespace negocio.Entidades
 {
     public class Pre_EmpleadosENT
     {
+        private int numcadREF;
+        private string cadREF;
         private string pobservaciones;
         private int pidc_tipodoc;
         private int idc_tipodocarc;
@@ -90,6 +92,17 @@ namespace negocio.Entidades
             set { cadena_pape = value; }
         }
 
+        public int tot_cadena_REF
+        {
+            get { return numcadREF; }
+            set { numcadREF = value; }
+        }
+
+        public string cadena_ref
+        {
+            get { return cadREF; }
+            set { cadREF = value; }
+        }
         public int Pidc_prepara
         {
             get { return pidc_prepara; }

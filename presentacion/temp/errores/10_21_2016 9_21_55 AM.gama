@@ -1,0 +1,10 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.EvaluateException: Cannot find column [isaac].
+   at System.Data.NameNode.Bind(DataTable table, List`1 list)
+   at System.Data.DataExpression.Bind(DataTable table)
+   at System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   at System.Data.DataView.set_RowFilter(String value)
+   at presentacion.empleados_incidencias_reporte.CargarConcentradosFiltro(DateTime f1, DateTime f2, String query) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\19_10_16\Puestos\presentacion\empleados_incidencias_reporte.aspx.cs:line 67

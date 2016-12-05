@@ -9,6 +9,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <_PublishTargetUrl>C:\Users\programador3\Desktop\Compilado\ELITE</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="Adicional.Master">
+      <publishTime>11/04/2016 10:42:02</publishTime>
+    </File>
     <File Include="administrador_entregas.aspx">
       <publishTime>09/17/2016 10:13:44</publishTime>
     </File>
@@ -65,6 +68,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="asignacion_revisiones_captura.aspx">
       <publishTime>09/17/2016 10:14:25</publishTime>
+    </File>
+    <File Include="asistencia_detalle.aspx">
+      <publishTime>10/27/2016 09:11:04</publishTime>
     </File>
     <File Include="assets/bootstrap/css/bootstrap-theme.css">
       <publishTime>03/16/2016 15:30:44</publishTime>
@@ -258,6 +264,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="assets/js/scripts.js">
       <publishTime>03/17/2016 08:15:42</publishTime>
     </File>
+    <File Include="Audios/JavaScript.js">
+      <publishTime>10/24/2016 10:57:35</publishTime>
+    </File>
     <File Include="avisos_gen_m.aspx">
       <publishTime>09/17/2016 10:48:14</publishTime>
     </File>
@@ -274,7 +283,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:58</publishTime>
     </File>
     <File Include="bin/datos.dll">
-      <publishTime>09/21/2016 09:30:05</publishTime>
+      <publishTime>12/05/2016 15:21:46</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>03/03/2016 15:08:57</publishTime>
@@ -304,16 +313,34 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/29/2015 21:27:38</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>10/19/2016 12:16:12</publishTime>
+      <publishTime>12/05/2016 15:58:15</publishTime>
     </File>
     <File Include="bin/OpenPop.dll">
       <publishTime>11/21/2015 16:46:36</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>10/19/2016 15:54:38</publishTime>
+      <publishTime>12/05/2016 15:58:21</publishTime>
+    </File>
+    <File Include="bin/Telerik.Web.UI.dll">
+      <publishTime>10/26/2016 09:37:26</publishTime>
+    </File>
+    <File Include="bin/Telerik.Windows.Documents.Core.dll">
+      <publishTime>10/21/2016 12:10:20</publishTime>
+    </File>
+    <File Include="bin/Telerik.Windows.Documents.Flow.dll">
+      <publishTime>10/21/2016 12:09:58</publishTime>
+    </File>
+    <File Include="bin/Telerik.Windows.Documents.Spreadsheet.dll">
+      <publishTime>10/21/2016 12:10:10</publishTime>
+    </File>
+    <File Include="bin/Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll">
+      <publishTime>10/21/2016 12:10:12</publishTime>
+    </File>
+    <File Include="bin/Telerik.Windows.Zip.dll">
+      <publishTime>10/21/2016 12:09:40</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
-      <publishTime>09/19/2016 09:16:57</publishTime>
+      <publishTime>12/05/2016 15:21:46</publishTime>
     </File>
     <File Include="buscar_colonia_mobile.aspx">
       <publishTime>10/10/2016 12:06:58</publishTime>
@@ -337,7 +364,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/29/2016 14:09:26</publishTime>
     </File>
     <File Include="Carga_de_Combustibles_m.aspx">
-      <publishTime>09/17/2016 10:30:43</publishTime>
+      <publishTime>11/29/2016 16:29:51</publishTime>
     </File>
     <File Include="catalogo_areas.aspx">
       <publishTime>09/17/2016 10:30:48</publishTime>
@@ -393,14 +420,26 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="check_plus_pre_m.aspx">
       <publishTime>10/10/2016 14:28:18</publishTime>
     </File>
+    <File Include="choferes_evaluacion.aspx">
+      <publishTime>11/30/2016 08:54:47</publishTime>
+    </File>
+    <File Include="comidas.aspx">
+      <publishTime>12/05/2016 14:06:13</publishTime>
+    </File>
+    <File Include="comisiones_detalles.aspx">
+      <publishTime>10/26/2016 10:17:53</publishTime>
+    </File>
     <File Include="comisiones_especiales.aspx">
       <publishTime>09/17/2016 10:31:27</publishTime>
+    </File>
+    <File Include="comisiones_m.aspx">
+      <publishTime>10/26/2016 10:17:53</publishTime>
     </File>
     <File Include="Compromisos_Cliente.aspx">
       <publishTime>10/05/2016 10:17:37</publishTime>
     </File>
     <File Include="confirmacion_de_pago_mobile.aspx">
-      <publishTime>10/17/2016 16:00:08</publishTime>
+      <publishTime>10/20/2016 10:16:17</publishTime>
     </File>
     <File Include="confirmacion_entrega.aspx">
       <publishTime>09/17/2016 10:31:29</publishTime>
@@ -425,6 +464,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="consulta_precios_m.aspx">
       <publishTime>10/11/2016 08:41:49</publishTime>
+    </File>
+    <File Include="consulta_preped.aspx">
+      <publishTime>12/05/2016 11:15:55</publishTime>
     </File>
     <File Include="consulta_quejas_m.aspx">
       <publishTime>09/17/2016 10:31:46</publishTime>
@@ -538,7 +580,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:32:28</publishTime>
     </File>
     <File Include="css/themes/flat-blue.css">
-      <publishTime>09/30/2016 14:23:30</publishTime>
+      <publishTime>10/21/2016 08:37:43</publishTime>
     </File>
     <File Include="css/themes/flat-green.css">
       <publishTime>03/16/2016 15:31:52</publishTime>
@@ -634,16 +676,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:33:25</publishTime>
     </File>
     <File Include="empleados_faltas.aspx">
-      <publishTime>09/17/2016 10:33:28</publishTime>
+      <publishTime>10/22/2016 11:18:14</publishTime>
     </File>
     <File Include="empleados_faltas_captura.aspx">
       <publishTime>09/17/2016 10:33:30</publishTime>
     </File>
     <File Include="empleados_incidencias_reporte.aspx">
-      <publishTime>10/19/2016 08:43:48</publishTime>
+      <publishTime>10/21/2016 09:48:19</publishTime>
     </File>
     <File Include="empleados_reportes.aspx">
-      <publishTime>10/19/2016 12:11:07</publishTime>
+      <publishTime>10/20/2016 15:57:42</publishTime>
     </File>
     <File Include="empleados_reportes_contra.aspx">
       <publishTime>10/19/2016 09:00:51</publishTime>
@@ -742,7 +784,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/21/2016 11:56:40</publishTime>
     </File>
     <File Include="ficha_cliente_m.aspx">
-      <publishTime>10/05/2016 15:48:47</publishTime>
+      <publishTime>12/05/2016 15:15:56</publishTime>
     </File>
     <File Include="Folios_Autorizacion.aspx">
       <publishTime>09/17/2016 10:34:01</publishTime>
@@ -988,13 +1030,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:34:52</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>10/11/2016 09:59:28</publishTime>
+      <publishTime>11/25/2016 08:17:06</publishTime>
     </File>
     <File Include="grafica.aspx">
       <publishTime>09/17/2016 10:34:58</publishTime>
     </File>
     <File Include="grafica_tareas.aspx">
       <publishTime>09/17/2016 10:35:02</publishTime>
+    </File>
+    <File Include="grafica_ventas.aspx">
+      <publishTime>11/17/2016 11:34:12</publishTime>
     </File>
     <File Include="Graph/highcharts-3d.js">
       <publishTime>04/21/2016 12:21:39</publishTime>
@@ -1131,6 +1176,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="html_dinamico.aspx">
       <publishTime>09/17/2016 10:36:42</publishTime>
     </File>
+    <File Include="html_editor.aspx">
+      <publishTime>11/23/2016 11:58:29</publishTime>
+    </File>
     <File Include="icons/font-awesome.html">
       <publishTime>03/16/2016 15:32:49</publishTime>
     </File>
@@ -1138,16 +1186,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/16/2016 15:32:50</publishTime>
     </File>
     <File Include="imagenes/128.png">
-      <publishTime>09/29/2016 14:00:47</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
+    </File>
+    <File Include="imagenes/acount.png">
+      <publishTime>11/17/2016 15:00:25</publishTime>
     </File>
     <File Include="imagenes/actions_document_preview.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/Add_user48.png">
-      <publishTime>10/10/2016 09:50:52</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/anexar.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/areas/1.jpg">
       <publishTime>03/03/2016 16:36:45</publishTime>
@@ -1159,19 +1210,130 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/06/2016 08:30:55</publishTime>
     </File>
     <File Include="imagenes/avisos.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/background.png">
-      <publishTime>09/17/2016 09:25:54</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/back_btn.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/body_page.png">
-      <publishTime>06/28/2016 07:57:03</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
+    </File>
+    <File Include="imagenes/btn/Accept48.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Add.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/add2.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/add3.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
     </File>
     <File Include="imagenes/btn/add_image_prof.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/add_user.ico">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Add_user48.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/agendar_llamada.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Applications.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/arrow-left-2.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/arrow-left.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/arrow-right-2.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/arrow-right.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso1.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso10.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso11.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso2.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso3.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso4.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso5.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso6.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso7.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso8.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/aviso9.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/avisos.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/back-icone.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/back_button.jpg">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Back_Button.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/bcksearch.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/bcksearch2.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/binoculars.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/btncotic.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/btninconvenientes.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/btnobservaciones.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/btn_blueSheen.gif">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/btn_compromisos.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/btn_compromisos2.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/btn_cotguards.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
     </File>
     <File Include="imagenes/btn/btn_solicitar_equipos.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
@@ -1179,32 +1341,182 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="imagenes/btn/btn_solicitar_equipos_press.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
+    <File Include="imagenes/btn/business-email.jpg">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Button Delete.ico">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/button_aceptpng.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/button_acept_black.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/button_add_arti.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Button_cotizar.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Button_GenerarP2.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Button_GenerarPP.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Button_Generar_P.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Button_ListaP.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/calendar3.gif">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/calendar4.gif">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/Calender.png">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/camion_entrega.jpg">
+      <publishTime>10/24/2016 10:49:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/cancel-button02.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/cancel.png">
       <publishTime>04/25/2016 08:11:51</publishTime>
+    </File>
+    <File Include="imagenes/btn/cancel_sign.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
     </File>
     <File Include="imagenes/btn/car_default.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
+    <File Include="imagenes/btn/cbo_img.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/celular.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/cerrar.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
     </File>
     <File Include="imagenes/btn/checked.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
+    <File Include="imagenes/btn/checkmark.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/chk_off.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/chk_on.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Clip08.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/default_employed.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/delete.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/dialog-ok-2.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/document-edit.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/document-edit.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
     </File>
     <File Include="imagenes/btn/documentation.png">
       <publishTime>09/01/2016 16:29:05</publishTime>
     </File>
+    <File Include="imagenes/btn/Download.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/edit-4.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/edit-6.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/edit-find.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/edit-redo-7.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/edit-undo-7.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/envelope-icon.gif">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/evolution-tasks.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/excel.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/exit_button.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/facebook.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Facebook_Logo-19.gif">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/File_info48.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/filter_add.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/filter_delete.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/flag-mx.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/flag-us.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/go-back-icon.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/go-down-7.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/go-down-9.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/go-home-5.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
     </File>
     <File Include="imagenes/btn/home.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
     <File Include="imagenes/btn/html_icon.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/Ical.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/iCalendar.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/ico-invalid.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/ico-valid.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
     </File>
     <File Include="imagenes/btn/icono_organigrama.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
@@ -1266,14 +1578,86 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="imagenes/btn/image-x-generic.png">
       <publishTime>09/01/2016 16:29:05</publishTime>
     </File>
+    <File Include="imagenes/btn/img_up.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/inchecked.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/Info48.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Info_Light.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/insert-link.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Internet-Alt.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Internet.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/interrogacion.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/left-arrow.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/loading2.gif">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/loading24.gif">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/loading_gif.gif">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/log.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
     </File>
     <File Include="imagenes/btn/logo-gama.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
+    <File Include="imagenes/btn/logout-icon.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Logo_140_140.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/logo_azul.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/logo_color.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/mail-attachment-2.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/mail-delete.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/mail-mark-unread.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/mail-message-new.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/maps.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/minimize.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/montacargas.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/more.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/more2.png">
+      <publishTime>11/17/2016 11:50:40</publishTime>
     </File>
     <File Include="imagenes/btn/new_register.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
@@ -1281,11 +1665,32 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="imagenes/btn/ntphone.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
+    <File Include="imagenes/btn/object-rotate-left-2.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/object-rotate-left.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/outbox.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/pdf.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
+    <File Include="imagenes/btn/plgr1.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/plgr2.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/preview_icon.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/promo.gif">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/regresar.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
     </File>
     <File Include="imagenes/btn/return-up.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
@@ -1293,80 +1698,182 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="imagenes/btn/return_default.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
+    <File Include="imagenes/btn/samarillo.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/save-button01.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/save2.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/save3.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Search.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Search32.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/search_48.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/spe_disabled.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/spe_green.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/spe_red.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/srojo.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/stock_proxy.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/stock_shared-by-me.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/sverde.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/system-switch-user-3.png">
       <publishTime>09/05/2016 08:55:48</publishTime>
     </File>
+    <File Include="imagenes/btn/tasks.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/textbobxsearch2.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/transfer.png">
+      <publishTime>11/08/2016 08:25:06</publishTime>
+    </File>
+    <File Include="imagenes/btn/transfer_blanco2.png">
+      <publishTime>11/08/2016 08:25:06</publishTime>
+    </File>
+    <File Include="imagenes/btn/transfer_sin_fondo.png">
+      <publishTime>11/08/2016 08:25:06</publishTime>
+    </File>
+    <File Include="imagenes/btn/twitter_logo.jpg">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/Untitled - 9.ico">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/up.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/upload2.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/user-home.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/user_edit.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/user_info.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/utilities-find.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/utilities-find2.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/utilities-find3.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/utilities-find4.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/utilities-find5.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
     <File Include="imagenes/btn/ver-mas.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
+    </File>
+    <File Include="imagenes/btn/view-pim-tasks.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
+    </File>
+    <File Include="imagenes/btn/view-refresh-7.png">
+      <publishTime>10/24/2016 10:49:53</publishTime>
     </File>
     <File Include="imagenes/btn/word_icon.png">
       <publishTime>03/03/2016 16:36:45</publishTime>
     </File>
     <File Include="imagenes/calendar3.gif">
-      <publishTime>10/04/2016 10:03:00</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/cogs.png">
-      <publishTime>05/11/2016 16:18:55</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/down_btn.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/elite.png">
-      <publishTime>03/17/2016 09:00:44</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/Facebook_Logo-19.gif">
-      <publishTime>09/30/2016 11:19:03</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/favicon.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/File_info48.png">
-      <publishTime>10/10/2016 09:50:27</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/Firma_gama.jpg">
-      <publishTime>10/07/2016 16:51:13</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
+    </File>
+    <File Include="imagenes/fondo_gaffete.png">
+      <publishTime>10/28/2016 17:54:07</publishTime>
     </File>
     <File Include="imagenes/fondo_login.png">
-      <publishTime>04/04/2016 16:33:53</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/gama_watermark.jpg">
-      <publishTime>04/30/2016 11:17:31</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/hand_down.png">
-      <publishTime>05/11/2016 16:18:55</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/hexagono_azul.jpg">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/horizontal-loader.gif">
-      <publishTime>10/11/2016 08:41:57</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/img_up.png">
-      <publishTime>10/11/2016 10:03:21</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/info.png">
-      <publishTime>08/29/2016 17:17:14</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/insert-link.png">
-      <publishTime>09/30/2016 11:18:44</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/ios_off.png">
-      <publishTime>03/07/2016 16:29:47</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/ios_on.png">
-      <publishTime>03/07/2016 16:29:47</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/item_header.png">
-      <publishTime>03/17/2016 12:16:44</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/loading.gif">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/logo.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/logo_black.png">
-      <publishTime>04/02/2016 10:22:41</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/lugares/1.jpg">
       <publishTime>03/03/2016 16:36:45</publishTime>
@@ -1399,88 +1906,88 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/06/2016 08:30:53</publishTime>
     </File>
     <File Include="imagenes/mapa.png">
-      <publishTime>08/30/2016 10:36:44</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/maps.jpg">
-      <publishTime>09/29/2016 16:17:04</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/office_html2.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/ok.png">
-      <publishTime>05/11/2016 16:18:55</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/pendiente.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/phone.png">
-      <publishTime>08/29/2016 16:15:29</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/promo.gif">
-      <publishTime>10/11/2016 10:02:34</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/rojo.jpg">
-      <publishTime>08/29/2016 10:31:43</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/rotar.png">
-      <publishTime>08/29/2016 16:19:32</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/sign-up.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/sin_OC.png">
-      <publishTime>10/17/2016 16:35:15</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/Sorting icons.psd">
-      <publishTime>04/26/2016 09:57:26</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/sort_asc.png">
-      <publishTime>04/26/2016 09:57:25</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/sort_asc_disabled.png">
-      <publishTime>04/26/2016 09:57:25</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/sort_both.png">
-      <publishTime>04/26/2016 09:57:25</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/sort_desc.png">
-      <publishTime>04/26/2016 09:57:25</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/sort_desc_disabled.png">
-      <publishTime>04/26/2016 09:57:25</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/spellicon.gif">
-      <publishTime>10/17/2016 10:28:49</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/spelliconover.gif">
-      <publishTime>10/17/2016 10:28:47</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/spe_disabled.png">
-      <publishTime>10/17/2016 10:28:47</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/spe_green.png">
-      <publishTime>10/17/2016 10:28:49</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/spe_red.png">
-      <publishTime>10/17/2016 10:28:49</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/srojo.png">
-      <publishTime>10/11/2016 10:00:49</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/twitter_logo.jpg">
-      <publishTime>09/30/2016 11:19:03</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/up_btn.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/verde.jpg">
-      <publishTime>08/29/2016 10:31:43</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/warning.gif">
-      <publishTime>05/11/2016 09:16:25</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="imagenes/word.png">
-      <publishTime>03/03/2016 16:36:45</publishTime>
+      <publishTime>10/24/2016 10:51:00</publishTime>
     </File>
     <File Include="img/.DS_Store">
       <publishTime>03/03/2016 14:44:45</publishTime>
@@ -1539,6 +2046,15 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="img/thumbnails/picjumbo.com_IMG_4566.jpg">
       <publishTime>03/03/2016 14:44:45</publishTime>
     </File>
+    <File Include="img/transfer.png">
+      <publishTime>11/08/2016 08:24:48</publishTime>
+    </File>
+    <File Include="img/transfer_blanco2.png">
+      <publishTime>11/08/2016 08:24:48</publishTime>
+    </File>
+    <File Include="img/transfer_sin_fondo.png">
+      <publishTime>11/08/2016 08:24:48</publishTime>
+    </File>
     <File Include="IMG_Croquis.aspx">
       <publishTime>10/17/2016 15:46:24</publishTime>
     </File>
@@ -1564,7 +2080,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/16/2016 15:32:51</publishTime>
     </File>
     <File Include="js/app.js">
-      <publishTime>04/28/2016 17:48:15</publishTime>
+      <publishTime>11/09/2016 08:01:58</publishTime>
     </File>
     <File Include="js/BlockHumberto.js">
       <publishTime>04/28/2016 14:58:33</publishTime>
@@ -1661,6 +2177,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="js/jquery.slimmenu.js">
       <publishTime>09/17/2016 10:37:54</publishTime>
+    </File>
+    <File Include="js/jquery.webcam.js">
+      <publishTime>10/27/2016 12:12:13</publishTime>
+    </File>
+    <File Include="js/jquery.webcam.min.js">
+      <publishTime>10/27/2016 12:12:13</publishTime>
     </File>
     <File Include="js/jquery10.js">
       <publishTime>06/02/2016 11:37:34</publishTime>
@@ -1813,13 +2335,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/16/2016 15:33:56</publishTime>
     </File>
     <File Include="login.aspx">
-      <publishTime>09/28/2016 08:56:31</publishTime>
+      <publishTime>11/30/2016 14:55:15</publishTime>
     </File>
     <File Include="Login.Master">
-      <publishTime>09/26/2016 16:16:40</publishTime>
+      <publishTime>11/09/2016 11:12:18</publishTime>
     </File>
     <File Include="login/css/style.css">
-      <publishTime>09/28/2016 09:00:20</publishTime>
+      <publishTime>11/09/2016 11:02:03</publishTime>
     </File>
     <File Include="login/js/index.js">
       <publishTime>09/26/2016 16:14:52</publishTime>
@@ -1834,13 +2356,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/03/2016 17:05:27</publishTime>
     </File>
     <File Include="menu.aspx">
-      <publishTime>10/19/2016 09:32:23</publishTime>
+      <publishTime>11/10/2016 14:09:31</publishTime>
     </File>
     <File Include="oc_clientes.aspx">
       <publishTime>09/29/2016 09:15:25</publishTime>
     </File>
     <File Include="OC_Digitales_Pendientes.aspx">
-      <publishTime>10/17/2016 16:43:31</publishTime>
+      <publishTime>10/24/2016 11:16:46</publishTime>
+    </File>
+    <File Include="Oc_Digitales_Pendientes_2.aspx">
+      <publishTime>10/24/2016 11:18:48</publishTime>
     </File>
     <File Include="org/css/bporgeditor.latest.css">
       <publishTime>04/29/2016 07:33:07</publishTime>
@@ -1993,13 +2518,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:39:39</publishTime>
     </File>
     <File Include="Pedidos7.aspx">
-      <publishTime>10/17/2016 16:41:21</publishTime>
+      <publishTime>10/24/2016 11:15:29</publishTime>
     </File>
     <File Include="pendientes.aspx">
       <publishTime>03/17/2016 08:17:29</publishTime>
     </File>
     <File Include="pendientes_tareas.aspx">
-      <publishTime>09/17/2016 10:39:42</publishTime>
+      <publishTime>10/25/2016 15:02:05</publishTime>
     </File>
     <File Include="perfiles.aspx">
       <publishTime>09/17/2016 10:39:45</publishTime>
@@ -2008,7 +2533,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:39:50</publishTime>
     </File>
     <File Include="perfiles_detalle.aspx">
-      <publishTime>09/17/2016 10:39:58</publishTime>
+      <publishTime>11/11/2016 11:47:08</publishTime>
     </File>
     <File Include="perfiles_pendiente.aspx">
       <publishTime>09/17/2016 10:40:03</publishTime>
@@ -2017,7 +2542,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:40:07</publishTime>
     </File>
     <File Include="permisos_pendientes.aspx">
-      <publishTime>09/17/2016 10:40:11</publishTime>
+      <publishTime>11/17/2016 07:41:13</publishTime>
+    </File>
+    <File Include="plantilla.aspx">
+      <publishTime>10/24/2016 14:29:20</publishTime>
     </File>
     <File Include="pmd.aspx">
       <publishTime>09/17/2016 10:40:14</publishTime>
@@ -2035,7 +2563,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:40:48</publishTime>
     </File>
     <File Include="pre_bajas.aspx">
-      <publishTime>09/17/2016 10:40:24</publishTime>
+      <publishTime>11/01/2016 08:01:44</publishTime>
     </File>
     <File Include="pre_bajas_bajas.aspx">
       <publishTime>09/17/2016 10:40:28</publishTime>
@@ -2050,7 +2578,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:40:38</publishTime>
     </File>
     <File Include="pre_empleados_captura.aspx">
-      <publishTime>09/17/2016 10:40:40</publishTime>
+      <publishTime>11/04/2016 10:07:43</publishTime>
+    </File>
+    <File Include="pre_empleados_info.aspx">
+      <publishTime>11/10/2016 08:28:59</publishTime>
     </File>
     <File Include="primitive/css/bporgeditor.latest.css">
       <publishTime>05/27/2016 09:21:31</publishTime>
@@ -2208,6 +2739,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="programacion_correos_d.aspx">
       <publishTime>09/17/2016 10:42:07</publishTime>
     </File>
+    <File Include="promociones_cliente_m.aspx">
+      <publishTime>10/31/2016 10:41:05</publishTime>
+    </File>
     <File Include="prospectos_captura3.aspx">
       <publishTime>09/17/2016 10:42:12</publishTime>
     </File>
@@ -2224,10 +2758,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:42:30</publishTime>
     </File>
     <File Include="puestos_catalogo.aspx">
-      <publishTime>10/19/2016 08:56:42</publishTime>
+      <publishTime>11/10/2016 17:18:32</publishTime>
+    </File>
+    <File Include="puestos_clasificacion.aspx">
+      <publishTime>11/07/2016 14:37:56</publishTime>
     </File>
     <File Include="puestos_equi.aspx">
-      <publishTime>09/28/2016 12:04:04</publishTime>
+      <publishTime>10/20/2016 16:16:52</publishTime>
     </File>
     <File Include="quejas_acciones.aspx">
       <publishTime>09/17/2016 10:42:42</publishTime>
@@ -2251,16 +2788,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:43:06</publishTime>
     </File>
     <File Include="registro_visitas.aspx">
-      <publishTime>09/17/2016 10:43:09</publishTime>
+      <publishTime>10/29/2016 09:05:43</publishTime>
+    </File>
+    <File Include="relacion_reclu_puestos.aspx">
+      <publishTime>10/21/2016 16:46:30</publishTime>
     </File>
     <File Include="rendimiento_tareas.aspx">
-      <publishTime>09/26/2016 10:32:45</publishTime>
+      <publishTime>11/08/2016 09:09:03</publishTime>
     </File>
     <File Include="rendimiento_tareas_asignadas.aspx">
       <publishTime>09/26/2016 10:34:34</publishTime>
     </File>
     <File Include="rendimiento_tareas_detalles.aspx">
-      <publishTime>09/17/2016 10:43:22</publishTime>
+      <publishTime>11/08/2016 08:24:32</publishTime>
     </File>
     <File Include="reportes_empleados.aspx">
       <publishTime>09/17/2016 10:43:37</publishTime>
@@ -2274,11 +2814,20 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="reporte_filtro.aspx">
       <publishTime>09/17/2016 10:43:30</publishTime>
     </File>
+    <File Include="reporte_permisos_horario.aspx">
+      <publishTime>11/17/2016 11:33:22</publishTime>
+    </File>
     <File Include="reporte_visitas.aspx">
       <publishTime>09/17/2016 10:43:34</publishTime>
     </File>
     <File Include="reporte_visitas_detalles.aspx">
       <publishTime>03/18/2016 14:05:04</publishTime>
+    </File>
+    <File Include="Reproductor_llamadas.aspx">
+      <publishTime>10/24/2016 08:20:48</publishTime>
+    </File>
+    <File Include="Reproductor_llamadas2.aspx">
+      <publishTime>10/24/2016 08:12:57</publishTime>
     </File>
     <File Include="retiro_ahorro.aspx">
       <publishTime>09/17/2016 10:43:42</publishTime>
@@ -2302,10 +2851,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:43:49</publishTime>
     </File>
     <File Include="revision_herramientas.aspx">
-      <publishTime>09/17/2016 10:43:55</publishTime>
+      <publishTime>11/29/2016 16:14:19</publishTime>
     </File>
     <File Include="seleccion_candidato.aspx">
-      <publishTime>09/17/2016 10:44:27</publishTime>
+      <publishTime>11/04/2016 10:34:53</publishTime>
     </File>
     <File Include="seleccion_puestos.aspx">
       <publishTime>09/17/2016 10:44:35</publishTime>
@@ -2317,13 +2866,19 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/14/2016 17:20:48</publishTime>
     </File>
     <File Include="servicios_revisiones.aspx">
-      <publishTime>09/17/2016 10:44:49</publishTime>
+      <publishTime>12/01/2016 09:34:34</publishTime>
+    </File>
+    <File Include="solicitar_asistencia.aspx">
+      <publishTime>11/16/2016 09:45:25</publishTime>
     </File>
     <File Include="solicitar_reemplazo.aspx">
       <publishTime>09/17/2016 10:44:55</publishTime>
     </File>
+    <File Include="solicitudes_asistencia_pendientes.aspx">
+      <publishTime>11/17/2016 10:46:05</publishTime>
+    </File>
     <File Include="solicitud_horario.aspx">
-      <publishTime>09/17/2016 10:45:00</publishTime>
+      <publishTime>10/29/2016 09:50:53</publishTime>
     </File>
     <File Include="sounds/correct.wav">
       <publishTime>03/03/2016 15:12:21</publishTime>
@@ -2347,13 +2902,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:45:09</publishTime>
     </File>
     <File Include="tareas.aspx">
-      <publishTime>09/17/2016 10:45:22</publishTime>
+      <publishTime>10/21/2016 10:33:10</publishTime>
     </File>
     <File Include="tareas_arbol.aspx">
-      <publishTime>09/17/2016 10:45:29</publishTime>
+      <publishTime>12/02/2016 11:34:23</publishTime>
     </File>
     <File Include="tareas_asignadas_lista.aspx">
-      <publishTime>10/19/2016 09:31:48</publishTime>
+      <publishTime>11/09/2016 10:22:16</publishTime>
     </File>
     <File Include="tareas_automaticas.aspx">
       <publishTime>09/17/2016 10:45:40</publishTime>
@@ -2362,7 +2917,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:45:45</publishTime>
     </File>
     <File Include="tareas_captura.aspx">
-      <publishTime>10/17/2016 07:46:19</publishTime>
+      <publishTime>11/25/2016 10:24:04</publishTime>
     </File>
     <File Include="tareas_clientes_cap.aspx">
       <publishTime>10/03/2016 09:10:20</publishTime>
@@ -2374,19 +2929,34 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/29/2016 16:42:22</publishTime>
     </File>
     <File Include="tareas_informacion_adicional.aspx">
-      <publishTime>09/30/2016 17:33:39</publishTime>
+      <publishTime>11/30/2016 09:03:41</publishTime>
     </File>
     <File Include="tareas_listado.aspx">
-      <publishTime>10/19/2016 09:32:06</publishTime>
+      <publishTime>11/09/2016 10:21:51</publishTime>
     </File>
     <File Include="tareas_rapidas.aspx">
-      <publishTime>09/19/2016 10:38:46</publishTime>
+      <publishTime>11/15/2016 09:40:29</publishTime>
     </File>
     <File Include="tareas_servicios_captura.aspx">
-      <publishTime>10/19/2016 15:24:07</publishTime>
+      <publishTime>11/11/2016 09:40:50</publishTime>
+    </File>
+    <File Include="temp/ejemplo.xlsx">
+      <publishTime>11/07/2016 14:24:49</publishTime>
     </File>
     <File Include="temp/tareas/js.js">
       <publishTime>03/22/2016 15:16:05</publishTime>
+    </File>
+    <File Include="ticketserv_info.aspx">
+      <publishTime>12/05/2016 14:06:14</publishTime>
+    </File>
+    <File Include="ticket_serv.aspx">
+      <publishTime>11/16/2016 14:24:52</publishTime>
+    </File>
+    <File Include="ticket_serv_captura.aspx">
+      <publishTime>11/12/2016 10:18:43</publishTime>
+    </File>
+    <File Include="ticket_serv_reporte.aspx">
+      <publishTime>12/05/2016 11:14:56</publishTime>
     </File>
     <File Include="TinyBox/style.css">
       <publishTime>10/06/2016 11:54:47</publishTime>
@@ -2412,6 +2982,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="vendedores_captura.aspx">
       <publishTime>03/17/2016 08:17:34</publishTime>
     </File>
+    <File Include="ver_preped_x_autorizar.aspx">
+      <publishTime>12/05/2016 09:57:13</publishTime>
+    </File>
     <File Include="view_files.aspx">
       <publishTime>09/17/2016 10:46:56</publishTime>
     </File>
@@ -2422,7 +2995,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:47:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/19/2016 09:17:57</publishTime>
+      <publishTime>12/05/2016 15:21:56</publishTime>
+    </File>
+    <File Include="Webcam_Plugin/jquery.webcam.js">
+      <publishTime>10/27/2016 12:26:39</publishTime>
+    </File>
+    <File Include="Webcam_Plugin/jscam.swf">
+      <publishTime>10/27/2016 12:26:39</publishTime>
+    </File>
+    <File Include="Webcam_Plugin/jscam_canvas_only.swf">
+      <publishTime>10/27/2016 12:26:39</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>03/03/2016 15:01:50</publishTime>

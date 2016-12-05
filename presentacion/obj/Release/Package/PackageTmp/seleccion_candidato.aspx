@@ -104,6 +104,11 @@
                                     <asp:Label ID="lblidc_pre_empleado" runat="server" Text='<%#Eval("idc_pre_empleado") %>' Visible="false" CssClass="label label-danger"></asp:Label>
 
                                     <div class="row">
+                                        
+                                        <div class=" col-lg-12">
+                                             <asp:LinkButton ID="LinkButton1" OnClick="lnkver_Click" Width="100%" CommandArgument='<%#Eval("idc_prepara") %>' CommandName='<%#Eval("idc_pre_empleado") %>' 
+                                                  CssClass="btn btn-primary btn-block" runat="server">Ver Información Completa  </asp:LinkButton>
+                                        </div>
                                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon" style="color: #fff; background-color: #19B5FE;">

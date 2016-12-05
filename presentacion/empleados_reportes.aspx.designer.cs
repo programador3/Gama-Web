@@ -22,6 +22,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtidoriginal;
         
         /// <summary>
+        /// Control txturl_back.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txturl_back;
+        
+        /// <summary>
         /// Control lblreportereasignado.
         /// </summary>
         /// <remarks>
@@ -155,6 +164,24 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmpleado;
+        
+        /// <summary>
+        /// Control lblmihis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblmihis;
+        
+        /// <summary>
+        /// Control lnkverhisto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkverhisto;
         
         /// <summary>
         /// Control lblPuesto.
@@ -317,6 +344,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkGuardarPape;
+        
+        /// <summary>
+        /// Control lista_archivos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lista_archivos;
         
         /// <summary>
         /// Control gridPapeleria.

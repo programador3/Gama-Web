@@ -25,8 +25,8 @@ namespace presentacion
                 FaltasCOM componente = new FaltasCOM();
                 entidad.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"].ToString());
                 DataSet ds = componente.CargaPrep(entidad);
-                repeat_pendi.DataSource = ds.Tables[0];
-                repeat_pendi.DataBind();
+                gridservicios.DataSource = ds.Tables[0];
+                gridservicios.DataBind();
             }
             catch (Exception ex)
             {
@@ -40,6 +40,21 @@ namespace presentacion
             LinkButton lnk = (LinkButton)sender;
             string value = funciones.deTextoa64(lnk.CommandName);
             Response.Redirect("empleados_faltas_captura.aspx?idc_empleado_falta=" + value);
+        }
+
+        protected void gridservicios_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            int idc_empleado_falta = Convert.ToInt32(gridservicios.DataKeys[index].Values["idc_empleado_falta"].ToString());
+           int idc_empleado = Convert.ToInt32(gridservicios.DataKeys[index].Values["idc_empleado"].ToString());
+            switch (e.CommandName)
+            {
+                case "Editar":
+                    string url = "empleados_faltas_captura.aspx?idc_empleado_falta="+funciones.deTextoa64(idc_empleado_falta.ToString().Trim());
+                    Response.Redirect(url);
+                    break;
+
+            }
         }
     }
 }

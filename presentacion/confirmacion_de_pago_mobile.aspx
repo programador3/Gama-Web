@@ -214,13 +214,13 @@
             </tr>
             <tr>
                 <td align="right">
-                <asp:Label ID="Label4" runat="server" Font-Bold="True" 
-                    Font-Names="Arial Narrow" Text="Monto"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Font-Bold="True"
+                        Font-Names="Arial Narrow" Text="Monto"></asp:Label>
                 </td>
                 <td>
-                                        <asp:TextBox ID="txtmonto"  onkeypress="return validarMontoMoney(event);" onfocus="this.select()" runat="server" Width="100%" CssClass="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini"
-                                    ></asp:TextBox>
-                                   
+                    <asp:TextBox ID="txtmonto" TextMode="Number" onkeypress="return validarMontoMoney(event);" onfocus="this.select()"
+                        runat="server" Width="100%" CssClass="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini"></asp:TextBox>
+
                 </td>
             </tr>
             <tr>

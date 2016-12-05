@@ -13,15 +13,6 @@ namespace presentacion {
     public partial class puestos_equi {
         
         /// <summary>
-        /// Control lnkReturn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkReturn;
-        
-        /// <summary>
         /// Control btnNuevo.
         /// </summary>
         /// <remarks>
@@ -101,5 +92,32 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridPuestoRelacionado;
+        
+        /// <summary>
+        /// Control txt_pidc_puestoequi_h.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txt_pidc_puestoequi_h;
+        
+        /// <summary>
+        /// Control txt_pdescripcion_h.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txt_pdescripcion_h;
+        
+        /// <summary>
+        /// Control txtCaso_h.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtCaso_h;
     }
 }

@@ -63,18 +63,32 @@
                                 TextMode="MultiLine" Rows="5" runat="server" Style="resize: none; text-transform: uppercase; font-size: 12px;"></asp:TextBox>
                         </div>
                     </div>
+                    <div class="row" runat="server" id="div_puestoasigna" visible="false" >
+                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <label style="color: orangered; ">Puede Seleccionar un Empleado para dar Visto Bueno a la Tarea</label>
+                            <asp:DropDownList ID="ddlpuestoasigna"  runat="server" CssClass="form-control" >
+                            </asp:DropDownList>
+                        </div>
+                        <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
+                            <label>Escriba un Filtro</label>
+                            <asp:TextBox  style="font-size:12px;" ID="txtpuesto_asigna" runat="server" TextMode="SingleLine" CssClass="form-control" 
+                                AutoPostBack="true" OnTextChanged="LinkButton2_Click" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                            <label style="width:100%"></label>
+                            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-success" Width="100%" OnClick="LinkButton2_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                    
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <h4><i class="fa fa-calendar"></i>&nbsp;Fecha Solicitada de Compromiso <small>Es la fecha que usted solicita como compromiso</small></h4>
                             <asp:TextBox ID="txtfecha_solicompromiso" runat="server" TextMode="DateTimeLocal" CssClass="form-control"></asp:TextBox>
                         </div>
-                    </div>
-                    <div class="row">
+
                         <div class="col-lg-12">
                             <h4><i class="fa fa-user"></i>&nbsp;Seleccione el puesto que realizara la tarea o servicio. <small>Tambien puede elegir varios empleados si quiere crear varias tareas iguales para diferentes puestos.</small></h4>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <label>Selecciona un Empleado <small>Si solo es un Empleado, NO ES NECESARIO que se agrege a la tabla.</small></label>
                             <asp:DropDownList ID="ddlPuesto" OnSelectedIndexChanged="ddlPuesto_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">

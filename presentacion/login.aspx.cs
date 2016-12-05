@@ -17,11 +17,28 @@ namespace presentacion
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string version = fvi.FileVersion;
-            lblfooter.Text = version;
-            //si tiene parametros de usuario y contrasñe logameos directamente
+            lblfooter.Text = version;            
             if (Request.QueryString["u"] != null && Request.QueryString["c"] != null)
             {
                 Login(funciones.de64aTexto(Request.QueryString["u"]), funciones.de64aTexto(Request.QueryString["c"]), false);
+            }
+           // si tiene parametros de usuario y contrasñe logameos directamente
+            //if (ExistCokie("username") && ExistCokie("name"))
+            //{
+            //    txtuser.Text = getCookie("username");
+            //    txtuser.Visible = false;
+            //    tit1.Visible = true;
+            //    tit2.Visible = true;
+            //    lnlotracuenta.Visible = true;
+            //    lblnamecooki.Text = getCookie("name");
+            //    txtpass.Focus();
+            //}
+        }
+        void DeleteCookie(string cookie_name)
+        {
+            if (Request.Cookies[cookie_name] != null)
+            {
+                Response.Cookies[cookie_name].Expires = DateTime.Now.AddDays(-1);
             }
         }
 
@@ -41,47 +58,31 @@ namespace presentacion
             Login(user, pass, remember);
         }
 
-        private void GetColor(string color_val)
-        {
-            string value = "#1C1C1C";
-            value = getCookie("GAMA", "bcolor");
-            if (value == null || value == "")
-            {
-                setCookie("GAMA", "bcolor", color_val);
-                ScriptManager.RegisterStartupScript(this, GetType(), "PREVIEW", "CambiaPaletasdecolor('" + color_val + "');", true);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "PREVIEW", "CambiaPaletasdecolor('" + value + "');", true);
-            }
-        }
-
+      
         /// <summary>
         /// Crea una cookie con expiracion de 7 dias
         /// </summary>
         /// <param name="data"></param>
-        private void setCookie(string cookie_name, string cookie_value, string cookie_valuedata)
+        private void setCookie(string cookie_name, string value)
         {
-            HttpCookie myCookie = new HttpCookie(cookie_name);
-            myCookie[cookie_value] = cookie_valuedata;
-            myCookie.Expires = DateTime.Now.AddDays(7d);
-            Response.Cookies.Add(myCookie);
+            Response.Cookies[cookie_name].Value = value;
+            Response.Cookies[cookie_name].Expires = DateTime.Now.AddDays(7);
         }
 
         /// <summary>
         /// Devuelve el valor actual de una cookie, si no existe la crea con expiracion de 7 dias
         /// </summary>
         /// <returns></returns>
-        public string getCookie(string cookie_name, string cookie_value)
+        public string getCookie(string cookie_name)
         {
-            string userSettings = "";
-            if (Request.Cookies[cookie_name] != null)
-            {
-                userSettings = Request.Cookies[cookie_name][cookie_value];
-            }
+            string userSettings = Request.Cookies[cookie_name].Value;
             return userSettings;
         }
 
+        bool ExistCokie(string cookie_name)
+        {
+            return Request.Cookies[cookie_name] != null;
+        }
         private void Login(string user, string pass, bool remember)
         {
             UsuariosE EntUsuario = new UsuariosE();
@@ -147,11 +148,14 @@ namespace presentacion
                         //si traeTIM el parametro de la pagina logeamos en esa pagina
                         string us = funciones.deTextoa64(txtuser.Text);
                         string con = funciones.deTextoa64(txtpass.Text);
-                        string response = Request.QueryString["p"] == null ? "menu.aspx" : funciones.de64aTexto(Request.QueryString["p"]);
+                        string response = "menu.aspx";
                         if (ValidarPantalla(65) == true && RevisionesBasicasPendientes() > 0)
                         {
                             response = "revision_basica_de_herramientas_pendientes_m.aspx";
                         }
+                        response = Request.QueryString["p"] == null ? response : funciones.de64aTexto(Request.QueryString["p"]);
+                        setCookie("username", user);
+                        setCookie("name", nombre_user);
                         Response.Redirect(response);
                     }
                     else
@@ -250,6 +254,13 @@ namespace presentacion
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+        }
+
+        protected void lnlotracuenta_Click(object sender, EventArgs e)
+        {
+            DeleteCookie("username");
+            DeleteCookie("name");
+            Response.Redirect("login.aspx");
         }
     }
 }

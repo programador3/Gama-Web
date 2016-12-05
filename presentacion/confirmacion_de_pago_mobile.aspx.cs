@@ -17,13 +17,9 @@ namespace presentacion
                 estado_controles(false);
                 btnaceptar.Attributes["onClick"] = "return pago(" + cbotipopago.ClientID + ".options[" + cbotipopago.ClientID + ".selectedIndex]," + cbobancos.ClientID + ".options[" + cbobancos.ClientID + ".selectedIndex]);";
                 btncancelar.Attributes["onClick"] = "return cerrar();";
-                txtmonto.Attributes["onblur"] = "return validarnumero(this);";
                 txtmonto.Attributes["onClick"] = "this.select();";
                 txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
                 cbotipopago.Attributes["onchange"] = "return change_cbotipo(this);";
-                //cbotipopago.Attributes["onClick"] = "return ddl_focus(this);"
-                txtmonto.Attributes["onfocus"] = "this.blur();";
-                txtmonto.Attributes["onClick"] = "window.open('teclado.aspx?ctrl=" + txtmonto.ClientID + "&dc= 4');";
             }
         }
 
@@ -48,8 +44,6 @@ namespace presentacion
 
         public void estado_controles(bool estado)
         {
-            txtmonto.Enabled = estado;
-            //txtfecha.Enabled = estado
             cbobancos.Enabled = estado;
 
 

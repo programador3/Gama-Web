@@ -53,6 +53,7 @@ namespace presentacion
         private String Cadena()
         {
             string cadena = "";
+            int tcadena = 0;
             if (lnktodo.CssClass != "btn btn-info btn-block")
             {
                 foreach (RepeaterItem item in Repeater1.Items)
@@ -61,8 +62,13 @@ namespace presentacion
                     if (lnk.CssClass == "btn btn-success btn-block")
                     {
                         cadena = cadena + lnk.CommandName + ";";
+                        tcadena = tcadena + 1;
                     }
                 }
+            }
+            if (Repeater1.Items.Count == tcadena)
+            {
+                cadena = "";
             }
             return cadena;
         }
@@ -80,6 +86,10 @@ namespace presentacion
                         cadena = cadena + 1;
                     }
                 }
+            }
+            if (Repeater1.Items.Count == cadena)
+            {
+                cadena = 0;
             }
             return cadena;
         }
@@ -103,11 +113,7 @@ namespace presentacion
                 case "aprobar":
                     //levantamos la solicitud
                     string res = solicitudAprobacion(Convert.ToInt32(Session["sidc_puestoperfil_borr"]));
-                    if (TotalCadena() == 0 && lnktodo.CssClass == "btn btn-default btn-block")
-                    {
-                        Alert.ShowAlertError("Seleccione una opcion", this.Page);
-                    }
-                    else if (string.IsNullOrEmpty(res.Trim().Replace(" ", "")))
+                    if (string.IsNullOrEmpty(res.Trim().Replace(" ", "")))
                     {
                         if (TotalCadena() > 0)
                         {

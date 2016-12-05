@@ -29,6 +29,7 @@
                    location.href = URLBACK;
                });
         }
+     
     </script>
     <style>
         #IrArriba {
@@ -111,6 +112,7 @@
                         <asp:ListItem Value="occ" Text="Solo la información externa(PARA PUBLICAR EN OCC)"></asp:ListItem>
                         <asp:ListItem Value="excp" Text="Toda la informacion menos la externa"></asp:ListItem>
                     </asp:DropDownList>
+                    <asp:LinkButton ID="lnkdescargarmanual" CssClass="btn btn-info" Width="50%" runat="server" OnClick="lnkdescargarmanual_Click">Descargar Manual Completo</asp:LinkButton>
                     <h3 style="text-align: center"><strong>
                         <asp:Label ID="lblComparacion" runat="server" Text="Comparación de Perfiles" Visible="false"></asp:Label></strong></h3>
                     <a style="display: none" id="btnGO" class="btn btn-primary btn-block" href="#PanelB">Ver Perfil Borrador <span class='glyphicon glyphicon-new-window'></span></a>

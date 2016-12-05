@@ -410,8 +410,8 @@ namespace presentacion
                 case "Puesto":
                     int idc_prepara = Convert.ToInt32(gridCatalogo.DataKeys[index].Values["idc_prepara"].ToString());
                     int idc_pre_empleado = Convert.ToInt32(gridCatalogo.DataKeys[index].Values["idc_pre_empleado"].ToString());
-                    DataPrep2(0, idc_prepara, idc_pre_empleado);
-                    view.Visible = true;
+                    ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), 
+                        "window.open('pre_empleados_info.aspx?idc_pre_empleado="+funciones.deTextoa64(idc_pre_empleado.ToString().Trim())+ "&idc_prepara="+funciones.deTextoa64(idc_prepara.ToString().Trim())+"');", true);
                     break;
             }
             gridCatalogo.DataSource = (DataTable)Session["data"];

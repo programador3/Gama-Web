@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): No se encontró el procedimiento almacenado 'sp_aclientes_inconvenientes_nuevo'.
+   at negocio.Componentes.Inconvenientes_ClienteCOM.guardar_compromiso_cliente(Inconvenientes_ClienteENT ent, Datos_Usuario_logENT dul) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\negocio\Componentes\Inconvenientes_ClienteCOM.cs:line 70
+   at presentacion.Inconvenientes_Cliente.guardar_click(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\05_12_16\Puestos\presentacion\Inconvenientes_Cliente.aspx.cs:line 112
+ClientConnectionId:ec1441b4-bbbc-46a6-8da5-a9005bf1dce5
+Error Number:2812,State:62,Class:16

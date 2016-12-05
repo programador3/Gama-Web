@@ -49,6 +49,24 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.TextBox txthoras;
         
         /// <summary>
+        /// Control txthorasl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txthorasl;
+        
+        /// <summary>
+        /// Control txthorasf.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txthorasf;
+        
+        /// <summary>
         /// Control txtobservaciones.
         /// </summary>
         /// <remarks>

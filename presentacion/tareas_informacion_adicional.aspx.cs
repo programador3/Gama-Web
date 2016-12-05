@@ -44,7 +44,14 @@ namespace presentacion
                 DataSet ds = new DataSet();
                 if (entidad.Pidc_proceso > 0)
                 {
-                    ds = componente.InformacionAdicional(entidad);
+                    if (Request.QueryString["f1"] == null)
+                    {
+                        ds = componente.InformacionAdicional(entidad);
+                    }
+                    else {
+
+                        ds = componente.InformacionAdicionalFechas(entidad);
+                    }
                 }
                 else
                 {

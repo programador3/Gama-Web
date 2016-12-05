@@ -19,6 +19,7 @@ namespace presentacion
             {
                 Session["date_noti"] = DateTime.Now.AddMinutes(-1);
             }
+            //dinamic_menudrop();
             DateTime datevaluesession = Convert.ToDateTime(Session["date_noti"]);
             if (DateTime.Now > datevaluesession)
             {
@@ -26,23 +27,21 @@ namespace presentacion
                 ScriptManager.RegisterStartupScript(this, GetType(), "ded", "ValidarNotificaciones();", true);
             }
             Page.MaintainScrollPositionOnPostBack = true;
-            if (Session["sidc_usuario"] == null)//si no hay session logeamos
-            {
-                Response.Redirect("login.aspx");
-            }
+            String path_actual = Request.Url.Segments[Request.Url.Segments.Length - 1];
+
             string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
-            ScriptManager.RegisterStartupScript(this, GetType(), "dedchangeedddededed", "ChangeCss('" + cs + "');", true);  
+            ScriptManager.RegisterStartupScript(this, GetType(), "dedchangeedddededed", "ChangeCss('" + cs + "');", true);
             tareas_pendi.Visible = cs == "P" ? false : true;
             lnkperfil.CommandName = Convert.ToInt32(Session["login_idc_perfil"]).ToString();
             lnkperfil.Text = (string)Session["login_perfil"];
             hdnidc_usuario.Value = Convert.ToInt32(Session["sidc_usuario"]).ToString();
-            String path_actual = Request.Url.Segments[Request.Url.Segments.Length - 1];
+
             String path_actual_COMPLETO = HttpContext.Current.Request.Url.AbsoluteUri;
             path_actual_COMPLETO = path_actual_COMPLETO.Replace("%20", "+");
             path_actual_COMPLETO = path_actual_COMPLETO.Replace("%20", "+");
             path_actual_COMPLETO = funciones.ChangeValue(path_actual_COMPLETO);
             string PreviousPage = Request.ServerVariables["HTTP_REFERER"];
-            int user_id = Convert.ToInt32(Session["sidc_usuario"]);           
+            int user_id = Convert.ToInt32(Session["sidc_usuario"]);
             lblUserName.Text = (String)(Session["nombre"]);
             lblpuestos2.Text = (String)(Session["puesto_login"]) == "" ? "Sin puesto Asignado" : (String)(Session["puesto_login"]);
             lbluser2.Text = (String)(Session["nombre"]);
@@ -50,9 +49,9 @@ namespace presentacion
             OpcionesUsadas();
             DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/errores/"));//path local
             Session["error_path"] = dirInfo.ToString();
-            if (Session["sidc_usuario"] == null && Session["lista"] == null)//si no hay session logeamos
+            if (Session["sidc_usuario"] == null && Session["lista"] == null && path_actual != "reproductor_llamadas.aspx")//si no hay session logeamos
             {
-                CreateFileError("ERROR DE LOGIN",this.Page);
+                CreateFileError("ERROR DE LOGIN", this.Page);
                 Response.Redirect("login.aspx");
             }
             else
@@ -329,7 +328,7 @@ namespace presentacion
             date = date.Replace(":", "_");
             content = (String)(page.Session["nombre"]) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + content;
             funciones.CreateFile((string)page.Session["error_path"] + date + ".gama", content);
-            funciones.EnviarError(content);
+            //funciones.EnviarError(content);
         }
 
         private void CargarHerramientasMenu()
@@ -398,6 +397,7 @@ namespace presentacion
             int index = listas_url.Count;
             String url = listas_url[index - 1];
             String path_actual2 = Request.Url.Segments[Request.Url.Segments.Length - 1];
+
             if (path_actual2 == "view_files.aspx" || path_actual2 == "tareas_informacion_adicional.aspx")
             {
                 Alert.ShowAlertError("Debe cerrar esta ventana o puede perder los cambios realizados.", this.Page);
@@ -408,8 +408,21 @@ namespace presentacion
             }
             else
             {
+
                 if (url == null || url == "") { url = "menu.aspx"; }
                 url = url.Replace("%20", "+");
+
+                /*uso para caso espesifico web form regresa los valores enviados */
+                if (path_actual2 == "rendimiento_tareas_detalles.aspx")
+                {
+                    int position = url.IndexOf('?', 0);
+                    if (position >= 0)
+                    {
+                        url = url.Substring(0, position).Trim();
+                    }
+                    string url_query = Request.Url.Query;
+                    url = url + url_query;
+                }
                 String path_actual_COMPLETO = HttpContext.Current.Request.Url.AbsoluteUri;
                 string PreviousPage = Request.ServerVariables["HTTP_REFERER"];
                 path_actual_COMPLETO = path_actual_COMPLETO.Replace("%20", "+");

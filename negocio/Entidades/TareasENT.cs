@@ -26,6 +26,7 @@ namespace negocio.Entidades
         private bool parchivo;
         private bool correcto;
         private bool APLICAR_CAMBIOTODOS;
+        private bool OTRO;
         private bool cambio_fecha_ori;
         private string comentarios;
         private DateTime fecha;
@@ -34,6 +35,7 @@ namespace negocio.Entidades
         private string pnombrepc;
         private string pusuariopc;
         private int idc_usuario;
+        private int pcasoFiltro; /* PARAMETRO PARA EL FILTRO EN RELACION PUESTO TAREAS*/
 
         public int Idc_usuario
         {
@@ -95,6 +97,11 @@ namespace negocio.Entidades
         {
             get { return correcto; }
             set { correcto = value; }
+        }
+        public bool POTROPUESTO
+        {
+            get { return OTRO; }
+            set { OTRO = value; }
         }
 
         public int Pidc_tarea_h
@@ -207,6 +214,12 @@ namespace negocio.Entidades
         {
             get { return fecha_fin; }
             set { fecha_fin = value; }
+        }
+
+        public int PcasoFiltro
+        {
+            get { return pcasoFiltro; }
+            set { pcasoFiltro = value; }
         }
     }
 }

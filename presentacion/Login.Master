@@ -14,8 +14,13 @@
     <script src="js/jquery10.js"></script> 
     <script src="js/sweetalert-dev.js"></script>
     <script src="js/sweetalert.min.js"></script>
-    <link href="login/css/style.css" rel="stylesheet" />
-    <script src="login/js/index.js"></script>
+  <%--  <link href="login/css/style.css" rel="stylesheet" />
+    <script src="login/js/index.js"></script>--%>
+     <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"/>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
         <script type="text/javascript">
             $(document).ready(function () {

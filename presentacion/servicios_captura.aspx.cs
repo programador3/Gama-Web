@@ -260,12 +260,9 @@ namespace presentacion
         {
             string cadena = "";
             DataTable dt = Session["tabla_puestos"] as DataTable;
-            if (lnktodo.CssClass == "btn btn-default btn-block")
+            foreach (DataRow row in dt.Rows)
             {
-                foreach (DataRow row in dt.Rows)
-                {
-                    cadena = cadena + row["idc_puesto"].ToString() + ";";
-                }
+                cadena = cadena + row["idc_puesto"].ToString() + ";";
             }
 
             return cadena;
@@ -274,14 +271,7 @@ namespace presentacion
         private int TotalCadenaPuestos()
         {
             DataTable dt = Session["tabla_puestos"] as DataTable;
-            if (lnktodo.CssClass == "btn btn-default btn-block")
-            {
-                return dt.Rows.Count;
-            }
-            else
-            {
-                return 0;
-            }
+            return dt.Rows.Count;
         }
 
         protected void lnkpuesto_Click(object sender, EventArgs e)
@@ -356,7 +346,7 @@ namespace presentacion
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             bool error = false;
-            if (TotalCadenaPuestos() == 0 && lnktodo.CssClass == "btn btn-default btn-block")
+            if (TotalCadenaPuestos() == 0)
             {
                 Alert.ShowAlertError("Para Guardar, debe seleccionar al menos un puesto", this);
                 error = true;

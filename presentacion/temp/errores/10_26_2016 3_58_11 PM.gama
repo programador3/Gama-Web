@@ -1,0 +1,9 @@
+Gerardo Vega Espinoza
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SyntaxErrorException: Syntax error: Missing operand before 'Or' operator.
+   at System.Data.ExpressionParser.Parse()
+   at System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   at System.Data.DataView.set_RowFilter(String value)
+   at presentacion.solicitudes_asistencia_pendientes.CargarFaltas(String value) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\25_10_16\Puestos\presentacion\solicitudes_asistencia_pendientes.aspx.cs:line 74

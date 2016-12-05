@@ -16,7 +16,7 @@ namespace presentacion
         public static int idc_puesto = 0;
         public static string path_user_chat = "";
         public static string content = "";
-        public static Nullable<DateTime> date;
+        public static DateTime? date;
 
         [Serializable]
         public class Id
@@ -174,6 +174,13 @@ namespace presentacion
             return list;
             //PlaceHolder.Controls.Add(new Literal { Text = html.ToString() });
         }
+
+        [System.Web.Services.WebMethod]
+        public static string Val()
+        {
+            return "helo";
+        }
+
 
         /// <summary>
         /// Regresa tabla con notificaciones

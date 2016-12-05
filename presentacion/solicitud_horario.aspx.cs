@@ -27,6 +27,7 @@ namespace presentacion
                 edicion.Visible = false;
                 autoriza.Visible = false;
                 Session["pidc_empleado_solic_horario"] = null;
+                txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');
                 CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
             }
             //SI ES UNA AUTORIZACION
@@ -42,6 +43,21 @@ namespace presentacion
                 lnkedit.Visible = true;
                 edicion.Visible = false;
                 autoriza.Visible = true;
+            }
+            //SI ES UNA VISTA
+            if (!IsPostBack && Request.QueryString["view"] != null)
+            {
+                Session["idc_horario_perm"] = null;
+                Session["checacomida"] = null;
+                Session["pidc_empleado_solic_horario"] = null;
+                CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
+                CargarDetallesl(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"])));
+                solicita.Visible = false;
+                lblobsr.Visible = false;
+                lnkedit.Visible = false;
+                edicion.Visible = false;
+                autoriza.Visible = false;
+
             }
             ScriptManager.RegisterStartupScript(this, GetType(), "DE", "Charge();", true);
         }
@@ -194,27 +210,6 @@ namespace presentacion
                         cuerpo.Visible = false;
                     }
                 }
-                else
-                {
-                    cuerpo.Visible = true;
-                    ddlsucursales.SelectedValue = "0";
-                    txthoraentrada.Text = "";
-                    txthoraentradac.Text = "";
-                    txthorasalida.Text = "";
-                    txthorasalidac.Text = "";
-                    ddlsucursales.Enabled = true;
-                    txthoraentrada.Enabled = true;
-                    txthoraentradac.Enabled = true;
-                    txthorasalida.Enabled = true;
-                    txthorasalidac.Enabled = true;
-                    solicita.Visible = true;
-                    lblobsr.Visible = false;
-                    lnkedit.Visible = false;
-                    edicion.Visible = false;
-                    btntot.CssClass = "btn btn-default btn-block";
-                    lnkno_horacomida.CssClass = "btn btn-default btn-block";
-                    lnkno_Salida.CssClass = "btn btn-default btn-block";
-                }
                 return ret;
             }
             catch (Exception ex)
@@ -229,11 +224,16 @@ namespace presentacion
         {
             if (txtfecha.Text != "")
             {
-                if (DateTime.Today > Convert.ToDateTime(txtfecha.Text))
+                DateTime fechastring = Convert.ToDateTime(txtfecha.Text);
+                AgentesCOM componente = new AgentesCOM();
+                DataTable dt = componente.sp_fn_validar_fechas_pagada(fechastring).Tables[0];
+                bool pagado = Convert.ToBoolean(dt.Rows[0][0]);
+                if (pagado==true)
                 {
-                    txtfecha.Text = "";
-                    Alert.ShowAlertError("No puede solicitar un permiso para una fecha menor o igual a hoy.", this);
+                    txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');
+                    Alert.ShowAlertInfo("No puede solicitar un permiso para esta fecha por que el PERIODO DE NOMINA AL QUE PERTENECE YA FUE PAGADO ","Mensaje del Sistema", this);
                 }
+
                 else
                 {
                     btnguardar.Visible = true;
@@ -272,11 +272,6 @@ namespace presentacion
             else if (txtfecha.Text == "")
             {
                 Alert.ShowAlertError("Ingrese la fecha de aplicación.", this);
-            }
-            else if (txtfecha.Text != "" && DateTime.Today > Convert.ToDateTime(txtfecha.Text))
-            {
-                txtfecha.Text = "";
-                Alert.ShowAlertError("No puede solicitar un permiso para una fecha menor o igual a hoy.", this);
             }
             else
             {
@@ -356,7 +351,7 @@ namespace presentacion
                         if (vmensaje == "")
                         {
                             string MESS = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 363) == true ? "Estamos Autorizando Automaticamente la Solicitud" : "Estamos Guardando los cambios.";
-                            Alert.ShowGiftMessage(MESS, "Espere un Momento", "puestos_catalogo.aspx", "imagenes/loading.gif", "2000", "Solicitud Guardada correctamente ", this);
+                            Alert.ShowGiftMessage(MESS, "Espere un Momento", "solicitud_horario.aspx?idc_puesto="+Request.QueryString["idc_puesto"], "imagenes/loading.gif", "2000", "Solicitud Guardada correctamente ", this);
                         }
                         else
                         {

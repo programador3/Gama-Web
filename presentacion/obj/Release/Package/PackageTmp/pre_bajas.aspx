@@ -101,100 +101,49 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8 col-md-12">
-                    <asp:Panel ID="PanelPreBaja" runat="server" CssClass="form-group" Visible="false"
-                        Style="padding: 10px; background-color: #f5f5f5; border-radius: 24px 24px 24px 24px; -moz-border-radius: 24px 24px 24px 24px; -webkit-border-radius: 24px 24px 24px 24px; border: 1px inset #000000; -webkit-box-shadow: 10px 10px 49px -6px rgba(0,0,0,0.75); -moz-box-shadow: 10px 10px 49px -6px rgba(0,0,0,0.75); box-shadow: 10px 10px 49px -6px rgba(0,0,0,0.75);">
-                        <h3 style="text-align: center;">Nueva Pre-Baja <i class="fa fa-users"></i>
-                        </h3>
+                <div class="col-lg-12">
+                    <asp:Panel ID="PanelPreBaja" runat="server" CssClass="form-group" Visible="false">
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
                             <ContentTemplate>
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <h5><strong><i class="fa fa-user"></i>Empleado: </strong>
-                                                <asp:Label ID="lblEmpleadoName" runat="server" Text=" Empleado"></asp:Label></h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <h5><strong><i class="fa fa-suitcase"></i>Puesto: </strong>
-                                                <asp:Label ID="lblPuesto" runat="server" Text="Puesto"></asp:Label>
-                                            </h5>
-                                        </div>
+                                    <div class="col-lg-12">
+                                        <h4><strong><i class="fa fa-user"></i>&nbsp;Empleado:&nbsp;</strong>
+                                            <asp:Label ID="lblEmpleadoName" runat="server" Text=" Empleado"></asp:Label></h4>
+                                        <h4><strong><i class="fa fa-suitcase"></i>&nbsp;Puesto:&nbsp;</strong>
+                                            <asp:Label ID="lblPuesto" runat="server" Text="Puesto"></asp:Label>
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <h5><strong><i class="fa fa-calendar-o"></i>Fecha de Baja: </strong>
-                                                <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" Text="" OnTextChanged="txtFecha_TextChanged" AutoPostBack="true"></asp:TextBox></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12">
+                                        <h4><strong><i class="fa fa-calendar-o"></i>&nbsp;Fecha de Baja: </strong>
+                                                <asp:TextBox ID="txtFecha" Width="150px" runat="server" TextMode="Date" Text="" OnTextChanged="txtFecha_TextChanged" AutoPostBack="true"></asp:TextBox></h4>
+                                    
                                         <asp:Label ID="lblErrorMotivo" runat="server" Text="Debe indicar el Motivo" Style="color: red; font: bold;" Visible="false"></asp:Label>
+                                         <asp:TextBox ID="txtMotivo" runat="server" CssClass="form-control" TextMode="MultiLine" MaxLength="250" Rows="3" Style="resize: none;" placeholder="Motivo de Baja"></asp:TextBox>
+                                           
+                                        <asp:CheckBox ID="cbxApto" CssClass="radio3 radio-check radio-info radio-inline" runat="server" Text="Apto para Reingresar" AutoPostBack="true" OnCheckedChanged="cbxApto_CheckedChanged" />
 
-                                        <div class="form-group">
-                                            <h5>
-                                                <asp:TextBox ID="txtMotivo" runat="server" CssClass="form-control" TextMode="MultiLine" MaxLength="250" Rows="3" Style="resize: none;" placeholder="Motivo de Baja"></asp:TextBox>
-                                            </h5>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" style="color: #fff; background-color: #367fa9;">
-                                                <i class="fa fa-arrow-left"></i></span>
+                                            <h4 style="background-color: white;">
 
-                                            <asp:CheckBox ID="cbxApto" runat="server" Text="Apto para Reingresar" AutoPostBack="true" OnCheckedChanged="cbxApto_CheckedChanged" />
-                                        </div>
+                                                <asp:CheckBox style=" font-size:25px;" ID="cbxHonesto" runat="server" CssClass="radio3 radio-check radio-info radio-inline" Text="Honesto" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <asp:CheckBox ID="cbxTrabajador" CssClass="radio3 radio-check radio-info radio-inline" runat="server" Text="Trabajador" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <asp:CheckBox ID="cbxDrogas" CssClass="radio3 radio-check radio-info radio-inline" runat="server" Text="Drogas" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <asp:CheckBox ID="cbxAlcol" CssClass="radio3 radio-check radio-info radio-inline" runat="server" Text="Alcohol" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <asp:CheckBox ID="cbxRobo" CssClass="radio3 radio-check radio-info radio-inline" runat="server" Text="Robo" /></h4>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-10">
-                                        <div class="form-group">
-                                            <h5 style="background-color: white;">
-
-                                                <asp:CheckBox ID="cbxHonesto" runat="server" Text="Honesto" Style="" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <asp:CheckBox ID="cbxTrabajador" runat="server" Text="Trabajador" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <asp:CheckBox ID="cbxDrogas" runat="server" Text="Drogas" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <asp:CheckBox ID="cbxAlcol" runat="server" Text="Alcohol" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <asp:CheckBox ID="cbxRobo" runat="server" Text="Robo" /></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <asp:TextBox ID="txtEspecificar" runat="server" CssClass="form-control" placeholder="Especificar" TextMode="MultiLine" Rows="3" MaxLength="250" Style="resize: none;"></asp:TextBox>
-                                        </div>
+                                        <asp:TextBox ID="txtEspecificar" runat="server" CssClass="form-control" placeholder="Especificar" TextMode="MultiLine" Rows="3" MaxLength="250" Style="resize: none;"></asp:TextBox>
+                                         <asp:CheckBox ID="cbxCartaRec" CssClass="radio3 radio-check radio-info radio-inline" runat="server" Text="Autorizo Carta de Recomendación" />
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <h5>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon" style="color: #fff; background-color: #367fa9;">
-                                                        <i class="fa fa-file-text-o"></i></span>
-
-                                                    <asp:CheckBox ID="cbxCartaRec" runat="server" Text="Autorizo Carta de Recomendación" />
-                                                </div>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <h5><strong><i class="fa fa-thumbs-o-up"></i>Status del Puesto: Vacante </strong>
+                                        <h4><strong><i class="fa fa-thumbs-o-up"></i>&nbsp;Status del Puesto: Vacante </strong>
                                                 <div class="btn-group" style="background-color: white;">
                                                     <asp:LinkButton Visible="false" ID="lnkVacanteC" runat="server" class="btn btn-primary active" Style="text-decoration: none; border: 1px solid #000000;" OnClick="lnkVacanteC_Click">Contratar </asp:LinkButton>
                                                     <asp:LinkButton Visible="false" ID="lnkVacanteNO" runat="server" class="btn btn-link" Style="text-decoration: none; border: 1px solid #000000;" OnClick="lnkVacanteNO_Click">No Contratar </asp:LinkButton>
@@ -203,14 +152,10 @@
                                                         <asp:ListItem Value="0" Text="VACANTE (NO CONTRATAR)"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
-                                            </h5>
-                                        </div>
+                                            </h4>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <h5><strong><i class="fa fa-thumbs-o-up"></i>Tipo de Baja</strong>
+                                            <h4><strong><i class="fa fa-thumbs-o-up"></i>&nbsp;Tipo de Baja</strong>
                                                 <div class="btn-group" style="background-color: white;">
                                                     <asp:DropDownList ID="ddlTipoBaja" runat="server" CssClass="form-control">
                                                         <asp:ListItem Value="SIN" Text="Selecciona uno por favor" Selected="True"></asp:ListItem>
@@ -218,22 +163,17 @@
                                                         <asp:ListItem Value="0" Text="Despido"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
-                                            </h5>
-                                        </div>
+                                            </h4>
                                     </div>
                                 </div>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                         <div class="row">
-                            <div class="col-lg-6 col-xs-12">
-                                <div class="form-group">
-                                    <asp:Button ID="btnACeptarPrebaja" runat="server" Text="Aceptar" CssClass="btn btn-primary btn-block" OnClick="btnACeptarPrebaja_Click" />
-                                </div>
+                            <div class="col-lg-6 col-xs-6">
+                                <asp:Button ID="btnACeptarPrebaja" runat="server" Text="Aceptar" CssClass="btn btn-primary btn-block" OnClick="btnACeptarPrebaja_Click" />
                             </div>
-                            <div class="col-lg-6 col-xs-12">
-                                <div class="form-group">
-                                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
-                                </div>
+                            <div class="col-lg-6 col-xs-6">
+                               <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
                             </div>
 
                             <div class="col-lg-6"></div>

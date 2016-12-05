@@ -110,6 +110,9 @@ namespace presentacion
             DataRow row = ds.Tables[0].Rows[0];
             txtempleado.Text = row["chofer"].ToString();
             idc_empleado.Text = row["idc_empleado"].ToString();
+            lnkreporte.Visible = Convert.ToInt32(row["idc_empleado"]) > 0;
+            div_Reporte.Visible = false;
+            if (Convert.ToInt32(row["idc_empleado"]) > 0) { CargarReportes(Convert.ToInt32(row["idc_empleado"])); }
         }
 
         private void HerramientasRevision(int idc_vehiculo)
@@ -485,6 +488,12 @@ namespace presentacion
                     case "Guardar":
                         Vehiculos_RevisionENT entidad = new Vehiculos_RevisionENT();
                         Vehiculos_RevisionCOM com = new Vehiculos_RevisionCOM();
+                        if (div_Reporte.Visible)
+                        {
+                            entidad.Pidc_tiporep = Convert.ToInt32(ddltiporeporte.SelectedValue);
+                            entidad.POBSERVACIONES = txtcomentarios.Text.ToUpper();
+                            entidad.Pidc_Empleadomio = Convert.ToInt32(Session["sidc_empleado"]);
+                        }
                         entidad.Pidc_empleado = Convert.ToInt32(idc_empleado.Text);
                         entidad.Idc_vehiculo = Convert.ToInt32(ddlvehiculo.SelectedValue);
                         entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
@@ -567,6 +576,10 @@ namespace presentacion
             {
                 Alert.ShowAlertError(error_valestr, this);
             }
+            else if (div_Reporte.Visible==true && ddltiporeporte.SelectedValue == "0" )
+            {
+                Alert.ShowAlertError("Seleccione un tipo de reporte para asignarlo.", this);
+            }
             else
             {
                 Session["Caso_Confirmacion"] = "Guardar";
@@ -638,6 +651,32 @@ namespace presentacion
                     e.Row.ForeColor = Color.FromName("#000");
                     e.Row.Cells[7].Controls.Clear();
                 }
+            }
+        }
+
+        protected void lnkreporte_Click(object sender, EventArgs e)
+        {
+            lnkreporte.CssClass = lnkreporte.CssClass == "btn btn-default btn-block" ? "btn btn-info btn-block" : "btn btn-default btn-block";
+            div_Reporte.Visible = lnkreporte.CssClass == "btn btn-info btn-block";
+        }
+
+        private void CargarReportes(int IDC_EMPLEADO)
+        {
+            try
+            {
+                ReportesENT entidad = new ReportesENT();
+                entidad.Pidc_empleado = IDC_EMPLEADO;
+                ReportesCOM componentes = new ReportesCOM();
+                ddltiporeporte.DataValueField = "idc_tiporep";
+                ddltiporeporte.DataTextField = "descripcion";
+                ddltiporeporte.DataSource = componentes.Carga(entidad);
+                ddltiporeporte.DataBind();
+                ddltiporeporte.Items.Insert(0, new ListItem("--Seleccione un Reporte", "0")); //updated code}
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
             }
         }
     }

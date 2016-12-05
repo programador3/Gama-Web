@@ -1685,10 +1685,15 @@ namespace presentacion
 
                         // Finally we save the docuement...
                     }
+
+                    DateTime localDate = DateTime.Now;
+                    string date = localDate.ToString();
+                    date = date.Replace("/", "_");
+                    date = date.Replace(":", "_");
                     Random random = new Random();
                     int randomNumber = random.Next(0, 100000);
                     DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/tareas/"));//path local
-                    string ruta = dirInfo + randomNumber .ToString().Trim()+ txtid.Text.Trim() + ".pdf";
+                    string ruta = dirInfo + randomNumber .ToString().Trim()+ date + txtid.Text.Trim() + ".pdf";
                     myPdfDocument.SaveToFile(ruta);
 
                     ////// *Envia el PDF por Correo al cliente.*

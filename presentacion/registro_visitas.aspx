@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="Registro de Visitas" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="registro_visitas.aspx.cs" Inherits="presentacion.registro_visitas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="Webcam_Plugin/jquery.webcam.js"></script>
     <script type="text/javascript">
         function ModalClose() {
             $('#myModalPersonas').modal('hide');
             $('#myModalempresa').modal('hide');
+            $('#myModal').modal('hide');
         }
         function ModalConfirmPero(cContenido, ctype) {
             var audio = new Audio('sounds/modal.wav');
@@ -32,24 +34,86 @@
             $('#content_modalempresa').text(cContenido);
         }
 
-        $(document).ready(function () {
-            $(".gvv").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
-                "lengthMenu": [[15, 25, -1], [15, 25, "Todos"]] //value:item pair
+    </script>
+    <script type="text/javascript">
+        var pageUrl = '<%=ResolveUrl("~/registro_visitas.aspx") %>';
+        $(function () {
+            jQuery("#webcam").webcam({
+                width: 300,
+                height: 300,
+                mode: "save",
+                swffile: '<%=ResolveUrl("~/Webcam_Plugin/jscam.swf") %>',
+                debug: function (type, status) {
+                },
+                onSave: function (data) {
+                    $.ajax({
+                        type: "POST",
+                        url: pageUrl + "/GetCapturedImage",
+                        data: '',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (r) {
+                            $("[id*=imgCapture]").css("display", "block");
+                            $("[id*=imgCapture]").attr("src", r.d);
+                            //$("[id*=webcam]").css("display", "none");
+                        },
+                        failure: function (response) {
+                            alert(response.d);
+                        }
+                    });
+                },
+                onCapture: function () {
+                    webcam.save(pageUrl);
+                    
+                    $("#<%= txtimgurl.ClientID %>").val("ddd");
+                }
             });
         });
+        function Capture() {            
+            $("<%= txtimgurl.ClientID %>").val("");
+            webcam.capture();
+            return false;
+        }
+        function AlertGO(TextMess, URL) {
+            swal({
+                title: "Mensaje del Sistema",
+                text: TextMess,
+                type: 'success',
+                showCancelButton: false,
+                confirmButtonColor: "#428bca",
+                confirmButtonText: "Aceptar",
+                closeOnConfirm: false, allowEscapeKey: false
+            },
+               function () {
+                   location.href = URL;
+               });
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <h1 class="page-header">Registro de Visitas</h1>
+    <asp:TextBox ID="txtimgurl" runat="server" Visible="false"></asp:TextBox>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div id="webcam">
+            </div>
+            <asp:Button ID="btnCapture" CssClass="btn btn-info" Width="300px" Text="Capturar Foto" runat="server" OnClientClick="return Capture();" />
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <asp:Image ID="imgCapture" runat="server" Style="display: none; height: 300px;" />
+        </div>
+    </div>
+    <asp:Button ID="Button2" Visible="false" runat="server" Text="Button" OnClick="Button2_Click" />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <Triggers>
-            <asp:PostBackTrigger ControlID="lnkpersonas" />
-            <asp:PostBackTrigger ControlID="lnkempresa" />
-            <asp:PostBackTrigger ControlID="ddlPuestoAsigna" />
+            <asp:AsyncPostBackTrigger ControlID="lnkpersonas" EventName="Click" />
+            <asp:PostBackTrigger ControlID="lnkempresa"/>
+            <asp:AsyncPostBackTrigger ControlID="ddlPuestoAsigna" EventName="SelectedIndexChanged" />
+            <asp:PostBackTrigger ControlID="Yes" />
         </Triggers>
         <ContentTemplate>
-            <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-12">
+            <div class="row">                
+                <div class="col-lg-12">
                     <h4><strong><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Nombre del Visitante</strong></h4>
                     <div class="input-group">
                         <asp:TextBox Style="text-transform: uppercase;" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 8000);" placeholder="Visitante" ID="txtnombre" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtnombre_TextChanged"></asp:TextBox>
@@ -58,9 +122,7 @@
                         </span>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-12">
+                <div class="col-lg-12">
                     <h4><strong><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;Empresa</strong></h4>
                     <div class="input-group">
                         <asp:TextBox Style="text-transform: uppercase;" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 250);" placeholder="Empresa" ID="txtempresa" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtempresa_TextChanged"></asp:TextBox>
@@ -71,7 +133,7 @@
                 </div>
             </div>
             <div class="row" runat="server" id="FILTRO">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <h4><strong><i class="fa fa-child" aria-hidden="true"></i>&nbsp;Empleado de GAMA con quien tendra visita</strong></h4>
                     <asp:DropDownList ID="ddlPuestoAsigna" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlPuestoAsigna_SelectedIndexChanged">
                     </asp:DropDownList>
@@ -113,9 +175,9 @@
                             <div class="row" style="overflow-y: scroll; height: 150px;">
                                 <asp:Repeater ID="repeatpersona" runat="server">
                                     <ItemTemplate>
-                                        <asp:UpdatePanel ID="upa" runat="server">
+                                        <asp:UpdatePanel ID="upa" runat="server" UpdateMode="Always">
                                             <Triggers>
-                                                <asp:PostBackTrigger ControlID="lnkpersona" />
+                                                    <asp:PostBackTrigger ControlID="lnkpersona"/>
                                             </Triggers>
                                             <ContentTemplate>
                                                 <div class="col-lg-12 col-sm-12">
@@ -129,7 +191,7 @@
                                 </asp:Repeater>
                             </div>
                             <br />
-                            <asp:LinkButton ID="lnkpersonas" OnClick="lnkpersonas_Click" CssClass="btn btn-success btn-block" runat="server">
+                            <asp:LinkButton ID="lnkpersonas" OnClientClick="ModalClose();" OnClick="lnkpersonas_Click" CssClass="btn btn-success btn-block" runat="server">
                                     Agregar Como Nuevo
                             </asp:LinkButton>
                         </div>
@@ -174,8 +236,7 @@
                     </div>
                 </div>
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+            
     <div class="row">
         <div class="col-lg-12">
             <h4><strong><i class="fa fa-indent" aria-hidden="true"></i>&nbsp;Visitas Actuales en curso
@@ -185,7 +246,7 @@
                             <asp:LinkButton Visible="true" ID="lnkurladicinal" CssClass="btn btn-success" OnClick="lnkurladicinal_Click" runat="server">Ver Visitas de Hoy <i class="fa fa-share" aria-hidden="true"></i></asp:LinkButton>
                         </span></h4>
             <div class="table-responsive">
-                <asp:GridView ID="gridvisitas" CssClass="table table-responsive table-condensed gvv" DataKeyNames="idc_visitareg" OnRowCommand="gridvisitas_RowCommand" AutoGenerateColumns="false" runat="server">
+                <asp:GridView ID="gridvisitas" CssClass="table table-responsive table-condensed" DataKeyNames="idc_visitareg" OnRowCommand="gridvisitas_RowCommand" AutoGenerateColumns="false" runat="server">
                     <Columns>
                         <asp:TemplateField HeaderText="Visita" HeaderStyle-Width="50px">
                             <ItemTemplate>
@@ -226,10 +287,12 @@
                         <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
                     </div>
                     <div class="col-lg-6 col-xs-6">
-                        <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
+                        <input id="No" class="btn btn-danger btn-block" type="button" onclick="ModalClose();" value="Cancelar" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

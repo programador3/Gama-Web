@@ -43,10 +43,15 @@ namespace presentacion
                     int idc_tiporep = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_tiporep"]));
                     TipoReportes(idc_tiporep);
                 }
-                else
-                {
-                    CargarCombosPuestos("");
-                }
+                    //DSE AGREGARON ESTAS LINEAS PARA NO MOSTRAR LISTADO DE PUESTOS
+                cbxeditable.Checked = true;
+                cbxeditable.Enabled = false;
+                div_puestos.Visible = false;
+                UpdatePanel1.Visible = false;
+                //else
+                //{
+                //    CargarCombosPuestos("");
+                //}
 
             }
         }

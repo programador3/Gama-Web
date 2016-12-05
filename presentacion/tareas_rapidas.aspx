@@ -38,7 +38,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-     <h1 class="page-header">Captura Nueva Tarea</h1>
+     <h1 class="page-header">Captura Tarea Rapida</h1>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <Triggers>
             <asp:PostBackTrigger ControlID="Yes" />

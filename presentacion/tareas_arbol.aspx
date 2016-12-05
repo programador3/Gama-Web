@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="tareas_arbol.aspx.cs" Inherits="presentacion.tareas_arbol" %>
 
+<%@ Register assembly="Telerik.Web.UI" namespace="Telerik.Web.UI" tagprefix="telerik" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link rel="stylesheet" href="primitive/js/jquery/ui-lightness/jquery-ui-1.10.2.custom.css" />
@@ -9,7 +11,8 @@
     <link rel="stylesheet" href="primitive/js/jquery/ui-lightness/jquery-ui-1.10.2.custom.css" />
     <script type="text/javascript" src="primitive/js/primitives.min.js?2110"></script>
     <link href="primitive/css/primitives.latest.css?2110" media="screen" rel="stylesheet" type="text/css" />
-    <script type='text/javascript'>        //<![CDATA[
+    <script type='text/javascript'>
+          //<![CDATA[
         function Go() {
             var url = document.getElementById('<%= HiddenFieldurl.ClientID%>').value;
             alert(url);

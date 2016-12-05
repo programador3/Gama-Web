@@ -48,8 +48,8 @@ namespace presentacion
             {
                 CargaTareas();
                 CargaTareasAsignadas();
-                lblasignadas.Text = MisTareasAsignadas();
-                lblpendientes.Text = MisTareas();
+            //    lblasignadas.Text = MisTareasAsignadas();
+            //    lblpendientes.Text = MisTareas();
             }
         }
 

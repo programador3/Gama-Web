@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): No se encontró el procedimiento almacenado 'sp_aagentes_act_movil_nuevo'.
+   at negocio.Componentes.AgentesCOM.registrar_visita(AgentesENT entidad) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\negocio\Componentes\AgentesCOM.cs:line 1830
+   at presentacion.ficha_cliente_m.lnkregistrarvisita_Click(Object sender, EventArgs e)
+ClientConnectionId:e23a71ba-6f07-458d-8168-49a566f3e5c0
+Error Number:2812,State:62,Class:16

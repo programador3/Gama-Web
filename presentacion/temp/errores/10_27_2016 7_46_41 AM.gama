@@ -1,0 +1,8 @@
+Gerardo Vega Espinoza
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.Convert.ToDateTime(String value)
+   at presentacion.solicitudes_asistencia_pendientes.gridservicios_RowCommand(Object sender, GridViewCommandEventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\25_10_16\Puestos\presentacion\solicitudes_asistencia_pendientes.aspx.cs:line 339

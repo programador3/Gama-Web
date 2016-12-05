@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
+    
         function getImage(path) {
             $("#myImage").attr("src", path);
             //alert(path);
@@ -33,14 +34,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <asp:TextBox ID="txtidoriginal" Visible="false" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txturl_back" Visible="false" runat="server"></asp:TextBox>
     <h1 class="page-header">Reporte a Empleados
         <small>
             <asp:Label style="color: orangered;" ID="lblreportereasignado" Visible="false" runat="server" Text="Este Reporte fue Reasignado de Otro Reporte"></asp:Label>
             <span>
                 <asp:LinkButton ID="lnkoriginal" Visible="false" CssClass="btn btn-info" runat="server" OnClick="lnkoriginal_Click">Ver Reporte Original</asp:LinkButton></span>
+        
         </small>
+         
     </h1>
-    <asp:UpdatePanel ID="ddedd" runat="server" UpdateMode="always">
+    <asp:UpdatePanel ID="ddedd" runat="server" UpdateMode="Always">
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="lnlvalido" EventName="Click" />
+        </Triggers>
         <ContentTemplate>
             <div style="padding: 20px">
                 <div class="row" id="div_empleadoalta" runat="server" visible="false" style="background-color: white; border: 1px solid gray; padding: 10px;">
@@ -92,6 +99,11 @@
                         <h4>
                             <strong>Nombre Empleado: </strong>
                             <asp:Label ID="lblEmpleado" runat="server" Text=""></asp:Label>
+            <strong><asp:Label style="color: orangered;" ID="lblmihis" Visible="false" runat="server" Text="Usted Tiene Historial de Reportes con este Empleado"></asp:Label>
+            <span>
+                <asp:LinkButton ID="lnkverhisto" Visible="false" CssClass="btn btn-success" runat="server">Ver el Historial&nbsp;<i class="fa fa-history" aria-hidden="true"></i></asp:LinkButton></span></strong>
+        
+      
                         </h4>
                         <h4><strong>Puesto: </strong>
                             <asp:Label ID="lblPuesto" runat="server" Text=""></asp:Label>
@@ -113,8 +125,8 @@
                 </div>
             </div>
             <div class="row" runat="server" id="FILTRO">
-               
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">                     
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <h4><strong>
                         <asp:Label ID="lbltitle" runat="server" Text="Selecciona el Empleado"></asp:Label></strong></h4>
                     <asp:DropDownList ID="ddlPuestoAsigna" OnSelectedIndexChanged="ddlPuestoAsigna_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="true">
@@ -147,49 +159,50 @@
                     <asp:TextBox ID="txtcomentarios" CssClass="form-control" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 8000);" TextMode="MultiLine" placeholder="Ingrese Observaciones" Rows="4" runat="server"></asp:TextBox>
                 </div>
             </div>
-            <div class="row" runat="server" id="archi" visible="false">
-                <div class="col-lg-12">
-                    <h4><i class="fa fa-file-archive-o"></i>&nbsp;Agregar Archivos <small>Puede anexar la cantidad de archivos que usted requiera</small></h4>
-                    <asp:TextBox ID="txtNombreArchivo" onfocus="$(this).select();" runat="server" CssClass="form-control" placeholder="Descripcion del documento" onkeypress="return isNumber(event);"></asp:TextBox>
-                </div>
-                <div class="col-lg-12">
-                    <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
-                </div>
-                <div class="col-lg-12 col-xs-12">
-                    <asp:LinkButton ID="lnkGuardarPape" CssClass="btn btn-info btn-block" OnClick="lnkGuardarPape_Click" runat="server">Agregar Archivo <i class="fa fa-plus-circle"></i> </asp:LinkButton>
-                </div>
-                <div class="col-lg-12">
-                    <div class="table table-responsive">
-                        <asp:GridView ID="gridPapeleria" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed" OnRowCommand="gridPapeleria_RowCommand" DataKeyNames="id_archi,descripcion, ruta, extension">
-                            <Columns>
-                                <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Eliminar" CommandName="Eliminar">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" Width="60px" />
-                                </asp:ButtonField>
-                                <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Descargar" CommandName="Descargar" Text="Descargar">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" Width="60px" />
-                                </asp:ButtonField>
-                                <asp:BoundField DataField="extension" HeaderText="extension" Visible="false"></asp:BoundField>
-                                <asp:BoundField DataField="ruta" HeaderText="Ruta Fisica Web" Visible="false"></asp:BoundField>
-                                <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
-                                <asp:BoundField DataField="id_archi" HeaderText="id_archi" Visible="false"></asp:BoundField>
-                            </Columns>
-                        </asp:GridView>
-                    </div>
-                </div>
-            </div>
+        
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-12" runat="server" id="archi" visible="false">
+            <h4><i class="fa fa-file-archive-o"></i>&nbsp;Agregar Archivos <small>Puede anexar la cantidad de archivos que usted requiera</small></h4>
+            <asp:TextBox ID="txtNombreArchivo" onfocus="$(this).select();" runat="server" CssClass="form-control"
+                Width="100%" placeholder="Descripcion del documento" TextMode="Multiline" Rows="4" onkeypress="return isNumber(event);"></asp:TextBox>
+
+            <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
+            <asp:LinkButton ID="lnkGuardarPape" CssClass="btn btn-info btn-block" OnClick="lnkGuardarPape_Click" runat="server">Agregar Archivo <i class="fa fa-plus-circle"></i> </asp:LinkButton>
+        </div>
+        <div class="col-lg-12" runat="server" id="lista_archivos">
+            <h4><strong><i class="fa fa-file-archive-o" aria-hidden="true"></i>&nbsp;Lista De Archivos </strong></h4>
+            <div class="table table-responsive">
+                <asp:GridView ID="gridPapeleria" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed"
+                    OnRowCommand="gridPapeleria_RowCommand" DataKeyNames="descripcion, ruta, extension">
+                    <Columns>
+                        <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Eliminar" CommandName="Eliminar">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" Width="60px" />
+                        </asp:ButtonField>
+                        <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Descargar" CommandName="Descargar" Text="Descargar">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" Width="60px" />
+                        </asp:ButtonField>
+                        <asp:BoundField DataField="extension" HeaderText="extension" Visible="false"></asp:BoundField>
+                        <asp:BoundField DataField="ruta" HeaderText="Ruta Fisica Web" Visible="false"></asp:BoundField>
+                        <asp:BoundField DataField="descripcion" HeaderText="Descripcion"></asp:BoundField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+    </div>     
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <asp:Button ID="btnGuardar" Visible="false" runat="server" Text="Guardar" CssClass="btn btn-primary btn-block" OnClick="btnGuardar_Click" />
             <asp:Button ID="btnvistobueno" Visible="false" runat="server" Text="Revisar" CssClass="btn btn-primary btn-block" OnClick="btnvistobueno_Click" />
             <asp:Button ID="btnterminar" Visible="false" runat="server" Text="Terminar" CssClass="btn btn-primary btn-block" OnClick="btnterminar_Click" />
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
         </div>
+        
         <div class="col-lg-12">
             <asp:Button ID="BTNCERRAR" Visible="false" runat="server" Text="Cerrar Esta Ventana" CssClass="btn btn-danger btn-block" OnClientClick="window.close();" />
         </div>

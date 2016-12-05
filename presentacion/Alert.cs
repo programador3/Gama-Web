@@ -40,7 +40,7 @@ namespace presentacion
             Mensaje = Mensaje.Replace(tab.ToString(), "");
 
             ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "showalert",
-                "sweetAlert({    title: 'Error', text: '" + Mensaje + "', type: 'error', allowEscapeKey:false});", true);
+                "sweetAlert({    title: 'Mensaje del Sistema', text: '" + Mensaje + "', type: 'info', allowEscapeKey:false});", true);
             ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "sounderror", "PlaySound('sounds/error.wav');", true);
         }
 
@@ -113,7 +113,7 @@ namespace presentacion
             Mensaje = Mensaje.Replace(lf.ToString(), "");
             Mensaje = Mensaje.Replace(tab.ToString(), "");
             ScriptManager.RegisterClientScriptBlock(mypage, mypage.GetType(), "showalert",
-                "swal({   title: '" + Title + "',   text: '" + Mensaje + "', allowEscapeKey:false,imageUrl: '" + IMG + "',   timer: " + Timer + ",   showConfirmButton: false }, function(){swal({  title: 'Mensaje del Sistema', allowEscapeKey:false,text: '" + MensajeOK + "',type: 'success',showCancelButton: false,confirmButtonColor: '#428bca',confirmButtonText: 'Aceptar',closeOnConfirm: false }, function () {location.href = '" + URL + "';});});", true);
+                "swal({   title: '" + Title + "',   text: '" + Mensaje + "', allowEscapeKey:false,imageUrl: '" + IMG + "',   timer: " + Timer + ",   showConfirmButton: false }, function(){swal({  title: 'Mensaje del Sistema', allowEscapeKey:false,text: '" + MensajeOK + "',type: 'success',showCancelButton: false,confirmButtonColor: '#428bca',confirmButtonText: 'Aceptar',showLoaderOnConfirm: true,closeOnConfirm: false }, function () {location.href = '" + URL + "';});});", true);
         }
 
 

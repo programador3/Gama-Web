@@ -87,6 +87,13 @@ namespace presentacion
                 foto.Columns.Add("ruta");
                 foto.Columns.Add("extension");
                 Session["foto"] = foto;
+
+                DataTable referencias = new DataTable();
+                referencias.Columns.Add("empresa");
+                referencias.Columns.Add("contacto");
+                referencias.Columns.Add("telefono");
+                referencias.Columns.Add("url");
+                Session["referencias"] = referencias;
             }
         }
 
@@ -240,6 +247,10 @@ namespace presentacion
             {
                 lblColonia.Text = "FILTRE Y SELECCIONE UNA COLONIA";
                 lblColonia.Visible = true;
+                error = true;
+            }
+            if (TotalCadenareferencias() < 2) {
+                Alert.ShowAlertInfo("Debe Ingresar minimo 2 referencias","Mensaje del Sistema", this);
                 error = true;
             }
             return error;
@@ -961,7 +972,6 @@ namespace presentacion
             try
             {
                 FileUPL.PostedFile.SaveAs(ruta);
-                FileUPL.Visible = false;
                 return false;
             }
             catch (Exception ex)
@@ -1056,7 +1066,6 @@ namespace presentacion
         protected void lnkElector_Click(object sender, EventArgs e)
         {
             bool error = false;
-            lnkElector.Visible = false;
             lblFolioEelec.Visible = false;
             if (fupFrenteElector.Visible == true && fupAtrasElector.Visible == true && txtFolioElector.Text == "") { lblFolioEelec.Visible = true; lblFolioEelec.Text = "FOLIO DE ELECTOR REQUERIDO"; error = true; }
             lblFecVenElect.Visible = false;
@@ -1475,6 +1484,8 @@ namespace presentacion
                         entidad.Numcadelelic = 1;
                         entidad.cadena_papeleria = CadenaPapeleriaDet();
                         entidad.tot_cadena_pape = TotalPapeleriaDet();
+                        entidad.tot_cadena_REF = TotalCadenareferencias();
+                        entidad.cadena_ref = Cadenareferencias();
                         DataSet ds = componente.GuardarPreEmpleas(entidad);
                         DataRow row = ds.Tables[0].Rows[0];
                         //verificamos que no existan errores
@@ -1516,25 +1527,32 @@ namespace presentacion
                                 if (correct != true) { Alert.ShowAlertError("Hubo un error al subir la papeleria. Verifiquelo con el Departamento de Sistemas", this); }
                             }
 
-                            if (ds.Tables.Count > 1)
+                            DataTable Pape_dest = ds.Tables[1];
+                            foreach (DataRow row_pape in papeleria.Rows)
                             {
-                                DataTable Pape_dest = ds.Tables[1];
-                                foreach (DataRow row_pape in papeleria.Rows)
+                                if (!row_pape["tipo"].ToString().Equals("elector") && !row_pape["tipo"].ToString().Equals("licencia"))
                                 {
-                                    if (!row_pape["tipo"].ToString().Equals("elector") && !row_pape["tipo"].ToString().Equals("licencia"))
+                                    foreach (DataRow row_ in Pape_dest.Rows)
                                     {
-                                        foreach (DataRow row_ in Pape_dest.Rows)
+                                        //verificamos que no existan errores
+                                        int idc_tipodocarc = Convert.ToInt16(row_["idc_tipodocarc"].ToString());
+                                        if (idc_tipodocarc == Convert.ToInt32(row_pape["idc_tipodocarc"]))
                                         {
-                                            //verificamos que no existan errores
-                                            int idc_tipodocarc = Convert.ToInt16(row_["idc_tipodocarc"].ToString());
-                                            if (idc_tipodocarc == Convert.ToInt32(row_pape["idc_tipodocarc"]))
-                                            {
-                                                correct = CopiarArchivos(row_pape["ruta"].ToString(), row_["destino"].ToString() + Path.GetExtension(row_pape["ruta"].ToString()));
-                                                if (correct != true) { Alert.ShowAlertError("Hubo un error al subir la papeleria. Verifiquelo con el Departamento de Sistemas", this); }
-                                            }
+                                            correct = CopiarArchivos(row_pape["ruta"].ToString(), row_["destino"].ToString() + Path.GetExtension(row_pape["ruta"].ToString()));
+                                            if (correct != true) { Alert.ShowAlertError("Hubo un error al subir la papeleria. Verifiquelo con el Departamento de Sistemas", this); }
                                         }
                                     }
                                 }
+                            }
+
+                            DataTable table_ref = ds.Tables[2];
+                            foreach (DataRow row_pape in table_ref.Rows)
+                            {
+                                string ruta_orige = row_pape["ruta_origen"].ToString();
+                                string ruta_destino = row_pape["ruta_destino"].ToString();
+                                correct = CopiarArchivos(ruta_orige, ruta_destino);
+                                if (correct != true) { Alert.ShowAlertError("Hubo un error al subir la papeleria. Verifiquelo con el Departamento de Sistemas", this); }
+
                             }
 
                             if (correct == true)
@@ -1631,5 +1649,109 @@ namespace presentacion
                 }
             }
         }
+
+        protected void lnksubirref_Click(object sender, EventArgs e)
+        {
+            if (txtempresa.Text == "")
+            {
+                Alert.ShowAlertInfo("Ingrese el Nombre de la Empresa de Referencia", "Mensaje del Sistema", this);
+            }
+            else if (txtcontacto.Text == "")
+            {
+                Alert.ShowAlertInfo("Ingrese el Nombre del Contacto de Referencia", "Mensaje del Sistema", this);
+            }
+            else if (txttelefonoref.Text == "")
+            {
+                Alert.ShowAlertInfo("Ingrese el Telefono de Referencia", "Mensaje del Sistema", this);
+            }
+            else if (!fupreferencia.HasFile)
+            {
+                Alert.ShowAlertInfo("Es necesario subir el archivo de audio de la llamada", "Mensaje del Sistema", this);
+            }
+            //else if (Path.GetExtension(fupreferencia.FileName).ToUpper() != ".MP3" &&
+            //    Path.GetExtension(fupreferencia.FileName).ToUpper() != ".M4A" &&
+            //    Path.GetExtension(fupreferencia.FileName).ToUpper() != ".WMA" &&
+            //    Path.GetExtension(fupreferencia.FileName).ToUpper() != ".MP4")
+            //{
+            //    Alert.ShowAlertInfo("Solo se Permite extensiones: MP3, MP4, M4A, WMA", "Mensaje del Sistema", this);
+            //}
+            else
+            {
+                //DataTable referencias = new DataTable();
+                //referencias.Columns.Add("empresa");
+                //referencias.Columns.Add("contacto");
+                //referencias.Columns.Add("telefono");
+                //referencias.Columns.Add("url");
+                DataTable referencias = Session["referencias"] as DataTable;
+                DataView dv = referencias.DefaultView;
+                dv.RowFilter = "contacto = '" + txtcontacto.Text.Trim() + "'";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+
+                    Alert.ShowAlertInfo("El contacto " + txtcontacto.Text + " ya existe", "Mensaje del Sistema", this);
+                }
+                else
+                {
+                    Random random = new Random();
+                    int randomNumber = random.Next(0, 100000);
+                    DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/pre_alta/documentos/papeleria/"));//path local
+                    bool pape = UploadFile(fupreferencia, dirInfo + randomNumber.ToString() + fupreferencia.FileName);
+
+                    DataRow row = referencias.NewRow();
+                    row["empresa"] = txtempresa.Text.Trim();
+                    row["contacto"] = txtcontacto.Text.Trim();
+                    row["telefono"] = txttelefonoref.Text.Trim();
+                    row["url"] = dirInfo + randomNumber.ToString() + fupreferencia.FileName;
+                    referencias.Rows.Add(row);
+                    DataTable dtcopy = referencias.Copy();
+                    gridreferencias.DataSource = dtcopy;
+                    gridreferencias.DataBind();
+                    Session["referencias"] = dtcopy;
+                    txtempresa.Text = "";
+                    txttelefonoref.Text = "";
+                    txtcontacto.Text = "";
+                    txtempresa.Focus();
+                    Alert.ShowAlert("Referencia Agregada Correctamente","Mensaje del Sistema", this);
+                }
+
+            }
+        }
+        protected void gridreferencias_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            string contacto = gridreferencias.DataKeys[index].Values["contacto"].ToString();
+            string telefono = gridreferencias.DataKeys[index].Values["telefono"].ToString();
+
+            DataTable referencias = (DataTable)Session["referencias"];
+            foreach (DataRow row in referencias.Rows)
+            {
+                if (row["contacto"].ToString().Equals(contacto) && row["telefono"].ToString().Equals(telefono)) { row.Delete(); break; }
+            }
+            DataTable dtcopy = referencias.Copy();
+            Session["referencias"] = dtcopy;
+            gridreferencias.DataSource = dtcopy;
+            gridreferencias.DataBind();
+        }
+        public string Cadenareferencias() {
+            DataTable referencias = Session["referencias"] as DataTable;
+            string cadena = "";
+            foreach (DataRow row in referencias.Rows) {
+                
+                cadena = cadena + 
+                    row["empresa"].ToString().Trim() + ";" + 
+                    row["telefono"].ToString().Trim() + ";" +
+                    row["contacto"].ToString().Trim() + ";" + 
+                    row["url"].ToString().Trim() + ";"+
+                    Path.GetExtension(row["url"].ToString().Trim()) + ";";
+            }
+            return cadena;
+        }
+        public int TotalCadenareferencias()
+        {
+            DataTable referencias = Session["referencias"] as DataTable;
+            return referencias.Rows.Count;
+        }
+
+       
     }
 }

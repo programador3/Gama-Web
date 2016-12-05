@@ -9,6 +9,28 @@ namespace negocio.Componentes
 {
     public class SolicitudHorarioCOM
     {
+        public DataSet sp_apermisos_horarios_multi(string cadena, int total, string tipo, string observ, int idc_usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.Int, Value = observ });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PSTATUS", SqlDbType = SqlDbType.Int, Value = tipo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotal", SqlDbType = SqlDbType.Int, Value = total });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena", SqlDbType = SqlDbType.Int, Value = cadena });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_apermisos_horarios_multi", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet Solcitud(Solicitud_HorarioENT Etiqueta)
         {
             DataSet ds = new DataSet();
@@ -163,7 +185,25 @@ namespace negocio.Componentes
             }
             return ds;
         }
+        public DataSet sp_solicitud_permiso_horarios_reporte(DateTime d1, DateTime d2)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfecha1", SqlDbType = SqlDbType.Int, Value =d1 });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfecha2", SqlDbType = SqlDbType.Int, Value = d2 });
 
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_solicitud_permiso_horarios_reporte", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet ComprobaciondeDia(Solicitud_HorarioENT Etiqueta)
         {
             DataSet ds = new DataSet();

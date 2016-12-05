@@ -22,6 +22,7 @@ namespace presentacion
             //si viene de una pagina externa
             if (!Page.IsPostBack && Request.QueryString["idc_empleado"] != null)//Si variable request es nulla
             {
+                txtFecha.Text = DateTime.Today.ToString("yyyy-MM-dd");
                 int idc_empleado = Convert.ToInt32(Request.QueryString["idc_empleado"]);
                 PreBajaDirecta(idc_empleado);
             }

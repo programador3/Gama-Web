@@ -7,10 +7,123 @@ using System.Data.SqlClient;
 
 namespace negocio.Componentes
 {
+    
+
     public class AgentesCOM
     {
-        
-             public DataSet sp_oc_clientes2(int idc_cliente)
+        public DataSet sp_ver_PREped(int idc_preped)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_preped", SqlDbType = SqlDbType.Int, Value = idc_preped });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_ver_PREped", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_preped_x_autorizar(int idc_usuario, int idc_cliente, int idc_agente)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_cliente", SqlDbType = SqlDbType.Int, Value = idc_cliente });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_agente", SqlDbType = SqlDbType.Int, Value = idc_agente });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_preped_x_autorizar", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_combo_agentes_usu(int idc_usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_agentes_usu", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_fn_validar_fechas_pagada(DateTime fecha)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfecha", SqlDbType = SqlDbType.Int, Value = fecha });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_fn_validar_fechas_pagada", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet sp_promociones_cliente(int idc_cliente, int vidc_listap)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_cliente", SqlDbType = SqlDbType.Int, Value = idc_cliente });
+            listparameters.Add(new SqlParameter() { ParameterName = "@vidc_listap", SqlDbType = SqlDbType.Int, Value = vidc_listap });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_promociones_cliente", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_lista_precios_x_familia(int idc_cliente, int pformato, int pprecios, int pdescuentos, int ppremin, int idc_sucursal, bool separar)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_cliente", SqlDbType = SqlDbType.Int, Value = idc_cliente });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pformato", SqlDbType = SqlDbType.Int, Value = pformato });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pprecios", SqlDbType = SqlDbType.Int, Value = pprecios });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdescuentos", SqlDbType = SqlDbType.Int, Value = pdescuentos });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ppremin", SqlDbType = SqlDbType.Int, Value = ppremin });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_sucursal", SqlDbType = SqlDbType.Int, Value = idc_sucursal });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pweb", SqlDbType = SqlDbType.Int, Value = separar });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_lista_precios_x_familia", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_oc_clientes2(int idc_cliente)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();

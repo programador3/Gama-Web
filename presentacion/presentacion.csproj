@@ -92,6 +92,11 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Web.UI, Version=2016.3.1027.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET AJAX R3 2016\Bin45\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="administrador_entregas.aspx" />
@@ -113,6 +118,8 @@
     <Content Include="asignacion_lugares.aspx" />
     <Content Include="asignacion_lugares_puestos.aspx" />
     <Content Include="asignacion_revisiones_captura.aspx" />
+    <Content Include="asistencia_detalle.aspx" />
+    <Content Include="Audios\JavaScript.js" />
     <Content Include="avisos_todos_m.aspx" />
     <Content Include="avisos_gen_m.aspx" />
     <Content Include="buscar_colonia_mobile.aspx" />
@@ -140,7 +147,11 @@
     <Content Include="celulares_revision.aspx" />
     <Content Include="chat.aspx" />
     <Content Include="check_plus_pre_m.aspx" />
+    <Content Include="choferes_evaluacion.aspx" />
+    <Content Include="comidas.aspx" />
+    <Content Include="comisiones_detalles.aspx" />
     <Content Include="comisiones_especiales.aspx" />
+    <Content Include="comisiones_m.aspx" />
     <Content Include="Compromisos_Cliente.aspx" />
     <Content Include="confirmacion_de_pago_mobile.aspx" />
     <Content Include="confirmacion_entrega.aspx" />
@@ -151,6 +162,7 @@
     <Content Include="consignado_mobile.aspx" />
     <Content Include="consulta_hallazgos_pendientes_m.aspx" />
     <Content Include="consulta_precios_m.aspx" />
+    <Content Include="consulta_preped.aspx" />
     <Content Include="consulta_quejas_m.aspx" />
     <Content Include="correo.aspx" />
     <Content Include="cotizaciones_correo.aspx" />
@@ -233,6 +245,7 @@
     <Content Include="generar_embarque_de_pre-embarques_m.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
+    <Content Include="grafica_ventas.aspx" />
     <Content Include="hallazgos_incumplidos_m.aspx" />
     <Content Include="hallazgos_m.aspx" />
     <Content Include="hallazgos_pendientes_revisar_m.aspx" />
@@ -240,32 +253,213 @@
     <Content Include="hallazgos_vobo_m.aspx" />
     <Content Include="Historial_Consignados_mobile.aspx" />
     <Content Include="html_dinamico.aspx" />
+    <Content Include="html_editor.aspx" />
     <Content Include="imagenes\128.png" />
+    <Content Include="imagenes\acount.png" />
+    <Content Include="imagenes\actions_document_preview.png" />
     <Content Include="imagenes\Add_user48.png" />
+    <Content Include="imagenes\anexar.png" />
     <Content Include="imagenes\areas\captura\ok.png" />
     <Content Include="imagenes\areas\ok.png" />
+    <Content Include="imagenes\avisos.png" />
     <Content Include="imagenes\background.png" />
+    <Content Include="imagenes\back_btn.png" />
     <Content Include="imagenes\body_page.png" />
+    <Content Include="imagenes\btn\Accept48.png" />
+    <Content Include="imagenes\btn\Add.png" />
+    <Content Include="imagenes\btn\add2.png" />
+    <Content Include="imagenes\btn\add3.png" />
+    <Content Include="imagenes\btn\add_user.ico" />
+    <Content Include="imagenes\btn\Add_user48.png" />
+    <Content Include="imagenes\btn\agendar_llamada.png" />
+    <Content Include="imagenes\btn\Applications.png" />
+    <Content Include="imagenes\btn\arrow-left-2.png" />
+    <Content Include="imagenes\btn\arrow-left.png" />
+    <Content Include="imagenes\btn\arrow-right-2.png" />
+    <Content Include="imagenes\btn\arrow-right.png" />
+    <Content Include="imagenes\btn\aviso1.png" />
+    <Content Include="imagenes\btn\aviso10.png" />
+    <Content Include="imagenes\btn\aviso11.png" />
+    <Content Include="imagenes\btn\aviso2.png" />
+    <Content Include="imagenes\btn\aviso3.png" />
+    <Content Include="imagenes\btn\aviso4.png" />
+    <Content Include="imagenes\btn\aviso5.png" />
+    <Content Include="imagenes\btn\aviso6.png" />
+    <Content Include="imagenes\btn\aviso7.png" />
+    <Content Include="imagenes\btn\aviso8.png" />
+    <Content Include="imagenes\btn\aviso9.png" />
+    <Content Include="imagenes\btn\avisos.png" />
+    <Content Include="imagenes\btn\back-icone.png" />
+    <Content Include="imagenes\btn\back_button.jpg" />
+    <Content Include="imagenes\btn\Back_Button.png" />
+    <Content Include="imagenes\btn\bcksearch.png" />
+    <Content Include="imagenes\btn\bcksearch2.png" />
+    <Content Include="imagenes\btn\binoculars.png" />
+    <Content Include="imagenes\btn\btncotic.png" />
+    <Content Include="imagenes\btn\btninconvenientes.png" />
+    <Content Include="imagenes\btn\btnobservaciones.png" />
+    <Content Include="imagenes\btn\btn_blueSheen.gif" />
+    <Content Include="imagenes\btn\btn_compromisos.png" />
+    <Content Include="imagenes\btn\btn_compromisos2.png" />
+    <Content Include="imagenes\btn\btn_cotguards.png" />
+    <Content Include="imagenes\btn\business-email.jpg" />
+    <Content Include="imagenes\btn\Button Delete.ico" />
+    <Content Include="imagenes\btn\button_aceptpng.png" />
+    <Content Include="imagenes\btn\button_acept_black.png" />
+    <Content Include="imagenes\btn\button_add_arti.png" />
+    <Content Include="imagenes\btn\Button_cotizar.png" />
+    <Content Include="imagenes\btn\Button_GenerarP2.png" />
+    <Content Include="imagenes\btn\Button_GenerarPP.png" />
+    <Content Include="imagenes\btn\Button_Generar_P.png" />
+    <Content Include="imagenes\btn\Button_ListaP.png" />
+    <Content Include="imagenes\btn\calendar3.gif" />
+    <Content Include="imagenes\btn\calendar4.gif" />
+    <Content Include="imagenes\btn\Calender.png" />
+    <Content Include="imagenes\btn\camion_entrega.jpg" />
+    <Content Include="imagenes\btn\cancel-button02.png" />
+    <Content Include="imagenes\btn\cancel_sign.png" />
+    <Content Include="imagenes\btn\cbo_img.png" />
+    <Content Include="imagenes\btn\cerrar.png" />
+    <Content Include="imagenes\btn\checkmark.png" />
+    <Content Include="imagenes\btn\chk_off.png" />
+    <Content Include="imagenes\btn\chk_on.png" />
+    <Content Include="imagenes\btn\Clip08.ico" />
+    <Content Include="imagenes\btn\delete.ico" />
+    <Content Include="imagenes\btn\dialog-ok-2.png" />
+    <Content Include="imagenes\btn\document-edit.ico" />
+    <Content Include="imagenes\btn\document-edit.png" />
     <Content Include="imagenes\btn\documentation.png" />
+    <Content Include="imagenes\btn\Download.png" />
+    <Content Include="imagenes\btn\edit-4.ico" />
+    <Content Include="imagenes\btn\edit-6.ico" />
+    <Content Include="imagenes\btn\edit-find.png" />
+    <Content Include="imagenes\btn\edit-redo-7.png" />
+    <Content Include="imagenes\btn\edit-undo-7.png" />
+    <Content Include="imagenes\btn\envelope-icon.gif" />
+    <Content Include="imagenes\btn\evolution-tasks.ico" />
+    <Content Include="imagenes\btn\exit_button.png" />
+    <Content Include="imagenes\btn\facebook.jpg" />
+    <Content Include="imagenes\btn\Facebook_Logo-19.gif" />
+    <Content Include="imagenes\btn\File_info48.png" />
+    <Content Include="imagenes\btn\filter_add.png" />
+    <Content Include="imagenes\btn\filter_delete.png" />
+    <Content Include="imagenes\btn\flag-mx.png" />
+    <Content Include="imagenes\btn\flag-us.png" />
+    <Content Include="imagenes\btn\go-back-icon.png" />
+    <Content Include="imagenes\btn\go-down-7.png" />
+    <Content Include="imagenes\btn\go-down-9.png" />
+    <Content Include="imagenes\btn\go-home-5.png" />
+    <Content Include="imagenes\btn\Ical.jpg" />
+    <Content Include="imagenes\btn\iCalendar.png" />
+    <Content Include="imagenes\btn\ico-invalid.png" />
+    <Content Include="imagenes\btn\ico-valid.png" />
     <Content Include="imagenes\btn\image-x-generic.png" />
+    <Content Include="imagenes\btn\img_up.png" />
+    <Content Include="imagenes\btn\Info48.png" />
+    <Content Include="imagenes\btn\Info_Light.png" />
+    <Content Include="imagenes\btn\insert-link.png" />
+    <Content Include="imagenes\btn\Internet-Alt.png" />
+    <Content Include="imagenes\btn\Internet.png" />
+    <Content Include="imagenes\btn\interrogacion.png" />
+    <Content Include="imagenes\btn\left-arrow.png" />
+    <Content Include="imagenes\btn\loading2.gif" />
+    <Content Include="imagenes\btn\loading24.gif" />
+    <Content Include="imagenes\btn\loading_gif.gif" />
+    <Content Include="imagenes\btn\log.png" />
+    <Content Include="imagenes\btn\logout-icon.png" />
+    <Content Include="imagenes\btn\Logo_140_140.jpg" />
+    <Content Include="imagenes\btn\logo_azul.jpg" />
+    <Content Include="imagenes\btn\logo_color.jpg" />
+    <Content Include="imagenes\btn\mail-attachment-2.png" />
+    <Content Include="imagenes\btn\mail-delete.png" />
+    <Content Include="imagenes\btn\mail-mark-unread.png" />
+    <Content Include="imagenes\btn\mail-message-new.png" />
+    <Content Include="imagenes\btn\maps.jpg" />
+    <Content Include="imagenes\btn\minimize.png" />
+    <Content Include="imagenes\btn\montacargas.jpg" />
+    <Content Include="imagenes\btn\more2.png" />
+    <Content Include="imagenes\btn\object-rotate-left-2.png" />
+    <Content Include="imagenes\btn\object-rotate-left.png" />
+    <Content Include="imagenes\btn\outbox.png" />
+    <Content Include="imagenes\btn\plgr1.png" />
+    <Content Include="imagenes\btn\plgr2.png" />
+    <Content Include="imagenes\btn\promo.gif" />
+    <Content Include="imagenes\btn\regresar.png" />
+    <Content Include="imagenes\btn\samarillo.png" />
+    <Content Include="imagenes\btn\save-button01.png" />
+    <Content Include="imagenes\btn\save2.ico" />
+    <Content Include="imagenes\btn\save3.ico" />
+    <Content Include="imagenes\btn\Search.png" />
+    <Content Include="imagenes\btn\Search32.png" />
+    <Content Include="imagenes\btn\search_48.png" />
+    <Content Include="imagenes\btn\spe_disabled.png" />
+    <Content Include="imagenes\btn\spe_green.png" />
+    <Content Include="imagenes\btn\spe_red.png" />
+    <Content Include="imagenes\btn\srojo.png" />
+    <Content Include="imagenes\btn\stock_proxy.png" />
+    <Content Include="imagenes\btn\stock_shared-by-me.png" />
+    <Content Include="imagenes\btn\sverde.png" />
     <Content Include="imagenes\btn\system-switch-user-3.png" />
+    <Content Include="imagenes\btn\tasks.ico" />
+    <Content Include="imagenes\btn\textbobxsearch2.jpg" />
+    <Content Include="imagenes\btn\transfer.png" />
+    <Content Include="imagenes\btn\transfer_blanco2.png" />
+    <Content Include="imagenes\btn\transfer_sin_fondo.png" />
+    <Content Include="imagenes\btn\twitter_logo.jpg" />
+    <Content Include="imagenes\btn\Untitled - 9.ico" />
+    <Content Include="imagenes\btn\up.png" />
+    <Content Include="imagenes\btn\upload2.png" />
+    <Content Include="imagenes\btn\user-home.png" />
+    <Content Include="imagenes\btn\user_edit.png" />
+    <Content Include="imagenes\btn\user_info.png" />
+    <Content Include="imagenes\btn\utilities-find.png" />
+    <Content Include="imagenes\btn\utilities-find2.png" />
+    <Content Include="imagenes\btn\utilities-find3.png" />
+    <Content Include="imagenes\btn\utilities-find4.png" />
+    <Content Include="imagenes\btn\utilities-find5.png" />
+    <Content Include="imagenes\btn\view-pim-tasks.png" />
+    <Content Include="imagenes\btn\view-refresh-7.png" />
     <Content Include="imagenes\calendar3.gif" />
+    <Content Include="imagenes\cogs.png" />
+    <Content Include="imagenes\down_btn.png" />
+    <Content Include="imagenes\elite.png" />
     <Content Include="imagenes\Facebook_Logo-19.gif" />
+    <Content Include="imagenes\favicon.png" />
     <Content Include="imagenes\File_info48.png" />
     <Content Include="imagenes\Firma_gama.jpg" />
+    <Content Include="imagenes\fondo_gaffete.png" />
+    <Content Include="imagenes\fondo_login.png" />
+    <Content Include="imagenes\gama_watermark.jpg" />
+    <Content Include="imagenes\hand_down.png" />
+    <Content Include="imagenes\hexagono_azul.jpg" />
     <Content Include="imagenes\horizontal-loader.gif" />
     <Content Include="imagenes\img_up.png" />
     <Content Include="imagenes\info.png" />
     <Content Include="imagenes\insert-link.png" />
+    <Content Include="imagenes\ios_off.png" />
+    <Content Include="imagenes\ios_on.png" />
+    <Content Include="imagenes\item_header.png" />
+    <Content Include="imagenes\loading.gif" />
+    <Content Include="imagenes\logo.png" />
+    <Content Include="imagenes\logo_black.png" />
     <Content Include="imagenes\lugares\captura\ok.png" />
     <Content Include="imagenes\lugares\ok.png" />
     <Content Include="imagenes\mapa.png" />
     <Content Include="imagenes\maps.jpg" />
+    <Content Include="imagenes\office_html2.png" />
+    <Content Include="imagenes\ok.png" />
+    <Content Include="imagenes\pendiente.png" />
     <Content Include="imagenes\phone.png" />
     <Content Include="imagenes\promo.gif" />
     <Content Include="imagenes\rojo.jpg" />
     <Content Include="imagenes\rotar.png" />
+    <Content Include="imagenes\sign-up.png" />
     <Content Include="imagenes\sin_OC.png" />
+    <Content Include="imagenes\sort_asc.png" />
+    <Content Include="imagenes\sort_asc_disabled.png" />
+    <Content Include="imagenes\sort_both.png" />
+    <Content Include="imagenes\sort_desc.png" />
+    <Content Include="imagenes\sort_desc_disabled.png" />
     <Content Include="imagenes\spellicon.gif" />
     <Content Include="imagenes\spelliconover.gif" />
     <Content Include="imagenes\spe_disabled.png" />
@@ -273,10 +467,16 @@
     <Content Include="imagenes\spe_red.png" />
     <Content Include="imagenes\srojo.png" />
     <Content Include="imagenes\twitter_logo.jpg" />
+    <Content Include="imagenes\up_btn.png" />
     <Content Include="imagenes\verde.jpg" />
+    <Content Include="imagenes\warning.gif" />
+    <Content Include="imagenes\word.png" />
     <Content Include="img\arrastra.png" />
     <Content Include="img\page-loader.gif" />
     <Content Include="img\profile\user.png" />
+    <Content Include="img\transfer.png" />
+    <Content Include="img\transfer_blanco2.png" />
+    <Content Include="img\transfer_sin_fondo.png" />
     <Content Include="IMG_Croquis.aspx" />
     <Content Include="Inconvenientes_Cliente.aspx" />
     <Content Include="informe.aspx" />
@@ -339,10 +539,6 @@
     <Content Include="herramientas_preparacion.aspx" />
     <Content Include="herramientas_revision.aspx" />
     <Content Include="html.aspx" />
-    <Content Include="imagenes\actions_document_preview.png" />
-    <Content Include="imagenes\anexar.png" />
-    <Content Include="imagenes\avisos.png" />
-    <Content Include="imagenes\back_btn.png" />
     <Content Include="imagenes\btn\add_image_prof.png" />
     <Content Include="imagenes\btn\btn_solicitar_equipos.png" />
     <Content Include="imagenes\btn\btn_solicitar_equipos_press.png" />
@@ -384,32 +580,6 @@
     <Content Include="imagenes\btn\return_default.png" />
     <Content Include="imagenes\btn\ver-mas.png" />
     <Content Include="imagenes\btn\word_icon.png" />
-    <Content Include="imagenes\cogs.png" />
-    <Content Include="imagenes\down_btn.png" />
-    <Content Include="imagenes\elite.png" />
-    <Content Include="imagenes\favicon.png" />
-    <Content Include="imagenes\fondo_login.png" />
-    <Content Include="imagenes\gama_watermark.jpg" />
-    <Content Include="imagenes\hand_down.png" />
-    <Content Include="imagenes\hexagono_azul.jpg" />
-    <Content Include="imagenes\ios_off.png" />
-    <Content Include="imagenes\ios_on.png" />
-    <Content Include="imagenes\item_header.png" />
-    <Content Include="imagenes\loading.gif" />
-    <Content Include="imagenes\logo.png" />
-    <Content Include="imagenes\logo_black.png" />
-    <Content Include="imagenes\office_html2.png" />
-    <Content Include="imagenes\ok.png" />
-    <Content Include="imagenes\pendiente.png" />
-    <Content Include="imagenes\sign-up.png" />
-    <Content Include="imagenes\up_btn.png" />
-    <Content Include="imagenes\warning.gif" />
-    <Content Include="imagenes\word.png" />
-    <Content Include="imagenes\sort_asc.png" />
-    <Content Include="imagenes\sort_asc_disabled.png" />
-    <Content Include="imagenes\sort_both.png" />
-    <Content Include="imagenes\sort_desc.png" />
-    <Content Include="imagenes\sort_desc_disabled.png" />
     <Content Include="inventario.aspx" />
     <Content Include="js\BlockHumberto.js" />
     <Content Include="js\bootstrap-switch-original.js" />
@@ -424,6 +594,8 @@
     <Content Include="js\jquery.rotate.js" />
     <Content Include="js\jquery.rotate.min.js" />
     <Content Include="js\jquery.slimmenu.js" />
+    <Content Include="js\jquery.webcam.js" />
+    <Content Include="js\jquery.webcam.min.js" />
     <Content Include="js\jquery10.js" />
     <Content Include="js\mascara.js" />
     <Content Include="js\maxlenght.js" />
@@ -491,6 +663,7 @@
     <Content Include="js\pnotify.custom.min.js" />
     <Content Include="oc_clientes.aspx" />
     <Content Include="OC_Digitales_Pendientes.aspx" />
+    <Content Include="Oc_Digitales_Pendientes_2.aspx" />
     <Content Include="organigrama.aspx" />
     <Content Include="org\css\bporgeditor.latest.css" />
     <Content Include="org\css\images\ui-bg_flat_10_000000_40x100.png" />
@@ -544,6 +717,7 @@
     <Content Include="pendientes_tareas.aspx" />
     <Content Include="perfiles_relacion.aspx" />
     <Content Include="permisos_pendientes.aspx" />
+    <Content Include="plantilla.aspx" />
     <Content Include="pmd_rh_detalles.aspx" />
     <Content Include="perfiles.aspx" />
     <Content Include="perfiles_captura.aspx" />
@@ -561,6 +735,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="pre_empleados_captura.aspx" />
+    <Content Include="pre_empleados_info.aspx" />
     <Content Include="primitive\css\bporgeditor.latest.css" />
     <Content Include="primitive\css\images\ui-bg_flat_10_000000_40x100.png" />
     <Content Include="primitive\css\images\ui-bg_glass_100_f6f6f6_1x400.png" />
@@ -613,6 +788,7 @@
     <Content Include="procesos_vista_previa.aspx" />
     <Content Include="programacion_correos.aspx" />
     <Content Include="programacion_correos_d.aspx" />
+    <Content Include="promociones_cliente_m.aspx" />
     <Content Include="prospectos_captura3.aspx" />
     <Content Include="prospectos_datos2.aspx" />
     <Content Include="prospectos_detalle.aspx" />
@@ -628,6 +804,7 @@
     <Content Include="recordatorios_pendientes.aspx" />
     <Content Include="redirect.aspx" />
     <Content Include="registro_visitas.aspx" />
+    <Content Include="puestos_clasificacion.aspx" />
     <Content Include="rendimiento_tareas_asignadas.aspx" />
     <Content Include="rendimiento_tareas.aspx" />
     <Content Include="rendimiento_tareas_detalles.aspx" />
@@ -636,6 +813,8 @@
     <Content Include="reporte_faltas.aspx" />
     <Content Include="reporte_filtro.aspx" />
     <Content Include="reporte_visitas.aspx" />
+    <Content Include="Reproductor_llamadas2.aspx" />
+    <Content Include="reproductor_llamadas.aspx" />
     <Content Include="retiro_ahorro.aspx" />
     <Content Include="revisiones.aspx" />
     <Content Include="revisiones_entrega.aspx" />
@@ -649,7 +828,10 @@
     <Content Include="services.aspx" />
     <Content Include="servicios_captura.aspx" />
     <Content Include="servicios_revisiones.aspx" />
+    <Content Include="solicitar_asistencia.aspx" />
     <Content Include="solicitar_reemplazo.aspx" />
+    <Content Include="solicitudes_asistencia_pendientes.aspx" />
+    <Content Include="reporte_permisos_horario.aspx" />
     <Content Include="solicitud_horario.aspx" />
     <Content Include="sounds\correct.wav" />
     <Content Include="sounds\error.wav" />
@@ -670,6 +852,10 @@
     <Content Include="tareas_listado.aspx" />
     <Content Include="tareas_rapidas.aspx" />
     <Content Include="tareas_servicios_captura.aspx" />
+    <Content Include="ticketserv_info.aspx" />
+    <Content Include="ticket_serv.aspx" />
+    <Content Include="ticket_serv_captura.aspx" />
+    <Content Include="ticket_serv_reporte.aspx" />
     <Content Include="TinyBox\style.css" />
     <Content Include="TinyBox\tinybox.js" />
     <Content Include="vacaciones.aspx" />
@@ -677,17 +863,28 @@
     <Content Include="vehiculos_entrega.aspx" />
     <Content Include="vehiculos_preparacion.aspx" />
     <Content Include="vehiculos_revision.aspx" />
+    <Content Include="ver_preped_x_autorizar.aspx" />
     <Content Include="view_files.aspx" />
     <Content Include="view_page.aspx" />
     <Content Include="visualizar_perfil.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Webcam_Plugin\jquery.webcam.js" />
+    <Content Include="Webcam_Plugin\jscam.swf" />
+    <Content Include="Webcam_Plugin\jscam_canvas_only.swf" />
     <Content Include="WebService.asmx" />
     <Content Include="web_methods.aspx" />
     <Content Include="w_s.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adicional.Master.cs">
+      <DependentUpon>Adicional.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adicional.Master.designer.cs">
+      <DependentUpon>Adicional.Master</DependentUpon>
+    </Compile>
     <Compile Include="administrador_entregas.aspx.cs">
       <DependentUpon>administrador_entregas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -821,6 +1018,13 @@
     </Compile>
     <Compile Include="asignacion_revisiones_captura.aspx.designer.cs">
       <DependentUpon>asignacion_revisiones_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="asistencia_detalle.aspx.cs">
+      <DependentUpon>asistencia_detalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="asistencia_detalle.aspx.designer.cs">
+      <DependentUpon>asistencia_detalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="avisos_todos_m.aspx.cs">
       <DependentUpon>avisos_todos_m.aspx</DependentUpon>
@@ -1011,12 +1215,40 @@
     <Compile Include="check_plus_pre_m.aspx.designer.cs">
       <DependentUpon>check_plus_pre_m.aspx</DependentUpon>
     </Compile>
+    <Compile Include="choferes_evaluacion.aspx.cs">
+      <DependentUpon>choferes_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="choferes_evaluacion.aspx.designer.cs">
+      <DependentUpon>choferes_evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="comidas.aspx.cs">
+      <DependentUpon>comidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="comidas.aspx.designer.cs">
+      <DependentUpon>comidas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="comisiones_detalles.aspx.cs">
+      <DependentUpon>comisiones_detalles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="comisiones_detalles.aspx.designer.cs">
+      <DependentUpon>comisiones_detalles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="comisiones_especiales.aspx.cs">
       <DependentUpon>comisiones_especiales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="comisiones_especiales.aspx.designer.cs">
       <DependentUpon>comisiones_especiales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="comisiones_m.aspx.cs">
+      <DependentUpon>comisiones_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="comisiones_m.aspx.designer.cs">
+      <DependentUpon>comisiones_m.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compromisos_Cliente.aspx.cs">
       <DependentUpon>Compromisos_Cliente.aspx</DependentUpon>
@@ -1087,6 +1319,13 @@
     </Compile>
     <Compile Include="consulta_precios_m.aspx.designer.cs">
       <DependentUpon>consulta_precios_m.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="consulta_preped.aspx.cs">
+      <DependentUpon>consulta_preped.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="consulta_preped.aspx.designer.cs">
+      <DependentUpon>consulta_preped.aspx</DependentUpon>
     </Compile>
     <Compile Include="consulta_quejas_m.aspx.cs">
       <DependentUpon>consulta_quejas_m.aspx</DependentUpon>
@@ -1350,6 +1589,13 @@
     <Compile Include="grafica_tareas.aspx.designer.cs">
       <DependentUpon>grafica_tareas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="grafica_ventas.aspx.cs">
+      <DependentUpon>grafica_ventas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="grafica_ventas.aspx.designer.cs">
+      <DependentUpon>grafica_ventas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="grupos_backend.aspx.cs">
       <DependentUpon>grupos_backend.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1455,6 +1701,13 @@
     <Compile Include="html.aspx.designer.cs">
       <DependentUpon>html.aspx</DependentUpon>
     </Compile>
+    <Compile Include="html_editor.aspx.cs">
+      <DependentUpon>html_editor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="html_editor.aspx.designer.cs">
+      <DependentUpon>html_editor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IMG_Croquis.aspx.cs">
       <DependentUpon>IMG_Croquis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1534,6 +1787,13 @@
     <Compile Include="OC_Digitales_Pendientes.aspx.designer.cs">
       <DependentUpon>OC_Digitales_Pendientes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Oc_Digitales_Pendientes_2.aspx.cs">
+      <DependentUpon>Oc_Digitales_Pendientes_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oc_Digitales_Pendientes_2.aspx.designer.cs">
+      <DependentUpon>Oc_Digitales_Pendientes_2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="organigrama.aspx.cs">
       <DependentUpon>organigrama.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1575,6 +1835,13 @@
     </Compile>
     <Compile Include="permisos_pendientes.aspx.designer.cs">
       <DependentUpon>permisos_pendientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="plantilla.aspx.cs">
+      <DependentUpon>plantilla.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="plantilla.aspx.designer.cs">
+      <DependentUpon>plantilla.aspx</DependentUpon>
     </Compile>
     <Compile Include="pmd_rh_detalles.aspx.cs">
       <DependentUpon>pmd_rh_detalles.aspx</DependentUpon>
@@ -1667,6 +1934,13 @@
     <Compile Include="pre_empleados_captura.aspx.designer.cs">
       <DependentUpon>pre_empleados_captura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pre_empleados_info.aspx.cs">
+      <DependentUpon>pre_empleados_info.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pre_empleados_info.aspx.designer.cs">
+      <DependentUpon>pre_empleados_info.aspx</DependentUpon>
+    </Compile>
     <Compile Include="procesos_autorizar.aspx.cs">
       <DependentUpon>procesos_autorizar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1694,6 +1968,13 @@
     </Compile>
     <Compile Include="programacion_correos_d.aspx.designer.cs">
       <DependentUpon>programacion_correos_d.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="promociones_cliente_m.aspx.cs">
+      <DependentUpon>promociones_cliente_m.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="promociones_cliente_m.aspx.designer.cs">
+      <DependentUpon>promociones_cliente_m.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="prospectos_captura3.aspx.cs">
@@ -1759,6 +2040,7 @@
     <Compile Include="quejas_espera_m.aspx.designer.cs">
       <DependentUpon>quejas_espera_m.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ReadXL.cs" />
     <Compile Include="reasignacion_tareas.aspx.cs">
       <DependentUpon>reasignacion_tareas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1800,6 +2082,13 @@
     </Compile>
     <Compile Include="registro_visitas.aspx.designer.cs">
       <DependentUpon>registro_visitas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="puestos_clasificacion.aspx.cs">
+      <DependentUpon>puestos_clasificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="puestos_clasificacion.aspx.designer.cs">
+      <DependentUpon>puestos_clasificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="rendimiento_tareas_asignadas.aspx.cs">
       <DependentUpon>rendimiento_tareas_asignadas.aspx</DependentUpon>
@@ -1858,6 +2147,20 @@
       <DependentUpon>reporte_visitas.aspx</DependentUpon>
     </Compile>
     <Compile Include="reporting.cs" />
+    <Compile Include="Reproductor_llamadas2.aspx.cs">
+      <DependentUpon>Reproductor_llamadas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reproductor_llamadas2.aspx.designer.cs">
+      <DependentUpon>Reproductor_llamadas2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reproductor_llamadas.aspx.cs">
+      <DependentUpon>reproductor_llamadas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reproductor_llamadas.aspx.designer.cs">
+      <DependentUpon>reproductor_llamadas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="retiro_ahorro.aspx.cs">
       <DependentUpon>retiro_ahorro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1949,12 +2252,33 @@
     <Compile Include="servicios_revisiones.aspx.designer.cs">
       <DependentUpon>servicios_revisiones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="solicitar_asistencia.aspx.cs">
+      <DependentUpon>solicitar_asistencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="solicitar_asistencia.aspx.designer.cs">
+      <DependentUpon>solicitar_asistencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="solicitar_reemplazo.aspx.cs">
       <DependentUpon>solicitar_reemplazo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="solicitar_reemplazo.aspx.designer.cs">
       <DependentUpon>solicitar_reemplazo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="solicitudes_asistencia_pendientes.aspx.cs">
+      <DependentUpon>solicitudes_asistencia_pendientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="solicitudes_asistencia_pendientes.aspx.designer.cs">
+      <DependentUpon>solicitudes_asistencia_pendientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reporte_permisos_horario.aspx.cs">
+      <DependentUpon>reporte_permisos_horario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reporte_permisos_horario.aspx.designer.cs">
+      <DependentUpon>reporte_permisos_horario.aspx</DependentUpon>
     </Compile>
     <Compile Include="solicitud_horario.aspx.cs">
       <DependentUpon>solicitud_horario.aspx</DependentUpon>
@@ -2063,6 +2387,34 @@
     <Compile Include="tareas_servicios_captura.aspx.designer.cs">
       <DependentUpon>tareas_servicios_captura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ticketserv_info.aspx.cs">
+      <DependentUpon>ticketserv_info.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ticketserv_info.aspx.designer.cs">
+      <DependentUpon>ticketserv_info.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ticket_serv.aspx.cs">
+      <DependentUpon>ticket_serv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ticket_serv.aspx.designer.cs">
+      <DependentUpon>ticket_serv.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ticket_serv_captura.aspx.cs">
+      <DependentUpon>ticket_serv_captura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ticket_serv_captura.aspx.designer.cs">
+      <DependentUpon>ticket_serv_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ticket_serv_reporte.aspx.cs">
+      <DependentUpon>ticket_serv_reporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ticket_serv_reporte.aspx.designer.cs">
+      <DependentUpon>ticket_serv_reporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vacaciones.aspx.cs">
       <DependentUpon>vacaciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2099,6 +2451,13 @@
     </Compile>
     <Compile Include="vehiculos_revision.aspx.designer.cs">
       <DependentUpon>vehiculos_revision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ver_preped_x_autorizar.aspx.cs">
+      <DependentUpon>ver_preped_x_autorizar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ver_preped_x_autorizar.aspx.designer.cs">
+      <DependentUpon>ver_preped_x_autorizar.aspx</DependentUpon>
     </Compile>
     <Compile Include="view_files.aspx.cs">
       <DependentUpon>view_files.aspx</DependentUpon>
@@ -2200,7 +2559,6 @@
     <Content Include="fonts\ionicons.ttf" />
     <Content Include="fonts\ionicons.woff" />
     <Content Include="Login.Master" />
-    <Content Include="imagenes\Sorting icons.psd" />
     <Content Include="fonts\fontello.eot" />
     <Content Include="fonts\fontello.ttf" />
     <Content Include="fonts\fontello.woff" />
@@ -2237,10 +2595,13 @@
     <Content Include="fonts\Roboto-Thin.woff" />
     <Content Include="fonts\Roboto-Thin.woff2" />
     <Content Include="Global.Master" />
+    <Content Include="imagenes\Sorting icons.psd" />
+    <Content Include="Adicional.Master" />
     <None Include="Properties\PublishProfiles\pub.pubxml" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <Content Include="StyleCop.Cache" />
     <None Include="Properties\PublishProfiles\WSWS.pubxml" />
+    <Content Include="temp\ejemplo.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2280,6 +2641,7 @@
     <Folder Include="temp\entrevista_salida\" />
     <Folder Include="temp\errores\" />
     <Folder Include="temp\examenes\" />
+    <Folder Include="temp\excel\" />
     <Folder Include="temp\files\" />
     <Folder Include="temp\formato_revision\" />
     <Folder Include="temp\html_files\" />
@@ -2295,6 +2657,7 @@
     <Folder Include="temp\vehiculos_formato\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="variables.resx" />
   </ItemGroup>
   <PropertyGroup>

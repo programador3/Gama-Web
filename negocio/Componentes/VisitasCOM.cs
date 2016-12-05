@@ -84,6 +84,7 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pimgurl", SqlDbType = SqlDbType.Int, Value = entidad.PURL });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrevisita", SqlDbType = SqlDbType.Int, Value = entidad.Pnombre });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombremepresa", SqlDbType = SqlDbType.Int, Value = entidad.Pnombreempresa });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_empleado });

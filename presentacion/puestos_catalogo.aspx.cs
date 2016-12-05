@@ -674,7 +674,8 @@ namespace presentacion
         {
             string idc_puesto = Convert.ToInt32(Session["idc_puesto"]).ToString();
             string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
-            Response.Redirect("reportes_empleados.aspx?idc_empleado=" + funciones.deTextoa64(val) + "&idc_puesto=" + funciones.deTextoa64(idc_puesto));
+            string bu = "puestos_catalogo.aspx";
+            Response.Redirect("reportes_empleados.aspx?backurl="+funciones.deTextoa64(bu) +"&idc_empleado=" + funciones.deTextoa64(val) + "&idc_puesto=" + funciones.deTextoa64(idc_puesto));
         }
 
         protected void lnkretiroahorro_Click(object sender, EventArgs e)
@@ -686,7 +687,9 @@ namespace presentacion
         protected void lnkinciden_Click(object sender, EventArgs e)
         {
             string val = Convert.ToInt32(Session["idc_empleado"]).ToString();
-            Response.Redirect("empleados_reportes.aspx?idc_empleado=" + funciones.deTextoa64(val));
+
+            string bu = "puestos_catalogo.aspx";
+            Response.Redirect("empleados_reportes.aspx?backurl=" + funciones.deTextoa64(bu) + "&idc_empleado=" + funciones.deTextoa64(val));
         }
     }
 }

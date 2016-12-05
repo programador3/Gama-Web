@@ -636,6 +636,18 @@
                     </tr>
             </div>
             <div class="row">
+                <div class="col-lg-12">
+                    <asp:LinkButton ID="lnkreporte" CssClass="btn btn-default btn-block" runat="server" OnClick="lnkreporte_Click">Generar Reporte a Empleado</asp:LinkButton>
+                </div>
+                <div class="col-lg-12" id="div_Reporte" runat="server" visible="false">
+                    <h4><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;<strong>Seleccione un Tipo de Reporte</strong>&nbsp;<small style="color: orangered;">Para seleccionar un reporte, seleccione un empleado</small></h4>
+                    <asp:DropDownList ID="ddltiporeporte" CssClass="form-control" runat="server"></asp:DropDownList>
+
+                    <h4><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;<strong>Observaciones para el Reporte</strong></h4>
+                    <asp:TextBox ID="txtcomentarios" CssClass="form-control" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 200);" TextMode="MultiLine" placeholder="Ingrese Observaciones" Rows="4" runat="server"></asp:TextBox>
+
+
+                </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <asp:LinkButton ID="lnkguardar" Visible="true" CssClass="btn btn-primary btn-block" runat="server" OnClick="lnkguardar_Click">Guardar</asp:LinkButton>
                 </div>

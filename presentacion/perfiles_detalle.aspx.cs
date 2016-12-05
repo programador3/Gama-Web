@@ -56,6 +56,7 @@ namespace presentacion
                     }
                     else
                     {
+                        lnkdescargarmanual.Visible = false;
                         CompararPerfiles(RequestId, RequestIdBorr);//Comparacion
                         ocultar_Paneles(rpCompara, "btnOcultar_BodyPanel", "Produccion_Panel_Individual");
                         ocultar_Paneles(rpBorrador, "btnOcultar_BodyPanel_Borrador", "Borrador_Panel_Indiv");
@@ -888,12 +889,12 @@ namespace presentacion
             //TOMO VARIABLE DEL NOMBRE DE PERFIL Y REMPLAZO ESPACIOS POR GUINES BAJO PARA METERLO COMO NOMBRE DE ARCHIVO
             Titulo = Titulo.Replace(" ", "_");
             //CREO STRING CON EL NOMBRE DEL ARCHIVO QUE SE GENERARA
-            string fileName = "" + Titulo + "" + ".doc";
-            //ASIGNO CONTEXTOS
-            Response.AppendHeader("Content-Type", "application/msword");
-            Response.AppendHeader("Content-disposition", "attachment; filename=" + fileName);
-            //CREO ARCHIVO EN UN RESPONSE PARA QUE PAGINA ME LO ARROJE
-            Response.Write(content.ToString());
+            //string fileName = "" + Titulo + "" + ".doc";
+            ////ASIGNO CONTEXTOS
+            //Response.AppendHeader("Content-Type", "application/msword");
+            //Response.AppendHeader("Content-disposition", "attachment; filename=" + fileName);
+            ////CREO ARCHIVO EN UN RESPONSE PARA QUE PAGINA ME LO ARROJE
+            //Response.Write(content.ToString());
         }
 
         /// <summary>
@@ -1471,6 +1472,54 @@ namespace presentacion
             else
             {
                 Alert.ShowAlertError("No existe el archivo", this);
+            }
+        }
+
+        protected void lnkdescargarmanual_Click(object sender, EventArgs e)
+        {
+            PerfilesBL componente = new PerfilesBL();
+            bool produccion = false;
+            int idc_perfil = 0;
+            if (Request.QueryString["uidc_puestoperfil_borr"] != null)//Si variable request es nulla
+            {
+                produccion = false;
+                idc_perfil = Convert.ToInt32((Request.QueryString["uidc_puestoperfil_borr"]));
+            }
+            else if (Request.QueryString["uidc_puestoperfil"] != null)//Si variable request es nulla
+            {
+                produccion = true;
+                idc_perfil = Convert.ToInt32((Request.QueryString["uidc_puestoperfil"]));
+            }
+            DataSet ds = componente.sp_perfileS_funciones_listado(idc_perfil,produccion);
+            DataTable dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                string DataComplete = "";
+                foreach (DataRow row in dt.Rows)
+                {
+                    string ruta = row["ruta_origen"].ToString();
+                    if (File.Exists(ruta))
+                    {
+                        StreamReader file = new StreamReader(ruta);
+                        DataComplete = DataComplete + file.ReadToEnd();
+                        file.Close();
+                    }
+                }
+                Random random_edit = new Random();
+                int randomNumber_live = random_edit.Next(0, 100000);
+                DateTime localDate = DateTime.Now;
+                string date = localDate.ToString();
+                date = date.Replace("/", "_");
+                date = date.Replace(":", "_");
+                DirectoryInfo dirInfo_edit = new DirectoryInfo(Server.MapPath("~/temp/html_files/"));//path local
+                string NAME = randomNumber_live.ToString() + date + ".html";
+                StreamWriter file_edit = new StreamWriter(dirInfo_edit.ToString() + NAME);
+                file_edit.Write(DataComplete);
+                file_edit.Close();
+                funciones.Download(dirInfo_edit.ToString() +NAME, NAME, this);
+            }
+            else {
+                Alert.ShowAlertInfo("ESTE PERFIL NO CUENTA CON MANUAL","Mensaje del Sistema",this);
             }
         }
 

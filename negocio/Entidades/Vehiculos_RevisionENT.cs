@@ -7,6 +7,8 @@ namespace negocio.Entidades
         private int idc_revbasherr;
         private int idc_puestorevi;
         private int IDC_EMPLEADO;
+        private int IDC_EMPLEADO_mio;
+        private int idc_tiporep;
         private int idc_puestoprebaja;
         private int idc_usuario;
         private int pidc_prebaja;
@@ -48,6 +50,7 @@ namespace negocio.Entidades
         private bool falta;
         private decimal total;
         private decimal monto;
+        private string obser;
 
         public string Pcadena
         {
@@ -59,6 +62,21 @@ namespace negocio.Entidades
         {
             get { return cadena2; }
             set { cadena2 = value; }
+        }
+        public string Observaciones
+        {
+            get { return obser; }
+            set { obser = value; }
+        }
+        public int Pidc_tiporep
+        {
+            get { return idc_tiporep; }
+            set { idc_tiporep = value; }
+        }
+        public int Pidc_Empleadomio
+        {
+            get { return IDC_EMPLEADO_mio; }
+            set { IDC_EMPLEADO_mio = value; }
         }
 
         public int Pnumcad

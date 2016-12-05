@@ -429,9 +429,16 @@
     background-color: #ffe5a2;
     color: #85630f;
     border-color: #ffe5a2; }
+  
+    .flat-blue .list-group .list-group-item.list-group-item-orange {
+      background-color: #FE9A2E;
+      color: black; }
     .flat-blue .list-group .list-group-item.list-group-item-warning .badge {
       background-color: #FFF;
       color: #FABE28; }
+    .flat-blue .list-group .list-group-item.list-group-item-orange .badge {
+      background-color: #FE9A2E;
+      color: black; }
   .flat-blue .list-group .list-group-item.list-group-item-danger {
     background-color: #ffb8aa;
     color: #7c1a06;

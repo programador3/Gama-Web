@@ -17,7 +17,77 @@ namespace presentacion
 {
     public class funciones
     {
+
         public static DBConnection conexion = new DBConnection();
+
+        String FormatNumber(decimal valor, int decimales)
+        {
+            string total_decimale = "";
+            for (int i = 0; i < decimales; i++)
+            {
+                total_decimale = total_decimale + "#";
+            }
+
+            return valor.ToString("#,###."+total_decimale);
+        }
+
+        /// <summary>
+        /// Devuelve meses
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable meses()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("value", typeof(Int32));
+            dt.Columns.Add("name");
+            for (int i = 1; i <= 12; i++)
+            {
+                DataRow row = dt.NewRow();
+                string fullMonthName = new DateTime(2015, i, 1).ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
+                row["value"] = i;
+                row["name"] = fullMonthName;
+                dt.Rows.Add(row);
+            }
+            DataView dv = dt.DefaultView;
+            dv.Sort = "value";
+            return dv.ToTable();
+        }
+
+        public static DataTable años()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("value");
+            dt.Columns.Add("name");
+
+            for (int i = 2000; i <= DateTime.Today.Year; i++)
+            {
+                DataRow row = dt.NewRow();
+                row["value"] = i;
+                row["name"] = i.ToString().Trim();
+                dt.Rows.Add(row);
+            }
+            DataView dv = dt.DefaultView;
+            dv.Sort = "value";
+            return dv.ToTable();
+        }
+        public static DataTable TopDataRow(DataTable dt, int count)
+        {
+            DataTable dtn = dt.Clone();
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                if (i < count)
+                {
+                    dtn.ImportRow(row);
+                    i++;
+                }
+                if (i > count)
+                    break;
+            }
+            return dtn;
+        }
+
+
         /// <summary>
         /// Regresa el filtro de una tabla
         /// </summary>
@@ -170,51 +240,7 @@ namespace presentacion
 
         public static void EnviarError(string bodycontent)
         {
-            try
-            {
-                string usuario = "";
-                string contraseña = "";
-
-                string body = bodycontent;
-                body = "Fecha: " + DateTime.Now.ToString("dd MMMM, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX")) + System.Environment.NewLine + "PC: " + funciones.GetPCName() + System.Environment.NewLine + "Usuario-PC: " + funciones.GetUserName() + System.Environment.NewLine + "IP: " + funciones.GetLocalIPAddress() + System.Environment.NewLine + body;
-                string hostnamesmtp = "";
-                int portsmtp = 0;
-                bool useSsl = false;
-                string subject = "ERROR EN SISTEMA GAMA";
-                string to = "programador3@gamamateriales.com.mx,";
-                List<string> listadeadjuntos = new List<string>();
-                DataTable dt = funciones.ExecQuery("SELECT top 1 LTRIM(RTRIM(CORREO)) correo,DBO.fn_desencripta(correos_gama.CONTRASEÑA) contraseña,correo_puerto.PUERTO,CORREO_PUERTO.ssl,LTRIM(RTRIM(CORREO_PUERTO.smtp)) smtp,LTRIM(RTRIM(CORREO_PUERTO.pop)) pop FROM correos_gama WITH (NOLOCK) INNER JOIN	correo_puerto WITH (NOLOCK) ON CORREOS_GAMA.idc_correopuerto = correo_puerto.idc_correopuerto inner join usuarios with(nolock) on usuarios.idc_correo = correos_gama.idc_correo where idc_usuario = 314 ");
-                if (dt.Rows.Count > 0)
-                {
-                    DataRow row = dt.Rows[0];
-                    usuario = row["correo"].ToString();
-                    contraseña = row["contraseña"].ToString();
-                    hostnamesmtp = row["smtp"].ToString();
-                    portsmtp = Convert.ToInt32(row["puerto"]);
-                    useSsl = Convert.ToBoolean(row["ssl"]);
-                    if (to != "" && usuario != "" && contraseña != "" && hostnamesmtp != "" && portsmtp != 0)
-                    {
-                        if (to[to.Length - 1].ToString() == ",")
-                        {
-                            to = to.Remove(to.Length - 1);
-                        }
-                        MailMessage message = new MailMessage();
-                        message.Subject = subject;
-                        message.Body = body;
-                        message.IsBodyHtml = true;
-                        message.To.Add(to);
-                        message.From = new MailAddress(usuario, "PROGRAMADOR WEB", System.Text.Encoding.UTF8);
-                        SmtpClient mailer = new SmtpClient(hostnamesmtp, portsmtp);
-                        mailer.Credentials = new NetworkCredential(usuario, contraseña);
-                        mailer.EnableSsl = useSsl;
-                        mailer.Send(message);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                string eed = ex.ToString();
-            }
+           
         }
 
         /// <summary>
@@ -1075,7 +1101,7 @@ namespace presentacion
                 dt = opcsBL.preparar_funcion(query);
                 DataRow row = dt.Rows[0];
                 Boolean res = Convert.ToBoolean(row["autorizado"].ToString());
-                if (res == true || usuario == 314 || usuario == 127)
+                if (res == true || usuario == 314)
                 {
                     val = true;
                 }

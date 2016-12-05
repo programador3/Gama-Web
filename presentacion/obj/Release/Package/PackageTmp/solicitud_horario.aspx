@@ -169,7 +169,7 @@
                         <h4><strong>Departamento: </strong>
                             <asp:Label ID="lbldepto" runat="server" Text=""></asp:Label>
                         </h4>
-                        <h4><strong>
+                        <h4 style="color:orangered;"><strong>
                             <asp:Label ID="lblobsr" Visible="false" runat="server" Text=""></asp:Label></strong>
                         </h4>
                     </div>

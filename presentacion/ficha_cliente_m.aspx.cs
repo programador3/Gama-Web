@@ -1,7 +1,14 @@
-﻿ using negocio.Componentes;
+﻿using Gios.Pdf;
+using negocio.Componentes;
 using negocio.Entidades;
 using System;
 using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -66,9 +73,10 @@ namespace presentacion
         {
             try
             {
-                DataTable dt = funciones.ExecQuery("select dbo.fn_actividad_registrada_age_hoy(" + Session["idc_agente"] as string + "," + Session["idc_cliente"] as string + ") as id");
+                DataTable dt = funciones.ExecQuery("select dbo.fn_actividad_registrada_age_hoy(" + Session["idc_agente"] as string + "," + Session["idc_cliente"] as string + ") as id");        
                 if (dt.Rows.Count > 0)
                 {
+                 
                     if (Convert.ToBoolean(dt.Rows[0]["id"]) == false)
                     {
                         lnkregistrarvisita.Visible = true;
@@ -82,7 +90,7 @@ namespace presentacion
                 }
                 else
                 {
-                    lnkregistrarvisita.Visible = false;
+                    lnkregistrarvisita.Visible = true;
                     lnkyaregis.Visible = false;
                 }
             }
@@ -126,7 +134,6 @@ namespace presentacion
             }
         }
 
-
         private void cargar_contactos_clientes(int idc_cliente)
         {
             try
@@ -155,6 +162,7 @@ namespace presentacion
                 Global.CreateFileError(ex.ToString(), this);
             }
         }
+
         private void CargarFichaTecnica(int idc_cliente)
         {
             try
@@ -169,93 +177,92 @@ namespace presentacion
                     row = ds.Tables[0].Rows[0];
                     int ord_compra = row["ord_compra"] is DBNull ? 0 : Convert.ToInt32(row["ord_compra"]);
                     int ord_entrada = row["ord_entrada"] is DBNull ? 0 : Convert.ToInt32(row["ord_entrada"]);
-                    //if (ord_compra > 0)
-                    //{
-                    //    if (Convert.ToBoolean(row["ord_compra"]) == true)
-                    //    {
-                    //        //txtoc.Text = "NO"
-                    //        chkoc.Checked = true;
-                    //        chkoc.Visible = true;
-                    //    }
-                    //    else
-                    //    {
-                    //        //txtoc.Text = "SI"
-                    //        chkoc.Checked = false;
-                    //        chkoc.Visible = false;
-                    //    }
+                    if (ord_compra > 0)
+                    {
+                        if (Convert.ToBoolean(row["ord_compra"]) == true)
+                        {
+                            //txtoc.Text = "NO"
+                            chkoc.Checked = true;
+                            chkoc.Visible = true;
+                        }
+                        else
+                        {
+                            //txtoc.Text = "SI"
+                            chkoc.Checked = false;
+                            chkoc.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        //txtoc.Text = "SI"
+                        chkoc.Checked = false;
+                        chkoc.Visible = false;
+                    }
+                    if (ord_entrada > 0)
+                    {
+                        if (Convert.ToBoolean(row["ord_entrada"]) == false)
+                        {
+                            txtoe.Text = "NO";
+                        }
+                        else
+                        {
+                            txtoe.Text = "SI";
+                        }
+                    }
+                    else
+                    {
+                        txtoe.Text = "NO";
+                    }
+                        
+                    if (row["croquis"].ToString() != "")
+                    {
+                        if (Convert.ToBoolean(row["croquis"]) == true)
+                        {
+                            //txtcroquis.Text = "NO"
+                            chkcroquis.Checked = true;
+                            chkcroquis.Visible = true;
+                        }
+                        else
+                        {
+                            chkcroquis.Checked = false;
+                            chkcroquis.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        chkcroquis.Checked = false;
+                        chkcroquis.Visible = false;
+                    }
 
-                    //}
-                    //else
-                    //{
-                    //    //txtoc.Text = "SI"
-                    //    chkoc.Checked = false;
-                    //    chkoc.Visible = false;
-                    //}
-                    //if (ord_entrada > 0)
-                    //{
-                    //    if (row["ord_entrada") == false)
-                    //    {
-                    //        txtoe.Text = "NO";
+                    if (row["sello"].ToString() != "")
+                    {
+                        if (Convert.ToBoolean(row["sello"]) == true)
+                        {
+                            //txtsello.Text = "NO"
+                            chksello.Checked = true;
+                            chksello.Visible = true;
+                        }
+                        else
+                        {
+                            //txtsello.Text = "SI"
+                            chksello.Checked = false;
+                            chksello.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        chksello.Checked = false;
 
-                    //    }
-                    //    else
-                    //    {
-                    //        txtoe.Text = "SI";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    txtoe.Text = "NO";
-                    //}
+                        chksello.Visible = false;
+                    }
 
-                    //if (!Information.IsDBNull(row["croquis")))
-                    //{
-                    //    if (row["croquis") == true)
-                    //    {
-                    //        //txtcroquis.Text = "NO"
-                    //        chkcroquis.Checked = true;
-                    //        chkcroquis.Visible = true;
-                    //    }
-                    //    else
-                    //    {
-                    //        chkcroquis.Checked = false;
-                    //        chkcroquis.Visible = false;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    chkcroquis.Checked = false;
-                    //    chkcroquis.Visible = false;
-                    //}
-
-                    //if (!Information.IsDBNull(row["sello")))
-                    //{
-                    //    if (row["sello") == true)
-                    //    {
-                    //        //txtsello.Text = "NO"
-                    //        chksello.Checked = true;
-                    //        chksello.Visible = true;
-                    //    }
-                    //    else
-                    //    {
-                    //        //txtsello.Text = "SI"
-                    //        chksello.Checked = false;
-                    //        chksello.Visible = false;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    chksello.Checked = false;
-                    //    chksello.Visible = false;
-                    //}
-
-                    //txtultimaventa.Text = (!Information.IsDBNull(row["ult_venta")) ? row["ult_venta") : "");
+                    txtultimaventa.Text = row["ult_venta"].ToString().Trim();
                     int idc_listap = 0;
                     if (row["idc_listap"] != null)
                     {
                         if (Convert.ToInt32(row["idc_listap"]) > 0)
                         {
-                            //txtmodelo.Text = row["idc_listap"].ToString() + " .- " + row["lista_precio"].ToString();
+                            txtmodelo.Text = row["idc_listap"].ToString() + " .- " + row["lista_precio"].ToString();
                             idc_listap = Convert.ToInt32(row["idc_listap"]);
                         }
                     }
@@ -366,7 +373,8 @@ namespace presentacion
                 if (promociones_existen == true)
                 {
                     btnpromociones.Visible = true;
-                    btnpromociones.Attributes["onclick"] = "window.open('promociones_cliente_m.aspx?cdi=" + idc_cliente + "&listap=" + idc_listap + "');";
+                    btnpromociones.Attributes["onclick"] = "window.open('promociones_cliente_m.aspx?cdi=" + funciones.deTextoa64(idc_cliente.ToString().Trim())
+                        + "&listap=" + funciones.deTextoa64(idc_listap.ToString().Trim()) + "');";
                 }
                 else
                 {
@@ -445,8 +453,8 @@ namespace presentacion
                     txtcliente.BackColor = System.Drawing.Color.Yellow;
                     txtcreditodisponible.BackColor = System.Drawing.Color.Yellow;
                     txtcreditodisponible.ForeColor = System.Drawing.Color.Black;
-                    //imgpedidos.Attributes("onclick") = "alert('El Cliente Esta Bloqueado por Cheques Devueltos...');return false;";
-                    //imgpedidos_lista.Attributes("onclick") = "alert('El Cliente Esta Bloqueado por Cheques Devueltos...');return false;";
+                    imgpedidos.Attributes["onclick"] = "alert('El Cliente Esta Bloqueado por Cheques Devueltos...');return false;";
+                    imgpedidos_lista.Attributes["onclick"] = "alert('El Cliente Esta Bloqueado por Cheques Devueltos...');return false;";
                     break;
             }
         }
@@ -479,7 +487,6 @@ namespace presentacion
             url = url.Replace(path_actual, "");
             url = url + pagina + "&title=" + funciones.deTextoa64(txtcliente.Text);
             ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "window.open('" + url + "');", true);
-
         }
 
         protected void lnkseleccionar_Click(object sender, EventArgs e)
@@ -490,35 +497,42 @@ namespace presentacion
                 case "1"://AGREGAR TAREA
                     Response.Redirect("agendar_llamada.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
+
                 case "12"://AGREGAR TAREA
                     Response.Redirect("tareas_clientes_cap.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
+
                 case "11"://REVISAR TAREA
-                    Response.Redirect("tareas_clientes_rev.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()) +"&idc_agente="+ funciones.deTextoa64(Convert.ToInt32(Session["idc_agente"]).ToString()));
+                    Response.Redirect("tareas_clientes_rev.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()) + "&idc_agente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_agente"]).ToString()));
                     break;
-                case "6"://negociacion articulos                    
-                    Response.Redirect("cotizacion_clientes2_m.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()) + "&IDA=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_agente"]).ToString())+
-                        "&r="+funciones.deTextoa64(txtrfc.Text));
+
+                case "6"://negociacion articulos
+                    Response.Redirect("cotizacion_clientes2_m.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()) + "&IDA=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_agente"]).ToString()) +
+                        "&r=" + funciones.deTextoa64(txtrfc.Text));
 
                     break;
+
                 case "5"://compromiso cliente
                     Response.Redirect("compromisos_cliente.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
+
                 case "4"://ALTA INCONVENIENTE
                     Response.Redirect("inconvenientes_cliente.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
+
                 case "9"://cotizacion
                     Response.Redirect("cotizaciones_correo.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
+
                 case "10"://check plus
                     Response.Redirect("check_plus_pre_m.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
+
                 case "8"://GENERRAR PEDIDO
                     Response.Redirect("pedidos7.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
             }
         }
-
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
@@ -527,8 +541,8 @@ namespace presentacion
 
         protected void LinkButton5_Click(object sender, EventArgs e)
         {
-            Response.Redirect("editar_contacto.aspx?tipo=0&idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString())+
-                "&n="+funciones.deTextoa64(txtcliente.Text)+"&r="+ funciones.deTextoa64(txtrfc.Text)+"&c="+funciones.deTextoa64(txtcveadicional.Text) );
+            Response.Redirect("editar_contacto.aspx?tipo=0&idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()) +
+                "&n=" + funciones.deTextoa64(txtcliente.Text) + "&r=" + funciones.deTextoa64(txtrfc.Text) + "&c=" + funciones.deTextoa64(txtcveadicional.Text));
         }
 
         protected void gridcontactos_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -545,7 +559,7 @@ namespace presentacion
             try
             {
                 AgentesENT entidad = new AgentesENT();
-                entidad.Pidc_cliente = Convert.ToInt32(txtid.Text); 
+                entidad.Pidc_cliente = Convert.ToInt32(txtid.Text);
                 AgentesCOM com = new AgentesCOM();
                 DataSet ds = com.sp_cliente_ubicacion(entidad);
 
@@ -554,9 +568,8 @@ namespace presentacion
                     string latitud = ds.Tables[0].Rows[0]["latitud"].ToString().Trim();
                     string longitud = ds.Tables[0].Rows[0]["longitud"].ToString().Trim();
 
-
                     string cliente = ds.Tables[0].Rows[0]["nombre"].ToString().Trim();
-                    cliente =cliente +System.Environment.NewLine+ " DIRECCION: "+ ds.Tables[1].Rows[0]["calle"].ToString().Trim() + " " +
+                    cliente = cliente + System.Environment.NewLine + " DIRECCION: " + ds.Tables[1].Rows[0]["calle"].ToString().Trim() + " " +
                     ds.Tables[1].Rows[0]["numero"].ToString().Trim() + " " +
                     ds.Tables[1].Rows[0]["mpio"].ToString().Trim() + " " +
                     ds.Tables[1].Rows[0]["edo"].ToString().Trim() +
@@ -566,8 +579,9 @@ namespace presentacion
                     Session["back_url"] = "ficha_cliente_m.aspx";
                     Response.Redirect(url);
                 }
-                else {
-                    Alert.ShowAlertInfo("En los Datos del Cliento no existe su Ubicación GPS","Mensaje del Sistema",this);
+                else
+                {
+                    Alert.ShowAlertInfo("En los Datos del Cliento no existe su Ubicación GPS", "Mensaje del Sistema", this);
                 }
             }
             catch (Exception ex)
@@ -597,7 +611,6 @@ namespace presentacion
                     string latitud = ds.Tables[0].Rows[0]["latitud"].ToString().Trim();
                     string longitud = ds.Tables[0].Rows[0]["longitud"].ToString().Trim();
 
-
                     string cliente = ds.Tables[0].Rows[0]["nombre"].ToString().Trim();
                     cliente = cliente + System.Environment.NewLine + " DIRECCION: " + ds.Tables[1].Rows[0]["calle"].ToString().Trim() + " " +
                     ds.Tables[1].Rows[0]["numero"].ToString().Trim() + " " +
@@ -624,6 +637,240 @@ namespace presentacion
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             Response.Redirect("precios_cotizados.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+        }
+
+        protected void btnsalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("captura_actividades_agentes2.aspx");
+        }
+
+        protected void btnref_Click(object sender, EventArgs e)
+        {
+            if (txtnew.Text == "1")
+            {
+                solicitudes_pendientes(txtid.Text.Trim());
+            }
+            else
+            {
+                cargar_contactos_clientes(Convert.ToInt32(txtid.Text.Trim()));
+            }
+        }
+
+        public void solicitudes_pendientes(string idc_cliente)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = funciones.ExecQuery("select DBO.fn_tiene_clientes_tel_solcambio(" + idc_cliente + ") as sol");
+                if (dt.Rows.Count > 0)
+                {
+                    LinkButton5.Visible = Convert.ToBoolean(dt.Rows[0]["sol"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError("Error: \\n" + ex.Message, this);
+            }
+        }
+
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("cotizaciones_correo.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+        }
+
+        protected void lnkenviarlista_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idc_cliente = Convert.ToInt32(Session["idc_cliente"]);
+                DataTable dt1 = default(DataTable);
+                AgentesCOM componente = new AgentesCOM();
+                dt1 = componente.sp_lista_precios_x_familia(idc_cliente, 0, 0, 1, 0, 1, true).Tables[0];
+
+                if (dt1.Rows.Count <= 0)
+                {
+                    return;
+                }
+                else
+                {
+                    DataTable dt = new DataTable();
+                    dt = dt1.DefaultView.ToTable("dt1", false, "familia", "desart", "precio", "medida", "paquete");
+                    if (dt.Rows.Count > 0)
+                    {
+                        dt.Columns["familia"].ColumnName = "Familia";
+                        dt.Columns["desart"].ColumnName = "Producto";
+                        dt.Columns["precio"].ColumnName = "Precio";
+                        dt.Columns["medida"].ColumnName = "Unidad";
+                        for (int i = 0; i <= dt.Rows.Count - 1; i++)
+                        {
+                            if (dt.Rows[i][0].ToString() == "IMPERMEABILIZANTES")
+                            {
+                                dt.Rows[i][0] = "IMPERMEAB- ILIZANTES";
+                            }
+                            if (dt.Rows[i][4].ToString() != "")
+                            {
+                                string[] paquete = null;
+                                paquete = dt.Rows[i][4].ToString().Split('*');
+                                if (paquete.Length > 0)
+                                {
+                                    for (int ii = 0; ii <= paquete.Length - 1; ii++)
+                                    {
+                                        if (paquete[ii].Length > 0)
+                                        {
+                                            dt.Rows[i][1] = dt.Rows[i][1].ToString() + System.Environment.NewLine + paquete[ii].Trim();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    PdfDocument myPdfDocument = new PdfDocument(PdfDocumentFormat.A4);
+
+                    PdfTable myPdfTable = myPdfDocument.NewTable(new Font("Arial", 9), dt.Rows.Count, 4, 4);
+
+                    myPdfTable.ImportDataTable(dt);
+                    myPdfTable.HeadersRow.SetColors(Color.White, Color.Navy);
+                    myPdfTable.SetColors(Color.Black, Color.White, Color.Gainsboro);
+                    myPdfTable.SetBorders(Color.Black, 1, BorderType.Rows);
+                    int[] columnasancho = {
+                        15,
+                        60,
+                        10,
+                        10
+                    };
+
+                    myPdfTable.SetColumnsWidth(columnasancho);
+                    myPdfTable.SetRowHeight(15);
+                    myPdfTable.SetContentAlignment(ContentAlignment.MiddleCenter);
+                    myPdfTable.Columns[1].SetContentAlignment(ContentAlignment.MiddleLeft);
+                    myPdfTable.Columns[2].SetContentAlignment(ContentAlignment.MiddleRight);
+                    myPdfTable.Columns[3].SetContentAlignment(ContentAlignment.MiddleCenter);
+
+                    string obs_lista = "Por medio de la presente, nos es grato saludarle y a la vez poner a su consideracion " + System.Environment.NewLine + " la cotizacion de precios de algunos materiales que manejamos para usted(es).";
+                    string empresa_datos = "GAMA MATERIALES Y ACEROS S.A. DE C.V." + System.Environment.NewLine + "TELEFONO: 800-71-800";
+                    string aviso = "PRECIOS MAS I.V.A.";
+                    string aviso2 = "(LISTA DE PRECIOS SUJETO A CAMBIOS SIN PREVIO AVISO)";
+                    while (!myPdfTable.AllTablePagesCreated)
+                    {
+                        PdfPage newPdfPage = myPdfDocument.NewPage();
+                        PdfTablePage newPdfTablePAge = myPdfTable.CreateTablePage(new PdfArea(myPdfDocument, 10, 120, 580, 710));
+                        PdfImage logo = myPdfDocument.NewImage(HttpContext.Current.Server.MapPath("~/imagenes/logo.png"));
+                        PdfTextArea rfc = new PdfTextArea(new Font("Arial", 12), Color.Black, new PdfArea(myPdfDocument, 10, 55, 200, 30), ContentAlignment.MiddleLeft, txtrfc.Text.Trim());
+                        PdfTextArea cliente = new PdfTextArea(new Font("Arial", 12), Color.Black, new PdfArea(myPdfDocument, 10, 70, txtcliente.Text.Length * 10, 30), ContentAlignment.MiddleLeft, txtcliente.Text.Trim());
+                        PdfTextArea obs = new PdfTextArea(new Font("Arial", 12), Color.Black, new PdfArea(myPdfDocument, 10, 90, 500, 40), ContentAlignment.MiddleLeft, obs_lista);
+                        PdfTextArea empresa = new PdfTextArea(new Font("Arial", 12, FontStyle.Bold), Color.Black, new PdfArea(myPdfDocument, (myPdfDocument.PageWidth / 4), 2, 300, 80), ContentAlignment.MiddleCenter, empresa_datos);
+                        PdfTextArea fecha = new PdfTextArea(new Font("Arial", 10), Color.Black, new PdfArea(myPdfDocument, 420, 30, 200, 80), ContentAlignment.MiddleCenter, DateTime.Now.ToString("dd MMMM, yyyy H:mm:ss", System.Globalization.CultureInfo.CreateSpecificCulture("es-MX")));
+                        PdfTextArea aviso_1 = new PdfTextArea(new Font("Arial", 10, FontStyle.Bold), Color.Black, new PdfArea(myPdfDocument, 10, 820, 200, 20), ContentAlignment.MiddleLeft, aviso);
+                        PdfTextArea aviso_2 = new PdfTextArea(new Font("Arial", 10, FontStyle.Bold), Color.Black, new PdfArea(myPdfDocument, (myPdfDocument.PageWidth / 4), 820, 600, 20), ContentAlignment.MiddleLeft, aviso2);
+
+                        newPdfPage.Add(newPdfTablePAge);
+                        newPdfPage.Add(logo, 10, 10);
+                        newPdfPage.Add(rfc);
+                        newPdfPage.Add(cliente);
+                        newPdfPage.Add(obs);
+                        newPdfPage.Add(empresa);
+                        newPdfPage.Add(fecha);
+                        newPdfPage.Add(aviso_1);
+                        newPdfPage.Add(aviso_2);
+                        newPdfPage.SaveToDocument();
+                    }
+                    Random random = new Random();
+                    int randomNumber = random.Next(0, 100000);
+                    DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/tareas/"));//path local
+                    string ruta = dirInfo + randomNumber.ToString().Trim() + txtid.Text.Trim() + ".pdf";
+                    myPdfDocument.SaveToFile(ruta);
+
+                    string cuenta = "";
+                    string pss = "";
+                    string nombre_mostrar = "";
+                    string correos_cliente = "";
+                    string smtp1 = "";
+                    int puerto = 0;
+                    bool ssl = false;
+                    if (File.Exists(ruta))
+                    {
+                        //GWebCN.Correos correo = new GWebCN.Correos();
+                        DataSet ds = new DataSet();
+                        //GWebCN.Clientes contactos_cliente = new GWebCN.Clientes();
+                        AgentesCOM com = new AgentesCOM();
+                        AgentesENT enti = new AgentesENT();
+                        enti.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                        ds = com.sp_correo_contraseña(enti);
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            cuenta = ds.Tables[0].Rows[0]["correo"].ToString();
+                            pss = ds.Tables[0].Rows[0]["contra"].ToString();
+                            nombre_mostrar = ds.Tables[0].Rows[0]["nombre_mostrar"].ToString();
+                        }
+                        else if (ds.Tables[1].Rows.Count > 0)
+                        {
+                            cuenta = ds.Tables[1].Rows[0]["correo"].ToString();
+                            pss = ds.Tables[1].Rows[0]["contra"].ToString();
+                            nombre_mostrar = ds.Tables[0].Rows[0]["nombre_mostrar"].ToString();
+                        }
+                        else
+                        {
+                            Alert.ShowAlertError("Error de Inicio de Sesión.", this);
+                            return;
+                        }
+                        ds = com.sp_correos_lista_precios_cliente(Convert.ToInt32(txtid.Text.Trim()));
+
+                        correos_cliente = "ventas@gamamateriales.com.mx";
+                        if (string.IsNullOrEmpty(correos_cliente.Trim()))
+                        {
+                            Alert.ShowAlertError("El Cliente no cuenta con Correo Electronico Registrado.", this);
+                            return;
+                        }
+                        if (ds.Tables[1].Rows.Count > 0)
+                        {
+                            puerto = Convert.ToInt32(ds.Tables[1].Rows[0]["puerto"].ToString());
+                            smtp1 = ds.Tables[1].Rows[0]["smtp"].ToString();
+                            ssl = Convert.ToBoolean(ds.Tables[1].Rows[0]["ssl"].ToString());
+                        }
+                        else
+                        {
+                            Alert.ShowAlertError("No se puede mandar el correo, error en datos de inicio de sesión.", this);
+                            return;
+                        }
+
+                        MailMessage mail = new MailMessage();
+                        mail.From = new MailAddress(cuenta, nombre_mostrar, Encoding.UTF8);
+                        mail.To.Add(correos_cliente);
+                        mail.Bcc.Add("sistemas@gamamateriales.com.mx,programador3@gamamateriales.com.mx," + cuenta);
+                        mail.IsBodyHtml = true;
+                        ///''
+                        mail.Subject = "Lista de Precios";
+                        string text = "<h3>El archivo adjunto, es una lista con los precios de los productos que ofrecemos para usted.</h3> <br/><br/><br/> <br/>";
+                        AlternateView plainView = AlternateView.CreateAlternateViewFromString(text, Encoding.UTF8, MediaTypeNames.Text.Plain);
+                        string html = "<h3>El archivo adjunto, es una lista con los precios de los productos que ofrecemos para usted.</h3> <br/><br/><br/> <br/>" + "<img src='cid:imagen'/>";
+                        AlternateView htmlView = AlternateView.CreateAlternateViewFromString(html, Encoding.UTF8, MediaTypeNames.Text.Html);
+                        LinkedResource img = new LinkedResource(Server.MapPath("~/imagenes/Firma_gama.jpg"), MediaTypeNames.Image.Jpeg);
+                        img.ContentId = "imagen";
+                        img.TransferEncoding = TransferEncoding.Base64;
+                        htmlView.LinkedResources.Add(img);
+                        mail.AlternateViews.Add(plainView);
+                        mail.AlternateViews.Add(htmlView);
+                        mail.Attachments.Add(new Attachment(ruta));
+                        NetworkCredential BasicAuthenticationInfo = new NetworkCredential(cuenta, pss);
+                        SmtpClient smtp = new SmtpClient(smtp1);
+                        smtp.UseDefaultCredentials = true;
+                        smtp.Credentials = BasicAuthenticationInfo;
+                        smtp.Port = puerto;
+                        smtp.EnableSsl = ssl;
+                        smtp.Timeout = 500000;
+                        smtp.Send(mail);
+                        mail.Attachments.Dispose();
+                        mail.Dispose();
+                        mail = null;
+                        Alert.ShowAlert("Correo Enviado Correctamente", "Mensaje del Sistema",this);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.Message,this);
+            }
         }
     }
 }

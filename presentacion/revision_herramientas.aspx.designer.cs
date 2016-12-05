@@ -166,6 +166,42 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.LinkButton blkcalibracion;
         
         /// <summary>
+        /// Control lnkreporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkreporte;
+        
+        /// <summary>
+        /// Control div_Reporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_Reporte;
+        
+        /// <summary>
+        /// Control ddltiporeporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddltiporeporte;
+        
+        /// <summary>
+        /// Control txtcomentarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcomentarios;
+        
+        /// <summary>
         /// Control btnGuardar.
         /// </summary>
         /// <remarks>

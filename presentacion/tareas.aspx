@@ -29,6 +29,11 @@
             }
         }
     </script>
+     <style type="text/css">
+         .h5, h5 {
+                font-size: 11px;
+            }
+     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <h1 class="page-header">Mis Tareas</h1>

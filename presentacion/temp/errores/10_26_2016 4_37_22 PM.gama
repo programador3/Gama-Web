@@ -1,0 +1,9 @@
+Gerardo Vega Espinoza
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'IDC_EMPLEADO' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.set_Item(String columnName, Object value)
+   at presentacion.solicitudes_asistencia_pendientes.adddata(String IDC_SOLICITUDASI, String IDC_EMPLEADO, DateTime fecha, String TEMPRANO, String nombre, String num_nomina) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\25_10_16\Puestos\presentacion\solicitudes_asistencia_pendientes.aspx.cs:line 69
+   at presentacion.solicitudes_asistencia_pendientes.cbxselecttodos_CheckedChanged(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\10OCTUBRE\25_10_16\Puestos\presentacion\solicitudes_asistencia_pendientes.aspx.cs:line 155

@@ -212,7 +212,7 @@
                         <ItemTemplate>
                             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                 <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  DataBinder.Eval(Container.DataItem, "web_form").ToString():string.Format("menu.aspx?menu={0}&nivel={1}", DataBinder.Eval(Container.DataItem, "menu").ToString().Trim(), DataBinder.Eval(Container.DataItem, "nivel"))  %>'>
-                                    <div class='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "card green summary-inline":"card blue summary-inline"  %>'>
+                                    <div class='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "card green summary-inline":"card dark summary-inline"  %>'>
                                         <div class="card-body">
                                             <i class="icon fa fa-chevron-circle-right fa-4x"></i>
                                             <div class="content">
@@ -255,15 +255,16 @@
                         </div>
                         <div class="card-body" id="cardmias" runat="server">
                             <a class="btn btn-primary btn-block" href="tareas_listado.aspx">
-                                <asp:Label ID="lblpendientes" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="lblpendientes" runat="server" Text="Ver Todas Mis Tareas"></asp:Label>
                                 <i class="fa fa-wrench" aria-hidden="true"></i></a>
                             <h5 style="text-align: center" id="notareas" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h5>
 
                             <div class="list-group">
                                 <asp:Repeater ID="repeat_tareas" runat="server">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
-                                            <span onclick="return Press('<%#Eval("idc_tarea")%>','<%#Eval("url")%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine,"")%>')" 
+                                        <asp:LinkButton ID="lnktarea" PostBackUrl='<%# Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>' 
+                                            runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
+                                            <span onclick="return Press('<%#Eval("idc_tarea")%>','<%#Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine,"")%>')" 
                                                 class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> 
                                              
                                             <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>                                             
@@ -281,10 +282,10 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="card">
-                        <div class="card-header" style="background-color: #19B5FE; color: white;">
-                            <div class="card-title" style="background-color: #19B5FE; color: white;">
-                                <div class="title" style="background-color: #19B5FE; color: white;">
-                                    <h5  class="h5n" style="background-color: #19B5FE; color: white;">Tareas Asignadas para hoy<small style="background-color: #19B5FE; color: white;" id="Small1" runat="server">
+                        <div class="card-header" style="background-color: #1e88e5; color: white;">
+                            <div class="card-title" style="background-color: #1e88e5; color: white;">
+                                <div class="title" style="background-color: #1e88e5; color: white;">
+                                    <h5  class="h5n" style="background-color: #1e88e5; color: white;">Tareas Asignadas para hoy<small style="background-color: #1e88e5; color: white;" id="Small1" runat="server">
                                         <asp:Label ID="lblasi" runat="server" Text="" ></asp:Label></small></h5>
                                 </div>
                             </div>                            
@@ -298,14 +299,14 @@
                         </div>
                         <div class="card-body" id="cardasignadas" runat="server">
                             <a class="btn btn-info btn-block" href="tareas_asignadas_lista.aspx">
-                                <asp:Label ID="lblasignadas" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="lblasignadas" runat="server" Text="Ver Todas Mis Tareas"></asp:Label>
                                 <i class="fa fa-wrench" aria-hidden="true"></i></a>
                             <h5 style="text-align: center" id="tareasasig" runat="server" visible="false">No tiene Tareas Pendientes para HOY <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h5>
                             <div class="list-group">
                                 <asp:Repeater ID="repeatasignadas" runat="server">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url")%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
-                                            <span onclick="return PressRev('<%#Eval("idc_tarea")%>','<%#Eval("url")%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine," ")%>')" 
+                                        <asp:LinkButton ID="lnktarea" PostBackUrl='<%#Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>' runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
+                                            <span onclick="return PressRev('<%#Eval("idc_tarea")%>','<%#Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine," ")%>')" 
                                                 class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> <h5 class="list-group-item-heading"><strong><%#Eval("fecha_compromiso")%></strong></h5>
                                                 <p class="list-group-item-text"><%#Eval("descripcion")%></p>                                            
                                                 <p class="list-group-item-text"><strong>Realiza</strong>: <%#Eval("empleado")%></p>

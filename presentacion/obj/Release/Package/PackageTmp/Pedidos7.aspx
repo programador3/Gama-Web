@@ -1,341 +1,288 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="Pedidos7.aspx.cs" Inherits="presentacion.Pedidos7" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script language="javascript" type="text/javascript">
-    function aportaciones()
-    {
-        var tabla = document.getElementById('<%=grdproductos2.ClientID%>');
-        var ft  = document.getElementById('<%=txtmaniobras.ClientID%>').value;
+    <script type="text/javascript">
+        function aportaciones() {
+            var tabla = document.getElementById('<%=grdproductos2.ClientID%>');
+        var ft = document.getElementById('<%=txtmaniobras.ClientID%>').value;
         var sbt = document.getElementById('<%=txtpretotal.ClientID%>').value;
-        if(tabla==null)
-        {
+        if (tabla == null) {
             alert('No Has Agregado Articulos.');
             return false;
         }
-        else
-        {
+        else {
             window.open('aportaciones.aspx?ft=' + ft + '&sbt=' + sbt);
         }
         return false;
-        
+
     }
-   
+
     var myvar_guardando;
-    function mostrar_procesar_guard()
-    {
-        myvar_guardando = setTimeout(function(){document.getElementById('div_guardando').style.display =''}, 0);
+    function mostrar_procesar_guard() {
+        myvar_guardando = setTimeout(function () { document.getElementById('div_guardando').style.display = '' }, 0);
     }
-    
-    function myStopFunction_guard()
-    {
+
+    function myStopFunction_guard() {
         clearTimeout(myvar_busq);
-        document.getElementById('div_guardando').style.display ='none';
+        document.getElementById('div_guardando').style.display = 'none';
     }
-    
-    
+
+
     var myvar_busq;
-    function  mostrar_procesar_busq()
-    {
-         myvar_busq = setTimeout(function(){document.getElementById('div_busq').style.display =''}, 0);
+    function mostrar_procesar_busq() {
+        myvar_busq = setTimeout(function () { document.getElementById('div_busq').style.display = '' }, 0);
     }
-    
-    function myStopFunction_busq()
-    {
+
+    function myStopFunction_busq() {
         clearTimeout(myvar_busq);
-        document.getElementById('div_busq').style.display ='none';
+        document.getElementById('div_busq').style.display = 'none';
     }
-    
-    
+
+
     var myvar_grid;
-    function mostrar_procesar_grid()
-    {
-        myvar_grid = setTimeout(function(){document.getElementById('ref_grid').style.display =''}, 0);
-    } 
-    
-    function myStopFunction_grid()
-    {
+    function mostrar_procesar_grid() {
+        myvar_grid = setTimeout(function () { document.getElementById('ref_grid').style.display = '' }, 0);
+    }
+
+    function myStopFunction_grid() {
         clearTimeout(myvar_grid);
-        document.getElementById('ref_grid').style.display ='none';
+        document.getElementById('ref_grid').style.display = 'none';
     }
-    
-    function validar_croquis()
-    {
 
-    }   
+    function validar_croquis() {
 
-    function validar_oc()
-    {
-           var oc = document.getElementById("<%=oc.ClientID%>").value;   
-           var txtnumeroOC = document.getElementById("<%=txtnumeroOC.ClientID%>");
-           var Foliooc = document.getElementById("<%=txtFolioOc.ClientID%>").value;
-            if(oc=="True")
-            {
-                if(txtnumeroOC.value=="" && (Foliooc.value=="" || Foliooc.value==0))
-                {
-                   var ped_folio = confirm("Es Requerido Ingresar la Orden de Compra del Cliente, Es Necesario Tambien Anexar la O.C. \n \u000b \n ¿Deseas Capturar el Folio de Autorización?");
-                   if(ped_folio==true)
-                   {
-                        
-                   
-                   }
-                   
-                   return false;
+    }
+
+    function validar_oc() {
+        var oc = document.getElementById("<%=oc.ClientID%>").value;
+        var txtnumeroOC = document.getElementById("<%=txtnumeroOC.ClientID%>");
+        var Foliooc = document.getElementById("<%=txtFolioOc.ClientID%>").value;
+        if (oc == "True") {
+            if (txtnumeroOC.value == "" && (Foliooc.value == "" || Foliooc.value == 0)) {
+                var ped_folio = confirm("Es Requerido Ingresar la Orden de Compra del Cliente, Es Necesario Tambien Anexar la O.C. \n \u000b \n ¿Deseas Capturar el Folio de Autorización?");
+                if (ped_folio == true) {
+
+
                 }
+
+                return false;
             }
-            else
-            {
-            
-            }
-            mostrar_procesar_guard();
-            return true;
-            
-           //return validar_croquis();
-    
+        }
+        else {
+
+        }
+        mostrar_procesar_guard();
+        return true;
+
+        //return validar_croquis();
+
     }
-    
-    function ver_maniobras()
-    {
-        
+
+    function ver_maniobras() {
+
         var cboentrega = document.getElementById("<%=cboentrega.ClientID%>");
         var txtmaniobras = document.getElementById("<%=txtmaniobras.ClientID%>");
         var txtFolio = document.getElementById("<%=txtFolio.ClientID%>");
-        if(cboentrega.options[cboentrega.selectedIndex].value==1)
-        {
-            if(txtmaniobras.value!=0 && txtFolio.value=="")
-            {
+        if (cboentrega.options[cboentrega.selectedIndex].value == 1) {
+            if (txtmaniobras.value != 0 && txtFolio.value == "") {
 
-                    var cargar = confirm("¿Deseas Cargar al Pre-Pedido el Monto del Flete?");
-                    if(cargar==true)
-                    {
-                        document.getElementById("<%=btncargarflete.ClientID%>").click();
-                        return false;                    
+                var cargar = confirm("¿Deseas Cargar al Pre-Pedido el Monto del Flete?");
+                if (cargar == true) {
+                    document.getElementById("<%=btncargarflete.ClientID%>").click();
+                        return false;
                     }
-                    else
-                    {
-                       alert("El Pre-Pedido Requerira Folio de Autorización.");
-                       document.getElementById("<%=txtFolio.ClientID%>").value= '-1';
+                    else {
+                        alert("El Pre-Pedido Requerira Folio de Autorización.");
+                        document.getElementById("<%=txtFolio.ClientID%>").value = '-1';
                        document.getElementById("<%=tbnguardarPP.ClientID%>").click();
-                       return false;
-                    }                    
-              
-            }
-           //return validar_oc();
-           mostrar_procesar_guard();
-        }
-        else if (cboentrega.options[cboentrega.selectedIndex].value == 3) { //MIC 13-05-2015
-            mostrar_procesar_guard();
-        }
-    
-    }
-     
-    function confirmacion_pago()
-    {
-       
-        //Validar Articulos con Especificaciones
-        var faltan_especif = false;
-        $('.img-especif').each(function() {
-            var especif = $(this).attr('especif');
-            var num_especif = $(this).attr('num_especif');            
-            if (especif == 'True') {
-                if (parseInt(num_especif) <= 0) {
-                    faltan_especif = true;
-                }
-            }
-        });
+                        return false;
+                    }
 
-        if (faltan_especif == true) {
-            alert('Faltan Seleccionar Especificaciones para Algunos Articulos.');
-            return false;
+                }
+            //return validar_oc();
+                mostrar_procesar_guard();
+            }
+            else if (cboentrega.options[cboentrega.selectedIndex].value == 3) { //MIC 13-05-2015
+                mostrar_procesar_guard();
+            }
+
         }
-        
-        var lblconfirmacion = document.getElementById('<%=lblconfirmacion.ClientID%>');
-        if(lblconfirmacion!=null)
-        {
+
+        function confirmacion_pago() {
+
+            //Validar Articulos con Especificaciones
+            var faltan_especif = false;
+            $('.img-especif').each(function () {
+                var especif = $(this).attr('especif');
+                var num_especif = $(this).attr('num_especif');
+                if (especif == 'True') {
+                    if (parseInt(num_especif) <= 0) {
+                        faltan_especif = true;
+                    }
+                }
+            });
+
+            if (faltan_especif == true) {
+                alert('Faltan Seleccionar Especificaciones para Algunos Articulos.');
+                return false;
+            }
+
+            var lblconfirmacion = document.getElementById('<%=lblconfirmacion.ClientID%>');
+        if (lblconfirmacion != null) {
             var txtfolioCHP = document.getElementById('<%=txtfolioCHP.ClientID%>').value;
             var grdproductos2 = document.getElementById('<%=grdproductos2.ClientID%>');
             var cboentrega = document.getElementById('<%=cboentrega.ClientID%>');
             var ventrar = cboentrega.options[cboentrega.selectedIndex].value;
-            var formapago =  document.getElementById('<%=txtformapago.ClientID%>').value;
-            if(ventrar<=4 && formapago=="" )
-            {
-                var check= false;
-                if(grdproductos2==null)
-                {
+            var formapago = document.getElementById('<%=txtformapago.ClientID%>').value;
+            if (ventrar <= 4 && formapago == "") {
+                var check = false;
+                if (grdproductos2 == null) {
                     alert("La Lista de Productos no Puede Estar Vacia.");
                     return false;
                 }
-                else
-                {
-                    for(var i = 1;i<=grdproductos2.rows.length-1;i++)
-                    {
-                        if(grdproductos2.rows[i].cells[11].textContent == 4406)
-                        {
+                else {
+                    for (var i = 1; i <= grdproductos2.rows.length - 1; i++) {
+                        if (grdproductos2.rows[i].cells[11].textContent == 4406) {
                             check = true;
                             break;
-                            
+
                         }
                     }
-                    if(check==false && (txtfolioCHP=="" || txtfolioCHP=='0'))
-                    {
+                    if (check == false && (txtfolioCHP == "" || txtfolioCHP == '0')) {
                         alert('El Cliente Requiere Confirmacion de Pago.');
-                        window.open('confirmacion_de_pago_mobile.aspx');                
-                        return false; 
+                        window.open('confirmacion_de_pago_mobile.aspx');
+                        return false;
                     }
                 }
-            }                   
+            }
         }
-        return ver_maniobras();  
-             
+        return ver_maniobras();
+
     }
-    
-    
+
+
     var myvar;
-    function mostrar_procesar()
-    {
-        myvar = setTimeout(function(){document.getElementById('procesando_div').style.display =''}, 0);
-    } 
-    
-    
-    
-    function myStopFunction()
-    {
-        clearTimeout(myvar);
-        document.getElementById('procesando_div').style.display ='none';
+    function mostrar_procesar() {
+        myvar = setTimeout(function () { document.getElementById('procesando_div').style.display = '' }, 0);
     }
-    function tipo_entrega(cboentrega)
-    {
+
+
+
+    function myStopFunction() {
+        clearTimeout(myvar);
+        document.getElementById('procesando_div').style.display = 'none';
+    }
+    function tipo_entrega(cboentrega) {
         var tipo = cboentrega.options[cboentrega.selectedIndex].value;
         var btnconsignado = document.getElementById('<%=btnconsignado.ClientID%>');
 
-        if(tipo==1)
-        {
-            
-            btnconsignado.value="Consignado";
-            
+        if (tipo == 1) {
+
+            btnconsignado.value = "Consignado";
+
         }
-        else if(tipo==2)
-        {
-            btnconsignado.value="Consignado";
+        else if (tipo == 2) {
+            btnconsignado.value = "Consignado";
         }
-        else if(tipo==3)
-        {
-            btnconsignado.value="Detalle Recoge Cliente";
+        else if (tipo == 3) {
+            btnconsignado.value = "Detalle Recoge Cliente";
         }
-        else if(tipo==4)
-        {
-            btnconsignado.value="Detalle Anticipos"; 
+        else if (tipo == 4) {
+            btnconsignado.value = "Detalle Anticipos";
         }
-        return false;    
-    }
-    
-    function folio_maniobras()    
-    {
-        var folio = confirm("Es necesario cobrar las maniobras. \n \u000b \n ¿Deseas capturar el Folio de Autorización?");
-        if (folio==true)
-        {
-            document.getElementById("<%=btnfoliomaniobras.ClientID%>").click();        
-        }
-    }
-    
-    function cargar_maniobras()
-    {
-        var cargar = confirm("¿Deseas Cargar al Pre-Pedido el Monto del Flete?");
-        if(cargar==true)
-        {
-            document.getElementById("<%=btncargarmaniobras.ClientID%>").click();           
-        }    
-    }
-    
-    
-    function cargar_detalles()
-    {
-        var detalles =  confirm("El Pedido Tiene Varios Detalles: \n" + mensaje + "\n \u000B \n Completa la Información Necesaria o Pide un Folio de Autorización \n \u000B \n ¿Deseas Capturar el Folio de Autorización?");
-        if(detalles==true)
-        {
-            document.getElementById("<%=btndetallespedido.ClientID%>").click();        
-        }    
+        return false;
     }
 
-    
-    function up_files(tipo)
-    {
-        if(tipo==1)
-        {
+    function folio_maniobras() {
+        var folio = confirm("Es necesario cobrar las maniobras. \n \u000b \n ¿Deseas capturar el Folio de Autorización?");
+        if (folio == true) {
+            document.getElementById("<%=btnfoliomaniobras.ClientID%>").click();
+        }
+    }
+
+    function cargar_maniobras() {
+        var cargar = confirm("¿Deseas Cargar al Pre-Pedido el Monto del Flete?");
+        if (cargar == true) {
+            document.getElementById("<%=btncargarmaniobras.ClientID%>").click();
+        }
+    }
+
+
+    function cargar_detalles() {
+        var detalles = confirm("El Pedido Tiene Varios Detalles: \n" + mensaje + "\n \u000B \n Completa la Información Necesaria o Pide un Folio de Autorización \n \u000B \n ¿Deseas Capturar el Folio de Autorización?");
+        if (detalles == true) {
+            document.getElementById("<%=btndetallespedido.ClientID%>").click();
+        }
+    }
+
+
+    function up_files(tipo) {
+        if (tipo == 1) {
             var fucroquis = document.getElementById("<%=fucroquis.ClientID%>");
             fucroquis.click();
         }
-        else if(tipo==2)
-        {
-           var fullamada = document.getElementById("<%=fullamada.ClientID %>");
-           fullamada.click();
-        }
+        else if (tipo == 2) {
+            var fullamada = document.getElementById("<%=fullamada.ClientID %>");
+                fullamada.click();
+            }
         return false;
-    
+
     }
-    
-    
-    
-   
-    function cboentrega(combo)
-    {
-        if(combo.value==3)
-        {
+
+
+
+
+    function cboentrega(combo) {
+        if (combo.value == 3) {
             RecogeCliente();
         }
-        else if(combo.value==4)
-        {
+        else if (combo.value == 4) {
             PedidoEspecial();
         }
     }
-    function editar_articulo(idc_articulo)
-    {
-        editar_precios_cantidad_1(idc_articulo);        
+    function editar_articulo(idc_articulo) {
+        editar_precios_cantidad_1(idc_articulo);
     }
-    function editar_precios_cantidad_1(idc_articulo)
-    {
+    function editar_precios_cantidad_1(idc_articulo) {
 
-        
+
         var ruta = "editar_precios_cantidad.aspx?edit=1&cdi=" + idc_articulo;
-        var width =document.width - 40;             //document.width - 50;
+        var width = document.width - 40;             //document.width - 50;
         var height = document.height; //- 50;
         //TINY.box.show({iframe:ruta ,boxid:'frameless',width:width,height:height,fixed:false,maskid:'bluemask',maskopacity:40,top:2,left:2})
         document.getElementById("<%=txtidc_articulo.ClientID%>").value = idc_articulo;
-        window.open(ruta);        
-        return false;    
+        window.open(ruta);
+        return false;
     }
-    
-    
-    function check_rd(rd)
-    {
-        if(rd.checked==true)
-        {
-            rd.checked=true;
+
+
+    function check_rd(rd) {
+        if (rd.checked == true) {
+            rd.checked = true;
             return false;
         }
-        else
-        {
-            rd.checked=false;
+        else {
+            rd.checked = false;
             return false;
-        }    
+        }
     }
-    
-  
-    
-    function pageLoad(sender, args)
-    {
-    
-//    
-//       $(function() {
-//                $( "#tabs" ).tabs({
-//                    collapsible: true
-//                });
-//            });
 
 
-        $(document).ready(function() {
+
+    function pageLoad(sender, args) {
+
+        //    
+        //       $(function() {
+        //                $( "#tabs" ).tabs({
+        //                    collapsible: true
+        //                });
+        //            });
+
+
+        $(document).ready(function () {
             //$('input[id$="txtidc_cliente"]').datetimepicker();
- 
 
-            $('.img-especif').each(function() {
+
+            $('.img-especif').each(function () {
                 var especif = $(this).attr('especif');
                 var num_especif = $(this).attr('num_especif');
                 var idc = $(this).attr('idc');
@@ -346,528 +293,459 @@
                     else {
                         $(this).prop('src', 'imagenes/spe_red.png');
                     }
-                    $(this).click(function() { window.open('especificaciones.aspx?cdi=' + idc); return false; });
+                    $(this).click(function () { window.open('especificaciones.aspx?cdi=' + idc); return false; });
                 }
                 else {
                     $(this).prop('src', 'imagenes/spe_disabled.png');
-                    $(this).click(function() { return false; });
+                    $(this).click(function () { return false; });
                 }
             });
         });
-            
-            
+
+
     }
-//    function popup_consignado()
-//    {
-//       var id  = document.getElementById("<%=txtid.ClientID%>").value;
-//       var consignado = document.getElementById("<%=txt_consignado.ClientID%>").value;
-//       var width = document.width - 50;
-//       var height = document.height;
-//       alert(width );
-//       var ruta ="Consignado_mobile.aspx?id=" + id + '&consignado=' + consignado;
-//       TINY.box.show({iframe:ruta ,boxid:'frameless',width:width,height:height,fixed:false,maskid:'bluemask',maskopacity:40})
-//       return false; 
-//    }  
+    //    function popup_consignado()
+    //    {
+    //       var id  = document.getElementById("<%=txtid.ClientID%>").value;
+        //       var consignado = document.getElementById("<%=txt_consignado.ClientID%>").value;
+        //       var width = document.width - 50;
+        //       var height = document.height;
+        //       alert(width );
+        //       var ruta ="Consignado_mobile.aspx?id=" + id + '&consignado=' + consignado;
+        //       TINY.box.show({iframe:ruta ,boxid:'frameless',width:width,height:height,fixed:false,maskid:'bluemask',maskopacity:40})
+        //       return false; 
+        //    }  
 
 
-    function popup_consignado()
-    {
-       var cboentrega = document.getElementById("<%=cboentrega.ClientID%>");
-       var tipo = cboentrega.options[cboentrega.selectedIndex].value;
-       var id  = document.getElementById("<%=txtid.ClientID%>").value;
+        function popup_consignado() {
+            var cboentrega = document.getElementById("<%=cboentrega.ClientID%>");
+        var tipo = cboentrega.options[cboentrega.selectedIndex].value;
+        var id = document.getElementById("<%=txtid.ClientID%>").value;
        var consignado = document.getElementById("<%=txt_consignado.ClientID%>").value;
         var ruta;
         var encodedString = btoa(id);
         var encodedString2 = btoa(consignado);
-       if(tipo==1)
-       {
-           ruta = "Consignado_mobile.aspx?id=" + encodedString + '&consignado=' + encodedString2;
+        if (tipo == 1) {
+            ruta = "Consignado_mobile.aspx?id=" + encodedString + '&consignado=' + encodedString2;
             window.open(ruta);
-       }
-       else if(tipo==2)
-       {
-           ruta = "Consignado_mobile.aspx?id=" + encodedString + '&consignado=' + encodedString2;
+        }
+        else if (tipo == 2) {
+            ruta = "Consignado_mobile.aspx?id=" + encodedString + '&consignado=' + encodedString2;
             window.open(ruta);
-       }
-       else if(tipo==3)
-       {
+        }
+        else if (tipo == 3) {
             RecogeCliente();
-       }
-       else if(tipo==4)
-       {
+        }
+        else if (tipo == 4) {
             PedidoEspecial();
-       }
-       return false;       
-    }  
-    
-    function editar_precios_cantidad(tipo)
-    {
-       var cboproductos;
-       if (tipo==1)
-       {
-            cboproductos = document.getElementById("<%=cboproductos.ClientID%>");       
-       }
-       else if(tipo==2)
-       {
-            cboproductos = document.getElementById("<%=cbomaster.ClientID%>");       
-       }
-       
-       if(cboproductos.options.length>0)
-       {
-           var idc_articulo = cboproductos.options[cboproductos.selectedIndex].value;
-           var ruta ="editar_precios_cantidad.aspx?cdi=" + idc_articulo + "&t=" + tipo;   
-           window.open(ruta);
-           return false;  
-       }
-       else
-       {
+        }
         return false;
-       }        
-          
     }
-    
-    
- 
-    
-    
-     function cerrar()
-    {
-        TINY.box.hide();
-        return false;    
-    }
-    function desh_panel()
-    {
-        var panel = document.getElementById("<%=txtbuscar.ClientID%>"); //Cambio nombre solo por el error.
-        panel.enabled=false;
-        panel.style.display = "block";
-       
-    }
-    
-    
-    function validar_fecha(txtfecha,txtfecha_max)
-    {
-   
-       var numeros = txtfecha.value.match(/\d+/g); 
-       var fecha = new Date(numeros [2], numeros[1]-1, numeros[0]);
-       
-       
-     
-       var numeros_max = txtfecha_max.value.match(/\d+/g);
-       var fecha_max = new Date(numeros_max[2],numeros_max[1]-1, numeros_max[0]);
-       
-       if(fecha>fecha_max)
-       {    
-            alert("La Fecha de Entrega Debe Ser Menor o Igual a 3 Dias.");
-            txtfecha.value= txtfecha_max.value;
-            return false;       
+
+    function editar_precios_cantidad(tipo) {
+        var cboproductos;
+        if (tipo == 1) {
+            cboproductos = document.getElementById("<%=cboproductos.ClientID%>");
        }
-       
-      fecha_hoy = new Date();
-      
-       if(fecha<fecha_hoy)
-       {
+       else if (tipo == 2) {
+           cboproductos = document.getElementById("<%=cbomaster.ClientID%>");
+       }
+
+    if (cboproductos.options.length > 0) {
+        var idc_articulo = cboproductos.options[cboproductos.selectedIndex].value;
+        var ruta = "editar_precios_cantidad.aspx?cdi=" + idc_articulo + "&t=" + tipo;
+        window.open(ruta);
+        return false;
+    }
+    else {
+        return false;
+    }
+
+}
+
+
+
+
+
+function cerrar() {
+    TINY.box.hide();
+    return false;
+}
+function desh_panel() {
+    var panel = document.getElementById("<%=txtbuscar.ClientID%>"); //Cambio nombre solo por el error.
+        panel.enabled = false;
+        panel.style.display = "block";
+
+    }
+
+
+    function validar_fecha(txtfecha, txtfecha_max) {
+
+        var numeros = txtfecha.value.match(/\d+/g);
+        var fecha = new Date(numeros[2], numeros[1] - 1, numeros[0]);
+
+
+
+        var numeros_max = txtfecha_max.value.match(/\d+/g);
+        var fecha_max = new Date(numeros_max[2], numeros_max[1] - 1, numeros_max[0]);
+
+        if (fecha > fecha_max) {
+            alert("La Fecha de Entrega Debe Ser Menor o Igual a 3 Dias.");
+            txtfecha.value = txtfecha_max.value;
+            return false;
+        }
+
+        fecha_hoy = new Date();
+
+        if (fecha < fecha_hoy) {
             alert("La Fecha no Debera ser Menor al dia de Hoy.");
-            var day =fecha_hoy.getDate();
-            if( day<10)
-            {
-                day = '0'  + day;            
+            var day = fecha_hoy.getDate();
+            if (day < 10) {
+                day = '0' + day;
             }
-            
-           
-            var month = (fecha_hoy.getMonth())+1;
-             if (month<10)
-            {
+
+
+            var month = (fecha_hoy.getMonth()) + 1;
+            if (month < 10) {
                 month = '0' + month;
             }
-            
-            
+
+
             var year = fecha_hoy.getFullYear();
-            
-            txtfecha.value= day   + '/' +  month  + '/' + year ;
+
+            txtfecha.value = day + '/' + month + '/' + year;
             return false;
-       }
-       
-    
+        }
+
+
     }
-    function ver_ficha(idc)
-         {
-            var ruta = "ficha_tecnica.aspx?idc=" + idc;
-            window.open(ruta);
-            return false;
-         }
-         
-          function cursor(objeto)
-        {
-           
-            objeto.style.cursor='hand';    
-        }
-        
-        function cursor_fuera(objeto)
-        {
-            objeto.style.cursor='pointer';    
-        }
-  
-    function Ubicacion_Cliente(nombre,direccion)
-    {
+    function ver_ficha(idc) {
+        var ruta = "ficha_tecnica.aspx?idc=" + idc;
+        window.open(ruta);
+        return false;
+    }
+
+    function cursor(objeto) {
+
+        objeto.style.cursor = 'hand';
+    }
+
+    function cursor_fuera(objeto) {
+        objeto.style.cursor = 'pointer';
+    }
+
+    function Ubicacion_Cliente(nombre, direccion) {
         if (document.getElementById("<%=txtid.ClientID%>").value == '' || document.getElementById("<%=txtid.ClientID%>").value == 0)
-         alert("No Existe Cliente.")
-        else 
-        {
-            var y= (screen.height - 425) / 2;
-             var x= (screen.width - 836)/ 2;
-            var ruta='Ubicacion_Cliente.aspx?id=' + document.getElementById("<%=txtid.ClientID%>").value + '&cliente=' + nombre + '&direccion=' + direccion;
-            window.open(ruta, "Orden de Compra", "width=836px,height=425px,top="+ y + ",left=" + x + ",Scrollbars=yes,title=yes,location=no");
-            return false;
-        }       
-    }
-//document.onkeydown=
-function redirecting()
-{
-    document.getElementById("<%=btnredirecting.ClientID%>").click();
+            alert("No Existe Cliente.")
+        else {
+            var y = (screen.height - 425) / 2;
+            var x = (screen.width - 836) / 2;
+            var ruta = 'Ubicacion_Cliente.aspx?id=' + document.getElementById("<%=txtid.ClientID%>").value + '&cliente=' + nombre + '&direccion=' + direccion;
+             window.open(ruta, "Orden de Compra", "width=836px,height=425px,top=" + y + ",left=" + x + ",Scrollbars=yes,title=yes,location=no");
+             return false;
+         }
+     }
+     //document.onkeydown=
+     function redirecting() {
+         document.getElementById("<%=btnredirecting.ClientID%>").click();
     return false;
 }
 
 
 
-function buscarart(e)
-{
-    
+function buscarart(e) {
+
     var key = (document.all) ? e.keyCode : e.which;
     var txtcodigoarticulo = document.getElementById("<%=txtcodigoarticulo.ClientID%>").value;
-    if (key==13)
-    {
-       if(txtcodigoarticulo.length>=3)
-       {
-           mostrar_procesar_busq();
-       }
-       document.getElementById("<%=btnbuscarart.ClientID%>").click();     
+    if (key == 13) {
+        if (txtcodigoarticulo.length >= 3) {
+            mostrar_procesar_busq();
+        }
+        document.getElementById("<%=btnbuscarart.ClientID%>").click();
        return false;
-    }
+   }
 
 }
 
 
-function agregararticulo(e)
-{
- var key=  (document.all) ? e.keyCode : e.which;
- 
- if(key==13)
-    {
+function agregararticulo(e) {
+    var key = (document.all) ? e.keyCode : e.which;
+
+    if (key == 13) {
         document.getElementById("<%=btnagregar.ClientID %>").click();
-        return false;    
-    }
-}
-
-
-
-function abremodal()
-{
-       var y= (screen.height - 40) / 2;
-       var x= (screen.width - 100 )/ 2;        
-       sList = window.open("Folio_Autorizacion.aspx?tipo=95", "argumentos", "Folio_Autorización", "width=100px,height=40px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no"); 
-       if(document.getElementById('<%=txtFolio.ClientID%>').value!='')
-        {            
-            alert(document.getElementById('<%=txtFolio.ClientID%>').value);                        
-        }
-        else
-        {
-            alert('El Folio se agrego correctamente')
-        }
-       
-}
-
-
-//    function fileUpload2()
-//    { __doPostBack('fileUpload2','');
-//      return (true);
-//    }
-function x(evt) //Deshabilitar el Enter TextBox
- {
- return (evt ? evt.which : event.keyCode) != 13;
+     return false;
  }
-
-    
-function mpeSeleccionOnCancel() //Boton Cancelar del ModalPopUp (Busqueda Articulos)
-{
-      var txtcodigoarticulo = document.getElementById('<%=txtcodigoarticulo.ClientID%>');
-      txtcodigoarticulo.value="";
-      document.getElementById('<%=txtcodigoarticulo.ClientID%>').focus();    
 }
 
-function LostFocus() //Actualizar Valores en cambios del Grid Lista...
-{
-    document.getElementById('<%=btnfocus.ClientID%>').click();
+
+
+function abremodal() {
+    var y = (screen.height - 40) / 2;
+    var x = (screen.width - 100) / 2;
+    sList = window.open("Folio_Autorizacion.aspx?tipo=95", "argumentos", "Folio_Autorización", "width=100px,height=40px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no");
+    if (document.getElementById('<%=txtFolio.ClientID%>').value != '') {
+           alert(document.getElementById('<%=txtFolio.ClientID%>').value);
+       }
+       else {
+           alert('El Folio se agrego correctamente')
+       }
+
+   }
+
+
+   //    function fileUpload2()
+   //    { __doPostBack('fileUpload2','');
+   //      return (true);
+   //    }
+   function x(evt) //Deshabilitar el Enter TextBox
+   {
+       return (evt ? evt.which : event.keyCode) != 13;
+   }
+
+
+   function mpeSeleccionOnCancel() //Boton Cancelar del ModalPopUp (Busqueda Articulos)
+   {
+       var txtcodigoarticulo = document.getElementById('<%=txtcodigoarticulo.ClientID%>');
+    txtcodigoarticulo.value = "";
+    document.getElementById('<%=txtcodigoarticulo.ClientID%>').focus();
+  }
+
+  function LostFocus() //Actualizar Valores en cambios del Grid Lista...
+  {
+      document.getElementById('<%=btnfocus.ClientID%>').click();
 }
 
-function cancelarbusqueda()
-{
+function cancelarbusqueda() {
     var txtbuscar = document.getElementById('<%=txtbuscar.ClientID%>');
-    txtbuscar.value="";
+    txtbuscar.value = "";
     document.getElementById('<%=txtbuscar.ClientID%>').focus();
 
 }
-function validarcampos()
-{
-    var txt =document.getElementById('<%=txtcodigoarticulo.ClientID%>').value;
-    if(txt=="")
-    {
-    alert("ingrse datos");
+function validarcampos() {
+    var txt = document.getElementById('<%=txtcodigoarticulo.ClientID%>').value;
+    if (txt == "") {
+        alert("ingrse datos");
     }
 
 }
 
 //Cuenta los caracteres del textbox
-function WorldCount(caracter)
-{
-//var cont= caracter.length;
-//if (cont==2)
-//{
-//document.getElementById("<%=btnagregar.ClientID%>").click();
-//}
-var code=window.event.keycode;
-if (caracter==code)
-{
-    document.getElementById("<%=btnagregar.ClientID%>").click();
+function WorldCount(caracter) {
+    //var cont= caracter.length;
+    //if (cont==2)
+    //{
+    //document.getElementById("<%=btnagregar.ClientID%>").click();
+    //}
+    var code = window.event.keycode;
+    if (caracter == code) {
+        document.getElementById("<%=btnagregar.ClientID%>").click();
 }
 }
 
-function cambiaFoco(e)
-{
-/*Esta funcion funciona con KeyPress y recibe como parametro el nombre de la caja destino(que es una cadena)*/
+function cambiaFoco(e) {
+    /*Esta funcion funciona con KeyPress y recibe como parametro el nombre de la caja destino(que es una cadena)*/
 
-//Primero debes obtener el valor ascii de la tecla presionada
-var key = (document.all) ? e.keyCode : e.which;
-//var key=window.event.keyCode;//
-//Si es enter(13)
-if(key==13)
-    //Se pasa el foco a la caja destino
+    //Primero debes obtener el valor ascii de la tecla presionada
+    var key = (document.all) ? e.keyCode : e.which;
+    //var key=window.event.keyCode;//
+    //Si es enter(13)
+    if (key == 13)
+        //Se pasa el foco a la caja destino
     {
         var caja = document.getElementById('<%=txtprecio.ClientID%>');
-        if(caja.disabled==true)
-        {
-            document.getElementById("<%=btnagregar.ClientID %>").click();        
+    if (caja.disabled == true) {
+        document.getElementById("<%=btnagregar.ClientID %>").click();
         }
-        else
-        {
+        else {
             caja.focus();
             caja.select();
         }
-        return false;        
+        return false;
     }
 }
 
-function AbreHija()
-{
-    if (document.getElementById("<%=txtid.ClientID%>").value=='')
-          alert("No Existe Cliente")
-          else
-    {
+function AbreHija() {
+    if (document.getElementById("<%=txtid.ClientID%>").value == '')
+        alert("No Existe Cliente")
+    else {
         var txtnumeroOC_obj = '<%= txtnumeroOC.ClientID%>';
         var txtidOc_obj = '<%= txtidOc.ClientID%>';
-        var ruta = 'Oc_Digitales_Pendientes_2.aspx?id=' + document.getElementById("<%=txtid.ClientID%>").value + '&txtnumeroOC_obj=' + txtnumeroOC_obj + '&txtidOc_obj=' + txtidOc_obj;
-//          var y= (screen.height - 500) / 2;
-//          var x= (screen.width - 800)/ 2;                                     
-//          sList=window.open(ruta, "OC", "width=800px,height=500px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no");
-          window.open(ruta);
-          return false;
-    }
-}
-
-function AbreConsignados()
-{
-    if (document.getElementById("<%=txtid.ClientID%>").value=='')
-          alert("No Existe Cliente")
-          else
-    {
-          var ruta= 'Historial_Consignados.aspx?idc_cliente=' + document.getElementById("<%=txtid.ClientID%>").value;
-          //sList = window.open(ruta, "Historial Consignados", "width=1100,height=900,Menubar=yes,Scrollbars=yes");
-          var y= (screen.height - 500) / 2;
-          var x= (screen.width - 900 )/ 2;                                     
-          sList=window.open(ruta, null, "width=900,height=500,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no");
-    }
-}
-
-function AbreBuscarColonia()
-{
-    if (document.getElementById("<%=txtid.ClientID%>").value=='')
-          alert("No Existe Cliente")
-          else
-    {
-          var y= (screen.height - 500) / 2;
-          var x= (screen.width - 700 )/ 2;
-          var ruta= 'buscar_colonia.aspx';       
-          sList=window.open(ruta,null, "width=700px,height=500px,top=" + y + ",left=" + x +",Menubar=no,Scrollbars=no,location=no,status=no");
-    }
-}
-
-function RecogeCliente()
-    {     
-        // var ruta="Recoje_Cliente2.aspx?idc_sucursal=" + document.getElementById('<%=txtsucursalr.ClientID%>').value;
-        // TINY.box.show({iframe:ruta,boxid:'frameless',width:500,height:150,fixed:false,maskid:'bluemask',maskopacity:40})
-           var ruta="recoge_cliente_mobile.aspx?idc_sucursal=" + document.getElementById('<%=txtsucursalr.ClientID%>').value; 
-           window.open(ruta);
-         //window.open(ruta, null, "width=510px,height=173px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no,status=no");
-        // document.getElementById('<%=btnrc.ClientID%>').click(); 
-                    
-    }
-    
-function PedidoEspecial()
-    {    
-         //var y= (screen.height - 340) / 2;
-         //var x= (screen.width - 540 )/ 2;
-         //ventana= window.open("Pedido_Especial2.aspx", null, "width=540px,height=340px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no,status=no,title='Pedido Especial'");
-         //TINY.box.show({iframe:"Pedido_Especial2.aspx",boxid:'frameless',width:490,height:334,fixed:false,maskid:'bluemask',maskopacity:40})
-         window.open("pedido_especial_mobile.aspx");         
-         //return false;
-         //document.getElementById('<%=btnsf.ClientID%>').click();
-        
-    }
-
-function remLink() {
-  if (window.sList && window.sList.open && !window.sList.closed)
-    window.sList.opener = null;
-}
-
-function AbreIMGOC()
-{
-    if (document.getElementById("<%=txtidOc.ClientID%>").value == '' || document.getElementById("<%=txtidOc.ClientID%>").value == 0)
-     alert("No ha sido seleccionada la Orden de Compra.")
-    else 
-    {
-        var y= (screen.height - 500) / 2;
-         var x= (screen.width - 800 )/ 2;
-        var ruta='IMG_Orden_Compra.aspx?img=' + document.getElementById("<%=txtidOc.ClientID%>").value;
+        var encodedString = btoa(document.getElementById("<%=txtid.ClientID%>").value);
+        var ruta = 'Oc_Digitales_Pendientes_2.aspx?id=' + encodedString + '&txtnumeroOC_obj=' + txtnumeroOC_obj + '&txtidOc_obj=' + txtidOc_obj;
+        //          var y= (screen.height - 500) / 2;
+        //          var x= (screen.width - 800)/ 2;                                     
+        //          sList=window.open(ruta, "OC", "width=800px,height=500px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no");
         window.open(ruta);
         return false;
     }
-   
 }
-function Agregarcroquis()
-{
-  if(document.getElementById("<%=txtid.ClientID%>").value=="" || document.getElementById("<%=txtid.ClientID%>").value=="")
-  {
-    alert("Es Necesario Seleccionar Cliente.");
-    return false;
-  }
-  else
-  {
-    var fucroquis = document.getElementById("<%=fucroquis.ClientID%>");
-    var file = fucroquis.value;
-    var ext = file.substring(file.length-4,file.length);
-    if(ext==".jpg" || ext==".png" || ext==".gif")
-    {
-        document.getElementById("<%=btnagregarcroquis.ClientID%>").click();    
+
+function AbreConsignados() {
+    if (document.getElementById("<%=txtid.ClientID%>").value == '')
+        alert("No Existe Cliente")
+    else {
+        var ruta = 'Historial_Consignados.aspx?idc_cliente=' + document.getElementById("<%=txtid.ClientID%>").value;
+        //sList = window.open(ruta, "Historial Consignados", "width=1100,height=900,Menubar=yes,Scrollbars=yes");
+        var y = (screen.height - 500) / 2;
+        var x = (screen.width - 900) / 2;
+        sList = window.open(ruta, null, "width=900,height=500,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no");
     }
-    else
-    {
-        alert("El Tipo de Imagen Seleccionado no es Valido.");
-        fucroquis.value="";
+}
+
+function AbreBuscarColonia() {
+    if (document.getElementById("<%=txtid.ClientID%>").value == '')
+        alert("No Existe Cliente")
+    else {
+        var y = (screen.height - 500) / 2;
+        var x = (screen.width - 700) / 2;
+        var ruta = 'buscar_colonia.aspx';
+        sList = window.open(ruta, null, "width=700px,height=500px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no,status=no");
+    }
+}
+
+function RecogeCliente() {
+    // var ruta="Recoje_Cliente2.aspx?idc_sucursal=" + document.getElementById('<%=txtsucursalr.ClientID%>').value;
+    // TINY.box.show({iframe:ruta,boxid:'frameless',width:500,height:150,fixed:false,maskid:'bluemask',maskopacity:40})
+    var ruta = "recoge_cliente_mobile.aspx?idc_sucursal=" + document.getElementById('<%=txtsucursalr.ClientID%>').value;
+    window.open(ruta);
+    //window.open(ruta, null, "width=510px,height=173px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no,status=no");
+    // document.getElementById('<%=btnrc.ClientID%>').click(); 
+
+}
+
+        function PedidoEspecial() {
+            //var y= (screen.height - 340) / 2;
+            //var x= (screen.width - 540 )/ 2;
+            //ventana= window.open("Pedido_Especial2.aspx", null, "width=540px,height=340px,top=" + y + ",left=" + x + ",Menubar=no,Scrollbars=no,location=no,status=no,title='Pedido Especial'");
+            //TINY.box.show({iframe:"Pedido_Especial2.aspx",boxid:'frameless',width:490,height:334,fixed:false,maskid:'bluemask',maskopacity:40})
+            window.open("pedido_especial_mobile.aspx");
+            //return false;
+            //document.getElementById('<%=btnsf.ClientID%>').click();
+
+}
+
+        function remLink() {
+            if (window.sList && window.sList.open && !window.sList.closed)
+                window.sList.opener = null;
+        }
+
+        function AbreIMGOC() {
+            if (document.getElementById("<%=txtidOc.ClientID%>").value == '' || document.getElementById("<%=txtidOc.ClientID%>").value == 0)
+        alert("No ha sido seleccionada la Orden de Compra.")
+    else {
+        var y = (screen.height - 500) / 2;
+        var x = (screen.width - 800) / 2;
+        var ruta = 'IMG_Orden_Compra.aspx?img=' + document.getElementById("<%=txtidOc.ClientID%>").value;
+         window.open(ruta);
+         return false;
+     }
+
+ }
+ function Agregarcroquis() {
+     if (document.getElementById("<%=txtid.ClientID%>").value == "" || document.getElementById("<%=txtid.ClientID%>").value == "") {
+        alert("Es Necesario Seleccionar Cliente.");
         return false;
     }
-  } 
+    else {
+        var fucroquis = document.getElementById("<%=fucroquis.ClientID%>");
+      var file = fucroquis.value;
+      var ext = file.substring(file.length - 4, file.length);
+      if (ext == ".jpg" || ext == ".png" || ext == ".gif") {
+          document.getElementById("<%=btnagregarcroquis.ClientID%>").click();
+    }
+    else {
+        alert("El Tipo de Imagen Seleccionado no es Valido.");
+        fucroquis.value = "";
+        return false;
+    }
+}
 }
 
-function Error()
-{
-//alert("Error al cargar el archivo, verifique el tamaño y tipo del mismo.");
+function Error() {
+    //alert("Error al cargar el archivo, verifique el tamaño y tipo del mismo.");
 }
 
-function verCroquis()
-{
+function verCroquis() {
     var id = document.getElementById("<%=txtid.ClientID%>").value;
     var encodedString = btoa(id);
     var ruta = "IMG_Croquis.aspx?croquis=" + encodedString + "&tipo=1";
-     if (document.getElementById("<%=txtid.ClientID%>").value == '')
+    if (document.getElementById("<%=txtid.ClientID%>").value == '')
         document.getElementById("<%=txtid.ClientID%>").value = '';
-     else
-     {
-        window.open(ruta);  
-        return false;
+     else {
+         window.open(ruta);
+         return false;
      }
      return false;
-}
-function verCroquis2()
-{var id = document.getElementById("<%=txtid.ClientID%>").value;
+ }
+ function verCroquis2() {
+     var id = document.getElementById("<%=txtid.ClientID%>").value;
     var encodedString = btoa(id);
     var ruta = "IMG_Croquis.aspx?croquis=" + encodedString + '&tipo=2';
 
-     if (combo.options[combo.selectedIndex].value == '')
-        {
-            combo.options[combo.selectedIndex].value = '';
-            return false;
-        }
-     else
-     {
+    if (combo.options[combo.selectedIndex].value == '') {
+        combo.options[combo.selectedIndex].value = '';
+        return false;
+    }
+    else {
         //var y= (screen.height - 500) / 2;
         //var x= (screen.width - 800 )/ 2;
         //window.open(ruta,"Croquis Seleccionado","width=1100,height=900,scrollbars=yes,title=yes,location=no");  
         //window.open(ruta,null,"height=500, width=800,status=yes,resizable= no,top=" + y + ",left=" + x + ",scrollbars=yes, toolbar=no, menubar=no,location=no");
         window.open(ruta);
         return false;
-     }
-     
+    }
+
 }
 
-function AgregarLlamada()
-    {
-          if(document.getElementById("<%=txtid.ClientID %>").value=="" || document.getElementById("<%=txtid.ClientID %>").value=="")
-          {
-            alert("Es Necesario Seleccionar Cliente.");
-            return false;
+function AgregarLlamada() {
+    if (document.getElementById("<%=txtid.ClientID %>").value == "" || document.getElementById("<%=txtid.ClientID %>").value == "") {
+        alert("Es Necesario Seleccionar Cliente.");
+        return false;
+    }
+    else {
+        document.getElementById("<%=btnagregarllamada.ClientID%>").click();
           }
-          else
-          {
-            document.getElementById("<%=btnagregarllamada.ClientID%>").click();
-          }
-            
-     }
+
+      }
 
 
-function validarmaxlength(textbox,maximo) //Función para limitar la cantidad de caracteres en un TextBox, recibe como parametros
-        {                  // el nombre del TextBox y la cantidad permitida.
-            if (textbox.value.length > maximo)
-            {
-                textbox.value = textbox.value.substring(0,maximo);
-                alert("Solo puedes ingresar hasta un maximo de "+maximo+" caracteres");
-            }
-        }
-        
-function reproducir_llamada()
-        {
-            var y= (screen.height - 70) / 2;
-            var x= (screen.width - 340 )/ 2;
-            var idc_cliente=document.getElementById("<%=txtid.ClientID%>").value;
-            if(idc_cliente=="")
-            {
+      function validarmaxlength(textbox, maximo) //Función para limitar la cantidad de caracteres en un TextBox, recibe como parametros
+      {                  // el nombre del TextBox y la cantidad permitida.
+          if (textbox.value.length > maximo) {
+              textbox.value = textbox.value.substring(0, maximo);
+              alert("Solo puedes ingresar hasta un maximo de " + maximo + " caracteres");
+          }
+      }
+
+      function reproducir_llamada() {
+          var y = (screen.height - 70) / 2;
+          var x = (screen.width - 340) / 2;
+          var idc_cliente = document.getElementById("<%=txtid.ClientID%>").value;
+            if (idc_cliente == "") {
                 alert("Seleccionar Cliente");
                 return false;
             }
-            else
-            {
-                var ruta="Audio_Llamada.aspx?idc_cliente="+idc_cliente;
+            else {
+                var ruta = "Audio_Llamada.aspx?idc_cliente=" + idc_cliente;
                 //window.open(ruta,"Llamada","height=70, width=340,top=" + y + ", left=" + x + ",scrollbars=NO,titlebar=YES,resizable=NO,location=no, center=yes");
                 window.open(ruta);
-                return false;     
-            
+                return false;
+
             }
-            
-              
+
+
         }
 
-function validar_chekplus()
-{
-    if (document.getElementById('<%=txtfolioCHP.ClientID%>').value != '' && document.getElementById('<%=txtfolioCHP.ClientID%>').value != '0' )
-    {
+        function validar_chekplus() {
+            if (document.getElementById('<%=txtfolioCHP.ClientID%>').value != '' && document.getElementById('<%=txtfolioCHP.ClientID%>').value != '0') {
         document.getElementById('<%=btnvalidaChP.ClientID%>').click();
     }
-    else
-    {
-        if(document.getElementById('<%=txtfolioCHP.ClientID%>').value == '')
-        {
+    else {
+        if (document.getElementById('<%=txtfolioCHP.ClientID%>').value == '') {
             document.getElementById('<%=txtfolioCHP.ClientID%>').value = '';
         }
         return false;
-    } 
+    }
 }
 
 //function validar_chekplus2(e)
@@ -876,44 +754,64 @@ function validar_chekplus()
 //    if (key==13)
 //    {
 //       document.getElementById('<%=btnvalidaChP.ClientID%>').click();
-//       return false;
-//       
-//    }
-// 
-//}
-function buscar_cliente(e)
-{
-    var key = (document.all) ? e.keyCode : e.which;
-    if (key==13)
-    {
-       document.getElementById('<%=btnbuscarcliente.ClientID%>').click();
-       return false;
+        //       return false;
+        //       
+        //    }
+        // 
+        //}
+        function buscar_cliente(e) {
+            var key = (document.all) ? e.keyCode : e.which;
+            if (key == 13) {
+                document.getElementById('<%=btnbuscarcliente.ClientID%>').click();
+        return false;
     }
 }
 
-function Hola()
-{
+function Hola() {
     alert('Hola mundo');
-    document.getElementsByName =('ctl00$ContentPlaceHolder1$grdproductos2$ctl02$txtprecioreal').value= 500.00;
-    var valor = document.getElementById=('ctl00_ContentPlaceHolder1_grdproductos2_ctl02_txtprecioreal').value;
+    document.getElementsByName = ('ctl00$ContentPlaceHolder1$grdproductos2$ctl02$txtprecioreal').value = 500.00;
+    var valor = document.getElementById = ('ctl00_ContentPlaceHolder1_grdproductos2_ctl02_txtprecioreal').value;
     alert(valor);
     return false;
 }
 
 
 
-</script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-    <style type="text/css" >
+
+    </script>
+     <style type="text/css" >
         .txt_search{padding-left:24px !important;background:white url(imagenes/btn/icon_buscar.png) no-repeat left center !important;}
         .ui-datepicker-trigger { position: relative; left:-20px; top:-25px; }
     </style>
+    <script type="text/javascript">
+        function ConfirmAlert(msg) {
+            swal({
+                title: msg,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Cancelar",
+                closeOnConfirm: true,
+                closeOnCancel: true,
+                allowEscapeKey: false
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        }
+    </script>
 
 
 
-
-<div style="position: relative; width: 100%; top: 0px; right: 0px; bottom: 0px; left: 0px;">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+   
+    <div style="position: relative; width: 100%; top: 0px; right: 0px; bottom: 0px; left: 0px;">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
 
         <ContentTemplate>
@@ -1146,7 +1044,7 @@ function Hola()
                             <table>
                                 <tr>
                                     <td>
-                                        <img id="procesando_gif" align="middle" alt="" height="20px"
+                                        <img id="procesando_gif" align="middle" alt="" height="30px"
                                             src="imagenes/loading.gif" width="30px" />
                                     </td>
                                     <td style="font-family: Arial; font-weight: bold;" valign="bottom">Cargando Productos Master...</td>
@@ -1185,7 +1083,7 @@ function Hola()
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <img src="imagenes/loading.gif" alt="" id="Img2" align="middle" height="20px" width="30px" />
+                                                    <img src="imagenes/loading.gif" alt="" id="Img2" align="middle" height="30px" width="30px" />
                                                 </td>
                                                 <td valign="bottom" style="font-family: Arial; font-weight: bold; font-size: small;">Buscando...</td>
                                             </tr>
@@ -1224,7 +1122,7 @@ function Hola()
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <img src="imagenes/loading.gif" alt="" id="Img1" align="middle" height="20px" width="30px" />
+                                                    <img src="imagenes/loading.gif" alt="" id="Img1" align="middle" height="30px" width="30px" />
                                                 </td>
                                                 <td valign="bottom" style="font-family: Arial; font-weight: bold;">Actualizando Productos...</td>
                                             </tr>
@@ -1591,8 +1489,8 @@ function Hola()
                                                     ImageUrl="~/imagenes/img_up.png" />
                                             </td>
                                             <td align="center">
-                                                <asp:Image ID="imgloading2" runat="server" Height="16px"
-                                                    ImageUrl="~/imagenes/loading.gif" Style="display: none" Width="16px" />
+                                                <asp:Image ID="imgloading2" runat="server" Height="30px"
+                                                    ImageUrl="~/imagenes/loading.gif" Style="display: none" Width="30px" />
                                             </td>
                                             <td>
                                                 <asp:Label ID="lblllamada" runat="server" Font-Bold="True" ForeColor="Navy"
@@ -1630,8 +1528,8 @@ function Hola()
                                             </td>
                                             <td>
                                                 <asp:Label ID="lblruta" runat="server" 
-                                                    Style="display: none; font-size:8px; color:orangered;"></asp:Label><asp:Image ID="imgloading" runat="server" Height="16px"
-                                                        ImageUrl="~/imagenes/loading.gif" Style="display: none" Width="16px" />
+                                                    Style="display: none; font-size:8px; color:orangered;"></asp:Label><asp:Image ID="imgloading" runat="server" Height="30px"
+                                                        ImageUrl="~/imagenes/loading.gif" Style="display: none" Width="30px" />
                                             </td>
                                             <td>
                                                 <asp:Button ID="btnvercroquis" runat="server" Font-Bold="True"
@@ -1728,7 +1626,7 @@ function Hola()
                             <table>
                                 <tr>
                                     <td>
-                                        <img src="imagenes/loading.gif" alt="" id="Img3" align="middle" height="20px" width="30px" />
+                                        <img src="imagenes/loading.gif" alt="" id="Img3" align="middle" height="30px" width="30px" />
                                     </td>
                                     <td valign="bottom" style="font-family: Arial; font-weight: bold; font-size: small; color: steelblue;">Guardando Pedido...</td>
                                 </tr>
@@ -1739,24 +1637,21 @@ function Hola()
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="tbnguardarPP" runat="server" Enabled="False" Font-Bold="True"
-                            ForeColor="Black" Height="35px" Text="Guardar Pre-Pedido" Width="100%"
-                            CssClass="btn btn-default" OnClick="tbnguardarPP_Click" />
+                        <asp:Button ID="tbnguardarPP" runat="server" Enabled="False"  Text="Guardar Pre-Pedido" Width="100%"
+                            CssClass="btn btn-primary" OnClick="tbnguardarPP_Click" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnnuevoprepedido" runat="server"
-                            Font-Bold="True" ForeColor="Black" Height="35px" Text="Nuevo Pre-Pedido"
+                        <asp:Button ID="btnnuevoprepedido" runat="server" Text="Nuevo Pre-Pedido"
                             Width="100%"
-                            CssClass="btn btn-default" OnClick="btnnuevoprepedido_Click" />
+                            CssClass="btn btn-success" OnClick="btnnuevoprepedido_Click" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnsalir" runat="server" Font-Bold="True" ForeColor="Black"
-                            Height="35px" Text="Salir" Width="100%"
-                            CssClass="btn btn-default" />
+                        <asp:Button ID="btnsalir" runat="server" Text="Salir" Width="100%" OnClientClick="return ConfirmAlert('Desea Salir del Pre Pedido');"
+                            CssClass="btn btn-danger" OnClick="btnsalir_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -2083,6 +1978,7 @@ function Hola()
             <asp:PostBackTrigger ControlID="btnagregarcroquis" />
             <asp:PostBackTrigger ControlID="btnagregarllamada" />
            <asp:PostBackTrigger ControlID="btneditar_art" />
+           <asp:PostBackTrigger ControlID="btnsalir" />
         </Triggers>
     
     </asp:UpdatePanel>  

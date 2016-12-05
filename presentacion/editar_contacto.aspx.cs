@@ -367,7 +367,7 @@ namespace presentacion
                         entidad.pemail = vemail;
                         entidad.pnombre = vnombre;
                         entidad.pcelular = vcelular;
-                        entidad.pfecha = Convert.ToDateTime(txtcumple.Text);
+                        entidad.pfecha = cbxsincumple.Checked ?DateTime.Today: Convert.ToDateTime(txtcumple.Text);
                         entidad.pactivo = vactivo;
                         entidad.phobbie = vhobbies;
                         entidad.pequipo = vequipo;
