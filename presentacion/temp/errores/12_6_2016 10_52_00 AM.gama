@@ -1,0 +1,9 @@
+Isaac Humberto De La Rosa Mendez
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at presentacion.ticket_serv.Yes_Click(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\06_12_16\Puestos\presentacion\ticket_serv.aspx.cs:line 187

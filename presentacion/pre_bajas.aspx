@@ -41,6 +41,14 @@
             $('#confirmTitulo').text(cTitulo);
             $('#confirmContenido').text(cContenido);
         }
+        function ModalFaltas(cTitulo, ctype) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModalFaltas').modal('show');
+            $('#myModalFaltas').removeClass('modal fade modal-info');
+            $('#myModalFaltas').addClass(ctype);
+            $('#modal_title').text(cTitulo);
+        }
         function ModalPreBaja() {
             var audio = new Audio('sounds/modal.wav');
             audio.play();
@@ -48,7 +56,8 @@
         }
         function ModalClose() {
             $('#modalPreviewView').modal('hide');
-            $('#myModal').modal('hide');
+            $('#myModalFaltas').modal('hide');
+            $('#myModal').modal('hide'); 
         }
         function getImage(path) {
             $("#myImage").attr("src", path);
@@ -58,6 +67,10 @@
                 "lengthMenu": [[15, 25, -1], [15, 25, "Todos"]] //value:item pair
             });
         });
+        function GiftEspera(mensaje) {
+            swal({ title: 'Espere un Momento...', text: mensaje, allowEscapeKey: false, imageUrl: 'imagenes/loading.gif', timer: '6000', showConfirmButton: false });
+            return true;
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -104,6 +117,9 @@
                 <div class="col-lg-12">
                     <asp:Panel ID="PanelPreBaja" runat="server" CssClass="form-group" Visible="false">
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                            <Triggers>
+                                <asp:PostBackTrigger ControlID="lnkverfaltas" />
+                            </Triggers>
                             <ContentTemplate>
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -112,6 +128,7 @@
                                         <h4><strong><i class="fa fa-suitcase"></i>&nbsp;Puesto:&nbsp;</strong>
                                             <asp:Label ID="lblPuesto" runat="server" Text="Puesto"></asp:Label>
                                         </h4>
+                                        <asp:LinkButton ID="lnkverfaltas" OnClientClick="return GiftEspera('Estamos Cargando las Faltas.');" CssClass="btn btn-danger" runat="server" OnClick="lnkverfaltas_Click">Ver Historial de Falta</asp:LinkButton>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -152,6 +169,7 @@
                                                         <asp:ListItem Value="0" Text="VACANTE (NO CONTRATAR)"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
+                                            <h4></h4>
                                             </h4>
                                     </div>
                                     <div class="col-lg-12">
@@ -163,7 +181,34 @@
                                                         <asp:ListItem Value="0" Text="Despido"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
+                                                <h4></h4>
                                             </h4>
+                                    </div>
+                                </div>
+                                <div class="modal fade modal-info" id="myModalFaltas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="text-align: center;">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 id="modal_title"><strong>Mensaje del Sistema</strong></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row" style="text-align: center;">
+                                                    <div class="col-lg-12 ">
+                                                        <asp:GridView ID="gridfaltas" runat="server" CssClass="gvv table table-responsive table-bordered table-condensed" AutoGenerateColumns="False">
+                                                            <Columns>
+                                                                <asp:BoundField DataField="fecha_Str" HeaderText="Fecha" HeaderStyle-Width="100%" ></asp:BoundField>
+                                                            </Columns>
+                                                        </asp:GridView>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="col-lg-12">
+                                                    <input id="Nop" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cerrar" />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </ContentTemplate>

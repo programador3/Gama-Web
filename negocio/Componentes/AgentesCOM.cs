@@ -11,6 +11,39 @@ namespace negocio.Componentes
 
     public class AgentesCOM
     {
+        public DataSet SP_FALTAS_EMPLEADO(int idc_empleado)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_empleado", SqlDbType = SqlDbType.Int, Value = idc_empleado });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("SP_FALTAS_EMPLEADO", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_combo_proytmk_gpo_usuarios()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_proytmk_gpo_usuarios", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet sp_ver_PREped(int idc_preped)
         {
             DataSet ds = new DataSet();

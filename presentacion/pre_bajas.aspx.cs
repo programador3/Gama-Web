@@ -317,5 +317,27 @@ namespace presentacion
             //    cbxRobo.Checked = false; cbxRobo.Enabled = false;
             //}
         }
+
+        protected void lnkverfaltas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AgentesCOM componente = new AgentesCOM();
+                DataSet ds = componente.SP_FALTAS_EMPLEADO(Convert.ToInt32(Request.QueryString["idc_empleado"]));
+                gridfaltas.DataSource = ds.Tables[0];
+                gridfaltas.DataBind();
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "ModalFaltas('faltas del Empleado','modal fade modal-info');", true);
+                }
+                else {
+                    Alert.ShowAlertError("El empleado "+lblEmpleadoName.Text+" NO TIENE FALTAS.",this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(),this);
+            }
+        }
     }
 }

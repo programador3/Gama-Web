@@ -480,6 +480,7 @@
     <Content Include="IMG_Croquis.aspx" />
     <Content Include="Inconvenientes_Cliente.aspx" />
     <Content Include="informe.aspx" />
+    <Content Include="informe_ventas_x_pedidos.aspx" />
     <Content Include="js\bootstrap-wysiwyg.js" />
     <Content Include="js\jquery-ui-1.8.19.custom.css" />
     <Content Include="js\jquery.dataTables.js" />
@@ -813,6 +814,8 @@
     <Content Include="reporte_faltas.aspx" />
     <Content Include="reporte_filtro.aspx" />
     <Content Include="reporte_visitas.aspx" />
+    <Content Include="Reporting.aspx" />
+    <Content Include="Reporting.aspx.vb" />
     <Content Include="Reproductor_llamadas2.aspx" />
     <Content Include="reproductor_llamadas.aspx" />
     <Content Include="retiro_ahorro.aspx" />
@@ -1728,6 +1731,13 @@
     </Compile>
     <Compile Include="informe.aspx.designer.cs">
       <DependentUpon>informe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="informe_ventas_x_pedidos.aspx.cs">
+      <DependentUpon>informe_ventas_x_pedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="informe_ventas_x_pedidos.aspx.designer.cs">
+      <DependentUpon>informe_ventas_x_pedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="inventario.aspx.cs">
       <DependentUpon>inventario.aspx</DependentUpon>

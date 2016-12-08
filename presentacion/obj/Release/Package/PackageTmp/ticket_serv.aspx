@@ -21,6 +21,7 @@
     <script type="text/javascript">
         function CerrarModal() {
             $('#myModal').modal('hide');
+            return true;
         }
 
 
@@ -74,6 +75,11 @@
                    location.href = URL;
                });
         }
+        $(document).ready(function () {
+            $(".gvv").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable({
+                "lengthMenu": [[15, 25, -1], [15, 25, "Todos"]] //value:item pair
+            });
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -82,7 +88,8 @@
    
 
     <div class="row">
-        <div class="col-lg-12 col-md-12 ">
+        <div id="grids" runat="server" visible="true">
+                    <div class="col-lg-12 col-md-12 ">
             <div class="panel panel-info fresh-color">
 
                 <div class="panel-heading">
@@ -91,8 +98,8 @@
                 <div class="panel-body">
                     <h3 id="NO_Hay_E" runat="server" visible="false" style="text-align: center;">NO HAY DATOS <i class="fa fa-exclamation-triangle"></i></h3>
                     <div class="table-responsive">
-                        <asp:GridView Style="font-size: 11px;" ID="grid_E" CssClass="table table-responsive table-condensed gvv {disableSortCols: [3]}" AutoGenerateColumns="false" runat="server"
-                            DataKeyNames="idc_ticketserv,idc_tareaser,descripcion,fecha,observaciones,empleado,DEPTO" OnRowCommand="grid_E_RowCommand">
+                        <asp:GridView Style="font-size: 12px; text-align:center;" ID="grid_E" CssClass="gvv table table-responsive table-condensed table-bordered" AutoGenerateColumns="false" runat="server"
+                            DataKeyNames="idc_ticketserv,idc_tareaser,descripcion,fecha,observaciones,EMPLEADO_ATIENDE,empleado,DEPTO" OnRowCommand="grid_E_RowCommand" OnRowDataBound="grid_E_RowDataBound">
                             <Columns>
                                 <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_autorizar.png" HeaderText="Atender" CommandName="Atender">
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -104,13 +111,17 @@
                                 </asp:ButtonField>
                                 <asp:BoundField DataField="idc_tareaser" Visible='false'></asp:BoundField>
                                 <asp:BoundField DataField="idc_ticketserv" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="descripcion" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="des_corta" HeaderText="Descripcion"></asp:BoundField>
-                                <asp:BoundField DataField="fecha" HeaderText="Fecha Sulisituda"></asp:BoundField>
+                                <asp:BoundField DataField="descripcion" Visible='false'></asp:BoundField>                        
+                                <asp:ButtonField  ButtonType="Button" ControlStyle-CssClass="btn btn-default btn-block"  HeaderText="Descripcion" DataTextField="des_corta" CommandName="preview">
+                                    <HeaderStyle HorizontalAlign="Center"  />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:ButtonField>
+                                <asp:BoundField DataField="fecha" HeaderText="Fecha Solicitud"></asp:BoundField>
                                 <asp:BoundField DataField="observaciones" Visible='false'></asp:BoundField>
                                 <asp:BoundField DataField="obs_corta" HeaderText="Observaciones"></asp:BoundField>
                                 <asp:BoundField DataField="empleado" HeaderText="Empleado"></asp:BoundField>
                                 <asp:BoundField DataField="DEPTO" Visible='false'></asp:BoundField>
+                                <asp:boundfield DataField="EMPLEADO_ATIENDE" Visible="false" HeaderText="idc_puesto_rep" />
 
                             </Columns>
                         </asp:GridView>
@@ -128,8 +139,10 @@
                 <div class="panel-body">
                     <h3 id="NO_Hay_A" runat="server" visible="false" style="text-align: center;">NO HAY DATOS <i class="fa fa-exclamation-triangle"></i></h3>
                     <div class="table-responsive">
-                        <asp:GridView Style="font-size: 11px;" ID="grid_A" CssClass="table table-responsive table-condensed gvv {disableSortCols: [3]}" AutoGenerateColumns="false" runat="server"
-                            DataKeyNames="idc_ticketserv,idc_ticketserva,idc_tareaser,descripcion,fecha,empleado,DEPTO,observaciones,idc_usuario_aten,idc_usuario,idc_puesto" OnRowCommand="grid_A_RowCommand">
+                        <asp:GridView Style="font-size: 12px; text-align:center;" ID="grid_A" CssClass="table table-responsive table-condensed table-bordered" AutoGenerateColumns="false" runat="server"
+                            DataKeyNames="idc_ticketserv,idc_ticketserva,idc_tareaser,descripcion,fecha,EMPLEADO_ATIENDE,empleado,DEPTO,observaciones,idc_usuario_aten,idc_usuario,idc_puesto" 
+                            OnRowCommand="grid_A_RowCommand" OnRowDataBound="grid_A_RowDataBound">
+           
                             <Columns>
                                 <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_autorizar.png" HeaderText="Terminar" CommandName="Terminar">
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -142,8 +155,11 @@
                                 <asp:BoundField DataField="idc_tareaser" Visible='false'></asp:BoundField>
                                 <asp:BoundField DataField="idc_ticketserv" Visible='false'></asp:BoundField>
                                 <asp:BoundField DataField="idc_ticketserva" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="descripcion" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="des_corta" HeaderText="Descripcion"></asp:BoundField>
+                                <asp:BoundField DataField="descripcion" Visible='false'></asp:BoundField>                                
+                                <asp:ButtonField  ButtonType="Button" ControlStyle-CssClass="btn btn-default btn-block"  HeaderText="Descripcion" DataTextField="des_corta" CommandName="preview">
+                                    <HeaderStyle HorizontalAlign="Center"  />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:ButtonField>
                                 <asp:BoundField DataField="fecha" HeaderText="Fecha Atendiendo"></asp:BoundField>
                                 <asp:BoundField DataField="observaciones" Visible='false'></asp:BoundField>
                                 <asp:BoundField DataField="obs_corta" HeaderText="Observaciones"></asp:BoundField>
@@ -152,18 +168,27 @@
                                 <asp:BoundField DataField="idc_usuario_aten" Visible="false" ></asp:BoundField>
                                 <asp:BoundField DataField="idc_usuario" Visible="false" HeaderText="idc_usuario_rep" />
                                 <asp:boundfield DataField="idc_puesto" Visible="false" HeaderText="idc_puesto_rep" />
+                                <asp:boundfield DataField="EMPLEADO_ATIENDE" Visible="false" HeaderText="idc_puesto_rep" />
                             </Columns>
                         </asp:GridView>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
+
     </div>
 
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
-
+               <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="always">
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="grid_A" EventName="RowCommand" />
+                    <asp:AsyncPostBackTrigger ControlID="grid_E" EventName="RowCommand" />
+                    <asp:PostBackTrigger ControlID="yes" />
+                </Triggers>
+                <ContentTemplate>
             <div class="modal-content" style="text-align: center">
                 <div class="modal-header" style="background-color: #428bca; color: white">
                     <h4><strong id="confirmTitulo" class="modal-title"></strong></h4>
@@ -184,8 +209,10 @@
                                 <br />
                                 <b>Observacion:</b>
                                 <asp:Label runat="server" ID="lblObser"> texto</asp:Label><br />
-                                <b>Empleado<asp:Label runat="server" ID="lblAten">&nbsp;(Atendiendo)</asp:Label>:</b>
+                                <b>Empleado Solicito<asp:Label runat="server" ID="lblAten">&nbsp;(Atendiendo)</asp:Label>:</b>
                                 <asp:Label runat="server" ID="lblEmple"> texto</asp:Label><br />
+                                <b>Empleado Atiende<asp:Label runat="server" ID="lblat">&nbsp;</asp:Label>:</b>
+                                <asp:Label runat="server" ID="lblempleaten"> texto</asp:Label><br />
                                 <b>Fecha:</b>
                                 <asp:Label runat="server" ID="lblFecha"> texto</asp:Label><br />
                                 <b>Departamento:</b>
@@ -215,24 +242,24 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="row">
-                            <div class="col-lg-6 col-xs-6">
+                       <div class="col-lg-6 col-xs-6">
                                 <asp:Button ID="yes" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
                             </div>
                             <div class="col-lg-6 col-xs-6">
                                 <input id="No" class="btn btn-danger btn-block" onclick="CerrarModal();" value="Cancelar" />
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
+                        <input type="hidden" runat="server" id="descripcion_h" />
+                        <input type="hidden" runat="server" id="idc_ticketserv_h" />
+                        <input type="hidden" runat="server" id="idc_ticketserva_h" />
+                        <input type="hidden" runat="server" id="idc_tareaser_h" />
+                        <input type="hidden" runat="server" id="sidc_puesto_h" />
+                        <input type="hidden" runat="server" id="idc_usuario_aten_h" />
+                        <input type="hidden" runat="server" id="idc_usuario_rep_h" />
+                    </ContentTemplate>
+                   </asp:UpdatePanel>
         </div>
     </div>
-    <input type="hidden" runat="server" id="descripcion_h" />
-    <input type="hidden" runat="server" id="idc_ticketserv_h" />
-    <input type="hidden" runat="server" id="idc_ticketserva_h" />
-    <input type="hidden" runat="server" id="idc_tareaser_h" />
-    <input type="hidden" runat="server" id="sidc_puesto_h" />
-    <input type="hidden" runat="server" id="idc_usuario_aten_h" />
-    <input type="hidden" runat="server" id="idc_usuario_rep_h" />
 </asp:Content>

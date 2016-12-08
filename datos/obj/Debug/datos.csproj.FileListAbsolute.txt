@@ -234,3 +234,10 @@ D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\datos\o
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\datos\obj\Debug\datos.csproj.GenerateResource.Cache
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\datos\obj\Debug\datos.dll
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\02_12_16\Puestos\datos\obj\Debug\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\07_12_16\Puestos\datos\bin\Debug\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\07_12_16\Puestos\datos\bin\Debug\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\07_12_16\Puestos\datos\obj\Debug\datos.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\07_12_16\Puestos\datos\obj\Debug\datos.recursos.resources
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\07_12_16\Puestos\datos\obj\Debug\datos.csproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\07_12_16\Puestos\datos\obj\Debug\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\07_12_16\Puestos\datos\obj\Debug\datos.pdb

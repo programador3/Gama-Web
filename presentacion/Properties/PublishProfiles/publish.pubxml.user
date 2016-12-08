@@ -283,7 +283,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:58</publishTime>
     </File>
     <File Include="bin/datos.dll">
-      <publishTime>12/05/2016 15:21:46</publishTime>
+      <publishTime>12/06/2016 10:32:48</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>03/03/2016 15:08:57</publishTime>
@@ -313,13 +313,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/29/2015 21:27:38</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>12/05/2016 15:58:15</publishTime>
+      <publishTime>12/06/2016 16:57:09</publishTime>
     </File>
     <File Include="bin/OpenPop.dll">
       <publishTime>11/21/2015 16:46:36</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>12/05/2016 15:58:21</publishTime>
+      <publishTime>12/07/2016 07:47:14</publishTime>
     </File>
     <File Include="bin/Telerik.Web.UI.dll">
       <publishTime>10/26/2016 09:37:26</publishTime>
@@ -340,7 +340,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/21/2016 12:09:40</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
-      <publishTime>12/05/2016 15:21:46</publishTime>
+      <publishTime>12/06/2016 10:32:49</publishTime>
     </File>
     <File Include="buscar_colonia_mobile.aspx">
       <publishTime>10/10/2016 12:06:58</publishTime>
@@ -1033,7 +1033,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/25/2016 08:17:06</publishTime>
     </File>
     <File Include="grafica.aspx">
-      <publishTime>09/17/2016 10:34:58</publishTime>
+      <publishTime>12/05/2016 17:25:26</publishTime>
     </File>
     <File Include="grafica_tareas.aspx">
       <publishTime>09/17/2016 10:35:02</publishTime>
@@ -2064,6 +2064,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="informe.aspx">
       <publishTime>09/17/2016 10:36:51</publishTime>
     </File>
+    <File Include="informe_ventas_x_pedidos.aspx">
+      <publishTime>12/06/2016 08:26:04</publishTime>
+    </File>
     <File Include="inventario.aspx">
       <publishTime>09/17/2016 10:36:55</publishTime>
     </File>
@@ -2563,7 +2566,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:40:48</publishTime>
     </File>
     <File Include="pre_bajas.aspx">
-      <publishTime>11/01/2016 08:01:44</publishTime>
+      <publishTime>12/06/2016 15:43:11</publishTime>
     </File>
     <File Include="pre_bajas_bajas.aspx">
       <publishTime>09/17/2016 10:40:28</publishTime>
@@ -2823,6 +2826,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="reporte_visitas_detalles.aspx">
       <publishTime>03/18/2016 14:05:04</publishTime>
     </File>
+    <File Include="Reporting.aspx">
+      <publishTime>12/06/2016 08:19:37</publishTime>
+    </File>
+    <File Include="Reporting.aspx.vb">
+      <publishTime>12/06/2016 08:19:37</publishTime>
+    </File>
     <File Include="Reproductor_llamadas.aspx">
       <publishTime>10/24/2016 08:20:48</publishTime>
     </File>
@@ -2950,7 +2959,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/05/2016 14:06:14</publishTime>
     </File>
     <File Include="ticket_serv.aspx">
-      <publishTime>11/16/2016 14:24:52</publishTime>
+      <publishTime>12/07/2016 07:46:14</publishTime>
     </File>
     <File Include="ticket_serv_captura.aspx">
       <publishTime>11/12/2016 10:18:43</publishTime>
@@ -2995,7 +3004,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:47:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/05/2016 15:21:56</publishTime>
+      <publishTime>12/07/2016 07:47:17</publishTime>
     </File>
     <File Include="Webcam_Plugin/jquery.webcam.js">
       <publishTime>10/27/2016 12:26:39</publishTime>

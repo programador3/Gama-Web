@@ -94,6 +94,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Label lblPuesto;
         
         /// <summary>
+        /// Control lnkverfaltas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkverfaltas;
+        
+        /// <summary>
         /// Control txtFecha.
         /// </summary>
         /// <remarks>
@@ -227,6 +236,15 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoBaja;
+        
+        /// <summary>
+        /// Control gridfaltas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridfaltas;
         
         /// <summary>
         /// Control btnACeptarPrebaja.

@@ -27,6 +27,25 @@ namespace negocio.Componentes
             }
             return ds;
         }
+        public DataSet ticket_serv_todos()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            //listparameters.Add(new SqlParameter() { ParameterName = "@pidc_ticketserv", Value = ent.Pidc_ticketserv });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PVERTODO", Value = true });
+
+            try
+            {
+                ds = data.enviar("sp_ticketserv", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
 
         public DataSet ticket_serv(ticket_servENT ent)
         {
@@ -36,6 +55,7 @@ namespace negocio.Componentes
 
             //listparameters.Add(new SqlParameter() { ParameterName = "@pidc_ticketserv", Value = ent.Pidc_ticketserv });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", Value = ent.Pidc_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", Value = ent.Pidc_usuario });
 
             try
             {

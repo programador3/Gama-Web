@@ -269,7 +269,7 @@ namespace presentacion
                 e.Row.Cells[5].ForeColor = color == "#F4FA58" ? Color.FromName("#000000") : Color.FromName("#FFFFFF");
                 e.Row.Cells[5].BackColor = Color.FromName(color);
             }
-        }
+        } 
 
         protected void Yes_Click(object sender, EventArgs e)
         {

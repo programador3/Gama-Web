@@ -19,15 +19,21 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
-                sidc_puesto_h.Value = Session["sidc_puesto_login"].ToString();
-                Cargar_Grid(Convert.ToInt32(Session["sidc_puesto_login"]));
+                if (Request.QueryString["all"] == null)
+                {
+                    grids.Visible = true;
+                    sidc_puesto_h.Value = Session["sidc_puesto_login"].ToString();
+                    Cargar_Grid(Convert.ToInt32(Session["sidc_puesto_login"]));
+                }
             }
+
         }
 
         private void Cargar_Grid(int idpuesto)
         {
             ticket_servENT ent = new ticket_servENT();
             ent.Pidc_puesto = idpuesto;
+            ent.Pidc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
 
             DataSet ds = com.ticket_serv(ent);
             grid_E.DataSource = ds.Tables[0];
@@ -72,7 +78,10 @@ namespace presentacion
             lblFecha.Text = grid_E.DataKeys[index].Values["fecha"].ToString();
             lblEmple.Text = grid_E.DataKeys[index].Values["empleado"].ToString();
             lblDepto.Text = grid_E.DataKeys[index].Values["DEPTO"].ToString();
+            lblempleaten.Text = grid_E.DataKeys[index].Values["EMPLEADO_ATIENDE"].ToString(); 
+            lblat.Visible = false;
             lblAten.Visible = false;
+            yes.Visible = true;
             Session["Caso_Confirmacion"] = e.CommandName.ToString();
             switch (e.CommandName)
             {
@@ -95,6 +104,13 @@ namespace presentacion
                     str_modal = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro de Cancelar el Ticket:  {0}? ');", descripcion);
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal, true);
                     break;
+                case "preview":
+                    div2.Visible = false;
+                    div_pass.Visible = false;
+                    yes.Visible = false;
+                    string str_modal2 = string.Format("ModalConfirm('Mensaje del Sistema','Información Principal del Ticket');", descripcion);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal2, true);
+                    break;
             }
         }
 
@@ -113,8 +129,10 @@ namespace presentacion
             lblFecha.Text = grid_A.DataKeys[index].Values["fecha"].ToString();
             lblEmple.Text = grid_A.DataKeys[index].Values["empleado"].ToString();
             lblDepto.Text = grid_A.DataKeys[index].Values["DEPTO"].ToString();
+            lblempleaten.Text = grid_A.DataKeys[index].Values["EMPLEADO_ATIENDE"].ToString();
             //grid_A.DataKeys[index].Values["idc_puesto"].ToString();
             lblAten.Visible = true;
+            yes.Visible = true;
             Session["Caso_Confirmacion"] = e.CommandName.ToString();
             switch (e.CommandName)
             {
@@ -141,6 +159,13 @@ namespace presentacion
                     string str_modal = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro de Cancelar el Ticket:  {0}? ');", descripcion);
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal, true);
                     break;
+                case "preview":
+                    div2.Visible = false;
+                    div_pass.Visible = false;
+                    yes.Visible = false;
+                    string str_modal2 = string.Format("ModalConfirm('Mensaje del Sistema','Información Principal del Ticket');", descripcion);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal2, true);
+                    break;
             }
         }
 
@@ -148,6 +173,7 @@ namespace presentacion
         {
             try
             {
+                
                 string caso = Session["Caso_Confirmacion"].ToString();
                 ticket_servENT ent = new ticket_servENT();
                 Datos_Usuario_logENT dul = new Datos_Usuario_logENT();
@@ -229,6 +255,33 @@ namespace presentacion
 
         }
 
+        protected void grid_E_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DataRowView rowView = (DataRowView)e.Row.DataItem;
+                bool APLICA = Convert.ToBoolean(rowView["APLICA"]);
+                if (!APLICA)
+                {
+                    e.Row.Cells[0].Controls.Clear();
+                    e.Row.Cells[1].Controls.Clear();
+                }
+            }
+        }
 
+        protected void grid_A_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DataRowView rowView = (DataRowView)e.Row.DataItem;
+                bool APLICA = Convert.ToBoolean(rowView["APLICA"]);
+                if (!APLICA)
+                {
+                    e.Row.Cells[0].Controls.Clear();
+                    e.Row.Cells[1].Controls.Clear();
+                }
+            }
+        }
     }
 }
