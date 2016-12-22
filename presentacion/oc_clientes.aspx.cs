@@ -1,11 +1,8 @@
 ﻿using negocio;
 using negocio.Componentes;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -24,17 +21,24 @@ namespace presentacion
                 Session["ruta_img_oc"] = null;
                 Session["tb_cl"] = null;
                 ddlcliente.Items.Insert(0, new ListItem("--Seleccione un Cliente", "0"));
+                cbxenviar.Checked = true;
+                cbxenviar.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 210);
+                txtxantidad.Text = "1";
             }
             enviar.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 210);
         }
 
-        void BuscarCliente(string filtro)
+        private void BuscarCliente(string filtro)
         {
             HallazgosENT entidad = new HallazgosENT();
             entidad.Phallazgo = filtro;
             entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
             HallazgosCOM compo = new HallazgosCOM();
             DataSet ds = compo.CargarClientes(entidad);
+            foreach (DataRow ROW in ds.Tables[0].Rows)
+            {
+                ROW["nombre"] = ROW["nombre"].ToString().Trim() + " | " + ROW["rfccliente"].ToString().Trim() + " | " + ROW["cveadi"].ToString().Trim();
+            }
             ddlcliente.DataValueField = "idc_cliente";
             ddlcliente.DataTextField = "nombre";
             ddlcliente.DataSource = ds.Tables[0];
@@ -43,8 +47,9 @@ namespace presentacion
             {
                 ddlcliente.Items.Insert(0, new ListItem("--Seleccione un Cliente", "0"));
             }
-            else {
-                int idc = ds.Tables[0].Rows.Count > 0 ? Convert.ToInt32(ddlcliente.SelectedValue):0;
+            else
+            {
+                int idc = ds.Tables[0].Rows.Count > 0 ? Convert.ToInt32(ddlcliente.SelectedValue) : 0;
                 if (idc > 0)
                 {
                     DataTable dt = ds.Tables[0];
@@ -63,10 +68,6 @@ namespace presentacion
             Session["tb_cl"] = ds.Tables[0];
         }
 
-
-
-
-
         protected void lnksubir_Click(object sender, EventArgs e)
         {
             string extension = fuparchivo.HasFile == true ? Path.GetExtension(fuparchivo.FileName) : "";
@@ -80,21 +81,23 @@ namespace presentacion
             {
                 Alert.ShowAlertError("Formato de archivo invalido. Solo se permiten los formato de IMAGEN: .bmp, .gif, .jpg, .dib", this);
             }
-            else {
+            else
+            {
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/tareas/"));//path local
                 Random random = new Random();
                 int randomNumber = random.Next(0, 100000);
                 string new_filw = dirInfo + randomNumber.ToString() + fuparchivo.FileName;
                 Session["ruta_img_oc"] = new_filw;
-                bool pape = funciones.UploadFile(fuparchivo,new_filw , this.Page);
+                bool pape = funciones.UploadFile(fuparchivo, new_filw, this.Page);
                 if (pape == true)
                 {
                     string server = System.Configuration.ConfigurationManager.AppSettings["server"];
-                    img.ImageUrl = server +"/temp/tareas/" + randomNumber.ToString() + fuparchivo.FileName;
+                    img.ImageUrl = server + "/temp/tareas/" + randomNumber.ToString() + fuparchivo.FileName;
+                    img.Attributes["onclick"] = "window.open('" + img.ImageUrl.ToString().Trim() + "');";
                     Alert.ShowGift("Estamos subiendo el archivo.", "Espere un Momento", "imagenes/loading.gif", "2000", "Comentario Guardardo Correctamente", this);
-                    
                 }
-                else {
+                else
+                {
                     Session["ruta_img_oc"] = null;
                 }
             }
@@ -110,10 +113,10 @@ namespace presentacion
             int idc = Convert.ToInt32(ddlcliente.SelectedValue);
             if (idc == 0)
             {
-
                 Alert.ShowAlertError("Debe seleccionar un cliente", this);
             }
-            else {
+            else
+            {
                 DataTable dt = Session["tb_cl"] as DataTable;
                 DataView view = dt.DefaultView;
                 view.RowFilter = "idc_cliente = " + idc + "";
@@ -127,7 +130,6 @@ namespace presentacion
                 }
             }
         }
-
 
         protected void Yes_Click(object sender, EventArgs e)
         {
@@ -153,7 +155,7 @@ namespace presentacion
                         {
                             bool correct = true;
                             string ruta_origen = Session["ruta_img_oc"] as string;
-                            string ruta_det = ds.Tables[0].Rows[0]["RUTA_DESTINO"].ToString()+Path.GetExtension(ruta_origen);
+                            string ruta_det = ds.Tables[0].Rows[0]["RUTA_DESTINO"].ToString() + Path.GetExtension(ruta_origen);
                             correct = funciones.CopiarArchivos(ruta_origen, ruta_det, this.Page);
                             if (correct != true) { Alert.ShowAlertError("Hubo un error al subir el archivo ", this); }
                             Alert.ShowGiftMessage("Estamos procesando los archivo(s) al Servidor.", "Espere un Momento", "menu.aspx", "imagenes/loading.gif", "2000", "La OC fue Guardada Correctamente", this);
@@ -170,14 +172,12 @@ namespace presentacion
                 Alert.ShowAlertError(ex.ToString(), this.Page);
                 Global.CreateFileError(ex.ToString(), this);
             }
-
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-
                 HallazgosENT entidad = new HallazgosENT();
                 HallazgosCOM compo = new HallazgosCOM();
                 DataSet ds = compo.MaximoOXClientes(entidad);
@@ -210,7 +210,6 @@ namespace presentacion
                 {
                     Session["Caso_Confirmacion"] = "Guardar";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Guardar esta OC?','modal fade modal-info');", true);
-
                 }
             }
             catch (Exception ex)
@@ -223,6 +222,18 @@ namespace presentacion
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("menu.aspx");
+        }
+
+        protected void txtxantidad_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dt = funciones.ExecQuery("select dbo.fn_maximo_oc_clientes() as maximo");
+            int maximo = Convert.ToInt32(funciones.ExecQuery("select dbo.fn_maximo_oc_clientes() as maximo").Rows[0][0]);
+            int numero_marcado = txtxantidad.Text == "" ? 0 : Convert.ToInt32(txtxantidad.Text.Trim());
+            if (numero_marcado < 1 || numero_marcado > maximo)
+            {
+                txtxantidad.Text = "1";
+                Alert.ShowAlertError("LA CANTIDAD DEBE ESTAR ENTRE 1 Y "+maximo.ToString(),this);
+            }
         }
     }
 }

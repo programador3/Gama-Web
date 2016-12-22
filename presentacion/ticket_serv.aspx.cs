@@ -4,6 +4,8 @@ using System;
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
+using System.Web;
 
 namespace presentacion
 {
@@ -73,6 +75,7 @@ namespace presentacion
             string descripcion = grid_E.DataKeys[index].Values["descripcion"].ToString();
             descripcion_h.Value = descripcion;
 
+            string ARCHIVO = grid_E.DataKeys[index].Values["ARCHIVO"].ToString();
             lblDescr.Text = descripcion;
             lblObser.Text = grid_E.DataKeys[index].Values["observaciones"].ToString();
             lblFecha.Text = grid_E.DataKeys[index].Values["fecha"].ToString();
@@ -85,6 +88,21 @@ namespace presentacion
             Session["Caso_Confirmacion"] = e.CommandName.ToString();
             switch (e.CommandName)
             {
+                case "Descargar":
+                    System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
+                    string Domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
+                    string extension = Path.GetExtension(ARCHIVO);
+                    string pageName = HttpContext.Current.Request.ApplicationPath + "/";
+                    if (extension.ToUpper() == ".PDF" || extension.ToUpper() == ".JPG")
+                    {
+                        File.Copy(ARCHIVO, dirInfo + Path.GetFileName(ARCHIVO), true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + Path.GetFileName(ARCHIVO) + "');", true);
+                    }
+                    else
+                    {
+                        funciones.Download(ARCHIVO, System.IO.Path.GetFileName(ARCHIVO), this);
+                    }
+                    break;
                 case "Atender":
                     div2.Visible = false;
 
@@ -112,6 +130,8 @@ namespace presentacion
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal2, true);
                     break;
             }
+
+            Cargar_Grid(Convert.ToInt32(Session["sidc_puesto_login"]));
         }
 
         protected void grid_A_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -122,6 +142,7 @@ namespace presentacion
             idc_ticketserva_h.Value = grid_A.DataKeys[index].Values["idc_ticketserva"].ToString();
             idc_tareaser_h.Value = grid_A.DataKeys[index].Values["idc_tareaser"].ToString();
             string descripcion  = grid_A.DataKeys[index].Values["descripcion"].ToString();
+            string ARCHIVO = grid_A.DataKeys[index].Values["ARCHIVO"].ToString();
             descripcion_h.Value = descripcion;
             idc_usuario_rep_h.Value =grid_A.DataKeys[index].Values["idc_usuario"].ToString();           
             lblDescr.Text = descripcion;
@@ -136,6 +157,21 @@ namespace presentacion
             Session["Caso_Confirmacion"] = e.CommandName.ToString();
             switch (e.CommandName)
             {
+                case "Descargar":
+                    System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
+                    string Domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
+                    string extension = Path.GetExtension(ARCHIVO);
+                    string pageName = HttpContext.Current.Request.ApplicationPath + "/";
+                    if (extension == ".PDF" || extension == ".JPG")
+                    {
+                        File.Copy(ARCHIVO, dirInfo + Path.GetFileName(ARCHIVO), true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + Path.GetFileName(ARCHIVO) + "');", true);
+                    }
+                    else
+                    {
+                        funciones.Download(ARCHIVO, System.IO.Path.GetFileName(ARCHIVO), this);
+                    }
+                    break;
                 case "Terminar":
                     div2.Visible = true;
                     div_pass.Visible = (idc_usuario_rep_h.Value != Session["sidc_usuario"].ToString());
@@ -167,6 +203,8 @@ namespace presentacion
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal2, true);
                     break;
             }
+
+            Cargar_Grid(Convert.ToInt32(Session["sidc_puesto_login"]));
         }
 
         protected void Yes_Click(object sender, EventArgs e)
@@ -261,10 +299,15 @@ namespace presentacion
             {
                 DataRowView rowView = (DataRowView)e.Row.DataItem;
                 bool APLICA = Convert.ToBoolean(rowView["APLICA"]);
+                string ARCHIVO = rowView["ARCHIVO"].ToString();
                 if (!APLICA)
                 {
                     e.Row.Cells[0].Controls.Clear();
                     e.Row.Cells[1].Controls.Clear();
+                }
+                if (ARCHIVO == "")
+                {
+                    e.Row.Cells[2].Controls.Clear();
                 }
             }
         }
@@ -276,10 +319,15 @@ namespace presentacion
             {
                 DataRowView rowView = (DataRowView)e.Row.DataItem;
                 bool APLICA = Convert.ToBoolean(rowView["APLICA"]);
+                string ARCHIVO = rowView["ARCHIVO"].ToString();
                 if (!APLICA)
                 {
                     e.Row.Cells[0].Controls.Clear();
                     e.Row.Cells[1].Controls.Clear();
+                }
+                if (ARCHIVO == "")
+                {
+                    e.Row.Cells[2].Controls.Clear();
                 }
             }
         }

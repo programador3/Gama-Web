@@ -116,15 +116,12 @@
             <asp:Panel ID="PanelDetallesCelular" runat="server">
                 <asp:Repeater ID="repeatCelulares" runat="server" OnItemDataBound="repeatCelulares_ItemDataBound">
                     <ItemTemplate>
-                        <div class="row">
+                        <div class="row" style="border:1px solid gray; background-color:white;" >
                             <div class="col-lg-12" style="margin: 0 auto;">
                                 <asp:Panel ID="PanelT1" runat="server">
-                                    <div class="row">
+                                    <div class="row" >
                                         <div class="col-lg-2" style="align-content: center;">
-
-                                            <a style="align-content: center;">
-                                                <asp:Image ID="imgCel" runat="server" class="img-responsive" alt="Gama" Style="width: 150px; margin: 0 auto;" />
-                                            </a>
+                                             <asp:Image ID="imgCel" runat="server" class="img-responsive" alt="Gama" Style="max-width:150px; margin: 0 auto;" />
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="form-group">
@@ -194,7 +191,7 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </asp:Panel>
-            <asp:Panel ID="PanelRevisaCelulares" runat="server" CssClass="panel panel-primary" Visible="false">
+            <asp:Panel ID="PanelRevisaCelulares" runat="server" CssClass="panel panel-info fresh-color" Visible="false">
                 <div class="panel-heading" style="text-align: center">
                     <h3 class="panel-title">Listado de Celulares <i class="fa fa-list"></i></h3>
                 </div>
@@ -230,31 +227,26 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                        <div class="form-group">
-                                                            <asp:Label ID="lblcelular1" runat="server" Text='<%#Eval("idc_celular") %>' Visible="false"></asp:Label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon" style="color: #fff; background-color: #337ab7;">
-                                                                    <i class="fa fa-mobile"></i></i></span>
-                                                                <asp:TextBox ID="txt1" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("descripcion") %>'></asp:TextBox>
-                                                            </div>
+
+                                                        <asp:Label ID="lblcelular1" runat="server" Text='<%#Eval("idc_celular") %>' Visible="false"></asp:Label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #337ab7;">
+                                                                <i class="fa fa-mobile"></i></i></span>
+                                                            <asp:TextBox ID="txt1" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("descripcion") %>'></asp:TextBox>
                                                         </div>
+
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                                    <i class="fa fa-check-square-o"></i></span>
-                                                                <asp:CheckBox ID="cbx1" runat="server" class="input-sm" Text="Entrego" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbx_CheckedChanged" />
-                                                            </div>
-                                                        </div>
+
+                                                        <asp:CheckBox ID="cbx1" runat="server" CssClass="radio3 radio-check radio-info radio-inline" Text="Entrego" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbx_CheckedChanged" />
+
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <asp:Label ID="lblcosto1" runat="server" Text='<%#Eval("costo") %>' Visible="false"></asp:Label>
-                                                                <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
-                                                                <asp:TextBox ID="txtMoney1" runat="server" class="input-sm" Text='<%#Eval("costo") %>' AutoPostBack="true" OnTextChanged="txtMoney_TextChanged" TextMode="Number"></asp:TextBox>
-                                                            </div>
+
+                                                        <div class="input-group">
+                                                            <asp:Label ID="lblcosto1" runat="server" Text='<%#Eval("costo") %>' Visible="false"></asp:Label>
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
+                                                            <asp:TextBox ID="txtMoney1" runat="server" class="input-sm" Text='<%#Eval("costo") %>' AutoPostBack="true" OnTextChanged="txtMoney_TextChanged" TextMode="Number"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>

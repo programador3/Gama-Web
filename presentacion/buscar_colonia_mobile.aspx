@@ -79,11 +79,11 @@
               }
               if (tipo==2)
               {
-                  var idc_colonia=document.getElementById("txtidc_colonia").value;
-                  var colonia = document.getElementById("txtcolonia").value;
-                  var estado = document.getElementById("txtestado").value; 
-                  var mun = document.getElementById("txtmunicipio").value; 
-                  var pais = document.getElementById("txtpais").value;        
+                 var idc_colonia = $("#<%=txtidc_colonia.ClientID%>").val();//document.getElementById("Contenido_txtidc_colonia").value;
+                  var colonia =$("#<%=txtcolonia.ClientID%>").val();// document.getElementById("txtcolonia").value;
+                  var estado =$("#<%=txtestado.ClientID%>").val();// document.getElementById("txtestado").value; 
+                  var mun =$("#<%=txtmunicipio.ClientID%>").val();// document.getElementById("txtmunicipio").value; 
+                  var pais = $("#<%=txtpais.ClientID%>").val();//document.getElementById("txtpais").value;     
                   window.opener.document.getElementById('txtidc_colonia').value=idc_colonia;  
                   window.opener.document.getElementById('txtcolonia').value=colonia;
                   window.opener.document.getElementById('txtmun').value=mun;
@@ -94,16 +94,17 @@
               }
               if (tipo==3)
               {
-                  var idc_colonia=document.getElementById("txtidc_colonia").value;
-                  var colonia = document.getElementById("txtcolonia").value;
-                  var estado = document.getElementById("txtestado").value; 
-                  var mun = document.getElementById("txtmunicipio").value; 
-                  var pais = document.getElementById("txtpais").value;        
-                  window.opener.document.getElementById('ctl00_ContentPlaceHolder1_txtidc_colonia').value=idc_colonia;  
-                  window.opener.document.getElementById('ctl00_ContentPlaceHolder1_txtcolonia').value=colonia;
-                  window.opener.document.getElementById('ctl00_ContentPlaceHolder1_txtmun').value=mun;
-                  window.opener.document.getElementById('ctl00_ContentPlaceHolder1_txtedo').value=estado;
-                  window.opener.document.getElementById('ctl00_ContentPlaceHolder1_txtpais').value=pais;
+                  var idc_colonia = $("#<%=txtidc_colonia.ClientID%>").val();//document.getElementById("Contenido_txtidc_colonia").value;
+                  var colonia =$("#<%=txtcolonia.ClientID%>").val();// document.getElementById("txtcolonia").value;
+                  var estado =$("#<%=txtestado.ClientID%>").val();// document.getElementById("txtestado").value; 
+                  var mun =$("#<%=txtmunicipio.ClientID%>").val();// document.getElementById("txtmunicipio").value; 
+                  var pais = $("#<%=txtpais.ClientID%>").val();//document.getElementById("txtpais").value;
+
+                  window.opener.document.getElementById('Contenido_txtidc_colonia').value = idc_colonia;
+                  window.opener.document.getElementById('Contenido_txtcolonia').value = colonia;
+                  window.opener.document.getElementById('Contenido_txtmun').value = mun;
+                  window.opener.document.getElementById('Contenido_txtedo').value = estado;
+                  window.opener.document.getElementById('Contenido_txtpais').value = pais;
                   window.close();
                   return false;
               }

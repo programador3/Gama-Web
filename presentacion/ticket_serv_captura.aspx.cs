@@ -110,9 +110,24 @@ namespace presentacion
 
         protected void Yes_Click(object sender, EventArgs e)
         {
-            string caso = (string)Session["Caso_Confirmacion"];
+            string caso = (string)Session["Caso_Confirmacion"];        
             try
             {
+                string url_archivo = "";
+                string extension = "";
+                if (fuparchivos.HasFile)
+                {
+                    Random random = new Random();
+                    int randomNumber = random.Next(0, 100000);
+                    DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/files/"));//path local         
+                    url_archivo = dirInfo + randomNumber.ToString() + fuparchivos.FileName;
+                    bool subida_correcta = funciones.UploadFile(fuparchivos, url_archivo, this.Page);
+                    extension = Path.GetExtension(url_archivo);
+                    if (!subida_correcta)
+                    {
+                        return;
+                    }
+                }
                 switch (caso)
                 {
                     case "Guardar":
@@ -121,15 +136,19 @@ namespace presentacion
                         string obser = txtobservaciones.Text;
                         int idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
                         int idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
-                        DataSet ds = componente.sp_aticketserv(idc_puesto,idc_tareaser,obser,idc_usuario);
+                        DataSet ds = componente.sp_aticketserv(idc_puesto,idc_tareaser,obser,idc_usuario, extension);
                         string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
-                            txtguid.Text = Guid.NewGuid().ToByteArray().ToString();
+                            txtguid.Text = Guid.NewGuid().ToString();
                             txtobservaciones.Text = "";
                             ViewState[txtguid.Text + "dt_serv"] = null;
                             CargarCombo(0, "");
-
+                            if (url_archivo != "")
+                            {
+                                string ruta_destino = ds.Tables[0].Rows[0]["ruta_destino"].ToString();
+                                funciones.CopiarArchivos(url_archivo,ruta_destino,this.Page);
+                            }
                             Alert.ShowAlertInfo("Ticket de Servicio Guardado Correctamente", "Mensaje del Sistema", this);
                         }
                         else {

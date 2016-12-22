@@ -52,7 +52,7 @@ namespace presentacion
                     cbogrupos.DataTextField = "nombre";
                     cbogrupos.DataValueField = "idc_cliente";
                     cbogrupos.DataBind();
-                    Session["idc_cliente"] = cbogrupos.SelectedValue;
+                    cbogrupos.SelectedValue = Session["idc_cliente"] as string;
                     divgrupos.Visible = true;
                     CargarFichaTecnica(Convert.ToInt32(dt.Rows[0]["idc_cliente"]));
                 }
@@ -105,19 +105,29 @@ namespace presentacion
         {
             try
             {
-                AgentesENT entidad = new AgentesENT();
-                AgentesCOM com = new AgentesCOM();
-                entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
-                entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
-                entidad.Pusuariopc = funciones.GetUserName();//usuario pc
-                entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
-                entidad.Pidc_agente = Convert.ToInt32(Session["idc_agente"]);
-                entidad.Pidc_cliente = Convert.ToInt32(Session["idc_cliente"]);
-                entidad.Pidc_actiage = 4;
-                entidad.Plat = Convert.ToSingle(oclatitud.Value);
-                entidad.Plon = Convert.ToSingle(oclongitud.Value);
-                DataSet ds = com.registrar_visita(entidad);
-                string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                string lat = oclatitud.Value;
+                string lon = oclongitud.Value;
+                string vmensaje = "";
+                if (lat == "" || lon == "")
+                {
+                    vmensaje = "NO SE HA PODIDO CAPTURAR SU UBICACION GPS, PUEDE SER DEBIDO A QUE NO ESTA USANDO SU NAVEGADOR NATIVO. COMUNIQUESE AL DEPTO DE SISTEMAS.";
+                }
+                else {
+                    AgentesENT entidad = new AgentesENT();
+                    AgentesCOM com = new AgentesCOM();
+                    entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
+                    entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
+                    entidad.Pusuariopc = funciones.GetUserName();//usuario pc
+                    entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                    entidad.Pidc_agente = Convert.ToInt32(Session["idc_agente"]);
+                    entidad.Pidc_cliente = Convert.ToInt32(Session["idc_cliente"]);
+                    entidad.Pidc_actiage = 4;
+                    entidad.Plat = Convert.ToSingle(lat);
+                    entidad.Plon = Convert.ToSingle(lon);
+                    DataSet ds = com.registrar_visita(entidad);
+                    vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                }
+               
                 if (vmensaje == "")
                 {
                     Alert.ShowGiftMessage("Estamos Registrando la Visita", "Espere un Momento", "ficha_cliente_m.aspx", "imagenes/loading.gif", "2000", "El registro por GPS fue guardado de manera correcta.", this);
@@ -155,14 +165,32 @@ namespace presentacion
                     gridcontactos.DataBind();
                     //imgmas.Visible = false;
                 }
+                solicitudes_pendientes(idc_cliente);
             }
             catch (Exception ex)
             {
                 Alert.ShowAlertError(ex.ToString(), this.Page);
-                Global.CreateFileError(ex.ToString(), this);
             }
         }
 
+        public void solicitudes_pendientes(int idc_cliente)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                LinkButton7.Visible = false;
+                   dt = funciones.ExecQuery("select DBO.fn_tiene_clientes_tel_solcambio(" + idc_cliente + ") as sol");
+                if (dt.Rows.Count > 0)
+                {
+                    LinkButton7.Visible = Convert.ToBoolean(dt.Rows[0]["sol"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+
+            }
+        }
         private void CargarFichaTecnica(int idc_cliente)
         {
             try
@@ -871,6 +899,11 @@ namespace presentacion
             {
                 Alert.ShowAlertError(ex.Message,this);
             }
+        }
+
+        protected void cbogrupos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarFichaTecnica(Convert.ToInt32(cbogrupos.SelectedValue));
         }
     }
 }

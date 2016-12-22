@@ -7,10 +7,45 @@ using System.Data.SqlClient;
 
 namespace negocio.Componentes
 {
-    
 
+    
     public class AgentesCOM
     {
+        public DataSet sp_FN_SUCURSAL_CORRESPONDE_COTIZACION_ELITE(int pidc_usuario, int pidc_coti)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_cotizacion", SqlDbType = SqlDbType.Int, Value = pidc_coti });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_FN_SUCURSAL_CORRESPONDE_COTIZACION_ELITE", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_reporting(int pidc_reporting)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_reporting", SqlDbType = SqlDbType.Int, Value = pidc_reporting });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_reporting", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet SP_FALTAS_EMPLEADO(int idc_empleado)
         {
             DataSet ds = new DataSet();
@@ -1418,7 +1453,7 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
-            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena", SqlDbType = SqlDbType.Int, Value = idc_occli });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_occli", SqlDbType = SqlDbType.Int, Value = idc_occli });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

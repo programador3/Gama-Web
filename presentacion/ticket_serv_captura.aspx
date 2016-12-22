@@ -82,15 +82,20 @@
             <h4><strong><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Observaciones del Ticket</strong></h4>
             <asp:TextBox  onblur="return imposeMaxLength(this, 249);" CssClass=" form-control" TextMode="Multiline" Rows="4" placeholder="Observaciones" ID="txtobservaciones" runat="server"></asp:TextBox>
         </div>
+        <div class="col-lg-12">
+            <h4><i class="fa fa-upload" aria-hidden="true"></i>&nbsp;Seleccione o arrastre un archivo anexo</h4>
+            <asp:FileUpload ID="fuparchivos" CssClass="form-control" runat="server" />
+
+        </div>
     </div>
-     <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar Ticket" CssClass="btn btn-primary btn-block" OnClick="btnGuardar_Click" />
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <asp:Button ID="btnGuardar" runat="server" Text="Guardar Ticket" CssClass="btn btn-primary btn-block" OnClick="btnGuardar_Click" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
+        </div>
+    </div>
     <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="always">

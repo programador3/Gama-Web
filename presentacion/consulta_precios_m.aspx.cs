@@ -37,8 +37,10 @@ namespace presentacion
 
 
         private void llenarCampos()
-        { 
+        {
 
+
+            Alert.ShowAlertAutoCloseTimer("Cargando", "", "1000", false, "imagenes/horizontal-loader.gif", this.Page);
             consulta_precios_mCOM comp = new consulta_precios_mCOM();
             consulta_precios_mENT ent = new consulta_precios_mENT();
             
@@ -51,12 +53,12 @@ namespace presentacion
             if (ds.Tables[0].Rows.Count > 0)
             {
                 Limpiar_Campos();
-                txtPrecio.Text = string.Format("$ {0:0,0.00}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio"].ToString()));
+                txtPrecio.Text = string.Format("$ {0:0,0.0000}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio"].ToString()));
                 //txtidc_Articulo.Text = ds.Tables[0].Rows[0]["idc_articulo"].ToString();
                 txtCodigo_Articulo.Text = ds.Tables[0].Rows[0]["codigo"].ToString();
-                txtPrecio_Lista.Text = string.Format("$ {0:0,0.00}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_lista"].ToString()));
-                txtPrecio_Minimo.Text = string.Format("$ {0:0,0.00}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_minimo"].ToString()));
-                txtPrecio_Real.Text = string.Format("$ {0:0,0.00}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_real"].ToString()));
+                txtPrecio_Lista.Text = string.Format("$ {0:0,0.0000}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_lista"].ToString()));
+                txtPrecio_Minimo.Text = string.Format("$ {0:0,0.0000}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_minimo"].ToString()));
+                txtPrecio_Real.Text = string.Format("$ {0:0,0.0000}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_real"].ToString()));
                 DataTable dt = (DataTable)ViewState["productos"];
                 string str = string.Format("idc_articulo ={0}", ddlProductos_Master.SelectedValue.ToString());
                 if (dt != null)
@@ -78,11 +80,10 @@ namespace presentacion
                     DateTime fecha = Convert.ToDateTime(ds.Tables[1].Rows[0]["FECHA"].ToString());
                     double Nota_C = Convert.ToDouble(ds.Tables[1].Rows[0]["precio_real"].ToString());//.ToString("C", Cultuture_Info);
                     
-                    txtUlt_Precio_Fac.Text = string.Format("$ {0:0,0.00}  {1}", precio, (cambio ? "***" : ""));
+                    txtUlt_Precio_Fac.Text = string.Format("$ {0:0,0.0000}  {1}", precio, (cambio ? "***" : ""));
                     txtFecha.Text =           fecha.ToString("D",Cultuture_Info);                   
-                    txtNota_Credito.Text =  string.Format((Nota_C != precio ? "$ {0:0,0.00} ": "" ), Nota_C);
+                    txtNota_Credito.Text =  string.Format((Nota_C != precio ? "$ {0:0,0.0000} ": "" ), Nota_C);
                 }
-                Alert.ShowAlertAutoCloseTimer("loading...", "", "2000", false, "imagenes/horizontal-loader.gif", this.Page);
             }
         }
 
@@ -105,8 +106,6 @@ namespace presentacion
                 ddlAgente.DataSource = ds.Tables[0];
                 ddlAgente.DataBind();
 
-                Alert.ShowAlertAutoCloseTimer("loading...", "", "2000", false, "imagenes/horizontal-loader.gif", this.Page);
-
             }
             catch (Exception ex)
             {
@@ -124,6 +123,10 @@ namespace presentacion
                
                 ent.Pidc_agente = Convert.ToInt32(ddlAgente.SelectedValue.ToString());
                 DataSet ds = comp.clientes_por_agente(ent);
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    row["nombre"] = row["nombre"].ToString().Trim() + " | " + row["rfccliente"].ToString().Trim() + " | " + row["cveadi"].ToString().Trim();
+                }
                 ddlClientes.Items.Clear();
                 ddlProductos_Master.Items.Clear();
                 ddlTipo_Producto.SelectedIndex = 0;
@@ -140,12 +143,10 @@ namespace presentacion
 
                     //gridclientes.DataSource = ds.Tables[0];
                     //gridclientes.DataBind();
-                    Alert.ShowAlertAutoCloseTimer("loading...", "", "2000", false, "imagenes/horizontal-loader.gif", this.Page);
                 }
                 else
                 {
                     ddlClientes.Items.Insert(0, new ListItem("--No Existen datos--", "0"));
-                    Alert.ShowAlertAutoCloseTimer("loading...", "", "500", false, "imagenes/horizontal-loader.gif", this.Page);
                 }
             }
             catch (Exception ex)
@@ -172,12 +173,10 @@ namespace presentacion
                     ddlProductos_Master.DataTextField = "desart";
                     ddlProductos_Master.DataBind();
                     ViewState["productos"] = ds.Tables[0];
-                    Alert.ShowAlertAutoCloseTimer("loading...", "", "2000", false, "imagenes/horizontal-loader.gif", this.Page);
                 }
                 else
                 {                    
                     ddlProductos_Master.Items.Insert(0, new ListItem("--No Existen datos--", "0")); //updated code}  
-                    Alert.ShowAlertAutoCloseTimer("loading...", "", "500", false, "imagenes/horizontal-loader.gif", this.Page);
                 }
                 
                 //
@@ -235,7 +234,6 @@ namespace presentacion
                     ddlProductos_Master.DataTextField = "desart";
                     ddlProductos_Master.DataBind();
                     ViewState["productos"] = ds.Tables[0];
-                    Alert.ShowAlertAutoCloseTimer("loading...", "", "2000", false, "imagenes/horizontal-loader.gif", this.Page);
                 }
                 else
                 {

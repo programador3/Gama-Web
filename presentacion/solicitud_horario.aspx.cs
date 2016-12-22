@@ -144,7 +144,9 @@ namespace presentacion
                     if (txthoraentrada.Text == "" &&
                         txthorasalida.Text == "" &&
                         txthorasalidac.Text == "" &&
-                        txthoraentradac.Text == "")
+                        txthoraentradac.Text == "" &&
+                        Convert.ToBoolean(row["no_comida"]) == false &&
+                        Convert.ToBoolean(row["no_salida"]) == false)
                     {
                         btntot.CssClass = "btn btn-success btn-block";
                         cuerpo.Visible = false;

@@ -82,6 +82,10 @@
                             Text="Iniciar Sesión" CssClass="waves-effect waves-light btn-large bt " OnClick="btnaceptar_Click" />
                         <h6>   <asp:LinkButton CssClass="waves-effect waves-light btn" Style="background: #37474f  ; height:30px; font-size:12px"
             Visible="false" ID="lnlotracuenta" runat="server" OnClick="lnlotracuenta_Click">Iniciar Sesion con otra Cuenta</asp:LinkButton></h6>
+                        <br />
+                        <br />
+                        <br />
+                        <asp:LinkButton ID="lbklimpiarsession" CssClass="waves-effect waves-light red darken-1 btn" runat="server" OnClick="lbklimpiarsession_Click">Cerrar Sesión Iniciada</asp:LinkButton>
                            </div>
                 </div>
             </div>

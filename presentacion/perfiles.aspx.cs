@@ -391,7 +391,7 @@ namespace presentacion
                 if (Convert.ToInt32(rowView["id_perfilproduccion"]) == 0)//si es 0 SIGNIFICA QUE ES NUEVO, MUESTRO ETIQUETA CORRESPONDIENTE
                 {
                     //nuevo_registro.ImageUrl = "imagenes/btn/new_register.png";
-                    e.Row.Cells[7].BackColor = Color.FromName("#81F79F");
+                    e.Row.Cells[7].BackColor = Color.FromName("#1de9b6");
                 }
                 if (cbxTipo.Checked == false)//si el request viene vacio ejecuto el modo borrador
                 {

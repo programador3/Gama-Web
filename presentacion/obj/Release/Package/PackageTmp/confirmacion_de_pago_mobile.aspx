@@ -189,7 +189,7 @@
                 <td>
                 <div id="select" class="styled-select" style="width:100%;">
                     <asp:DropDownList ID="cbotipopago" runat="server" Font-Bold="True" CssClass="dropdownlist"
-                        Font-Names="Arial Narrow" Height="30px" Width="105%">
+                        Font-Names="Arial Narrow" Height="30px" Width="100%">
                         <asp:ListItem Value="1">Efectivo</asp:ListItem>
                         <asp:ListItem Value="2">Deposito</asp:ListItem>
                     </asp:DropDownList>                

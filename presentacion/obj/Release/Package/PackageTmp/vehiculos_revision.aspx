@@ -224,11 +224,8 @@
                                         </ItemTemplate>
                                     </asp:Repeater>
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" style="color: black;">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                <i class="fa fa-check-square-o"></i></span>
-                                            <asp:CheckBox ID="cbxBuenasCondiciones" runat="server" class="input-sm" Text="Si (Desmarcada en caso contrario)" TextAlign="Right" />
-                                        </div>
+                                        <asp:CheckBox ID="cbxBuenasCondiciones" runat="server"  CssClass="radio3 radio-check radio-info radio-inline" Text="Si (Desmarcada en caso contrario)" TextAlign="Right" />
+                                     
                                     </div>
                                 </div>
                                 <div class="row">
@@ -249,248 +246,219 @@
                                     <ContentTemplate>
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                            
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #337ab7;"><i class="fa fa-car"></i></span>
                                                         <asp:TextBox ID="txtPintura" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text="Pintura"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                              
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                            <i class="fa fa-check-square-o"></i></span>
-                                                        <asp:CheckBox ID="cbxPintura" runat="server" class="input-sm" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxPintura_CheckedChanged" />
-                                                    </div>
-                                                </div>
+                                               <asp:CheckBox ID="cbxPintura" runat="server"  CssClass="radio3 radio-check radio-info radio-inline" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxPintura_CheckedChanged" />
+                                                  
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                               
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
                                                         <asp:TextBox ID="txtCostoPintura" ReadOnly="true" runat="server" class="form-control input-sm" Text="0.00" TextMode="Number" AutoPostBack="true"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                              
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                            
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-file-text"></i></span>
                                                         <asp:TextBox ID="txtObservacionesPintura" runat="server" class="form-control input-sm" placeholder="Comentarios"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                            
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                               
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #337ab7;"><i class="fa fa-car"></i></span>
                                                         <asp:TextBox ID="txtLantas" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text="Llantas"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                           
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                            <i class="fa fa-check-square-o"></i></span>
-                                                        <asp:CheckBox ID="cbxLlantas" runat="server" class="input-sm" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxLlantas_CheckedChanged" />
-                                                    </div>
-                                                </div>
+                                              <asp:CheckBox ID="cbxLlantas" runat="server"   CssClass="radio3 radio-check radio-info radio-inline" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxLlantas_CheckedChanged" />
+                                                 
+                                           
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                            
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
                                                         <asp:TextBox ID="txtCostollantas" ReadOnly="true" runat="server" class="form-control input-sm" Text="0.00" TextMode="Number" AutoPostBack="true"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                           
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                             
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-file-text"></i></span>
                                                         <asp:TextBox ID="txtComentariosllantas" runat="server" class="form-control input-sm" placeholder="Comentarios"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                             
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                             
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #337ab7;"><i class="fa fa-car"></i></span>
                                                         <asp:TextBox ID="txtAccesorios" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text="Accesorios"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                           
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                            <i class="fa fa-check-square-o"></i></span>
-                                                        <asp:CheckBox ID="cbxAccesorios" runat="server" class="input-sm" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxAccesorios_CheckedChanged" />
-                                                    </div>
-                                                </div>
+                                             <asp:CheckBox ID="cbxAccesorios" runat="server"   CssClass="radio3 radio-check radio-info radio-inline" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxAccesorios_CheckedChanged" />
+                                                 
+                                              
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                              
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
                                                         <asp:TextBox ID="txtCostoAccesorios" ReadOnly="true" runat="server" class="form-control input-sm" Text="0.00" TextMode="Number" AutoPostBack="true"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                                
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                               
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-file-text"></i></span>
                                                         <asp:TextBox ID="txtDescripcionAccesorios" runat="server" class="form-control input-sm" placeholder="Comentarios" AutoPostBack="true"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                               
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #337ab7;"><i class="fa fa-car"></i></span>
                                                         <asp:TextBox ID="txtCarroceria" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text="Carroceria"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                               
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                            <i class="fa fa-check-square-o"></i></span>
-                                                        <asp:CheckBox ID="cbxCarroceria" runat="server" class="input-sm" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxCarroceria_CheckedChanged" />
-                                                    </div>
-                                                </div>
+                                               <asp:CheckBox ID="cbxCarroceria" runat="server"   CssClass="radio3 radio-check radio-info radio-inline" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxCarroceria_CheckedChanged" />
+                                                  
+                                               
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                             
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
                                                         <asp:TextBox ID="txtCostoCarroceria" ReadOnly="true" runat="server" class="form-control input-sm" Text="0.00" TextMode="Number" AutoPostBack="true"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                               
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                               
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-file-text"></i></span>
                                                         <asp:TextBox ID="txtObservacionesCarroceria" runat="server" class="form-control input-sm" placeholder="Comentarios"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                             
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #337ab7;"><i class="fa fa-car"></i></span>
                                                         <asp:TextBox ID="txtInterior" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text="Interior"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                              
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                            <i class="fa fa-check-square-o"></i></span>
-                                                        <asp:CheckBox ID="cbxInterior" runat="server" class="input-sm" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxInterior_CheckedChanged" />
-                                                    </div>
-                                                </div>
+                                             <asp:CheckBox ID="cbxInterior" runat="server"   CssClass="radio3 radio-check radio-info radio-inline" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxInterior_CheckedChanged" />
+                                                 
+                                               
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                               
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
                                                         <asp:TextBox ID="txtCostoInterior" ReadOnly="true" runat="server" class="form-control input-sm" Text="0.00" TextMode="Number" AutoPostBack="true"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                               
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                               
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-file-text"></i></span>
                                                         <asp:TextBox ID="txtObservacionesInterior" runat="server" class="form-control input-sm" placeholder="Comentarios"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                                
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #337ab7;"><i class="fa fa-car"></i></span>
                                                         <asp:TextBox ID="txtVidrios" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text="Vidrios"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                                
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                            <i class="fa fa-check-square-o"></i></span>
-                                                        <asp:CheckBox ID="cbxVidrios" runat="server" class="input-sm" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxVidrios_CheckedChanged" />
-                                                    </div>
-                                                </div>
+                                                <asp:CheckBox ID="cbxVidrios" runat="server"   CssClass="radio3 radio-check radio-info radio-inline" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxVidrios_CheckedChanged" />
+                                                   
+                                                
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                                
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
                                                         <asp:TextBox ID="txtCostoVidrios" ReadOnly="true" runat="server" class="form-control input-sm" Text="0.00" TextMode="Number" AutoPostBack="true"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                                
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                                
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-file-text"></i></span>
                                                         <asp:TextBox ID="txtObservacionesVidrios" runat="server" class="form-control input-sm" placeholder="Comentarios"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                              
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                                
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #337ab7;"><i class="fa fa-car"></i></span>
                                                         <asp:TextBox ID="txtFocos" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text="Focos"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                              
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                            <i class="fa fa-check-square-o"></i></span>
-                                                        <asp:CheckBox ID="cbxFocos" runat="server" class="input-sm" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxFocos_CheckedChanged" />
-                                                    </div>
-                                                </div>
+                                                 <asp:CheckBox ID="cbxFocos" runat="server"   CssClass="radio3 radio-check radio-info radio-inline" Text="Presenta Daño" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbxFocos_CheckedChanged" />
+                                                    
+                                               
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                                
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
                                                         <asp:TextBox ID="txtCostoFocos" ReadOnly="true" runat="server" class="form-control input-sm" Text="0.00" TextMode="Number" AutoPostBack="true"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                                
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                <div class="form-group">
+                                                
                                                     <div class="input-group">
                                                         <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-file-text"></i></span>
                                                         <asp:TextBox ID="txtObservacionesFocos" runat="server" class="form-control input-sm" placeholder="Comentarios"></asp:TextBox>
                                                     </div>
-                                                </div>
+                                            
                                             </div>
                                         </div>
                                     </ContentTemplate>

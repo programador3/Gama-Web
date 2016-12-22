@@ -133,7 +133,8 @@ namespace presentacion
                 {
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     Session["xusuario"] = lblusuario.Text;
-                    Session["idc_cliente"] = grdclientes.DataKeys[row.RowIndex].Value;
+                    string val = grdclientes.DataKeys[row.RowIndex].Values["IDC_CLIENTE"].ToString().Trim();
+                    Session["idc_cliente"] = val;
                     Session["num_grupo"] = (grdclientes.Rows[row.RowIndex].Cells[6].Text.Trim() == "&nbsp;" ? "0" : grdclientes.Rows[row.RowIndex].Cells[6].Text.Trim());
                     Session["idc_agente"] = cboagente.SelectedValue;
                     Response.Redirect("Ficha_cliente_m.aspx");
@@ -151,17 +152,10 @@ namespace presentacion
                 CheckBox chkact =  e.Row.FindControl("chkact") as CheckBox;
                 string tiempo = rowView["t"].ToString();
                 string dia = rowView["dia"].ToString();
+                int visito_hoy = Convert.ToInt32(rowView["visito_hoy"]);
                 if (dia == "True" | dia == "False")
                 {
-                    //e.Row.Cells(9).BackColor = Drawing.Color.Yellow
-                    if (Convert.ToInt32(e.Row.Cells[12].Text) > 0)
-                    {
-                        chkact.Visible = true;
-                    }
-                    else
-                    {
-                        chkact.Visible = false;
-                    }
+                    chkact.Visible = visito_hoy > 0;
                     if (!string.IsNullOrEmpty(tiempo))
                     {
                         if (Convert.ToInt32(tiempo) == 0)

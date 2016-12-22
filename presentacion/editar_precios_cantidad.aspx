@@ -17,7 +17,6 @@
     <link href="js/sweetalert.css" rel="stylesheet" />
     <script src="js/sweetalert-dev.js"></script>
     <script src="js/sweetalert.min.js"></script>
-    <script src="Textbox.js" type="text/javascript"></script>
     <%----/-----------/----%>
     <style type="text/css">
         input[type="text"]{padding:0px !important;}
@@ -103,7 +102,7 @@
                 }
 
             }
-
+            
             function movio_precios() {
                 var txtmod = document.getElementById('txtmod');
                 var precio = document.getElementById('txtprecio');
@@ -292,6 +291,28 @@
             }
 
     </script>
+    <script type="text/javascript">
+        function movio_precios_minimo() {
+            var txtmod = document.getElementById('txtmod');
+            var precio = document.getElementById('txtprecio');
+            var precior = document.getElementById('txtprecioreal');
+            var txtpreciominimo = document.getElementById('txtpreciominimo');
+            var z = txtpreciominimo.value.replace(",", "");
+            var x = precio.value.replace(",", "");
+            var y = precior.value.replace(",", "");
+            if (y < z) {
+                alert("EL PRECIO REAL NO PUEDE SER MENOR AL PRECIO MINIMO");
+                $("#<%=txtprecioreal.ClientID%>").val(z);
+                return false;
+            } else if (x < z) {
+                alert("EL PRECIO NO PUEDE SER MENOR AL PRECIO MINIMO");
+                $("#<%=txtprecio.ClientID%>").val(z);
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server" style="position: absolute; top: 0px; left: 0px; width: 100%" defaultbutton="def_b">
@@ -363,7 +384,7 @@
                                 Precio:</label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtprecio" runat="server"  onkeypress="return validarMontoMoney(event);"  type="number" min="0.0001" step="0.0001"
+                                <asp:TextBox ID="txtprecio" onfocus="this.select()" onblur="return movio_precios_minimo();" runat="server"  onkeypress="return validarMontoMoney(event);"  type="number" min="0.0001" step="0.0001"
                                     CssClass="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini" 
                                     style="height:30px;display:inline; text-align: left;" Width="80%"></asp:TextBox>
                                     <asp:ImageButton ID="imgultimo" runat="server" Height="30px" Width="30px" ImageUrl="imagenes/calendar3.gif" 
@@ -376,7 +397,7 @@
                                 Precio Real:</label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtprecioreal" runat="server"  onkeypress="return validarMontoMoney(event);"  type="number" step="0.0001" min="0.0001"
+                                <asp:TextBox ID="txtprecioreal" onfocus="this.select()" onblur="return movio_precios_minimo();" runat="server"  onkeypress="return validarMontoMoney(event);"  type="number" step="0.0001" min="0.0001"
                                     CssClass="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini" 
                                     style="height:30px; text-align: left;" Text="0" Width="100%"></asp:TextBox>
                             </td>

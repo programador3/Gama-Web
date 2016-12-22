@@ -368,7 +368,7 @@ namespace presentacion
             try
             {
                 TicketsCapturaCOM componente = new TicketsCapturaCOM();
-                DataSet ds = componente.sp_aticketserv(idc_puesto, idc_tareaser, obser, idc_usuario);
+                DataSet ds = componente.sp_aticketserv(idc_puesto, idc_tareaser, obser, idc_usuario,"");
                 vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                 ret.Add(vmensaje);
                 return ret;

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+GWebCN
+</name>
+</assembly>
+<members>
+<member name="T:GWebCN.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:GWebCN.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:GWebCN.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:GWebCN.Formatos_Redondeo.Formato_moneda(System.Double)">
+ <summary>
+ Convierte a formato moneda segun las configuraciones regionales del equipo.
+ </summary>
+ <param name="valor"> Valor a convertir </param>
+ <returns>Regresa el valor a formato moneda(separando por ',' los miles y por '.' los decimales )</returns>
+ <remarks></remarks>
+ 
+</member>
+<member name="M:GWebCN.Formatos_Redondeo.Redondeo_Dos_Decimales(System.Decimal)">
+ <summary>
+ Redondea un valor con fracciones decimales (2 digitos decimales)
+ </summary>
+ <param name="valor">Valor a Redondear</param>
+ <returns>Valor redondeado a dos digitos</returns>
+ <remarks></remarks>
+</member>
+<member name="M:GWebCN.Formatos_Redondeo.Redondeo_cuatro_decimales(System.Double)">
+ <summary>
+ Regresa un numero entero con cuatro digitos decimales
+ </summary>
+ <param name="valor">Valor a convertir con cuatro digitos decimales</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:GWebCN.OC_Digitales.validar_oc_cliente(System.Int32)">
+ <summary>
+ Devuelve valor Boolean, True si el numero de OC es correcto.
+ </summary>
+ <param name="idc_occli">Numero de Orden de Compra </param>
+ <returns>Retorna Boolean</returns>
+ <remarks>/////</remarks>
+</member>
+<member name="M:GWebCN.OC_Digitales.Requiere_OC_Croquis(System.Int32)">
+ <summary>
+ Regresa si para el pedido se tiene que ligar una OC y un Croquis
+ </summary>
+ <param name="idc_cliente">Numero del cliente</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

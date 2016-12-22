@@ -58,6 +58,33 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.TextBox txthasta;
         
         /// <summary>
+        /// Control buscar_cliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow buscar_cliente;
+        
+        /// <summary>
+        /// Control txtbuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbuscar;
+        
+        /// <summary>
+        /// Control drclientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView drclientes;
+        
+        /// <summary>
         /// Control Label3.
         /// </summary>
         /// <remarks>

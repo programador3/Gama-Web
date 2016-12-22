@@ -1194,16 +1194,16 @@ namespace presentacion
                     }
                     if (Session["redirect"] != null && Session["redirect_pagedet"] == null)
                     {
-                        Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", (string)Session["redirect"], "imagenes/loading.gif", "2000", "El movimiento fue Guardado Correctamente", this);
+                        Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", (string)Session["redirect"], "imagenes/loading.gif", "1000", "El movimiento fue Guardado Correctamente", this);
                     }
                     else if (Session["redirect_pagedet"] != null)
                     {
-                        Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", (string)Session["redirect_pagedet"], "imagenes/loading.gif", "2000", "El movimiento fue Guardado Correctamente", this);
+                        Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", (string)Session["redirect_pagedet"], "imagenes/loading.gif", "1000", "El movimiento fue Guardado Correctamente", this);
                         Session["redirect_pagedet"] = null;
                     }
                     else
                     {
-                        Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", "tareas.aspx", "imagenes/loading.gif", "2000", "El movimiento fue Guardado Correctamente", this);
+                        Alert.ShowGiftMessage("Estamos guardando los cambios", "Espere un Momento", "tareas.aspx", "imagenes/loading.gif", "1000", "El movimiento fue Guardado Correctamente", this);
                     }
 
                     Session["Caso_Confirmacion"] = null;

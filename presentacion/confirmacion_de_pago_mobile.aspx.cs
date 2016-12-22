@@ -20,6 +20,7 @@ namespace presentacion
                 txtmonto.Attributes["onClick"] = "this.select();";
                 txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
                 cbotipopago.Attributes["onchange"] = "return change_cbotipo(this);";
+                txtmonto.Enabled = false;
             }
         }
 

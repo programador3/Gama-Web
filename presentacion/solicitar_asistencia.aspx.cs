@@ -85,9 +85,13 @@ namespace presentacion
             string depto = gridservicios.DataKeys[index].Values["depto"].ToString();
             string horario = gridservicios.DataKeys[index].Values["horario"].ToString();
             string hora_asistencia = gridservicios.DataKeys[index].Values["hora_asistencia"].ToString();
+            DateTime asistencia = Convert.ToDateTime(gridservicios.DataKeys[index].Values["asistencia"]);
+            bool tuvo_asistencia = gridservicios.DataKeys[index].Values["hora_checo_real"].ToString() != "";
             switch (e.CommandName)
             {
                 case "Puestos":
+                    txthora.Text = tuvo_asistencia ? asistencia.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T') : "";
+                    txthora.Enabled = !tuvo_asistencia;
                     txtfechaview.Text= Convert.ToDateTime(txtfecha.Text).ToString("dd MMMM, yyyy", CultureInfo.CreateSpecificCulture("es-MX"));
                     txtnomina.Text = num_nomina.Trim();
                     txtidc_empleado.Text = IDC_EMPLEADO.Trim();

@@ -33,6 +33,8 @@ namespace presentacion
                 txthasta.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 btnaceptar.Attributes["onclick"] = "return ver_informe(" + txtdesde.ClientID + "," + txthasta.ClientID + "," + txtidc_cliente.ClientID + "," + chktodos.ClientID + "," + cbosuc.ClientID + "," + chktodas.ClientID + "," + chktmk.ClientID + "," + cbogrupo.ClientID + "," + btna.ClientID + ");";
                 sucursales();
+
+                imgcliente.Visible = false;
                 cargar_combo_grupos();
                 cbogrupo.SelectedValue = "[TODOS]";
             }
@@ -204,20 +206,24 @@ namespace presentacion
                 Alert.ShowAlertError("Error al Generar Reporte \\n \\u000B \\n" + ex.Message,this);
             }
         }
-
+        protected void gridclientes_ItemDataBound(object sender, DataGridItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.AlternatingItem | e.Item.ItemType == ListItemType.Item)
+            {
+                ImageButton imgselec = new ImageButton();
+                imgselec = e.Item.FindControl("imgselec") as ImageButton;
+                imgselec.Attributes["onclick"] = "return regresar(" + e.Item.ItemIndex + 1 + ");";
+            }
+        }
         protected void chktodos_CheckedChanged(object sender, EventArgs e)
         {
-            imgcliente.Attributes.Remove("onclick");
-            imgcliente.Enabled = false;
             if (chktodos.Checked == true)
             {
-                imgcliente.Attributes.Remove("onclick");
-                imgcliente.Enabled = false;
+                imgcliente.Visible = false;
             }
             else
             {
-                imgcliente.Attributes["onclick"] = "return buscar_cliente();";
-                imgcliente.Enabled = true;
+                imgcliente.Visible = true;
             }
             txtcliente.Text = "";
             txtidc_cliente.Text = "0";
@@ -260,6 +266,59 @@ namespace presentacion
             {
                 cbosuc.ForeColor = System.Drawing.Color.White;
             }
+        }
+
+        protected void imgcliente_Click(object sender, ImageClickEventArgs e)
+        {
+            buscar_cliente.Visible = buscar_cliente.Visible ? false : true;
+        }
+
+        protected void txtbuscar_TextChanged(object sender, EventArgs e)
+        {
+            buscar_clientes();
+        }
+
+        public void buscar_clientes()
+        {
+
+            DataSet ds = new DataSet();
+            try
+            {
+                if (!string.IsNullOrEmpty(txtbuscar.Text.Trim()))
+                {
+                    AgentesCOM com = new AgentesCOM();
+                    ds = com.sp_bclientes_ventas(txtbuscar.Text.Trim());
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        drclientes.DataSource = ds.Tables[0];
+                        drclientes.DataBind();
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.ToString() + "')</script>");
+            }
+
+        }
+
+        protected void drclientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            int idc_cliente = Convert.ToInt32(drclientes.DataKeys[index].Values["idc_cliente"].ToString());
+            string nombre = drclientes.DataKeys[index].Values["nombre"].ToString();
+            txtidc_cliente.Text = idc_cliente.ToString().Trim();
+            txtcliente.Text = nombre;
+            buscar_cliente.Visible = false;
+        }
+
+        protected void btncerrar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("menu.aspx");
         }
     }
 }

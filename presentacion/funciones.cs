@@ -20,6 +20,29 @@ namespace presentacion
 
         public static DBConnection conexion = new DBConnection();
 
+        public static string NombreMes(string strOutput)
+        {
+            strOutput = strOutput.Replace("Monday", "Lunes");
+            strOutput = strOutput.Replace("Tuesday", "Martes");
+            strOutput = strOutput.Replace("Wednesday", "Miércoles");
+            strOutput = strOutput.Replace("Thursday", "Jueves");
+            strOutput = strOutput.Replace("Friday", "Viernes");
+            strOutput = strOutput.Replace("Saturday", "Sábado");
+            strOutput = strOutput.Replace("Sunday", "Domingo");
+            strOutput = strOutput.Replace("January", "Enero");
+            strOutput = strOutput.Replace("February", "Febrero");
+            strOutput = strOutput.Replace("March", "Marzo");
+            strOutput = strOutput.Replace("April", "Abril");
+            strOutput = strOutput.Replace("May", "Mayo");
+            strOutput = strOutput.Replace("June", "Junio");
+            strOutput = strOutput.Replace("July", "Julio");
+            strOutput = strOutput.Replace("August", "Agosto");
+            strOutput = strOutput.Replace("September", "Septiembre");
+            strOutput = strOutput.Replace("October", "Octubre");
+            strOutput = strOutput.Replace("November", "Noviembre");
+            strOutput = strOutput.Replace("December", "Diciembre");
+            return strOutput;
+        }
         String FormatNumber(decimal valor, int decimales)
         {
             string total_decimale = "";

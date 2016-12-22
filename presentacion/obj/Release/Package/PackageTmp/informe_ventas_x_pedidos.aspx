@@ -34,30 +34,7 @@
     <script type="text/javascript">
 
         function pageLoad(sender, args) {
-            $(document).ready(function () {
-                //$('input[id$="txtidc_cliente"]').datetimepicker();
-                $('input[id$="txtdesde"]').datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    showOn: 'button',
-                    buttonImage: 'Jquery/calendar.gif',
-                    buttonImageOnly: true,
-                    dateformat: 'dd-mm-yy',
-                    firstDay: 1
-                });
-                $('input[id$="txtdesde"]').datepicker($.datepicker.regional["es"]);
-
-                $('input[id$="txthasta"]').datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    showOn: 'button',
-                    buttonImage: 'Jquery/calendar.gif',
-                    buttonImageOnly: true,
-                    dateformat: 'dd-mm-yy',
-                    firstDay: 1
-                });
-                $('input[id$="txthasta"]').datepicker($.datepicker.regional["es"]);
-            });
+           
         }
 
         function buscar_cliente() {
@@ -121,7 +98,7 @@
 
 
         }
-
+     
     </script>
 
 
@@ -149,17 +126,43 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:TextBox ID="txtdesde" runat="server" TextMode="Date"
-                                        onfocus="this.blur();" Width="80%"
+                                    <asp:TextBox ID="txtdesde" runat="server" TextMode="Date" Width="100%"
                                         CssClass="form-control2"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="txthasta" runat="server"  TextMode="Date" onfocus="this.blur();" Width="80%"
+                                    <asp:TextBox ID="txthasta" runat="server"  TextMode="Date"  Width="100%"
                                         CssClass="form-control2"></asp:TextBox>
                                 </td>
                             </tr>
                         </table>
-
+                        <br />
+                    </td>
+                </tr>
+                <tr id="buscar_cliente" runat="server" visible="false" >
+                    <td>
+                        <h4 style="text-align:center;"><strong>Buscar Cliente</strong></h4>
+                         <asp:TextBox ID="txtbuscar" runat="server" style="display:inline" AutoPostBack="true" 
+                        onfocus="if(this.value=='Buscar...')this.value='';" 
+                        onblur="if(this.value=='')this.value='Buscar...'" Width="100%" 
+                        CssClass=" form-control" OnTextChanged="txtbuscar_TextChanged"></asp:TextBox>
+                        <br />
+                        <div class="table table-responsive">
+                            <asp:GridView DataKeyNames="idc_cliente,nombre" ID="drclientes" runat="server" Width="100%" CssClass=" table table-responsive table-condensed table-bordered"
+                                Style="background-color: white;"
+                                AutoGenerateColumns="False" OnRowCommand="drclientes_RowCommand">
+                                <Columns>
+                                    <asp:TemplateField>
+                                         <ItemTemplate>
+                                            <asp:ImageButton CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ID="imgselec" runat="server" Height="25px" Width="25px" ImageUrl="~/imagenes/btn/icon_autorizar.png" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="idc_cliente" HeaderText="idc_cliente" Visible="False" />
+                                    <asp:BoundField DataField="nombre" HeaderText="nombre"  />
+                                    <asp:BoundField DataField="rfccliente" HeaderText="rfccliente"  />
+                                    <asp:BoundField DataField="cveadi" HeaderText="cveadi"  />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -176,8 +179,8 @@
                                         CssClass="form-control2"></asp:TextBox>
                                 </td>
                                 <td style="width: 2%">
-                                    <asp:ImageButton ID="imgcliente" runat="server" Enabled="False" Height="20px"
-                                        ImageUrl="~/Iconos/utilities-find.png" Width="20px" />
+                                    <asp:ImageButton ID="imgcliente" runat="server" Height="30px"
+                                        ImageUrl="~/imagenes/btn/icon_buscar.png" Width="30px" OnClick="imgcliente_Click" />
                                 </td>
                             </tr>
                             <tr>
@@ -288,18 +291,14 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnaceptar" runat="server" Font-Bold="True" ForeColor="Black"
-                            Height="35px" Text="Aceptar" Width="100%"
-                            CssClass="btn btn-primary btn-block" />
+                        <asp:Button ID="btnaceptar" runat="server" Text="Aceptar" CssClass="btn btn-primary btn-block"/>
 
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Button ID="btncerrar" runat="server"
-                            CssClass="btn btn-danger btn-block"
-                            Font-Bold="True" ForeColor="Black" Height="40px" Text="Salir" ToolTip="Salir"
-                            Width="100%" />
+                            CssClass="btn btn-danger btn-block" Text="Salir" ToolTip="Salir" OnClick="btncerrar_Click" />
                     </td>
                 </tr>
                 <tr>

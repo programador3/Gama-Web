@@ -94,7 +94,7 @@ namespace presentacion
                     txtdescripcion.ReadOnly = editable == true ? false : true;
                     txtfecha_solicompromiso.ReadOnly = editable == true ? false : true;
                     txtidc_tareaser.Text = idc_tareaser.ToString().Trim();
-                    ScriptManager.RegisterStartupScript(this, GetType(), "DededededE", "Gift('Estamos Cargando la Tarea');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "DededededE", "Gifts('Estamos Cargando la Tarea');", true);
                 }
                 else
                 {
@@ -505,8 +505,9 @@ namespace presentacion
                             int total = (((tabla_archivos.Rows.Count) * 1) + 1) * 1000;
                             string t = total.ToString();
                             string url_back = Request.QueryString["idc_tarea"] != null ? (string)Session["Back_Page"] : "tareas.aspx";
-                            Alert.ShowGiftMessage("Estamos procesando la cantidad de " + tabla_archivos.Rows.Count.ToString() + " archivo(s) al Servidor.", "Espere un Momento", url_back,
-                                "imagenes/loading.gif", t, "La tarea fue Guardada Correctamente con una Fecha de compromiso para el dia " + FECHA, this);
+                            ScriptManager.RegisterStartupScript(this,GetType(),Guid.NewGuid().ToString(), 
+                                "AlertGO('"+ "La tarea fue Guardada Correctamente con una Fecha de compromiso para el dia " + FECHA+"','"+url_back+"');", true);
+                         
                         }
                         else
                         {

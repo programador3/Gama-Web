@@ -9,6 +9,27 @@ namespace negocio.Componentes
 {
     public class comidasCOM
     {
+        public DataSet sp_importar_vales_comida(string cadena, int total, int idc_usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena", Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotal_cadena", Value = total });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", Value = idc_usuario });
+
+            try
+            {
+                ds = data.enviar("sp_importar_vales_comida", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+
+        }
         public DataSet CargarEmpleados(comidasENT ent)
         {
             DataSet ds = new DataSet();

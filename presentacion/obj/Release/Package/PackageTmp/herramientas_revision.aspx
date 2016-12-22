@@ -100,7 +100,7 @@
                 <div class="col-lg-2">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" runat="server" id="Selecte" visible="false">
                 <div class="col-lg-4">
                     <div class="btn-group">
                         <asp:LinkButton ID="lnkDetalles" runat="server" class="btn btn-primary active" OnClick="lnkDetalles_Click">Detalles <i class="fa fa-list-alt"></i></asp:LinkButton>
@@ -116,7 +116,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <asp:Panel ID="PanelActivos" runat="server" class="panel panel-primary">
+                    <asp:Panel ID="PanelActivos" runat="server" class="panel panel-primary" Visible="false">
                         <div class="panel-heading" style="text-align: center;">
                             <h3 class="panel-title">Listado de Herramientas <i class="fa fa-list"></i></h3>
                         </div>
@@ -150,122 +150,118 @@
                         </div>
                     </asp:Panel>
 
-                    <asp:Panel ID="PanelRevisionActivos" runat="server" class="panel panel-primary" Visible="false">
+                    <asp:Panel ID="PanelRevisionActivos" runat="server" class="panel panel-info fresh-color" Visible="true">
                         <div class="panel-heading" style="text-align: center;">
                             <h3 class="panel-title">Revision de Herramientas <i class="fa fa-check-square-o"></i></h3>
                         </div>
                         <div class="panel-body">
-                            <asp:Panel ID="Panel2" runat="server">
-                                <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Always">
-                                    <ContentTemplate>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-xs-12" style="text-align: center;">
-                                                <h4><strong>Herramienta <i class="fa fa-wrench"></i></strong></h4>
-                                            </div>
-                                            <div class="col-lg-3 col-xs-12" style="text-align: center;">
-                                                <h5><strong>Entrego </strong>
-                                                    <asp:LinkButton ID="lbkseltodo" OnClick="lbkseltodo_Click" runat="server" CssClass="btn btn-primary btn-xs">Seleccionar Todo  <i class="fa fa-check-square-o"></i></asp:LinkButton>
-
-                                                    <asp:LinkButton ID="lnkDes" OnClick="lbkdestodo_Click" runat="server" CssClass="btn btn-primary btn-xs" Visible="false">Deseleccionar Todo  <i class="fa fa-check-square-o"></i></asp:LinkButton>
-                                                </h5>
-                                            </div>
-                                            <div class="col-lg-3 col-xs-12" style="text-align: center;">
-                                                <h4><strong>Costo Aproximado <i class="fa fa-usd"></i></strong></h4>
-                                            </div>
+                            <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Always">
+                                <ContentTemplate>
+                                    <div class="row">
+                                        <div class="col-lg-7 col-xs-12" style="text-align: center;">
+                                            <h4><strong>Herramienta <i class="fa fa-wrench"></i></strong></h4>
                                         </div>
+                                        <div class="col-lg-3 col-xs-12" style="text-align: center;">
+                                            <h5><strong>Entrego </strong>
+                                                <asp:LinkButton ID="lbkseltodo" OnClick="lbkseltodo_Click" runat="server" CssClass="btn btn-primary btn-xs">Seleccionar Todo  <i class="fa fa-check-square-o"></i></asp:LinkButton>
 
-                                        <asp:Repeater ID="repeatRevision" runat="server" OnItemDataBound="repeatRevision_ItemDataBound">
-                                            <ItemTemplate>
-                                                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                                                    <Triggers>
-                                                        <asp:AsyncPostBackTrigger ControlID="txtMoney" EventName="TextChanged" />
-                                                    </Triggers>
-                                                    <ContentTemplate>
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                                <div class="form-group">
-                                                                    <asp:Label ID="lblactivo" runat="server" Text="Label" Visible="false"></asp:Label>
-                                                                    <div class="input-group">
-                                                                        <span class="input-group-addon" style="color: #fff; background-color: #337ab7;">
-                                                                            <asp:LinkButton ID="lnkDetallesHerrRevision" Style="color: #fff; background-color: #337ab7;" runat="server" OnClick="lnkDetallesHerrRevision_Click"><i class="fa fa-wrench"></i></asp:LinkButton></span>
-                                                                        <asp:TextBox ID="txt" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("subcat") %>'></asp:TextBox>
-                                                                        <asp:Label ID="LBLFECHA_REV" runat="server" Text='<%#Eval("fecha") %>' Visible="false"></asp:Label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                                <div class="form-group">
-                                                                    <asp:Label ID="lblerrorfolio" runat="server" CssClass="label label-danger" Text="" Visible="false"></asp:Label></strong>
-                                                             <asp:Label ID="lblfolioactv" runat="server" Visible="false" Text='<%#Eval("folio") %>'></asp:Label></strong>
+                                                <asp:LinkButton ID="lnkDes" OnClick="lbkdestodo_Click" runat="server" CssClass="btn btn-primary btn-xs" Visible="false">Deseleccionar Todo  <i class="fa fa-check-square-o"></i></asp:LinkButton>
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-2 col-xs-12" style="text-align: center;">
+                                            <h4><strong>Costo <i class="fa fa-usd"></i></strong></h4>
+                                        </div>
+                                    </div>
+
+                                    <asp:Repeater ID="repeatRevision" runat="server" OnItemDataBound="repeatRevision_ItemDataBound">
+                                        <ItemTemplate>
+                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID="txtMoney" EventName="TextChanged" />
+                                                </Triggers>
+                                                <ContentTemplate>
+                                                    <div class="row" style="border: 1px solid gray; padding-top: 7px">
+                                                        <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
+
+                                                            <asp:Label ID="lblactivo" runat="server" Text="Label" Visible="false"></asp:Label>
                                                             <div class="input-group">
                                                                 <span class="input-group-addon" style="color: #fff; background-color: #337ab7;">
-                                                                    <i class="fa fa-wrench"></i></span>
+                                                                    <asp:LinkButton ID="lnkDetallesHerrRevision" Style="color: #fff; background-color: #337ab7;" runat="server"
+                                                                         OnClientClick="return false;"
+                                                                         OnClick="lnkDetallesHerrRevision_Click"><i class="fa fa-wrench"></i></asp:LinkButton></span>
+                                                                <asp:TextBox ID="txt" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("subcat") %>'></asp:TextBox>
+                                                                <asp:Label ID="LBLFECHA_REV" runat="server" Text='<%#Eval("fecha") %>' Visible="false"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+
+                                                            <asp:Label ID="lblerrorfolio" runat="server" CssClass="label label-danger" Text="" Visible="false"></asp:Label></strong>
+                                                             <asp:Label ID="lblfolioactv" runat="server" Visible="false" Text='<%#Eval("folio") %>'></asp:Label></strong>
+                                                         
                                                                 <asp:TextBox ID="txtFolio" AutoPostBack="true" runat="server" MaxLength="10" TextMode="Number" OnTextChanged="txtFolio_TextChanged" CssClass="form-control input-group-sm " placeholder="Folio"></asp:TextBox>
 
-                                                                <asp:Label ID="lblfoliocorrecto" runat="server" Text="0" Style="color: red; font: bold;" Visible="false"></asp:Label></strong>
-                                                            </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                                <div class="form-group">
-                                                                    <div class="input-group">
-                                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;">
-                                                                            <i class="fa fa-check-square-o"></i></span>
-                                                                        <asp:CheckBox ID="cbx" runat="server" class="input-sm" Text="Entrego" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbx_CheckedChanged" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                                <div class="form-group">
-                                                                    <strong>
-                                                                        <asp:Label ID="lblerror" runat="server" Text="" Style="color: red; font: bold;" Visible="false"></asp:Label></strong>
-
-                                                                    <div class="input-group">
-                                                                        <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
-                                                                        <asp:TextBox ID="txtMoney" runat="server" AutoPostBack="true" class="form-control input-sm" Text="0.00" TextMode="Number" OnTextChanged="txtMoney_TextChanged"></asp:TextBox>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            <asp:Label ID="lblfoliocorrecto" runat="server" Text="0" Style="color: red; font: bold;" Visible="false"></asp:Label></strong>
+                                                           
+                                                         
                                                         </div>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                            </ItemTemplate>
-                                        </asp:Repeater>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                            </div>
-                                            <div class="col-lg-3">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                                    <ContentTemplate>
-                                                        <div class="form-group">
+                                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+
+                                                            <asp:CheckBox ID="cbx" runat="server" CssClass="radio3 radio-check radio-info radio-inline" Text="Entrego" TextAlign="Right" AutoPostBack="true" OnCheckedChanged="cbx_CheckedChanged" />
+
+
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+
+                                                            <strong>
+                                                                <asp:Label ID="lblerror" runat="server" Text="" Style="color: red; font: bold;" Visible="false"></asp:Label></strong>
+
                                                             <div class="input-group">
-                                                                <span class="input-group-addon" style="color: #fff; background-color: #337ab7;">
-                                                                    <asp:LinkButton ID="LinkButton1" runat="server" Style="color: white;" OnClick="LinkButton1_Click">Generar Total <i class="fa fa-usd"></i></asp:LinkButton></span>
-                                                                <asp:TextBox ID="txtTotal" runat="server" class="form-control input-sm" Text="0.00" AutoPostBack="true" ReadOnly="true" TextMode="Number"></asp:TextBox>
+                                                                <span class="input-group-addon" style="color: #fff; background-color: #5bc0de;"><i class="fa fa-usd"></i></span>
+                                                                <asp:TextBox ID="txtMoney" runat="server" AutoPostBack="true" class="form-control input-sm" Text="0.00" TextMode="Number" OnTextChanged="txtMoney_TextChanged"></asp:TextBox>
                                                             </div>
-                                                        </div>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                            </div>
-                                        </div>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
 
-                                <div class="row">
-                                    <div class="col-lg-6 col-xs-12">
-                                        <div class="form-group">
-                                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary btn-block" OnClick="btnGuardar_Click" />
+                                                        </div>
+                                                    </div>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                        </div>
+                                        <div class="col-lg-3">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                                <ContentTemplate>
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" style="color: #fff; background-color: #337ab7;">
+                                                                <asp:LinkButton ID="LinkButton1" runat="server" Style="color: white;" OnClick="LinkButton1_Click">Generar Total <i class="fa fa-usd"></i></asp:LinkButton></span>
+                                                            <asp:TextBox ID="txtTotal" runat="server" class="form-control input-sm" Text="0.00" AutoPostBack="true" ReadOnly="true" TextMode="Number"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-xs-12">
-                                        <div class="form-group">
-                                            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
-                                        </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    <div class="form-group">
+                                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary btn-block" OnClick="btnGuardar_Click" />
                                     </div>
                                 </div>
-                            </asp:Panel>
+                                <div class="col-lg-6 col-xs-12">
+                                    <div class="form-group">
+                                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </asp:Panel>
                 </div>

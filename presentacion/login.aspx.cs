@@ -17,22 +17,13 @@ namespace presentacion
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string version = fvi.FileVersion;
-            lblfooter.Text = version;            
+            lblfooter.Text = version;
+            lbklimpiarsession.Visible = Session["sidc_usuario"] != null;
             if (Request.QueryString["u"] != null && Request.QueryString["c"] != null)
             {
                 Login(funciones.de64aTexto(Request.QueryString["u"]), funciones.de64aTexto(Request.QueryString["c"]), false);
             }
-           // si tiene parametros de usuario y contrasñe logameos directamente
-            //if (ExistCokie("username") && ExistCokie("name"))
-            //{
-            //    txtuser.Text = getCookie("username");
-            //    txtuser.Visible = false;
-            //    tit1.Visible = true;
-            //    tit2.Visible = true;
-            //    lnlotracuenta.Visible = true;
-            //    lblnamecooki.Text = getCookie("name");
-            //    txtpass.Focus();
-            //}
+           
         }
         void DeleteCookie(string cookie_name)
         {
@@ -260,6 +251,12 @@ namespace presentacion
         {
             DeleteCookie("username");
             DeleteCookie("name");
+            Response.Redirect("login.aspx");
+        }
+
+        protected void lbklimpiarsession_Click(object sender, EventArgs e)
+        {
+            Session["sidc_usuario"] = null;
             Response.Redirect("login.aspx");
         }
     }

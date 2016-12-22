@@ -31,22 +31,13 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Label lblheader;
         
         /// <summary>
-        /// Control Label2.
+        /// Control cbxagentes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// Control cboagentes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboagentes;
+        protected global::System.Web.UI.WebControls.DropDownList cbxagentes;
         
         /// <summary>
         /// Control gridpedidos.

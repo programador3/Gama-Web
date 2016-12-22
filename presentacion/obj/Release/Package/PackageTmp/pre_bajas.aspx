@@ -128,7 +128,7 @@
                                         <h4><strong><i class="fa fa-suitcase"></i>&nbsp;Puesto:&nbsp;</strong>
                                             <asp:Label ID="lblPuesto" runat="server" Text="Puesto"></asp:Label>
                                         </h4>
-                                        <asp:LinkButton ID="lnkverfaltas" OnClientClick="return GiftEspera('Estamos Cargando las Faltas.');" CssClass="btn btn-danger" runat="server" OnClick="lnkverfaltas_Click">Ver Historial de Falta</asp:LinkButton>
+                                        <asp:LinkButton ID="lnkverfaltas" OnClientClick="return GiftEspera('Estamos Cargando las Faltas.');" CssClass="btn btn-danger" runat="server" OnClick="lnkverfaltas_Click">Ver Historial de Faltas</asp:LinkButton>
                                     </div>
                                 </div>
                                 <div class="row">

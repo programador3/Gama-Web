@@ -163,7 +163,9 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="table table-responsive">
-                <asp:GridView ID="gridperfiles" runat="server" CssClass="gvv table table-bordered table-hover grid sortable {disableSortCols: [4]}" AutoGenerateColumns="False" DataKeyNames="id_perfilproduccion,id_perfilborrador,descripcion" OnSelectedIndexChanged="gridperfiles_SelectedIndexChanged" PageSize="5" OnRowDataBound="gridperfiles_RowDataBound" Font-Size="Small" OnRowCommand="gridperfiles_RowCommand">
+                <asp:GridView ID="gridperfiles" runat="server" CssClass="gvv table table-bordered table-condensed table-responsive" style="font-size:12px; text-align:center;"
+                     AutoGenerateColumns="False" DataKeyNames="id_perfilproduccion,id_perfilborrador,descripcion" OnSelectedIndexChanged="gridperfiles_SelectedIndexChanged"
+                      OnRowDataBound="gridperfiles_RowDataBound" OnRowCommand="gridperfiles_RowCommand">
 
                     <Columns>
                         <asp:CommandField ButtonType="Image" EditText="" HeaderText="Editar" SelectImageUrl="~/imagenes/btn/icon_editar.png" SelectText="" ShowSelectButton="True">
@@ -194,7 +196,7 @@
                                 <asp:Image ID="pendiente" runat="server" ImageUrl="~/imagenes/btn/inchecked.png" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/btn_solicitar_equipos.png" HeaderText="Autorizacion" CommandName="Solicitar">
+                        <asp:ButtonField ButtonType="Button" Text="Solicitar" ControlStyle-CssClass="btn btn-info btn-block"  HeaderText="Autorizacion" CommandName="Solicitar">
                             <HeaderStyle HorizontalAlign="Center" Width="40px" />
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:ButtonField>
@@ -206,8 +208,8 @@
                 </asp:GridView>
             </div>
             <div class="row" style="text-align: center;">
-                <div class="col-lg-2" style="background-color: #81F79F; text-align: center;">
-                    <div class="form-group" style="background-color: #81F79F; text-align: center;">
+                <div class="col-lg-2" style="background-color: #1de9b6; text-align: center;">
+                    <div class="form-group" style="background-color:#1de9b6; text-align: center;">
                         Indica que es un Nuevo Registro
                     </div>
                 </div>
@@ -223,6 +225,7 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                 <Triggers>
                     <asp:PostBackTrigger ControlID="Yes" />
+                    <asp:AsyncPostBackTrigger ControlID="gridperfiles" EventName="RowCommand" />
                     <asp:AsyncPostBackTrigger ControlID="btnGuardarSinLigar" EventName="Click" />
                     <asp:AsyncPostBackTrigger ControlID="btnSinLigar" EventName="Click" />
                 </Triggers>
@@ -251,21 +254,15 @@
                         <div class="modal-footer">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                                    <div class="form-group">
-                                        <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Si" OnClick="btnConfirm_Click" />
-                                    </div>
+                                   <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Si" OnClick="btnConfirm_Click" />
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                                    <div class="form-group">
-                                        <asp:Button Visible="false" ID="btnGuardarSinLigar" runat="server" Text="Guardar" class="btn btn-warning btn-block" OnClick="btnGuardarSinLigar_Click" />
+                                    <asp:Button Visible="false" ID="btnGuardarSinLigar" runat="server" Text="Guardar" class="btn btn-warning btn-block" OnClick="btnGuardarSinLigar_Click" />
                                         <asp:Button Visible="false" ID="btnSinLigar" class="btn btn-warning btn-block" runat="server" Text="Si, sin ligar a perfil" OnClick="btnSinLigar_Click" />
-                                    </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="form-group">
-                                        <asp:Button ID="btnNo" runat="server" class="btn btn-danger btn-block" Text="No" OnClick="btnNo_Click" />
-                                    </div>
+                                  <asp:Button ID="btnNo" runat="server" class="btn btn-danger btn-block" Text="No" OnClientClick="ModalClose();" />
                                 </div>
                             </div>
                         </div>

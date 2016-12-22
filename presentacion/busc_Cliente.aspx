@@ -5,7 +5,6 @@
 <head runat="server">
     <title>Seleccionar Cliente</title>
     <meta name="viewport" content="width=device-width" />
-     <link href="GridEstilo.css" rel="stylesheet" type="text/css" />
         <link href="css/jquery.mobile-1.2.0.min.css" rel="stylesheet" /> 
     <link href="js/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
@@ -36,18 +35,18 @@
             var tipo = document.getElementById('txttipo').value;
             if (tipo=='')
             {
-                window.opener.document.getElementById("ctl00_ContentPlaceHolder1_txtrfc").value= tabla.rows[index].cells[1].textContent;
-                window.opener.document.getElementById("ctl00_ContentPlaceHolder1_txtidc_cliente").value= tabla.rows[index].cells[3].textContent;
-                window.opener.document.getElementById("ctl00_ContentPlaceHolder1_txtcve").value= tabla.rows[index].cells[2].textContent;
-                window.opener.document.getElementById("ctl00_ContentPlaceHolder1_txtcliente").value= tabla.rows[index].cells[0].textContent;
+                window.opener.document.getElementById("Contenido_txtrfc").value= tabla.rows[index].cells[1].textContent;
+                window.opener.document.getElementById("Contenido_txtidc_cliente").value= tabla.rows[index].cells[3].textContent;
+                window.opener.document.getElementById("Contenido_txtcve").value= tabla.rows[index].cells[2].textContent;
+                window.opener.document.getElementById("Contenido_txtcliente").value= tabla.rows[index].cells[0].textContent;
                 window.opener.cerrar();
                 window.close();
                 return false;             
             }
             else if (tipo=='1')
             {
-                window.opener.document.getElementById("ctl00_ContentPlaceHolder1_txtcliente").value= tabla.rows[index].cells[0].textContent;
-                window.opener.document.getElementById("ctl00_ContentPlaceHolder1_txtidc_cliente").value= tabla.rows[index].cells[3].textContent;
+                window.opener.document.getElementById("Contenido_txtcliente").value= tabla.rows[index].cells[0].textContent;
+                window.opener.document.getElementById("Contenido_txtidc_cliente").value= tabla.rows[index].cells[3].textContent;
                 //window.parent.cerrar();
                 window.close();
                 return false; 
@@ -72,6 +71,7 @@
 <body onkeypress="return x(event);">
     <form id="form1" runat="server"  
     style="position: absolute; top: 2px; left: 2px;width: 100%; margin-bottom: 0px;">
+        <h4><strong>Buscar Cliente</strong></h4>
     <div style="background-image: url('Iconos/btn_blueSheen.gif');width:100%">
     
         <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="arial" 

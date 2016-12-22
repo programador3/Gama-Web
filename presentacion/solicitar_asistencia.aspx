@@ -54,9 +54,8 @@
                 <label id="lblsolohoy" runat="server" visible="false" style="color:red"><strong>Solo puede solicitar asistencia de hoy</strong></label>
             <div class=" table table-responsive">
                 <asp:GridView Style="font-size: 11px;text-align:center;" ID="gridservicios" 
-                    DataKeyNames="IDC_EMPLEADO,IDC_PUESTO,num_nomina,empleado,puesto,depto,horario,hora_asistencia"
-                    CssClass=" gvv table table-responsive table-bordered table-condensed" AutoGenerateColumns="false" runat="server" OnRowCommand="gridservicios_RowCommand" 
-                   >
+                    DataKeyNames="IDC_EMPLEADO,IDC_PUESTO,num_nomina,empleado,puesto,depto,horario,hora_asistencia,asistencia,hora_checo_real"
+                    CssClass=" gvv table table-responsive table-bordered table-condensed" AutoGenerateColumns="false" runat="server" OnRowCommand="gridservicios_RowCommand">
                  
                     <Columns>
                         <asp:TemplateField HeaderText="Solicitar" HeaderStyle-Width="30px">
@@ -80,6 +79,7 @@
                         <asp:BoundField DataField="IDC_EMPLEADO" HeaderText="idc_tiporep" Visible="FALSE"></asp:BoundField>
                         <asp:BoundField DataField="IDC_PUESTO" HeaderText="idc_tiporep" Visible="FALSE"></asp:BoundField>
                         <asp:BoundField DataField="hora_asistencia" HeaderText="idc_tiporep" Visible="FALSE"></asp:BoundField>
+                        <asp:BoundField DataField="asistencia" HeaderText="idc_tiporep" Visible="FALSE"></asp:BoundField>
 
                     </Columns>
                 </asp:GridView>
@@ -118,7 +118,7 @@
                                 ReadOnly="false" runat="server"></asp:TextBox>
                             <br />
                             <br />
-                            <label id="lblhora" runat="Server" style="width: 20%; text-align: right;"><strong>Hora de Checada</strong></label>
+                            <label id="lblhora" runat="Server" style="width: 20%; text-align: right;"><strong>Hora de Checada del Empleado.</strong></label>
                             <asp:TextBox Style="font-size: 11px;" ID="txthora" CssClass=" form-control2" Width="78%" ReadOnly="false" TextMode="DateTimeLocal" runat="server"></asp:TextBox>
                             <asp:CheckBox ID="cbxllegadatemprano" CssClass="radio3 radio-check radio-info radio-inline" Text="LLEGADA TEMPRANO" runat="server" />
 

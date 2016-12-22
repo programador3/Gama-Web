@@ -1,0 +1,8 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentNullException: File name cannot be null.
+Parameter name: sourceFileName
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at presentacion.quejas_acciones.TesClick_Click(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\20_12_16\Puestos\presentacion\quejas_acciones.aspx.cs:line 239

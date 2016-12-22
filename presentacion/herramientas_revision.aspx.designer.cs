@@ -85,6 +85,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Label lblmotivo;
         
         /// <summary>
+        /// Control Selecte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Selecte;
+        
+        /// <summary>
         /// Control lnkDetalles.
         /// </summary>
         /// <remarks>
@@ -146,15 +155,6 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelRevisionActivos;
-        
-        /// <summary>
-        /// Control Panel2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
         /// Control UpdatePanel4.

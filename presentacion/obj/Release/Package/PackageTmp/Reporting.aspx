@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Reporting.aspx.vb" Inherits="Reporting" %>
 
-<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">

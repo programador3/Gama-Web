@@ -86,7 +86,7 @@ namespace presentacion
 
         protected void cerrar_click(object sender, EventArgs e)
         {
-            Response.Redirect("comisiones_m.aspx");
+            ScriptManager.RegisterStartupScript(this,GetType(),Guid.NewGuid().ToString(),"window.close();",true);
 
         } 
     }

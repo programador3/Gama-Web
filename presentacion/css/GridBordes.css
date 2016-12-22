@@ -1,0 +1,46 @@
+﻿.Border
+{
+	/*border-bottom-color:Black;
+	border-bottom-style:solid;
+	border-bottom-width:thin;*/
+	border-top-color:#A9A9A9;
+	border-top-style:solid;
+	border-top-width:2px;		
+}
+.HeaderS
+{
+	background-image: url(Images/YahooSprite.gif);
+    background-position:top;
+    background-repeat:repeat-x;
+    background-color:#d1dbe0;
+    color:#16387c;
+    text-align:center;
+    font-weight:bold;	
+}
+.AltRow
+{
+
+    background-color: #D3D3D3;
+	/*background-image: url(Images/YahooSprite.gif);
+    background-repeat:inherit;
+    background-position:0 -80px;*/
+    text-align:center;  
+}
+.Border td 
+{
+	border-right:none;
+	border-left:none;	
+}
+
+.border_side
+{
+
+	border-right-color:#A9A9A9;
+	border-right-style:solid;
+	border-right-width:2px;	
+}
+.border_side td 
+{
+	border-top:none;
+	border-bottom:none;	
+}

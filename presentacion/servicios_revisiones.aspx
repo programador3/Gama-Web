@@ -127,7 +127,7 @@
                         <ContentTemplate>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="panel panel-primary">
+                                    <div class="panel panel-info fresh-color">
                                         <div class="panel-heading" style="text-align: center;">
                                             <%#Eval("desc_servicio") %> <i class="fa fa-laptop"></i>
                                         </div>
@@ -137,7 +137,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <h4><strong><%#Eval("desc_servicio") %></strong></h4>
+                                                        <h4>Tipo de Revision: <strong><%#Eval("desc_servicio") %></strong></h4>
                                                         <asp:TextBox ID="txtDescSer" Visible="false" runat="server" Text='<%#Eval("desc_servicio") %>' CssClass="form-control" Style="resize: none;" ReadOnly="true" PlaceholdeR="Observaciones"></asp:TextBox>
                                                     </div>
                                                 </div>
@@ -190,7 +190,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <asp:Button ID="btnAceptar" runat="server" Text="Revisar" CssClass="btn btn-primary btn-block" OnClick="btnAceptar_Click" />
+                                <asp:Button ID="btnAceptar" runat="server" Text="Revisar" CssClass="btn btn-info btn-block" OnClick="btnAceptar_Click" />
                             </div>
                         </div>
                         <div class="col-lg-6">

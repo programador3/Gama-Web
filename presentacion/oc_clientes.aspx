@@ -45,34 +45,43 @@
             <label style="color:red;"><strong>Solo se permiten los formato de IMAGEN: .bmp, .gif, .jpg, .dib</strong></label>
             <asp:LinkButton ID="lnksubir"  CssClass="btn btn-info btn-block" runat="server" OnClick="lnksubir_Click">Subir Archivo</asp:LinkButton>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <asp:Image ID="img"  CssClass="img-responsive " runat="server" />
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <asp:Image ID="img"  CssClass="img-responsive " style="max-height:600px" runat="server" />
         </div>        
-        <div class="col-lg-6 col-md-6 col-sm-12">
-           <h4><strong>Cliente</strong></h4>
-            <asp:DropDownList ID="ddlcliente" CssClass="form-control" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlcliente_SelectedIndexChanged"></asp:DropDownList>
-            <asp:TextBox ID="txtcliente" OnTextChanged="lnkbuscar_Click"  AutoPostBack="true" placeholder="Buscar Cliente" CssClass="form-control2" Width="80%" runat="server"></asp:TextBox>
-            <asp:LinkButton ID="lnkbuscar" CssClass="btn btn-info" Width="18%"  runat="server" OnClick="lnkbuscar_Click"><i class="fa fa-search" aria-hidden="true"></i></asp:LinkButton>
-            <h4 ><strong>RFC</strong></h4>    
-            <asp:TextBox ID="txtfrc" ReadOnly="true"  CssClass="form-control"  runat="server"></asp:TextBox> 
-             <h4 ><strong>CVE</strong></h4>    
-            <asp:TextBox ID="txtcve" ReadOnly="true"  CssClass="form-control"  runat="server"></asp:TextBox> 
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                <ContentTemplate>
+                    <h4><strong>Cliente</strong></h4>
+                    <asp:DropDownList ID="ddlcliente" CssClass="form-control" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlcliente_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:TextBox ID="txtcliente" OnTextChanged="lnkbuscar_Click" AutoPostBack="true" placeholder="Buscar Cliente" CssClass="form-control2" Width="80%" runat="server"></asp:TextBox>
+                    <asp:LinkButton ID="lnkbuscar" CssClass="btn btn-info" Width="18%" runat="server" OnClick="lnkbuscar_Click"><i class="fa fa-search" aria-hidden="true"></i></asp:LinkButton>
+                    <h4><strong>RFC</strong></h4>
+                    <asp:TextBox ID="txtfrc" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                    <h4><strong>CVE</strong></h4>
+                    <asp:TextBox ID="txtcve" ReadOnly="true" CssClass="form-control" runat="server"></asp:TextBox>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <h4><strong>OC</strong></h4> 
-            <asp:TextBox ID="txtox" ReadOnly="false" placeholder="Orden De Compra"  CssClass="form-control"  runat="server"></asp:TextBox> 
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-             <h4><strong>Cantidad</strong></h4>
-            <asp:TextBox ID="txtxantidad" ReadOnly="false" TextMode="Number"  CssClass="form-control"  onkeypress="return validarEnteros(event);"  runat="server"></asp:TextBox> 
-        </div>
-        
-        <div class="col-lg-12 col-xs-12" runat="server" id="enviar">
-            <asp:CheckBox ID="cbxenviar" Text="ENVIAR AVISO A USUARIO DE TMK" CssClass="radio3 radio-check radio-info radio-inline" runat="server" />
-        </div>
-    </div>
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always">
+        <ContentTemplate>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h4><strong>OC</strong></h4>
+                    <asp:TextBox ID="txtox" ReadOnly="false" placeholder="Orden De Compra" CssClass="form-control" MaxLength="30" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h4><strong>Cantidad</strong></h4>
+                    <asp:TextBox ID="txtxantidad" AutoPostBack="True" ReadOnly="false" TextMode="Number" CssClass="form-control" 
+                        onkeypress="return validarEnteros(event);" onfocus="this.select();" runat="server" OnTextChanged="txtxantidad_TextChanged"></asp:TextBox>
+                </div>
+
+                <div class="col-lg-12 col-xs-12" runat="server" id="enviar">
+                    <asp:CheckBox ID="cbxenviar" Text="ENVIAR AVISO A USUARIO DE TMK" CssClass="radio3 radio-check radio-info radio-inline" runat="server" />
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary btn-block" OnClick="btnGuardar_Click" />

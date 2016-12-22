@@ -209,7 +209,7 @@
                         <ItemStyle HorizontalAlign="Center" />
                         <HeaderStyle CssClass="sorttable_nosort" />
                         <ItemTemplate>
-                            <asp:CheckBox  CssClass="radio3 radio-check radio-info radio-inline" ID="chkact" runat="server" Checked="true" onclick="return false;" />
+                            <asp:CheckBox ID="chkact"  CssClass="radio3 radio-check radio-info  radio-inline" Text="Visita Registrada" runat="server" Checked="true" onclick="return false;" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="" HeaderText="GPS" HeaderStyle-CssClass="sorttable_nosort" ItemStyle-Font-Names="arial">

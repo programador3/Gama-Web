@@ -129,7 +129,7 @@ namespace presentacion
 
         protected void lnkcerrar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("quejas_espera_.aspx");
+            Response.Redirect("quejas_espera_m.aspx");
         }
 
         protected void lnkcomentario_Click(object sender, EventArgs e)
@@ -232,10 +232,10 @@ namespace presentacion
                 }
                 if (vmensaje == "")
                 {
-                    if (copiar_archivo == true)
+                    string origen = Session["url_file"] as string;
+                    string destino = ruta + Path.GetExtension(origen);
+                    if (copiar_archivo == true && origen != null && destino != "")
                     {
-                        string origen = Session["url_file"] as string;
-                        string destino = ruta + Path.GetExtension(origen);
                         File.Copy(origen, destino, true);
                     }
                     Alert.ShowGiftMessage("Estamos procesando la solicitud.", "Espere un Momento", "quejas_espera_m.aspx", "imagenes/loading.gif", "2000", proceso, this);

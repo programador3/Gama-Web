@@ -35,31 +35,30 @@ namespace presentacion
                 ds = com.sp_combo_agentes_usu(Convert.ToInt32(Session["sidc_usuario"]));
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    ds.Tables[0].Columns.Add("nombre2");
-                    for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                    foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        ds.Tables[0].Rows[i][2] = ds.Tables[0].Rows[i][0].ToString() + " .- " + ds.Tables[0].Rows[i][1].ToString();
+                        row["nombre"] = row["idc_agente"].ToString().Trim() + ".- " + row["nombre"].ToString().Trim();
                     }
                     if (ds.Tables[0].Rows.Count == 1)
                     {
-                        cboagentes.DataSource = ds.Tables[0];
-                        cboagentes.DataValueField = "idc_agente";
-                        cboagentes.DataTextField = "nombre2";
-                        cboagentes.DataBind();
-                        cargar_grid(Convert.ToInt32(cboagentes.SelectedValue));
+                        cbxagentes.DataSource = ds.Tables[0];
+                        cbxagentes.DataValueField = "idc_agente";
+                        cbxagentes.DataTextField = "nombre";
+                        cbxagentes.DataBind();
+                        cargar_grid(Convert.ToInt32(cbxagentes.SelectedValue));
                     }
                     else
                     {
-                        cboagentes.DataSource = ds.Tables[0];
-                        cboagentes.DataValueField = "idc_agente";
-                        cboagentes.DataTextField = "nombre2";
-                        cboagentes.DataBind();
-                        cargar_grid(Convert.ToInt32(cboagentes.SelectedValue));
+                        cbxagentes.DataSource = ds.Tables[0];
+                        cbxagentes.DataValueField = "idc_agente";
+                        cbxagentes.DataTextField = "nombre";
+                        cbxagentes.DataBind();
+                        cargar_grid(Convert.ToInt32(cbxagentes.SelectedValue));
                     }
                 }
                 else
                 {
-                    cboagentes.Items.Clear();
+                    cbxagentes.Items.Clear();
                 }
             }
             catch (Exception ex)
@@ -93,7 +92,7 @@ namespace presentacion
 
         protected void cboagentes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargar_grid(Convert.ToInt32(cboagentes.SelectedValue));
+            cargar_grid(Convert.ToInt32(cbxagentes.SelectedValue));
         }
 
         protected void gridpedidos_ItemDataBound(object sender, DataGridItemEventArgs e)

@@ -69,7 +69,8 @@
 
                         <asp:GridView Style="font-size: 10px; text-align: center;" ID="gridservicios"
                             DataKeyNames="idc_solicitudasi, fecha,idc_empleado, num_nomina,empleado,temprano"
-                            CssClass=" gvv table table-responsive table-bordered table-condensed" AutoGenerateColumns="false" runat="server" OnRowDataBound="gridservicios_RowDataBound" OnRowCommand="gridservicios_RowCommand">
+                            CssClass=" gvv table table-responsive table-bordered table-condensed" AutoGenerateColumns="false" runat="server" OnRowDataBound="gridservicios_RowDataBound" 
+                            OnRowCommand="gridservicios_RowCommand">
                             <Columns>
                                
                                 <asp:BoundField DataField="observaciones" HeaderText="Observaciones"></asp:BoundField>
@@ -83,7 +84,7 @@
                                      CommandName="empleado" ButtonType="Button" HeaderText="Detalles Asistencia"></asp:ButtonField>
 
                                 <asp:BoundField DataField="puesto" HeaderText="Puesto" HeaderStyle-Width="180px"></asp:BoundField>
-                                <asp:BoundField DataField="depto" HeaderText="Depto" HeaderStyle-Width="180px"></asp:BoundField>
+                                <asp:BoundField DataField="sucursal" HeaderText="Sucursal" HeaderStyle-Width="180px"></asp:BoundField>
                                 <asp:BoundField DataField="horario" HeaderText="Horario" HeaderStyle-Width="100px"></asp:BoundField>
                                 <asp:BoundField DataField="hora_checo_real" HeaderText="Hora Checada" HeaderStyle-Width="100px"></asp:BoundField>
                                 <asp:BoundField DataField="HORA_CHECK" HeaderText="Fecha Solicitud" HeaderStyle-Width="190px"></asp:BoundField>

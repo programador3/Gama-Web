@@ -32,6 +32,10 @@
             getCoordenadas();
 
         }
+        $(document).ready(function () {
+
+            getCoordenadas();
+        });
         function getCoordenadas() {
             var options = {
                 enableHighAccuracy: true,
@@ -51,6 +55,7 @@
             };
 
             function error(error) {
+                alert('ERROR EN EL GPS(' + error.code + '): EL NAVEGADOR ACTUAL NO ES COMPATIBLE CON EL GPS, UTILIZE EL NAVEGADOR POR DEFECTO DE SU EQUIPO CELULAR');
                 if (error.code != "3") {
                     if (error.code == "1") {
 
@@ -154,7 +159,7 @@
         <div id="divgrupos" runat="server" class=" col-lg-12">
             <h4><strong><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Clientes del Grupo</strong></h4>
             <asp:DropDownList ID="cbogrupos" runat="server"
-                CssClass=" form-control" AutoPostBack="True">
+                CssClass=" form-control" AutoPostBack="True" OnSelectedIndexChanged="cbogrupos_SelectedIndexChanged">
             </asp:DropDownList>
         </div>
         <div class="col-lg-12">
@@ -360,6 +365,7 @@
                                            <asp:TemplateField HeaderText="Editar" HeaderStyle-Width="30px">
                                                <ItemTemplate>
                                                    <asp:ImageButton ID="imgeditar" runat="server" Height="30px"
+                                                        CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
                                                        ImageUrl="imagenes/btn/icon_editar.png" Width="30px" />
                                                </ItemTemplate>
                                            </asp:TemplateField>

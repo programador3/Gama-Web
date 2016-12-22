@@ -46,7 +46,7 @@ namespace negocio.Componentes
             return ds;
         }
 
-        public DataSet sp_aticketserv(int idc_puesto, int idc_tareaser, string observaciones, int idc_usuario)
+        public DataSet sp_aticketserv(int idc_puesto, int idc_tareaser, string observaciones, int idc_usuario, string extension)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
@@ -55,6 +55,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tareaser", SqlDbType = SqlDbType.Int, Value = idc_tareaser });
             listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.Int, Value = observaciones });
             listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_USUARIO", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pextension", SqlDbType = SqlDbType.Int, Value = extension });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

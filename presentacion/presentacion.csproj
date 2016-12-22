@@ -149,9 +149,21 @@
     <Content Include="check_plus_pre_m.aspx" />
     <Content Include="choferes_evaluacion.aspx" />
     <Content Include="comidas.aspx" />
+    <Content Include="comidas_vales.aspx" />
     <Content Include="comisiones_detalles.aspx" />
     <Content Include="comisiones_especiales.aspx" />
+    <Content Include="comisiones_esp_activaciones.aspx" />
+    <Content Include="comisiones_esp_activaciones.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="comisiones_esp_articulos.aspx" />
+    <Content Include="comisiones_esp_articulos.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="comisiones_m.aspx" />
+    <Content Include="comisiones_m.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Compromisos_Cliente.aspx" />
     <Content Include="confirmacion_de_pago_mobile.aspx" />
     <Content Include="confirmacion_entrega.aspx" />
@@ -169,6 +181,7 @@
     <Content Include="cotizacion_clientes2_m.aspx" />
     <Content Include="css\bootstrap-switch.css" />
     <Content Include="css\bootstrap-switch.min.css" />
+    <Content Include="css\GridBordes.css" />
     <Content Include="css\gridestilo.css" />
     <Content Include="css\highlight.css" />
     <Content Include="css\html_page.css" />
@@ -210,6 +223,10 @@
     <Content Include="empleados_reportes.aspx" />
     <Content Include="empleados_reportes_pendientes.aspx" />
     <Content Include="empleados_reportes_contra.aspx" />
+    <Content Include="especificaciones.aspx" />
+    <Content Include="especificaciones.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="fancybox\blank.gif" />
     <Content Include="fancybox\fancybox-x.png" />
     <Content Include="fancybox\fancybox-y.png" />
@@ -353,6 +370,7 @@
     <Content Include="imagenes\btn\iCalendar.png" />
     <Content Include="imagenes\btn\ico-invalid.png" />
     <Content Include="imagenes\btn\ico-valid.png" />
+    <Content Include="imagenes\btn\icon_download.png" />
     <Content Include="imagenes\btn\image-x-generic.png" />
     <Content Include="imagenes\btn\img_up.png" />
     <Content Include="imagenes\btn\Info48.png" />
@@ -715,6 +733,9 @@
     <Content Include="org\js\randomdata.js" />
     <Content Include="page_error.aspx" />
     <Content Include="Pedidos7.aspx" />
+    <Content Include="Pedidos7_m.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="pendientes_tareas.aspx" />
     <Content Include="perfiles_relacion.aspx" />
     <Content Include="permisos_pendientes.aspx" />
@@ -799,6 +820,10 @@
     <Content Include="puestos_equi.aspx" />
     <Content Include="quejas_acciones.aspx" />
     <Content Include="quejas_espera_m.aspx" />
+    <Content Include="quejas_m.aspx" />
+    <Content Include="quejas_m.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="reasignacion_tareas.aspx" />
     <Content Include="recoge_cliente_mobile.aspx" />
     <Content Include="recordatorios.aspx" />
@@ -859,6 +884,9 @@
     <Content Include="ticket_serv.aspx" />
     <Content Include="ticket_serv_captura.aspx" />
     <Content Include="ticket_serv_reporte.aspx" />
+    <Content Include="TinyBox\jquery-1.7.2.min.js" />
+    <Content Include="TinyBox\jquery.dynatable.css" />
+    <Content Include="TinyBox\jquery.dynatable.js" />
     <Content Include="TinyBox\style.css" />
     <Content Include="TinyBox\tinybox.js" />
     <Content Include="vacaciones.aspx" />
@@ -1232,6 +1260,13 @@
     <Compile Include="comidas.aspx.designer.cs">
       <DependentUpon>comidas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="comidas_vales.aspx.cs">
+      <DependentUpon>comidas_vales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="comidas_vales.aspx.designer.cs">
+      <DependentUpon>comidas_vales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="comisiones_detalles.aspx.cs">
       <DependentUpon>comisiones_detalles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1245,13 +1280,6 @@
     </Compile>
     <Compile Include="comisiones_especiales.aspx.designer.cs">
       <DependentUpon>comisiones_especiales.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="comisiones_m.aspx.cs">
-      <DependentUpon>comisiones_m.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="comisiones_m.aspx.designer.cs">
-      <DependentUpon>comisiones_m.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compromisos_Cliente.aspx.cs">
       <DependentUpon>Compromisos_Cliente.aspx</DependentUpon>
@@ -1718,6 +1746,7 @@
     <Compile Include="IMG_Croquis.aspx.designer.cs">
       <DependentUpon>IMG_Croquis.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="Inconvenientes_Cliente.aspx.cs">
       <DependentUpon>Inconvenientes_Cliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1817,13 +1846,6 @@
     </Compile>
     <Compile Include="page_error.aspx.designer.cs">
       <DependentUpon>page_error.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pedidos7.aspx.cs">
-      <DependentUpon>Pedidos7.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pedidos7.aspx.designer.cs">
-      <DependentUpon>Pedidos7.aspx</DependentUpon>
     </Compile>
     <Compile Include="pendientes_tareas.aspx.cs">
       <DependentUpon>pendientes_tareas.aspx</DependentUpon>
@@ -2612,6 +2634,7 @@
     <Content Include="StyleCop.Cache" />
     <None Include="Properties\PublishProfiles\WSWS.pubxml" />
     <Content Include="temp\ejemplo.xlsx" />
+    <Content Include="temp\EJEMPLO_VALES_COMIDA.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2623,6 +2646,10 @@
     <ProjectReference Include="..\datos\datos.csproj">
       <Project>{13E87AF7-A6D8-4BD9-AD54-AA929CCD7375}</Project>
       <Name>datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GWebCN\GWebCN.vbproj">
+      <Project>{76a6449f-ae24-455d-9923-d6834e8762a3}</Project>
+      <Name>GWebCN</Name>
     </ProjectReference>
     <ProjectReference Include="..\negocio\negocio.csproj">
       <Project>{077b150d-7682-49ff-becc-5cd13dfd10bd}</Project>
