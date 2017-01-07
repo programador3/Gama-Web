@@ -186,9 +186,13 @@ namespace presentacion
             }
             else if (txtobservaciones.Text=="")
             {
-
                 Alert.ShowAlertInfo("Son Necesarias las Observaciones.", "Mensaje del Sistema", this);
-            } else {
+            }
+            else if (txtobservaciones.Text.Length > 249)
+            {
+                Alert.ShowAlertInfo("Para la descripcion del Ticket solo se permiten 250 caracteres", "Mensaje del Sistema", this);
+            }
+            else {
                 Session["Caso_Confirmacion"] = "Guardar";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Guardar este Ticket de Servicio?','modal fade modal-info');", true);
 

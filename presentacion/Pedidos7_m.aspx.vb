@@ -901,7 +901,7 @@ Partial Class Pedidos_m2
         If Not Session("idc_cliente") Is Nothing Then
             Response.Redirect("ficha_cliente_m.aspx")
         Else
-            Response.Redirect("menu ventas.aspx")
+            Response.Redirect("menu_ventas.aspx")
         End If
     End Sub
 

@@ -104,6 +104,10 @@
     <Content Include="administrador_preparaciones.aspx" />
     <Content Include="agendar_llamada.aspx" />
     <Content Include="agenda_de_visitas.aspx" />
+    <Content Include="agentes_act_cotizacion_periodo_m.aspx" />
+    <Content Include="agentes_act_cotizacion_periodo_m.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="agregar_clientes_chekplus.aspx" />
     <Content Include="aportaciones.aspx" />
     <Content Include="aprobaciones.aspx" />
@@ -146,7 +150,7 @@
     <Content Include="celulares_preparacion.aspx" />
     <Content Include="celulares_revision.aspx" />
     <Content Include="chat.aspx" />
-    <Content Include="check_plus_pre_m.aspx" />
+    <Content Include="check_plus_pre.aspx" />
     <Content Include="choferes_evaluacion.aspx" />
     <Content Include="comidas.aspx" />
     <Content Include="comidas_vales.aspx" />
@@ -216,6 +220,10 @@
     <Content Include="css\jquery.dataTables.css" />
     <Content Include="css\jquery.dataTables.min.css" />
     <Content Include="datos_ch_p.aspx" />
+    <Content Include="detalles_agente_cot.aspx" />
+    <Content Include="detalles_agente_cot.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="easteregg.aspx" />
     <Content Include="editar_contacto.aspx" />
     <Content Include="editar_precios_cantidad.aspx" />
@@ -500,6 +508,7 @@
     <Content Include="informe.aspx" />
     <Content Include="informe_ventas_x_pedidos.aspx" />
     <Content Include="js\bootstrap-wysiwyg.js" />
+    <Content Include="js\ckeditor.js" />
     <Content Include="js\jquery-ui-1.8.19.custom.css" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\jquery.dataTables.min.js" />
@@ -621,6 +630,8 @@
     <Content Include="js\npm.js" />
     <Content Include="js\prefixfree.min.js" />
     <Content Include="js\responsivemultimenu.js" />
+    <Content Include="js\sample.js" />
+    <Content Include="js\sf.js" />
     <Content Include="js\slack.js" />
     <Content Include="js\styles.js" />
     <Content Include="js\wickedpicker.css" />
@@ -680,6 +691,7 @@
     <Content Include="css\animate.css" />
     <Content Include="css\pnotify.custom.min.css" />
     <Content Include="js\pnotify.custom.min.js" />
+    <Content Include="menu_ventas.aspx" />
     <Content Include="oc_clientes.aspx" />
     <Content Include="OC_Digitales_Pendientes.aspx" />
     <Content Include="Oc_Digitales_Pendientes_2.aspx" />
@@ -811,6 +823,10 @@
     <Content Include="programacion_correos.aspx" />
     <Content Include="programacion_correos_d.aspx" />
     <Content Include="promociones_cliente_m.aspx" />
+    <Content Include="promocion_arti_terminar.aspx" />
+    <Content Include="promocion_arti_terminar_m.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="prospectos_captura3.aspx" />
     <Content Include="prospectos_datos2.aspx" />
     <Content Include="prospectos_detalle.aspx" />
@@ -843,6 +859,7 @@
     <Content Include="Reporting.aspx.vb" />
     <Content Include="Reproductor_llamadas2.aspx" />
     <Content Include="reproductor_llamadas.aspx" />
+    <Content Include="respaldo_manuales.aspx" />
     <Content Include="retiro_ahorro.aspx" />
     <Content Include="revisiones.aspx" />
     <Content Include="revisiones_entrega.aspx" />
@@ -1239,12 +1256,12 @@
     <Compile Include="chat.aspx.designer.cs">
       <DependentUpon>chat.aspx</DependentUpon>
     </Compile>
-    <Compile Include="check_plus_pre_m.aspx.cs">
-      <DependentUpon>check_plus_pre_m.aspx</DependentUpon>
+    <Compile Include="check_plus_pre.aspx.cs">
+      <DependentUpon>check_plus_pre.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="check_plus_pre_m.aspx.designer.cs">
-      <DependentUpon>check_plus_pre_m.aspx</DependentUpon>
+    <Compile Include="check_plus_pre.aspx.designer.cs">
+      <DependentUpon>check_plus_pre.aspx</DependentUpon>
     </Compile>
     <Compile Include="choferes_evaluacion.aspx.cs">
       <DependentUpon>choferes_evaluacion.aspx</DependentUpon>
@@ -1810,6 +1827,13 @@
     <Compile Include="menu.aspx.designer.cs">
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="menu_ventas.aspx.cs">
+      <DependentUpon>menu_ventas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="menu_ventas.aspx.designer.cs">
+      <DependentUpon>menu_ventas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="metodos.cs" />
     <Compile Include="msgbox.cs" />
     <Compile Include="oc_clientes.aspx.cs">
@@ -2192,6 +2216,13 @@
     </Compile>
     <Compile Include="reproductor_llamadas.aspx.designer.cs">
       <DependentUpon>reproductor_llamadas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="respaldo_manuales.aspx.cs">
+      <DependentUpon>respaldo_manuales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="respaldo_manuales.aspx.designer.cs">
+      <DependentUpon>respaldo_manuales.aspx</DependentUpon>
     </Compile>
     <Compile Include="retiro_ahorro.aspx.cs">
       <DependentUpon>retiro_ahorro.aspx</DependentUpon>

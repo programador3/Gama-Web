@@ -448,6 +448,7 @@ Partial Class comisiones_m
 
 
             Session("dv_com") = dv.ToTable
+            Session("ds") = dv_distinct.ToTable
             grid1.DataSource = dv_distinct
             grid1.DataBind()
 

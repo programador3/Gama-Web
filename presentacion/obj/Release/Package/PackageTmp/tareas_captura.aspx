@@ -45,7 +45,7 @@
     <div id="page-wrapper">
         <asp:HiddenField ID="id_res" runat="server" />
         <div class="container-fluid">
-            <h1 class="page-header">Captura Nueva Tarea</h1>
+            <h3 class="page-header">Captura Nueva Tarea</h3>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="txtfecha_solicompromiso" EventName="TextChanged" />

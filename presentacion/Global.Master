@@ -838,6 +838,11 @@
                                         <span class="icon fa fa-home"></span><span class="title">Menu Inicio</span>
                                     </a>
                                 </li>
+                                <li id="menu_vents" runat="server" visible="false">
+                                    <a href="menu_ventas.aspx">
+                                        <span class="icon fa fa-shopping-cart"></span><span class="title">Menu Ventas</span>
+                                    </a>
+                                </li>
                                 <li id="linkavisos" runat="server" visible="false">
                                     <a href="avisos.aspx">
                                         <span class="icon fa fa-bell">
@@ -878,7 +883,7 @@
                                                     <ItemTemplate>
                                                         <li>
                                                             <asp:LinkButton ID="lnkHerramientas" runat="server" OnClick="lnkHerramientas_Click" CommandName='<%#Eval("pagina") %>' CommandArgument='<%#Eval("nueva_ventana") %>'>
-                                            <i class='<%#Eval("icono") %>'></i>&nbsp;<%#Eval("nombre") %>
+                                                                <i class='<%#Eval("icono") %>'></i>&nbsp;<%#Eval("nombre") %>
                                                             </asp:LinkButton>
                                                         </li>
                                                     </ItemTemplate>
@@ -906,127 +911,6 @@
                 </div>
                 <!-- Main Content -->
                 <div class="side-body">
-                    <nav id="menu" runat="server" visible="false">
-                        <label for="tm" id="toggle-menu">Menu <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span></label>
-                        <input type="checkbox" id="tm" />
-                        <ul class="main-menu clearfix">
-                            <asp:Repeater ID="repeatmenu1" runat="server" OnItemDataBound="repeat_menu1">
-                                <ItemTemplate>
-                                    <li><a href="#"><%#Eval("menu1")%>
-                                        <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                                        <label title="Toggle Drop-down" class="drop-icon" for='<%#Eval("idc_opcion")%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></label>
-                                    </a>
-                                        <input type="checkbox" id='<%#Eval("idc_opcion")%>'>
-                                        <ul class="sub-menu">
-                                            <asp:Repeater ID="repeatmenu1d" runat="server">
-                                                <ItemTemplate>
-                                                    <li><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<a href='<%#Eval("web_form")%>'><%#Eval("menu1")%>&nbsp;</a></li>
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-                                            <asp:Repeater ID="Repearepeatmenu2" runat="server" OnItemDataBound="repeat_menu2">
-                                                <ItemTemplate>
-
-                                                    <asp:Repeater ID="repeatmenu2d" runat="server">
-                                                        <ItemTemplate>
-                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu2")%></a>
-                                                            </li>
-                                                        </ItemTemplate>
-                                                    </asp:Repeater>
-                                                    <li class="linkto" id="rm3" runat="server" visible="false"><a href="#"><%#Eval("menu2")%>
-                                                        <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                                                        <label title="Toggle Drop-down" class="drop-icon" for='<%#Eval("idc_opcion")%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></label>
-                                                    </a>
-                                                        <input type="checkbox" id='<%#Eval("idc_opcion")%>'>
-                                                        <ul class="sub-menu">
-                                                            <asp:Repeater ID="Repearepeatmenu3" runat="server" OnItemDataBound="repeat_menu3">
-                                                                <ItemTemplate>
-                                                                    <asp:Repeater ID="repeatmenu3d" runat="server">
-                                                                        <ItemTemplate>
-                                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu3")%>
-                                                                            </a>
-                                                                            </li>
-                                                                        </ItemTemplate>
-                                                                    </asp:Repeater>
-                                                                    <li id="rm4" runat="server" visible="false"><a href="#"><%#Eval("menu3")%>
-                                                                        <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                                                                        <label title="Toggle Drop-down" class="drop-icon" for='<%#Eval("idc_opcion")%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></label>
-                                                                    </a>
-                                                                        <input type="checkbox" id='<%#Eval("idc_opcion")%>'>
-                                                                        <ul class="sub-menu">
-                                                                            <asp:Repeater ID="Repearepeatmenu4" runat="server" OnItemDataBound="repeat_menu4">
-                                                                                <ItemTemplate>
-                                                                                    <asp:Repeater ID="repeatmenu4d" runat="server">
-                                                                                        <ItemTemplate>
-                                                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu4")%></a></li>
-                                                                                        </ItemTemplate>
-                                                                                    </asp:Repeater>
-                                                                                    <li id="rm5" runat="server" visible="false"><a href="#"><%#Eval("menu4")%>
-                                                                                        <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                                                                                        <label title="Toggle Drop-down" class="drop-icon" for='<%#Eval("idc_opcion")%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></label>
-                                                                                    </a>
-                                                                                        <input type="checkbox" id='<%#Eval("idc_opcion")%>'>
-                                                                                        <ul class="sub-menu">
-                                                                                            <asp:Repeater ID="Repearepeatmenu5" runat="server" OnItemDataBound="repeat_menu5">
-                                                                                                <ItemTemplate>
-                                                                                                    <asp:Repeater ID="repeatmenu5d" runat="server">
-                                                                                                        <ItemTemplate>
-                                                                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu5")%></a></li>
-                                                                                                        </ItemTemplate>
-                                                                                                    </asp:Repeater>
-                                                                                                    <li id="rm6" runat="server" visible="false"><a href="#"><%#Eval("menu5")%>
-                                                                                                        <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                                                                                                        <label title="Toggle Drop-down" class="drop-icon" for='<%#Eval("idc_opcion")%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></label>
-                                                                                                    </a>
-                                                                                                        <input type="checkbox" id='<%#Eval("idc_opcion")%>'>
-                                                                                                        <ul class="sub-menu">
-                                                                                                            <asp:Repeater ID="Repearepeatmenu6" runat="server" OnItemDataBound="repeat_menu6">
-                                                                                                                <ItemTemplate>
-                                                                                                                    <asp:Repeater ID="repeatmenu6d" runat="server">
-                                                                                                                        <ItemTemplate>
-                                                                                                                            <li><a href='<%#Eval("web_form")%>'><%#Eval("menu6")%></a></li>
-                                                                                                                        </ItemTemplate>
-                                                                                                                    </asp:Repeater>
-                                                                                                                    <li id="rm7" runat="server" visible="false"><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu6")%>
-                                                                                                                        <span class="drop-icon"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-                                                                                                                        <label title="Toggle Drop-down" class="drop-icon" for='<%#Eval("idc_opcion")%>'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></label>
-                                                                                                                    </a>
-                                                                                                                        <input type="checkbox" id='<%#Eval("idc_opcion")%>'>
-                                                                                                                        <ul class="sub-menu">
-                                                                                                                            <asp:Repeater ID="Repearepeatmenu7" runat="server" OnItemDataBound="repeat_menu7">
-                                                                                                                                <ItemTemplate>
-                                                                                                                                    <asp:Repeater ID="repeatmenu7d" runat="server">
-                                                                                                                                        <ItemTemplate>
-                                                                                                                                            <li><a href='<%#Eval("web_form")%>'><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<%#Eval("menu7")%></a></li>
-                                                                                                                                        </ItemTemplate>
-                                                                                                                                    </asp:Repeater>
-                                                                                                                                </ItemTemplate>
-                                                                                                                            </asp:Repeater>
-                                                                                                                        </ul>
-                                                                                                                    </li>
-                                                                                                                </ItemTemplate>
-                                                                                                            </asp:Repeater>
-                                                                                                        </ul>
-                                                                                                    </li>
-                                                                                                </ItemTemplate>
-                                                                                            </asp:Repeater>
-                                                                                        </ul>
-                                                                                    </li>
-                                                                                </ItemTemplate>
-                                                                            </asp:Repeater>
-                                                                        </ul>
-                                                                    </li>
-                                                                </ItemTemplate>
-                                                            </asp:Repeater>
-                                                        </ul>
-                                                    </li>
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-                                        </ul>
-                                    </li>
-                                </ItemTemplate>
-                            </asp:Repeater>
-                        </ul>
-                    </nav>
                     <asp:ContentPlaceHolder ID="Contenido" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>

@@ -20,6 +20,7 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
+                CargarReloj();
                 txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');                
                 if (Request.QueryString["fecha"] != null)
                 {
@@ -27,6 +28,17 @@ namespace presentacion
                     DateTime dt = Convert.ToDateTime(txtfecha.Text);
                     CargarFaltas(dt);
                 }
+            }
+        }
+        private void CargarReloj()
+        {
+            for (int i = 23; i >= 0; i--)
+            {
+                ddlhora.Items.Insert(0,new ListItem(i.ToString(),i.ToString()));
+            }
+            for (int i = 59; i >= 0; i--)
+            {
+                ddlminutos.Items.Insert(0, new ListItem(i.ToString(), i.ToString()));
             }
         }
         public void CargarFaltas(DateTime dtime)
@@ -90,15 +102,15 @@ namespace presentacion
             switch (e.CommandName)
             {
                 case "Puestos":
-                    txthora.Text = tuvo_asistencia ? asistencia.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T') : "";
-                    txthora.Enabled = !tuvo_asistencia;
+                    ddlhora.Enabled = !tuvo_asistencia;
+                    ddlminutos.Enabled = !tuvo_asistencia;
+                    ddlhora.SelectedValue = tuvo_asistencia ? asistencia.Hour.ToString() : "0";
+                    ddlminutos.SelectedValue = tuvo_asistencia ? asistencia.Minute.ToString() : "0";
                     txtfechaview.Text= Convert.ToDateTime(txtfecha.Text).ToString("dd MMMM, yyyy", CultureInfo.CreateSpecificCulture("es-MX"));
                     txtnomina.Text = num_nomina.Trim();
                     txtidc_empleado.Text = IDC_EMPLEADO.Trim();
                     txtempleado.Text = empleado;
                     txthoracheco.Text = hora_asistencia;
-                    txthora.Visible = true;
-                    lblhora.Visible = txthora.Visible;
                     txtmotivo.Text = "";
                     cbxllegadatemprano.Checked = false;
                     Session["Caso_Confirmacion"] = e.CommandName;
@@ -127,27 +139,30 @@ namespace presentacion
                             error_modal.Visible = true;
                             lblerror.Text = "Ingrese el Motivo";
                         }
-                        else if (txthora.Visible && txthora.Text == "")
+                        else if (ddlhora.Enabled && ddlhora.SelectedValue == "0" && ddlminutos.Enabled && ddlminutos.SelectedValue == "0")
                         {
                             error_modal.Visible = true;
                             lblerror.Text = "Ingrese la hora de llegada del empleado";
                         }
-                        else if (Convert.ToDateTime(txtfecha.Text).Day != Convert.ToDateTime(txthora.Text).Day || Convert.ToDateTime(txtfecha.Text).Month != Convert.ToDateTime(txthora.Text).Month
-                            || Convert.ToDateTime(txtfecha.Text).Year != Convert.ToDateTime(txthora.Text).Year)
-                        {
-                            error_modal.Visible = true;
-                            lblerror.Text = "La fecha de llegada del empleado no es valida";
-                        }
+
+                        //else if (Convert.ToDateTime(txtfecha.Text).Day != Convert.ToDateTime(txthora.Text).Day || Convert.ToDateTime(txtfecha.Text).Month != Convert.ToDateTime(txthora.Text).Month
+                        //    || Convert.ToDateTime(txtfecha.Text).Year != Convert.ToDateTime(txthora.Text).Year)
+                        //{
+                        //    error_modal.Visible = true;
+                        //    lblerror.Text = "La fecha de llegada del empleado no es valida";
+                        //}
                         else {
                             DateTime PFECHA = Convert.ToDateTime(txtfecha.Text);
-                            DateTime PFECHA2 = Convert.ToDateTime(txthora.Text);
+                            DateTime PFECHA2 = Convert.ToDateTime(txtfecha.Text).AddHours(Convert.ToInt32(ddlhora.SelectedValue)).AddMinutes(Convert.ToInt32(ddlminutos.SelectedValue));
                             int IDC_EMPLEADO = Convert.ToInt32(txtidc_empleado.Text.Trim());
                             string obser = txtmotivo.Text.ToUpper().Trim();
                             bool aviso = false;
                             bool llegada = cbxllegadatemprano.Checked;
                             bool trabajo = true;
+                            string fecha_str = PFECHA2.ToString("yyyy-dd-MM HH:mm:ss");
                             AsistenciaCOM componente = new AsistenciaCOM();
-                            DataSet ds = componente.sp_masistencia_observ_nuevo(PFECHA, PFECHA2.ToString("yyyy-dd-MM HH:mm:ss"), Convert.ToInt32(Session["sidc_usuario"]),                                
+                            DataSet ds = componente.sp_masistencia_observ_nuevo(PFECHA, fecha_str, 
+                                Convert.ToInt32(Session["sidc_usuario"]),                                
                                 IDC_EMPLEADO, trabajo, obser, llegada, aviso);
                             string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                             if (vmensaje == "")
@@ -157,7 +172,7 @@ namespace presentacion
                                 txtidc_empleado.Text = "";
                                 txtempleado.Text = "";
                                 txthoracheco.Text = "";
-                                txthora.Text = "";
+                                CargarReloj();
                                 ScriptManager.RegisterStartupScript(this, GetType(), "alewswedededsrtMessage",
                                  "ModalClose();", true);
                                 string url = "solicitar_asistencia.aspx?fecha="+funciones.deTextoa64(txtfecha.Text);

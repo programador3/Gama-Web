@@ -8,6 +8,23 @@ namespace negocio.Componentes
 {
     public class UsuariosBL
     {
+        
+             public DataSet sp_datos_promocion_arti_terminar2(int idc_usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Char, Value = idc_usuario });
+            try
+            {
+                ds = data.enviar("sp_datos_promocion_arti_terminar2", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet TicketsiNFOALL(int IDC_PUESTO)
         {
             DataSet ds = new DataSet();

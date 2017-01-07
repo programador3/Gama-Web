@@ -26,7 +26,7 @@ namespace presentacion
                 txtcomision_c.Text = funciones.de64aTexto(Request.QueryString["p_comisionc"].ToString());
                 txtapo.Text = funciones.de64aTexto(Request.QueryString["apo"].ToString());
 
-                DataView ds = (DataView)Session["ds"];
+                DataTable ds = (DataTable)Session["ds"];
                 gridv2.DataSource = ds;
                 gridv2.DataBind();
                 

@@ -1,0 +1,7 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'abortado' does not belong to table Table.
+   at negocio.Componentes.AsistenciaCOM.sp_autorizar_asistencias_varios_nuevo(String tipomov, String cadena, Int32 totalcadena, String observaciones, Int32 idc_usuario) in D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\negocio\Componentes\AsistenciaCOM.cs:line 102
+   at presentacion.solicitudes_asistencia_pendientes.Yes_Click(Object sender, EventArgs e) in D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\presentacion\solicitudes_asistencia_pendientes.aspx.cs:line 301

@@ -184,6 +184,15 @@ namespace presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navbartop2;
         
         /// <summary>
+        /// Control menu_vents.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_vents;
+        
+        /// <summary>
         /// Control linkavisos.
         /// </summary>
         /// <remarks>
@@ -254,24 +263,6 @@ namespace presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl li1;
-        
-        /// <summary>
-        /// Control menu.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu;
-        
-        /// <summary>
-        /// Control repeatmenu1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeatmenu1;
         
         /// <summary>
         /// Control Contenido.

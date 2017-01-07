@@ -70,8 +70,8 @@
     <div id="page-wrapper">
         <asp:HiddenField ID="id_res" runat="server" />
         <div class="container-fluid">
-            <h1 class="page-header">Detalles de Tarea <small>
-                <asp:Label ID="lbltitle" runat="server" Text=" Tarea Autogenerada" Visible="false"></asp:Label></small> </h1>
+            <h3 class="page-header">Detalles de Tarea <small>
+                <asp:Label ID="lbltitle" runat="server" Text=" Tarea Autogenerada" Visible="false"></asp:Label></small> </h3>
             <div class="row">
                 <div class="col-lg-12">
                     <h4><i class="fa fa-list-alt"></i>&nbsp;Descripcion de la tarea<span>

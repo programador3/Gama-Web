@@ -183,14 +183,14 @@ namespace presentacion
                 Asignacion_RevisionesENT entidad = new Asignacion_RevisionesENT();
                 Asignacion_RevisionesCOM componente = new Asignacion_RevisionesCOM();
                 entidad.Filtro = filtro;
-                entidad.Ptipo = "";
+                entidad.Ptipo = "R";
                 entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
                 DataSet ds = componente.CargaComboDinamicoOrgn(entidad);
                 ddlPuestoAsigna.DataValueField = "idc_empleado";
                 ddlPuestoAsigna.DataTextField = "descripcion_puesto_completa";
                 ddlPuestoAsigna.DataSource = ds.Tables[0];
                 ddlPuestoAsigna.DataBind();
-                ddlPuestoAsigna.Items.Insert(0, new ListItem("--Seleccione un Empleado", "0")); //updated code}
+                ddlPuestoAsigna.Items.Insert(0, new ListItem("--Seleccione un Empleado", "0")); //updated code}}
                 if (Request.QueryString["idc_empleado"] != null && filtro == "")
                 {
                     int idc_empleadoe = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_empleado"]));

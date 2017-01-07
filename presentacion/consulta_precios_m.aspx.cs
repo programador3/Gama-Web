@@ -38,9 +38,6 @@ namespace presentacion
 
         private void llenarCampos()
         {
-
-
-            Alert.ShowAlertAutoCloseTimer("Cargando", "", "1000", false, "imagenes/horizontal-loader.gif", this.Page);
             consulta_precios_mCOM comp = new consulta_precios_mCOM();
             consulta_precios_mENT ent = new consulta_precios_mENT();
             
@@ -55,7 +52,7 @@ namespace presentacion
                 Limpiar_Campos();
                 txtPrecio.Text = string.Format("$ {0:0,0.0000}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio"].ToString()));
                 //txtidc_Articulo.Text = ds.Tables[0].Rows[0]["idc_articulo"].ToString();
-                txtCodigo_Articulo.Text = ds.Tables[0].Rows[0]["codigo"].ToString();
+                txtCodigo_Articulo.Text = ds.Tables[0].Rows[0]["idc_articulo"].ToString();
                 txtPrecio_Lista.Text = string.Format("$ {0:0,0.0000}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_lista"].ToString()));
                 txtPrecio_Minimo.Text = string.Format("$ {0:0,0.0000}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_minimo"].ToString()));
                 txtPrecio_Real.Text = string.Format("$ {0:0,0.0000}", Convert.ToDouble(ds.Tables[0].Rows[0]["precio_real"].ToString()));
@@ -66,7 +63,7 @@ namespace presentacion
                     DataRow[] dr = dt.Select(str);
                     if (dr.Length > 0)
                     {
-                        txtUM.Text = dr[0]["nom_corto"].ToString();
+                        txtUM.Text = dr[0]["desart"].ToString();
                         txtDescripcion.Text = dr[0]["desart"].ToString();
                         
                     }
@@ -105,7 +102,7 @@ namespace presentacion
                 ddlAgente.DataTextField = "nombre3";
                 ddlAgente.DataSource = ds.Tables[0];
                 ddlAgente.DataBind();
-
+                CargarClientesBely();
             }
             catch (Exception ex)
             {
@@ -116,11 +113,15 @@ namespace presentacion
 
         protected void ddlAgente_Changed(Object sender, EventArgs e)
         {
+            CargarClientesBely();
+        }
+        void CargarClientesBely()
+        {
             try
             {
                 consulta_precios_mCOM comp = new consulta_precios_mCOM();
-                consulta_precios_mENT ent = new consulta_precios_mENT();     
-               
+                consulta_precios_mENT ent = new consulta_precios_mENT();
+
                 ent.Pidc_agente = Convert.ToInt32(ddlAgente.SelectedValue.ToString());
                 DataSet ds = comp.clientes_por_agente(ent);
                 foreach (DataRow row in ds.Tables[0].Rows)
@@ -155,7 +156,6 @@ namespace presentacion
                 Global.CreateFileError(ex.ToString(), this);
             }
         }
-
         protected void ddlClientes_Changed(Object sender, EventArgs e)
         {
             try

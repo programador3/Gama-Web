@@ -81,6 +81,8 @@ namespace presentacion
                 }
                 else
                 {
+                    gridpedidos.DataSource = null;
+                    gridpedidos.DataBind();
                     Alert.ShowAlertError("No Existen Datos.", this);
                 }
             }

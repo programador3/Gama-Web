@@ -1218,10 +1218,36 @@ D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\21_12_16\Puestos\negocio
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\21_12_16\Puestos\negocio\obj\Debug\negocio.csprojResolveAssemblyReference.cache
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\21_12_16\Puestos\negocio\obj\Debug\negocio.dll
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\21_12_16\Puestos\negocio\obj\Debug\negocio.pdb
-D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\negocio\bin\Debug\negocio.dll
-D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\negocio\bin\Debug\negocio.pdb
-D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\negocio\bin\Debug\datos.dll
-D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\negocio\bin\Debug\datos.pdb
-D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\negocio\obj\Debug\negocio.csprojResolveAssemblyReference.cache
-D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\negocio\obj\Debug\negocio.dll
-D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\negocio\obj\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\negocio\bin\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\negocio\bin\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\negocio\bin\Debug\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\negocio\bin\Debug\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\negocio\obj\Debug\negocio.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\negocio\obj\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\negocio\obj\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\negocio\bin\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\negocio\bin\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\negocio\bin\Debug\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\negocio\bin\Debug\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\negocio\obj\Debug\negocio.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\negocio\obj\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\negocio\obj\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\negocio\bin\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\negocio\bin\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\negocio\bin\Debug\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\negocio\bin\Debug\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\negocio\obj\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\negocio\obj\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\negocio\bin\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\negocio\bin\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\negocio\bin\Debug\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\negocio\bin\Debug\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\negocio\obj\Debug\negocio.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\negocio\obj\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\negocio\obj\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\negocio\bin\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\negocio\bin\Debug\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\negocio\bin\Debug\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\negocio\bin\Debug\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\negocio\obj\Debug\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\negocio\obj\Debug\negocio.pdb

@@ -35,7 +35,7 @@ namespace presentacion
         public void CargarGrid(int idc_usuario)
         {
             PuestosENT entidad = new PuestosENT();
-            entidad.Idc_Puesto = 0;//INDICAMOS QUE NO QUEREMOS DATOS DE EMPLEADO
+            entidad.Idc_Puesto = Convert.ToInt32(Session["sidc_puesto_login"]); ;//INDICAMOS QUE NO QUEREMOS DATOS DE EMPLEADO
             entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
             PuestosCOM componente = new PuestosCOM();
             DataSet ds = componente.CargaCatologoPuestos(entidad);
@@ -147,7 +147,6 @@ namespace presentacion
             int id_puestoperfil = Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_puestoperfil"].ToString());
             int idc_herramienta = Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_herramienta"].ToString());
             int idc_puesto_reemplazo = Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_puesto_reemplazo"].ToString());
-            int idc_puesto_jefe = Convert.ToInt32(gridPuestos.DataKeys[index].Values["idc_puesto_jefe"].ToString());
             bool abajo_de_mi = Convert.ToBoolean(gridPuestos.DataKeys[index].Values["abajo_de_mi"]);
             Session["idc_prepara"] = gridPuestos.DataKeys[index].Values["idc_prepara"].ToString();
             Session["puesto"] = gridPuestos.DataKeys[index].Values["descripcion"].ToString();
@@ -161,6 +160,7 @@ namespace presentacion
             servicios_medan.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 350);
             int IDC_PUESTO_LOGIN = Convert.ToInt32(Session["sidc_puesto_login"]);
             //si tengo el permiso de ver todo verificamos que el usuario tenga permisos de  los botones
+            bool SOY_SU_JEFE = funciones.ExecQuery("SELECT * FROM dbo.fn_jefes_directos_equi() WHERE idc_puesto = "+ id_puesto + " AND idc_puesto_padre = "+IDC_PUESTO_LOGIN+"").Rows.Count > 0;
             if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 349) == true)
             {
                 servicios.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 338);
@@ -175,7 +175,7 @@ namespace presentacion
                 lugartrabajo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 362);
                 ahorro.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 199);
                 //si tiene el permiso pero tambien es su jefe directo o depende de el
-                if (idc_puesto_jefe == IDC_PUESTO_LOGIN || abajo_de_mi == true)
+                if (SOY_SU_JEFE|| abajo_de_mi == true)
                 {
                     reportes.Visible = true;
                     lugartrabajo.Visible = true;
@@ -210,10 +210,10 @@ namespace presentacion
                 prebaja.Visible = false;
             }
             ahorro.Visible = idc_empleado == 0 ? false : lnkretiroahorro.Visible;
-            DataTable table = (DataTable)Session["Tabla_PuestosPermitidos"];
+            DataTable table = (DataTable)Session["Tabla_PuestosPrebaja"];
             DataRow[] DR;
             DR = table.Select("idc_empleado=" + idc_empleado);
-            if (DR.Length == 0)
+            if (DR.Length > 0)
             {
                 prebaja.Visible = false;
             }

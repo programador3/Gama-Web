@@ -69,7 +69,7 @@
                 <div class="panel-body">
                     <h3 id="NO_Hay" runat="server" visible="false" style="text-align: center;">NO HAY DATOS <i class="fa fa-exclamation-triangle"></i></h3>
                     <div class="table-responsive">
-                        <asp:GridView ID="gridEquivalente" CssClass="table table-responsive table-condensed gvv {disableSortCols: [3]}" AutoGenerateColumns="false" runat="server" DataKeyNames="pidc_puestoequi,pdescripcion" OnRowCommand="gridAsignacion_RowCommand">
+                        <asp:GridView ID="gridEquivalente" CssClass="table table-responsive table-condensed gvv" AutoGenerateColumns="false" runat="server" DataKeyNames="pidc_puestoequi,pdescripcion" OnRowCommand="gridAsignacion_RowCommand">
                             <Columns>
                                 <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_editar.png" HeaderText="Editar" CommandName="Editar">
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -170,6 +170,12 @@
     <div class="modal fade modal-info" id="myModalGrid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="gridEquivalente" EventName="RowCommand" />
+                    </Triggers>
+                    <ContentTemplate>
+                        
                 <div class="modal-header" style="text-align: center;">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 id="ModalGrid_title"><strong>Sistema de edicion</strong></h4>
@@ -190,7 +196,7 @@
                                 <div class="panel-body">
                                     <h3 id="VacioGrid_modal" runat="server" visible="false" style="text-align: center;">NO HAY DATOS <i class="fa fa-exclamation-triangle"></i></h3>
                                     <div class="table-responsive">
-                                        <asp:GridView ID="GridPuestoRelacionado" CssClass="table table-responsive table-condensed gvv " AutoGenerateColumns="false" runat="server">
+                                        <asp:GridView ID="GridPuestoRelacionado" CssClass="table table-responsive table-condensed " AutoGenerateColumns="false" runat="server">
                                             <Columns>
 
                                                 <asp:BoundField DataField="idc_puesto" HeaderText="Puesto"></asp:BoundField>
@@ -208,10 +214,9 @@
                         </div>
                     </div>
                 </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
                 <div class="modal-footer">
-                    <%--<div class="col-lg-6 col-xs-6">
-                                <asp:Button ID="Button1" class="btn btn-info btn-block" runat="server" Text="Guardar" OnClick="Guardar_Click" />
-                            </div>--%>
                     <div class="col-lg-12">
                         <input id="btnCerrar" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cerrar" />
                     </div>

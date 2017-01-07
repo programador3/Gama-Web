@@ -33,6 +33,7 @@
                                 <asp:BoundColumn DataField="fecha" HeaderText="Fecha"></asp:BoundColumn>
                                 <asp:BoundColumn DataField="observ" HeaderText="Observacion"></asp:BoundColumn>
                                 <asp:BoundColumn DataField="usuario" HeaderText="Usuario"></asp:BoundColumn>
+                                <asp:BoundColumn DataField="idc_agente" HeaderText="Agente"></asp:BoundColumn>
                             </Columns>
                             <HeaderStyle CssClass="RowStyle" />
                         </asp:DataGrid>

@@ -118,8 +118,11 @@
                                 ReadOnly="false" runat="server"></asp:TextBox>
                             <br />
                             <br />
-                            <label id="lblhora" runat="Server" style="width: 20%; text-align: right;"><strong>Hora de Checada del Empleado.</strong></label>
-                            <asp:TextBox Style="font-size: 11px;" ID="txthora" CssClass=" form-control2" Width="78%" ReadOnly="false" TextMode="DateTimeLocal" runat="server"></asp:TextBox>
+                            <label id="lblhora" runat="Server" style="width: 100%; text-align: center;"><strong>Hora de Checada del Empleado.</strong></label>
+                            <label id="Label1" runat="Server" style="width: 49%; text-align: left;"><strong>Hora</strong></label>
+                            <label id="Label2" runat="Server" style="width: 49%; text-align: left;"><strong>Minutos</strong></label>
+                            <asp:DropDownList ID="ddlhora" CssClass=" form-control2" Width="49%" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlminutos" CssClass=" form-control2" Width="49%" runat="server"></asp:DropDownList>
                             <asp:CheckBox ID="cbxllegadatemprano" CssClass="radio3 radio-check radio-info radio-inline" Text="LLEGADA TEMPRANO" runat="server" />
 
                         </div>

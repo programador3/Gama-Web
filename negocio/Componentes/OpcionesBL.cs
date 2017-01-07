@@ -28,7 +28,25 @@ namespace negocio.Componentes
             }
             return ds;
         }
+        public DataSet sp_menu_opciones_tipos(byte tipo, int idc_usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.TinyInt, Value = tipo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
 
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_menu_opciones_tipos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet OpcionFavorita(OpcionesE Etiqueta)
         {
             DataSet ds = new DataSet();

@@ -149,8 +149,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Menu Inicio
-            </h1>
+            <h2 class="page-header">Menu Inicio
+                <span>
+                    <asp:LinkButton ID="lnkmenuventas" PostBackUrl="menu_ventas.aspx" CssClass="btn btn-info" runat="server" OnClick="lnkmenuventas_Click">Menu Ventas&nbsp;
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i></asp:LinkButton></span>
+                <span>
+                    <asp:LinkButton ID="lnkverpromo" PostBackUrl="promocion_arti_terminar.aspx" CssClass="btn btn-danger" runat="server" OnClick="lnkverpromo_Click">Ver Promociones</asp:LinkButton></span>
+            </h2>
         </div>
     </div>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
@@ -158,9 +163,7 @@
             <asp:PostBackTrigger ControlID="txtsearch" />
         </Triggers>
         <ContentTemplate>
-
             <div class="row">
-
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="form-group has-feedback">
                         <asp:TextBox ID="txtsearch" CssClass="form-control" runat="server" AutoPostBack="true"
@@ -176,9 +179,6 @@
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
-            
-        
             <asp:Panel ID="panel_search" runat="server">
                 <div class="row" id="linkv">
                     <asp:Repeater ID="Repeater2" runat="server">
@@ -205,7 +205,7 @@
                         <br />
                         Puede Intentarlo Nuevamente.</h2>
                 </div>
-            </asp:Panel>        
+            </asp:Panel>
             <asp:Panel ID="panel_menus_repeat" runat="server" Visible="true">
                 <div class="row">
                     <asp:Repeater ID="Repeater3" runat="server">
@@ -218,7 +218,7 @@
                                             <div class="content">
                                                 <h6>
                                                     <asp:Label ID="lbl" runat="server" Text=' <%# DataBinder.Eval(Container.DataItem, "menu").ToString() %>'></asp:Label>
-                                                    </h6>
+                                                </h6>
                                                 <h6 style="text-align: right;">
                                                     <asp:Label ID="Label1" Visible="true"
                                                         runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "web_form").ToString() !="" ?  "Pagina":"Menu"  %>'></asp:Label>
@@ -262,7 +262,7 @@
                             <div class="list-group">
                                 <asp:Repeater ID="repeat_tareas" runat="server">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnktarea" PostBackUrl='<%# Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>' 
+                                        <asp:LinkButton ID="lnktarea" PostBackUrl='<%# Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>'
                                             runat="server" CssClass='<%#Eval("css_class")%>' ToolTip='<%#Eval("desc_completa")%>'>
                                             <span onclick="return Press('<%#Eval("idc_tarea")%>','<%#Eval("url").ToString()+presentacion.funciones.deTextoa64(Eval("idc_tarea").ToString())%>','<%#Eval("tipo")%>','<%#Eval("descripcion").ToString().Replace(System.Environment.NewLine,"")%>')" 
                                                 class="badge btn btn-default btn-xs"><%#Eval("icono")%></span> 
@@ -285,10 +285,10 @@
                         <div class="card-header" style="background-color: #1e88e5; color: white;">
                             <div class="card-title" style="background-color: #1e88e5; color: white;">
                                 <div class="title" style="background-color: #1e88e5; color: white;">
-                                    <h5  class="h5n" style="background-color: #1e88e5; color: white;">Tareas Asignadas para hoy<small style="background-color: #1e88e5; color: white;" id="Small1" runat="server">
-                                        <asp:Label ID="lblasi" runat="server" Text="" ></asp:Label></small></h5>
+                                    <h5 class="h5n" style="background-color: #1e88e5; color: white;">Tareas Asignadas para hoy<small style="background-color: #1e88e5; color: white;" id="Small1" runat="server">
+                                        <asp:Label ID="lblasi" runat="server" Text=""></asp:Label></small></h5>
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="pull-right card-action">
                                 <div class="btn-group" role="group">
                                     <asp:LinkButton ID="LinkButton4" OnClick="LinkButton4_Click" CssClass="btn btn-info" runat="server"><i class="fa fa-chevron-down" aria-hidden="true"></i>

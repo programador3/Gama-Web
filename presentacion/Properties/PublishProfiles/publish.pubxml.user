@@ -27,6 +27,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="agenda_de_visitas.aspx">
       <publishTime>10/10/2016 15:23:35</publishTime>
     </File>
+    <File Include="agentes_act_cotizacion_periodo_m.aspx">
+      <publishTime>12/26/2016 09:23:57</publishTime>
+    </File>
+    <File Include="agentes_act_cotizacion_periodo_m.aspx.vb">
+      <publishTime>12/26/2016 09:03:19</publishTime>
+    </File>
     <File Include="agregar_clientes_chekplus.aspx">
       <publishTime>10/10/2016 11:22:07</publishTime>
     </File>
@@ -283,7 +289,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:58</publishTime>
     </File>
     <File Include="bin/datos.dll">
-      <publishTime>12/06/2016 10:32:48</publishTime>
+      <publishTime>01/04/2017 16:25:33</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>03/03/2016 15:08:57</publishTime>
@@ -301,10 +307,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/17/2012 17:59:36</publishTime>
     </File>
     <File Include="bin/GWebCD.dll">
-      <publishTime>12/17/2016 08:50:50</publishTime>
+      <publishTime>01/04/2017 16:25:41</publishTime>
     </File>
     <File Include="bin/GWebCN.dll">
-      <publishTime>12/20/2016 11:37:10</publishTime>
+      <publishTime>01/04/2017 16:25:43</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>04/15/2004 21:47:00</publishTime>
@@ -319,13 +325,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/29/2015 21:27:38</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>12/17/2016 08:50:50</publishTime>
+      <publishTime>01/05/2017 15:07:20</publishTime>
     </File>
     <File Include="bin/OpenPop.dll">
       <publishTime>11/21/2015 16:46:36</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>12/22/2016 08:48:40</publishTime>
+      <publishTime>01/05/2017 15:07:28</publishTime>
     </File>
     <File Include="bin/Telerik.Web.UI.dll">
       <publishTime>10/26/2016 09:37:26</publishTime>
@@ -346,7 +352,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/21/2016 12:09:40</publishTime>
     </File>
     <File Include="bin/Winthusiasm.HtmlEditor.dll">
-      <publishTime>12/06/2016 10:32:49</publishTime>
+      <publishTime>01/04/2017 16:25:40</publishTime>
     </File>
     <File Include="buscar_colonia_mobile.aspx">
       <publishTime>12/20/2016 08:23:21</publishTime>
@@ -423,6 +429,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="chat.aspx">
       <publishTime>10/04/2016 16:59:46</publishTime>
     </File>
+    <File Include="check_plus_pre.aspx">
+      <publishTime>12/26/2016 08:28:30</publishTime>
+    </File>
     <File Include="check_plus_pre_m.aspx">
       <publishTime>10/10/2016 14:28:18</publishTime>
     </File>
@@ -433,7 +442,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/05/2016 14:06:13</publishTime>
     </File>
     <File Include="comidas_vales.aspx">
-      <publishTime>12/15/2016 09:58:55</publishTime>
+      <publishTime>12/28/2016 09:15:29</publishTime>
     </File>
     <File Include="comisiones_detalles.aspx">
       <publishTime>10/26/2016 10:17:53</publishTime>
@@ -457,7 +466,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/21/2016 10:02:24</publishTime>
     </File>
     <File Include="comisiones_m.aspx.vb">
-      <publishTime>12/21/2016 11:14:59</publishTime>
+      <publishTime>12/22/2016 15:55:36</publishTime>
     </File>
     <File Include="Compromisos_Cliente.aspx">
       <publishTime>10/05/2016 10:17:37</publishTime>
@@ -598,7 +607,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:32:26</publishTime>
     </File>
     <File Include="css/style.css">
-      <publishTime>09/15/2016 15:51:56</publishTime>
+      <publishTime>12/26/2016 10:03:19</publishTime>
     </File>
     <File Include="css/themes/facebook/facebook.css">
       <publishTime>09/17/2016 10:32:27</publishTime>
@@ -683,6 +692,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="datos_ch_p.aspx">
       <publishTime>10/10/2016 11:38:30</publishTime>
+    </File>
+    <File Include="detalles_agente_cot.aspx">
+      <publishTime>12/26/2016 09:10:39</publishTime>
+    </File>
+    <File Include="detalles_agente_cot.aspx.vb">
+      <publishTime>12/26/2016 09:08:38</publishTime>
     </File>
     <File Include="disponibilidad_celulares.aspx">
       <publishTime>09/17/2016 10:33:19</publishTime>
@@ -1063,7 +1078,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:34:52</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>12/22/2016 08:12:43</publishTime>
+      <publishTime>01/03/2017 11:16:14</publishTime>
     </File>
     <File Include="grafica.aspx">
       <publishTime>12/05/2016 17:25:26</publishTime>
@@ -1210,7 +1225,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:36:42</publishTime>
     </File>
     <File Include="html_editor.aspx">
-      <publishTime>11/23/2016 11:58:29</publishTime>
+      <publishTime>12/28/2016 16:45:36</publishTime>
     </File>
     <File Include="icons/font-awesome.html">
       <publishTime>03/16/2016 15:32:49</publishTime>
@@ -2119,7 +2134,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/16/2016 15:32:51</publishTime>
     </File>
     <File Include="js/app.js">
-      <publishTime>11/09/2016 08:01:58</publishTime>
+      <publishTime>12/23/2016 07:47:03</publishTime>
     </File>
     <File Include="js/BlockHumberto.js">
       <publishTime>04/28/2016 14:58:33</publishTime>
@@ -2150,6 +2165,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="js/chartjs.js">
       <publishTime>04/19/2016 10:30:57</publishTime>
+    </File>
+    <File Include="js/ckeditor.js">
+      <publishTime>12/28/2016 16:41:58</publishTime>
     </File>
     <File Include="js/coffee/alert.coffee">
       <publishTime>03/03/2016 14:45:05</publishTime>
@@ -2250,8 +2268,14 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="js/responsivemultimenu.js">
       <publishTime>09/17/2016 10:38:07</publishTime>
     </File>
+    <File Include="js/sample.js">
+      <publishTime>12/28/2016 16:42:35</publishTime>
+    </File>
     <File Include="js/select2.full.min.js">
       <publishTime>03/16/2016 15:33:56</publishTime>
+    </File>
+    <File Include="js/sf.js">
+      <publishTime>12/28/2016 16:42:35</publishTime>
     </File>
     <File Include="js/slack.js">
       <publishTime>04/21/2016 12:23:45</publishTime>
@@ -2374,7 +2398,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/16/2016 15:33:56</publishTime>
     </File>
     <File Include="login.aspx">
-      <publishTime>12/12/2016 16:27:06</publishTime>
+      <publishTime>12/22/2016 09:53:37</publishTime>
     </File>
     <File Include="Login.Master">
       <publishTime>11/09/2016 11:12:18</publishTime>
@@ -2395,7 +2419,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/03/2016 17:05:27</publishTime>
     </File>
     <File Include="menu.aspx">
-      <publishTime>11/10/2016 14:09:31</publishTime>
+      <publishTime>01/02/2017 07:44:45</publishTime>
+    </File>
+    <File Include="menu_ventas.aspx">
+      <publishTime>01/02/2017 09:58:50</publishTime>
     </File>
     <File Include="oc_clientes.aspx">
       <publishTime>12/19/2016 10:48:53</publishTime>
@@ -2560,7 +2587,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/21/2016 14:23:10</publishTime>
     </File>
     <File Include="Pedidos7_m.aspx.vb">
-      <publishTime>12/21/2016 08:03:32</publishTime>
+      <publishTime>01/02/2017 10:38:58</publishTime>
     </File>
     <File Include="pendientes.aspx">
       <publishTime>03/17/2016 08:17:29</publishTime>
@@ -2784,6 +2811,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="promociones_cliente_m.aspx">
       <publishTime>10/31/2016 10:41:05</publishTime>
     </File>
+    <File Include="promocion_arti_terminar.aspx">
+      <publishTime>12/27/2016 09:42:24</publishTime>
+    </File>
+    <File Include="promocion_arti_terminar_m.aspx.vb">
+      <publishTime>12/27/2016 09:31:06</publishTime>
+    </File>
     <File Include="prospectos_captura3.aspx">
       <publishTime>09/17/2016 10:42:12</publishTime>
     </File>
@@ -2800,13 +2833,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:42:30</publishTime>
     </File>
     <File Include="puestos_catalogo.aspx">
-      <publishTime>11/10/2016 17:18:32</publishTime>
+      <publishTime>12/28/2016 08:03:54</publishTime>
     </File>
     <File Include="puestos_clasificacion.aspx">
       <publishTime>11/07/2016 14:37:56</publishTime>
     </File>
     <File Include="puestos_equi.aspx">
-      <publishTime>10/20/2016 16:16:52</publishTime>
+      <publishTime>12/30/2016 10:19:15</publishTime>
     </File>
     <File Include="quejas_acciones.aspx">
       <publishTime>09/17/2016 10:42:42</publishTime>
@@ -2923,13 +2956,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/16/2016 09:12:53</publishTime>
     </File>
     <File Include="solicitar_asistencia.aspx">
-      <publishTime>12/10/2016 10:25:03</publishTime>
+      <publishTime>01/03/2017 09:43:33</publishTime>
     </File>
     <File Include="solicitar_reemplazo.aspx">
       <publishTime>09/17/2016 10:44:55</publishTime>
     </File>
     <File Include="solicitudes_asistencia_pendientes.aspx">
-      <publishTime>12/10/2016 09:24:40</publishTime>
+      <publishTime>01/05/2017 11:49:16</publishTime>
     </File>
     <File Include="solicitud_horario.aspx">
       <publishTime>10/29/2016 09:50:53</publishTime>
@@ -2971,7 +3004,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:45:45</publishTime>
     </File>
     <File Include="tareas_captura.aspx">
-      <publishTime>12/20/2016 14:27:45</publishTime>
+      <publishTime>12/28/2016 16:20:11</publishTime>
     </File>
     <File Include="tareas_clientes_cap.aspx">
       <publishTime>10/03/2016 09:10:20</publishTime>
@@ -2980,7 +3013,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/01/2016 09:46:52</publishTime>
     </File>
     <File Include="tareas_detalles.aspx">
-      <publishTime>09/29/2016 16:42:22</publishTime>
+      <publishTime>12/28/2016 16:20:05</publishTime>
     </File>
     <File Include="tareas_informacion_adicional.aspx">
       <publishTime>11/30/2016 09:03:41</publishTime>
@@ -3049,7 +3082,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/17/2016 08:17:34</publishTime>
     </File>
     <File Include="ver_preped_x_autorizar.aspx">
-      <publishTime>12/19/2016 15:10:19</publishTime>
+      <publishTime>12/26/2016 09:35:25</publishTime>
     </File>
     <File Include="view_files.aspx">
       <publishTime>09/17/2016 10:46:56</publishTime>
@@ -3061,7 +3094,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:47:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/22/2016 08:43:19</publishTime>
+      <publishTime>01/05/2017 15:07:32</publishTime>
     </File>
     <File Include="Webcam_Plugin/jquery.webcam.js">
       <publishTime>10/27/2016 12:26:39</publishTime>

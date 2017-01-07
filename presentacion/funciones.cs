@@ -19,7 +19,17 @@ namespace presentacion
     {
 
         public static DBConnection conexion = new DBConnection();
+        public static string GUID()
+        {
+            Random random_edit = new Random();
+            int randomNumber_live = random_edit.Next(0, 1000000);
+            DateTime localDate = DateTime.Now;
+            string date = localDate.ToString();
+            date = date.Replace("/", "");
+            date = date.Replace(":", "");
 
+            return date + randomNumber_live.ToString();
+        }
         public static string NombreMes(string strOutput)
         {
             strOutput = strOutput.Replace("Monday", "Lunes");

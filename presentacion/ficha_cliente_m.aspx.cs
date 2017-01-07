@@ -553,7 +553,7 @@ namespace presentacion
                     break;
 
                 case "10"://check plus
-                    Response.Redirect("check_plus_pre_m.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    Response.Redirect("check_plus_pre.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
                     break;
 
                 case "8"://GENERRAR PEDIDO

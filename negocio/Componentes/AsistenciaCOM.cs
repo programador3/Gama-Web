@@ -103,6 +103,7 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
         public DataSet sp_masistencia_observ_nuevo(DateTime pfecha,string pfechac, int idc_usuario, int idc_empleado, bool trabajo, string observ, 
             bool llegada_tempr, bool aviso)
         {

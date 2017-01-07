@@ -34,8 +34,8 @@
             <asp:FileUpload ID="fuparchivos" CssClass="form-control" runat="server" />
             <asp:LinkButton ID="lnk" runat="server" CssClass="btn btn-success btn btn-block" OnClick="lnk_Click" OnClientClick="return Giftl('ESTAMOS COMPROBANDO EL ARCHIVO DE EXCEL');">Subir Excel&nbsp;<i class="fa fa-upload" aria-hidden="true"></i></asp:LinkButton>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12" id="tabla_errores" runat="server" visible="false">
-            <asp:LinkButton ID="LinkButton2" CssClass="btn btn-success" runat="server" OnClick="LinkButton2_Click">Descargar eRRORES EN EXCEL&nbsp;<i class="fa fa-download" aria-hidden="true"></i></asp:LinkButton>
+        <div class="col-lg-12 col-sm-12" id="tabla_errores" runat="server" visible="false">
+            <asp:LinkButton ID="LinkButton2" CssClass="btn btn-success" runat="server" OnClick="LinkButton2_Click">Descargar ERRORES EN EXCEL&nbsp;<i class="fa fa-download" aria-hidden="true"></i></asp:LinkButton>
             <div class="table table-responsive">
                 <asp:GridView Style="text-align: center;" ID="grid_errores" CssClass="table table-responsive table-bordered table-condensed" runat="server" AutoGenerateColumns="False" >
                     <Columns>

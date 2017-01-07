@@ -44,10 +44,10 @@ namespace presentacion
                     TipoReportes(idc_tiporep);
                 }
                     //DSE AGREGARON ESTAS LINEAS PARA NO MOSTRAR LISTADO DE PUESTOS
-                cbxeditable.Checked = true;
-                cbxeditable.Enabled = false;
-                div_puestos.Visible = false;
-                UpdatePanel1.Visible = false;
+                //cbxeditable.Checked = true;
+                //cbxeditable.Enabled = false;
+                //div_puestos.Visible = false;
+                //UpdatePanel1.Visible = false;
                 //else
                 //{
                 //    CargarCombosPuestos("");

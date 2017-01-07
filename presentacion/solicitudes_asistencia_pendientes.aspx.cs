@@ -1,10 +1,6 @@
 ﻿using negocio.Componentes;
-using negocio.Entidades;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
-using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -37,7 +33,7 @@ namespace presentacion
             }
         }
 
-        string cadena()
+        private string cadena()
         {
             string ret = "";
             DataTable dt = ViewState["dt_pendi_auto"] as DataTable;
@@ -46,20 +42,22 @@ namespace presentacion
                 string idc_sol = row["IDC_SOLICITUDASI"].ToString();
                 string IDC_EMPLEADO = row["IDC_EMPLEADO"].ToString();
                 DateTime fecha = Convert.ToDateTime(row["fecha"]);
-                string TEMPRANO = Convert.ToBoolean(row["TEMPRANO"])?"1":"0";
+                string TEMPRANO = Convert.ToBoolean(row["TEMPRANO"]) ? "1" : "0";
                 string nombre = row["empleado"].ToString();
                 string num_nomina = row["num_nomina"].ToString();
                 ret = ret + idc_sol + ";" + IDC_EMPLEADO + ";" + fecha.ToString("yyyy-dd-MM HH:mm:ss") + ";" + TEMPRANO + ";" +
-                    nombre + ";" + num_nomina + ";"; 
+                    nombre + ";" + num_nomina + ";";
             }
             return ret;
         }
-        int totalcadena()
+
+        private int totalcadena()
         {
-            DataTable dt = ViewState["dt_pendi_auto"] as DataTable;           
+            DataTable dt = ViewState["dt_pendi_auto"] as DataTable;
             return dt.Rows.Count;
         }
-        void adddata(string IDC_SOLICITUDASI, string IDC_EMPLEADO, DateTime fecha, string TEMPRANO, string nombre, string num_nomina)
+
+        private void adddata(string IDC_SOLICITUDASI, string IDC_EMPLEADO, DateTime fecha, string TEMPRANO, string nombre, string num_nomina)
         {
             DataTable dt = ViewState["dt_pendi_auto"] as DataTable;
             DataRow row = dt.NewRow();
@@ -73,10 +71,8 @@ namespace presentacion
             ViewState["dt_pendi_auto"] = dt;
         }
 
-
-        void deletedata(string IDC_SOLICITUDASI)
+        private void deletedata(string IDC_SOLICITUDASI)
         {
-
             DataTable dt = ViewState["dt_pendi_auto"] as DataTable;
             foreach (DataRow row in dt.Rows)
             {
@@ -89,7 +85,8 @@ namespace presentacion
             }
             ViewState["dt_pendi_auto"] = dt;
         }
-        bool Exists(string query)
+
+        private bool Exists(string query)
         {
             DataTable dt = ViewState["dt_pendi_auto"] as DataTable;
             DataView dv = dt.DefaultView;
@@ -111,9 +108,9 @@ namespace presentacion
                     "%' OR  DEPTO like '%" + value + "%'OR USUARIO like '%" + value + "%'OR HORA_CHECK like '%" + value + "%'";
                 if (funciones.isNumeric(value))
                 {
-                    QUERY = QUERY + "or num_nomina = "+value+"";
+                    QUERY = QUERY + "or num_nomina = " + value + "";
                 }
-                dv.RowFilter =QUERY;
+                dv.RowFilter = QUERY;
                 DataTable dt = dv.ToTable();
                 gridservicios.DataSource = dt;
                 gridservicios.DataBind();
@@ -188,6 +185,7 @@ namespace presentacion
             txtfiltrar.Text = "";
             CargarFaltas("");
         }
+
         protected void cbx_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cbx = sender as CheckBox;
@@ -203,9 +201,10 @@ namespace presentacion
             deletedata(IDC_SOLICITUDASI.ToString().Trim());
             if (cbx.Checked)
             {
-                adddata(IDC_SOLICITUDASI.ToString().Trim(), idc_empleado.ToString(),fecha,TEMPRANO,nombre,num_nomina.ToString());
+                adddata(IDC_SOLICITUDASI.ToString().Trim(), idc_empleado.ToString(), fecha, TEMPRANO, nombre, num_nomina.ToString());
             }
         }
+
         protected void gridservicios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -214,19 +213,17 @@ namespace presentacion
                 CheckBox cbx = e.Row.FindControl("cbxselected") as CheckBox;
                 cbx.Checked = cbxselecttodos.Checked;
                 string IDC_SOLICITUDASI = rowView["IDC_SOLICITUDASI"].ToString();
-                cbx.Checked = Exists("idc_solicitudasi = "+IDC_SOLICITUDASI.Trim()+"");
+                cbx.Checked = Exists("idc_solicitudasi = " + IDC_SOLICITUDASI.Trim() + "");
             }
         }
 
         protected void txtfiltrar_TextChanged(object sender, EventArgs e)
         {
-
             CargarFaltas(txtfiltrar.Text);
         }
 
         protected void lbkbuscar_Click(object sender, EventArgs e)
         {
-
             CargarFaltas(txtfiltrar.Text);
         }
 
@@ -235,14 +232,18 @@ namespace presentacion
             cadena();
             if (totalcadena() == 0)
             {
-                Alert.ShowAlertInfo("Seleccione minimo una solicitud para Autorizar","Mensaje del Sistema",this);
+                Alert.ShowAlertInfo("Seleccione minimo una solicitud para Autorizar", "Mensaje del Sistema", this);
             }
-            else {
+            else
+            {
+                Yes.Visible = true;
                 error_modal.Visible = false;
                 lblerror.Text = "";
                 txtobservaciones.Text = "";
                 Session["Caso_Confirmacion"] = "Auto";
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','Desea Autorizar las Solicitudes Seleccionadas(" + totalcadena().ToString() + ") ','modal fade modal-success');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage",
+                    "ModalConfirm('Mensaje del Sistema','Desea Autorizar las Solicitudes Seleccionadas(" +
+                    totalcadena().ToString() + ") ','modal fade modal-success');", true);
             }
         }
 
@@ -252,17 +253,18 @@ namespace presentacion
             if (totalcadena() == 0)
             {
                 Alert.ShowAlertInfo("Seleccione minimo una solicitud para Cancelar", "Mensaje del Sistema", this);
-            } 
+            }
             else
             {
+                Yes.Visible = true;
                 error_modal.Visible = false;
                 lblerror.Text = "";
                 txtobservaciones.Text = "";
                 Session["Caso_Confirmacion"] = "Cancelar";
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','Desea Cancelar las Solicitudes Seleccionadas(" +totalcadena().ToString()+ ") ','modal fade modal-danger');", true);
-
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage",
+                    "ModalConfirm('Mensaje del Sistema','Desea Cancelar las Solicitudes Seleccionadas(" +
+                    totalcadena().ToString() + ") ','modal fade modal-danger');", true);
             }
-
         }
 
         protected void Yes_Click(object sender, EventArgs e)
@@ -278,6 +280,7 @@ namespace presentacion
                         tipo = "A";
                         msg = "Solicitudes Autorizadas";
                         break;
+
                     case "Cancelar":
                         tipo = "C";
                         msg = "Solicitudes Canceladas";
@@ -290,14 +293,29 @@ namespace presentacion
                     lblerror.Text = "Ingrese Observaciones para Cancelar";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMeededssage", "ModalClose();", true);
 
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMeeee334333ssage", "ModalConfirm('Mensaje del Sistema','Desea Cancelar las Solicitudes Seleccionadas(" +totalcadena().ToString()+ ") ','modal fade modal-danger');", true);
-
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMeeee334333ssage",
+                        "ModalConfirm('Mensaje del Sistema','Desea Cancelar las Solicitudes Seleccionadas("
+                        + totalcadena().ToString() + ") ','modal fade modal-danger');", true);
                 }
-                else {
+                else
+                {
                     AsistenciaCOM componente = new AsistenciaCOM();
                     DataSet ds = componente.sp_autorizar_asistencias_varios_nuevo(tipo, cadena(), totalcadena(), txtobservaciones.Text.Trim().ToUpper(),
                         Convert.ToInt32(Session["sidc_usuario"]));
                     string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                    ViewState["dt_errores"] = null;
+                    lnkexcel.Visible = false;
+                    if (ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables[1].Rows.Count > 0)
+                        {
+                            CargarFaltas("");
+                            Yes.Visible = false;
+                            ViewState["dt_errores"] = ds.Tables[1];
+                            lnkexcel.Visible = true;
+                            vmensaje = vmensaje + ". ALGUNAS SOLICITUDES NO PUDIERON SER PROCESADAS, DESCARG EL ARCHIVO DE ECEL PARA VER MAS DETALLES";
+                        }
+                    }
                     if (vmensaje == "")
                     {
                         error_modal.Visible = false;
@@ -308,9 +326,9 @@ namespace presentacion
 
                         ScriptManager.RegisterStartupScript(this, GetType(), "alewswedededsrtMessage",
                          "ModalClose();", true);
-                        string url = txtfiltrar.Text==""? "solicitudes_asistencia_pendientes.aspx" : "solicitudes_asistencia_pendientes.aspx?filtro=" + funciones.deTextoa64(txtfiltrar.Text);
+                        string url = txtfiltrar.Text == "" ? "solicitudes_asistencia_pendientes.aspx" : "solicitudes_asistencia_pendientes.aspx?filtro=" + funciones.deTextoa64(txtfiltrar.Text);
                         ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(),
-                         "AlertGO('"+ msg + " Correctamente','" + url + "');", true);
+                         "AlertGO('" + msg + " Correctamente','" + url + "');", true);
                     }
                     else
                     {
@@ -318,11 +336,20 @@ namespace presentacion
                         lblerror.Text = vmensaje;
                         ScriptManager.RegisterStartupScript(this, GetType(), "alertMeededssage", "ModalClose();", true);
 
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMeeee334333ssage", "ModalConfirm('Mensaje del Sistema','Desea Cancelar las Solicitudes Seleccionadas(" +totalcadena().ToString()+ ") ','modal fade modal-danger');", true);
-
+                        if (tipo == "C")
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertMeeee334333ssage",
+                                "ModalConfirm('Mensaje del Sistema','Desea Cancelar las Solicitudes Seleccionadas(" +
+                                totalcadena().ToString() + ") ','modal fade modal-info');", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertMeeee33WW4333ssage",
+                                "ModalConfirm('Mensaje del Sistema','Desea Autorizar las Solicitudes Seleccionadas(" +
+                                totalcadena().ToString() + ") ','modal fade modal-success');", true);
+                        }
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -330,11 +357,10 @@ namespace presentacion
                 lblerror.Text = ex.ToString();
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMeededssage", "ModalClose();", true);
 
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertMeeee334333ssage", "ModalConfirm('Mensaje del Sistema','Desea Cancelar las Solicitudes Seleccionadas(" +totalcadena().ToString()+ ") ','modal fade modal-danger');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMeeee334333ssage", "ModalConfirm('Mensaje del Sistema','Desea Cancelar las Solicitudes Seleccionadas(" + totalcadena().ToString() + ") ','modal fade modal-danger');", true);
 
                 Global.CreateFileError(ex.ToString(), this);
             }
-            
         }
 
         protected void gridservicios_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -357,7 +383,7 @@ namespace presentacion
                 txtstaus.ForeColor = System.Drawing.Color.FromName("#fff");
                 AsistenciaCOM componente = new AsistenciaCOM();
                 string date = fecha.ToString("MM/dd/yyyy");
-                
+
                 DataSet ds = componente.sp_status_incidencia_dia_numnomina(num_nomina, Convert.ToDateTime(date));
                 DataTable dtstatus = ds.Tables[0];
                 string color = dtstatus.Rows[0]["color"].ToString();
@@ -387,8 +413,7 @@ namespace presentacion
                     nohay.Visible = true;
                 }
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMe223222eee334333ssage",
-                    "ModalConfirms('" + estatus+"');", true);
-
+                    "ModalConfirms('" + estatus + "');", true);
             }
             catch (Exception ex)
             {
@@ -399,11 +424,52 @@ namespace presentacion
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            
-            string url = "asistencia_detalle.aspx?top="+funciones.deTextoa64("15")+"&num_nomina=" + funciones.deTextoa64(txtnumeronomina.Text.Trim()) +
+            string url = "asistencia_detalle.aspx?top=" + funciones.deTextoa64("15") + "&num_nomina=" + funciones.deTextoa64(txtnumeronomina.Text.Trim()) +
                 "&idc_empleado=" + funciones.deTextoa64(txtidc_empleado.Text.Trim());
             ScriptManager.RegisterStartupScript(this, GetType(), "KWDOIQNDW9929929H",
                 "window.open('" + url + "');", true);
+        }
+        protected void lnkexcel_Click(object sender, EventArgs e)
+        {
+            if (ViewState["dt_errores"] == null)
+            {
+                Alert.ShowAlertError("NO SE ENCONTRO LA TABLA DT_ERRORES, VERIFICAR CON DEPTO DE SISTEMAS0",this);
+            }
+            else {
+                DataTable dt = ViewState["dt_errores"] as DataTable;
+                try
+                {
+                    string attachment = "attachment; filename=errores.xls";
+                    Response.ClearContent();
+                    Response.AddHeader("content-disposition", attachment);
+                    Response.ContentType = "application/vnd.ms-excel;";
+                    Response.ContentEncoding = System.Text.Encoding.Unicode;
+                    Response.BinaryWrite(System.Text.Encoding.Unicode.GetPreamble());
+                    string tab = "";
+                    foreach (DataColumn dc in dt.Columns)
+                    {
+                        Response.Write(tab + dc.ColumnName);
+                        tab = "\t";
+                    }
+                    Response.Write("\n");
+                    int i;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        tab = "";
+                        for (i = 0; i < dt.Columns.Count; i++)
+                        {
+                            Response.Write(tab + dr[i].ToString());
+                            tab = "\t";
+                        }
+                        Response.Write("\n");
+                    }
+                    Response.End();
+                }
+                catch (Exception ex)
+                {
+                    Alert.ShowAlertError(ex.ToString(), this);
+                }
+            }
         }
     }
 }

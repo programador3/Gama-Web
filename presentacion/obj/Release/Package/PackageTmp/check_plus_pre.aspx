@@ -1,4 +1,4 @@
-﻿<%@ Page Title="CheckPlus" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="check_plus_pre_m.aspx.cs" Inherits="presentacion.check_plus_pre_m" %>
+﻿<%@ Page Title="CheckPlus" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="check_plus_pre.aspx.cs" Inherits="presentacion.check_plus_pre_m" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <style type="text/css">
         .Ocultar {

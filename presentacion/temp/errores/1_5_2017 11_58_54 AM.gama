@@ -1,0 +1,9 @@
+Mayra Moreno Cavazos
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): El nombre de objeto '#detalles' no es válido.
+   at negocio.Componentes.AsistenciaCOM.sp_autorizar_asistencias_varios_nuevo(String tipomov, String cadena, Int32 totalcadena, String observaciones, Int32 idc_usuario) in D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\negocio\Componentes\AsistenciaCOM.cs:line 102
+   at presentacion.solicitudes_asistencia_pendientes.Yes_Click(Object sender, EventArgs e)
+ClientConnectionId:02403584-29a1-4be1-8269-4dd1b2617bad
+Error Number:208,State:0,Class:16

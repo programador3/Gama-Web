@@ -46,6 +46,7 @@ namespace presentacion
             lblpuestos2.Text = (String)(Session["puesto_login"]) == "" ? "Sin puesto Asignado" : (String)(Session["puesto_login"]);
             lbluser2.Text = (String)(Session["nombre"]);
             CargarHerramientasMenu();
+            menu_vents.Visible = TieneOpcionesdeVentas();
             OpcionesUsadas();
             DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/errores/"));//path local
             Session["error_path"] = dirInfo.ToString();
@@ -99,9 +100,34 @@ namespace presentacion
                     Session["lista"] = listas_url;
                 }
             }
+            string query = "SELECT ticketserv.idc_ticketserv " +
+                        "FROM ticketserv WITH(NOLOCK) INNER JOIN " +
+                        "tareas_servicios_puestos WITH(NOLOCK) ON tareas_servicios_puestos.idc_tareaser = ticketserv.idc_tareaser " +
+                        "WHERE ticketserv.pendiente = 1 AND tareas_servicios_puestos.borrado = 0 " +
+                        "AND status = 'E' AND tareas_servicios_puestos.idc_puesto = "+Session["sidc_puesto_login"] as string+"";
+            DataTable dt_ticket = funciones.ExecQuery(query);
+            if (dt_ticket.Rows.Count > 0)
+            {
 
+                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), 
+                    "NotificacionDesktop('Sistema GAMA WEB','Tiene "+ dt_ticket.Rows.Count .ToString()+ " Ticket(s) en espera.','imagenes/pendiente.png');", true);
+          
+            }
         }
-
+        private bool TieneOpcionesdeVentas()
+        {
+            try
+            {
+                OpcionesBL opciones = new OpcionesBL();
+                DataSet ds = opciones.sp_menu_opciones_tipos(1, Convert.ToInt32(Session["sidc_usuario"]));
+                return ds.Tables[0].Rows.Count > 0;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                return false;
+            }
+        }
         public void OpcionesUsadas()
         {
             try
@@ -163,8 +189,8 @@ namespace presentacion
             Session["menudrop"] = ds.Tables[0];
             DataView view = new DataView(ds.Tables[0]);
             DataTable distinctValues = view.ToTable(true, "menu1");
-            repeatmenu1.DataSource = Distinct(distinctValues);
-            repeatmenu1.DataBind();
+            //repeatmenu1.DataSource = Distinct(distinctValues);
+            //repeatmenu1.DataBind();
         }
 
         public int contador = 1;

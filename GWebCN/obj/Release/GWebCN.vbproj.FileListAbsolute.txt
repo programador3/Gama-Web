@@ -68,3 +68,115 @@ D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\GWebCN\
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\GWebCN\obj\Release\GWebCN.dll
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\GWebCN\obj\Release\GWebCN.xml
 D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\22_12_16\Puestos\GWebCN\obj\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\bin\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\bin\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\bin\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\obj\Release\GWebCN.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\obj\Release\GWebCN.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\obj\Release\GWebCN.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\obj\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\obj\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\23_12_16\Puestos\GWebCN\obj\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\bin\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\bin\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\bin\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\obj\Release\GWebCN.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\obj\Release\GWebCN.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\obj\Release\GWebCN.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\obj\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\obj\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\26_12_16\Puestos\GWebCN\obj\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\bin\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\bin\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\bin\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\obj\Release\GWebCN.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\obj\Release\GWebCN.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\obj\Release\GWebCN.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\obj\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\obj\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\GWebCN\obj\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\bin\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\bin\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\bin\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\obj\Release\GWebCN.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\obj\Release\GWebCN.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\obj\Release\GWebCN.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\obj\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\obj\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\GWebCN\obj\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\bin\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\bin\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\bin\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\obj\Release\GWebCN.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\obj\Release\GWebCN.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\obj\Release\GWebCN.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\obj\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\obj\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\02_01_17\Puestos\GWebCN\obj\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\bin\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\bin\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\bin\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\obj\Release\GWebCN.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\obj\Release\GWebCN.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\obj\Release\GWebCN.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\obj\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\obj\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\03_01_17\Puestos\GWebCN\obj\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\bin\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\bin\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\bin\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\obj\Release\GWebCN.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\obj\Release\GWebCN.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\obj\Release\GWebCN.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\obj\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\obj\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\GWebCN\obj\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\bin\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\bin\Release\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\bin\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\obj\Release\GWebCN.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\obj\Release\GWebCN.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\obj\Release\GWebCN.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\obj\Release\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\obj\Release\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\05_01_17\Puestos\GWebCN\obj\Release\GWebCN.pdb

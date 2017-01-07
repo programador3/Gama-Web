@@ -1,0 +1,9 @@
+Isaac Humberto De La Rosa Mendez
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): Error de desbordamiento aritmético al convertir int al tipo de datos numeric.
+   at negocio.Componentes.TareasAutomaticasCOM.DatosGraficas(TareasAutomaticasENT Etiqueta) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\27_12_16\Puestos\negocio\Componentes\TareasAutomaticasCOM.cs:line 144
+   at presentacion.grafica.GenerarDatos(DateTime fecha_i, DateTime fecha_f, Int32 idc_puesto, Int32 IDC_DEPTO) in D:\Trabajos Humberto\Proyectos Diarios\2016\12DICIEMBRE\28_12_16\Puestos\presentacion\grafica.aspx.cs:line 43
+ClientConnectionId:c46f3526-dd55-4341-ac99-010db1453546
+Error Number:8115,State:8,Class:16

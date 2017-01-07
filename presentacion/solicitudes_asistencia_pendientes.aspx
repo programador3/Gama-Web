@@ -110,6 +110,9 @@
             <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="always">
+                        <Triggers>
+                            <asp:PostBackTrigger ControlID="lnkexcel" />
+                        </Triggers>
                         <ContentTemplate>
 
                             <div class="modal-content">
@@ -131,6 +134,8 @@
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 <strong>ERROR&nbsp;</strong><asp:Label ID="lblerror" runat="server" Text="" Visible="true"></asp:Label>
                                             </div>
+                                            <asp:LinkButton ID="lnkexcel" CssClass="btn btn-success btn-block" runat="server"
+                                                 OnClick="lnkexcel_Click">DESCARGAR EXCEL CON ERRORES</asp:LinkButton>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

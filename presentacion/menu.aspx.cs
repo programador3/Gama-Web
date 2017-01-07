@@ -16,6 +16,14 @@ namespace presentacion
             {
                 Response.Redirect("login.aspx");
             }
+            lnkmenuventas.Visible = TieneOpcionesdeVentas();
+            lnkverpromo.Visible = false;
+            if (funciones.permiso(Convert.ToInt32(Session["sidc_usuario"]), 1163))
+            {
+                UsuariosBL componente = new UsuariosBL();
+                DataSet ds = componente.sp_datos_promocion_arti_terminar2(Convert.ToInt32(Session["sidc_usuario"]));
+                lnkverpromo.Visible = ds.Tables[0].Rows.Count > 0;
+            }
             // dinamic_menudrop();
             Session["redirect_pagedet"] = "menu.aspx";
             if (Request.QueryString["value"] == null)
@@ -48,11 +56,23 @@ namespace presentacion
             {
                 CargaTareas();
                 CargaTareasAsignadas();
-            //    lblasignadas.Text = MisTareasAsignadas();
-            //    lblpendientes.Text = MisTareas();
             }
         }
 
+        private bool TieneOpcionesdeVentas()
+        {
+            try
+            {
+                OpcionesBL opciones = new OpcionesBL();
+                DataSet ds = opciones.sp_menu_opciones_tipos(1,Convert.ToInt32(Session["sidc_usuario"]));
+                return ds.Tables[0].Rows.Count > 0;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(),this);
+                return false;
+            }
+        }
         private void CargaTareas()
         {
             TareasENT entidad = new TareasENT();
@@ -446,6 +466,16 @@ namespace presentacion
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
             cardasignadas.Visible = cardasignadas.Visible == true ? false : true;
+        }
+
+        protected void lnkverpromo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkmenuventas_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
