@@ -6,7 +6,10 @@ using System.Drawing;
 using System.IO;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+
+using System.Globalization;
 
 namespace presentacion
 {
@@ -19,17 +22,27 @@ namespace presentacion
                 ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.close();", true);
                 return;
             }
-            int idc_prepara = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_prepara"]));
-            int idc_pre_empleado = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_pre_empleado"]));
-            DataPrep2(0, idc_prepara, idc_pre_empleado);
-            Random random = new Random();
-            int randomNumber = random.Next(0, 100000);
-            DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/pre_alta/"));//path local
-            string url_original = funciones.GenerarRuta("FOT_CAN", "UNIDAD");
-            url_original = url_original + idc_pre_empleado.ToString() + ".jpg";
-            string url = dirInfo + randomNumber.ToString() + "_" + idc_pre_empleado.ToString() + ".jpg";
-            File.Copy(url_original,url,true);
-            imgempleado.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "\\temp\\pre_alta\\" + randomNumber.ToString() + "_" + idc_pre_empleado.ToString() + ".jpg"; ;
+            try
+            {
+                int idc_prepara = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_prepara"]));
+                int idc_pre_empleado = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_pre_empleado"]));
+                DataPrep2(0, idc_prepara, idc_pre_empleado);
+                Random random = new Random();
+                int randomNumber = random.Next(0, 100000);
+                DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/pre_alta/"));//path local
+                string url_original = funciones.GenerarRuta("FOT_CAN", "UNIDAD");
+                url_original = url_original + idc_pre_empleado.ToString() + ".jpg";
+                string url = dirInfo + randomNumber.ToString() + "_" + idc_pre_empleado.ToString() + ".jpg";
+                if (File.Exists(url_original))
+                {
+                    File.Copy(url_original, url, true);
+                    imgempleado.ImageUrl = System.Configuration.ConfigurationManager.AppSettings["server"] + "\\temp\\pre_alta\\" + randomNumber.ToString() + "_" + idc_pre_empleado.ToString() + ".jpg";
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(),this);
+            }
         }
 
         public void DataPrep2(int idc_puestosbaja, int idc_prepara, int idc_pre_empleado)
@@ -53,16 +66,19 @@ namespace presentacion
                 DataTable audio = ds.Tables[4];
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
                 string pageName = HttpContext.Current.Request.ApplicationPath + "/";
-                foreach (DataRow row in audio.Rows)
-                {
-                    string path = row["audiopath"].ToString();
-                    string file = row["audio"].ToString();
-                    File.Copy(path, dirInfo + file, true);
-                    row["audio"] = System.Configuration.ConfigurationManager.AppSettings["server"] + "/temp/files/"  + file;
-                }
+                //foreach (DataRow row in audio.Rows)
+                //{
+                //    string path = row["audiopath"].ToString();
+                //    string file = row["audio"].ToString();
+                //    File.Copy(path, dirInfo + file, true);
+                //    row["audio"] = System.Configuration.ConfigurationManager.AppSettings["server"] + "/temp/files/"  + file;
+                //}
                 repeater_referencias.DataSource = audio;
                 repeater_referencias.DataBind();
-                
+                gridreferencias.DataSource = audio;
+                gridreferencias.DataBind();
+
+
             }
         }
 
@@ -91,11 +107,13 @@ namespace presentacion
         protected void repeat_papeleria_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             DataRowView dbr = (DataRowView)e.Item.DataItem;
+            HtmlGenericControl div_details = e.Item.FindControl("div_details") as HtmlGenericControl;
             LinkButton lnkdownload = (LinkButton)e.Item.FindControl("lnkdownload");
             string ruta = Convert.ToString(DataBinder.Eval(dbr, "ruta"));
             string archivo = Convert.ToString(DataBinder.Eval(dbr, "archivo"));
             lnkdownload.CommandName = ruta;
             lnkdownload.CommandArgument = archivo;
+            div_details.Visible = File.Exists(ruta);
         }
 
         /// <summary>

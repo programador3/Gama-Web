@@ -223,11 +223,10 @@ namespace presentacion
             bool error = false;
             DataTable tabla_telefonos = (DataTable)Session["tabla_telefonos"];
             DataTable tabla_fotos = (DataTable)Session["foto"];
-            if (tabla_fotos.Rows.Count == 0) { error = true; Alert.ShowAlertError("Debe Cargar la Foto del Pre Empleado", this); }
+            //if (tabla_fotos.Rows.Count == 0) { error = true; Alert.ShowAlertError("Debe Cargar la Foto del Pre Empleado", this); }
             if (tabla_telefonos.Rows.Count == 0) { error = true; Alert.ShowAlertError("Debe Ingresar al menos 1 numero telefonico", this); }
             if (txtFecNac.Text == string.Empty) { error = true; Alert.ShowAlertError("Seleccione la Fecha de Nacimiento", this); }
-            if (ddlestado.SelectedValue == null) { error = true; Alert.ShowAlertError("Seleccione el Estado", this); }
-            if (ddlpais.SelectedValue == null) { error = true; Alert.ShowAlertError("Seleccione el Pais", this); }
+           
             if (ddlSexo.SelectedValue == "0") { error = true; Alert.ShowAlertError("Seleccione el Sexo", this); }
             if (ddlEstadoCivil.SelectedValue == null) { error = true; Alert.ShowAlertError("Seleccione el Estado Civil", this); }
             if (ddlEstadoCivil.SelectedValue != "2") { txtEsposo.ReadOnly = true; }
@@ -235,24 +234,26 @@ namespace presentacion
 
             lblTelefono.Visible = false;
             if (TotalCadenaTelefonos() == 0) { lblTelefono.Visible = true; lblTelefono.Text = "DEBE INGRESAR AL MENOS UN TELEFONO"; }
-            lblCalle.Visible = false;
-            if (txtCalle.Text == string.Empty)
-            {
-                lblCalle.Text = "ESCRIBA UNA DIRECCION";
-                lblCalle.Visible = true;
-                error = true;
-            }
-            lblColonia.Visible = false;
-            if (txtMunicipio.Text == string.Empty)
-            {
-                lblColonia.Text = "FILTRE Y SELECCIONE UNA COLONIA";
-                lblColonia.Visible = true;
-                error = true;
-            }
-            if (TotalCadenareferencias() < 2) {
-                Alert.ShowAlertInfo("Debe Ingresar minimo 2 referencias","Mensaje del Sistema", this);
-                error = true;
-            }
+            //if (ddlestado.SelectedValue == null) { error = true; Alert.ShowAlertError("Seleccione el Estado", this); }
+            //if (ddlpais.SelectedValue == null) { error = true; Alert.ShowAlertError("Seleccione el Pais", this); }
+            //lblCalle.Visible = false;
+            //if (txtCalle.Text == string.Empty)
+            //{
+            //    lblCalle.Text = "ESCRIBA UNA DIRECCION";
+            //    lblCalle.Visible = true;
+            //    error = true;
+            //}
+            //lblColonia.Visible = false;
+            //if (txtMunicipio.Text == string.Empty)
+            //{
+            //    lblColonia.Text = "FILTRE Y SELECCIONE UNA COLONIA";
+            //    lblColonia.Visible = true;
+            //    error = true;
+            //}
+            //if (TotalCadenareferencias() < 2) {
+            //    Alert.ShowAlertInfo("Debe Ingresar minimo 2 referencias","Mensaje del Sistema", this);
+            //    error = true;
+            //}
             return error;
         }
 
@@ -263,64 +264,64 @@ namespace presentacion
         public bool CompletePanelDLab()
         {
             bool error = false;
-            lblcurp.Visible = false;
-            Regex pattern = new Regex("^([A-Z][A,E,I,O,U,X][A-Z]{2})(\\d{2})((01|03|05|07|08|10|12)(0[1-9]|[12]\\d|3[01])|02(0[1-9]|[12]\\d)|(04|06|09|11)(0[1-9]|[12]\\d|30))([M,H])(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)([B,C,D,F,G,H,J,K,L,M,N,Ñ,P,Q,R,S,T,V,W,X,Y,Z]{3})([0-9,A-Z][0-9])$");
-            if (!pattern.IsMatch(TXTCURP.Text))
-            {
-                lblcurp.Text = "CURP NO VALIDO"; lblcurp.Visible = true; error = true;
-            }
-            lblRFC.Visible = false;
-            string valid = "^(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))";
-            if (TXTCURP.Text.Length != 12)
-            {
-                valid = "^(([A-Z]|[a-z]|\\s){1})(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))";
-            }
-            Regex pattern2 = new Regex(valid);
-            if (!pattern2.IsMatch(txtRFC.Text))
-            {
-                lblRFC.Text = "RFC NO VALIDO"; lblRFC.Visible = true; error = true;
-            }
-            LBLIMSS.Visible = false;
-            int numbers = txtIMSS.Text.Length;
-            if (numbers < 11)
-            {
-                LBLIMSS.Text = "FALTAN " + (11 - txtIMSS.Text.Length).ToString() + " CARACTERES";
-                LBLIMSS.Visible = true;
-                error = true;
-            }
-
-            lblSueldo.Visible = false;
-            if (txtSueldo.Text == string.Empty)
-            {
-                lblSueldo.Text = "SUELDO REQUERIDO";
-                lblSueldo.Visible = true;
-                error = true;
-            }
-            lblComplemento.Visible = false;
-            if (txtComplementos.Text == string.Empty)
-            {
-                txtComplementos.Text = "0.00";
-            }
-            lblErrorHorarioHORARIO.Visible = false;
-            DataTable dt = (DataTable)Session["HORARIO"];
-            if (TotalCadenaHorarios() != 1 && dt.Rows.Count > 0)
-            {
-                lblErrorHorarioHORARIO.Visible = true;
-                lblErrorHorarioHORARIO.Text = "SELECCIONE SOLO UN HORARIO";
-                error = true;
-            }
-            //foreach (RepeaterItem item in repeatdias.Items)
+            //lblcurp.Visible = false;
+            //Regex pattern = new Regex("^([A-Z][A,E,I,O,U,X][A-Z]{2})(\\d{2})((01|03|05|07|08|10|12)(0[1-9]|[12]\\d|3[01])|02(0[1-9]|[12]\\d)|(04|06|09|11)(0[1-9]|[12]\\d|30))([M,H])(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)([B,C,D,F,G,H,J,K,L,M,N,Ñ,P,Q,R,S,T,V,W,X,Y,Z]{3})([0-9,A-Z][0-9])$");
+            //if (!pattern.IsMatch(TXTCURP.Text))
             //{
-            //    DropDownList ddlhorariodia = (DropDownList)item.FindControl("ddlhorariodia");
-            //    DropDownList ddlhorariocomida = (DropDownList)item.FindControl("ddlhorariocomida");
-            //    CheckBox cbxLaborables = (CheckBox)item.FindControl("cbxLaborables");
-            //    Label lblErrorHorario = (Label)item.FindControl("lblErrorHorario");
-            //    lblErrorHorario.Visible = false;
-            //    if (ddlhorariocomida.SelectedValue == null || ddlhorariocomida.SelectedValue == "0") { lblErrorHorario.Text = "SELECCIONE UN HORARIO DE COMIDA"; error = true; }
-            //    if (ddlhorariodia.SelectedValue == null || ddlhorariodia.SelectedValue == "0") { lblErrorHorario.Text = "SELECCIONE UN HORARIO"; error = true; }
-            //    if (cbxLaborables.Checked == true) { TOTAL = TOTAL + 1; }
-            //    if (TOTAL > 6) { error = true; lblErrorHorario.Text = "SOLO DEBEN SER 6 DIAS"; lblErrorHorario.Visible = true; }
+            //    lblcurp.Text = "CURP NO VALIDO"; lblcurp.Visible = true; error = true;
             //}
+            //lblRFC.Visible = false;
+            //string valid = "^(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))";
+            //if (TXTCURP.Text.Length != 12)
+            //{
+            //    valid = "^(([A-Z]|[a-z]|\\s){1})(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))";
+            //}
+            //Regex pattern2 = new Regex(valid);
+            //if (!pattern2.IsMatch(txtRFC.Text))
+            //{
+            //    lblRFC.Text = "RFC NO VALIDO"; lblRFC.Visible = true; error = true;
+            //}
+            //LBLIMSS.Visible = false;
+            //int numbers = txtIMSS.Text.Length;
+            //if (numbers < 11)
+            //{
+            //    LBLIMSS.Text = "FALTAN " + (11 - txtIMSS.Text.Length).ToString() + " CARACTERES";
+            //    LBLIMSS.Visible = true;
+            //    error = true;
+            //}
+
+            //lblSueldo.Visible = false;
+            //if (txtSueldo.Text == string.Empty)
+            //{
+            //    lblSueldo.Text = "SUELDO REQUERIDO";
+            //    lblSueldo.Visible = true;
+            //    error = true;
+            //}
+            //lblComplemento.Visible = false;
+            //if (txtComplementos.Text == string.Empty)
+            //{
+            //    txtComplementos.Text = "0.00";
+            //}
+            //lblErrorHorarioHORARIO.Visible = false;
+            //DataTable dt = (DataTable)Session["HORARIO"];
+            //if (TotalCadenaHorarios() != 1 && dt.Rows.Count > 0)
+            //{
+            //    lblErrorHorarioHORARIO.Visible = true;
+            //    lblErrorHorarioHORARIO.Text = "SELECCIONE SOLO UN HORARIO";
+            //    error = true;
+            //}
+            ////foreach (RepeaterItem item in repeatdias.Items)
+            ////{
+            ////    DropDownList ddlhorariodia = (DropDownList)item.FindControl("ddlhorariodia");
+            ////    DropDownList ddlhorariocomida = (DropDownList)item.FindControl("ddlhorariocomida");
+            ////    CheckBox cbxLaborables = (CheckBox)item.FindControl("cbxLaborables");
+            ////    Label lblErrorHorario = (Label)item.FindControl("lblErrorHorario");
+            ////    lblErrorHorario.Visible = false;
+            ////    if (ddlhorariocomida.SelectedValue == null || ddlhorariocomida.SelectedValue == "0") { lblErrorHorario.Text = "SELECCIONE UN HORARIO DE COMIDA"; error = true; }
+            ////    if (ddlhorariodia.SelectedValue == null || ddlhorariodia.SelectedValue == "0") { lblErrorHorario.Text = "SELECCIONE UN HORARIO"; error = true; }
+            ////    if (cbxLaborables.Checked == true) { TOTAL = TOTAL + 1; }
+            ////    if (TOTAL > 6) { error = true; lblErrorHorario.Text = "SOLO DEBEN SER 6 DIAS"; lblErrorHorario.Visible = true; }
+            ////}
             return error;
         }
 
@@ -331,27 +332,27 @@ namespace presentacion
         public bool CompletePanelDFam()
         {
             bool error = false;
-            lblPadre.Visible = false;
-            int numbers = txtPadre.Text.Length;
-            if (numbers < 10)
-            {
-                lblPadre.Text = "DEBE SER EL NOMBRE COMPLETO"; lblPadre.Visible = true; error = true;
-            }
-            lblMadre.Visible = false;
-            int numbersm = txtMadre.Text.Length;
-            if (numbers < 10)
-            {
-                lblMadre.Text = "DEBE SER EL NOMBRE COMPLETO"; lblMadre.Visible = true; error = true;
-            }
-            if (ddlEstadoCivil.SelectedValue == "2")
-            {
-                lblEsposo.Visible = false;
-                int numberse = txtPadre.Text.Length;
-                if (numbers < 10)
-                {
-                    lblPadre.Text = "DEBE SER EL NOMBRE COMPLETO"; lblPadre.Visible = true; error = true;
-                }
-            }
+            //lblPadre.Visible = false;
+            //int numbers = txtPadre.Text.Length;
+            //if (numbers < 10)
+            //{
+            //    lblPadre.Text = "DEBE SER EL NOMBRE COMPLETO"; lblPadre.Visible = true; error = true;
+            //}
+            //lblMadre.Visible = false;
+            //int numbersm = txtMadre.Text.Length;
+            //if (numbers < 10)
+            //{
+            //    lblMadre.Text = "DEBE SER EL NOMBRE COMPLETO"; lblMadre.Visible = true; error = true;
+            //}
+            //if (ddlEstadoCivil.SelectedValue == "2")
+            //{
+            //    lblEsposo.Visible = false;
+            //    int numberse = txtPadre.Text.Length;
+            //    if (numbers < 10)
+            //    {
+            //        lblPadre.Text = "DEBE SER EL NOMBRE COMPLETO"; lblPadre.Visible = true; error = true;
+            //    }
+            //}
             return error;
         }
 
@@ -449,6 +450,10 @@ namespace presentacion
             string cadena = "";
             DataTable elector = (DataTable)Session["elector"];
             DataTable licencia = (DataTable)Session["licencia"];
+            if (elector.Rows.Count == 0)
+            {
+                cadena = cadena + null + ";" + null + ";";
+            }
             foreach (DataRow row in elector.Rows)
             {
                 DateTime myDateTime = Convert.ToDateTime(row["vencimiento"]);
@@ -1398,20 +1403,20 @@ namespace presentacion
             DataTable licencia = (DataTable)Session["licencia"];
             DataTable papeleria = (DataTable)Session["documentos_detalles"];
             DataTable papeleria_det = (DataTable)Session["papeleria"];
-            foreach (RepeaterItem Item in repeatPapeleria.Items)
-            {
-                Label lblerrorpapedinamico = (Label)Item.FindControl("lblerrorpapedinamico");
-                Label lblidc_tipodocarc = (Label)Item.FindControl("lblidc_tipodocarc");
-                int idc_tipodocarc = Convert.ToInt32(lblidc_tipodocarc.Text);
-                lblerrorpapedinamico.Visible = false;
-                if (!papeleria_det.Rows.Contains(idc_tipodocarc))
-                {
-                    error = true; lblerrorpapedinamico.Visible = true; lblerrorpapedinamico.Text = "PAPELERIA OBLIGATORIA";
-                }
-            }
-            if (elector.Rows.Count == 0) { error = true; Alert.ShowAlertError("La Credencial de Elector es obligatoria", this); }
+            //foreach (RepeaterItem Item in repeatPapeleria.Items)
+            //{
+            //    Label lblerrorpapedinamico = (Label)Item.FindControl("lblerrorpapedinamico");
+            //    Label lblidc_tipodocarc = (Label)Item.FindControl("lblidc_tipodocarc");
+            //    int idc_tipodocarc = Convert.ToInt32(lblidc_tipodocarc.Text);
+            //    lblerrorpapedinamico.Visible = false;
+            //    if (!papeleria_det.Rows.Contains(idc_tipodocarc))
+            //    {
+            //        error = true; lblerrorpapedinamico.Visible = true; lblerrorpapedinamico.Text = "PAPELERIA OBLIGATORIA";
+            //    }
+            //}
+            // if (elector.Rows.Count == 0) { error = true; Alert.ShowAlertError("La Credencial de Elector es obligatoria", this); }
             //solo si aplica licnecia
-            if (panelLicencia.Visible == true) { if (licencia.Rows.Count == 0) { error = true; Alert.ShowAlertError("La Licencia de Manejo es obligatoria", this); } }
+            //if (panelLicencia.Visible == true) { if (licencia.Rows.Count == 0) { error = true; Alert.ShowAlertError("La Licencia de Manejo es obligatoria", this); } }
             if (error == false)
             {
                 Session["Caso_Confirmacion"] = "Guardar";
@@ -1431,7 +1436,7 @@ namespace presentacion
                     case "Guardar":
                         bool capacitacion = false;
                         if (Convert.ToInt32(Session["idc_curso"]) == 0) { capacitacion = true; }
-                        SqlMoney complementos = SqlMoney.Parse((txtComplementos.Text).ToString());
+                        SqlMoney complementos = SqlMoney.Parse((txtComplementos.Text==""?"0": txtComplementos.Text).ToString());
                         entidad.Complementos = complementos;
                         entidad.Pobersvaciones = txtobservaciones.Text.ToUpper();
                         entidad.Correo_personal = txtCorreo.Text;
@@ -1445,9 +1450,9 @@ namespace presentacion
                         entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
                         SqlDateTime fec_nac = SqlDateTime.Parse(txtFecNac.Text);
                         entidad.Fec_nac = fec_nac;
-                        entidad.Idc_colonia = Convert.ToInt32(ddlColonia.SelectedValue.ToString());
-                        entidad.Idc_edocivil = Convert.ToInt32(ddlEstadoCivil.SelectedValue.ToString());
-                        entidad.Idc_estado = Convert.ToInt32(ddlestado.SelectedValue.ToString());
+                        entidad.Idc_colonia = Convert.ToInt32(ddlColonia.SelectedValue == ""?"0": ddlColonia.SelectedValue);
+                        entidad.Idc_edocivil = Convert.ToInt32(ddlEstadoCivil.SelectedValue == "" ? "0" : ddlEstadoCivil.SelectedValue);
+                        entidad.Idc_estado = Convert.ToInt32(ddlestado.SelectedValue == "" ? "0" : ddlestado.SelectedValue);
                         entidad.Idc_nzona = 1;
                         entidad.Idc_prepara = Convert.ToInt32(Session["idc_prepara"]);
                         entidad.Idc_puesto = Convert.ToInt32(Session["idc_puesto"]);//IDC_PUESTO
@@ -1463,7 +1468,7 @@ namespace presentacion
                         entidad.Premio_transporte = premiotranbsp;
                         entidad.Rfc = txtRFC.Text;
                         entidad.Sexo = ddlSexo.SelectedValue;
-                        SqlMoney sueldo = SqlMoney.Parse((txtSueldo.Text).ToString());
+                        SqlMoney sueldo = SqlMoney.Parse((txtSueldo.Text==""?"0": txtSueldo.Text).ToString());
                         entidad.Sueldo = sueldo;
                         entidad.Titulo = ddlTitulo.SelectedValue;
                         entidad.Cadtel = CadenaTelefonos();
@@ -1481,7 +1486,10 @@ namespace presentacion
                         }
                         entidad.Numcadhorarios = idc;
                         entidad.Cadelelic = CadenaElectorLicencia();
-                        entidad.Numcadelelic = 1;
+
+                        DataTable electordt = (DataTable)Session["elector"];
+                        DataTable licenciadt = (DataTable)Session["licencia"];
+                        entidad.Numcadelelic = electordt.Rows.Count + licenciadt.Rows.Count;
                         entidad.cadena_papeleria = CadenaPapeleriaDet();
                         entidad.tot_cadena_pape = TotalPapeleriaDet();
                         entidad.tot_cadena_REF = TotalCadenareferencias();
@@ -1561,7 +1569,7 @@ namespace presentacion
                                 string t = total.ToString();
                                 int archivos_procesados = papeleria.Rows.Count;
                                 string url = Session["redirect"] == null ? "candidatos_preparar.aspx" : (string)Session["redirect"];
-                                Alert.ShowGiftMessage("Estamos procesando la cantidad de " + archivos_procesados.ToString() + " archivo(s) al Servidor.", "Espere un Momento", url, "imagenes/loading.gif", t, "El Pre Empleado fue Guardado correctamente.", this);
+                                Alert.ShowGiftMessage("Estamos procesando la cantidad de " + archivos_procesados.ToString() + " archivo(s) al Servidor.", "Espere un Momento", "candidatos_preparar.aspx", "imagenes/loading.gif", t, "El Pre Empleado fue Guardado correctamente.", this);
                             }
                         }
                         else

@@ -33,8 +33,8 @@ namespace presentacion
             {
                 idc_puesto = Convert.ToInt32(Session["sidc_puesto_login"].ToString());
                 idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
-                idc_puestobaja = Convert.ToInt32(Request.QueryString["idc_puesto"].ToString());
-                idc_prepara = Convert.ToInt32(Request.QueryString["idc_prepara"].ToString());
+                idc_puestobaja = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"].ToString()));
+                idc_prepara = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_prepara"].ToString()));
             }
             else
             {
@@ -92,16 +92,16 @@ namespace presentacion
             foreach (RepeaterItem Item in repeat_candidatos.Items)
             {
                 Label lblidc_pre_empleado = (Label)Item.FindControl("lblidc_pre_empleado");
-                CheckBox cbxSelected = (CheckBox)Item.FindControl("cbxSelected");
+                LinkButton lnkrechazar = (LinkButton)Item.FindControl("lnkrechazar");
+                LinkButton lnkaceptar = (LinkButton)Item.FindControl("lnkaceptar");
                 TextBox txt = (TextBox)Item.FindControl("txtObservaciones");
                 DropDownList ddlorden = (DropDownList)Item.FindControl("ddlorden");
-                if (cbxSelected.Checked == true)
+                if (lnkaceptar.CssClass=="btn btn-primary")
                 {
-                    cadena = cadena + lblidc_pre_empleado.Text + ";" + cbxSelected.Checked + ";" + txt.Text.ToUpper() + ";" + ddlorden.SelectedValue + ";";
-                }
-                if (cbxSelected.Checked == false)
+                    cadena = cadena + lblidc_pre_empleado.Text + ";" + true.ToString() + ";" + txt.Text.ToUpper() + ";" + ddlorden.SelectedValue + ";";
+                }else
                 {
-                    cadena = cadena + lblidc_pre_empleado.Text + ";" + cbxSelected.Checked + ";" + txt.Text.ToUpper() + ";" + "0;";
+                    cadena = cadena + lblidc_pre_empleado.Text + ";" + false.ToString() + ";" + txt.Text.ToUpper() + ";" + "0;";
                 }
             }
             return cadena;
@@ -198,7 +198,7 @@ namespace presentacion
                 case "Guardar":
                     entidad.Cadsel = CadenaCandidatos();
                     entidad.Numcad = TotalCadenaCandidatos();
-                    entidad.Pidc_prepara = Convert.ToInt32(Request.QueryString["idc_prepara"].ToString());
+                    entidad.Pidc_prepara = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_prepara"].ToString()));
                     entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
                     entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
                     entidad.Pusuariopc = funciones.GetUserName();//usuario pc
@@ -244,15 +244,17 @@ namespace presentacion
             ddlorden.DataBind();
         }
 
-        protected void cbxSelected_CheckedChanged(object sender, EventArgs e)
+        protected void btnCheckChanged_Click1(object sender, EventArgs e)
         {
-            CheckBox cbx = (CheckBox)sender;
+            LinkButton cbx = (LinkButton)sender;
+            cbx.CssClass = cbx.CssClass == "btn btn-default" ? "btn btn-primary" : "btn btn-default";
             foreach (RepeaterItem Item in repeat_candidatos.Items)
             {
                 DataTable orden = (DataTable)Session["numero_orden"];
                 DropDownList ddlorden = (DropDownList)Item.FindControl("ddlorden");
                 Panel panelorden = (Panel)Item.FindControl("panelorden");
-                CheckBox cbxSelected = (CheckBox)Item.FindControl("cbxSelected");
+                LinkButton lnkrechazar = (LinkButton)Item.FindControl("lnkrechazar");
+                LinkButton lnkaceptar = (LinkButton)Item.FindControl("lnkaceptar");
                 System.Web.UI.WebControls.Image imgYes = (System.Web.UI.WebControls.Image)Item.FindControl("imgYes");
                 System.Web.UI.WebControls.Image imgNo = (System.Web.UI.WebControls.Image)Item.FindControl("imgNo");
                 Label lblacepted = (Label)Item.FindControl("lblacepted");
@@ -263,10 +265,90 @@ namespace presentacion
                 imgYes.Visible = false;
                 lblacepted.Text = "Rechazado";
                 lblacepted.CssClass = "label label-default";
-                if (cbxSelected.Checked == true)
+                if (lnkrechazar.CssClass == "btn btn-default")
                 {
+                    lnkaceptar.CssClass = "btn btn-primary";
+                    panelorden.Visible = true;
+                    panelobsr.Visible = false;
+                    imgNo.Visible = false;
+                    imgYes.Visible = true;
+                    lblacepted.Text = "Aceptado";
+                    lblacepted.CssClass = "label label-info";
+                }
+                else
+                {
+                    lnkaceptar.CssClass = "btn btn-default";
+                }
+               
+            }
+
+        }
+        protected void btnCheckChanged2_Click1(object sender, EventArgs e)
+        {
+            LinkButton cbx = (LinkButton)sender;
+            cbx.CssClass = cbx.CssClass == "btn btn-default" ? "btn btn-primary" : "btn btn-default";
+            foreach (RepeaterItem Item in repeat_candidatos.Items)
+            {
+                DataTable orden = (DataTable)Session["numero_orden"];
+                DropDownList ddlorden = (DropDownList)Item.FindControl("ddlorden");
+                Panel panelorden = (Panel)Item.FindControl("panelorden");
+                LinkButton lnkrechazar = (LinkButton)Item.FindControl("lnkrechazar");
+                LinkButton lnkaceptar = (LinkButton)Item.FindControl("lnkaceptar");
+                System.Web.UI.WebControls.Image imgYes = (System.Web.UI.WebControls.Image)Item.FindControl("imgYes");
+                System.Web.UI.WebControls.Image imgNo = (System.Web.UI.WebControls.Image)Item.FindControl("imgNo");
+                Label lblacepted = (Label)Item.FindControl("lblacepted");
+                Panel panelobsr = (Panel)Item.FindControl("panelobsr");
+                panelobsr.Visible = true;
+                panelorden.Visible = false;
+                imgNo.Visible = true;
+                imgYes.Visible = false;
+                lblacepted.Text = "Rechazado";
+                lblacepted.CssClass = "label label-default";
+                if (lnkaceptar.CssClass == "btn btn-default")
+                {
+                    lnkrechazar.CssClass = "btn btn-primary";
+                }
+                else
+                {
+                    lnkrechazar.CssClass = "btn btn-default";
+                    panelorden.Visible = true;
+                    panelobsr.Visible = false;
+                    imgNo.Visible = false;
+                    imgYes.Visible = true;
+                    lblacepted.Text = "Aceptado";
+                }
+
+            }
+
+        }
+        protected void cbxSelected_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cbx = (CheckBox)sender;
+            foreach (RepeaterItem Item in repeat_candidatos.Items)
+            {
+                DataTable orden = (DataTable)Session["numero_orden"];
+                DropDownList ddlorden = (DropDownList)Item.FindControl("ddlorden");
+                Panel panelorden = (Panel)Item.FindControl("panelorden");
+                CheckBox cbxSelected = (CheckBox)Item.FindControl("cbxSelected");
+                CheckBox cbxaceptado = (CheckBox)Item.FindControl("cbxaceptado");
+                System.Web.UI.WebControls.Image imgYes = (System.Web.UI.WebControls.Image)Item.FindControl("imgYes");
+                System.Web.UI.WebControls.Image imgNo = (System.Web.UI.WebControls.Image)Item.FindControl("imgNo");
+                Label lblacepted = (Label)Item.FindControl("lblacepted");
+                Panel panelobsr = (Panel)Item.FindControl("panelobsr");
+                panelobsr.Visible = true;
+                panelorden.Visible = false;
+                imgNo.Visible = true;
+                imgYes.Visible = false;
+                lblacepted.Text = "Rechazado";
+                lblacepted.CssClass = "label label-default";
+                if (cbxSelected.Checked)
+                {
+                    cbxaceptado.Checked = false;
                     panelorden.Visible = true; panelobsr.Visible = false; imgNo.Visible = false;
                     imgYes.Visible = true; lblacepted.Text = "Aceptado"; lblacepted.CssClass = "label label-info";
+                }
+                else {
+                    cbxaceptado.Checked = true;
                 }
             }
         }
@@ -277,7 +359,7 @@ namespace presentacion
             List<String> list_values = new List<String>();
             foreach (RepeaterItem Item in repeat_candidatos.Items)
             {
-                CheckBox cbxSelected = (CheckBox)Item.FindControl("cbxSelected");
+                LinkButton lnkrechazar = (LinkButton)Item.FindControl("lnkrechazar");
                 Label lblerrorobs = (Label)Item.FindControl("lblerrorobs");
                 Label lblerrororden = (Label)Item.FindControl("lblerrororden");
                 TextBox txt = (TextBox)Item.FindControl("txtObservaciones");
@@ -285,16 +367,17 @@ namespace presentacion
                 Panel panelorden = (Panel)Item.FindControl("panelorden");
                 lblerrorobs.Visible = false;
                 lblerrororden.Visible = false;
-                if (cbxSelected.Checked == false && txt.Text == string.Empty)
+                bool cbxSelected = lnkrechazar.CssClass == "btn btn-primary" ? false : true;
+                if (cbxSelected == false && txt.Text == string.Empty)
                 {
-                    lblerrorobs.Visible = true; lblerrorobs.Text = "DEBE COLOCAR UNA OBSERVACION";
+                    lblerrorobs.Visible = true; lblerrorobs.Text = "PARA RECHAZAR DEBE COLOCAR UNA OBSERVACION";
                 }
-                if (list_values.Exists(w => w.EndsWith(ddlorden.SelectedValue)) && panelorden.Visible == true && cbxSelected.Checked == true && chechedant == true)
+                if (list_values.Exists(w => w.EndsWith(ddlorden.SelectedValue)) && panelorden.Visible == true && cbxSelected == true && chechedant == true)
                 {
                     lblerrororden.Visible = true; lblerrororden.Text = "DEBE COLOCAR UN ORDEN CORRECTO SIN REPETIR";
                 }
 
-                chechedant = cbxSelected.Checked;
+                chechedant = cbxSelected;
                 list_values.Add(ddlorden.SelectedValue);
             }
         }
@@ -307,26 +390,27 @@ namespace presentacion
             bool algunactivo = false;
             foreach (RepeaterItem Item in repeat_candidatos.Items)
             {
-                CheckBox cbxSelected = (CheckBox)Item.FindControl("cbxSelected");
+                LinkButton lnkrechazar = (LinkButton)Item.FindControl("lnkrechazar");
                 Label lblerrorobs = (Label)Item.FindControl("lblerrorobs");
                 Label lblerrororden = (Label)Item.FindControl("lblerrororden");
                 TextBox txt = (TextBox)Item.FindControl("txtObservaciones");
                 DropDownList ddlorden = (DropDownList)Item.FindControl("ddlorden");
                 lblerrorobs.Visible = false;
                 lblerrororden.Visible = false;
-                if (cbxSelected.Checked == false && txt.Text == string.Empty)
+                bool cbxSelected = lnkrechazar.CssClass == "btn btn-primary" ? false : true; 
+                if (cbxSelected == false && txt.Text == string.Empty)
                 {
-                    lblerrorobs.Visible = true; lblerrorobs.Text = "DEBE COLOCAR UNA OBSERVACION"; error = true;
+                    lblerrorobs.Visible = true; lblerrorobs.Text = "PARA RECHAZAR DEBE COLOCAR UNA OBSERVACION"; error = true;
                 }
-                if (list_values.Exists(w => w.EndsWith(ddlorden.SelectedValue)) && cbxSelected.Checked == true && chechedant == true)
+                if (list_values.Exists(w => w.EndsWith(ddlorden.SelectedValue)) && cbxSelected == true && chechedant == true)
                 {
                     lblerrororden.Visible = true; lblerrororden.Text = "DEBE COLOCAR UN ORDEN CORRECTO SIN REPETIR"; error = true;
                 }
-                if (cbxSelected.Checked == true)
+                if (cbxSelected== true)
                 {
                     algunactivo = true;
                 }
-                chechedant = cbxSelected.Checked;
+                chechedant = cbxSelected;
                 list_values.Add(ddlorden.SelectedValue);
             }
             Session["Caso_Confirmacion"] = "Guardar";

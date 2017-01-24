@@ -569,7 +569,7 @@ namespace presentacion
             vprecio = Convert.ToDecimal(dt.Rows[0]["precio"].ToString());
             vprecio_lista = Convert.ToDecimal(dt.Rows[0]["precio_lista"].ToString());
             vprecio_minimo = Convert.ToDecimal(dt.Rows[0]["precio_minimo"].ToString());
-            if (lblroja.Visible == true)
+            if (lblroja.Visible)
             {
                 try
                 {
@@ -593,7 +593,8 @@ namespace presentacion
                     dt2 = funciones.ExecQuery("select dbo.fn_ver_precio_real_cliente_esp_cambio_lista(" + vidc.ToString() + "," + vidcli.ToString() + "," + zidc_sucursal.ToString() + ") as pxprecior");
                     rowprincipal["PrecioReal"] = dt2.Rows[0]["pxprecior"];
                     Session["pprecio_real"] = dt2.Rows[0]["pxprecior"];
-                    rowprincipal["descuento"] = (vprecio - Convert.ToDecimal(rowprincipal["PrecioReal"])).ToString("#.####");
+                    string preal = rowprincipal["PrecioReal"].ToString();
+                    rowprincipal["descuento"] = (vprecio - Convert.ToDecimal(preal));
 
                     if (Convert.ToDecimal(rowprincipal["descuento"]) > 0)
                     {
@@ -757,7 +758,7 @@ namespace presentacion
             }
         }
 
-        public bool No_Vender_Mas_De_Existencia(int idc_articulo, double cantidad)
+        public bool No_Vender_Mas_De_Existencia(int idc_articulo, decimal cantidad)
         {
             DataRow rowprincipal = Session["rowprincipal"] as DataRow;
             DataRow row = default(DataRow);
@@ -769,7 +770,7 @@ namespace presentacion
                 row = ds.Tables[0].Rows[0];
                 rowprincipal["Existencia"] = row["EXISTENCIA_DISPONIBLE"].ToString();
 
-                if ((cantidad <= Convert.ToDouble(rowprincipal["Existencia"])) == false)
+                if ((cantidad <= Convert.ToDecimal(rowprincipal["Existencia"])) == false)
                 {
                     CargarMsgBox("No puedes vender mas de la existencia, existencia: " + Convert.ToDouble(rowprincipal["Existencia"]).ToString());
                     return false;
@@ -791,12 +792,12 @@ namespace presentacion
             //----
             if (Convert.ToBoolean(row["vende_exis"]) == true & Convert.ToBoolean(row["comercial"]) == true)
             {
-                if (No_Vender_Mas_De_Existencia(Convert.ToInt32(row["idc_articulo"]), Convert.ToInt32(txtcantidad.Text)) == false)
+                if (No_Vender_Mas_De_Existencia(Convert.ToInt32(row["idc_articulo"]), Convert.ToDecimal(txtcantidad.Text)) == false)
                 {
                     return false;
                 }
             }
-            if (validar_multiplos(Convert.ToInt32(row["idc_articulo"]), Convert.ToInt32(txtcantidad.Text)) == false)
+            if (validar_multiplos(Convert.ToInt32(row["idc_articulo"]), Convert.ToDecimal(txtcantidad.Text)) == false)
             {
                 return false;
             }
@@ -930,7 +931,7 @@ namespace presentacion
             }
         }
 
-        public bool validar_multiplos(int idc_articulo, int cantidad)
+        public bool validar_multiplos(int idc_articulo, decimal cantidad)
         {
             DataSet ds = new DataSet();
             DataRow row = default(DataRow);

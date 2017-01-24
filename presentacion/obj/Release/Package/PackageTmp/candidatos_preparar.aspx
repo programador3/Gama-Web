@@ -14,6 +14,7 @@
         function ModalClose() {
             $('#modalPreviewView').modal('hide');
             $('#myModal').modal('hide');
+            $('#myModalObserv').modal('hide');
         }
         function ModalConfirm(cTitulo, cContenido, ctype) {
             var audio = new Audio('sounds/modal.wav');
@@ -23,7 +24,15 @@
             $('#myModal').addClass(ctype);
             $('#modal_title').text(cTitulo);
             $('#content_modal').text(cContenido);
+        } myModalObserv
+        function myModalObserv(ctype) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModalObserv').modal('show');
+            $('#myModalObserv').removeClass('modal fade modal-info');
+            $('#myModalObserv').addClass(ctype);
         }
+
         var downloadURL = function downloadURL(url) {
             var hiddenIFrameID = 'hiddenDownloader',
                 iframe = document.getElementById(hiddenIFrameID);
@@ -90,17 +99,34 @@
                 <div class="col-lg-12">
                     <asp:LinkButton ID="lnkexcel" CssClass="btn btn-success" runat="server" OnClick="lnkexcel_Click">Exportar Listado a Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></asp:LinkButton>
                     <asp:LinkButton ID="LNKREP" CssClass="btn btn-info" runat="server" OnClick="LinkButton1_Click">Ver Reporte de Altas y Bajas de Empledos <i class="fa fa-file-excel-o" aria-hidden="true"></i></asp:LinkButton>
-                    <div class="table table-responsive">
-                        <asp:GridView AutoGenerateColumns="false" ID="gridreclu" DataKeyNames="idc_puesto,idc_prepara" OnRowCommand="gridreclu_RowCommand" CssClass="table table-responsive table-bordered table-condensed gvv" runat="server">
+                    <asp:LinkButton ID="lnkcambiarfecha" CssClass=" btn btn-success" PostBackUrl="cambiar_fechas_compromiso.aspx" runat="server">Cambiar Fecha Compromiso(MASIVO)</asp:LinkButton>
+                   
+                     <div class="table table-responsive">
+                        <asp:GridView AutoGenerateColumns="false" ID="gridreclu" DataKeyNames="idc_puesto,idc_prepara,reclutador" OnRowCommand="gridreclu_RowCommand" 
+                            CssClass="table table-responsive table-bordered table-condensed gvv" runat="server" style=" font-size : 12px; text-align:center;">
                             <Columns>
                                 <asp:TemplateField HeaderText="Proceso" HeaderStyle-Width="40px">
                                     <ItemTemplate>
                                         <asp:Button ID="btnproce" CommandName="preview" CssClass="btn btn-info btn-block" runat="server" Text="Detalles" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="fecha_registro" HeaderStyle-Width="100px" HeaderText="Fecha de Solicitud"></asp:BoundField>
-                                <asp:BoundField DataField="descripcion" HeaderText="Puesto" HeaderStyle-Width="120px"></asp:BoundField>
+                                
+                                <asp:TemplateField HeaderText="Observaciones" HeaderStyle-Width="40px">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btnobsr_add" CommandName="obsr_add" CssClass="btn btn-primary btn-block" runat="server" Text="Agregar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Observaciones" HeaderStyle-Width="40px">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btnobsr_view" CommandName="view_add" Visible='<%# Convert.ToInt32(Eval("total_obsr")) > 0%>'
+                                             CssClass="btn btn-success btn-block" runat="server" Text="Ver" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="fecha_registro" HeaderStyle-Width="100px" HeaderText="Fecha de Solicitud" Visible="false"></asp:BoundField>
                                 <asp:BoundField DataField="fecha_compromiso_reclutamiento" HeaderStyle-Width="100px" HeaderText="Fecha Compromiso"></asp:BoundField>
+                                <asp:BoundField DataField="descripcion" HeaderText="Puesto" HeaderStyle-Width="120px"></asp:BoundField>
+                                <asp:BoundField DataField="sucursal" HeaderStyle-Width="100px" HeaderText="Sucursal"></asp:BoundField>
+                                <asp:BoundField DataField="depto" HeaderStyle-Width="100px" HeaderText="Depto"></asp:BoundField>
                                 <asp:BoundField DataField="total_candidatos" HeaderStyle-Width="10px" HeaderText="Candidatos Reclutados"></asp:BoundField>
                                 <asp:BoundField DataField="reclutador" HeaderStyle-Width="150px" HeaderText="Reclutador"></asp:BoundField>
                                 <asp:BoundField DataField="idc_puesto" HeaderText="Area" Visible="false"></asp:BoundField>
@@ -126,10 +152,8 @@
                                     <h6>FC:
                                             <asp:Label ID="Label3" runat="server" Text='<%#Eval("fecha_compromiso_reclutamiento") %>'></asp:Label>
                                     </h6>
-                                    <h6>Candidatos Reclutados:&nbsp;<strong><%#Eval("total_candidatos") %></strong>
-                                    </h6>
-                                    <h6>Reclutador:&nbsp;<strong><%#Eval("reclutador") %></strong>
-                                    </h6>
+                                    <h6>Candidatos Reclutados:&nbsp;<strong><%#Eval("total_candidatos") %></strong></h6>
+                                    <h6>Reclutador:&nbsp;<strong><%#Eval("reclutador") %></strong></h6>
                                 </div>
                                 <div class="icon">
                                     <asp:LinkButton ID="lnkGOdET" Style="color: white;" runat="server" OnClick="lnkGO_Click"><i class="ion ion-arrow-right-c"></i></asp:LinkButton>
@@ -175,6 +199,58 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    
+    <div class="modal fade modal-info" id="myModalObserv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode=" Always">
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="gridreclu" EventName="RowCommand" />
+                    <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
+                </Triggers>
+                <ContentTemplate>
+
+                    <div class="modal-content">
+                        <div class="modal-header" style="text-align: center;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4><strong>Mensaje del Sistema</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="text-align: center;" id="div_addobsr" runat="server">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <h4>Ingrese Observaciones o Comentarios
+                                    </h4>
+                                    <asp:TextBox ID="txtobservaciones" TextMode="MultiLine" Rows="3" placeholder="Ingrese Observaciones" CssClass="form-control" runat="server"></asp:TextBox>
+                                </div>
+                                <asp:TextBox ID="txtidc_prepara" Visible="false" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="row" style="text-align: center;" id="div_viewobsr" runat="server">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="table table-responsive">
+                                        <asp:GridView ID="grid_observaciones" AutoGenerateColumns="false" CssClass="table table-responsive table-bordered table-condensed" runat="server">
+                                            <Columns>
+
+                                                <asp:BoundField DataField="usuario" HeaderText="Usuario"></asp:BoundField>
+                                                <asp:BoundField DataField="observaciones" HeaderText="Observaciones"></asp:BoundField>
+                                                <asp:BoundField DataField="fecha_registro" HeaderText="Fecha"></asp:BoundField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-lg-6 col-xs-6">
+                                <asp:Button ID="Button1" class="btn btn-info btn-block" OnClientClick="ModalClose();" runat="server" Text="Guardar" OnClick="Yes2_Click" />
+                            </div>
+                            <div class="col-lg-6 col-xs-6">
+                                <input id="Noeee" class="btn btn-danger btn-block" onclick="ModalClose();" type="button" value="Cerrar" />
+                            </div>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 </asp:Content>

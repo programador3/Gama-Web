@@ -18,6 +18,7 @@ namespace presentacion
             }
             if (!Page.IsPostBack)
             {
+                txtfecha.Text = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
                 DataPrep();
             }
         }
@@ -35,6 +36,10 @@ namespace presentacion
             DataSet ds = componente.CargaPuestos(entidad);
             Repeater1.DataSource = ds.Tables[0];
             Repeater1.DataBind();
+            cblPuestos.DataValueField = "idc_prepara";
+            cblPuestos.DataTextField = "descripcion";
+            cblPuestos.DataSource = ds.Tables[0];
+            cblPuestos.DataBind();
         }
 
         protected void Yes_Click(object sender, EventArgs e)
@@ -171,6 +176,75 @@ namespace presentacion
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("candidatos_preparar.aspx");
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            DataPrep();
+            ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "ModalMasivo();", true);
+        }
+
+        protected void All_Click(object sender, EventArgs e)
+        {
+            lnkselectall.CssClass = lnkselectall.CssClass == "btn btn-info btn-block" ? "btn btn-default btn-block" : "btn btn-info btn-block";
+            foreach (ListItem item in cblPuestos.Items)
+            {
+                item.Selected = lnkselectall.CssClass == "btn btn-info btn-block";
+            }
+        }
+        protected void Yes2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String CADENA = "";
+                int TOT = 0;
+                string mensaje = "";
+                foreach (ListItem item in cblPuestos.Items)
+                {
+                    if (item.Selected)
+                    {
+                        TOT++;
+                        CADENA = CADENA + item.Value.Trim() + ";" + Convert.ToDateTime(txtfecha.Text).ToString("yyyy/dd/MM HH:mm:ss") + ";" + ";";
+                    }
+                }
+                if (TOT == 0)
+                {
+                    mensaje = "SELECCIONE POR LO MENOS UN PUESTO";
+                }
+                else if (Convert.ToDateTime(txtfecha.Text) < DateTime.Now)
+                {
+                    mensaje = "LA FECHA DE COMPROMISO NO PUEDE SER MENOR A HOY";
+                }
+                else {
+
+                    CandidatosENT entidad = new CandidatosENT();
+                    CandidatosCOM componente = new CandidatosCOM();
+                    entidad.Pidc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                    entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
+                    entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
+                    entidad.Pusuariopc = funciones.GetUserName();//usuario pc.
+                    entidad.Cadarch = CADENA;
+                    entidad.Totalcadsarch = TOT;
+                    DataSet ds = componente.CambiarFechaCompromisocADENA(entidad);
+                    DataRow row = ds.Tables[0].Rows[0];
+                    //verificamos que no existan errores
+
+                    mensaje = row["mensaje"].ToString();
+                }
+                if (mensaje == "")
+                {
+                    Alert.ShowGiftMessage("Estamos procesando las preparaciones.", "Espere un Momento", "cambiar_fechas_compromiso.aspx", "imagenes/loading.gif", "3000", "Los cambios de fecha fueron guardados correctamente", this);
+                }
+                else
+                {
+                    Alert.ShowAlertError(mensaje, this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.Message, this);
+            }
+
         }
     }
 }

@@ -68,32 +68,28 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">
+                    <h3 class="page-header">
                         <asp:LinkButton ID="lnkReturn" Visible="false" runat="server" OnClick="lnkReturn_Click" CausesValidation="false"><i class="fa fa-arrow-circle-left"></i></asp:LinkButton>
                         Seleccionar Candidatos para
-                        <asp:Label ID="lblNombrePuesto" runat="server"></asp:Label></h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12" style="text-align: left">
-                    <div class="form-group">
-                        <h4><strong>
+                        <asp:Label ID="lblNombrePuesto" runat="server"></asp:Label></h3>
+                    
+                    <h5><strong>
                             <asp:Label ID="lblPuesto" runat="server" Text=""></asp:Label></strong>
                             <asp:Label ID="lblfechasoli" runat="server" Text="" Visible="false"></asp:Label>
-                        </h4>
-                    </div>
+                        </h5>
                 </div>
             </div>
             <asp:Panel ID="PanelCatalogo" runat="server">
                 <h4 id="ExisteProce" runat="server" visible="false">Ya hay un Proceso de Pre Alta o Alta activo. No podra hacer ningun movimiento hasta que este termine o se cancele. <i class="fa fa-info-circle"></i></h4>
 
-                <br />
-                <h3 id="nohay" runat="server" visible="false" style="text-align: center;">No hay pendientes <i class="fa fa-exclamation-triangle"></i></h3>
+                <h4 id="nohay" runat="server" visible="false" style="text-align: center;">No hay pendientes <i class="fa fa-exclamation-triangle"></i></h4>
+                <h5 style="color:red">De un Click en el nombre del candidato para ver su información completa</h5>
                 <asp:Repeater ID="repeat_candidatos" runat="server" OnItemDataBound="repeat_candidatos_ItemDataBound">
                     <ItemTemplate>
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                             <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID="cbxSelected" EventName="CheckedChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="lnkaceptar" EventName="Click" />
+                                <asp:AsyncPostBackTrigger ControlID="lnkrechazar" EventName="Click" />
                                 <asp:AsyncPostBackTrigger ControlID="ddlorden" EventName="SelectedIndexChanged" />
                                 <asp:AsyncPostBackTrigger ControlID="txtObservaciones" EventName="TextChanged" />
                                 <asp:PostBackTrigger ControlID="lnkInfoOrden" />
@@ -107,27 +103,27 @@
                                         
                                         <div class=" col-lg-12">
                                              <asp:LinkButton ID="LinkButton1" OnClick="lnkver_Click" Width="100%" CommandArgument='<%#Eval("idc_prepara") %>' CommandName='<%#Eval("idc_pre_empleado") %>' 
-                                                  CssClass="btn btn-primary btn-block" runat="server">Ver Información Completa  </asp:LinkButton>
+                                                  CssClass="btn btn-info btn-block" runat="server"><%#Eval("nombre") %>  </asp:LinkButton>
+                                            <h4>
+                                                <asp:Image ID="imgYes" ImageUrl="~/imagenes/btn/checked.png" Visible="false" runat="server" />
+                                                <asp:Image ID="imgNo" ImageUrl="~/imagenes/btn/inchecked.png" runat="server" /><asp:Label ID="lblacepted" runat="server" Text="Rechazado" CssClass="label label-default"></asp:Label></h4>
                                         </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" runat="server" id="name" visible="false">
                                             <div class="input-group">
                                                 <span class="input-group-addon" style="color: #fff; background-color: #19B5FE;">
                                                     <asp:LinkButton ID="lnkver" OnClick="lnkver_Click" Style="color: #fff; background-color: #19B5FE;" runat="server">Nombre <i class="fa fa-user"></i> </asp:LinkButton></span>
                                                 <asp:TextBox ID="txt" ReadOnly="true" runat="server" CssClass="form-control input-group-sm " Text='<%#Eval("nombre") %>'></asp:TextBox>
                                             </div>
                                         </div>
-                                        <div class="col-lg4 col-md-4 col-sm-12 col-xs-12">
-
-                                            <h4>
-                                                <asp:Image ID="imgYes" ImageUrl="~/imagenes/btn/checked.png" Visible="false" runat="server" />
-                                                <asp:Image ID="imgNo" ImageUrl="~/imagenes/btn/inchecked.png" runat="server" /><asp:Label ID="lblacepted" runat="server" Text="Rechazado" CssClass="label label-default"></asp:Label></h4>
-                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <h4><strong>Seleccione para Aceptar, deje desmarcado para Rechazar</strong></h4>
-                                            <asp:CheckBox ID="cbxSelected" runat="server" Text="Aceptado" AutoPostBack="true" OnCheckedChanged="cbxSelected_CheckedChanged" CssClass="radio3 radio-check radio-info radio-inline" />
-                                        </div>
+                                            <h5><strong>Seleccione para Aceptar o Rechazar</strong></h5>
+                                            <asp:LinkButton ID="lnkrechazar" OnClick="btnCheckChanged_Click1" CssClass="btn btn-primary" runat="server">Rechazar</asp:LinkButton>
+                                            <asp:LinkButton ID="lnkaceptar" OnClick="btnCheckChanged2_Click1" CssClass="btn btn-default"  runat="server">Aceptar</asp:LinkButton>
+                                           <%-- <asp:CheckBox ID="cbxSelected" runat="server" Text="Rechazado" Checked="True" AutoPostBack="true" OnCheckedChanged="cbxSelected_CheckedChanged" CssClass="radio3 radio-check radio-info radio-inline" />
+                                             <asp:CheckBox ID="cbxaceptado" runat="server" Text="Aceptado" AutoPostBack="true" OnCheckedChanged="cbxSelected_CheckedChanged" CssClass="radio3 radio-check radio-info radio-inline" />
+                                       --%> </div>
                                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                             <asp:Panel ID="panelorden" runat="server" Visible="false">
                                                 <div class="input-group">
@@ -149,7 +145,7 @@
                                                         <i class="fa fa-comment-o"></i></span>
                                                     <asp:TextBox ID="txtObservaciones" AutoPostBack="true" OnTextChanged="txtObservaciones_TextChanged" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Observaciones"></asp:TextBox>
                                                 </div>
-                                                <asp:Label ID="lblerrorobs" runat="server" Text="Debe Colocar una Observacion" Visible="true" CssClass="label label-danger"></asp:Label>
+                                                <asp:Label ID="lblerrorobs" runat="server" Text="Para RECHAZAR Debe Colocar una Observacion" Visible="true" CssClass="label label-danger"></asp:Label>
                                             </asp:Panel>
                                         </div>
                                     </div>

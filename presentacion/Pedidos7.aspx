@@ -791,7 +791,7 @@ function Hola() {
 
     <div style="position: relative; width: 100%; top: 0px; right: 0px; bottom: 0px; left: 0px;">
 
-
+        <br />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 
             <ContentTemplate>
@@ -1012,8 +1012,8 @@ function Hola() {
                                 <table>
                                     <tr>
                                         <td>
-                                            <img id="procesando_gif" align="middle" alt="" height="20px"
-                                                src="imagenes/loading.gif" width="30px" />
+                                            <img id="procesando_gif" align="middle" alt="" height="40px"
+                                                src="imagenes/loading.gif" width="40px" />
                                         </td>
                                         <td style="font-family: Arial; font-weight: bold;" valign="bottom">Cargando Productos Master...</td>
                                     </tr>
@@ -1053,7 +1053,7 @@ function Hola() {
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <img src="imagenes/loading.gif" alt="" id="Img2" align="middle" height="20px" width="30px" />
+                                                        <img src="imagenes/loading.gif" alt="" id="Img2" align="middle" height="40px" width="40px" />
                                                     </td>
                                                     <td valign="bottom" style="font-family: Arial; font-weight: bold; font-size: small;">Buscando...</td>
                                                 </tr>
@@ -1092,7 +1092,7 @@ function Hola() {
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <img src="imagenes/loading.gif" alt="" id="Img1" align="middle" height="20px" width="30px" />
+                                                        <img src="imagenes/loading.gif" alt="" id="Img1" align="middle" height="40px" width="40px" />
                                                     </td>
                                                     <td valign="bottom" style="font-family: Arial; font-weight: bold;">Actualizando Productos...</td>
                                                 </tr>
@@ -1242,7 +1242,7 @@ function Hola() {
                     </tr>
                     <tr>
                         <td align="right">
-                            <asp:ImageButton ID="imgpromocion" runat="server" Height="30px"
+                            <asp:ImageButton ID="imgpromocion" runat="server" Height="40px"
                                 ImageUrl="~/imagenes/promo.gif" Style="display: none;" Width="150px" />
                         </td>
                     </tr>
@@ -1589,7 +1589,7 @@ function Hola() {
                                 <table>
                                     <tr>
                                         <td>
-                                            <img src="imagenes/loading.gif" alt="" id="Img3" align="middle" height="20px" width="30px" />
+                                            <img src="imagenes/loading.gif" alt="" id="Img3" align="middle" height="40px" width="40px" />
                                         </td>
                                         <td valign="bottom" style="font-family: Arial; font-weight: bold; font-size: small; color: steelblue;">Guardando Pedido...</td>
                                     </tr>

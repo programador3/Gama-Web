@@ -100,7 +100,7 @@
                         <asp:LinkButton ID="lnkReturn" Visible="false" runat="server" OnClick="lnkReturn_Click" CausesValidation="false"><i class="fa fa-arrow-circle-left"></i></asp:LinkButton>
                         Captura de Pre Empleados</h1>
 
-                    <h5 style="color: red; font-style: italic;"><strong>* CAMPOS OBLIGATORIOS</strong></h5>
+                    <h4 style="color: red; font-style: italic;"><strong>* CAMPOS OBLIGATORIOS</strong></h4>
                 </div>
             </div>
             <div class="row">
@@ -141,7 +141,6 @@
                                                     ErrorMessage="Tipo de archivo no permitido. Debe ser JPG, JPEG" ControlToValidate="fupFotoPerfil"
                                                     ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))(.jpg|.JPG|.jpeg|.JPEG)$">
                                                 </asp:RegularExpressionValidator>
-                                                <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" runat="server" id="im" visible="false">
@@ -260,7 +259,6 @@
                                                 <h4><strong><i class="fa fa-caret-right"></i>Originario de: Pais</strong></h4>
                                                 <asp:DropDownList ID="ddlpais" AutoPostBack="true" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlpais_SelectedIndexChanged">
                                                 </asp:DropDownList>
-                                                <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
@@ -268,7 +266,6 @@
                                                 <h5><strong>Estado </strong></h5>
                                                 <asp:DropDownList ID="ddlestado" AutoPostBack="true" runat="server" CssClass="form-control">
                                                 </asp:DropDownList>
-                                                <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                             </div>
                                         </div>
                                     </div>
@@ -281,7 +278,6 @@
                                                         <i class="fa fa-home"></i></span>
                                                     <asp:TextBox ID="txtCalle" AutoPostBack="true" OnTextChanged="txtCalle_TextChanged" runat="server" class="form-control" placeholder="Calle, # Interior o Exterior" Style="resize: none;"></asp:TextBox>
                                                 </div>
-                                                <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                 <asp:Label ID="lblCalle" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
                                             </div>
                                         </div>
@@ -311,7 +307,6 @@
                                                 <h4 style="text-align: center;" id="resultados" runat="server" visible="false">No hay resultados. Puede intentarlo nuevamente.</h4>
                                                 <asp:DropDownList ID="ddlColonia" Visible="false" AutoPostBack="true" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlColonia_SelectedIndexChanged">
                                                 </asp:DropDownList>
-                                                <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                             </div>
                                         </div>
                                     </div>
@@ -440,7 +435,6 @@
                                                         <asp:TextBox ID="txtIMSS" MaxLength="11" AutoPostBack="true" OnTextChanged="txtIMSS_TextChanged" runat="server" class="form-control" placeholder="Numero de Seguro Social" Style="resize: none;"></asp:TextBox>
                                                     </div>
                                                     <asp:Label ID="LBLIMSS" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
-                                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -449,7 +443,6 @@
                                                         <span class="input-group-addon" style="color: #fff; background-color: #00a65a;"><i class="fa fa-cogs"></i></span>
                                                         <asp:TextBox ID="TXTCURP" runat="server" AutoPostBack="true" class="form-control" placeholder="CURP" Style="resize: none;" MaxLength="18" OnTextChanged="TXTCURP_TextChanged"></asp:TextBox>
                                                     </div>
-                                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                     <asp:Label ID="lblcurp" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                             </div>
@@ -459,7 +452,6 @@
                                                         <span class="input-group-addon" style="color: #fff; background-color: #00a65a;"><i class="fa fa-cogs"></i></span>
                                                         <asp:TextBox ID="txtRFC" MaxLength="13" AutoPostBack="true" OnTextChanged="txtRFC_TextChanged" runat="server" class="form-control" placeholder="RFC" Style="resize: none;"></asp:TextBox>
                                                     </div>
-                                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                     <asp:Label ID="lblRFC" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                             </div>
@@ -473,7 +465,6 @@
                                                         <asp:TextBox ID="txtSueldo" TextMode="Number" OnTextChanged="txtSueldo_TextChanged" AutoPostBack="true" runat="server" class="form-control" placeholder="Salario" Style="resize: none;"></asp:TextBox>
                                                     </div>
                                                     <asp:Label ID="lblSueldo" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
-                                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -482,7 +473,6 @@
                                                         <span class="input-group-addon" style="color: #fff; background-color: #00a65a;">Gratificacion Mensual <i class="fa fa-usd"></i></span>
                                                         <asp:TextBox ID="txtComplementos" TextMode="Number" OnTextChanged="txtComplementos_TextChanged" runat="server" AutoPostBack="true" class="form-control" placeholder="Gratificacion" Style="resize: none;" MaxLength="18"></asp:TextBox>
                                                     </div>
-                                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                     <asp:Label ID="lblComplemento" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                             </div>
@@ -490,7 +480,6 @@
                                                 <div class="form-group">
                                                     <asp:CheckBox ID="cbxPremioTransporte" CssClass="radio3 radio-check radio-info radio-inline" Text="Dar Premio Transporte" Checked="true" runat="server" />
 
-                                                    <h5 style="color: red; font-style: italic;"><strong>*</strong></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -598,7 +587,6 @@
                                                         <span class="input-group-addon" style="color: #fff; background-color: #d9534f;"><i class="fa fa-users"></i></span>
                                                         <asp:TextBox ID="txtPadre" onkeypress="return isNumberKey(event)" OnTextChanged="txtPadre_TextChanged" AutoPostBack="true" runat="server" class="form-control" placeholder="Nombre Completo del Padre" Style="resize: none;"></asp:TextBox>
                                                     </div>
-                                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                     <asp:Label ID="lblPadre" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                             </div>
@@ -610,7 +598,6 @@
                                                         <span class="input-group-addon" style="color: #fff; background-color: #d9534f;"><i class="fa fa-users"></i></span>
                                                         <asp:TextBox ID="txtMadre" onkeypress="return isNumberKey(event)" OnTextChanged="txtMadre_TextChanged" AutoPostBack="true" runat="server" class="form-control" placeholder="Nombre Completo de la Madre" Style="resize: none;"></asp:TextBox>
                                                     </div>
-                                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                     <asp:Label ID="lblMadre" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                             </div>
@@ -622,7 +609,6 @@
                                                         <span class="input-group-addon" style="color: #fff; background-color: #d9534f;"><i class="fa fa-users"></i></span>
                                                         <asp:TextBox ID="txtEsposo" onkeypress="return isNumberKey(event)" OnTextChanged="txtEsposo_TextChanged" AutoPostBack="true" runat="server" class="form-control" placeholder="Nombre Completo del(a) Esposo(a)" Style="resize: none;"></asp:TextBox>
                                                     </div>
-                                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                                     <asp:Label ID="lblEsposo" CssClass="label label-danger" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                             </div>
@@ -710,7 +696,6 @@
                                     </div>
                                     <h4><strong><i class="fa fa-caret-right"></i>Credencial de Elector </strong>
                                         <asp:Image ID="imgElector" ImageUrl="~/imagenes/btn/checked.png" runat="server" Visible="false" /></h4>
-                                    <label style="color: red; font-style: italic;"><strong>*</strong></label>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">

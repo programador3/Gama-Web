@@ -52,9 +52,15 @@
             audio.play();
             $('#modalPreviewView').modal('show');
         }
+        function ModalMasivo() {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModal2').modal('show');
+        }
         function ModalClose() {
             $('#modalPreviewView').modal('hide');
             $('#myModal').modal('hide');
+            $('#myModal2').modal('hide');
         }
         function getImage(path) {
             $("#myImage").attr("src", path);
@@ -74,7 +80,8 @@
                 <div class="col-lg-12">
                     <div class="panel panel-success fresh-color">
                         <div class="panel-heading">
-                            Seleccione la fecha compromiso para cada puesto
+                            Seleccione la fecha compromiso para cada puesto o
+                            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary "  runat="server" OnClick="LinkButton1_Click">Realice un Cambio Masivo</asp:LinkButton>
                         </div>
                         <div class="panel-body">
                             <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
@@ -130,6 +137,47 @@
                                 </div>
                                 <div class="col-lg-6 col-xs-6">
                                     <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="myModal2" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: #428bca; color: white">
+                            <h4><strong id="confirmTitulo2" class="modal-title">Cambio de Fechas</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <h4>
+                                        <label id="confirmContenido2">Seleccione los Puestos a Aplicar</label>
+                                    </h4>
+                                    <asp:TextBox ID="txtfecha" CssClass="form-control" TextMode=" DateTimeLocal" runat="server"></asp:TextBox>
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="lnkselectall" EventName="Click" />
+                                        </Triggers>
+                                        <ContentTemplate>
+                                            <asp:LinkButton OnClick="All_Click" ID="lnkselectall" CssClass="btn btn-default btn-block" runat="server">Seleccionar Todos</asp:LinkButton>
+                                            <div style="width: 100%; height: 500px; overflow-y: auto; padding: 5px">
+                                                <asp:CheckBoxList CssClass="radio3 radio-check radio-info radio-inline" ID="cblPuestos" runat="server"></asp:CheckBoxList>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <asp:Button ID="Button1" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClientClick="return confirm('¿CONFIRMA LA TRANSACCION MASIVA DE CAMBIO DE FECHA?');" OnClick="Yes2_Click" CausesValidation="false" />
+                                </div>
+                                <div class="col-lg-6 col-xs-6">
+                                    <input id="Nope" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cerrar" />
                                 </div>
                             </div>
                         </div>

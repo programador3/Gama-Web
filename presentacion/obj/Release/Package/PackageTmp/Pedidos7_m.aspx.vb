@@ -302,7 +302,8 @@ Partial Class Pedidos_m2
                 '/TabContainer1.ActiveTabIndex = 0
                 CargarMsgbox("", "", True, 2)
                 If tipo = 1 Then
-                    txtid.Text = Session("idc_cliente")
+
+                    txtid.Text = de64aTexto(Request.QueryString("idc_cliente"))
                     ViewState("dt") = Session("dt_pedido_lista")
                     'Productos_Calculados()
                     'Calcular_Valores_DataTable()
@@ -351,7 +352,7 @@ Partial Class Pedidos_m2
                     ds = gweb.ver_datos_cliente(Session("idc_cliente"))
                     If ds.Tables(0).Rows.Count Then
                         row = ds.Tables(0).Rows(0)
-                        txtid.Text = Session("idc_cliente")
+                        txtid.Text = de64aTexto(Request.QueryString("idc_cliente"))
                         txtrfc.Text = row("rfccliente")
                         txtnombre.Text = row("nombre")
                         'cargar_credito_disponible(txtid.Text)
@@ -396,6 +397,20 @@ Partial Class Pedidos_m2
     End Sub
 
 
+    Public Function de64aTexto(cadena As String) As String
+        Dim enviar As String
+        Dim base641 = cadena
+        Dim data = Convert.FromBase64String(base641)
+        enviar = Encoding.UTF8.GetString(data)
+        Return enviar
+    End Function
+
+    Public Function deTextoa64(cadena As String) As String
+        Dim enviar As String
+        Dim bytes = Encoding.UTF8.GetBytes(cadena)
+        enviar = Convert.ToBase64String(bytes)
+        Return enviar
+    End Function
     Public Function validar_opcion(ByVal idc_opcion As Integer) As Boolean
         Dim dt As New DataTable
         dt = Session("dt_opciones_usuario")
@@ -1397,7 +1412,7 @@ Partial Class Pedidos_m2
             ds = gweb.ver_datos_cliente(Session("idc_cliente"))
             If ds.Tables(0).Rows.Count Then
                 row = ds.Tables(0).Rows(0)
-                txtid.Text = Session("idc_cliente")
+                txtid.Text = de64aTexto(Request.QueryString("idc_cliente"))
                 txtrfc.Text = row("rfccliente")
                 txtnombre.Text = row("nombre")
                 'cargar_credito_disponible(txtid.Text)
@@ -4569,7 +4584,7 @@ Partial Class Pedidos_m2
 
             If tipo = 1 Then
 
-                txtid.Text = Session("idc_cliente")
+                txtid.Text = de64aTexto(Request.QueryString("idc_cliente"))
                 ViewState("dt") = proces_ped_lista(Session("dt_pedido_lista"))
                 Session("dt_productos_lista") = ViewState("dt")
                 Productos_Calculados()

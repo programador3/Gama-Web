@@ -11,6 +11,25 @@ namespace negocio.Componentes
     
     public class AgentesCOM
     {
+        public DataSet sp_anomina_asistencia_guardias(int pidc_usuario, int total, string cadena)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotal", SqlDbType = SqlDbType.Int, Value = total });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena", SqlDbType = SqlDbType.Int, Value = cadena });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_anomina_asistencia_guardias", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet sp_FN_SUCURSAL_CORRESPONDE_COTIZACION_ELITE(int pidc_usuario, int pidc_coti)
         {
             DataSet ds = new DataSet();
@@ -1932,12 +1951,14 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
-
+            if (entidad.Plat.ToString() != "" && entidad.Plon.ToString() == "")
+            {
+                listparameters.Add(new SqlParameter() { ParameterName = "@platitud", SqlDbType = SqlDbType.Int, Value = entidad.Plat });
+                listparameters.Add(new SqlParameter() { ParameterName = "@plongitud", SqlDbType = SqlDbType.Int, Value = entidad.Plon });
+            }
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_actiage", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_actiage });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_cliente", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_cliente });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_agente", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_agente });
-            listparameters.Add(new SqlParameter() { ParameterName = "@platitud", SqlDbType = SqlDbType.Int, Value = entidad.Plat });
-            listparameters.Add(new SqlParameter() { ParameterName = "@plongitud", SqlDbType = SqlDbType.Int, Value = entidad.Plon });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = entidad.Idc_usuario });
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = entidad.Pdirecip });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pnombrepc });

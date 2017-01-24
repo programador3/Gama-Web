@@ -55,14 +55,8 @@
             };
 
             function error(error) {
-                alert('ERROR EN EL GPS(' + error.code + '): EL NAVEGADOR ACTUAL NO ES COMPATIBLE CON EL GPS, UTILIZE EL NAVEGADOR POR DEFECTO DE SU EQUIPO CELULAR');
                 if (error.code != "3") {
-                    if (error.code == "1") {
-
-                        alert('ERROR EN EL GPS(' + error.code + '): EL NAVEGADOR ACTUAL NO ES COMPATIBLE CON EL GPS, UTILIZE EL NAVEGADOR POR DEFECTO DE SU EQUIPO CELULAR');
-                    } else {
-                        alert('ERROR EN EL GPS(' + error.code + '): ' + error.message);
-                    }
+                    alert('ERROR EN EL GPS(' + error.code + '): ' + error.message);                    
                 }
             };
 
@@ -123,7 +117,9 @@
                 return false;
             }
         }
-
+        function LoadInfo() {
+            swal({ title: 'Espere un Momento...', text: 'Esamos Cargando la Información del Cliente', allowEscapeKey: false, imageUrl: 'imagenes/loading.gif', timer: '25000', showConfirmButton: false });
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -158,7 +154,7 @@
         </div>
         <div id="divgrupos" runat="server" class=" col-lg-12">
             <h4><strong><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Clientes del Grupo</strong></h4>
-            <asp:DropDownList ID="cbogrupos" runat="server"
+            <asp:DropDownList ID="cbogrupos" runat="server" onchange="LoadInfo();"
                 CssClass=" form-control" AutoPostBack="True" OnSelectedIndexChanged="cbogrupos_SelectedIndexChanged">
             </asp:DropDownList>
         </div>

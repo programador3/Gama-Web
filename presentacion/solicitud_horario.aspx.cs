@@ -29,6 +29,7 @@ namespace presentacion
                 Session["pidc_empleado_solic_horario"] = null;
                 txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');
                 CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
+                txtfecha_TextChanged(null,null);
             }
             //SI ES UNA AUTORIZACION
             if (!IsPostBack && Request.QueryString["autoriza"] != null)
@@ -145,8 +146,8 @@ namespace presentacion
                         txthorasalida.Text == "" &&
                         txthorasalidac.Text == "" &&
                         txthoraentradac.Text == "" &&
-                        Convert.ToBoolean(row["no_comida"]) == false &&
-                        Convert.ToBoolean(row["no_salida"]) == false)
+                        Convert.ToBoolean(row["no_comida"]) == true &&
+                        Convert.ToBoolean(row["no_salida"]) == true)
                     {
                         btntot.CssClass = "btn btn-success btn-block";
                         cuerpo.Visible = false;
@@ -202,11 +203,12 @@ namespace presentacion
                     lblobsr.Visible = true;
                     lnkedit.Visible = true;
                     edicion.Visible = false;
+                    btncancelarsol.Visible = row["STATUS"].ToString().Trim().ToUpper() == "P";
                     lnkno_horacomida.CssClass = "btn btn-default btn-block";
                     lnkno_Salida.CssClass = "btn btn-default btn-block";
                     lnkno_horacomida.CssClass = Convert.ToBoolean(row["no_comida"]) == true ? "btn btn-success btn-block" : "btn btn-default btn-block";
                     lnkno_Salida.CssClass = Convert.ToBoolean(row["no_salida"]) == true ? "btn btn-success btn-block" : "btn btn-default btn-block";
-                    if (lnkno_Salida.CssClass == "btn btn-default btn-block" && lnkno_horacomida.CssClass == "btn btn-default btn-block" && txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
+                    if (Convert.ToBoolean(row["no_comida"]) && Convert.ToBoolean(row["no_salida"]) && txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
                     {
                         btntot.CssClass = "btn btn-success btn-block";
                         cuerpo.Visible = false;
@@ -217,13 +219,13 @@ namespace presentacion
             catch (Exception ex)
             {
                 Alert.ShowAlertError(ex.ToString(), this.Page);
-                Global.CreateFileError(ex.ToString(), this);
                 return false;
             }
         }
 
         protected void txtfecha_TextChanged(object sender, EventArgs e)
         {
+            btncancelarsol.Visible = false;
             if (txtfecha.Text != "")
             {
                 DateTime fechastring = Convert.ToDateTime(txtfecha.Text);
@@ -239,6 +241,7 @@ namespace presentacion
                 else
                 {
                     btnguardar.Visible = true;
+                    btncancelarsol.Visible = false;
                     if (ExisteSolicituenDia(Convert.ToInt32(Session["pidc_empleado_solic_horario"]), Convert.ToDateTime(txtfecha.Text)))
                     {
                         btnguardar.Visible = false;
@@ -375,7 +378,20 @@ namespace presentacion
                             Alert.ShowAlertError(vmensaje, this);
                         }
                         break;
-
+                    case "Cancelar":
+                        entidad.Pidc_horario_erm = Convert.ToInt32(Session["idc_horario_perm"]);
+                        entidad.Pstatus = "R";
+                        ds = componente.Autorizar(entidad);
+                        vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                        if (vmensaje == "")
+                        {
+                            Alert.ShowGiftMessage("Estamos Guardando los cambios.", "Espere un Momento", "solicitud_horario.aspx?idc_puesto=" + Request.QueryString["idc_puesto"], "imagenes/loading.gif", "2000", "La Solicitud fue cANCELADA correctamente ", this);
+                        }
+                        else
+                        {
+                            Alert.ShowAlertError(vmensaje, this);
+                        }
+                        break;
                     case "Rechazar":
                         entidad.Pidc_horario_erm = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_horario_perm"]));
                         entidad.Pstatus = "R";
@@ -439,6 +455,18 @@ namespace presentacion
             }
         }
 
+        protected void btnrechaza2_Click(object sender, EventArgs e)
+        {
+            if (txtobservaciones.Text == "")
+            {
+                Alert.ShowAlertError("Debe Ingresar Observaciones para Cancelar", this);
+            }
+            else
+            {
+                Session["Caso_Confirmacion"] = "Cancelar";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Cancelar esta Solicitud?','modal fade modal-info');", true);
+            }
+        }
         protected void btnguardaredicio_Click(object sender, EventArgs e)
         {
             if (txthorasalidac.Text == "" && txthoraentradac.Text != "")

@@ -167,7 +167,9 @@ namespace presentacion
         public void CargaGrid()
         {
             int idUsuario = (int)Session["sidc_usuario"];
+            bool prod=lnkborrador.Visible;
             PerfilesE entidad = new PerfilesE();
+            entidad.Borrador = prod;
             entidad.Usuario = idUsuario;
             PerfilesBL componente = new PerfilesBL();
             DataSet ds = new DataSet();

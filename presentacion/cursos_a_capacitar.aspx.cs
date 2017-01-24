@@ -14,6 +14,7 @@ namespace presentacion
         {
             if (!Page.IsPostBack)
             {
+                ViewState["correo_a_cand"] = null;
                 cargar_info();
             }
         }
@@ -88,6 +89,12 @@ namespace presentacion
                             Alert.ShowAlertError("La fecha ingresada debe ser mayor al dia de hoy", this.Page);
                             return;
                         }
+                        if (txtcorreo.Text == "")
+                        {
+                            Alert.ShowAlertError("INGRESE UN CORREO PARA ENVIAR EL LINK DE RECLUTAMIENTO", this.Page);
+                            return;
+                        }
+                       
                         //entidad
                         Cursos_HistorialENT EntCursoHist = new Cursos_HistorialENT();
                         EntCursoHist.Idc_curso_historial = 0;
@@ -106,15 +113,25 @@ namespace presentacion
                         //componente
                         //return;
                         Cursos_HistorialCOM ComCursoHist = new Cursos_HistorialCOM();
-                        ds = ComCursoHist.cursos_programar_capturar(EntCursoHist);
+                        string correorh = "";
+                        string correocandidato = "";
+                        string guid = Guid.NewGuid().ToString();
+                        if (Convert.ToBoolean(ViewState["correo_a_cand"])==false)
+                        {
+                            correorh = txtcorreo.Text.Trim();
+                        }
+                        else {
+                            correocandidato = txtcorreo.Text.Trim();
+                        }
+                        ds = ComCursoHist.cursos_programar_capturar(EntCursoHist,correorh,correocandidato,txtObservaciones.Text,guid);
                         string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (string.IsNullOrEmpty(vmensaje)) // si esta vacio todo bien
                         {
+                            limpiar();
+                            cargar_info();
                             int curso = Convert.ToInt32(ds.Tables[0].Rows[0]["cursos"].ToString());
                             string mess = curso > 0 ? "Programación de curso guardada correctamente" : "El empleado no tiene cursos disponibles. El proceso de ingreso continua.";
                             ScriptManager.RegisterStartupScript(this, GetType(), "GOALERT", "AlertGO('" + mess + "','menu.aspx');", true);
-                            limpiar();
-                            cargar_info();
                         }
                         else
                         {
@@ -179,6 +196,9 @@ namespace presentacion
 
         protected void cargar_info_detalle(int idc_pre_empleado)
         {
+            txtComentarios.Text = "";
+            txtObservaciones.Text = "";
+            txtfecha_tentativa.Text = "";
             //componente
             Cursos_HistorialCOM ComCursoHist = new Cursos_HistorialCOM();
             //ds
@@ -207,6 +227,25 @@ namespace presentacion
             oc_modal_idc_pre_empleado.Value = idc_pre_empleado.ToString();
             //puesto
             oc_modal_idc_puesto.Value = tabla_pre_empleados.Rows[0]["idc_puesto"].ToString();
+
+            bool aplica_enviar_correo = Convert.ToBoolean(tabla_pre_empleados.Rows[0]["SE_ENVIARA_CORREO"]);
+            if (aplica_enviar_correo)
+            {
+                lbltextocorreo.Text = "Se enviara un correo al candidato, con un link al sistema de RECLUTAMIENTO, para que este complete su informacion y documentos. SE RECOMIENDA REALIZAR UNA LLAMADA DE AVISO AL CANDIDATO.";
+                txtcorreo.ReadOnly = false;
+                txtcorreo.Text = modal_lblcorreo.Text.Trim();
+                ViewState["correo_a_cand"] = true;
+            }
+            else
+            {
+                ViewState["correo_a_cand"] = false;
+                string query = "select top 1 ltrim(rtrim(correo)) as correo,a.idc_correo from usuarios with(nolock) inner join correos_gama as a on a.idc_correo = usuarios.idc_correo where a.borrado = 0 and usuarios.idc_usuario = " + Convert.ToInt32(Session["sidc_usuario"]).ToString().Trim() + "";
+                DataTable dt_correos_reclu = funciones.ExecQuery(query);
+                lbltextocorreo.Text = "Se enviara un link a su correo externo, para que USTED complete la informacion y documentos del candidato.";
+                txtcorreo.ReadOnly = Convert.ToInt32(dt_correos_reclu.Rows[0]["idc_correo"]) > 0 ? true : false;
+                txtcorreo.Text = Convert.ToInt32(dt_correos_reclu.Rows[0]["idc_correo"]) > 0 ? dt_correos_reclu.Rows[0]["correo"].ToString().Trim() : "";
+            }
+
         }
 
         protected void grid_cursos_pre_alta_pendientes_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -230,6 +269,7 @@ namespace presentacion
         {
             fecha.Visible = Convert.ToInt32(rbtnlist_programar_rechazar.SelectedValue) == 0 ? false : true;
             comentarios.Visible = Convert.ToInt32(rbtnlist_programar_rechazar.SelectedValue) == 0 ? true : false;
+            div_correo.Visible = fecha.Visible;
         }
     }
 }

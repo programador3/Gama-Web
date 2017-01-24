@@ -29,6 +29,9 @@
             $('#myModal').modal('show');
             $('#confirmTitulo').text(cTitulo);
         }
+        function ModalClose() {
+            $('#myModal').modal('hide');
+        }
         function AlertGO(TextMess, URL) {
             swal({
                 title: "Mensaje del Sistema",
@@ -54,7 +57,7 @@
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Contactar Empleado</h1>
+                    <h2 class="page-header">Contactar Candidato</h2>
                 </div>
             </div>
             <!-- /.row -->
@@ -75,7 +78,7 @@
                                 <div class="table table-responsive">
                                     <asp:GridView ID="grid_cursos_pre_alta_pendientes" CssClass="gvv table table-bordered table-hover grid sortable {disableSortCols: [2]}" runat="server" AutoGenerateColumns="False" DataKeyNames="idc_pre_empleado" OnRowCommand="grid_cursos_pre_alta_pendientes_RowCommand" OnRowDataBound="grid_cursos_pre_alta_pendientes_RowDataBound">
                                         <Columns>
-                                            <asp:TemplateField HeaderText="Programar" ShowHeader="False">
+                                            <asp:TemplateField HeaderText="Programar" ShowHeader="False" HeaderStyle-Width="40px">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="btnprogramar" runat="server" CausesValidation="false" CommandName="clic_programar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ImageUrl="~/imagenes/btn/icon_autorizar.png" Text="Checklist" />
                                                 </ItemTemplate>
@@ -116,78 +119,87 @@
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content" style="text-align: center">
-                        <div class="modal-header" style="background-color: #428bca; color: white">
-                            <h4><strong id="confirmTitulo" class="modal-title"></strong></h4>
-                        </div>
-                        <div class="modal-body">
-                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
-                                <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="rbtnlist_programar_rechazar" EventName="SelectedIndexChanged" />
-                                </Triggers>
-                                <ContentTemplate>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="rbtnlist_programar_rechazar" EventName="SelectedIndexChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="grid_cursos_pre_alta_pendientes" EventName="RowCommand" />
+                            </Triggers>
+                            <ContentTemplate>
+                                <div class="modal-header" style="background-color: #428bca; color: white">
+                                    <h4><strong id="confirmTitulo" class="modal-title"></strong></h4>
+                                </div>
+                                <div class="modal-body">
+
                                     <div class="row" style="text-align: left;">
                                         <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Pre Emplado:</label>
-                                                <asp:Label ID="modal_pre_empleado" runat="server"></asp:Label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Puesto:</label>
-                                                <asp:Label ID="modal_lblpuesto" runat="server"></asp:Label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Cursos:</label>
 
-                                                <asp:BulletedList ID="lista_cursos" CssClass="table-bordered" runat="server"></asp:BulletedList>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Correo:</label>
-                                                <asp:Label ID="modal_lblcorreo" runat="server" Text=""></asp:Label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Telefonos:</label>
-                                                <asp:BulletedList ID="lista_tels" runat="server" CssClass="table-bordered"></asp:BulletedList>
-                                            </div>
-                                            <div class="form-group">
-                                                <asp:RadioButtonList ID="rbtnlist_programar_rechazar" runat="server" AutoPostBack="true" OnSelectedIndexChanged="rbtnlist_programar_rechazar_SelectedIndexChanged">
-                                                    <asp:ListItem Value="1">Programar Candidato</asp:ListItem>
-                                                    <asp:ListItem Value="0">Rechazar Candidato</asp:ListItem>
-                                                </asp:RadioButtonList>
-                                            </div>
-                                            <div class="form-group" id="fecha" runat="server">
+                                            <label>Pre Emplado:</label>
+                                            <asp:Label ID="modal_pre_empleado" runat="server"></asp:Label>
+                                            <br />
+                                            <label>Puesto:</label>
+                                            <asp:Label ID="modal_lblpuesto" runat="server"></asp:Label>
+                                            <br />
+
+                                            <label>Cursos:</label>
+
+                                            <asp:BulletedList ID="lista_cursos" CssClass="table-bordered" runat="server"></asp:BulletedList>
+                                            <br />
+
+                                            <label>Correo:</label>
+                                            <asp:Label ID="modal_lblcorreo" runat="server" Text=""></asp:Label>
+                                            <br />
+
+                                            <label>Telefonos:</label>
+                                            <asp:BulletedList ID="lista_tels" runat="server" CssClass="table-bordered"></asp:BulletedList>
+                                            <br />
+
+                                            <asp:RadioButtonList ID="rbtnlist_programar_rechazar" runat="server" AutoPostBack="true" OnSelectedIndexChanged="rbtnlist_programar_rechazar_SelectedIndexChanged">
+                                                <asp:ListItem Value="1">Programar Candidato</asp:ListItem>
+                                                <asp:ListItem Value="0">Rechazar Candidato</asp:ListItem>
+                                            </asp:RadioButtonList>
+                                            <br />
+
+                                            <div id="fecha" runat="server">
                                                 <label><strong>Fecha Acordada de Ingreso:</strong></label>
                                                 <asp:TextBox ID="txtfecha_tentativa" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                                             </div>
-                                            <div class="form-group" id="comentarios" runat="server" visible="false">
+                                            <div id="comentarios" runat="server" visible="false">
                                                 Comentarios:
                                           <asp:TextBox ID="txtComentarios" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
+                                            <br />
+                                            <div id="div_correo" runat="server">
+                                                <asp:Label Style="font-weight: 700; color: red" ID="lbltextocorreo" runat="server" Text=""></asp:Label>
+                                                <asp:TextBox ID="txtcorreo" TextMode=" Email" CssClass="form-control" placeholder="Ingrese el Correo donde se enviara" runat="server"></asp:TextBox>
+                                                <br />
+                                                <asp:TextBox ID="txtObservaciones" TextMode="Multiline" CssClass="form-control"
+                                                    placeholder="Agrege comentarios que se veran en el correo" Rows="2" runat="server"></asp:TextBox>
+                                            </div>
                                         </div>
                                     </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <asp:Button ID="modal_btnaceptar" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="modal_btnaceptar_Click" />
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <asp:Button ID="modal_btncancelar" class="btn btn-danger btn-block" runat="server" Text="Cancelar" OnClick="modal_btncancelar_Click" />
-                                </div>
-                            </div>
+                                <div class="modal-footer">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <asp:Button ID="modal_btnaceptar" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClientClick="ModalClose();" OnClick="modal_btnaceptar_Click" />
 
-                            <!--campos ocultos -->
-                            <asp:HiddenField ID="oc_modal_idc_curso" runat="server" />
-                            <asp:HiddenField ID="oc_modal_idc_puesto" runat="server" />
-                            <asp:HiddenField ID="oc_modal_idc_pre_empleado" runat="server" />
-                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <asp:Button ID="modal_btncancelar" class="btn btn-danger btn-block" runat="server" Text="Cancelar" OnClientClick="ModalClose();" />
+                                    </div>
+
+                                    <!--campos ocultos -->
+                                    <asp:HiddenField ID="oc_modal_idc_curso" runat="server" />
+                                    <asp:HiddenField ID="oc_modal_idc_puesto" runat="server" />
+                                    <asp:HiddenField ID="oc_modal_idc_pre_empleado" runat="server" />
+                                </div>
+
+
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
-        </div>
+              </div>
 
         <script src="js/bootstrap-switch-original.js"></script>
     </div>

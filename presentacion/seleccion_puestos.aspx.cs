@@ -48,7 +48,7 @@ namespace presentacion
             //PanelDetalles.Visible = true;
             // DataPrebajasDetalles(Convert.ToInt32(lnkGO.CommandName.ToString()), Convert.ToInt32(lnkGO.CommandArgument.ToString()));
             // lnklista.Visible = true;
-            Response.Redirect("seleccion_candidato.aspx?idc_puesto=" + lnkGO.CommandArgument.ToString() + "&idc_prepara=" + lnkGO.CommandName.ToString());
+            Response.Redirect("seleccion_candidato.aspx?idc_puesto=" + funciones.deTextoa64(lnkGO.CommandArgument.ToString()) + "&idc_prepara=" + funciones.deTextoa64(lnkGO.CommandName.ToString()));
         }
 
         protected void repeatpendientes_ItemDataBound(object sender, RepeaterItemEventArgs e)

@@ -161,7 +161,7 @@ namespace presentacion
             int IDC_PUESTO_LOGIN = Convert.ToInt32(Session["sidc_puesto_login"]);
             //si tengo el permiso de ver todo verificamos que el usuario tenga permisos de  los botones
             bool SOY_SU_JEFE = funciones.ExecQuery("SELECT * FROM dbo.fn_jefes_directos_equi() WHERE idc_puesto = "+ id_puesto + " AND idc_puesto_padre = "+IDC_PUESTO_LOGIN+"").Rows.Count > 0;
-            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 349) == true)
+            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 349))
             {
                 servicios.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 338);
                 reemplazo.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 351);

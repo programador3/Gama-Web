@@ -18,7 +18,6 @@ namespace presentacion
             if (!IsPostBack)
             {
                 cargar_combo_agentes_usuario((int)Session["sidc_usuario"]);
-                //cargar_combo_agentes_usuario(127);
                 divBuscar.Visible = false;
             }
         }
@@ -87,7 +86,7 @@ namespace presentacion
         
         protected void btnCancelarTodo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ficha_cliente_m.aspx");
+            Response.Redirect("Captura_Actividades_Agentes2.aspx");
         }
 
         private void cargar_combo_agentes_usuario(int idc_usuario)

@@ -69,64 +69,93 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">
+                    <h2 class="page-header">
                         <asp:LinkButton ID="lnkReturn" Visible="false" runat="server" OnClick="lnkReturn_Click" CausesValidation="false"><i class="fa fa-arrow-circle-left"></i></asp:LinkButton>
-                        Reclutar Candidatos al Puesto</h1>
+                        Reclutar Candidatos al Puesto</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12" style="text-align: left">
                     <div class="form-group">
-                        <h4><strong>Puesto:
+                        <h5><strong>Puesto:
                             <asp:Label ID="lblPuesto" runat="server" Text=""></asp:Label></strong>
                             <asp:Label ID="lblfechasoli" runat="server" Text="" Visible="false"></asp:Label>
-                        </h4>
-                        <h4>
+                        </h5>
+                        <h5><strong>Sucursal:
+                            <asp:Label ID="lblsucursal" runat="server" Text=""></asp:Label></strong>
+                        </h5>
+                        <h5><strong>Depto:
+                            <asp:Label ID="lbldepto" runat="server" Text=""></asp:Label></strong>
+                        </h5>
+                        <h5 style="color:red;"><strong>
+                            
+                            <asp:Label ID="lblreclu" runat="server" Text="" Visible="True"></asp:Label>
+                            </strong>
+
+                        </h5>
+                        <h5>
                             <asp:Label ID="lblfecha_compro" runat="server" Text="" Visible="true"></asp:Label>
                             <span>
-                                <asp:LinkButton ID="lnkcambiarfecha" runat="server" CssClass="btn btn-success" OnClick="lnkcambiarfecha_Click">Cambiar Fecha</asp:LinkButton></span>
-                        </h4>
+                                <asp:LinkButton ID="lnkcambiarfecha" runat="server" CssClass="btn btn-success" OnClick="lnkcambiarfecha_Click">Cambiar Fecha</asp:LinkButton>                                
+                                <asp:LinkButton ID="lnkcambiarreclutador" runat="server" CssClass="btn btn-info" OnClick="lnkcambiarreclu_Click">Cambiar Reclutador</asp:LinkButton>
+                            </span>
+                        </h5>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <asp:LinkButton ID="lnknuevocandidato" runat="server" CssClass="btn btn-success btn-block" OnClick="lnknuevocandidato_Click">Agregar Candidato <i class="fa fa-plus-circle"></i></asp:LinkButton>
+                <div class="col-lg-12">                    
+                    <h5><strong>Observaciones</strong></h5>
+                    <h6><strong>
+                        <asp:Label ID="lblusuario" runat="server" Text=""></asp:Label></strong></h6>
+                    <asp:TextBox onfocus="$(this).select();" ID="txtobservaciones_obs" CssClass=" form-control" placeholder="Puede Ingresar Observaciones" TextMode="Multiline" Rows="2" runat="server"></asp:TextBox>
+                    <asp:LinkButton ID="lnkguardarobser" OnClick="Yes3_Click" CssClass="btn btn-success" OnClientClick="return confirm('¿DESEA GUARDAR ESTAS OBSERVACIONES?')" runat="server">Guardar Observaciones</asp:LinkButton>
                 </div>
             </div>
             <asp:Panel ID="PanelCatalogo" runat="server">
-
                 <h4 id="ExisteProce" runat="server" visible="false">Ya hay un Proceso de Pre Alta o Alta activo. No podra hacer ningun movimiento hasta que este termine o se cancele. <i class="fa fa-info-circle"></i></h4>
 
-                <br />
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 xol-sm-12">
-                        <div class="panel panel-success fresh-color">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <asp:LinkButton ID="lnknuevocandidato" runat="server" CssClass="btn btn-primary btn-block" OnClick="lnknuevocandidato_Click">Agregar Candidato <i class="fa fa-plus-circle"></i></asp:LinkButton>
+                        <div class="panel panel-info fresh-color">
+                             
                             <div class="panel-heading" style="text-align: center;">
                                 <h4 class="panel-title">Candidatos al Puesto <i class="fa fa-users"></i></h4>
                             </div>
                             <div class="panel-body">
                                 <div class="table table-responsive">
                                     <h2 id="nocandidatos" runat="server" visible="false" style="text-align: center;"><strong>Aun no hay ningun candidato relacionado <i class="fa fa-exclamation-triangle"></i></strong></h2>
-                                    <asp:GridView ID="gridCatalogo" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed" OnRowDataBound="gridCatalogo_RowDataBound" OnRowCommand="gridCatalogo_RowCommand" DataKeyNames="idc_puesto, idc_prepara ,idc_pre_empleado">
+                                    <asp:GridView ID="gridCatalogo" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed" OnRowDataBound="gridCatalogo_RowDataBound" 
+                                        OnRowCommand="gridCatalogo_RowCommand" DataKeyNames="idc_puesto, idc_prepara ,idc_pre_empleado,CORREO_PERSONAL,SE_ENVIARA_CORREO">
                                         <Columns>
                                             <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_autorizar.png" HeaderText="Capacitar" CommandName="Capacitacion" Visible="false">
                                                 <HeaderStyle HorizontalAlign="Center" />
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:ButtonField>
+                                            <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_editar.png" HeaderText="Editar" CommandName="Editar" CausesValidation="false">
+                                                <HeaderStyle HorizontalAlign="Center" Width="40px" />
+                                                <ItemStyle HorizontalAlign="Center"/>
+                                            </asp:ButtonField>
                                             <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Eliminar" CommandName="Eliminar" CausesValidation="false">
-                                                <HeaderStyle HorizontalAlign="Center" />
+                                                <HeaderStyle HorizontalAlign="Center" Width="40px"  />
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:ButtonField>
-                                            <%-- <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_editar.png" HeaderText="Editar" CommandName="Editar" CausesValidation="false">
-                                        <HeaderStyle HorizontalAlign="Center" />
-                                        <ItemStyle HorizontalAlign="Center" />
-                                    </asp:ButtonField>--%>
                                             <asp:BoundField DataField="idc_pre_empleado" HeaderText="idc_pre_empleado" Visible="false"></asp:BoundField>
+                                            <asp:BoundField DataField="CORREO_PERSONAL" HeaderText="idc_pre_empleado" Visible="false"></asp:BoundField>
+                                            <asp:BoundField DataField="SE_ENVIARA_CORREO" HeaderText="idc_pre_empleado" Visible="false"></asp:BoundField>
                                             <asp:BoundField DataField="idc_puesto" HeaderText="idc_tipoherramienta" Visible="false"></asp:BoundField>
                                             <asp:BoundField DataField="idc_prepara" HeaderText="idc_prepara" Visible="false"></asp:BoundField>
                                             <asp:ButtonField DataTextField="nombre" ControlStyle-CssClass="btn btn-default btn-block" HeaderText="Candidato" CommandName="Puesto" />
                                             <asp:BoundField DataField="fec_ingreso" HeaderText="Fecha de Alta"></asp:BoundField>
+                                            <asp:TemplateField HeaderText="Acceso al Sistema">
+                                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                                <HeaderStyle Width="120px"></HeaderStyle>
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lnkrege" CssClass="btn btn-primary btn-block" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
+                                                         CommandName="RegenerarGUID" runat="server">Regenerar</asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
                                 </div>
@@ -357,7 +386,7 @@
                                                             <asp:ButtonField ButtonType="Image" ImageUrl="~/imagenes/btn/icon_delete.png" HeaderText="Eliminar" CommandName="Eliminar" CausesValidation="false">
                                                                 <HeaderStyle HorizontalAlign="Center" />
                                                                 <ItemStyle HorizontalAlign="Center" />
-                                                            </asp:ButtonField>
+                                                            </asp:ButtonField>   
                                                             <asp:BoundField DataField="ruta" HeaderText="idc_tipoherramienta" Visible="false"></asp:BoundField>
                                                             <asp:BoundField DataField="descripcion" HeaderText="Nombre"></asp:BoundField>
                                                             <asp:BoundField DataField="tipo_archi" HeaderText="Tipo_Archi" Visible="false"></asp:BoundField>
@@ -391,36 +420,49 @@
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content" style="text-align: center">
-                        <div class="modal-header" style="background-color: #428bca; color: white">
-                            <h4><strong id="confirmTitulo" class="modal-title"></strong></h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                    <h4>
-                                        <label id="confirmContenido"></label>
-                                    </h4>
+                        <asp:UpdatePanel ID="UpdatePanel3" UpdateMode="Always" runat="server">
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="gridCatalogo" EventName="RowCommand" />
+                            </Triggers>
+                            <ContentTemplate>
+                                <div class="modal-header" style="background-color: #428bca; color: white">
+                                    <h4><strong id="confirmTitulo" class="modal-title"></strong></h4>
                                 </div>
-                            </div>
-                            <div class="row" id="cambiar_fecha" runat="server" visible="false">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                    <asp:TextBox ID="txtnueva_fecha" CssClass="form-control" TextMode="DateTimeLocal" runat="server"></asp:TextBox>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                            <h4>
+                                                <label id="confirmContenido"></label>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="cambiar_fecha" runat="server" visible="false">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                            <asp:TextBox ID="txtnueva_fecha" CssClass="form-control" TextMode="DateTimeLocal" runat="server"></asp:TextBox>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                            
+                                                <asp:Label Style="font-weight: 700; color: red" ID="lbltextocorreo" Visible="false" runat="server" Text=""></asp:Label>
+                                            <asp:TextBox ID="txtcorreo" Visible="false" CssClass="form-control" Style="text-transform: uppercase;" onblur="return imposeMaxLength(this, 250);" 
+                                                TextMode="Email" placeholder="Ingrese un Correo" runat="server"></asp:TextBox>
+                                            </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                            <asp:TextBox ID="txtmotivo" CssClass="form-control" Style="text-transform: uppercase;" onblur="return imposeMaxLength(this, 250);" TextMode="MultiLine" placeholder="Ingrese un Motivo" Rows="3" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                                    <asp:TextBox ID="txtmotivo" CssClass="form-control" Style="text-transform: uppercase;" onblur="return imposeMaxLength(this, 250);" TextMode="MultiLine" placeholder="Ingrese un Motivo" Rows="3" runat="server"></asp:TextBox>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xs-6">
+                                            <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" OnClientClick="ModalClose();" CausesValidation="false" />
+                                        </div>
+                                        <div class="col-lg-6 col-xs-6">
+                                            <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-lg-6 col-xs-6">
-                                    <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" CausesValidation="false" />
-                                </div>
-                                <div class="col-lg-6 col-xs-6">
-                                    <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
-                                </div>
-                            </div>
-                        </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
@@ -430,15 +472,29 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #428bca; color: white; text-align: center;">
-                    <h4>Información del Candidato <i class="fa fa-info-circle"></i>
+                    <h4>Cambiar Reclutador
                     </h4>
                 </div>
                 <div class="modal-body">
+                    <h5>Seleccione el Puesto que reclutara</h5>
+                    <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Always" runat="server">
+                        <ContentTemplate>
+                            <asp:TextBox ID="txtfiltro" CssClass="form-control" AutoPostBack="True" onfocus="$(this).select();" OnTextChanged="txtMinimoRequeridos_TextChanged" placeholder="Buscar Puesto" runat="server"></asp:TextBox>
+                            <br />
+                            <asp:DropDownList ID="ddlpuestos" CssClass=" form-control" AutoPostBack="True" OnSelectedIndexChanged="cboagentes_SelectedIndexChanged"  runat="server">
+                            </asp:DropDownList>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
                 <div class="modal-footer">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <input id="btnModalAcept" class="btn btn-primary btn-block" value="Cerrar" onclick="ModalClose();" />
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            
+                            <asp:Button ID="Button1" class="btn btn-primary btn-block" runat="server" Text="Guardar" OnClick="Yes2_Click" OnClientClick="return confirm('¿Desea Guardar los Cambios?');" CausesValidation="false" />
+                            </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input id="btnModalAcept" class="btn btn-danger btn-block" value="Cerrar" onclick="ModalClose();" />
                         </div>
                     </div>
                 </div>

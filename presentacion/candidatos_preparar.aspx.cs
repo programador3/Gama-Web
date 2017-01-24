@@ -24,6 +24,7 @@ namespace presentacion
                 Session["temp_table_id_reclu"] = null;
                 DataPrep();
             }
+            lnkcambiarfecha.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 348);
             H1.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 348);
             LNKREP.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 376);
         }
@@ -46,6 +47,7 @@ namespace presentacion
             Session["temp_table_id_reclu"] = ds.Tables[0];
             lblto.Text = ds.Tables[0].Rows.Count.ToString();
             if (ds.Tables[0].Rows.Count == 0) { Noempleados.Visible = true; }
+            gridreclu.Columns[1].Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 403);
         }
 
         protected void lnkGO_Click(object sender, EventArgs e)
@@ -96,14 +98,14 @@ namespace presentacion
             dt.Columns.Remove("num_total");
             dt.Columns.Remove("css_class");
             dt.Columns.Remove("fecha_compromiso_reclu");
-            dt.Columns.Remove("fecha_compromiso_reclutamiento");
             dt.Columns["descripcion"].ColumnName = "Puesto";
             dt.Columns["fecha_registro"].ColumnName = "Fecha de Solicitud";
+            dt.Columns["fecha_compromiso_reclutamiento"].ColumnName = "Fecha de Compromiso";
             ListaTables.Add(dt);
             string mensaje = "";
             string[] Nombres = new string[] { "Detalles de Reclutamiento" };
             mensaje = Export.toExcel("Reporte de Reclutamiento", XLColor.White, XLColor.Black, 18, true, DateTime.Now.ToString("MMMM dd, yyyy H:mm:ss", CultureInfo.CreateSpecificCulture("es-MX")), XLColor.White,
-                              XLColor.Black, 10, ListaTables, XLColor.Orange, XLColor.White, Nombres, 1,
+                              XLColor.Black, 10, ListaTables, XLColor.Gray, XLColor.White, Nombres, 1,
                               "Listado_de_Reclutamiento.xlsx", Page.Response);
 
             if (mensaje != "")
@@ -117,7 +119,32 @@ namespace presentacion
             int index = Convert.ToInt32(e.CommandArgument);
             string idc_puesto = gridreclu.DataKeys[index].Values["idc_puesto"].ToString();
             string idc_prepara = gridreclu.DataKeys[index].Values["idc_prepara"].ToString();
-            Response.Redirect("candidatos_preparar_captura.aspx?idc_puesto=" + funciones.deTextoa64(idc_puesto) + "&idc_prepara=" + funciones.deTextoa64(idc_prepara));
+            string reclutador = gridreclu.DataKeys[index].Values["reclutador"].ToString();
+            div_addobsr.Visible = false;
+            div_viewobsr.Visible = false;
+            Button1.Visible = false;
+            switch (e.CommandName)
+            {
+                case "preview":
+                    Response.Redirect("candidatos_preparar_captura.aspx?rec=" + funciones.deTextoa64(reclutador) + "&idc_puesto=" + funciones.deTextoa64(idc_puesto) + "&idc_prepara=" + funciones.deTextoa64(idc_prepara));
+
+                    break;
+                case "obsr_add":
+                    div_addobsr.Visible = true;
+                    Button1.Visible = true;
+                    txtidc_prepara.Text = idc_prepara.Trim();
+                    ScriptManager.RegisterStartupScript(this, GetType(),Guid.NewGuid().ToString(), "myModalObserv('modal fade modal-info');", true);
+                    break;
+                case "view_add":
+                    div_viewobsr.Visible = true;
+                    txtidc_prepara.Text = idc_prepara.Trim();
+                    CandidatosCOM componente = new CandidatosCOM();
+                    DataSet ds = componente.sp_puestosprepara_observaciones(Convert.ToInt32(idc_prepara));
+                    grid_observaciones.DataSource = ds.Tables[0];
+                    grid_observaciones.DataBind();
+                    ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "myModalObserv('modal fade modal-info');", true);
+                    break;
+            }
         }
 
         protected void Yes_Click(object sender, EventArgs e)
@@ -135,6 +162,37 @@ namespace presentacion
                 url = url.Replace(path_actual, "");
                 url = url + "tareas_informacion_adicional.aspx?idc_proceso=" + funciones.deTextoa64("0") + "&idc_tipoi=" + funciones.deTextoa64("5") + "&f1=" + funciones.deTextoa64(f1) + "&f2=" + funciones.deTextoa64(f2);
                 ScriptManager.RegisterStartupScript(this, GetType(), "noti533W3", "window.open('" + url + "');", true);
+            }
+        }
+
+        protected void Yes2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtobservaciones.Text == "")
+                {
+                    Alert.ShowAlertError("Ingrese Observaciones", this);
+                }
+                else
+                {
+                    CandidatosCOM componente = new CandidatosCOM();
+                    DataSet ds = componente.sp_mpuestos_preparar_obs(Convert.ToInt32(txtidc_prepara.Text), txtobservaciones.Text, Convert.ToInt32(Session["sidc_usuario"]));
+                    string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                    if (vmensaje == "")
+                    {
+                        txtidc_prepara.Text = "";
+                        txtobservaciones.Text = "";
+                        Alert.ShowAlert( "Observaciones Agregadas correctamente", "Mensaje del Sistema", this);
+                    }
+                    else
+                    {
+                        Alert.ShowAlertError(vmensaje, this);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
             }
         }
 

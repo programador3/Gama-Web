@@ -20,7 +20,7 @@
         <ContentTemplate>
             <div class="row">
                 <div class="col-lg-12">
-                    <h4><i class="fa fa-user-secret" aria-hidden="true"></i>&nbsp;Agente </h4>
+                    <h4><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Agente </h4>
                     <asp:DropDownList ID="ddlAgente" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlAgente_Changed" AutoPostBack="true">
                     </asp:DropDownList>
                     <h4><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Clientes </h4>            

@@ -194,7 +194,10 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-                                    <h5><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<strong>Fecha que aplicara</strong></h5>
+                                    <h5><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<strong>Fecha que aplicara</strong>
+                                        <span>
+                                            <asp:Button ID="btncancelarsol" Visible="false" CssClass="btn btn-danger" OnClick="btnrechaza2_Click" runat="server" Text="Cancelar Solicitud" /></span>
+                                    </h5>
                                     <asp:TextBox ID="txtfecha" TextMode="Date" CssClass="form-control timepicker" AutoPostBack="true" OnTextChanged="txtfecha_TextChanged" runat="server"></asp:TextBox>
                                 </div>
                             </div>
@@ -278,7 +281,7 @@
                     <asp:Button ID="btnguardar" CssClass="btn btn-info btn-block" OnClick="btnguardar_Click" runat="server" Text="Guardar" />
                 </div>
                 <div class="col-lg-6 col-sm-6 col-xs-6">
-                    <asp:Button ID="btncancelar" CssClass="btn btn-danger btn-block" OnClick="btncancelar_Click" runat="server" Text="Cancelar" />
+                    <asp:Button ID="btncancelar" CssClass="btn btn-danger btn-block" OnClick="btncancelar_Click" runat="server" OnClientClick="return confirm('¿DESEA REGRESAR?')" Text="Regresar" />
                 </div>
             </div>
             <div class="row" id="autoriza" runat="server" visible="false">

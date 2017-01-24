@@ -54,7 +54,7 @@ namespace presentacion
                     cbogrupos.DataBind();
                     cbogrupos.SelectedValue = Session["idc_cliente"] as string;
                     divgrupos.Visible = true;
-                    CargarFichaTecnica(Convert.ToInt32(dt.Rows[0]["idc_cliente"]));
+                    CargarFichaTecnica(Convert.ToInt32(cbogrupos.SelectedValue));
                 }
                 else
                 {
@@ -108,26 +108,24 @@ namespace presentacion
                 string lat = oclatitud.Value;
                 string lon = oclongitud.Value;
                 string vmensaje = "";
-                if (lat == "" || lon == "")
+                
+                AgentesENT entidad = new AgentesENT();
+                AgentesCOM com = new AgentesCOM();
+                entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
+                entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
+                entidad.Pusuariopc = funciones.GetUserName();//usuario pc
+                entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                entidad.Pidc_agente = Convert.ToInt32(Session["idc_agente"]);
+                entidad.Pidc_cliente = Convert.ToInt32(Session["idc_cliente"]);
+                entidad.Pidc_actiage = 4;
+                if (lat != "" && lon != "")
                 {
-                    vmensaje = "NO SE HA PODIDO CAPTURAR SU UBICACION GPS, PUEDE SER DEBIDO A QUE NO ESTA USANDO SU NAVEGADOR NATIVO. COMUNIQUESE AL DEPTO DE SISTEMAS.";
-                }
-                else {
-                    AgentesENT entidad = new AgentesENT();
-                    AgentesCOM com = new AgentesCOM();
-                    entidad.Pdirecip = funciones.GetLocalIPAddress(); //direccion ip de usuario
-                    entidad.Pnombrepc = funciones.GetPCName();//nombre pc usuario
-                    entidad.Pusuariopc = funciones.GetUserName();//usuario pc
-                    entidad.Idc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
-                    entidad.Pidc_agente = Convert.ToInt32(Session["idc_agente"]);
-                    entidad.Pidc_cliente = Convert.ToInt32(Session["idc_cliente"]);
-                    entidad.Pidc_actiage = 4;
                     entidad.Plat = Convert.ToSingle(lat);
                     entidad.Plon = Convert.ToSingle(lon);
-                    DataSet ds = com.registrar_visita(entidad);
-                    vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                 }
-               
+                DataSet ds = com.registrar_visita(entidad);
+                vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+
                 if (vmensaje == "")
                 {
                     Alert.ShowGiftMessage("Estamos Registrando la Visita", "Espere un Momento", "ficha_cliente_m.aspx", "imagenes/loading.gif", "2000", "El registro por GPS fue guardado de manera correcta.", this);
@@ -520,44 +518,45 @@ namespace presentacion
         protected void lnkseleccionar_Click(object sender, EventArgs e)
         {
             string opcion = cboopciones.SelectedValue;
+            string idc_cliente = cbogrupos.SelectedValue;
             switch (opcion)
             {
                 case "1"://AGREGAR TAREA
-                    Response.Redirect("agendar_llamada.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    Response.Redirect("agendar_llamada.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente));
                     break;
 
                 case "12"://AGREGAR TAREA
-                    Response.Redirect("tareas_clientes_cap.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    Response.Redirect("tareas_clientes_cap.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente));
                     break;
 
                 case "11"://REVISAR TAREA
-                    Response.Redirect("tareas_clientes_rev.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()) + "&idc_agente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_agente"]).ToString()));
+                    Response.Redirect("tareas_clientes_rev.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente) + "&idc_agente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_agente"]).ToString()));
                     break;
 
                 case "6"://negociacion articulos
-                    Response.Redirect("cotizacion_clientes2_m.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()) + "&IDA=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_agente"]).ToString()) +
+                    Response.Redirect("cotizacion_clientes2_m.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente) + "&IDA=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_agente"]).ToString()) +
                         "&r=" + funciones.deTextoa64(txtrfc.Text));
 
                     break;
 
                 case "5"://compromiso cliente
-                    Response.Redirect("compromisos_cliente.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    Response.Redirect("compromisos_cliente.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente));
                     break;
 
                 case "4"://ALTA INCONVENIENTE
-                    Response.Redirect("inconvenientes_cliente.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    Response.Redirect("inconvenientes_cliente.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente));
                     break;
 
                 case "9"://cotizacion
-                    Response.Redirect("cotizaciones_correo.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    Response.Redirect("cotizaciones_correo.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente));
                     break;
 
                 case "10"://check plus
-                    Response.Redirect("check_plus_pre.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    Response.Redirect("check_plus_pre.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente));
                     break;
 
                 case "8"://GENERRAR PEDIDO
-                    Response.Redirect("pedidos7.aspx?idc_cliente=" + funciones.deTextoa64(Convert.ToInt32(Session["idc_cliente"]).ToString()));
+                    Response.Redirect("pedidos7.aspx?idc_cliente=" + funciones.deTextoa64(idc_cliente));
                     break;
             }
         }
@@ -903,6 +902,7 @@ namespace presentacion
 
         protected void cbogrupos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Session["idc_cliente"] = cbogrupos.SelectedValue;
             CargarFichaTecnica(Convert.ToInt32(cbogrupos.SelectedValue));
         }
     }

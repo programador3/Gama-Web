@@ -129,14 +129,14 @@ namespace presentacion
         {
             LinkButton lnk = (LinkButton)sender;
             string value = funciones.deTextoa64(lnk.CommandName.ToString());
-            Response.Redirect("tareas_detalles.aspx?termina=1&idc_tarea=" + value);
+            Response.Redirect("tareas_detalles.aspx?LECTURA=1&termina=1&idc_tarea=" + value);
         }
 
         protected void lnkmistarea_Click1(object sender, EventArgs e)
         {
             LinkButton lnk = (LinkButton)sender;
             string value = funciones.deTextoa64(lnk.CommandName.ToString());
-            Response.Redirect("tareas_detalles.aspx?acepta=1&idc_tarea=" + value);
+            Response.Redirect("tareas_detalles.aspx?LECTURA=1&acepta=1&idc_tarea=" + value);
         }
 
         protected void repeat_asignadas_ItemDataBound(object sender, RepeaterItemEventArgs e)

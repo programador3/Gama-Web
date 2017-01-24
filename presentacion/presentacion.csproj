@@ -261,6 +261,10 @@
     <Content Include="fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="ficha_cliente_m.aspx" />
+    <Content Include="Ficha_Tecnica.aspx" />
+    <Content Include="Ficha_Tecnica.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Folios_Autorizacion.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.dev.svg" />
@@ -271,6 +275,8 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="grafica_ventas.aspx" />
+    <Content Include="guardias_captura.aspx" />
+    <Content Include="guardias_reporte.aspx" />
     <Content Include="hallazgos_incumplidos_m.aspx" />
     <Content Include="hallazgos_m.aspx" />
     <Content Include="hallazgos_pendientes_revisar_m.aspx" />
@@ -769,7 +775,9 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="pre_empleados_captura.aspx" />
+    <Content Include="pre_empleados_captura_basica.aspx" />
     <Content Include="pre_empleados_info.aspx" />
+    <Content Include="pre_empleados_vobo.aspx" />
     <Content Include="primitive\css\bporgeditor.latest.css" />
     <Content Include="primitive\css\images\ui-bg_flat_10_000000_40x100.png" />
     <Content Include="primitive\css\images\ui-bg_glass_100_f6f6f6_1x400.png" />
@@ -1665,6 +1673,20 @@
     <Compile Include="grupos_puestos_captura.aspx.designer.cs">
       <DependentUpon>grupos_puestos_captura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="guardias_captura.aspx.cs">
+      <DependentUpon>guardias_captura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="guardias_captura.aspx.designer.cs">
+      <DependentUpon>guardias_captura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="guardias_reporte.aspx.cs">
+      <DependentUpon>guardias_reporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="guardias_reporte.aspx.designer.cs">
+      <DependentUpon>guardias_reporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="hallazgos_incumplidos_m.aspx.cs">
       <DependentUpon>hallazgos_incumplidos_m.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1990,12 +2012,26 @@
     <Compile Include="pre_empleados_captura.aspx.designer.cs">
       <DependentUpon>pre_empleados_captura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pre_empleados_captura_basica.aspx.cs">
+      <DependentUpon>pre_empleados_captura_basica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pre_empleados_captura_basica.aspx.designer.cs">
+      <DependentUpon>pre_empleados_captura_basica.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pre_empleados_info.aspx.cs">
       <DependentUpon>pre_empleados_info.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pre_empleados_info.aspx.designer.cs">
       <DependentUpon>pre_empleados_info.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pre_empleados_vobo.aspx.cs">
+      <DependentUpon>pre_empleados_vobo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pre_empleados_vobo.aspx.designer.cs">
+      <DependentUpon>pre_empleados_vobo.aspx</DependentUpon>
     </Compile>
     <Compile Include="procesos_autorizar.aspx.cs">
       <DependentUpon>procesos_autorizar.aspx</DependentUpon>
@@ -2666,6 +2702,7 @@
     <None Include="Properties\PublishProfiles\WSWS.pubxml" />
     <Content Include="temp\ejemplo.xlsx" />
     <Content Include="temp\EJEMPLO_VALES_COMIDA.xlsx" />
+    <Content Include="temp\ejemplo_guardias.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2710,7 +2747,7 @@
     <Folder Include="temp\errores\" />
     <Folder Include="temp\examenes\" />
     <Folder Include="temp\excel\" />
-    <Folder Include="temp\files\" />
+    <Folder Include="temp\files\PDF\" />
     <Folder Include="temp\formato_revision\" />
     <Folder Include="temp\html_files\" />
     <Folder Include="temp\img\" />

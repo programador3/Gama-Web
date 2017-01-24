@@ -1,0 +1,9 @@
+Rocio Pamela Ruiz Treviño
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.Data.SqlClient.SqlException (0x80131904): Se proporcionó un número insuficiente de argumentos para el procedimiento o la función fn_deptos_asignados_puestos.
+   at negocio.Componentes.TareasCOM.CargarTareasAsigne(TareasENT Etiqueta) in D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\24_01_17\Puestos\negocio\Componentes\TareasCOM.cs:line 740
+   at presentacion.tareas.CargarTareasAsigne(Int32 idc_puesto, Int32 idc_depto) in D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\24_01_17\Puestos\presentacion\tareas.aspx.cs:line 38
+ClientConnectionId:85eaee50-9a4f-46c5-88e8-bded1407fc32
+Error Number:313,State:3,Class:16

@@ -34,6 +34,7 @@ namespace negocio.Componentes
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@idc_usuario", SqlDbType = SqlDbType.Int, Value = entidad.Usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pproduccion", SqlDbType = SqlDbType.Int, Value = entidad.Borrador });
 
             try
             {

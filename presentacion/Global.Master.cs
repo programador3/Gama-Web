@@ -100,19 +100,6 @@ namespace presentacion
                     Session["lista"] = listas_url;
                 }
             }
-            string query = "SELECT ticketserv.idc_ticketserv " +
-                        "FROM ticketserv WITH(NOLOCK) INNER JOIN " +
-                        "tareas_servicios_puestos WITH(NOLOCK) ON tareas_servicios_puestos.idc_tareaser = ticketserv.idc_tareaser " +
-                        "WHERE ticketserv.pendiente = 1 AND tareas_servicios_puestos.borrado = 0 " +
-                        "AND status = 'E' AND tareas_servicios_puestos.idc_puesto = "+Session["sidc_puesto_login"] as string+"";
-            DataTable dt_ticket = funciones.ExecQuery(query);
-            if (dt_ticket.Rows.Count > 0)
-            {
-
-                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), 
-                    "NotificacionDesktop('Sistema GAMA WEB','Tiene "+ dt_ticket.Rows.Count .ToString()+ " Ticket(s) en espera.','imagenes/pendiente.png');", true);
-          
-            }
         }
         private bool TieneOpcionesdeVentas()
         {

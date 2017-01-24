@@ -145,7 +145,7 @@ namespace negocio.Componentes
             return ds;
         }
 
-        public DataSet cursos_programar_capturar(Cursos_HistorialENT entidad)
+        public DataSet cursos_programar_capturar(Cursos_HistorialENT entidad, string correorh, string correocandidato, string obsrvaciones, string guid)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
@@ -160,6 +160,10 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pdirecip", SqlDbType = SqlDbType.VarChar, Value = entidad.Pdirecip });
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = entidad.Pusuariopc });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcorreorh", SqlDbType = SqlDbType.VarChar, Value = correorh });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcorreocandidato", SqlDbType = SqlDbType.VarChar, Value = correocandidato });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.VarChar, Value = obsrvaciones });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pguid", SqlDbType = SqlDbType.VarChar, Value = guid });
 
             try
             {
