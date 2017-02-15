@@ -181,7 +181,21 @@ namespace presentacion
             return "helo";
         }
 
-
+        [System.Web.Services.WebMethod]
+        public static int Avisos(List<string> aData)
+        {
+            try
+            {
+                String a = aData[0];
+                DataTable dt = funciones.ExecQuery("select * from fn_tiene_asvisos_sinleer("+a+")");
+               
+                return Convert.ToInt32(dt.Rows[0]["total_avisos"]);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
         /// <summary>
         /// Regresa tabla con notificaciones
         /// </summary>

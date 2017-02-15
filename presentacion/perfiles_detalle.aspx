@@ -115,7 +115,7 @@
                     <asp:LinkButton ID="lnkdescargarmanual" CssClass="btn btn-info" Width="50%" runat="server" OnClick="lnkdescargarmanual_Click">Descargar Manual Completo</asp:LinkButton>
                     <h3 style="text-align: center"><strong>
                         <asp:Label ID="lblComparacion" runat="server" Text="Comparación de Perfiles" Visible="false"></asp:Label></strong></h3>
-                    <a style="display: none" id="btnGO" class="btn btn-primary btn-block" href="#PanelB">Ver Perfil Borrador <span class='glyphicon glyphicon-new-window'></span></a>
+                    <a style="display: none" id="btnGO" class="btn btn-primary btn-block" href="#PanelB">Ver Perfil en Proceso <span class='glyphicon glyphicon-new-window'></span></a>
                     <br />
                 </div>
                 <asp:Panel ID="PanelHTML" Visible="False" runat="server">
@@ -223,7 +223,7 @@
                             <asp:Panel ID="PanelProduccion" runat="server" Visible="false">
                                 <div class="panel panel-success fresh-color">
                                     <div class="panel-heading" style="text-align: center; color: #FFF; background-color: #449D44;">
-                                        <h3><i class="glyphicon glyphicon-check"></i>Perfil Actual en Producción
+                                        <h3><i class="glyphicon glyphicon-check"></i>Perfil Actual Autorizado
                                                <span>
                                                    <button type="button" id="btn_p" class="btn btn-success btn-xs">
                                                        <span class="glyphicon glyphicon-chevron-down"></span>Ver

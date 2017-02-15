@@ -1346,6 +1346,25 @@ namespace negocio.Componentes
             return ds;
         }
 
+        public DataSet sp_comprobar_correo_reclutador(int idc_pre_empleado)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_pre_empleado", SqlDbType = SqlDbType.Int, Value = idc_pre_empleado });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_comprobar_correo_reclutador", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return ds;
+        }
+
         public DataSet SP_VER_PROYECTOS(AgentesENT entidad)
         {
             DataSet ds = new DataSet();

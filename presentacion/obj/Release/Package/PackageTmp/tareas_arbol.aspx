@@ -80,7 +80,7 @@
                             var url = document.getElementById('<%= HiddenField.ClientID%>').value;
                             url = url + "tareas_detalles.aspx?lectura=1&acepta=1&idc_tarea=" + data.context.label;
                             $('#<% =HiddenFieldurl.ClientID %>').attr('value', url);
-                            ModalConfirm('Mensaje del Sistema', 'Seleccione una opcion');
+                            //ModalConfirm('Mensaje del Sistema', 'Seleccione una opcion');
                             //swal({
                             //    title: "¿Desea visualizar esta Tarea?",
                             //    text: "Por cuestiones de seguridad, \n si usted NO ESTA INVOLUCRADO EN ESTA TAREA, \n NO SE LE PERMITIRA modificar el contenido de la misma.",
@@ -93,6 +93,10 @@
                             //function () {
                             //    window.location = url;
                             //});
+                            if (confirm('¿Desea visualizar esta Tarea?\nPor cuestiones de seguridad, \nsi usted NO ESTA INVOLUCRADO EN ESTA TAREA, \nNO SE LE PERMITIRA modificar el contenido de la misma.'))
+                            {
+                                window.open(url);
+                            }
                         } else {
                             swal("Mensaje del Sistema", "Para ver los detalles, de clic sobre la tarea padre.", "info");
                         }

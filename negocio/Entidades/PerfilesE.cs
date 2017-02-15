@@ -3,6 +3,7 @@
     public class PerfilesE
     {
         private int idc_perfil;
+        private int idc_depto;
         private string nombre;
         private string cadena_gpo_lib;
         private int cad_total_gpo_lib;
@@ -11,6 +12,8 @@
         private int idc_puestoperfil_borr;
 
         private bool borrador;
+        private bool produccion;
+        private bool todo;
         private string pcadena_archi;
         private int ptotal_cadena_archi;
         private string cadena_gpo_opc;
@@ -72,6 +75,11 @@
         {
             get { return idc_usuario; }
             set { idc_usuario = value; }
+        }
+        public int Pidc_depto
+        {
+            get { return idc_depto; }
+            set { idc_depto = value; }
         }
 
         public string Pdirecip
@@ -187,7 +195,16 @@
             get { return borrador; }
             set { borrador = value; }
         }
-
+        public bool Produccion
+        {
+            get { return produccion; }
+            set { produccion = value; }
+        }
+        public bool VerTodo
+        {
+            get { return todo; }
+            set { todo = value; }
+        }
         public string Cadena_perfil_docs
         {
             get { return cadena_perfil_docs; }

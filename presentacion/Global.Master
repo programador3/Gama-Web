@@ -11,12 +11,11 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <script src="https://use.fontawesome.com/697fe8fd5a.js"></script>
     <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap-switch.min.css" />
     <link rel="stylesheet" type="text/css" href="css/checkbox3.min.css" />
     <link href="css/PanelsLTE.css" rel="stylesheet" />
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="css/ionicons.css" rel="stylesheet" />
     <link href="css/ionicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -219,8 +218,6 @@
             }
         }
         function ValidateTotal(Object, val_min, val_max, error_mess) {
-            // It's a number
-
             if (Object.value != "") {
                 numValue = parseFloat(Object.value);
                 min = parseFloat(val_min);
@@ -242,23 +239,25 @@
 
         function nobackbutton() {
             ValidarOpciones();
+            //Avisos();
+            ValidarNotificaciones();
             LlenarNotificaciones();
             window.location.hash = "no-back-button";
             window.location.hash = "Again-No-back-button"
             window.onhashchange = function () { window.location.hash = "no-back-button"; }
             setTimeout(function () {
-                swal("Advertencia!!!","Por seguridad, si usted deja de utilizar el sistema por un lapso de mas de 2 horas, tendra que iniciar sesion de nuevo y sus cambios podrian perderse.","info");
+                swal("Advertencia!!!", "Por seguridad, si usted deja de utilizar el sistema por un lapso de mas de 2 horas, tendra que iniciar sesion de nuevo y sus cambios podrian perderse.", "info");
             }, 3600000);
         }
-    
-            function LlenarNotificaciones() {
-                GetSessionValueTotal();
-                GetSessionValuehtml();
-            }
-            function ValidarNotificaciones() {
-                $('#notipend').empty();
-                var aData = [];
-                aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
+
+        function LlenarNotificaciones() {
+            GetSessionValueTotal();
+            GetSessionValuehtml();
+        }
+        function ValidarNotificaciones() {
+            $('#notipend').empty();
+            var aData = [];
+            aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
                 var jsonData = JSON.stringify({ aData: aData });
                 $.ajax({
                     type: "POST",
@@ -441,56 +440,88 @@
                     }
                 }
             }
+            function Avisos() {
 
-            function ChangeCss(value) {
-                if (value != "P") {
-                    $("#navbartop").removeClass("navbar navbar-inverse navbar-fixed-top navbar-top");
-                    $("#navbartop").addClass("navbar navbar-default navbar-fixed-top navbar-top");
-                    $("#navbartop2").removeClass("side-menu sidebar-inverse");
-                    $("#navbartop2").addClass("side-menu sidebar-default");
+                $('#notieneavios').hide();
+                $('#tieneavios').hide();
+                $('#tot_avisos').html("");
+                tot_avisos
+                var aData = [];
+                aData[0] = $('#<%= hdnidc_usuario.ClientID%>').val();
+                    var jsonData = JSON.stringify({ aData: aData });
+                    $.ajax({
+                        type: "POST",
+                        url: "web_methods.aspx/Avisos",
+                        data: jsonData,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json", // dataType is json format
+                        success: OnSuccess,
+                        error: function (xhr, ajaxOptions, thrownError) {
+                        }
+                    });
+
+                    function OnSuccess(response) {
+                        var total = response.d;
+                        if (total > 0) {
+                            $('#tieneavios').show();
+                            $('#tot_avisos').html(total);
+                        } else {
+                            $('#notieneavios').show();
+                        }
+                    }
                 }
-            }
-      
 
-            // convertimos en minusculas la cadena devuelta por navigator.userAgent
-            var nav = navigator.userAgent.toLowerCase();
-            //buscamos dentro de la cadena mediante indexOf() el identificador del navegador
-            if (nav.indexOf("msie") != -1) {
-                alert("Su navegador Internet Explorer no es 100 % compatible con este sistema. Utilize Google Chrome");
-            } else if (nav.indexOf("firefox") != -1) {
-                alert("Su navegador Firefox no es 100 % compatible con este sistema. Utilize Google Chrome");
-            } else if (nav.indexOf("opera") != -1) {
-                alert("Su navegador Opera no es 100 % compatible con este sistema. Utilize Google Chrome");
-            }
-
-            function ConfirmaRet(msg) {
-                var r = confirm(msg);
-                if (r == true) {
-                    return true;
-                } else {
-                    return false;
+                function ChangeCss(value) {
+                    if (value != "P") {
+                        $("#navbartop").removeClass("navbar navbar-inverse navbar-fixed-top navbar-top");
+                        $("#navbartop").addClass("navbar navbar-default navbar-fixed-top navbar-top");
+                        $("#navbartop2").removeClass("side-menu sidebar-inverse");
+                        $("#navbartop2").addClass("side-menu sidebar-default");
+                    }
                 }
-            }
 
-            function AlertaOkRedirecciona(msg, url) {
-                swal({
-                    title: "Mensaje del Sistema",
-                    text: msg,
-                    type: "success",
-                    closeOnConfirm: false
-                },
-                function () {
-                    window.location.href = url;
-                });
-            }
+
+                // convertimos en minusculas la cadena devuelta por navigator.userAgent
+                var nav = navigator.userAgent.toLowerCase();
+                //buscamos dentro de la cadena mediante indexOf() el identificador del navegador
+                if (nav.indexOf("msie") != -1) {
+                    alert("Su navegador Internet Explorer no es 100 % compatible con este sistema. Utilize Google Chrome");
+                } else if (nav.indexOf("firefox") != -1) {
+                    alert("Su navegador Firefox no es 100 % compatible con este sistema. Utilize Google Chrome");
+                } else if (nav.indexOf("opera") != -1) {
+                    alert("Su navegador Opera no es 100 % compatible con este sistema. Utilize Google Chrome");
+                }
+
+                function ConfirmaRet(msg) {
+                    var r = confirm(msg);
+                    if (r == true) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                function AlertaOkRedirecciona(msg, url) {
+                    swal({
+                        title: "Mensaje del Sistema",
+                        text: msg,
+                        type: "success",
+                        closeOnConfirm: false
+                    },
+                    function () {
+                        window.location.href = url;
+                    });
+                }
     </script>
     <style type="text/css">
         body {
             font-family: 'Roboto Condensed', sans-serif;
         }
+
         .Ocultar {
-            display:none;
+            display: none;
         }
+
         .form-control2 {
             height: 34px;
             padding: 6px 12px;
@@ -506,7 +537,10 @@
             -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
             transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         }
-
+        .form-control2[disabled], .form-control2[readonly], fieldset[disabled] .form-control2 {
+            background-color: #eee;
+            opacity: 1;
+        }
         .read {
             border: 1px solid #ccc;
             background-color: #eee;
@@ -759,6 +793,23 @@
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                                 <i style="color: white;" class="fa fa-times icon"></i>
                             </button>
+                            <li class="dropdown" style="display:none;">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa  fa-envelope"></i>                                    
+                                <label id="tot_avisos" class="label label-danger"></label>
+                                </a>
+                                <ul class="dropdown-menu animated fadeInDown ">
+                                    <li class="title">Avisos 
+                                    </li>
+                                    <li id="notieneavios"  class="message">No tiene  Avisos
+                                    </li>
+                                  
+                                    <ul class="list-group notifications" id="tieneavios">
+                                        <li class="list-group-item">
+                                            <a href="avisos_todos_m.aspx">Ver Mis Avisos</a>  </li>
+                                    </ul>
+                                  
+                                </ul>
+                            </li>
                             <li class="dropdown danger">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star"></i>
                                     <asp:Label ID="LBLTOTALFAVORI" Visible="false" runat="server" Text=""></asp:Label>
@@ -798,7 +849,7 @@
                                 <ul class="dropdown-menu animated fadeInDown">
                                     <li>
                                         <div class="profile-info">
-                                            <h4 class="username">
+                                            <h4 style="text-align:center;">
                                                 <asp:Label ID="lbluser2" runat="server" Text=""></asp:Label></h4>
                                             <p>
                                                 <strong>Puesto:</strong>
@@ -821,7 +872,7 @@
                 <div class="side-menu sidebar-inverse" id="navbartop2" runat="server">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="side-menu-container">
-                            <div class="navbar-header">
+                          <%--  <div class="navbar-header">
                                 <a class="navbar-brand" style="text-align: center;">
                                     <div class="title" style="text-align: center;">
                                         <img onclick="ClicImg();" id="IMG" src="imagenes/logo_black.png" class="img-responsive" width="120" height="100" style="margin: 5px;" />
@@ -830,8 +881,16 @@
                                 <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                     <i class="fa fa-times icon"></i>
                                 </button>
-                            </div>
-
+                            </div>--%>
+                             <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa fa-th-large"></div>
+                                <div class="title">GAMA WEB</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
                             <ul class="nav navbar-nav">
                                 <li>
                                     <a href="menu.aspx">

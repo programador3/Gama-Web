@@ -58,6 +58,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Panel panel_puestos;
         
         /// <summary>
+        /// Control no.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl no;
+        
+        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>

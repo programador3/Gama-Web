@@ -13,13 +13,40 @@ namespace presentacion {
     public partial class ticket_serv {
         
         /// <summary>
-        /// Control grids.
+        /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl grids;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// Control lnksolomios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnksolomios;
+        
+        /// <summary>
+        /// Control txtbuscarespera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbuscarespera;
+        
+        /// <summary>
+        /// Control lnkbuscarespera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbuscarespera;
         
         /// <summary>
         /// Control NO_Hay_E.
@@ -31,13 +58,40 @@ namespace presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl NO_Hay_E;
         
         /// <summary>
-        /// Control grid_E.
+        /// Control repeat_en_espera.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grid_E;
+        protected global::System.Web.UI.WebControls.Repeater repeat_en_espera;
+        
+        /// <summary>
+        /// Control txtbuscaraten.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbuscaraten;
+        
+        /// <summary>
+        /// Control TextBox1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// Control lnkbuscaraten.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbuscaraten;
         
         /// <summary>
         /// Control NO_Hay_A.
@@ -49,13 +103,13 @@ namespace presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl NO_Hay_A;
         
         /// <summary>
-        /// Control grid_A.
+        /// Control repeat_atendidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grid_A;
+        protected global::System.Web.UI.WebControls.Repeater repeat_atendidos;
         
         /// <summary>
         /// Control confir.

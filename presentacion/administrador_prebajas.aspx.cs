@@ -147,6 +147,7 @@ namespace presentacion
                 {
                     if (Convert.ToInt32(row["idc_puesto"]) == idc_puestoprebaja)
                     {
+                        lblusuario.Text = row["usuario"].ToString();
                         lblNombre.Text = row["empleado"].ToString();
                         lblPuesto.Text = row["descripcion"].ToString();
                         lblnomina.Text = row["num_nomina"].ToString();

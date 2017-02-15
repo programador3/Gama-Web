@@ -55,29 +55,25 @@ namespace presentacion
                 entidad.Pidc_prepara = idc_prepara;
                 entidad.Pidc_pre_empleado = idc_pre_empleado;
                 DataSet ds = componente.CargaCandidatos(entidad);
-                txtobservaciones2.Text = ds.Tables[1].Rows[0]["observaciones"].ToString();
-                gridDetalles.DataSource = ds.Tables[1];
-                gridDetalles.DataBind();
-                repeat_telefonos.DataSource = ds.Tables[2];
-                repeat_telefonos.DataBind();
-                repeat_papeleria.DataSource = ds.Tables[3];
-                repeat_papeleria.DataBind();
+                if (ds.Tables[1].Rows.Count > 0)
+                {
+                    txtobservaciones2.Text = ds.Tables[1].Rows[0]["observaciones"].ToString();
+                    gridDetalles.DataSource = ds.Tables[1];
+                    gridDetalles.DataBind();
+                    repeat_telefonos.DataSource = ds.Tables[2];
+                    repeat_telefonos.DataBind();
+                    repeat_papeleria.DataSource = ds.Tables[3];
+                    repeat_papeleria.DataBind();
 
-                DataTable audio = ds.Tables[4];
-                DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
-                string pageName = HttpContext.Current.Request.ApplicationPath + "/";
-                //foreach (DataRow row in audio.Rows)
-                //{
-                //    string path = row["audiopath"].ToString();
-                //    string file = row["audio"].ToString();
-                //    File.Copy(path, dirInfo + file, true);
-                //    row["audio"] = System.Configuration.ConfigurationManager.AppSettings["server"] + "/temp/files/"  + file;
-                //}
-                repeater_referencias.DataSource = audio;
-                repeater_referencias.DataBind();
-                gridreferencias.DataSource = audio;
-                gridreferencias.DataBind();
+                    DataTable audio = ds.Tables[4];
+                    DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
+                    string pageName = HttpContext.Current.Request.ApplicationPath + "/";
+                    repeater_referencias.DataSource = audio;
+                    repeater_referencias.DataBind();
+                    gridreferencias.DataSource = audio;
+                    gridreferencias.DataBind();
 
+                }
 
             }
         }
@@ -94,8 +90,10 @@ namespace presentacion
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
                 string Domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
                 string pageName = HttpContext.Current.Request.ApplicationPath + "/";
-                File.Copy(ruta, dirInfo + Path.GetFileName(ruta), true);
-                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + Path.GetFileName(ruta) + "');", true);
+                Random random = new Random();
+                int randomNumber = random.Next(0, 1000000);
+                File.Copy(ruta, dirInfo + randomNumber.ToString()+"_"+ Path.GetFileName(ruta), true);
+                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + randomNumber.ToString() + "_" + Path.GetFileName(ruta) + "');", true);
 
             }
             else {

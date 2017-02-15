@@ -172,8 +172,9 @@
                                                 <asp:Label Style="font-weight: 700; color: red" ID="lbltextocorreo" runat="server" Text=""></asp:Label>
                                                 <asp:TextBox ID="txtcorreo" TextMode=" Email" CssClass="form-control" placeholder="Ingrese el Correo donde se enviara" runat="server"></asp:TextBox>
                                                 <br />
+                                                <label>Mensaje que se anexara en el correo al candidato. Puede Modificarlo.</label>
                                                 <asp:TextBox ID="txtObservaciones" TextMode="Multiline" CssClass="form-control"
-                                                    placeholder="Agrege comentarios que se veran en el correo" Rows="2" runat="server"></asp:TextBox>
+                                                    placeholder="Agrege comentarios que se veran en el correo" Rows="3" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>

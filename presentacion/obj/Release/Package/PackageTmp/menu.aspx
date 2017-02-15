@@ -137,6 +137,7 @@
         $(document).ready(function(){
             $("#Listado").empty();
             $("#Listado").hide();
+
         });
         function ModalConfirm(cTitulo) {
             var audio = new Audio('sounds/modal.wav');
@@ -234,6 +235,9 @@
                 </div>
             </asp:Panel>
             <div class="row">
+                <div class="col-lg-12" runat="server" id="div_tareas_mis_empleados">
+                    <asp:LinkButton ID="lnktareas_mis_empleados" CssClass="btn btn-danger" PostBackUrl="tareas_listado_sub.aspx" runat="server"></asp:LinkButton>
+                </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="card">
                         <div class="card-header" style="background-color: #353d47; color: white;">

@@ -103,6 +103,7 @@
     </asp:UpdatePanel>
     <div class="row">
         <div class="col-lg-12">
+           <h6 style="text-align:left; color:red;">Total de Articulos:&NBSP; <asp:Label ID="lbltotal" runat="server" Text="0"></asp:Label></h6>
             <div class="table table-responsive" style="font-size:11px;">
                 <asp:GridView ID="gridprocesos" CssClass="table table-responsive table-bordered" runat="server" DataKeyNames="idc_artimod,estado,conteo_total,idc_articulo,idc_artimodprog " OnRowDataBound="gridprocesos_RowDataBound" AutoGenerateColumns="false" OnRowCommand="gridprocesos_RowCommand">
                    <HeaderStyle ForeColor="White" BackColor="Gray" />

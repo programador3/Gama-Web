@@ -15,18 +15,15 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["date_noti"] == null)
-            {
-                Session["date_noti"] = DateTime.Now.AddMinutes(-1);
-            }
-            //dinamic_menudrop();
-            DateTime datevaluesession = Convert.ToDateTime(Session["date_noti"]);
-            if (DateTime.Now > datevaluesession)
-            {
-                Session["date_noti"] = DateTime.Now.AddMinutes(0);
-                ScriptManager.RegisterStartupScript(this, GetType(), "ded", "ValidarNotificaciones();", true);
-            }
             Page.MaintainScrollPositionOnPostBack = true;
+            //Session["date_noti"] = Session["date_noti"] == null ? DateTime.Now.AddMinutes(-1) : Convert.ToDateTime(Session["date_noti"]);
+            //DateTime datevaluesession = Session["date_noti"] == null ? DateTime.Now.AddMinutes(-1) : Convert.ToDateTime(Session["date_noti"]);
+            //if (DateTime.Now > datevaluesession)
+            //{
+            //    Session["date_noti"] = DateTime.Now.AddMinutes(0);
+            //    ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "ValidarNotificaciones();", true);
+            //}
+
             String path_actual = Request.Url.Segments[Request.Url.Segments.Length - 1];
 
             string cs = System.Configuration.ConfigurationManager.AppSettings["cs"];
@@ -48,11 +45,8 @@ namespace presentacion
             CargarHerramientasMenu();
             menu_vents.Visible = TieneOpcionesdeVentas();
             OpcionesUsadas();
-            DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/errores/"));//path local
-            Session["error_path"] = dirInfo.ToString();
             if (Session["sidc_usuario"] == null && Session["lista"] == null && path_actual != "reproductor_llamadas.aspx")//si no hay session logeamos
             {
-                CreateFileError("ERROR DE LOGIN", this.Page);
                 Response.Redirect("login.aspx");
             }
             else

@@ -282,11 +282,11 @@
                             <asp:LinkButton ID="lnkpmd" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkpmd_Click">PMD <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="servicios">
-                            <asp:LinkButton ID="lnkservicios" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkservicios_Click">Asignar Servicios <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkservicios" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkservicios_Click">A Quien Da Servicios <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="servicios_medan">
-                            <asp:LinkButton ID="lnkservicios_medan" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkservicios_medan_Click">Servicios Asignados <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkservicios_medan" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="lnkservicios_medan_Click">Quien Le Da Servicios<i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" runat="server" visible="false" id="permiso">
                             <asp:LinkButton ID="lnkpermiso" runat="server" Visible="true" CssClass="btn btn-primary btn-block" OnClick="LinkButton1_Click">Permiso Cambio de Horario <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>

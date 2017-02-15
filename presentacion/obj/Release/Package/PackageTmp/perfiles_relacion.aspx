@@ -66,10 +66,8 @@
                                                 <asp:AsyncPostBackTrigger ControlID="lnkpuesto" EventName="Click" />
                                             </Triggers>
                                             <ContentTemplate>
-
-                                                <asp:LinkButton ID="lnkpuesto" CssClass="btn btn-default btn-block" runat="server" CommandName='<%#Eval("idc_puesto") %>' OnClick="lnkpuesto_Click">
-                                                    <h5><%#Eval("descripcion_puesto_completa") %></h5>
-                                                </asp:LinkButton>
+                                                 <asp:Button ID="lnkpuesto" runat="server" Text='<%#Eval("descripcion_puesto_completa") %>' CssClass="btn btn-default btn-block"
+                                            CommandName='<%#Eval("idc_puesto") %>' OnClick="lnkpuesto_Click" />
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                     </ItemTemplate>

@@ -56,8 +56,29 @@ namespace presentacion
             {
                 CargaTareas();
                 CargaTareasAsignadas();
+                CargaTareasDeMisEmpleados();
+                lblpendientes.Text = MisTareas();
+                lblasignadas.Text = MisTareasAsignadas();
+                //CargarOpcionesRapida();
             }
         }
+        //private void CargarOpcionesRapida()
+        //{
+        //    try
+        //    {
+        //        OpcionesE entidadad = new OpcionesE();
+        //        OpcionesBL compad = new OpcionesBL();
+        //        entidadad.Usuario_id = Convert.ToInt32(Convert.ToInt32(Session["sidc_usuario"]));
+        //        DataSet ds = compad.AcessosDirectos(entidadad);
+        //        repeat_accesos.DataSource = ds.Tables[0];
+        //        repeat_accesos.DataBind();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Alert.ShowAlertError(ex.ToString(), this);
+        //    }
+        //}
+
 
         private bool TieneOpcionesdeVentas()
         {
@@ -73,6 +94,9 @@ namespace presentacion
                 return false;
             }
         }
+        /// <summary>
+        /// Obtiene la tareas que me asignaron
+        /// </summary>
         private void CargaTareas()
         {
             TareasENT entidad = new TareasENT();
@@ -87,7 +111,24 @@ namespace presentacion
                 notareas.Visible = true;
             }
         }
-
+        /// <summary>
+        /// Obtiene tareas de mis subordinados
+        /// </summary>
+        private void CargaTareasDeMisEmpleados()
+        {
+            TareasENT entidad = new TareasENT();
+            TareasCOM componente = new TareasCOM();
+            entidad.Pidc_puesto_asigna = Convert.ToInt32(Session["sidc_puesto_login"]);
+            entidad.Pmisempleados = true;
+            entidad.Pcorrecto = true;
+            entidad.Parchivo = false;
+            DataSet ds = componente.CargarPendientesHoy(entidad);
+            lnktareas_mis_empleados.Text = "<i class='fa fa-random' aria-hidden='true'></i> Ver Tareas de Mis Subordinados (" + ds.Tables[0].Rows.Count.ToString() + ") ";
+            div_tareas_mis_empleados.Visible = ds.Tables[0].Rows.Count > 0;
+        }
+        /// <summary>
+        /// Obtiene las tareas que yo asigne
+        /// </summary>
         private void CargaTareasAsignadas()
         {
             TareasENT entidad = new TareasENT();

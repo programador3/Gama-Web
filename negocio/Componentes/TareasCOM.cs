@@ -395,6 +395,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto_asigna", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_puesto_asigna });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptodo", SqlDbType = SqlDbType.Int, Value = entidad.Pcorrecto });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptodos_puestos", SqlDbType = SqlDbType.Int, Value = entidad.Parchivo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTAREAS_DE_MIS_EMPLEADOS", SqlDbType = SqlDbType.Int, Value = entidad.Pmisempleados });
 
             try
             {
@@ -540,6 +541,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@PAPLICAR_CAMBIOTODOS", SqlDbType = SqlDbType.Bit, Value = Etiqueta.PAPLICAR_CAMBIOTODOS });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_cambio", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Pcadena_arch });
             listparameters.Add(new SqlParameter() { ParameterName = "@PTOTAL_CADENA_cambio", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Ptotal_cadena_arch });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptarea_terminada_por_asigna", SqlDbType = SqlDbType.Bit, Value = Etiqueta.Ptarea_terminada_por_asigna }); 
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -678,23 +680,19 @@ namespace negocio.Componentes
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
 
-            if (Etiqueta.Pidc_depto != 0)
-            {
+            listparameters.Add(new SqlParameter() { ParameterName = "@preporte", SqlDbType = SqlDbType.Int, Value = Etiqueta.preporte });
+           
                 listparameters.Add(new SqlParameter() { ParameterName = "@pidc_depto", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_depto });
-            }
-            if (Etiqueta.Pidc_puesto != 0)
-            {
+           
                 listparameters.Add(new SqlParameter()
                 {
                     ParameterName = "@pidc_puesto",
                     SqlDbType = SqlDbType.Int,
                     Value = Etiqueta.Pidc_puesto
                 });
-            }
-            if (Etiqueta.Pidc_puesto_asigna != 0)
-            {
+            
                 listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto_asigna", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto_asigna });
-            }
+            
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -713,23 +711,16 @@ namespace negocio.Componentes
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
 
-            if (Etiqueta.Pidc_depto != 0)
-            {
-                listparameters.Add(new SqlParameter() { ParameterName = "@pidc_depto", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_depto });
-            }
-            if (Etiqueta.Pidc_puesto != 0)
-            {
-                listparameters.Add(new SqlParameter()
+            listparameters.Add(new SqlParameter() { ParameterName = "@preporte", SqlDbType = SqlDbType.Int, Value = Etiqueta.preporte });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_depto", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_depto });
+            listparameters.Add(new SqlParameter()
                 {
                     ParameterName = "@pidc_puesto",
                     SqlDbType = SqlDbType.Int,
                     Value = Etiqueta.Pidc_puesto
                 });
-            }
-            if (Etiqueta.Pidc_puesto_asigna != 0)
-            {
-                listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto_asigna", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto_asigna });
-            }
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto_asigna", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto_asigna });
+            
             try
             {
                 //ds = data.datos_Clientes(listparameters);

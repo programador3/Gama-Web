@@ -233,7 +233,24 @@ namespace presentacion
                 return dt;
             }
         }
-
+        public static DataTable CorreoReclutador(int idc_pre_empleado)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                AgentesENT enti = new AgentesENT();
+                AgentesCOM com = new AgentesCOM();
+                DataSet ds = com.sp_comprobar_correo_reclutador(idc_pre_empleado);
+                dt = ds.Tables[0];
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                funciones.EnviarError(ex.ToString());
+                string t = ex.ToString();
+                return dt;
+            }
+        }
         public static string EnviarCorreo(string username, string password, string hostnamesmtp, int portsmtp, bool useSsl,
             string subject, string body, string to, List<string> listadeadjuntos, bool ishtml)
         {

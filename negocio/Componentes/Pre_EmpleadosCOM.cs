@@ -34,6 +34,24 @@ namespace negocio.Componentes
             }
             return ds;
         }
+        public DataSet CargaInformacion_prepara_sinpuesto(Pre_EmpleadosENT Entidad)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_prepara", SqlDbType = SqlDbType.Int, Value = Entidad.Pidc_candidato });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_datos_captura_preempleado_web", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
 
         public DataSet sp_informacion_solicitud_preempleados(int guid)
         {
@@ -176,6 +194,7 @@ namespace negocio.Componentes
             if (Entidad.Idc_estado > 0) { listparameters.Add(new SqlParameter() { ParameterName = "@idc_estado", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_estado }); }
             if (Entidad.Idc_colonia > 0) { listparameters.Add(new SqlParameter() { ParameterName = "@idc_colonia", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_colonia }); }
 
+            
 
             listparameters.Add(new SqlParameter() { ParameterName = "@sexo", SqlDbType = SqlDbType.Char, Value = Entidad.Sexo });
             listparameters.Add(new SqlParameter() { ParameterName = "@idc_sucursal", SqlDbType = SqlDbType.Int, Value = Entidad.Idc_sucursal });
@@ -209,7 +228,6 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pnombrepc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pnombrepc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pusuariopc", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pusuariopc });
             listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.VarChar, Value = Entidad.Pobersvaciones });
-            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_horariogpo", SqlDbType = SqlDbType.Int, Value = Entidad.Numcadhorarios });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadenah", SqlDbType = SqlDbType.VarChar, Value = Entidad.Cadhorarios });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptotal_cad_ref", SqlDbType = SqlDbType.Int, Value = Entidad.tot_cadena_REF });
             listparameters.Add(new SqlParameter() { ParameterName = "@pcadena_ref", SqlDbType = SqlDbType.VarChar, Value = Entidad.cadena_ref });

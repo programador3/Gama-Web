@@ -7,8 +7,263 @@ using System.Data.SqlClient;
 
 namespace negocio.Componentes
 {
+
+    
     public class PuestosCOM
     {
+        public DataSet SP_COMBO_TABULADORES_SUELDOS()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("SP_COMBO_TABULADORES_SUELDOS", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_combo_horariosg()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_horariosg", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_pre_puestos_autorizar(string cadena, int total_cadena, int idc_usuario, string observaciones)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pcadena", SqlDbType = SqlDbType.Int, Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptotal_cadena", SqlDbType = SqlDbType.Int, Value = total_cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pobservaciones", SqlDbType = SqlDbType.Int, Value = observaciones });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_pre_puestos_autorizar", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_status_pre_puestos(int idc_pre_puesto, string status, int idc_usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_pre_puesto", SqlDbType = SqlDbType.Int, Value = idc_pre_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pstatus", SqlDbType = SqlDbType.Int, Value = status });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_status_pre_puestos", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_e_pre_puestos(int idc_pre_puesto, string status, int idc_usuario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_pre_puesto", SqlDbType = SqlDbType.Int, Value = idc_pre_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pstatus", SqlDbType = SqlDbType.Int, Value = status });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_e_pre_puestos", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet sp_pre_puestos(int idc_pre_puesto, int tipo)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_pre_puesto", SqlDbType = SqlDbType.Int, Value = idc_pre_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo_catalogo", SqlDbType = SqlDbType.Int, Value = tipo });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_pre_puestos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_mpre_puestos(int idc_pre_puesto, string descripcion, string clave, int idc_puesto_jefe, int idc_depto, int idc_sucursal, int idc_uniforme, int idc_usuario, string cadena, int total_cadena, 
+            int idc_perfil,            int idc_horariog, int idc_tabulador, int dias_reclu)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_pre_puesto", SqlDbType = SqlDbType.Int, Value = idc_pre_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PDESCRIPCION", SqlDbType = SqlDbType.Int, Value = descripcion });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PCLAVE", SqlDbType = SqlDbType.Int, Value = clave });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO_JEFE", SqlDbType = SqlDbType.Int, Value = idc_puesto_jefe });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_DEPTO", SqlDbType = SqlDbType.Int, Value = idc_depto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_SUCURSAL", SqlDbType = SqlDbType.Int, Value = idc_sucursal });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tabulador", SqlDbType = SqlDbType.Int, Value = idc_tabulador });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_horariog", SqlDbType = SqlDbType.Int, Value = idc_horariog });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_UNIFORME", SqlDbType = SqlDbType.Int, Value = idc_uniforme });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_USUARIO", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_perfil", SqlDbType = SqlDbType.Int, Value = idc_perfil });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PCADENA", SqlDbType = SqlDbType.Int, Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTOTAL_CADENA", SqlDbType = SqlDbType.Int, Value = total_cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdias_reclutar", SqlDbType = SqlDbType.Int, Value = dias_reclu });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_mpre_puestos", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_apre_puestos(string descripcion,string clave, int idc_puesto_jefe,int  idc_depto,int idc_sucursal, int idc_uniforme, int idc_usuario, string cadena, int total_cadena, int idc_perfil ,
+            int idc_horariog, int idc_tabulador, int dias_reclu)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@PDESCRIPCION", SqlDbType = SqlDbType.Int, Value = descripcion });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PCLAVE", SqlDbType = SqlDbType.Int, Value = clave });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_PUESTO_JEFE", SqlDbType = SqlDbType.Int, Value = idc_puesto_jefe });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_DEPTO", SqlDbType = SqlDbType.Int, Value = idc_depto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_SUCURSAL", SqlDbType = SqlDbType.Int, Value = idc_sucursal });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_UNIFORME", SqlDbType = SqlDbType.Int, Value = idc_uniforme });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_tabulador", SqlDbType = SqlDbType.Int, Value = idc_tabulador });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_horariog", SqlDbType = SqlDbType.Int, Value = idc_horariog });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PIDC_USUARIO", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_perfil", SqlDbType = SqlDbType.Int, Value = idc_perfil });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PCADENA", SqlDbType = SqlDbType.Int, Value = cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTOTAL_CADENA", SqlDbType = SqlDbType.Int, Value = total_cadena });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pdias_reclutar", SqlDbType = SqlDbType.Int, Value = dias_reclu });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_apre_puestos", listparameters, true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_combo_puestos_clasificacion()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_puestos_clasificacion", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_combo_puestos(string filtro)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfiltro", SqlDbType = SqlDbType.Int, Value = filtro});
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_puestos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_combo_tipos_uniformes()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_combo_tipos_uniformes", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_sucursales_combo()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_sucursales_combo", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet SP_COMBO_DEPTOS()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("SP_COMBO_DEPTOS", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         /// <summary>
         /// Carga una lista de todos los puestos de la empresa
         /// </summary>

@@ -112,6 +112,24 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.Repeater Repeater3;
         
         /// <summary>
+        /// Control div_tareas_mis_empleados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_tareas_mis_empleados;
+        
+        /// <summary>
+        /// Control lnktareas_mis_empleados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnktareas_mis_empleados;
+        
+        /// <summary>
         /// Control total_tareas.
         /// </summary>
         /// <remarks>

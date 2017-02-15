@@ -1604,8 +1604,8 @@ namespace presentacion
                         entidad.Idc_edocivil = Convert.ToInt32(ddlEstadoCivil.SelectedValue == "" ? "0" : ddlEstadoCivil.SelectedValue);
                         entidad.Idc_estado = Convert.ToInt32(ddlestado.SelectedValue == "" ? "0" : ddlestado.SelectedValue);
                         entidad.Idc_nzona = 1;
-                        entidad.Idc_prepara = Convert.ToInt32(Session["idc_prepara"]);
-                        entidad.Idc_puesto = Convert.ToInt32(Session["idc_puesto"]);//IDC_PUESTO
+                        entidad.Idc_prepara = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_prepara"]));
+                        entidad.Idc_puesto = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_prepara"]));
                         entidad.Idc_sucursal = 1;
                         entidad.Nombre = txtNombres.Text.ToUpper();
                         entidad.Paterno = txtPaterno.Text.ToUpper();
@@ -1657,10 +1657,10 @@ namespace presentacion
                         DataRow row = ds.Tables[0].Rows[0];
                         //verificamos que no existan errores
                         string mensaje = row["mensaje"].ToString();
-                        int idc_pre_empleado = Convert.ToInt16(row["idc_pre_empleado"].ToString());
-                        entidad.Idc_pre_empleado = idc_pre_empleado;
                         if (mensaje == "")//no hay errores retornamos true
                         {
+                            int idc_pre_empleado = Convert.ToInt16(row["idc_pre_empleado"].ToString());
+                            entidad.Idc_pre_empleado = idc_pre_empleado;
                             bool correct = true;
                             DataTable elector = (DataTable)Session["elector"];
                             DataTable licencia = (DataTable)Session["licencia"];

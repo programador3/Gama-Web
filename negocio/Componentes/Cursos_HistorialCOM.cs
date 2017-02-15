@@ -13,12 +13,13 @@ namespace negocio.Componentes
         /// retorna los pre empleados que ocupan curso y no se a dado una evaluación.
         /// </summary>
         /// <returns></returns>
-        public DataSet cursos_mandar_capacitar()
+        public DataSet cursos_mandar_capacitar(int idc_puesto)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
 
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = idc_puesto });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

@@ -87,7 +87,6 @@ namespace presentacion
             catch (Exception ex)
             {
                 Alert.ShowAlertError(ex.ToString(), this.Page);
-                Global.CreateFileError(ex.ToString(), this);
             }
         }
 
@@ -97,26 +96,31 @@ namespace presentacion
         /// <param name="idc_puestoprebaja"></param>
         private void GenerarDatosEmpleado(int idc_puestoprebaja)
         {
-            DataTable tabla = (DataTable)Session["Tabla_DatosEmpleado"];
-            //si el id de empleado es igaul saco los datos
-            foreach (DataRow row in tabla.Rows)
+            try
             {
-                if (Convert.ToInt32(row["IDC_PUESTO"]) == idc_puestoprebaja)
+                DataTable tabla = (DataTable)Session["Tabla_DatosEmpleado"];
+                //si el id de empleado es igaul saco los datos
+                foreach (DataRow row in tabla.Rows)
                 {
-                    lblNombre.Text = row["empleado"].ToString();
-                    lblPuesto.Text = row["descripcion"].ToString();
-                    lblnomina.Text = row["num_nomina"].ToString();
-                    lblmotivo.Text = row["motivo"].ToString();
-                    lblsucursal.Text = row["sucursal"].ToString();
-                    idc_prebaja = Convert.ToInt32(row["idc_prebaja"].ToString());
-                    GenerarRuta(Convert.ToInt32(row["idc_empleado"].ToString()), "fot_emp");
+                    if (Convert.ToInt32(row["IDC_PUESTO"]) == idc_puestoprebaja)
+                    {
+                        lblNombre.Text = row["empleado"].ToString();
+                        lblPuesto.Text = row["descripcion"].ToString();
+                        lblnomina.Text = row["num_nomina"].ToString();
+                        lblmotivo.Text = row["motivo"].ToString();
+                        lblsucursal.Text = row["sucursal"].ToString();
+                        idc_prebaja = Convert.ToInt32(row["idc_prebaja"].ToString());
+                        GenerarRuta(Convert.ToInt32(row["idc_empleado"].ToString()), "fot_emp");
+                    }
                 }
+                DataTable tabla_servicios = (DataTable)Session["Tabla_DatosServicio"];
+                DataRow row_ser = tabla_servicios.Rows[0];
+                lblNombreEncargado.Text = row_ser["empleado"].ToString();
             }
-            DataTable tabla_servicios = (DataTable)Session["Tabla_DatosServicio"];
-            DataRow row_ser = tabla_servicios.Rows[0];
-            lblNombreEncargado.Text = row_ser["empleado"].ToString();
-            //txtDescSer.Text= row_ser["descripcion"].ToString();
-            //idc_revisionser=Convert.ToInt32(row_ser["idc_revisionser"].ToString());
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+            }
         }
 
         /// <summary>

@@ -25,6 +25,13 @@
             $('#myModal').modal('hide');
         }
     </script>
+    
+     <style type="text/css">
+        .scroll {
+            padding: 10px;
+            background-color: #F2F2F2;
+        }
+         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="row">
@@ -81,13 +88,41 @@
                                             </h4>
                                         </div>
                                     </div>
+                                    <div class="row" id="vobo" runat="server" visible="false">
+
+                                        <asp:UpdatePanel ID="udududud" runat="server" UpdateMode="Always">
+                                            <Triggers>
+                                                <asp:AsyncPostBackTrigger ControlID="gridCatalogo" EventName="RowCommand" />
+                                            </Triggers>
+                                            <ContentTemplate>
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <h4><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Horarios Aplicables</strong></h4>
+                                                    <asp:DropDownList ID="ddlhorarios" CssClass=" form-control " AutoPostBack="True" runat="server" OnSelectedIndexChanged="ddlhorarios_SelectedIndexChanged"></asp:DropDownList>
+                                                </div>
+                                                <br />
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <div class="table table-responsive">
+                                                        <asp:GridView ID="grid_Detalles" CssClass="table table-responsive table-bordered" AutoGenerateColumns="false" runat="server">
+                                                            <Columns>
+                                                                <asp:BoundField DataField="nombre_dia" HeaderText="Dia"></asp:BoundField>
+                                                                <asp:BoundField DataField="horario" HeaderText="Horario"></asp:BoundField>
+                                                                <asp:BoundField DataField="horario_comida" HeaderText="Comida"></asp:BoundField>
+                                                                <asp:CheckBoxField DataField="laborable" Text="Laborable"></asp:CheckBoxField>
+                                                            </Columns>
+                                                        </asp:GridView>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </div>
                                     <div class="row" id="cambiar_fecha" runat="server" visible="false">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">                                           
-                                                <asp:Label Style="font-weight: 700; color: red" ID="lbltextocorreo" Visible="false" runat="server" Text=""></asp:Label>
-                                            <asp:TextBox ID="txtcorreo" CssClass="form-control" Style="text-transform: uppercase;" onblur="return imposeMaxLength(this, 250);" 
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                            <asp:Label Style="font-weight: 700; color: red" ID="lbltextocorreo" Visible="false" runat="server" Text=""></asp:Label>
+                                            <asp:TextBox ID="txtcorreo" CssClass="form-control" Style="text-transform: uppercase;" onblur="return imposeMaxLength(this, 250);"
                                                 TextMode="Email" placeholder="Ingrese un Correo" runat="server"></asp:TextBox>
-                                            <br />
-                                            <asp:TextBox ID="txtmotivo" CssClass="form-control" Style="text-transform: uppercase;" onblur="return imposeMaxLength(this, 250);" TextMode="MultiLine" placeholder="Ingrese un Motivo" 
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                            <asp:TextBox ID="txtmotivo" CssClass="form-control" Style="text-transform: uppercase;" onblur="return imposeMaxLength(this, 250);" TextMode="MultiLine" placeholder="Ingrese un Motivo"
                                                 Rows="3" runat="server"></asp:TextBox>
                                         </div>
                                     </div>

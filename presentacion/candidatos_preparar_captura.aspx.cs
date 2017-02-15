@@ -635,7 +635,7 @@ namespace presentacion
         protected void lnknuevocandidato_Click(object sender, EventArgs e)
         {
             Session["redirect"] = "candidatos_preparar_captura.aspx?rec=" + Request.QueryString["rec"].ToString() + "&idc_puesto=" + Request.QueryString["idc_puesto"].ToString() + "&idc_prepara=" + Request.QueryString["idc_prepara"].ToString();
-            Response.Redirect("pre_empleados_captura_basica.aspx?idc_puesto=" + Request.QueryString["idc_puesto"].ToString());
+            Response.Redirect("pre_empleados_captura_basica.aspx?idc_puesto=" + Request.QueryString["idc_puesto"].ToString()+ "&idc_prepara=" + Request.QueryString["idc_prepara"].ToString());
         }
 
         protected void lnkcambiarfecha_Click(object sender, EventArgs e)

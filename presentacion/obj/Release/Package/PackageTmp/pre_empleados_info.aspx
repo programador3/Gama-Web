@@ -30,6 +30,16 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+        div.container4 {
+            height: 20em;
+            position: relative }
+        div.container4 img {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%) }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -39,8 +49,8 @@
                                                                               </span>
     </h2>    
     <div class="row">
-        <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
-            <asp:Image style="max-width:250px; max-height:250px" ID="imgempleado" ImageUrl="~/imagenes/acount.png" runat="server" />
+        <div class="container4">
+            <asp:Image CssClass=" image img-responsive" style="max-width:250px; max-height:250px" ID="imgempleado" ImageUrl="~/imagenes/acount.png" runat="server" />
         </div>
     </div>
     <div class="row">

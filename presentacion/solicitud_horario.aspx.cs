@@ -27,9 +27,7 @@ namespace presentacion
                 edicion.Visible = false;
                 autoriza.Visible = false;
                 Session["pidc_empleado_solic_horario"] = null;
-                txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');
                 CargarGridPrincipal(Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"])));
-                txtfecha_TextChanged(null,null);
             }
             //SI ES UNA AUTORIZACION
             if (!IsPostBack && Request.QueryString["autoriza"] != null)
@@ -208,7 +206,7 @@ namespace presentacion
                     lnkno_Salida.CssClass = "btn btn-default btn-block";
                     lnkno_horacomida.CssClass = Convert.ToBoolean(row["no_comida"]) == true ? "btn btn-success btn-block" : "btn btn-default btn-block";
                     lnkno_Salida.CssClass = Convert.ToBoolean(row["no_salida"]) == true ? "btn btn-success btn-block" : "btn btn-default btn-block";
-                    if (Convert.ToBoolean(row["no_comida"]) && Convert.ToBoolean(row["no_salida"]) && txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
+                    if (!Convert.ToBoolean(row["no_comida"]) && !Convert.ToBoolean(row["no_salida"]) && txthoraentrada.Text == "" && txthoraentradac.Text == "" && txthorasalida.Text == "" && txthorasalidac.Text == "" && ddlsucursales.SelectedValue == "0")
                     {
                         btntot.CssClass = "btn btn-success btn-block";
                         cuerpo.Visible = false;
@@ -273,6 +271,10 @@ namespace presentacion
             else if (txtobservaciones.Text == "" && Request.QueryString["autoriza"] == null)
             {
                 Alert.ShowAlertError("Ingrese Observaciones", this);
+            }
+            else if (txtobservaciones.Text.Contains("asistencia de salida") && Request.QueryString["autoriza"] == null)
+            {
+                Alert.ShowAlertError("No existe la ASISTENCIA DE SALIDA. \\n Cambie sus Observaciones", this);
             }
             else if (txtfecha.Text == "")
             {
@@ -551,6 +553,8 @@ namespace presentacion
                     txthoraentradac.Enabled = true;
                     txthorasalidac.Enabled = true;
                     ddlsucursales.SelectedValue = "0";
+                    lnkno_horacomida.CssClass = "btn btn-default btn-block";
+                    lnkno_Salida.CssClass = "btn btn-default btn-block";
                 }
             }
         }

@@ -100,6 +100,7 @@
                     <asp:LinkButton ID="lnkexcel" CssClass="btn btn-success" runat="server" OnClick="lnkexcel_Click">Exportar Listado a Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></asp:LinkButton>
                     <asp:LinkButton ID="LNKREP" CssClass="btn btn-info" runat="server" OnClick="LinkButton1_Click">Ver Reporte de Altas y Bajas de Empledos <i class="fa fa-file-excel-o" aria-hidden="true"></i></asp:LinkButton>
                     <asp:LinkButton ID="lnkcambiarfecha" CssClass=" btn btn-success" PostBackUrl="cambiar_fechas_compromiso.aspx" runat="server">Cambiar Fecha Compromiso(MASIVO)</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton1" CssClass=" btn btn-danger" runat="server" OnClientClick="window.open('grafica_reclutamiento.aspx');">Grafica de Rendimiento</asp:LinkButton>
                    
                      <div class="table table-responsive">
                         <asp:GridView AutoGenerateColumns="false" ID="gridreclu" DataKeyNames="idc_puesto,idc_prepara,reclutador" OnRowCommand="gridreclu_RowCommand" 
@@ -128,6 +129,7 @@
                                 <asp:BoundField DataField="sucursal" HeaderStyle-Width="100px" HeaderText="Sucursal"></asp:BoundField>
                                 <asp:BoundField DataField="depto" HeaderStyle-Width="100px" HeaderText="Depto"></asp:BoundField>
                                 <asp:BoundField DataField="total_candidatos" HeaderStyle-Width="10px" HeaderText="Candidatos Reclutados"></asp:BoundField>
+                                <asp:BoundField DataField="dias" HeaderStyle-Width="10px" HeaderText="Dias"></asp:BoundField>
                                 <asp:BoundField DataField="reclutador" HeaderStyle-Width="150px" HeaderText="Reclutador"></asp:BoundField>
                                 <asp:BoundField DataField="idc_puesto" HeaderText="Area" Visible="false"></asp:BoundField>
                                 <asp:BoundField DataField="idc_prepara" HeaderText="Area" Visible="false"></asp:BoundField>

@@ -111,7 +111,7 @@ namespace presentacion
             DataTable dt = (DataTable)Session["tabla_pp"];
             foreach (RepeaterItem item in repeat_pues.Items)
             {
-                LinkButton lnk = (LinkButton)item.FindControl("lnkpuesto");
+                Button lnk = (Button)item.FindControl("lnkpuesto");
                 int idc_puesto = Convert.ToInt32(lnk.CommandName);
                 foreach (DataRow row in dt.Rows)
                 {
@@ -253,7 +253,7 @@ namespace presentacion
                         string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
                         if (vmensaje == "")
                         {
-                            Alert.ShowGiftMessage("Estamos procesando las solicitudes de autorizacion.", "Espere un Momento", "menu.aspx", "imagenes/loading.gif", "5000", "Las Solicitudes de Autorizacion fueron guardados correctamente. ", this);
+                            Alert.ShowGiftMessage("Estamos procesando las solicitudes de autorizacion.", "Espere un Momento", "perfiles_relacion.aspx", "imagenes/loading.gif", "1000", "Las Solicitudes de Autorizacion fueron guardados correctamente. ", this);
                         }
                         else
                         {
@@ -290,7 +290,7 @@ namespace presentacion
 
         protected void lnkpuesto_Click(object sender, EventArgs e)
         {
-            LinkButton linkbtn = sender as LinkButton;
+            Button linkbtn = sender as Button;
             linkbtn.CssClass = linkbtn.CssClass == "btn btn-success btn-block" ? "btn btn-default btn-block" : "btn btn-success btn-block";
             string css = linkbtn.CssClass;
             int idc_pp = Convert.ToInt32(ddlperfil.SelectedValue);
@@ -306,7 +306,7 @@ namespace presentacion
                     {
                         foreach (RepeaterItem item in repeat_pues.Items)
                         {
-                            LinkButton lnk = (LinkButton)item.FindControl("lnkpuesto");
+                            Button lnk = (Button)item.FindControl("lnkpuesto");
                             if (lnk == linkbtn)
                             {
                                 int idc_p = Convert.ToInt32(lnk.CommandName);
@@ -326,7 +326,7 @@ namespace presentacion
                 case "btn btn-default btn-block":
                     foreach (RepeaterItem item in repeat_pues.Items)
                     {
-                        LinkButton lnk = (LinkButton)item.FindControl("lnkpuesto");
+                        Button lnk = (Button)item.FindControl("lnkpuesto");
                         if (lnk == linkbtn)
                         {
                             int idc_p = Convert.ToInt32(lnk.CommandName);
@@ -335,7 +335,6 @@ namespace presentacion
                     }
 
                     CargarGrid();
-                    CargaPuestos("");
                     break;
             }
         }

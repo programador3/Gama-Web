@@ -109,6 +109,7 @@ namespace presentacion
             DataSet ds = componente.CargarArticulos(entidad);
             gridprocesos.DataSource = ds.Tables[0];
             gridprocesos.DataBind();
+            lbltotal.Text = ds.Tables[0].Rows.Count.ToString();
             Session["dtart"] = ds.Tables[0];
         }
 

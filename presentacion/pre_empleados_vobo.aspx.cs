@@ -44,10 +44,22 @@ namespace presentacion
             string nombre = gridCatalogo.DataKeys[index].Values["nombre"].ToString();
             Session["idc_pre_empleado"] = idc_pre.ToString();
             cambiar_fecha.Visible = false;
-
+            vobo.Visible = false;
             switch (e.CommandName)
             {
                 case "OK":
+                    Pre_EmpleadosENT entidad = new Pre_EmpleadosENT();
+                    Pre_EmpleadosCOM componente = new Pre_EmpleadosCOM();
+                    entidad.Pidc_candidato = Convert.ToInt32(gridCatalogo.DataKeys[index].Values["idc_prepara"].ToString());
+                    DataSet ds = componente.CargaInformacion(entidad);
+                    ddlhorarios.DataTextField = "descripcion";
+                    ddlhorarios.DataValueField = "idc_horariog";
+
+                    ddlhorarios.DataSource = ds.Tables[9];
+                    ddlhorarios.DataBind();
+                    ddlhorarios.Items.Insert(0,new ListItem("--Seleccione un Horario--","0"));
+                    Session["HORARIO"] = ds.Tables[9];
+                    vobo.Visible = true;
                     Session["Caso_Confirmacion"] = "vobo";
                     ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "ModalConfirm('Mensaje del Sistema','¿Desea dar el Visto Bueno al Candidato "+ nombre + "? \\nEsto terminara el proceso de preparación y podra dar de alta al candidato como Empleado.');", true);
                     break;
@@ -72,7 +84,7 @@ namespace presentacion
                         txtcorreo.ReadOnly = Convert.ToInt32(dt_correos_reclu.Rows[0]["idc_correo"]) > 0 ? true : false;
                         txtcorreo.Text = Convert.ToInt32(dt_correos_reclu.Rows[0]["idc_correo"]) > 0 ? dt_correos_reclu.Rows[0]["correo"].ToString().Trim() : "";
                     }
-
+                   
                     Session["Caso_Confirmacion"] = "RegenerarGUID";
                     ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "ModalConfirm('Mensaje del Sistema','¿Desea Regenerar el Link a este candidato.?');", true);
                     break;
@@ -120,7 +132,7 @@ namespace presentacion
                         {
                             mensaje333 = "Escriba el motivo";
                         }
-                        else if (correo == "")
+                        else if (correo == "" && correorh=="")
                         {
                             mensaje333 = "Escriba un correo para enviar el link";
                         }
@@ -142,15 +154,25 @@ namespace presentacion
                         break;
 
                     case "vobo":
-                        DataSet ds = componente.SP_PRE_EMPLEADO_VOBO(idc_prepara,Convert.ToInt32(Session["sidc_usuario"]), idc_pre_empleado);
-                        string vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString(); ;
-                        if (vmensaje != "")
+                        int idc = Convert.ToInt32(ddlhorarios.SelectedValue);
+                        if (idc > 0)
                         {
-                            Alert.ShowAlertError(vmensaje, this);
+                            DataSet ds = componente.SP_PRE_EMPLEADO_VOBO(idc_prepara, Convert.ToInt32(Session["sidc_usuario"]), idc_pre_empleado, idc);
+                            string vmensaje = "";
+                            vmensaje = ds.Tables[0].Rows[0]["mensaje"].ToString();
+                            if (vmensaje != "")
+                            {
+                                Alert.ShowAlertError(vmensaje, this);
+                            }
+                            else
+                            {//mostramos error
+                                ScriptManager.RegisterStartupScript(this, GetType(), "GOALERT", "AlertGO('Los datos del Candidato fueron aceptados. \\nYa puede dar de alta al Empleado desde el Sistema GAMA.','" + HttpContext.Current.Request.Url.AbsoluteUri + "','success');", true);
+                            }
                         }
                         else
-                        {//mostramos error
-                            ScriptManager.RegisterStartupScript(this, GetType(), "GOALERT", "AlertGO('Los datos del Candidato fueron aceptados. \\nYa puede dar de alta al Empleado desde el Sistema GAMA.','" + HttpContext.Current.Request.Url.AbsoluteUri + "','success');", true);
+                        {
+                            Alert.ShowAlertError("Seleccione un Horario.", this);
+
                         }
 
                         break;
@@ -162,5 +184,33 @@ namespace presentacion
             }
         }
 
+        protected void ddlhorarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id_horario = Convert.ToInt32(ddlhorarios.SelectedValue);
+                if (id_horario > 0)
+                {
+                    CandidatosENT entidad = new CandidatosENT();
+                    CandidatosCOM componente = new CandidatosCOM();
+                    DataSet ds = componente.sp_datos_horarios_grupos_det(id_horario);
+                    DataTable dt_Details = ds.Tables[1];
+                    grid_Detalles.DataSource = dt_Details;
+                    grid_Detalles.DataBind();
+                    ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "ModalConfirm('Mensaje del Sistema','¿Desea dar el Visto Bueno al Candidato ? \\nEsto terminara el proceso de preparación y podra dar de alta al candidato como Empleado.');", true);
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "ModalClose();", true);
+
+                    Alert.ShowAlertError("Seleccione un horario valido", this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
+            }
+        }
     }
 }

@@ -200,5 +200,10 @@ namespace presentacion
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Ingrese las Fecha para filtrar el reporte','modal fade modal-info');", true);
         }
+
+        protected void LinkButton1_Click1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

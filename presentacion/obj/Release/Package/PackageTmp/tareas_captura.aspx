@@ -230,7 +230,7 @@
                                 <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Si" OnClick="Yes_Click" />
                             </div>
                             <div class="col-lg-6 col-xs-6">
-                                <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="No" />
+                                <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="No" type="button" />
                             </div>
                         </div>
                     </div>

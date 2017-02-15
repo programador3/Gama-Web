@@ -12,7 +12,6 @@ namespace presentacion
     public partial class ticket_serv : System.Web.UI.Page
     {
         private ticket_servCOM com = new ticket_servCOM();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["sidc_usuario"] == null)//si no hay session logeamos
@@ -21,31 +20,210 @@ namespace presentacion
             }
             if (!IsPostBack)
             {
+                ViewState["dt_espera"] = null;
+                ViewState["dt_atendido"] = null;
                 if (Request.QueryString["all"] == null)
                 {
-                    grids.Visible = true;
+                    //grids.Visible = true;
                     sidc_puesto_h.Value = Session["sidc_puesto_login"].ToString();
                     Cargar_Grid(Convert.ToInt32(Session["sidc_puesto_login"]));
                 }
+                lnksolomios.Visible= funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 387);
             }
 
         }
 
+
         private void Cargar_Grid(int idpuesto)
         {
-            ticket_servENT ent = new ticket_servENT();
-            ent.Pidc_puesto = idpuesto;
-            ent.Pidc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+            try
+            {
 
-            DataSet ds = com.ticket_serv(ent);
-            grid_E.DataSource = ds.Tables[0];
-            grid_E.DataBind();
-            if (ds.Tables[0].Rows.Count == 0) { NO_Hay_E.Visible = true; }
-            grid_A.DataSource = ds.Tables[1];
-            grid_A.DataBind();
-            if (ds.Tables[1].Rows.Count == 0) { NO_Hay_A.Visible = true; }
+                ticket_servENT ent = new ticket_servENT();
+                ent.Pidc_puesto = idpuesto;
+                ent.Pidc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+
+                ent.Ptodo = true;
+                DataSet ds = com.ticket_serv(ent);
+                repeat_en_espera.DataSource = ds.Tables[0];
+                repeat_en_espera.DataBind();
+                NO_Hay_E.Visible = ds.Tables[0].Rows.Count == 0;
+                repeat_atendidos.DataSource = ds.Tables[1];
+                repeat_atendidos.DataBind();
+                NO_Hay_A.Visible = ds.Tables[1].Rows.Count == 0;
+                ViewState["dt_espera"] = ds.Tables[0];
+                ViewState["dt_atendido"] = ds.Tables[1];
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
+            }
+
         }
 
+        protected void repeat_en_espera_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            try
+            {
+                int idc_ticketserv = Convert.ToInt32(e.CommandArgument);
+                //int idc_ticketserva = Convert.ToInt32(e.CommandName);
+                DataTable dt = ViewState["dt_espera"] as DataTable;
+                DataRow[] findRows = dt.Select("idc_ticketserv = " + idc_ticketserv.ToString().Trim() + "");
+                if (findRows.Length > 0)
+                {
+                    idc_ticketserv_h.Value = findRows[0]["idc_ticketserv"].ToString();
+                    idc_tareaser_h.Value = findRows[0]["idc_tareaser"].ToString();
+                    string descripcion = findRows[0]["descripcion"].ToString();
+                    descripcion_h.Value = descripcion;
+
+                    string ARCHIVO = findRows[0]["ARCHIVO"].ToString();
+                    lblDescr.Text = descripcion;
+                    lblObser.Text = findRows[0]["observaciones"].ToString();
+                    lblFecha.Text = findRows[0]["fecha"].ToString();
+                    lblEmple.Text = findRows[0]["empleado"].ToString();
+                    lblDepto.Text = findRows[0]["DEPTO"].ToString();
+                    lblempleaten.Text = findRows[0]["EMPLEADO_ATIENDE"].ToString();
+                    lblat.Visible = false;
+                    lblAten.Visible = false;
+                    yes.Visible = true;
+
+                    Session["Caso_Confirmacion"] = e.CommandName.ToString();
+                    switch (e.CommandName)
+                    {
+                        case "Descargar":
+                            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
+                            string Domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
+                            string extension = Path.GetExtension(ARCHIVO);
+                            string pageName = HttpContext.Current.Request.ApplicationPath + "/";
+                            if (extension.ToUpper() == ".PDF" || extension.ToUpper() == ".JPG")
+                            {
+                                File.Copy(ARCHIVO, dirInfo + Path.GetFileName(ARCHIVO), true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + Path.GetFileName(ARCHIVO) + "');", true);
+                            }
+                            else
+                            {
+                                funciones.Download(ARCHIVO, System.IO.Path.GetFileName(ARCHIVO), this);
+                            }
+                            break;
+                        case "Tomar":
+                            div2.Visible = false;
+
+
+                            string str_Alert;
+                            str_Alert = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro  de atender el siguiente Ticket: {0}?');", descripcion);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_Alert, true);
+                            break;
+
+                        case "Cancelar":
+                            div2.Visible = true;
+                            div_pass.Visible = false;
+
+                            txtDescripcion.Text = "";
+                            lblDescripcion.Text = "Motivo";
+                            string str_modal;
+                            str_modal = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro de Cancelar el Ticket:  {0}? ');", descripcion);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal, true);
+                            break;
+                        case "Ver":
+                            div2.Visible = false;
+                            div_pass.Visible = false;
+                            yes.Visible = false;
+                            string str_modal2 = string.Format("ModalConfirm('Mensaje del Sistema','Información Principal del Ticket');", descripcion);
+                            ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), str_modal2, true);
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
+            }
+        }
+
+        protected void repeat_atendidos_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            try
+            {
+                int idc_ticketserv = Convert.ToInt32(e.CommandArgument);
+                
+                DataTable dt = ViewState["dt_atendido"] as DataTable;
+                DataRow[] findRows = dt.Select("idc_ticketserv = " + idc_ticketserv.ToString().Trim() + "");
+                if (findRows.Length > 0)
+                {
+                    int idc_ticketserva = Convert.ToInt32(findRows[0]["idc_ticketserva"]);
+
+                    idc_ticketserv_h.Value = findRows[0]["idc_ticketserv"].ToString();
+                    idc_ticketserva_h.Value = findRows[0]["idc_ticketserva"].ToString();
+                    idc_tareaser_h.Value = findRows[0]["idc_tareaser"].ToString();
+                    string descripcion = findRows[0]["descripcion"].ToString();
+                    string ARCHIVO = findRows[0]["ARCHIVO"].ToString();
+                    descripcion_h.Value = descripcion;
+                    idc_usuario_rep_h.Value = findRows[0]["idc_usuario"].ToString();
+                    lblDescr.Text = descripcion;
+                    lblObser.Text = findRows[0]["observaciones"].ToString();
+                    lblFecha.Text = findRows[0]["fecha"].ToString();
+                    lblEmple.Text = findRows[0]["empleado"].ToString();
+                    lblDepto.Text = findRows[0]["DEPTO"].ToString();
+                    lblempleaten.Text = findRows[0]["EMPLEADO_ATIENDE"].ToString();
+                    //findRows[0]["idc_puesto"].ToString();
+                    lblAten.Visible = true;
+                    yes.Visible = true;
+                    Session["Caso_Confirmacion"] = e.CommandName.ToString();
+                    switch (e.CommandName)
+                    {
+                        case "Descargar":
+                            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
+                            string Domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
+                            string extension = Path.GetExtension(ARCHIVO);
+                            string pageName = HttpContext.Current.Request.ApplicationPath + "/";
+                            if (extension == ".PDF" || extension == ".JPG")
+                            {
+                                File.Copy(ARCHIVO, dirInfo + Path.GetFileName(ARCHIVO), true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + Path.GetFileName(ARCHIVO) + "');", true);
+                            }
+                            else
+                            {
+                                funciones.Download(ARCHIVO, System.IO.Path.GetFileName(ARCHIVO), this);
+                            }
+                            break;
+                        case "Terminar":
+                            div2.Visible = true;
+                            div_pass.Visible = (idc_usuario_rep_h.Value != Session["sidc_usuario"].ToString());
+                            //div_detalles.Visible = false;
+                            Cargar_ddlUsuarios(Convert.ToInt32(findRows[0]["idc_puesto"].ToString()));
+
+                            txtDescripcion.Text = "";
+                            lblDescripcion.Text = "Observaciones";
+                            string str_Alert;
+                            str_Alert = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro  de terminar el siguiente Ticket: {0}?');", descripcion);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_Alert, true);
+                            break;
+
+                        case "Aten_Cancelar":
+                            div2.Visible = true;
+                            div_pass.Visible = false;
+
+                            txtDescripcion.Text = "";
+                            lblDescripcion.Text = "Motivo";
+
+                            string str_modal = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro de Cancelar el Ticket:  {0}? ');", descripcion);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal, true);
+                            break;
+                        case "Ver":
+                            div2.Visible = false;
+                            div_pass.Visible = false;
+                            yes.Visible = false;
+                            string str_modal2 = string.Format("ModalConfirm('Mensaje del Sistema','Información Principal del Ticket');", descripcion);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal2, true);
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
+            }
+        }
         private void Cargar_ddlUsuarios(int idpuesto)
         {
             ticket_servENT ent = new ticket_servENT();
@@ -66,152 +244,11 @@ namespace presentacion
             }
         }
 
-        protected void grid_E_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            int index = Convert.ToInt32(e.CommandArgument);
-            //idc_ticketserv,idc_tareaser,descripcion
-            idc_ticketserv_h.Value = grid_E.DataKeys[index].Values["idc_ticketserv"].ToString();
-            idc_tareaser_h.Value = grid_E.DataKeys[index].Values["idc_tareaser"].ToString();
-            string descripcion = grid_E.DataKeys[index].Values["descripcion"].ToString();
-            descripcion_h.Value = descripcion;
-
-            string ARCHIVO = grid_E.DataKeys[index].Values["ARCHIVO"].ToString();
-            lblDescr.Text = descripcion;
-            lblObser.Text = grid_E.DataKeys[index].Values["observaciones"].ToString();
-            lblFecha.Text = grid_E.DataKeys[index].Values["fecha"].ToString();
-            lblEmple.Text = grid_E.DataKeys[index].Values["empleado"].ToString();
-            lblDepto.Text = grid_E.DataKeys[index].Values["DEPTO"].ToString();
-            lblempleaten.Text = grid_E.DataKeys[index].Values["EMPLEADO_ATIENDE"].ToString(); 
-            lblat.Visible = false;
-            lblAten.Visible = false;
-            yes.Visible = true;
-            Session["Caso_Confirmacion"] = e.CommandName.ToString();
-            switch (e.CommandName)
-            {
-                case "Descargar":
-                    System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
-                    string Domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
-                    string extension = Path.GetExtension(ARCHIVO);
-                    string pageName = HttpContext.Current.Request.ApplicationPath + "/";
-                    if (extension.ToUpper() == ".PDF" || extension.ToUpper() == ".JPG")
-                    {
-                        File.Copy(ARCHIVO, dirInfo + Path.GetFileName(ARCHIVO), true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + Path.GetFileName(ARCHIVO) + "');", true);
-                    }
-                    else
-                    {
-                        funciones.Download(ARCHIVO, System.IO.Path.GetFileName(ARCHIVO), this);
-                    }
-                    break;
-                case "Atender":
-                    div2.Visible = false;
-
-
-                    string str_Alert;
-                    str_Alert = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro  de atender el siguiente Ticket: {0}?');", descripcion);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_Alert, true);
-                    break;
-
-                case "Cancelar":
-                    div2.Visible = true;
-                    div_pass.Visible = false;
-
-                    txtDescripcion.Text = "";
-                    lblDescripcion.Text = "Motivo";
-                    string str_modal;
-                    str_modal = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro de Cancelar el Ticket:  {0}? ');", descripcion);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal, true);
-                    break;
-                case "preview":
-                    div2.Visible = false;
-                    div_pass.Visible = false;
-                    yes.Visible = false;
-                    string str_modal2 = string.Format("ModalConfirm('Mensaje del Sistema','Información Principal del Ticket');", descripcion);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal2, true);
-                    break;
-            }
-
-            Cargar_Grid(Convert.ToInt32(Session["sidc_puesto_login"]));
-        }
-
-        protected void grid_A_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            int index = Convert.ToInt32(e.CommandArgument);
-
-            idc_ticketserv_h.Value = grid_A.DataKeys[index].Values["idc_ticketserv"].ToString();
-            idc_ticketserva_h.Value = grid_A.DataKeys[index].Values["idc_ticketserva"].ToString();
-            idc_tareaser_h.Value = grid_A.DataKeys[index].Values["idc_tareaser"].ToString();
-            string descripcion  = grid_A.DataKeys[index].Values["descripcion"].ToString();
-            string ARCHIVO = grid_A.DataKeys[index].Values["ARCHIVO"].ToString();
-            descripcion_h.Value = descripcion;
-            idc_usuario_rep_h.Value =grid_A.DataKeys[index].Values["idc_usuario"].ToString();           
-            lblDescr.Text = descripcion;
-            lblObser.Text = grid_A.DataKeys[index].Values["observaciones"].ToString();
-            lblFecha.Text = grid_A.DataKeys[index].Values["fecha"].ToString();
-            lblEmple.Text = grid_A.DataKeys[index].Values["empleado"].ToString();
-            lblDepto.Text = grid_A.DataKeys[index].Values["DEPTO"].ToString();
-            lblempleaten.Text = grid_A.DataKeys[index].Values["EMPLEADO_ATIENDE"].ToString();
-            //grid_A.DataKeys[index].Values["idc_puesto"].ToString();
-            lblAten.Visible = true;
-            yes.Visible = true;
-            Session["Caso_Confirmacion"] = e.CommandName.ToString();
-            switch (e.CommandName)
-            {
-                case "Descargar":
-                    System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
-                    string Domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
-                    string extension = Path.GetExtension(ARCHIVO);
-                    string pageName = HttpContext.Current.Request.ApplicationPath + "/";
-                    if (extension == ".PDF" || extension == ".JPG")
-                    {
-                        File.Copy(ARCHIVO, dirInfo + Path.GetFileName(ARCHIVO), true);
-                        ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + Path.GetFileName(ARCHIVO) + "');", true);
-                    }
-                    else
-                    {
-                        funciones.Download(ARCHIVO, System.IO.Path.GetFileName(ARCHIVO), this);
-                    }
-                    break;
-                case "Terminar":
-                    div2.Visible = true;
-                    div_pass.Visible = (idc_usuario_rep_h.Value != Session["sidc_usuario"].ToString());
-                    //div_detalles.Visible = false;
-                    Cargar_ddlUsuarios(Convert.ToInt32(grid_A.DataKeys[index].Values["idc_puesto"].ToString()));
-
-                    txtDescripcion.Text = "";
-                    lblDescripcion.Text = "Observaciones";
-                    string str_Alert;
-                    str_Alert = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro  de terminar el siguiente Ticket: {0}?');", descripcion);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_Alert, true);
-                    break;
-
-                case "Aten_Cancelar":
-                    div2.Visible = true;
-                    div_pass.Visible = false;
-
-                    txtDescripcion.Text = "";
-                    lblDescripcion.Text = "Motivo";
-
-                    string str_modal = string.Format("ModalConfirm('Mensaje del Sistema','¿Esta seguro de Cancelar el Ticket:  {0}? ');", descripcion);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal, true);
-                    break;
-                case "preview":
-                    div2.Visible = false;
-                    div_pass.Visible = false;
-                    yes.Visible = false;
-                    string str_modal2 = string.Format("ModalConfirm('Mensaje del Sistema','Información Principal del Ticket');", descripcion);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal2, true);
-                    break;
-            }
-
-            Cargar_Grid(Convert.ToInt32(Session["sidc_puesto_login"]));
-        }
-
         protected void Yes_Click(object sender, EventArgs e)
         {
             try
             {
-                
+
                 string caso = Session["Caso_Confirmacion"].ToString();
                 ticket_servENT ent = new ticket_servENT();
                 Datos_Usuario_logENT dul = new Datos_Usuario_logENT();
@@ -224,7 +261,7 @@ namespace presentacion
                 DataSet ds = new DataSet();
                 switch (caso)
                 {
-                    case "Atender":
+                    case "Tomar":
                         ent.Pidc_ticketserv = Convert.ToInt32(idc_ticketserv_h.Value);
                         ent.Pidc_puesto = Convert.ToInt32(sidc_puesto_h.Value);
                         ds = com.ticket_serv_Espera(ent, dul);
@@ -281,7 +318,7 @@ namespace presentacion
                 else
                 {
                     string strScript = "AlertGO('" + vmensaje + "','ticket_serv.aspx');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", strScript, true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), strScript, true);
                     // Alert.ShowAlertInfo(vmensaje, "Mensaje del Sistema", this);
                 }
             }
@@ -293,42 +330,82 @@ namespace presentacion
 
         }
 
-        protected void grid_E_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void lnkbuscarespera_Click(object sender, EventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                DataRowView rowView = (DataRowView)e.Row.DataItem;
-                bool APLICA = Convert.ToBoolean(rowView["APLICA"]);
-                string ARCHIVO = rowView["ARCHIVO"].ToString();
-                if (!APLICA)
-                {
-                    e.Row.Cells[0].Controls.Clear();
-                    e.Row.Cells[1].Controls.Clear();
-                }
-                if (ARCHIVO == "")
-                {
-                    e.Row.Cells[2].Controls.Clear();
-                }
+
+                ticket_servENT ent = new ticket_servENT();
+                ent.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
+                ent.Pidc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                ent.Ptodo = true;
+                DataSet ds = com.ticket_serv(ent);
+                ViewState["dt_espera"] = ds.Tables[0];
+                ViewState["dt_atendido"] = ds.Tables[1];
+                DataTable dt = ds.Tables[0];
+                DataView dv = dt.DefaultView;
+                string value = txtbuscarespera.Text;
+                dv.RowFilter = "observaciones like '%"+value+ "%' OR fecha like '%" + value + "%' OR empleado like '%" + value + "%' OR empleado_atiende like '%" + value + "%' OR descripcion like '%" + value + "%'";
+                repeat_en_espera.DataSource = dv.ToTable();
+                repeat_en_espera.DataBind();
+                NO_Hay_E.Visible = dv.ToTable().Rows.Count == 0;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
             }
         }
 
-        protected void grid_A_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void lnkbuscaraten_Click(object sender, EventArgs e)
         {
-
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            try
             {
-                DataRowView rowView = (DataRowView)e.Row.DataItem;
-                bool APLICA = Convert.ToBoolean(rowView["APLICA"]);
-                string ARCHIVO = rowView["ARCHIVO"].ToString();
-                if (!APLICA)
-                {
-                    e.Row.Cells[0].Controls.Clear();
-                    e.Row.Cells[1].Controls.Clear();
-                }
-                if (ARCHIVO == "")
-                {
-                    e.Row.Cells[2].Controls.Clear();
-                }
+
+                ticket_servENT ent = new ticket_servENT();
+                ent.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
+                ent.Pidc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                ent.Ptodo = true;
+                DataSet ds = com.ticket_serv(ent);
+                ViewState["dt_espera"] = ds.Tables[0];
+                ViewState["dt_atendido"] = ds.Tables[1];
+                DataTable dt = ds.Tables[1];
+                DataView dv = dt.DefaultView;
+                string value = txtbuscaraten.Text;
+                dv.RowFilter = "observaciones like '%" + value + "%' OR fecha like '%" + value + "%' OR empleado like '%" + value + "%' OR empleado_atiende like '%" + value + "%' OR descripcion like '%" + value + "%'";
+                repeat_atendidos.DataSource = dv.ToTable();
+                repeat_atendidos.DataBind();
+                NO_Hay_A.Visible = dv.ToTable().Rows.Count == 0;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
+            }
+        }
+
+        protected void lnksolomios_Click(object sender, EventArgs e)
+        {
+            lnksolomios.Text = lnksolomios.Text == "Ver Solo Tickets Mios" ? "Ver Todos los Tickets" : "Ver Solo Tickets Mios";
+            bool todo = lnksolomios.Text != "Ver Todos los Tickets";
+            try
+            {
+
+                ticket_servENT ent = new ticket_servENT();
+                ent.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
+                ent.Pidc_usuario = Convert.ToInt32(Session["sidc_usuario"]);
+                ent.Ptodo = todo;
+                DataSet ds = com.ticket_serv(ent);
+                repeat_en_espera.DataSource = ds.Tables[0];
+                repeat_en_espera.DataBind();
+                NO_Hay_E.Visible = ds.Tables[0].Rows.Count == 0;
+                repeat_atendidos.DataSource = ds.Tables[1];
+                repeat_atendidos.DataBind();
+                NO_Hay_A.Visible = ds.Tables[1].Rows.Count == 0;
+                ViewState["dt_espera"] = ds.Tables[0];
+                ViewState["dt_atendido"] = ds.Tables[1];
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
             }
         }
     }

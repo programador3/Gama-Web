@@ -449,7 +449,7 @@ namespace presentacion
                         entidad.Pdescripcion = txtdescripcion.Text.ToUpper();
                         int TO = TotalCadenaPuestos();
                         bool OTROPUESTO = false;
-                        if (div_puestoasigna.Visible == true && Convert.ToInt32(ddlPuesto.SelectedValue) == Convert.ToInt32(Session["sidc_puesto_login"]))
+                        if (div_puestoasigna.Visible == true && Convert.ToInt32(ddlPuesto.SelectedValue) != Convert.ToInt32(Session["sidc_puesto_login"]))
                         {
                             OTROPUESTO = true;
                         }

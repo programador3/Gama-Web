@@ -76,7 +76,12 @@ namespace presentacion
                     txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');
                     Alert.ShowAlertInfo("No puede solicitar un permiso para esta fecha por que el PERIODO DE NOMINA AL QUE PERTENECE YA FUE PAGADO ", "Mensaje del Sistema", this);
                 }
+                else if (fechastring < DateTime.Today)
+                {
+                    txtfecha.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');
+                    Alert.ShowAlertInfo("No puede solicitar un permiso para una fecha menor a hoy.", "Mensaje del Sistema", this);
 
+                }
                 else
                 {
                     DateTime dtDD = Convert.ToDateTime(txtfecha.Text);

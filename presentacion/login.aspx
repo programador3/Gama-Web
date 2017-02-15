@@ -8,7 +8,7 @@
     <style type="text/css">
          body {
             text-align: center;
-            background:#263238 ;
+            background:#1976d2 ;
         }
 
         #footer-zone {
@@ -22,19 +22,9 @@
             padding: 10% 0 0;
             max-width: 340px;
         }
-        .form {
-          /*position: relative;
-          z-index: 1;
-          background: #FFFFFF;
-          max-width: 340px;
-          margin: 0 auto 100px;
-          padding: 15px;
-          text-align: center;
-          box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
-        }
         .form input {
           outline: 0;
-          background: #37474f  ;
+          background:#1565c0  ;
           color:white;
           width: 100%;
           border: 0;
@@ -44,11 +34,11 @@
           font-size: 14px;
         }
         .form .bt {
-          background: #37474f  ;
+          background:#0d47a1;
           width: 100%;
         }
         .form .bt:hover,.form .bt:active,.form .bt:focus {
-          background: #37474f  ;
+          background: #1565c0   ;
         }
        
     </style>
@@ -66,7 +56,7 @@
                     <div class="login-form">
                         <div class="form-group" style="text-align: center; height: 50%">
                             <img onclick="ClicImg();" style="display: block; margin: 0 auto; max-width:150px"
-                                class="img-responsive" src="imagenes/acount.png" />
+                                class="img-responsive" src="imagenes/acount.png?p=9" />
                         </div>
                         <br />
                        
@@ -95,7 +85,7 @@
     </asp:UpdatePanel>
     <div id="footer-zone" style="text-align: center; color: white;">
       
-        <h6>Sistema Web <small>v.<asp:Label ID="lblfooter" runat="server" Text="Footer"></asp:Label></small></h6>
+        <h6>Sistema GAMA Web <small>v.<asp:Label ID="lblfooter" runat="server" Text="Footer"></asp:Label></small></h6>
     </div>
     <!-- /#page-wrapper -->
 </asp:Content>

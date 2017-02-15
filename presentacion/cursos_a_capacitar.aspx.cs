@@ -27,7 +27,7 @@ namespace presentacion
                 Cursos_HistorialCOM ComCursoHist = new Cursos_HistorialCOM();
                 //ds
                 DataSet ds = new DataSet();
-                ds = ComCursoHist.cursos_mandar_capacitar();
+                ds = ComCursoHist.cursos_mandar_capacitar(Convert.ToInt32(Session["sidc_puesto_login"]));
                 //llenar en session
                 //Session.Add("TablaCursoCapacitar", ds.Tables[0]);
                 //llenar grid view
@@ -197,7 +197,7 @@ namespace presentacion
         protected void cargar_info_detalle(int idc_pre_empleado)
         {
             txtComentarios.Text = "";
-            txtObservaciones.Text = "";
+            txtObservaciones.Text = "BIENVENIDO, FUISTE SELECCIONADO PARA FORMAR PARTE DEL EQUIPO GAMA SOLO NECESITAMOS TU PAPELERIA COMPLETA Y ESPERO PUEDAS APOYARNOS LO ANTES POSIBLE CON EL LLENADO CORRECTO DE TUS DATOS.NOS VEMOS PRONTO.GRACIAS";
             txtfecha_tentativa.Text = "";
             //componente
             Cursos_HistorialCOM ComCursoHist = new Cursos_HistorialCOM();

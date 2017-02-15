@@ -71,7 +71,6 @@
             <div class="btn-group">
                 <asp:HiddenField ID="ocgpoidmenu" runat="server" Value="0" />
                 <asp:Repeater ID="repite_menu_grupos" runat="server" OnItemDataBound="repite_menu_grupos_ItemDataBound" OnItemCommand="repite_menu_grupos_ItemCommand">
-
                     <ItemTemplate>
                         <asp:Button ID="btnmenugpo" runat="server" Text="" />
                         <asp:HiddenField ID="oc_gpoid" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "idc_perfilgpo").ToString() %>' />
@@ -88,9 +87,9 @@
                 <div class="panel-body">
                     <h2 style="text-align: center;"><strong>
                         <asp:Label ID="lblgrupotitulo" runat="server" Text=""></asp:Label></strong></h2>
-                    <div class="alert fresh-color alert-danger alert-dismissible" role="alert" runat="server" id="inicio">
+                    <div class="alert fresh-color alert-info alert-dismissible" role="alert" runat="server" id="inicio">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong>Para Comenzar!</strong> Seleccione un Grupo para empezar a llenar el formulario.
+                        Seleccione un Grupo para empezar a llenar el formulario.
                     </div>
                     <!-- GRUPO DETALLE -->
                     <asp:Panel ID="panel_grupo_detalle" runat="server" Visible="False">
@@ -428,31 +427,41 @@
     <!-- /.CONFIRMA -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content" style="text-align: center">
-                <div class="modal-header" style="background-color: #428bca; color: white">
-                    <h4><strong id="confirmTitulo" class="modal-title"></strong></h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                            <h4>
-                                <label id="confirmContenido"></label>
-                            </h4>
+            <asp:UpdatePanel ID="wwss" runat="server" UpdateMode="Always">
+                <Triggers>
+                    <asp:PostBackTrigger  ControlID="Yes"/>
+                    <asp:AsyncPostBackTrigger ControlID="btnGuardarTodo" EventName="Click" />
+                    <asp:AsyncPostBackTrigger ControlID="btnCancelarTodo" EventName="Click" />
+                </Triggers>
+                <ContentTemplate>
+
+                    <!-- Modal content-->
+                    <div class="modal-content" style="text-align: center">
+                        <div class="modal-header" style="background-color: #428bca; color: white">
+                            <h4><strong id="confirmTitulo" class="modal-title"></strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <h4>
+                                        <label id="confirmContenido"></label>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Si" OnClientClick="ModalClose();" OnClick="Yes_Click" />
+                                </div>
+                                <div class="col-lg-6 col-xs-6">
+                                    <input id="No" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="No" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-lg-6 col-xs-6">
-                            <asp:Button ID="Yes" class="btn btn-success btn-block" runat="server" Text="Si" OnClick="Yes_Click" />
-                        </div>
-                        <div class="col-lg-6 col-xs-6">
-                            <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="No" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
     <!-- /.CONFIRMA -->

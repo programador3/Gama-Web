@@ -31,7 +31,16 @@ namespace presentacion
                 //FIN
                 try
                 {
+                    if (Request.QueryString["todos"] != null)
+                    {
+                        lnktodos.CssClass = funciones.de64aTexto(Request.QueryString["todos"]);
+                    }
                     CargaGrid();
+                    if (Request.QueryString["depto"] != null)
+                    {
+                        ddldeptos.SelectedValue = funciones.de64aTexto(Request.QueryString["depto"]);
+                        ddldeptos_SelectedIndexChanged(null, null);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -45,13 +54,13 @@ namespace presentacion
                 sborrador = Convert.ToInt32(Request.QueryString["sborrador"]);
                 if (sborrador == 0)
                 {
-                    lblmensaje.Text = " De Producción";
+                    lblmensaje.Text = " Autorizados";
                     lblmensaje.CssClass = "btn btn-success";
                     cbxTipo.Checked = true;
                 }
                 else
                 {
-                    lblmensaje.Text = " De Borrador";
+                    lblmensaje.Text = " En Proceso";
                     lblmensaje.CssClass = "btn btn-primary";
                     cbxTipo.Checked = false;
                 }
@@ -66,6 +75,27 @@ namespace presentacion
             }
         }
 
+        private void CargarDeptos()
+        {
+            try
+            {
+                PerfilesBL componente = new PerfilesBL();
+                DataTable table = Session["dt_perfiles"] as DataTable;
+                DataView view = new DataView(table);
+                DataTable distinctValues = view.ToTable(true, "depto", "idc_depto");
+                DataView dv = distinctValues.DefaultView;
+                dv.RowFilter = "depto <> ''";
+                ddldeptos.DataTextField = "depto";
+                ddldeptos.DataValueField = "idc_depto";
+                ddldeptos.DataSource = dv.ToTable();
+                ddldeptos.DataBind();
+                ddldeptos.Items.Insert(0, new ListItem("VER TODOS LOS DEPTOS","0"));
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(),this);
+            }
+        }
         /// <summary>
         /// Elimina una fila del grid
         /// </summary>
@@ -93,7 +123,7 @@ namespace presentacion
                 {
                     ///todo bien
                     CargaGrid();
-                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx", "imagenes/loading.gif", "2000", "Perfil Eliminado Correctamente", this);
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue), "imagenes/loading.gif", "2000", "Perfil Eliminado Correctamente", this);
                 }
                 else
                 {
@@ -148,9 +178,10 @@ namespace presentacion
             }
             else
             {
+                
                 if (mensaje.Equals(string.Empty))
                 {
-                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx", "imagenes/loading.gif", "2000", "La autorización fue solicitada correctamente", this);
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue), "imagenes/loading.gif", "2000", "La autorización fue solicitada correctamente", this);
                 }
                 else
                 {
@@ -166,16 +197,30 @@ namespace presentacion
         /// </summary>
         public void CargaGrid()
         {
+            try
+            {
+
             int idUsuario = (int)Session["sidc_usuario"];
-            bool prod=lnkborrador.Visible;
+            bool prod = lnkborrador.Visible;
+            bool borr = lnkproduccion.Visible;
+            bool ver_todo = lnktodos.CssClass == "btn btn-info btn-block";
             PerfilesE entidad = new PerfilesE();
             entidad.Borrador = prod;
+            entidad.Produccion = borr;
+            entidad.VerTodo = ver_todo;
             entidad.Usuario = idUsuario;
             PerfilesBL componente = new PerfilesBL();
             DataSet ds = new DataSet();
             ds = componente.perfiles(entidad);
             gridperfiles.DataSource = ds.Tables[0];
             gridperfiles.DataBind();
+                Session["dt_perfiles"] = ds.Tables[0];
+                CargarDeptos();
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
+            }
         }
 
         /// <summary>
@@ -198,7 +243,7 @@ namespace presentacion
                     //todo bien
                     CargaGrid();
 
-                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx", "imagenes/loading.gif", "2000", "Listo borrador desbloqueado", this);
+                    Alert.ShowGiftMessage("Estamos procesando la Solicitud", "Espere un Momento", "perfiles.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue), "imagenes/loading.gif", "2000", "Listo borrador desbloqueado", this);
                 }
                 else
                 {
@@ -263,7 +308,7 @@ namespace presentacion
                     int total = ((t_archivos_eti * 1) + 1) * 1000;
                     string t = total.ToString();
                     string idc_puestoperfil_borr = rowr["Resultado"].ToString();
-                    Alert.ShowGiftRedirect("Estamos Generando el Borrador y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", t, "perfiles_captura.aspx?uidc_puestoperfil=" + idc_puestoperfil_borr + "&uborrador=1", this);
+                    Alert.ShowGiftRedirect("Estamos Generando el Borrador y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", t,"perfiles_captura.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue) +"&uidc_puestoperfil=" + idc_puestoperfil_borr + "&uborrador=1", this);
                 }
             }
             else
@@ -346,14 +391,14 @@ namespace presentacion
             {
                 Session["Caso_Confirmacion"] = "Editar Produccion";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','Desea Editar el perfil de " + perfil + "?');", true);
-                Session["url_value"] = "perfiles_captura.aspx?uidc_puestoperfil=" + vidc.ToString() + "&uborrador=0";
+                Session["url_value"] ="perfiles_captura.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue) +"&uidc_puestoperfil=" + vidc.ToString() + "&uborrador=0";
             }
             //verificamos estado de switch
             if (cbxTipo.Checked == true && funciones.autorizacion(idc_usuario, 317) == false)//produccion sin permisos
             {
                 Session["Caso_Confirmacion"] = "Editar Produccion";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','Desea Editar el perfil de " + perfil + "?');", true);
-                Session["url_value"] = "perfiles_captura.aspx?uidc_puestoperfil=" + vidc_borr.ToString() + "&uborrador=1";
+                Session["url_value"] ="perfiles_captura.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue) +"&uidc_puestoperfil=" + vidc_borr.ToString() + "&uborrador=1";
             }
             if (cbxTipo.Checked == false)//borrador
             {
@@ -374,46 +419,48 @@ namespace presentacion
                     Yes.Text = "Editar Este Perfil";
                     Session["Caso_Confirmacion"] = "Editar Produccion";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','Desea Editar el perfil de " + perfil + "? O puede crear un nuevo borrador sin ligar a este perfil');", true);
-                    Session["url_value"] = "perfiles_captura.aspx?uidc_puestoperfil=" + vidc_borr.ToString() + "&uborrador=1";
+                    Session["url_value"] ="perfiles_captura.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue) +"&uidc_puestoperfil=" + vidc_borr.ToString() + "&uborrador=1";
                 }
             }
         }
 
         protected void gridperfiles_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //INSTANCIO OBJETOS DE ASP  COMO ACCESIBLES
-            System.Web.UI.WebControls.Image pendiente = (System.Web.UI.WebControls.Image)e.Row.FindControl("pendiente");
+            //INSTANCIO OBJETOS DE ASP  COMO ACCESIBLE
             System.Web.UI.WebControls.Image produccion = (System.Web.UI.WebControls.Image)e.Row.FindControl("produccion");
             System.Web.UI.WebControls.Image borrador = (System.Web.UI.WebControls.Image)e.Row.FindControl("borrador");
             System.Web.UI.WebControls.Image nuevo_registro = (System.Web.UI.WebControls.Image)e.Row.FindControl("Nuevo_Registro");
             //FILTRO LOS DATOS DE TIPO CONTROL
+            
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 DataRowView rowView = (DataRowView)e.Row.DataItem;
-                if (Convert.ToInt32(rowView["id_perfilproduccion"]) == 0)//si es 0 SIGNIFICA QUE ES NUEVO, MUESTRO ETIQUETA CORRESPONDIENTE
+                //if (Convert.ToInt32(rowView["id_perfilproduccion"]) == 0)//si es 0 SIGNIFICA QUE ES NUEVO, MUESTRO ETIQUETA CORRESPONDIENTE
+                //{
+                //    //nuevo_registro.ImageUrl = "imagenes/btn/new_register.png";
+                //    e.Row.Cells[9].BackColor = Color.FromName("#1de9b6");
+                //}
+                if (Convert.ToBoolean(rowView["pendiente"]))
                 {
-                    //nuevo_registro.ImageUrl = "imagenes/btn/new_register.png";
-                    e.Row.Cells[7].BackColor = Color.FromName("#1de9b6");
+                    e.Row.BackColor = Color.FromName("#00e676");
                 }
                 if (cbxTipo.Checked == false)//si el request viene vacio ejecuto el modo borrador
                 {
-                    if (Convert.ToBoolean(rowView["pendiente"]) == true)
-                    {//si es true check es trueprimeros dos controles vacios
-                        e.Row.Cells[1].Controls.Clear();
-                        e.Row.Cells[2].Controls.Clear();
+                    e.Row.Cells[2].Controls.Clear();
 
-                        e.Row.Cells[9].Controls.Clear();
-                        pendiente.ImageUrl = "imagenes/btn/checked.png";
-                    }
-                    else
+                    if (!Convert.ToBoolean(rowView["pendiente"]))
                     {
+                        e.Row.Cells[11].Controls.Clear();
+                    }
+                    else {
+
                         e.Row.Cells[10].Controls.Clear();
                     }
-                    if (Convert.ToBoolean(rowView["produccion"]) == true)//si es true check es true
+                    if (Convert.ToBoolean(rowView["produccion"]))//si es true check es true
                     {
                         produccion.ImageUrl = "imagenes/btn/checked.png";
                     }
-                    if (Convert.ToBoolean(rowView["borrador"]) == true)//si es true check es true
+                    if (Convert.ToBoolean(rowView["borrador"]))//si es true check es true
                     {
                         borrador.ImageUrl = "imagenes/btn/checked.png";
                     }
@@ -424,37 +471,37 @@ namespace presentacion
                 }
                 else
                 {
-                    e.Row.Cells[9].Controls.Clear();
                     int idc_usuario = Convert.ToInt32(Session["sidc_usuario"].ToString());
                     int idc_tipo_aut = 317;
                     int idc_opcion = 1798;
                     ////valida si tiene permiso de ver esta pagina//
-                    if (funciones.autorizacion(idc_usuario, 345) == true)
+                    if (funciones.autorizacion(idc_usuario, 345))
                     {
                         //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
                         e.Row.Cells[0].Controls.Clear();
                         e.Row.Cells[1].Controls.Clear();
                     }
-                    if (funciones.autorizacion(idc_usuario, idc_tipo_aut) == false)
+                    if (!funciones.autorizacion(idc_usuario, idc_tipo_aut))
                     {
                         //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
                         e.Row.Cells[0].Controls.Clear();
                         e.Row.Cells[1].Controls.Clear();
                     }
-
-                    if (Convert.ToBoolean(rowView["pendiente"]) == true)
-                    {//si es true check es true                        {
-                        pendiente.ImageUrl = "imagenes/btn/checked.png";
+                    if (!Convert.ToBoolean(rowView["pendiente"]))
+                    {
+                        e.Row.Cells[10].Controls.Clear();
+                        e.Row.Cells[11].Controls.Clear();
                     }
                     else
                     {
+
                         e.Row.Cells[10].Controls.Clear();
                     }
-                    if (Convert.ToBoolean(rowView["produccion"]) == true)//si es true check es true
+                    if (Convert.ToBoolean(rowView["produccion"]))//si es true check es true
                     {
                         produccion.ImageUrl = "imagenes/btn/checked.png";
                     }
-                    if (Convert.ToBoolean(rowView["borrador"]) == true)//si es true check es true
+                    if (Convert.ToBoolean(rowView["borrador"]))//si es true check es true
                     {
                         borrador.ImageUrl = "imagenes/btn/checked.png";
                     }
@@ -467,13 +514,13 @@ namespace presentacion
             }
 
             ////valida si tiene permiso de ver esta pagina//
-            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 345) == true && cbxTipo.Checked == false) //borrador
+            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 345) && !cbxTipo.Checked) //borrador
             {
                 //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
                 e.Row.Cells[0].Controls.Clear();
                 e.Row.Cells[1].Controls.Clear();
             }
-            if (funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 317) == false && cbxTipo.Checked == true)//produ
+            if (!funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"].ToString()), 317) && cbxTipo.Checked)//produ
             {
                 //si entro quiere decir que no tiene permisos de produccion y por ende se activa el borrador
                 e.Row.Cells[0].Controls.Clear();
@@ -489,10 +536,19 @@ namespace presentacion
             id_borrador_grid = Convert.ToInt32(gridperfiles.DataKeys[index].Values["id_perfilborrador"].ToString());
             String perfil = gridperfiles.DataKeys[index].Values["descripcion"].ToString();
 
+            btnSinLigar.Visible = false;
             perfil = perfil.TrimStart();
             perfil = perfil.Replace(System.Environment.NewLine, "");
             switch (e.CommandName)
             {
+                case "CrearBorrador":
+                    Session["tipo_creado_borrado"] = "PRODUCCION-BORRADOR";
+                    Session["Caso_Confirmacion"] = "Crear Borrador-Produccion";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "Return('Mensaje del Sistema','Desea crear un borrador de " + perfil + "? Tambien puede crear un Nuevo borrador sin estar ligado a este perfil.');", true);
+                    Session["value"] = id_produccion_grid;
+                    btnSinLigar.Visible = true;
+                    Yes.Text = "Si, ligado a perfil";
+                    break;
                 case "Desbloquear"://Desboquear Autorizacion
                     //Paso parametro a SWICTH
                     Session["Caso_Confirmacion"] = "Desbloquear";
@@ -583,7 +639,7 @@ namespace presentacion
                     Session["Previus"] = HttpContext.Current.Request.Url.AbsoluteUri;
                     Response.Redirect(url);
                     break;
-
+                    
                 case "Crear Borrador-Produccion"://veveve
                     int value = Convert.ToInt32(Session["value"]);
                     TablasBorrador(value);//vavava
@@ -682,7 +738,7 @@ namespace presentacion
                             int total = ((t_archivos_eti * 1) + 1) * 1000;
                             string t = total.ToString();
                             string idc_puestoperfil_borr = rowr["Resultado"].ToString();
-                            Alert.ShowGiftRedirect("Estamos Generando el Borrador y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", "8000", "perfiles_captura.aspx?uidc_puestoperfil=" + idc_puestoperfil_borr + "&uborrador=1", this);
+                            Alert.ShowGiftRedirect("Estamos Generando el Borrador y copiando los archivos anexos.", "Espere un Momento", "imagenes/loading.gif", "4000","perfiles_captura.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue) +"&uidc_puestoperfil=" + idc_puestoperfil_borr + "&uborrador=1", this);
                         }
                     }
                     else
@@ -709,7 +765,7 @@ namespace presentacion
 
         protected void btnNo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("perfiles.aspx");
+            Response.Redirect("perfiles.aspx?todos=" + funciones.deTextoa64(lnktodos.CssClass) + "&depto=" + funciones.deTextoa64(ddldeptos.SelectedValue));
         }
 
         protected void lnknuevo_Click(object sender, EventArgs e)
@@ -730,7 +786,7 @@ namespace presentacion
             lnkproduccion.Visible = false;
             lnkborrador.Visible = true;
             cbxTipo.Checked = true;
-            lblmensaje.Text = " De Producción";
+            lblmensaje.Text = " Autorizados";
             lblmensaje.CssClass = "btn btn-success";
             lnknuevo.CssClass = "btn btn-success btn-block";
             //FIN
@@ -749,7 +805,7 @@ namespace presentacion
             lnkproduccion.Visible = true;
             lnkborrador.Visible = false;
             cbxTipo.Checked = false;
-            lblmensaje.Text = " De Borrador";
+            lblmensaje.Text = " En Proceso";
             lblmensaje.CssClass = "btn btn-primary";
             lnknuevo.CssClass = "btn btn-primary btn-block";
             //FIN
@@ -761,6 +817,49 @@ namespace presentacion
             {
                 msgbox.show("eere" + ex.Message, this.Page);
             }
+        }
+
+        protected void lnktodos_Click(object sender, EventArgs e)
+        {
+            lnktodos.CssClass = lnktodos.CssClass == "btn btn-default btn-block" ? "btn btn-info btn-block" : "btn btn-default btn-block";
+            CargaGrid();
+        }
+
+        protected void ddldeptos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(ddldeptos.SelectedValue)>=0)
+                {
+                    int idUsuario = (int)Session["sidc_usuario"];
+                    bool prod = lnkborrador.Visible;
+                    bool borr = lnkproduccion.Visible;
+                    bool ver_todo = lnktodos.CssClass == "btn btn-info btn-block";
+                    PerfilesE entidad = new PerfilesE();
+                    entidad.Borrador = prod;
+                    entidad.Produccion = borr;
+                    entidad.VerTodo = ver_todo;
+                    entidad.Usuario = idUsuario;
+                    entidad.Pidc_depto = Convert.ToInt32(ddldeptos.SelectedValue);
+                    PerfilesBL componente = new PerfilesBL();
+                    DataSet ds = new DataSet();
+                    ds = componente.perfiles(entidad);
+                    gridperfiles.DataSource = ds.Tables[0];
+                    gridperfiles.DataBind();
+                }
+          
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this);
+            }
+
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            string url = "tareas_informacion_adicional.aspx?idc_tipoi="+funciones.deTextoa64("10")+ "&idc_proceso="+funciones.deTextoa64(ddldeptos.SelectedValue.ToString());
+            ScriptManager.RegisterStartupScript(this, GetType(),Guid.NewGuid().ToString(),"window.open('"+url+"');",true);
         }
     }
 }

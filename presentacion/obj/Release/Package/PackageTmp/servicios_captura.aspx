@@ -112,7 +112,7 @@
             </div>
             <asp:Panel ID="panel_puestos" runat="server">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" runat="server" id="no" visible="false">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h4 style="text-align: center;" class=" panel-title">Agregar Servicios Predefinidos <small style="color: white;">

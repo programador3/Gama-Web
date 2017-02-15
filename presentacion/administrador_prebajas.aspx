@@ -96,6 +96,9 @@
                 }
             });
         });
+        function LoadingGift(mensaje) {
+            swal({ title: 'Espere un Momento...', text: mensaje, allowEscapeKey: false, imageUrl: 'imagenes/loading.gif', timer: '120000', showConfirmButton: false });
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -127,9 +130,9 @@
                                     </p>
                                 </div>
                                 <div class="icon">
-                                    <asp:LinkButton ID="lnkGOdET" Style="color: white;" runat="server" OnClick="lnkGO_Click"><i class="ion ion-arrow-right-c"></i></asp:LinkButton>
+                                    <asp:LinkButton ID="lnkGOdET" OnClientClick="LoadingGift('Estamos Cargando la Información de la PreBaja. Si el proceso tarda demasiado, es posible que se deba a la cantidad de Activos Relacionados al Puesto.');" Style="color: white;" runat="server" OnClick="lnkGO_Click"><i class="ion ion-arrow-right-c"></i></asp:LinkButton>
                                 </div>
-                                <asp:LinkButton ID="lnkGO" runat="server" CssClass="small-box-footer" OnClick="lnkGO_Click">Ver Detalles <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
+                                <asp:LinkButton ID="lnkGO"  OnClientClick="LoadingGift('Estamos Cargando la Información de la PreBaja. Si el proceso tarda demasiado, es posible que se deba a la cantidad de Activos Relacionados al Puesto.');" runat="server" CssClass="small-box-footer" OnClick="lnkGO_Click">Ver Detalles <i class="fa fa-arrow-circle-o-right"></i></asp:LinkButton>
                             </asp:Panel>
                         </div>
                     </ItemTemplate>
@@ -162,10 +165,13 @@
                                     </div>
                                     <div class="form-group">
                                         <h5><strong>Fecha de Solicitud de Pre-Baja: </strong>
-                                            <asp:Label ID="lblfecha" runat="server" Text=""></asp:Label>
-                                            &nbsp;&nbsp;<strong>Motivo: </strong>
-                                            <asp:Label ID="lblmotivo" runat="server" Text=""></asp:Label>
+                                            <asp:Label ID="lblfecha" runat="server" Text=""></asp:Label>  
+                                            &nbsp;&nbsp;<strong>Usuario Solicito: </strong>
+                                            <asp:Label ID="lblusuario" runat="server" Text=""></asp:Label>
                                         </h5>
+                                        <h5>
+                                            <strong>Motivo: </strong>
+                                            <asp:Label ID="lblmotivo" runat="server" Text=""></asp:Label></h5>
                                     </div>
                                     <div class="form-group">
                                         <h5><strong>Tipo de Baja: </strong>

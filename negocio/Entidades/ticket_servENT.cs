@@ -15,7 +15,7 @@ namespace negocio.Entidades
         private string pobservaciones;
         private string pcontraseña;
         private int pidc_usuario_term;
-        
+        private bool todo;
         private DateTime pfechaInicio;
         private DateTime pfechafin;
         private int pidc_depto_aten;
@@ -49,6 +49,7 @@ namespace negocio.Entidades
         public int Pidc_puesto_revisa { get { return pidc_puesto_revisa; } set { pidc_puesto_revisa = value; } }
 
         public int Pidc_usuario { get { return pidc_usuario; } set { pidc_usuario = value; } }
+        public bool Ptodo { get { return todo; } set { todo = value; } }
 
     }
 }

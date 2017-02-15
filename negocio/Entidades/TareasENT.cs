@@ -4,6 +4,8 @@ namespace negocio.Entidades
 {
     public class TareasENT
     {
+        private bool tarea_terminada_por_asigna;
+        private bool mis_empleados;
         private int idc_tarea;
         private int idc_tipoi;
         private int idc_proceso;
@@ -27,6 +29,7 @@ namespace negocio.Entidades
         private bool correcto;
         private bool APLICAR_CAMBIOTODOS;
         private bool OTRO;
+        private bool reporte;
         private bool cambio_fecha_ori;
         private string comentarios;
         private DateTime fecha;
@@ -62,6 +65,11 @@ namespace negocio.Entidades
         }
 
         public Boolean PAPLICAR_CAMBIOTODOS { get { return APLICAR_CAMBIOTODOS; } set { APLICAR_CAMBIOTODOS = value; } }
+
+        public Boolean preporte { get { return reporte; } set { reporte = value; } }
+            public Boolean Ptarea_terminada_por_asigna { get { return tarea_terminada_por_asigna; } set { tarea_terminada_por_asigna = value; } }
+
+        public Boolean Pmisempleados { get { return mis_empleados; } set { mis_empleados = value; } }
 
         public int Pidc_tarea
         {

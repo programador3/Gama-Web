@@ -27,7 +27,24 @@ namespace negocio.Componentes
             }
             return ds;
         }
-        
+        public DataSet sp_datos_horarios_grupos_det(int idc_horario)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_horariog", SqlDbType = SqlDbType.Int, Value = idc_horario });
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_datos_horarios_grupos_det", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet sp_mpuestos_preparar_obs(int idc_prepara,string observaciones, int idc_usuario)
         {
             DataSet ds = new DataSet();
@@ -87,7 +104,7 @@ namespace negocio.Componentes
             return ds;
         }
         
-        public DataSet SP_PRE_EMPLEADO_VOBO(int idc_prepara, int idc_usuario, int idc_pre_empleado)
+        public DataSet SP_PRE_EMPLEADO_VOBO(int idc_prepara, int idc_usuario, int idc_pre_empleado, int idc_horariog)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
@@ -95,6 +112,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_pre_empleado", SqlDbType = SqlDbType.Int, Value = idc_pre_empleado });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_prepara", SqlDbType = SqlDbType.Int, Value = idc_prepara });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_horariog", SqlDbType = SqlDbType.Int, Value = idc_horariog });
             try
             {
                 //ds = data.datos_Clientes(listparameters);
@@ -165,6 +183,23 @@ namespace negocio.Componentes
             {
                 //ds = data.datos_Clientes(listparameters);
                 ds = data.enviar("sp_pre_empleado_falta_vbno", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+        public DataSet sp_pre_empleados_pendientes_alta()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_pre_empleados_pendientes_alta", listparameters, false);
             }
             catch (Exception ex)
             {

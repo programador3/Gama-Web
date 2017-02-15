@@ -102,6 +102,9 @@
                 <div class="col-lg-12 col-xs-12">
                     <asp:LinkButton ID="LinkButton2" CssClass="btn btn-danger btn-block" runat="server" OnClick="LinkButton2_Click">Reporte para Junta Direccion <i class="fa fa-repeat" aria-hidden="true"></i></asp:LinkButton>
                 </div>
+                <div class="col-lg-12">
+                    <asp:LinkButton ID="LinkButton3" CssClass=" btn btn-success btn-block" runat="server" OnClientClick="window.open('grafica_reclutamiento.aspx');">Grafica de Rendimiento Reclutamiento</asp:LinkButton>
+                </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>

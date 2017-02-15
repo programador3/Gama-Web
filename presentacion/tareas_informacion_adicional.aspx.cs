@@ -42,7 +42,7 @@ namespace presentacion
                 }
 
                 DataSet ds = new DataSet();
-                if (entidad.Pidc_proceso > 0)
+                if (entidad.Pidc_proceso > 0 || entidad.Pidc_tipoi==10)
                 {
                     if (Request.QueryString["f1"] == null)
                     {

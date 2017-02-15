@@ -88,7 +88,7 @@ namespace presentacion
                 }
                 else
                 { //valor erroneo
-                    Response.Redirect("perfiles.aspx");
+                    Response.Redirect("perfiles.aspx?todos=" +Request.QueryString["todos"] + "&depto=" + Request.QueryString["depto"]);
                     return;
                 }
 
@@ -149,7 +149,7 @@ namespace presentacion
                 }
                 else
                 {
-                    oc_paginaprevia.Value = "perfiles.aspx";
+                    oc_paginaprevia.Value = "perfiles.aspx?todos=" +Request.QueryString["todos"] + "&depto=" + Request.QueryString["depto"];
                 }
 
                 //una vez utilizada la reseteo
@@ -2199,7 +2199,7 @@ namespace presentacion
 
                         //if (string.IsNullOrEmpty(vmensaje) && ds.Tables.Count >=1) // si esta vacio todo bien
                         //{
-                        //    Alert.ShowGiftMessage("Estamos procesando la cantidad de "+papeleria.Rows.Count.ToString()+" archivo(s) al Servidor.", "Espere un Momento", "perfiles.aspx", "imagenes/loading.gif", tP, "El perfil fue Guardado Correctamente", this);
+                        //    Alert.ShowGiftMessage("Estamos procesando la cantidad de "+papeleria.Rows.Count.ToString()+" archivo(s) al Servidor.", "Espere un Momento", "perfiles.aspx?todos=" +Request.QueryString["todos"] + "&depto=" + Request.QueryString["depto"], "imagenes/loading.gif", tP, "El perfil fue Guardado Correctamente", this);
 
                         //}
                         if (string.IsNullOrEmpty(vmensaje) && ds.Tables[1] != null) // si esta vacio todo bien
@@ -2265,8 +2265,9 @@ namespace presentacion
 
                             if (correct == true)
                             {
-                                int total = (((tabla_archivos.Rows.Count + t_archivos_eti) * 1) + 1) * 1000;
-                                string t = total.ToString();
+                                int total = tabla_archivos.Rows.Count + t_archivos_eti;
+                                int subtotal = total > 5 ? (total * 200) : 1000;
+                                string t = subtotal.ToString();
                                 int archivos_procesados = t_archivos_eti + papeleria.Rows.Count;
                                 entidad.Cadena_etiq_lib = cadena;
                                 entidad.Cad_total_etiq_lib = TOTAL_CAD;
@@ -2276,10 +2277,13 @@ namespace presentacion
                                 string vm_mensaje = DS_ARCHI.Tables[0].Rows[0]["mensaje"].ToString();
                                 if (vm_mensaje == "")
                                 {
-                                    Alert.ShowGiftMessage("Estamos procesando la cantidad de " + archivos_procesados.ToString() + " archivo(s) al Servidor.", "Espere un Momento", "perfiles.aspx", "imagenes/loading.gif", t, "El perfil fue Guardado Correctamente", this);
+                                    Alert.ShowGiftMessage("Estamos procesando la cantidad de " + archivos_procesados.ToString() + " archivo(s) al Servidor.", "Espere un Momento", "perfiles.aspx?todos=" +Request.QueryString["todos"] + "&depto=" + Request.QueryString["depto"], "imagenes/loading.gif", t, "El perfil fue Guardado Correctamente", this);
                                 }
                                 else
                                 {
+                                    
+
+
                                     Alert.ShowAlertError(vm_mensaje, this);
                                 }
                             }

@@ -56,6 +56,7 @@ namespace negocio.Componentes
             //listparameters.Add(new SqlParameter() { ParameterName = "@pidc_ticketserv", Value = ent.Pidc_ticketserv });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", Value = ent.Pidc_puesto });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", Value = ent.Pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptodo", Value = ent.Ptodo });
 
             try
             {

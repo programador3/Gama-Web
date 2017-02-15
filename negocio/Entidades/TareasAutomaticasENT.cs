@@ -4,6 +4,7 @@ namespace negocio.Entidades
 {
     public class TareasAutomaticasENT
     {
+        private int tipo_filtro;
         private int idc_depto;
         private int idc_tarea_auto;
         private string descripcion;
@@ -30,7 +31,11 @@ namespace negocio.Entidades
         private string pnombrepc;
         private string pusuariopc;
         private int idc_usuario;
-
+        public int Ptipofiltro
+        {
+            get { return tipo_filtro; }
+            set { tipo_filtro = value; }
+        }
         public int Idc_usuario
         {
             get { return idc_usuario; }

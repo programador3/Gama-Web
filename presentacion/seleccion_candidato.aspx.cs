@@ -212,7 +212,7 @@ namespace presentacion
                     }
                     else
                     {
-                        Alert.ShowAlertConfirm(mensaje, "No puede continuar", "administrador_preparaciones.aspx", this);
+                        Alert.ShowAlertError(mensaje, this);
                     }
                     break;
 

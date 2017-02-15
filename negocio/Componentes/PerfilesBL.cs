@@ -26,8 +26,27 @@ namespace negocio.Componentes
             {
                 throw ex;
             }
+            
             return ds;
         }
+        public DataSet SP_COMBO_DEPTOS()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("SP_COMBO_DEPTOS", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
         public DataSet perfiles(PerfilesE entidad)
         {
             DataSet ds = new DataSet();
@@ -35,6 +54,9 @@ namespace negocio.Componentes
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@idc_usuario", SqlDbType = SqlDbType.Int, Value = entidad.Usuario });
             listparameters.Add(new SqlParameter() { ParameterName = "@pproduccion", SqlDbType = SqlDbType.Int, Value = entidad.Borrador });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pborrador", SqlDbType = SqlDbType.Int, Value = entidad.Produccion });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ver_todos", SqlDbType = SqlDbType.Int, Value = entidad.VerTodo });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_depto", SqlDbType = SqlDbType.Int, Value = entidad.Pidc_depto });
 
             try
             {

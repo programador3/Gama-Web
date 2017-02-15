@@ -46,6 +46,7 @@
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="lnkreturn_mias" EventName="Click" />
             <asp:AsyncPostBackTrigger ControlID="lnkregresa_mias" EventName="Click" />
+            <asp:PostBackTrigger ControlID="LinkButton1" />
         </Triggers>
         <ContentTemplate>
             <div class="row">
@@ -54,7 +55,11 @@
                         <div class="card-header" style="background-color: #1ABC9C; color: white;">
                             <div class="card-title" style="background-color: #1ABC9C; color: white;">
                                 <div class="title" style="text-align: center; background-color: #1ABC9C; color: white;">
-                                    <h4 style="text-align: center;"><i class="fa fa-wrench"></i>&nbsp;Mis Tareas Pendientes</h4>
+                                    <h4 style="text-align: center;"><i class="fa fa-wrench"></i>&nbsp;Mis Tareas Pendientes
+                                        <span>
+                                            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">Excel</asp:LinkButton>
+                                        </span>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
@@ -154,6 +159,7 @@
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="nlkreturn" EventName="Click" />
             <asp:AsyncPostBackTrigger ControlID="lnkregresa" EventName="Click" />
+            <asp:PostBackTrigger ControlID="LinkButton2" />
         </Triggers>
         <ContentTemplate>
             <div class="row">
@@ -162,7 +168,9 @@
                         <div class="card-header" style="background-color: #1ABC9C; color: white;">
                             <div class="card-title" style="background-color: #1ABC9C; color: white;">
                                 <div class="title" style="background-color: #1ABC9C; color: white;">
-                                    <h4 style="text-align: center;"><i class="fa fa-wrench"></i>&nbsp;Tareas que yo Asigne</h4>
+                                    <h4 style="text-align: center;"><i class="fa fa-wrench"></i>&nbsp;Tareas que yo Asigne  <span>
+                                            <asp:LinkButton ID="LinkButton2" CssClass="btn btn-primary" runat="server" OnClick="LinkButton2_Click">Excel</asp:LinkButton>
+                                        </span></h4>
                                 </div>
                             </div>
                         </div>

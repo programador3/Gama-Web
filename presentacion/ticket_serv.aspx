@@ -1,23 +1,5 @@
-﻿<%@ Page Title="Ticket de Servicios" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="ticket_serv.aspx.cs" Inherits="presentacion.ticket_serv" %>
-
+﻿<%@ Page Title="Tickets" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="ticket_serv.aspx.cs" Inherits="presentacion.ticket_serv" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .form-control1 {
-            float: right;
-            text-align: right;
-            font-weight: bold;
-            color: blue;
-        }
-
-        .form-control + .form-control-feedback {
-            left: 0;
-        }
-
-        .input-group {
-            display: block;
-        }
-    </style>
-
     <script type="text/javascript">
         function CerrarModal() {
             $('#myModal').modal('hide');
@@ -81,119 +63,156 @@
             });
         });
     </script>
+    <style>
+        .div_espera {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 1px;
+            border-width: 1px;
+            font-family: 'Roboto Condensed', sans-serif;
+            background-color: #F0F0F0;
+            border-color: #EAEAEA;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .div_aten {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 1px;
+            border-width: 1px;
+            font-family: 'Roboto Condensed', sans-serif;
+            background-color: #353d47;
+            color: #FFF;
+            border-color: #353d47;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+      <%--  <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="repeat_en_espera" EventName="ItemCommand" />
+            <asp:AsyncPostBackTrigger ControlID="repeat_atendidos" EventName="ItemCommand" />
+        </Triggers>--%>
+        <ContentTemplate>
+            <h2 class="page-header"><i class="fa fa-bookmark-o" aria-hidden="true"></i>&nbsp; Ticket de Servicios
+                <span>
+                    <asp:LinkButton ID="lnksolomios" CssClass="btn btn-info" Text="Ver Solo Tickets Mios" runat="server" OnClick="lnksolomios_Click"></asp:LinkButton>
+                </span>
+            </h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4><i class="fa fa-list"></i>&nbsp;Tickets de Servicio En Espera. 
+                        <span>
+                            <asp:TextBox ID="txtbuscarespera" CssClass=" form-control2" placeholder="Buscar en Espera" Width="200px" runat="server" autocomplete="off"></asp:TextBox>
+                            <asp:LinkButton ID="lnkbuscarespera" runat="server" CssClass="btn btn-info" OnClick="lnkbuscarespera_Click">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </asp:LinkButton>
+                        </span>
+                    </h4>
+                    <h4 id="NO_Hay_E" runat="server" visible="false" style="text-align: center;">No Hay Registros <i class="fa fa-exclamation-triangle"></i></h4>
+                    <asp:Repeater ID="repeat_en_espera" runat="server" OnItemCommand="repeat_en_espera_ItemCommand">
+                        <ItemTemplate>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="lnktickete" EventName="Click" />
+                                    <asp:AsyncPostBackTrigger ControlID="LinkButton3" EventName="Click" />
+                                    <asp:AsyncPostBackTrigger ControlID="LinkButton2" EventName="Click" />
+                                    <asp:PostBackTrigger ControlID="LNKARCHIVO2" />
+                                </Triggers>
+                                <ContentTemplate>
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"  data-toggle="tooltip" data-placement="top" title='<%# Eval("observaciones").ToString() %>'>
+                                        <div class=" div_espera">
 
-    <h1 class="page-header"><i class="fa fa-bookmark-o" aria-hidden="true"></i>&nbsp; Ticket de Servicios</h1>
-   
-
-    <div class="row">
-        <div id="grids" runat="server" visible="true">
-                    <div class="col-lg-12 col-md-12 ">
-            <div class="panel panel-info fresh-color">
-
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-list"></i>&nbsp;Ticket de Servicio En Espera. </h3>
-                </div>
-                <div class="panel-body">
-                    <h3 id="NO_Hay_E" runat="server" visible="false" style="text-align: center;">NO HAY DATOS <i class="fa fa-exclamation-triangle"></i></h3>
-                    <div class="table-responsive">
-                        <asp:GridView Style="font-size: 12px; text-align:center;" ID="grid_E" CssClass="gvv table table-responsive table-condensed table-bordered" AutoGenerateColumns="false" runat="server"
-                            DataKeyNames="idc_ticketserv,idc_tareaser,descripcion,fecha,observaciones,EMPLEADO_ATIENDE,ARCHIVO,empleado,DEPTO" OnRowCommand="grid_E_RowCommand" OnRowDataBound="grid_E_RowDataBound">
-                            <Columns>
-                                <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_autorizar.png" HeaderText="Atender" CommandName="Atender">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:ButtonField>
-                                <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_borrar.png" HeaderText="Cancelar" CommandName="Cancelar">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:ButtonField>
-                                   <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_download.png" HeaderText="Archivo" CommandName="Descargar">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:ButtonField>
-                                <asp:BoundField DataField="idc_tareaser" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="idc_ticketserv" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="descripcion" Visible='false'></asp:BoundField>                        
-                                <asp:ButtonField  ButtonType="Button" ControlStyle-CssClass="btn btn-default btn-block"  HeaderText="Descripcion" DataTextField="des_corta" CommandName="preview">
-                                    <HeaderStyle HorizontalAlign="Center"  />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:ButtonField>
-                                <asp:BoundField DataField="fecha" HeaderText="Fecha Solicitud"></asp:BoundField>
-                                <asp:BoundField DataField="observaciones" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="obs_corta" HeaderText="Observaciones"></asp:BoundField>
-                                <asp:BoundField DataField="empleado" HeaderText="Empleado"></asp:BoundField>
-                                <asp:BoundField DataField="DEPTO" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="ARCHIVO" Visible='false'></asp:BoundField>
-                                <asp:boundfield DataField="EMPLEADO_ATIENDE" Visible="false" HeaderText="idc_puesto_rep" />
-
-                            </Columns>
-                        </asp:GridView>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-12 col-md-12">
-            <div class="panel panel-primary">
-
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-list"></i>&nbsp;Ticket de Servicio Atendido. </h3>
-                </div>
-                <div class="panel-body">
-                    <h3 id="NO_Hay_A" runat="server" visible="false" style="text-align: center;">NO HAY DATOS <i class="fa fa-exclamation-triangle"></i></h3>
-                    <div class="table-responsive">
-                        <asp:GridView Style="font-size: 12px; text-align:center;" ID="grid_A" CssClass="table table-responsive table-condensed table-bordered" AutoGenerateColumns="false" runat="server"
-                            DataKeyNames="idc_ticketserv,idc_ticketserva,idc_tareaser,descripcion,fecha,EMPLEADO_ATIENDE,ARCHIVO,empleado,DEPTO,observaciones,idc_usuario_aten,idc_usuario,idc_puesto" 
-                            OnRowCommand="grid_A_RowCommand" OnRowDataBound="grid_A_RowDataBound">
-           
-                            <Columns>
-                                <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_autorizar.png" HeaderText="Terminar" CommandName="Terminar">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:ButtonField>
-                                <asp:ButtonField  ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_borrar.png" HeaderText="Cancelar" CommandName="Aten_Cancelar">
-                                    <HeaderStyle HorizontalAlign="Center"  />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:ButtonField>
-                                   <asp:ButtonField ButtonType="Image" HeaderStyle-Width="40px" ImageUrl="~/imagenes/btn/icon_download.png" HeaderText="Archivo" CommandName="Descargar">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:ButtonField>
-
-                                <asp:BoundField DataField="idc_tareaser" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="idc_ticketserv" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="idc_ticketserva" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="descripcion" Visible='false'></asp:BoundField>                                
-                                <asp:ButtonField  ButtonType="Button" ControlStyle-CssClass="btn btn-default btn-block"  HeaderText="Descripcion" DataTextField="des_corta" CommandName="preview">
-                                    <HeaderStyle HorizontalAlign="Center"  />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:ButtonField>
-                                <asp:BoundField DataField="fecha" HeaderText="Fecha Atendiendo"></asp:BoundField>
-                                <asp:BoundField DataField="observaciones" Visible='false'></asp:BoundField>
-                                <asp:BoundField DataField="obs_corta" HeaderText="Observaciones"></asp:BoundField>
-                                <asp:BoundField DataField="EMPLEADO_ATIENDE" HeaderText="Empleado Atendiendo"></asp:BoundField>
-                                <asp:BoundField DataField="DEPTO" Visible='false' ></asp:BoundField>
-                                <asp:BoundField DataField="idc_usuario_aten" Visible="false" ></asp:BoundField>
-                                <asp:BoundField DataField="idc_usuario" Visible="false" HeaderText="idc_usuario_rep" />
-                                <asp:boundfield DataField="idc_puesto" Visible="false" HeaderText="idc_puesto_rep" />
-                                <asp:BoundField DataField="ARCHIVO" Visible='false'></asp:BoundField>
-                                <asp:boundfield DataField="EMPLEADO" Visible="false" HeaderText="idc_puesto_rep" />
-                            </Columns>
-                        </asp:GridView>
-                    </div>
+                                            <h6><strong><%# Eval("des_corta").ToString() %></strong></h6>
+                                            <h6><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;<strong><%# Eval("empleado").ToString() %></strong></h6>
+                                            <h6><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<%# Eval("fecha").ToString() %></h6>
+                                            <h6><%# Eval("obs_corta").ToString() %></h6>
+                                            <asp:LinkButton Visible='<%# Convert.ToBoolean(Eval("aplica")) && Convert.ToInt32(Session["sidc_puesto_login"]) != Convert.ToInt32(Eval("idc_puesto"))  %>' 
+                                                ID="LinkButton2" CommandName="Tomar" CommandArgument='<%# Eval("idc_ticketserv")%>' runat="server"
+                                                CssClass="btn btn-primary" ToolTip='<%# Eval("observaciones").ToString() %>'>
+                                            Tomar&nbsp;<i class="fa fa-check-circle" aria-hidden="true"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton3" Visible='<%# Convert.ToBoolean(Eval("aplica")) %>' CommandName="Cancelar" CommandArgument='<%# Eval("idc_ticketserv")%>' runat="server"
+                                                CssClass="btn btn-danger" ToolTip='<%# Eval("observaciones").ToString() %>'>
+                                            Cancelar&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton ID="lnktickete" CommandName="Ver" CommandArgument='<%# Eval("idc_ticketserv")%>' runat="server"
+                                                CssClass="btn btn-info" ToolTip='<%# Eval("observaciones").ToString() %>'>
+                                            Info&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton Visible='<%# Eval("archivo").ToString() != "" %>' ID="LNKARCHIVO2" CommandName="Descargar" CommandArgument='<%# Eval("idc_ticketserv")%>' runat="server"
+                                                CssClass="btn btn-success" ToolTip='<%# Eval("observaciones").ToString() %>'>                                  
+                                                 Archivo&nbsp;<i class="fa fa-download" aria-hidden="true"></i>
+                                            </asp:LinkButton>
+                                        </div>
+                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
-        </div>
-        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4><i class="fa fa-list"></i>&nbsp;Tickets de Servicio Atendidos.                         
+                        <span>
+                            <asp:TextBox ID="txtbuscaraten" placeholder="Buscar en Atendidos" Width="200px" CssClass=" form-control2" runat="server" autocomplete="off"></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" placeholder="Buscar en AtendidosJ" Width="200px" CssClass=" form-control2" runat="server" Style="display: none;" autocomplete="off"></asp:TextBox>
+                            <asp:LinkButton ID="lnkbuscaraten" runat="server" CssClass="btn btn-primary" OnClick="lnkbuscaraten_Click">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </asp:LinkButton>
+                        </span>
+                    </h4>
+                    <h4 id="NO_Hay_A" runat="server" visible="false" style="text-align: center;">No Hay Registros <i class="fa fa-exclamation-triangle"></i></h4>
+                    <asp:Repeater ID="repeat_atendidos" runat="server" OnItemCommand="repeat_atendidos_ItemCommand">
+                        <ItemTemplate>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="lnkticketat" EventName="Click" />
+                                    <asp:AsyncPostBackTrigger ControlID="LinkButton32" EventName="Click" />
+                                    <asp:AsyncPostBackTrigger ControlID="LinkButton22" EventName="Click" />
+                                    <asp:PostBackTrigger ControlID="LNKARCHIVO" />
+                                </Triggers>
+                                <ContentTemplate>
+                                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"  data-toggle="tooltip" data-placement="top" title='<%# Eval("observaciones").ToString() %>'>
+                                        <div class=" div_aten">
+                                            <h6><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;<%# Eval("empleado_atiende").ToString() %></h6>
+                                            <h6><%# Eval("des_corta").ToString() %></h6>
+                                            <h6><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;<%# Eval("empleado").ToString() %></h6>
+                                            <h6><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<%# Eval("fecha").ToString() %></h6>
+                                            <h6><asp:Label ID="lbldes" runat="server" Text='<%# Eval("obs_corta").ToString() %>' ToolTip='<%# Eval("observaciones").ToString() %>'></asp:Label></h6>
+                                            <asp:LinkButton Visible='<%# Convert.ToBoolean(Eval("aplica")) %>' ID="LinkButton22" CommandName="Terminar" CommandArgument='<%# Eval("idc_ticketserv")%>' runat="server"
+                                                CssClass="btn btn-default" ToolTip='<%# Eval("observaciones").ToString() %>'>
+                                                    Terminar&nbsp;<i class="fa fa-check-circle" aria-hidden="true"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton Visible='<%# Convert.ToBoolean(Eval("aplica")) %>' ID="LinkButton32" CommandName="Aten_Cancelar" CommandArgument='<%# Eval("idc_ticketserv")%>' runat="server"
+                                                CssClass="btn btn-danger" ToolTip='<%# Eval("observaciones").ToString() %>'>
+                                                 Cancelar&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton ID="lnkticketat" CommandName="Ver" CommandArgument='<%# Eval("idc_ticketserv")%>' runat="server"
+                                                CssClass="btn btn-info" ToolTip='<%# Eval("observaciones").ToString() %>'>                                  
+                                                 Info&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </asp:LinkButton>
+                                            <asp:LinkButton Visible='<%# Eval("archivo").ToString() != ""%>' ID="LNKARCHIVO" CommandName="Descargar" CommandArgument='<%# Eval("idc_ticketserv")%>' runat="server"
+                                                CssClass="btn btn-success" ToolTip='<%# Eval("observaciones").ToString() %>'>                                  
+                                                 Archivo&nbsp;<i class="fa fa-download" aria-hidden="true"></i>
+                                            </asp:LinkButton>
+                                        </div>
 
-    </div>
+                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
 
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-     
                     <div class="modal-content" style="text-align: center">
                         <div class="modal-header" style="background-color: #428bca; color: white">
                             <h4><strong id="confirmTitulo" class="modal-title"></strong></h4>
@@ -233,7 +252,7 @@
                                         <asp:TextBox Style="text-transform: uppercase; resize: none;" onfocus="$(this).select();"
                                             ID="txtDescripcion" runat="server" TextMode="Multiline" Rows="2" CssClass="form-control"
                                             AutoPostBack="false" placeholder="Descripcion"></asp:TextBox>
-                                        <asp:LinkButton ID="LinkButton1" runat="server">LinkButton</asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" runat="server"></asp:LinkButton>
                                         <div id="div_pass" runat="server">
                                             <!--   -->
                                             <h5><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Usuario</h5>
@@ -249,10 +268,10 @@
                             </div>
                             <div class="modal-footer">
                                 <div class="col-lg-6 col-xs-6">
-                                    <asp:Button ID="yes" class="btn btn-success btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
+                                    <asp:Button ID="yes" class="btn btn-info btn-block" OnClientClick="CerrarModal();" runat="server" OnClick="Yes_Click" Text="Aceptar" />
                                 </div>
                                 <div class="col-lg-6 col-xs-6">
-                                    <input id="No" class="btn btn-danger btn-block" onclick="CerrarModal();" value="Cancelar" />
+                                    <input id="No" type="button" class="btn btn-danger btn-block" onclick="CerrarModal();" value="Cancelar" />
                                 </div>
                             </div>
                         </div>
@@ -264,6 +283,10 @@
                     <input type="hidden" runat="server" id="sidc_puesto_h" />
                     <input type="hidden" runat="server" id="idc_usuario_aten_h" />
                     <input type="hidden" runat="server" id="idc_usuario_rep_h" />
-        </div>
-    </div>
+                </div>
+            </div>
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
 </asp:Content>

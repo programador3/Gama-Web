@@ -143,7 +143,8 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon" style="color: #fff; background-color: #19B5FE;">
                                                         <i class="fa fa-comment-o"></i></span>
-                                                    <asp:TextBox ID="txtObservaciones" AutoPostBack="true" OnTextChanged="txtObservaciones_TextChanged" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Observaciones"></asp:TextBox>
+                                                    <asp:TextBox ID="txtObservaciones"  onblur="return imposeMaxLength(this, 250);" AutoPostBack="true" OnTextChanged="txtObservaciones_TextChanged" runat="server" CssClass="form-control" TextMode="MultiLine" 
+                                                        placeholder="Observaciones"></asp:TextBox>
                                                 </div>
                                                 <asp:Label ID="lblerrorobs" runat="server" Text="Para RECHAZAR Debe Colocar una Observacion" Visible="true" CssClass="label label-danger"></asp:Label>
                                             </asp:Panel>

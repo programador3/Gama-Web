@@ -33,10 +33,8 @@ namespace presentacion
                     DataRow row = dt.NewRow();
                     row["ruta"] = filePath;
                     row["archivo"] = (Path.GetFileName(filePath));
-                    row["fecha"] = File.GetCreationTime(filePath).ToString("dd MMMM, yyyy H:mm:ss", 
-                        System.Globalization.CultureInfo.CreateSpecificCulture("es-MX"));
-                    //row["fecha"] = Convert.ToDateTime(File.GetCreationTime(filePath).ToString("dd MMMM, yyyy H:mm:ss",
-                    //   System.Globalization.CultureInfo.CreateSpecificCulture("es-MX")));
+                    row["fecha"] = File.GetCreationTime(filePath).ToString("dddd dd MMMM, yyyy H:mm:ss", 
+                       System.Globalization.CultureInfo.CreateSpecificCulture("es-MX"));
                     dt.Rows.Add(row);
                 }
                 grid_archivos.DataSource = dt;

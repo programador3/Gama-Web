@@ -231,6 +231,7 @@
     <Content Include="empleados_reportes.aspx" />
     <Content Include="empleados_reportes_pendientes.aspx" />
     <Content Include="empleados_reportes_contra.aspx" />
+    <Content Include="error_update.htm" />
     <Content Include="especificaciones.aspx" />
     <Content Include="especificaciones.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
@@ -274,6 +275,8 @@
     <Content Include="generar_embarque_de_pre-embarques_m.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
+    <Content Include="error.htm" />
+    <Content Include="grafica_reclutamiento.aspx" />
     <Content Include="grafica_ventas.aspx" />
     <Content Include="guardias_captura.aspx" />
     <Content Include="guardias_reporte.aspx" />
@@ -777,6 +780,7 @@
     <Content Include="pre_empleados_captura.aspx" />
     <Content Include="pre_empleados_captura_basica.aspx" />
     <Content Include="pre_empleados_info.aspx" />
+    <Content Include="pre_empleados_pendientes_alta.aspx" />
     <Content Include="pre_empleados_vobo.aspx" />
     <Content Include="primitive\css\bporgeditor.latest.css" />
     <Content Include="primitive\css\images\ui-bg_flat_10_000000_40x100.png" />
@@ -840,6 +844,9 @@
     <Content Include="prospectos_detalle.aspx" />
     <Content Include="prueba.aspx" />
     <Content Include="puestos.aspx" />
+    <Content Include="puestos_alta.aspx" />
+    <Content Include="puestos_alta_autorizar.aspx" />
+    <Content Include="puestos_alta_captura.aspx" />
     <Content Include="puestos_catalogo.aspx" />
     <Content Include="puestos_equi.aspx" />
     <Content Include="quejas_acciones.aspx" />
@@ -894,6 +901,7 @@
     <Content Include="subprocesos_captura.aspx" />
     <Content Include="tareas.aspx" />
     <Content Include="tareas_arbol.aspx" />
+    <Content Include="tareas_listado_sub.aspx" />
     <Content Include="tareas_asignadas_lista.aspx" />
     <Content Include="tareas_automaticas.aspx" />
     <Content Include="tareas_automaticas_captura.aspx" />
@@ -906,6 +914,7 @@
     <Content Include="tareas_rapidas.aspx" />
     <Content Include="tareas_servicios_captura.aspx" />
     <Content Include="ticketserv_info.aspx" />
+    <Content Include="ticket_serv1.aspx" />
     <Content Include="ticket_serv.aspx" />
     <Content Include="ticket_serv_captura.aspx" />
     <Content Include="ticket_serv_reporte.aspx" />
@@ -1631,6 +1640,13 @@
     <Compile Include="Global.Master.designer.cs">
       <DependentUpon>Global.Master</DependentUpon>
     </Compile>
+    <Compile Include="grafica_reclutamiento.aspx.cs">
+      <DependentUpon>grafica_reclutamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="grafica_reclutamiento.aspx.designer.cs">
+      <DependentUpon>grafica_reclutamiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="grafica.aspx.cs">
       <DependentUpon>grafica.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2026,6 +2042,13 @@
     <Compile Include="pre_empleados_info.aspx.designer.cs">
       <DependentUpon>pre_empleados_info.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pre_empleados_pendientes_alta.aspx.cs">
+      <DependentUpon>pre_empleados_pendientes_alta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pre_empleados_pendientes_alta.aspx.designer.cs">
+      <DependentUpon>pre_empleados_pendientes_alta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pre_empleados_vobo.aspx.cs">
       <DependentUpon>pre_empleados_vobo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2103,6 +2126,27 @@
     </Compile>
     <Compile Include="puestos.aspx.designer.cs">
       <DependentUpon>puestos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="puestos_alta.aspx.cs">
+      <DependentUpon>puestos_alta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="puestos_alta.aspx.designer.cs">
+      <DependentUpon>puestos_alta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="puestos_alta_autorizar.aspx.cs">
+      <DependentUpon>puestos_alta_autorizar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="puestos_alta_autorizar.aspx.designer.cs">
+      <DependentUpon>puestos_alta_autorizar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="puestos_alta_captura.aspx.cs">
+      <DependentUpon>puestos_alta_captura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="puestos_alta_captura.aspx.designer.cs">
+      <DependentUpon>puestos_alta_captura.aspx</DependentUpon>
     </Compile>
     <Compile Include="puestos_catalogo.aspx.cs">
       <DependentUpon>puestos_catalogo.aspx</DependentUpon>
@@ -2409,6 +2453,13 @@
     <Compile Include="tareas_arbol.aspx.designer.cs">
       <DependentUpon>tareas_arbol.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tareas_listado_sub.aspx.cs">
+      <DependentUpon>tareas_listado_sub.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tareas_listado_sub.aspx.designer.cs">
+      <DependentUpon>tareas_listado_sub.aspx</DependentUpon>
+    </Compile>
     <Compile Include="tareas_asignadas_lista.aspx.cs">
       <DependentUpon>tareas_asignadas_lista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2492,6 +2543,13 @@
     </Compile>
     <Compile Include="ticketserv_info.aspx.designer.cs">
       <DependentUpon>ticketserv_info.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ticket_serv1.aspx.cs">
+      <DependentUpon>ticket_serv1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ticket_serv1.aspx.designer.cs">
+      <DependentUpon>ticket_serv1.aspx</DependentUpon>
     </Compile>
     <Compile Include="ticket_serv.aspx.cs">
       <DependentUpon>ticket_serv.aspx</DependentUpon>

@@ -1,0 +1,8 @@
+Isaac Humberto De La Rosa Mendez
+PC: DESKTOP-TQ1IL43
+Usuario-PC: programador3
+IP: 192.168.0.37
+System.ArgumentException: Column 'usuario' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at presentacion.administrador_prebajas.DataPrebajasDetalles(Int32 idc_prebaja, Int32 idc_puestoprebaja) in D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\24_01_17\Puestos\presentacion\administrador_prebajas.aspx.cs:line 150

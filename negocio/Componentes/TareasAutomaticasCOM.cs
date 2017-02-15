@@ -145,5 +145,28 @@ namespace negocio.Componentes
             }
             return ds;
         }
+
+        public DataSet DatosGraficasReclu(TareasAutomaticasENT Etiqueta)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            if (Etiqueta.Pfecha_empieza != Convert.ToDateTime("1/1/0001 12:00:00 AM"))
+            {
+                listparameters.Add(new SqlParameter() { ParameterName = "@pFECHA_INICIAL", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_empieza });
+                listparameters.Add(new SqlParameter() { ParameterName = "@pfecha_fin", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_termina });
+                listparameters.Add(new SqlParameter() { ParameterName = "@PTIPO", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptipofiltro });
+            }
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_grafica_reclutamiento", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
     }
 }

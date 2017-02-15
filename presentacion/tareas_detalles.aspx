@@ -94,7 +94,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <h4><i class="fa fa-pencil-square-o"></i>&nbsp;Puesto que Asigno la Tarea</h4>
-                    <asp:TextBox ID="txtpuesto_asigna" ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtpuesto_asigna" ReadOnly="true" runat="server" TextMode="MultiLine" Rows="2" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <h4><i class="fa fa-wrench"></i>&nbsp;Puesto Que realizara la Tarea
@@ -270,12 +270,14 @@
 
                 <br />
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <asp:Button ID="btnTerminar" runat="server" Text="Terminar Tarea" CssClass="btn btn-primary btn-block" OnClick="btnTerminar_Click" Visible="false" />
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        
                         <asp:Button ID="btnTerminarVBNO" runat="server" Text="Reasignar Tarea" CssClass="btn btn-primary btn-block" OnClick="btnTerminarVBNO_Click" Visible="false" />
                     </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <asp:Button ID="btnCancelarTodo" Visible="false" runat="server" Text="Cancelar el Proceso de la Tarea" CssClass="btn btn-danger btn-block" OnClick="btnCancelarTodo_Click" />
                     </div>
                 </div>
@@ -324,7 +326,7 @@
 
                                                     <h4><i class="fa fa-list-alt"></i>&nbsp;Comentarios</h4>
                                                     <asp:TextBox ID="txtcomentarios_vbno" onfocus="btn();" onblur="campoVacio();" Visible="true" ReadOnly="false" placeholder="Comentarios" CssClass="form-control" TextMode="MultiLine" MaxLength="200" Rows="2" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
-                                                    <div class="row">
+                                                    <div class="row Ocultar" >
                                                         <h4><strong>¿La tarea fue realizada satisfactoriamente y en tiempo acordado?</strong></h4>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                             <asp:Button ID="btncorrectvbno" runat="server" Text="Si" CssClass="btn btn-default btn-block" OnClick="btncorrectvbno_Click" />
@@ -348,7 +350,7 @@
                                             <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
                                         </div>
                                         <div class="col-lg-6 col-xs-6">
-                                            <input id="No" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
+                                            <input id="No" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                                         </div>
                                     </div>
                                 </div>
@@ -461,38 +463,39 @@
                             <h4><strong>Mensaje del Sistema</strong></h4>
                         </div>
                         <div class="modal-body">
-                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
-                                        <ContentTemplate>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-12 col-xs-12">
-                                                    <label>Como solicitante de la tarea usted puede cambiar la Fecha Compromiso Directamente
-                                                    </label>
-                                                    <asp:TextBox ID="txtfecha_reasigna" runat="server" TextMode="DateTimeLocal" CssClass="form-control"></asp:TextBox>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <label>Selecciona un Empleado </label>
-                                                    <asp:DropDownList ID="ddlPuesto" runat="server" CssClass="form-control">
-                                                    </asp:DropDownList>
-                                                </div>
-                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                                    <label>Escriba un Filtro</label>
-                                                    <asp:TextBox ID="txtpuesto_filtro" runat="server" TextMode="SingleLine" CssClass="form-control" AutoPostBack="true" OnTextChanged="lnkbuscarpuestos_Click" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                    <label></label>
-                                                    <asp:LinkButton ID="lnkbuscarpuestos" runat="server" CssClass="btn btn-success btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <label>Motivo de la Reasignacion</label>
-                                                    <asp:TextBox ID="txtmotivo" runat="server" CssClass="form-control" TextMode="Multiline" placeholder="Motivo" Rows="3" style="resize:none;"></asp:TextBox>
-                                                </div>                                                
-                                                <div class="col-lg-12 col-xs-12">
-                                                     <label><strong>¿Contar como MAL RESULTADO a el empleado?</strong></label>
-                                                    <asp:Button ID="btnreasignamalresultado" runat="server" Text="Si contar como mal resultado" CssClass="btn btn-default btn-block" OnClick="btncorrectvbno_Click" />
-                                                </div>
-                                            </div>
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                                <ContentTemplate>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                                            <label>
+                                                Como solicitante de la tarea usted puede cambiar la Fecha Compromiso Directamente
+                                            </label>
+                                            <asp:TextBox ID="txtfecha_reasigna" runat="server" TextMode="DateTimeLocal" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <label>Selecciona un Empleado </label>
+                                            <asp:DropDownList ID="ddlPuesto" runat="server" CssClass="form-control">
+                                            </asp:DropDownList>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <label>Escriba un Filtro</label>
+                                            <asp:TextBox ID="txtpuesto_filtro" runat="server" TextMode="SingleLine" CssClass="form-control" AutoPostBack="true" OnTextChanged="lnkbuscarpuestos_Click" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                            <label></label>
+                                            <asp:LinkButton ID="lnkbuscarpuestos" runat="server" CssClass="btn btn-success btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label>Motivo de la Reasignacion</label>
+                                            <asp:TextBox ID="txtmotivo" runat="server" CssClass="form-control" TextMode="Multiline" placeholder="Motivo" Rows="3" Style="resize: none;"></asp:TextBox>
+                                        </div>
+                                        <div class="col-lg-12 col-xs-12">
+                                            <label><strong>¿Contar como MAL RESULTADO a el empleado?</strong></label>
+                                            <asp:Button ID="btnreasignamalresultado" runat="server" Text="Si contar como mal resultado" CssClass="btn btn-default btn-block" OnClick="btncorrectvbno_Click" />
+                                        </div>
+                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
                         <div class="modal-footer">
                             <div class="row">

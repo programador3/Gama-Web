@@ -219,5 +219,109 @@ namespace presentacion
             int idc_depto = Convert.ToInt32(lnkregresa_mias.CommandName);
             CargarTareasAsignadas(0, idc_depto);
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TareasENT entidad = new TareasENT();
+                TareasCOM componente = new TareasCOM();
+                entidad.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
+                entidad.Pidc_puesto_asigna = 0;
+                entidad.Pidc_depto = 0;
+                entidad.preporte = true;
+                DataSet ds = componente.CargarTareasAsignadas(entidad);
+                DataTable dt = ds.Tables[1];
+                if (dt.Rows.Count > 0)
+                {
+                    string attachment = "attachment; filename=lista.xls";
+                    Response.ClearContent();
+                    Response.AddHeader("content-disposition", attachment);
+                    Response.ContentType = "application/vnd.ms-excel;";
+                    Response.ContentEncoding = System.Text.Encoding.Unicode;
+                    Response.BinaryWrite(System.Text.Encoding.Unicode.GetPreamble());
+                    string tab = "";
+                    foreach (DataColumn dc in dt.Columns)
+                    {
+                        Response.Write(tab + dc.ColumnName);
+                        tab = "\t";
+                    }
+                    Response.Write("\n");
+                    int i;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        tab = "";
+                        for (i = 0; i < dt.Columns.Count; i++)
+                        {
+                            Response.Write(tab + dr[i].ToString());
+                            tab = "\t";
+                        }
+                        Response.Write("\n");
+                    }
+                    Response.End();
+                }
+                else {
+                    Alert.ShowAlertError("NO HAY DATOS",this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TareasENT entidad = new TareasENT();
+                TareasCOM componente = new TareasCOM();
+                entidad.Pidc_puesto_asigna = Convert.ToInt32(Session["sidc_puesto_login"]);
+                entidad.Pidc_puesto = 0;
+                entidad.Pidc_depto = 0;
+                entidad.preporte = true;
+                DataSet ds = componente.CargarTareasAsigne(entidad);
+                DataTable dt = ds.Tables[1];
+                if (dt.Rows.Count > 0)
+                {
+                    string attachment = "attachment; filename=lista.xls";
+                    Response.ClearContent();
+                    Response.AddHeader("content-disposition", attachment);
+                    Response.ContentType = "application/vnd.ms-excel;";
+                    Response.ContentEncoding = System.Text.Encoding.Unicode;
+                    Response.BinaryWrite(System.Text.Encoding.Unicode.GetPreamble());
+                    string tab = "";
+                    foreach (DataColumn dc in dt.Columns)
+                    {
+                        Response.Write(tab + dc.ColumnName);
+                        tab = "\t";
+                    }
+                    Response.Write("\n");
+                    int i;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        tab = "";
+                        for (i = 0; i < dt.Columns.Count; i++)
+                        {
+                            Response.Write(tab + dr[i].ToString());
+                            tab = "\t";
+                        }
+                        Response.Write("\n");
+                    }
+                    Response.End();
+                }
+                else
+                {
+                    Alert.ShowAlertError("NO HAY DATOS", this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+                Global.CreateFileError(ex.ToString(), this);
+            }
+
+        }
     }
 }
