@@ -441,11 +441,26 @@ namespace presentacion
                     url = listas_url[index - 1];
                     if (url == null || url == "") { url = "menu.aspx"; }
                     url = url.Replace("%20", "+");
-                    Response.Redirect(url);
+                    if (url.Contains("grafica.aspx"))
+                    {
+                        ScriptManager.RegisterStartupScript(this,GetType(),Guid.NewGuid().ToString(),"window.close();",true);
+                    }
+                    else {
+
+                        Response.Redirect(url);
+                    }
                 }
                 else
                 {
-                    Response.Redirect(url);
+                    if (url.Contains("grafica.aspx"))
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.close();", true);
+                    }
+                    else
+                    {
+
+                        Response.Redirect(url);
+                    }
                 }
             }
         }

@@ -232,8 +232,9 @@ namespace presentacion
             if (aplica_enviar_correo)
             {
                 lbltextocorreo.Text = "Se enviara un correo al candidato, con un link al sistema de RECLUTAMIENTO, para que este complete su informacion y documentos. SE RECOMIENDA REALIZAR UNA LLAMADA DE AVISO AL CANDIDATO.";
-                txtcorreo.ReadOnly = false;
+                
                 txtcorreo.Text = modal_lblcorreo.Text.Trim();
+                txtcorreo.ReadOnly = modal_lblcorreo.Text != "";
                 ViewState["correo_a_cand"] = true;
             }
             else

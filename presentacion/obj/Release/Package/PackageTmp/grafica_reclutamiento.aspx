@@ -157,9 +157,16 @@
                     <label style="width:49%"><strong><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Fecha Fin</strong></label>
                     <asp:TextBox ID="txtfechainicio" CssClass="form-control2" Width="49%" TextMode="Date" runat="server"></asp:TextBox>
                     <asp:TextBox ID="txtfechafin" CssClass="form-control2" Width="49%" TextMode="Date" runat="server"></asp:TextBox>
+                    
+                    <br />
+                    <br />
+                    <label style="width:100%"><strong><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Reclutadores</strong></label>
+                    <asp:DropDownList ID="ddlreclu" CssClass=" form-control2" runat="server"></asp:DropDownList>
+                    
                     <br />
                     <br />
                     <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" style="text-align:left;" runat="server" OnClick="LinkButton1_Click">Generar Evaluación</asp:LinkButton>
+                    
                 </div>
             </div>
             <div id="div_reporte" runat="server" visible="false">

@@ -13,15 +13,6 @@ namespace presentacion {
     public partial class html {
         
         /// <summary>
-        /// Control form1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// Control HiddenField_value.
         /// </summary>
         /// <remarks>
@@ -58,33 +49,6 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.HiddenField HiddenField;
         
         /// <summary>
-        /// Control ScriptManager1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// Control Image1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
-        
-        /// <summary>
-        /// Control UpdatePanel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
         /// Control PanelTitulo.
         /// </summary>
         /// <remarks>
@@ -103,67 +67,67 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtTitulo;
         
         /// <summary>
-        /// Control Button1.
+        /// Control LinkButton1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
-        /// Control btnGuardarEdicionLive.
+        /// Control lnkGuardarEdicionLive.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarEdicionLive;
+        protected global::System.Web.UI.WebControls.LinkButton lnkGuardarEdicionLive;
         
         /// <summary>
-        /// Control SaveButton.
+        /// Control lnkSaveButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveButton;
+        protected global::System.Web.UI.WebControls.LinkButton lnkSaveButton;
         
         /// <summary>
-        /// Control btnsave_detalles.
+        /// Control lnksave_detalles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsave_detalles;
+        protected global::System.Web.UI.WebControls.LinkButton lnksave_detalles;
         
         /// <summary>
-        /// Control btnDescarga.
+        /// Control lnkDescarga.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDescarga;
+        protected global::System.Web.UI.WebControls.LinkButton lnkDescarga;
         
         /// <summary>
-        /// Control ClearButton.
+        /// Control lnkClearButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ClearButton;
+        protected global::System.Web.UI.WebControls.LinkButton lnkClearButton;
         
         /// <summary>
-        /// Control close.
+        /// Control lnkclose.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button close;
+        protected global::System.Web.UI.WebControls.LinkButton lnkclose;
         
         /// <summary>
         /// Control ddlhistorial.
@@ -175,13 +139,13 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlhistorial;
         
         /// <summary>
-        /// Control btnEliminarrachivo.
+        /// Control lnkEliminarrachivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminarrachivo;
+        protected global::System.Web.UI.WebControls.LinkButton lnkEliminarrachivo;
         
         /// <summary>
         /// Control Editor.
@@ -190,16 +154,7 @@ namespace presentacion {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Winthusiasm.HtmlEditor.HtmlEditor Editor;
-        
-        /// <summary>
-        /// Control lista_imagenes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList lista_imagenes;
+        protected global::FreeTextBoxControls.FreeTextBox Editor;
         
         /// <summary>
         /// Control fileimg.

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Rendimiento" Language="C#" MasterPageFile="~/Global.Master" AutoEventWireup="true" CodeBehind="rendimiento_tareas_detalles.aspx.cs" Inherits="presentacion.rendimiento_tareas_detalles" %>
+﻿<%@ Page Title="Rendimiento" Language="C#" MasterPageFile="~/Adicional.Master" AutoEventWireup="true" CodeBehind="rendimiento_tareas_detalles.aspx.cs" Inherits="presentacion.rendimiento_tareas_detalles" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 

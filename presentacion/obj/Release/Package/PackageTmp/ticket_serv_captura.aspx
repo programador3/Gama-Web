@@ -80,7 +80,7 @@
         </asp:UpdatePanel>
         <div class=" col-lg-12">
             <h4><strong><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Observaciones del Ticket</strong></h4>
-            <asp:TextBox  onblur="return imposeMaxLength(this, 249);" CssClass=" form-control" TextMode="Multiline" Rows="4" placeholder="Observaciones" ID="txtobservaciones" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass=" form-control" TextMode="Multiline" Rows="4" placeholder="Observaciones" ID="txtobservaciones" runat="server"></asp:TextBox>
         </div>
         <div class="col-lg-12">
             <h4><i class="fa fa-upload" aria-hidden="true"></i>&nbsp;Seleccione o arrastre un archivo anexo</h4>

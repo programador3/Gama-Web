@@ -62,6 +62,22 @@ namespace negocio.Componentes
             }
             return ds;
         }
+        public DataSet SP_fn_puestos_quien_recluta()
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("SP_fn_puestos_quien_recluta", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
 
         public DataSet EliminarTarea(TareasAutomaticasENT Etiqueta)
         {
@@ -151,12 +167,11 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
-            if (Etiqueta.Pfecha_empieza != Convert.ToDateTime("1/1/0001 12:00:00 AM"))
-            {
-                listparameters.Add(new SqlParameter() { ParameterName = "@pFECHA_INICIAL", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_empieza });
-                listparameters.Add(new SqlParameter() { ParameterName = "@pfecha_fin", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_termina });
-                listparameters.Add(new SqlParameter() { ParameterName = "@PTIPO", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptipofiltro });
-            }
+
+            listparameters.Add(new SqlParameter() { ParameterName = "@pFECHA_INICIAL", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_empieza });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pfecha_fin", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_termina });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PTIPO", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptipofiltro });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puestoreclu", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto_realiza });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

@@ -5,30 +5,23 @@ using System.Data;
 using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Winthusiasm.HtmlEditor;
 
 namespace presentacion
 {
     public partial class html : System.Web.UI.Page
     {
         protected string initialHtml = @"<h1>SISTEMA WEB GAMA MATERIALES </h1>
-<p>Esta herramienta funciona para generar archivos html.</p><p><b>Este texto esta en negrita</b>, <span style='text-style: italic'>este en cursiva</span> y <span style='text-decoration: underline'>este subrayado</span>.</p>
-<p><span style='font-family: Arial'>Este texto es Arial</span>, &nbsp;<span style='font-family: Garamond'>este&nbsp;Garamond</span>, <span style='font-family: Verdana'>y este&nbsp;Verdana</span>.</p><p>Esta es una lista</p>
-<ul>
-<li>Item 1 </li>
-<li>Item 2</li>
-</ul>";
-
-        protected bool InternetExplorer
-        {
-            get { return Request.Browser.Browser.Equals("IE"); }
-        }
-
+        <p>Esta herramienta funciona para generar archivos html.</p><p><b>Este texto esta en negrita</b>, <span style='text-style: italic'>este en cursiva</span> y <span style='text-decoration: underline'>este subrayado</span>.</p>
+        <p><span style='font-family: Arial'>Este texto es Arial</span>, &nbsp;<span style='font-family: Garamond'>este&nbsp;Garamond</span>, <span style='font-family: Verdana'>y este&nbsp;Verdana</span>.</p><p>Esta es una lista</p>
+        <ul>
+        <li>Item 1 </li>
+        <li>Item 2</li>
+        </ul>";
         protected void Page_Load(object sender, EventArgs e)
         {
             ScriptManager sm = ScriptManager.GetCurrent(this);
-            sm.RegisterAsyncPostBackControl(SaveButton);
-            sm.RegisterAsyncPostBackControl(ClearButton);
+            sm.RegisterAsyncPostBackControl(lnkSaveButton);
+            sm.RegisterAsyncPostBackControl(lnkClearButton);
             Random random = new Random();
             int randomNumber = random.Next(0, 1000000);
             if (!IsPostBack && Request.QueryString["edit_live"] == null)//si no trae request significa que no es edicio
@@ -36,9 +29,9 @@ namespace presentacion
                 lblsession_h.Text = randomNumber.ToString();
                 Editor.Text = initialHtml;
                 CargarGrid();
-                btnGuardarEdicionLive.Visible = false;
+                lnkGuardarEdicionLive.Visible = false;
                 PanelTitulo.Visible = true;
-                SaveButton.Visible = true;
+                lnkSaveButton.Visible = true;
             }
             if (!IsPostBack && Request.QueryString["edit_live"] != null)//si tare request siginfica que es edicion tipo perfiles
             {
@@ -49,18 +42,18 @@ namespace presentacion
                     string ruta = funciones.de64aTexto(Request.QueryString["url"]);
                     CargarGrid();
                     CargarDatosEdicion(ruta);
-                    SaveButton.Visible = false;
+                    lnkSaveButton.Visible = false;
                     PanelTitulo.Visible = false;
-                    btnGuardarEdicionLive.Visible = false;
-                    btnsave_detalles.Visible = true;
+                    lnkGuardarEdicionLive.Visible = false;
+                    lnksave_detalles.Visible = true;
                 }
                 else
                 {
                     lblsession.Text = funciones.de64aTexto(Request.QueryString["dinamic_id"]);
                     int id = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_html"]));
                     Session[lblsession.Text + "idc_etiqueta_htmlfile"] = id.ToString();
-                    btnGuardarEdicionLive.Visible = true;
-                    SaveButton.Visible = false;
+                    lnkGuardarEdicionLive.Visible = true;
+                    lnkSaveButton.Visible = false;
                     PanelTitulo.Visible = false;
                     CargarGrid();
                     CargarDatosEdicionLocal();
@@ -117,151 +110,13 @@ namespace presentacion
             ddlhistorial.DataBind();
             ddlhistorial.Items.Insert(0, new ListItem("Sus Archivos HTML Recientes", "0")); //updated code}
         }
-
-        protected override void OnInitComplete(EventArgs e)
-        {
-            base.OnInitComplete(e);
-
-            if (!IsPostBack)
-            {
-                string toggleMode = this.Request.QueryString["ToggleMode"];
-                if (toggleMode != null)
-                    Editor.ToggleMode = GetToggleMode(toggleMode);
-
-                string colorScheme = this.Request.QueryString["ColorScheme"];
-                if (colorScheme != null)
-                    Editor.ColorScheme = GetColorScheme(colorScheme);
-
-                string noToolstripBackgroundImage = this.Request.QueryString["NoToolstripBackgroundImage"];
-                if (noToolstripBackgroundImage != null)
-                    Editor.NoToolstripBackgroundImage = noToolstripBackgroundImage == "true";
-
-                string xhtml = this.Request.QueryString["XHTML"];
-                if (xhtml != null)
-                    Editor.OutputXHTML = xhtml == "true";
-
-                string deprecated = this.Request.QueryString["Deprecated"];
-                if (deprecated != null)
-                    Editor.ConvertDeprecatedSyntax = deprecated == "true";
-
-                string paragraphs = this.Request.QueryString["Paragraphs"];
-                if (paragraphs != null)
-                    Editor.ConvertParagraphs = paragraphs == "true";
-            }
-        }
-
-        protected override void OnPreRenderComplete(EventArgs e)
-        {
-            base.OnPreRenderComplete(e);
-        }
-
-        protected HtmlEditor.ToggleModeType GetToggleMode(string toggleMode)
-        {
-            HtmlEditor.ToggleModeType toggleModeType;
-
-            switch (toggleMode)
-            {
-                case "Tabs":
-                    toggleModeType = HtmlEditor.ToggleModeType.Tabs;
-                    break;
-
-                case "ToggleButton":
-                    toggleModeType = HtmlEditor.ToggleModeType.ToggleButton;
-                    break;
-
-                case "Buttons":
-                    toggleModeType = HtmlEditor.ToggleModeType.Buttons;
-                    break;
-
-                case "None":
-                    toggleModeType = HtmlEditor.ToggleModeType.None;
-                    break;
-
-                default:
-                    toggleModeType = HtmlEditor.ToggleModeType.Tabs;
-                    break;
-            }
-
-            return toggleModeType;
-        }
-
-        protected HtmlEditor.ColorSchemeType GetColorScheme(string colorScheme)
-        {
-            HtmlEditor.ColorSchemeType colorSchemeType;
-
-            switch (colorScheme)
-            {
-                case "Custom":
-                    colorSchemeType = HtmlEditor.ColorSchemeType.Custom;
-                    break;
-
-                case "VisualStudio":
-                    colorSchemeType = HtmlEditor.ColorSchemeType.VisualStudio;
-                    break;
-
-                default:
-                    colorSchemeType = HtmlEditor.ColorSchemeType.Default;
-                    break;
-            }
-
-            return colorSchemeType;
-        }
-
         protected void ClearButton_Click(object sender, EventArgs e)
         {
             Editor.Text = String.Empty;
         }
 
-        protected void XHTMLBox_CheckedChanged(object sender, EventArgs e)
+        protected void lnkSaveButton_Click(object sender, EventArgs e)
         {
-            CheckBox box = (CheckBox)sender;
-            Editor.OutputXHTML = box.Checked;
-            Editor.Revert();
-            UpdatePanel1.Update();
-        }
-
-        protected void DeprecatedBox_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox box = (CheckBox)sender;
-            Editor.ConvertDeprecatedSyntax = box.Checked;
-            Editor.Revert();
-            UpdatePanel1.Update();
-        }
-
-        protected void ParagraphsBox_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox box = (CheckBox)sender;
-            Editor.ConvertParagraphs = box.Checked;
-
-            Editor.Revert();
-            UpdatePanel1.Update();
-        }
-
-        protected void PreviewButton_Click(object sender, EventArgs e)
-        {
-        }
-
-        protected string GetRedirectUrl()
-        {
-            string url = "Demo.aspx?";
-            return url;
-        }
-
-        protected void Redirect_EventHandler(object sender, EventArgs e)
-        {
-            this.Response.Redirect(GetRedirectUrl());
-        }
-
-        protected class DataStore
-        {
-            public static void StoreHtml(string html)
-            {
-            }
-        }
-
-        protected void SaveButton_Click(object sender, EventArgs e)
-        {
-            DataStore.StoreHtml(Editor.Text);
             string content = Editor.Text;
             string confirmValue = Request.Form["confirm_value"];
             confirmValue = confirmValue.Substring(confirmValue.LastIndexOf(",") + 1);
@@ -358,7 +213,7 @@ namespace presentacion
                     {
                         Session["value_edit_intern"] = null;
                         CargarGrid();
-                        btnEliminarrachivo.Visible = false;
+                        lnkEliminarrachivo.Visible = false;
                         Alert.ShowGift("Estamos Eliminando el archivo del Servidor.", "Espere un Momento", "imagenes/loading.gif", "3000", "El archivo " + title + " fue Eliminado en la Base De Datos correctamente", this);
                     }
                     else
@@ -441,9 +296,8 @@ namespace presentacion
             Event_Buttons();
         }
 
-        protected void btnGuardarEdicionLive_Click(object sender, EventArgs e)
+        protected void lnkGuardarEdicionLive_Click(object sender, EventArgs e)
         {
-            DataStore.StoreHtml(Editor.Text);
             string content = Editor.Text;
             string confirmValue = Request.Form["confirm_value"];
             confirmValue = confirmValue.Substring(confirmValue.LastIndexOf(",") + 1);
@@ -498,7 +352,7 @@ namespace presentacion
                 DataSet ds = componente.SelectHTMLEspecifico(entidad);
                 Editor.Text = ds.Tables[0].Rows[0]["contenido"].ToString();
                 txtTitulo.Text = ds.Tables[0].Rows[0]["titulo"].ToString();
-                btnEliminarrachivo.Visible = true;
+                lnkEliminarrachivo.Visible = true;
             }
         }
 
@@ -531,9 +385,8 @@ namespace presentacion
             }
         }
 
-        protected void btnsave_detalles_Click(object sender, EventArgs e)
+        protected void lnksave_detalles_Click(object sender, EventArgs e)
         {
-            DataStore.StoreHtml(Editor.Text);
             string content = Editor.Text;
             string confirmValue = Request.Form["confirm_value"];
             confirmValue = confirmValue.Substring(confirmValue.LastIndexOf(",") + 1);

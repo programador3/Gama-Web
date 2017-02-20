@@ -36,9 +36,6 @@ namespace presentacion
                 entidad.Pidc_puesto = idc_puesto;
                 entidad.Pidc_depto = idc_depto;
                 DataSet ds = componente.CargarTareasAsigne(entidad);
-                //Session["tabla_pendientes"] = ds.Tables[1];
-                //repeat_pendientes.DataSource = ds.Tables[0];
-                //repeat_pendientes.DataBind();
                 if (idc_puesto > 0)
                 {
                     Session["tabla_asiganadas"] = ds.Tables[1];
@@ -85,9 +82,6 @@ namespace presentacion
                 entidad.Pidc_puesto = Convert.ToInt32(Session["sidc_puesto_login"]);
                 entidad.Pidc_depto = idc_depto;
                 DataSet ds = componente.CargarTareasAsignadas(entidad);
-                //Session["tabla_pendientes"] = ds.Tables[1];
-                //repeat_pendientes.DataSource = ds.Tables[0];
-                //repeat_pendientes.DataBind();
                 if (idc_puesto_asigna > 0)
                 {
                     Session["tabla_pendientes"] = ds.Tables[1];
@@ -319,7 +313,6 @@ namespace presentacion
             catch (Exception ex)
             {
                 Alert.ShowAlertError(ex.ToString(), this.Page);
-                Global.CreateFileError(ex.ToString(), this);
             }
 
         }

@@ -211,7 +211,7 @@ namespace presentacion
             {
                 ret.Add("");
                 TicketsCapturaCOM componente = new TicketsCapturaCOM();
-                ds = componente.sp_tareas_servicios_puestos(idc_puesto); //funcion que valida la existencia del usuario
+                ds = componente.sp_tareas_servicios_puestos(idc_puesto,""); //funcion que valida la existencia del usuario
                 DataTable dt = ds.Tables[0];
                 if (dt.Rows.Count > 0)
                 {

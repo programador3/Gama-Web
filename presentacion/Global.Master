@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Gama</title>
+    <title>Gama WEB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="imagenes/favicon.png" />
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css' />
@@ -31,7 +31,6 @@
     <script src="js/pnotify.custom.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
-
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript">
         var value = 0;
@@ -48,6 +47,7 @@
         function Gift(mensaje) {
             swal({ title: 'Espere un Momento...', text: mensaje, allowEscapeKey: false, imageUrl: 'imagenes/loading.gif', timer: '6000', showConfirmButton: false });
         }
+        //FUNCIONES QUE MANDA UN AVISO DE SWEETALERT Y LUEGO REDIRECCIONA
         function AlertGO(TextMess, URL) {
             swal({
                 title: "Mensaje del Sistema",
@@ -63,12 +63,14 @@
                    location.href = URL;
                });
         }
+        //ENVIA UN MENSAJE DE SLACK
         function SendSlack(URL) {
             $.ajax({
                 type: "POST",
                 url: URL
             });
         }
+        
         function getImage(path) {
             $("#myImage").attr("src", path);
         }
@@ -76,6 +78,8 @@
             var audio = new Audio(path);
             audio.play();
         }
+
+        //DEVUELVE NOTIFICACION DE ESCRITORIO
         function Notifica(mess) {
             $(function () {
                 var notice = new PNotify({
@@ -236,11 +240,14 @@
                 }
             }
         }
-
+        //ESTA FUNCION BLOQUEA EL BOTON DE ATRAS DEL NAVEGADOR
         function nobackbutton() {
+            //ACCESO DIRECTOS
             ValidarOpciones();
             //Avisos();
+            //CHECA NOTIFICACIONES
             ValidarNotificaciones();
+            //LLENA NOTIFICACIONES
             LlenarNotificaciones();
             window.location.hash = "no-back-button";
             window.location.hash = "Again-No-back-button"

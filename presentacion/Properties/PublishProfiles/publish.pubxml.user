@@ -13,7 +13,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/13/2017 11:32:31</publishTime>
     </File>
     <File Include="Adicional.Master">
-      <publishTime>11/04/2016 10:42:02</publishTime>
+      <publishTime>02/16/2017 09:30:10</publishTime>
     </File>
     <File Include="administrador_entregas.aspx">
       <publishTime>09/17/2016 10:13:44</publishTime>
@@ -292,7 +292,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/03/2016 15:08:58</publishTime>
     </File>
     <File Include="bin/datos.dll">
-      <publishTime>01/04/2017 16:25:33</publishTime>
+      <publishTime>02/18/2017 11:06:19</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>03/03/2016 15:08:57</publishTime>
@@ -306,14 +306,17 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="bin/es/Microsoft.ReportViewer.WinForms.resources.dll">
       <publishTime>05/29/2015 21:25:26</publishTime>
     </File>
+    <File Include="bin/FreeTextBox.dll">
+      <publishTime>01/29/2011 06:51:48</publishTime>
+    </File>
     <File Include="bin/Gios Pdf.NET.dll">
       <publishTime>08/17/2012 17:59:36</publishTime>
     </File>
     <File Include="bin/GWebCD.dll">
-      <publishTime>01/04/2017 16:25:41</publishTime>
+      <publishTime>02/18/2017 11:06:23</publishTime>
     </File>
     <File Include="bin/GWebCN.dll">
-      <publishTime>01/04/2017 16:25:43</publishTime>
+      <publishTime>02/18/2017 11:06:24</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>04/15/2004 21:47:00</publishTime>
@@ -328,13 +331,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/29/2015 21:27:38</publishTime>
     </File>
     <File Include="bin/negocio.dll">
-      <publishTime>02/14/2017 14:27:39</publishTime>
+      <publishTime>02/18/2017 11:06:24</publishTime>
     </File>
     <File Include="bin/OpenPop.dll">
       <publishTime>11/21/2015 16:46:36</publishTime>
     </File>
     <File Include="bin/presentacion.dll">
-      <publishTime>02/14/2017 16:02:24</publishTime>
+      <publishTime>02/18/2017 11:06:29</publishTime>
     </File>
     <File Include="bin/Telerik.Web.UI.dll">
       <publishTime>10/26/2016 09:37:26</publishTime>
@@ -466,10 +469,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/21/2016 11:03:58</publishTime>
     </File>
     <File Include="comisiones_m.aspx">
-      <publishTime>12/21/2016 10:02:24</publishTime>
+      <publishTime>02/18/2017 10:30:48</publishTime>
     </File>
     <File Include="comisiones_m.aspx.vb">
-      <publishTime>12/22/2016 15:55:36</publishTime>
+      <publishTime>02/18/2017 11:03:18</publishTime>
     </File>
     <File Include="Compromisos_Cliente.aspx">
       <publishTime>10/05/2016 10:17:37</publishTime>
@@ -1093,13 +1096,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:34:52</publishTime>
     </File>
     <File Include="Global.Master">
-      <publishTime>02/13/2017 10:18:48</publishTime>
+      <publishTime>02/16/2017 11:51:16</publishTime>
     </File>
     <File Include="grafica.aspx">
       <publishTime>12/05/2016 17:25:26</publishTime>
     </File>
     <File Include="grafica_reclutamiento.aspx">
-      <publishTime>02/14/2017 14:45:02</publishTime>
+      <publishTime>02/15/2017 17:37:34</publishTime>
     </File>
     <File Include="grafica_tareas.aspx">
       <publishTime>09/17/2016 10:35:02</publishTime>
@@ -1243,7 +1246,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/06/2016 15:07:46</publishTime>
     </File>
     <File Include="html.aspx">
-      <publishTime>09/17/2016 10:36:35</publishTime>
+      <publishTime>02/16/2017 09:50:24</publishTime>
+    </File>
+    <File Include="html2.aspx">
+      <publishTime>02/16/2017 09:23:21</publishTime>
     </File>
     <File Include="html_dinamico.aspx">
       <publishTime>09/17/2016 10:36:42</publishTime>
@@ -2923,7 +2929,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/26/2016 10:34:34</publishTime>
     </File>
     <File Include="rendimiento_tareas_detalles.aspx">
-      <publishTime>11/08/2016 08:24:32</publishTime>
+      <publishTime>02/16/2017 16:53:49</publishTime>
     </File>
     <File Include="reportes_empleados.aspx">
       <publishTime>09/17/2016 10:43:37</publishTime>
@@ -3049,7 +3055,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:45:45</publishTime>
     </File>
     <File Include="tareas_captura.aspx">
-      <publishTime>02/07/2017 14:53:20</publishTime>
+      <publishTime>02/17/2017 09:24:08</publishTime>
     </File>
     <File Include="tareas_clientes_cap.aspx">
       <publishTime>10/03/2016 09:10:20</publishTime>
@@ -3058,7 +3064,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/01/2016 09:46:52</publishTime>
     </File>
     <File Include="tareas_detalles.aspx">
-      <publishTime>02/03/2017 08:03:46</publishTime>
+      <publishTime>02/15/2017 09:00:01</publishTime>
     </File>
     <File Include="tareas_informacion_adicional.aspx">
       <publishTime>11/30/2016 09:03:41</publishTime>
@@ -3100,7 +3106,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/08/2017 17:05:55</publishTime>
     </File>
     <File Include="ticket_serv_captura.aspx">
-      <publishTime>12/12/2016 09:56:57</publishTime>
+      <publishTime>02/16/2017 15:18:56</publishTime>
     </File>
     <File Include="ticket_serv_reporte.aspx">
       <publishTime>12/05/2016 11:14:56</publishTime>
@@ -3151,7 +3157,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/17/2016 10:47:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/14/2017 14:27:50</publishTime>
+      <publishTime>02/18/2017 11:06:32</publishTime>
     </File>
     <File Include="Webcam_Plugin/jquery.webcam.js">
       <publishTime>10/27/2016 12:26:39</publishTime>

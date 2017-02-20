@@ -185,7 +185,8 @@ namespace presentacion
                 url = url + "grafica.aspx?idc_puesto=" + funciones.deTextoa64(ddlPuestoAsigna.SelectedValue) + "&fecha_inicio=" + txtfechainicio.Text + "&fecha_fin=" + txtfechafin.Text;
                 string id_puesto = ddlPuestoAsigna.SelectedValue == "0" ? funciones.deTextoa64("0") : funciones.deTextoa64(ddlPuestoAsigna.SelectedValue);
                 string idc_depto = Convert.ToInt32(ddlPuestoAsigna.SelectedValue) > 0 ? funciones.deTextoa64("0") : funciones.deTextoa64(ddldeptos.SelectedValue);
-                Response.Redirect("rendimiento_tareas_detalles.aspx?pidc_depto=" + idc_depto + "&pidc_puesto=" + id_puesto + "&inicio=" + funciones.deTextoa64(txtfechainicio.Text) + "&fin=" + funciones.deTextoa64(txtfechafin.Text) + "&casoFiltro=" + funciones.deTextoa64(h_casoFiltro.Value));
+                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + "rendimiento_tareas_detalles.aspx?pidc_depto=" + idc_depto + "&pidc_puesto=" + id_puesto + "&inicio=" + funciones.deTextoa64(txtfechainicio.Text) + "&fin=" + funciones.deTextoa64(txtfechafin.Text) + "&casoFiltro=" + funciones.deTextoa64(h_casoFiltro.Value) + "');",
+                   true);
             }
 
         }
@@ -252,8 +253,9 @@ namespace presentacion
                 url = url + "grafica.aspx?idc_puesto=" + funciones.deTextoa64(ddlPuestoAsigna.SelectedValue) + "&fecha_inicio=" + txtfechainicio.Text + "&fecha_fin=" + txtfechafin.Text;
                 string id_puesto = ddlPuestoAsigna.SelectedValue == "0" ? funciones.deTextoa64("0") : funciones.deTextoa64(ddlPuestoAsigna.SelectedValue);
                 string idc_depto = Convert.ToInt32(ddlPuestoAsigna.SelectedValue) > 0 ? funciones.deTextoa64("0") : funciones.deTextoa64(ddldeptos.SelectedValue);
-                Response.Redirect("rendimiento_tareas_detalles.aspx?junta=SIHAYJUNTAHOY&pidc_depto=" + idc_depto + "&pidc_puesto="
-                    + id_puesto + "&inicio=" + funciones.deTextoa64(txtfechainicio.Text) + "&fin=" + funciones.deTextoa64(txtfechafin.Text));
+                ScriptManager.RegisterStartupScript(this,GetType(),Guid.NewGuid().ToString(),"window.open('"+ "rendimiento_tareas_detalles.aspx?junta=SIHAYJUNTAHOY&pidc_depto=" + idc_depto + "&pidc_puesto="
+                    + id_puesto + "&inicio=" + funciones.deTextoa64(txtfechainicio.Text) + "&fin=" + funciones.deTextoa64(txtfechafin.Text) + "');",
+                    true);
             }
         }
 

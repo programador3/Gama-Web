@@ -37,42 +37,38 @@ namespace presentacion
             {
 
                 TicketsCapturaCOM componente = new TicketsCapturaCOM();
-                DataSet ds = componente.sp_tareas_servicios_puestos(idc_puesto);
+                DataSet ds = componente.sp_tareas_servicios_puestos(idc_puesto, filtro);
                 DataTable dt = ds.Tables[0];
-                DataView dv = dt.DefaultView;
-                dv.RowFilter = filtro;
-                DataTable dtr = dv.ToTable();
-                if (dtr.Rows.Count == 0)
+                if (dt.Rows.Count == 0)
                 {
                     Alert.ShowAlertInfo("No se encontro ningun servicio", "Mensaje del Sistema", this);
                 }
                 ddltiposervicios.DataTextField = "desc_corta";
                 ddltiposervicios.DataValueField = "idc_tareaser";
-                ddltiposervicios.DataSource = dtr;
+                ddltiposervicios.DataSource = dt;
                 ddltiposervicios.DataBind();
                 if (filtro == "")
                 {
                     ddltiposervicios.Items.Insert(0, new ListItem("--Seleccione un Servicio", "0"));
                 }
-                ViewState[txtguid.Text + "dt_serv"] = dtr;
+                ViewState[txtguid.Text + "dt_serv"] = dt;
                 ViewState[txtguid.Text + "dt_serv_perso"] = ds.Tables[1];
             }
             catch (Exception ex)
             {
                 Alert.ShowAlertError(ex.ToString(), this.Page);
-                Global.CreateFileError(ex.ToString(), this);
             }
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
-            string query = TextBox1.Text == "" ? "" : "desc_corta like '%" + TextBox1.Text + "%'";
+            string query = TextBox1.Text;
             CargarCombo(0, query);
         }
 
         protected void lnkbuscar_Click(object sender, EventArgs e)
         {
-            string query = TextBox1.Text == "" ? "" : "desc_corta like '%" + TextBox1.Text + "%'";
+            string query = TextBox1.Text;
             CargarCombo(0, query);
         }
 
@@ -188,9 +184,9 @@ namespace presentacion
             {
                 Alert.ShowAlertInfo("Son Necesarias las Observaciones.", "Mensaje del Sistema", this);
             }
-            else if (txtobservaciones.Text.Length > 249)
+            else if (txtobservaciones.Text.Length > 1000)
             {
-                Alert.ShowAlertInfo("Para la descripcion del Ticket solo se permiten 250 caracteres", "Mensaje del Sistema", this);
+                Alert.ShowAlertInfo("Para la descripcion del Ticket solo se permiten 1000 caracteres", "Mensaje del Sistema", this);
             }
             else {
                 Session["Caso_Confirmacion"] = "Guardar";

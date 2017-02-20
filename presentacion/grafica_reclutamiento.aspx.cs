@@ -18,6 +18,9 @@ namespace presentacion
         {
             if (!IsPostBack)
             {
+                txtfechafin.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                txtfechainicio.Text = DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd");
+                CargarReclutadores();
                 if (Request.QueryString["fecha_inicio"] != null)
                 {
                     DateTime fi = Convert.ToDateTime(Request.QueryString["fecha_inicio"]);
@@ -31,6 +34,23 @@ namespace presentacion
         public List<String> meses = new List<string>();
         public List<int> valores = new List<int>();
 
+        private void CargarReclutadores()
+        {
+            try
+            {
+                TareasAutomaticasCOM componente = new TareasAutomaticasCOM();
+                DataSet ds = componente.SP_fn_puestos_quien_recluta();
+                ddlreclu.DataTextField = "descripcion";
+                ddlreclu.DataValueField = "idc_puestoreclu";
+                ddlreclu.DataSource = ds.Tables[0];
+                ddlreclu.DataBind();
+                ddlreclu.Items.Insert(0, new ListItem("--Ver Todos los Reclutadores--","0"));
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+            }
+        }
         private void GenerarDatos(DateTime fecha_i, DateTime fecha_f)
         {
             try
@@ -39,11 +59,13 @@ namespace presentacion
                 //entidad.Pidc_puesto_realiza = idc_puesto;
                 entidad.Pfecha_empieza = fecha_i;
                 entidad.Pfecha_termina = fecha_f;
+                int idc_puestoreclu = Convert.ToInt32(ddlreclu.SelectedValue);
+                entidad.Pidc_puesto_realiza = idc_puestoreclu;
                 entidad.Ptipofiltro = 1;
                // entidad.Pidc_depto = IDC_DEPTO;
                 TareasAutomaticasCOM componente = new TareasAutomaticasCOM();
                 DataSet ds = componente.DatosGraficasReclu(entidad);
-                string nombre = " Reclutamiento";
+                string nombre = idc_puestoreclu > 0 ? ddlreclu.SelectedItem.ToString(): " Reclutamiento";
                 string total = ds.Tables[0].Rows[0]["total"].ToString();
                 string bien_sistema = ds.Tables[1].Rows[0]["bien_sistema"].ToString();
                 string mal_sistema = ds.Tables[1].Rows[0]["mal_sistema"].ToString();
@@ -124,6 +146,8 @@ namespace presentacion
                         entidad.Pfecha_empieza = fi;
                         entidad.Pfecha_termina = ff;
                         entidad.Ptipofiltro = tipo;
+                        int idc_puestoreclu = Convert.ToInt32(ddlreclu.SelectedValue);
+                        entidad.Pidc_puesto_realiza = idc_puestoreclu;
                         // entidad.Pidc_depto = IDC_DEPTO;
                         TareasAutomaticasCOM componente = new TareasAutomaticasCOM();
                         DataSet ds = componente.DatosGraficasReclu(entidad);

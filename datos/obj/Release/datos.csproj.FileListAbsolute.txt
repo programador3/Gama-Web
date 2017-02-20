@@ -138,3 +138,10 @@ D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\datos\ob
 D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\datos\obj\Release\datos.csproj.GenerateResource.Cache
 D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\datos\obj\Release\datos.dll
 D:\Trabajos Humberto\Proyectos Diarios\2017\ENERO 2017\04_01_17\Puestos\datos\obj\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\datos\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\datos\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\datos\obj\Release\datos.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\datos\obj\Release\datos.recursos.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\datos\obj\Release\datos.csproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\datos\obj\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\datos\obj\Release\datos.pdb

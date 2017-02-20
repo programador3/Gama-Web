@@ -59,6 +59,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\programador3\Documents\Visual Studio 2015\Projects\EjemploDLL\EjemploDLL\bin\Debug\EjemploDLL.dll</HintPath>
     </Reference>
+    <Reference Include="FreeTextBox, Version=3.3.0.22838, Culture=neutral, PublicKeyToken=5962a4e684a48b87, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\FreeTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="Gios Pdf.NET">
       <HintPath>C:\Users\programador3\Desktop\Gios Pdf.NET.dll</HintPath>
     </Reference>
@@ -286,8 +290,7 @@
     <Content Include="hallazgos_pendientes_terminar_m.aspx" />
     <Content Include="hallazgos_vobo_m.aspx" />
     <Content Include="Historial_Consignados_mobile.aspx" />
-    <Content Include="html_dinamico.aspx" />
-    <Content Include="html_editor.aspx" />
+    <Content Include="html.aspx" />
     <Content Include="imagenes\128.png" />
     <Content Include="imagenes\acount.png" />
     <Content Include="imagenes\actions_document_preview.png" />
@@ -575,7 +578,6 @@
     <Content Include="herramientas_entrega.aspx" />
     <Content Include="herramientas_preparacion.aspx" />
     <Content Include="herramientas_revision.aspx" />
-    <Content Include="html.aspx" />
     <Content Include="imagenes\btn\add_image_prof.png" />
     <Content Include="imagenes\btn\btn_solicitar_equipos.png" />
     <Content Include="imagenes\btn\btn_solicitar_equipos_press.png" />
@@ -1773,26 +1775,12 @@
     <Compile Include="Historial_Consignados_mobile.aspx.designer.cs">
       <DependentUpon>Historial_Consignados_mobile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="html_dinamico.aspx.cs">
-      <DependentUpon>html_dinamico.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="html_dinamico.aspx.designer.cs">
-      <DependentUpon>html_dinamico.aspx</DependentUpon>
-    </Compile>
     <Compile Include="html.aspx.cs">
       <DependentUpon>html.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="html.aspx.designer.cs">
       <DependentUpon>html.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="html_editor.aspx.cs">
-      <DependentUpon>html_editor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="html_editor.aspx.designer.cs">
-      <DependentUpon>html_editor.aspx</DependentUpon>
     </Compile>
     <Compile Include="IMG_Croquis.aspx.cs">
       <DependentUpon>IMG_Croquis.aspx</DependentUpon>
@@ -2780,10 +2768,6 @@
     <ProjectReference Include="..\negocio\negocio.csproj">
       <Project>{077b150d-7682-49ff-becc-5cd13dfd10bd}</Project>
       <Name>negocio</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\programador3\Desktop\ASP.NET 4.0\Winthusiasm.HtmlEditor\Winthusiasm.HtmlEditor.csproj">
-      <Project>{bc99173d-2ef8-4d7e-b0ae-3bc1cc55e3b6}</Project>
-      <Name>Winthusiasm.HtmlEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

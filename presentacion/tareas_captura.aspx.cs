@@ -64,8 +64,8 @@ namespace presentacion
                     ViewState["tabla_servicios"] = null;
                     ddlservicios.Items.Clear();
                     tareaservicios.Visible = false;
-                    txtdescripcion.ReadOnly = false;
-                    txtfecha_solicompromiso.ReadOnly = false;
+                    //txtdescripcion.ReadOnly = false;
+                    //txtfecha_solicompromiso.ReadOnly = false;
                 }
             }
             catch (Exception ex)
@@ -91,8 +91,8 @@ namespace presentacion
                     txtdescripcion.Text = row["descripcion"].ToString();
                     txtfecha_solicompromiso.Text = Convert.ToDateTime(row["fecha_compromiso"]).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
                     bool editable = Convert.ToBoolean(row["editable"]);
-                    txtdescripcion.ReadOnly = editable == true ? false : true;
-                    txtfecha_solicompromiso.ReadOnly = editable == true ? false : true;
+                    //txtdescripcion.ReadOnly = editable == true ? false : true;
+                    //txtfecha_solicompromiso.ReadOnly = editable == true ? false : true;
                     txtidc_tareaser.Text = idc_tareaser.ToString().Trim();
                     ScriptManager.RegisterStartupScript(this, GetType(), "DededededE", "Gifts('Estamos Cargando la Tarea');", true);
                 }
@@ -196,7 +196,7 @@ namespace presentacion
                         break;
                     }
                 }
-                if (exists == false)
+                if (!exists)
                 {
                     DataRow new_row = papeleria.NewRow();
                     new_row["ruta"] = ruta;
@@ -289,7 +289,7 @@ namespace presentacion
             Random random = new Random();
             int randomNumber = random.Next(0, 100000);
             //si no subio archivo, solo esta subiendo un comentario
-            if (fupPapeleria.HasFile && error == false)
+            if (fupPapeleria.HasFile && !error)
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(Server.MapPath("~/temp/tareas/"));//path local
                 string mensaje = AddPapeleriaToTable(dirInfo + randomNumber.ToString() + fupPapeleria.FileName, Path.GetExtension(fupPapeleria.FileName).ToString(), txtNombreArchivo.Text.ToUpper(), id_archi);
@@ -310,7 +310,7 @@ namespace presentacion
                     Alert.ShowAlertError(mensaje, this);
                 }
             }
-            if (!fupPapeleria.HasFile && error == false)
+            if (!fupPapeleria.HasFile && !error)
             {
                 string mensaje = AddPapeleriaToTable("", "", txtNombreArchivo.Text.ToUpper(), id_archi);
                 if (mensaje.Equals(string.Empty))
@@ -408,6 +408,11 @@ namespace presentacion
                 error = true;
                 Alert.ShowAlertError("Coloque una descripcion para la Tarea", this);
             }
+            if (txtdescripcion.Text.Length > 1000)
+            {
+                error = true;
+                Alert.ShowAlertError("Solo se permite hasta 1000 caracteres en la descripcion", this);
+            }
             if (txtfecha_solicompromiso.Text == "")
             {
                 error = true;
@@ -418,7 +423,7 @@ namespace presentacion
                 error = true;
                 Alert.ShowAlertError("Agregre un puesto para la Tarea", this);
             }
-            if (error == false)
+            if (!error)
             {
                 Session["Caso_Confirmacion"] = "Guardar";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "ModalConfirm('Mensaje del Sistema','¿Desea Guardar esta Tarea. Una vez Guardada NO PODRA SER MODIFICADA?','modal fade modal-info');", true);
@@ -517,7 +522,6 @@ namespace presentacion
                     catch (Exception ex)
                     {
                         Alert.ShowAlertError(ex.ToString(), this.Page);
-                        Global.CreateFileError(ex.ToString(), this);
                     }
 
                     break;
@@ -633,8 +637,8 @@ namespace presentacion
                 ddlservicios.Items.Clear();
                 titleserv.Visible = false;
                 tareaservicios.Visible = false;
-                txtdescripcion.ReadOnly = false;
-                txtfecha_solicompromiso.ReadOnly = false;
+                //txtdescripcion.ReadOnly = false;
+                //txtfecha_solicompromiso.ReadOnly = false;
                 lblhoras_tarea_serv.Text = "";
                 lblobservacionesser.Text = "";
                 txtfecha_solicompromiso.Text = DateTime.Now.AddHours(2).ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
@@ -652,8 +656,7 @@ namespace presentacion
             {
                 string url = "tareas_servicios_captura.aspx?view=HEHEHASISEVE&solo_lista=KNWODBWODBWOEBDOWDOWKDBOWEKDBEWBDOWEPOP&idc_tareaser=" + funciones.deTextoa64(idc_tareaser.ToString());
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMesededsage", "window.open('" + url + "');", true);
-            }
-            
+            }            
      
         }
 

@@ -35,14 +35,14 @@
             $('#myModalCF').modal('show');
         }
         function disbalebutton() {
-            $('#<%= Yes.ClientID%>').prop('disabled', true);
+            $('#<%= Yes.ClientID%>').prop('disabled', false);
         }
         function campoVacio() {
 
             var obs = $('#<%= txtcambio_desc.ClientID%>').val().replace(/\s+/g, '');
             if (obs.length < 1) {
                 //inhabilita el boton aceptar
-                $('#<%= Yes.ClientID%>').prop('disabled', true);
+                $('#<%= Yes.ClientID%>').prop('disabled', false);
 
             } else {
                 $('#<%= Yes.ClientID%>').prop('disabled', false);
@@ -58,7 +58,7 @@
             var obs = $('#<%= txtcomentarios_vbno.ClientID%>').val().replace(/\s+/g, '');
             if (obs.length < 1) {
                 //inhabilita el boton aceptar
-                $('#<%= Yes.ClientID%>').prop('disabled', true);
+                $('#<%= Yes.ClientID%>').prop('disabled', false);
 
             } else {
                 $('#<%= Yes.ClientID%>').prop('disabled', false);
@@ -211,7 +211,8 @@
 
             <div class="row" id="nueva" runat="server" style="padding: 5px; border-radius: 0px 0px 0px 0px; -moz-border-radius: 0px 0px 0px 0px; -webkit-border-radius: 0px 0px 0px 0px; border: 1px solid #000000;">
                 <div class="col-lg-12">
-                    <h4><i class="fa fa-share-alt"></i>&nbsp; Puede Generar nuevas Tareas, teniendo como principal esta Tarea</h4>
+                    <h4><i class="fa fa-share-alt"></i>&nbsp; Puede Generar nuevas Tareas, teniendo como principal esta Tarea
+                 </h4>
                     <asp:LinkButton ID="lnkGO" runat="server" CssClass="btn btn-info btn-block" OnClick="lnkGO_Click">Nueva Tarea  <i class="fa fa-plus-circle"></i></asp:LinkButton>
                 </div>
             </div>
@@ -222,15 +223,11 @@
                     <asp:TextBox ID="txtNombreArchivo" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 250);" runat="server" Style="text-transform: uppercase;" CssClass="form-control" placeholder="Comentario"></asp:TextBox>
                 </div>
                 <div class="col-lg-12 col-xs-12">
-                    <div class="form-group">
-                        <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-xs-12">
+                    <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
+                    <br />
+                    <asp:LinkButton ID="lnkGuardarPape" CssClass="btn btn-primary btn-block" OnClick="lnkGuardarPape_Click" runat="server">Agregar Comentario <i class="fa fa-plus-circle"></i> </asp:LinkButton>
 
-                        <asp:LinkButton ID="lnkGuardarPape" CssClass="btn btn-primary btn-block" OnClick="lnkGuardarPape_Click" runat="server">Agregar Comentario <i class="fa fa-plus-circle"></i> </asp:LinkButton>
-                    </div>
+
                 </div>
                 <div class="col-lg-12">
                     <div class="table-responsive">
@@ -345,13 +342,13 @@
                                             </div>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xs-6">
-                                            <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
-                                        </div>
-                                        <div class="col-lg-6 col-xs-6">
-                                            <input id="No" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
-                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="col-lg-6 col-xs-6">
+                                        <asp:Button ID="Yes" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="Yes_Click" />
+                                    </div>
+                                    <div class="col-lg-6 col-xs-6">
+                                        <input id="No" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                                     </div>
                                 </div>
                             </div>
@@ -407,17 +404,15 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <asp:Button ID="btnGuardar" runat="server" Text="Aceptar" CssClass="btn btn-primary btn-block" OnClick="btnGuardar_Click" Visible="false" />
-                                    <asp:Button ID="BTNCANCELARGUARDAR" runat="server" Text="Aceptar" CssClass="btn btn-primary btn-block" OnClick="btnCancelarTodo_Click" Visible="false" />
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <asp:Button ID="btnCancelar" runat="server" Text="Rechazar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <input id="Nos" type="button" class="btn btn-info btn-block" onclick="ModalClose();" value="Cerrar" />
-                                </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <asp:Button ID="btnGuardar" runat="server" Text="Aceptar" CssClass="btn btn-primary btn-block" OnClick="btnGuardar_Click" Visible="false" />
+                                <asp:Button ID="BTNCANCELARGUARDAR" runat="server" Text="Aceptar" CssClass="btn btn-primary btn-block" OnClick="btnCancelarTodo_Click" Visible="false" />
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <asp:Button ID="btnCancelar" runat="server" Text="Rechazar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <input id="Nos" type="button" class="btn btn-info btn-block" onclick="ModalClose();" value="Cerrar" />
                             </div>
                         </div>
                     </div>
@@ -442,14 +437,12 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="row">
                                 <div class="col-lg-6 col-xs-6">
                                     <asp:Button ID="btnsifecdirecto" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="btnsifecdirecto_Click" />
                                 </div>
                                 <div class="col-lg-6 col-xs-6">
                                     <input id="Ndddo" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -498,7 +491,6 @@
                             </asp:UpdatePanel>
                         </div>
                         <div class="modal-footer">
-                            <div class="row">
                                 <div class="col-lg-6 col-xs-6">
 
                                     <asp:Button ID="Button2" class="btn btn-info btn-block" runat="server" Text="Aceptar" OnClick="Button2_Click" />
@@ -506,7 +498,6 @@
                                 <div class="col-lg-6 col-xs-6">
                                     <input id="Ndddoss" type="button" class="btn btn-danger btn-block" onclick="ModalClose();" value="Cancelar" />
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

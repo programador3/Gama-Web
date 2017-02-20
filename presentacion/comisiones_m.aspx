@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Global.Master" AutoEventWireup="false" CodeFile="comisiones_m.aspx.vb" Inherits="comisiones_m" title="" %>
+﻿ <%@ Page Language="VB" MasterPageFile="~/Global.Master" AutoEventWireup="false" CodeFile="comisiones_m.aspx.vb" Inherits="comisiones_m" title="" %>
 
 <%@ Register assembly="System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 
@@ -11,8 +11,20 @@
     <script src="TinyBox/tinybox.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
-    <script src="JavaScript/sorttable.js" type="text/javascript"></script>
     <script type="text/javascript" >
+        function ModalClose() {
+            $('#modalPreviewView').modal('hide');
+            $('#myModal').modal('hide');
+        }
+        function ModalConfirm(cTitulo, ctype) {
+            var audio = new Audio('sounds/modal.wav');
+            audio.play();
+            $('#myModal').modal('show');
+            $('#myModal').removeClass('modal fade modal-info');
+            $('#myModal').addClass(ctype);
+            $('#modal_title').text(cTitulo);
+        }
+
         var myvar_guardando;
         function mostrar_procesar_guard()
         {
@@ -646,7 +658,7 @@
                                     </tr>
                                 </table>
                             </div>
-
+                            <asp:Button ID="btncomisiones" runat="server" CssClass="btn btn-success btn-block" Text="Bono de Presupuesto"  data-toggle="modal" data-target="#myModal" />
                         </td>
                     </tr>
                     <!-- fin 14-10-2015 MIC -->
@@ -661,6 +673,53 @@
             <input type="hidden" runat="server" name="h_mes" id="h_mes" />
             <input type="hidden" runat="server" id="h_axion_esp" value="" />
             <input type="hidden" runat="server" id="h_aportacion" value="" />
+             <!-- Modal -->
+            <div class="modal fade modal-info" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="text-align: center;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 id="modal_title"><strong>Información del BONO DE PRESUPUESTO</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <h5><strong><i class="fa fa-address-book" aria-hidden="true"></i>&nbsp;Agente</strong></h5>
+                                      <asp:TextBox ID="txtnumagente" runat="server"
+                                        CssClass="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini"
+                                        Height="30px" onfocus="this.blur();" Width="99%"
+                                        BackColor="White"></asp:TextBox>
+
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <h5><strong><i class="fa fa-address-book" aria-hidden="true"></i>&nbsp;Presupuesto</strong></h5>
+                                      <asp:TextBox ID="txtpresupuesto" runat="server"
+                                        CssClass="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini"
+                                        Height="30px" onfocus="this.blur();" Width="99%"
+                                        BackColor="White"></asp:TextBox>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <h5><strong><i class="fa fa-address-book" aria-hidden="true"></i>&nbsp;Venta</strong></h5>
+                                      <asp:TextBox ID="txtventa_modal" runat="server"
+                                        CssClass="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini"
+                                        Height="30px" onfocus="this.blur();" Width="99%"
+                                        BackColor="White"></asp:TextBox>
+                                </div>  |   
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <h5><strong><i class="fa fa-address-book" aria-hidden="true"></i>&nbsp;Bono del Presupuesto</strong></h5>
+                                      <asp:TextBox ID="txtbono_presupuesto" runat="server"
+                                        CssClass="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-mini"
+                                        Height="30px" onfocus="this.blur();" Width="99%"
+                                        BackColor="White"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input id="No" class="btn btn-info" data-dismiss="modal" value="Cerrar" type="button" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

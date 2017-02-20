@@ -28,12 +28,13 @@ namespace negocio.Componentes
             }
             return ds;
         }
-        public DataSet sp_tareas_servicios_puestos(int idc_puesto)
+        public DataSet sp_tareas_servicios_puestos(int idc_puesto, string filtro)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = idc_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PVALOR", SqlDbType = SqlDbType.Int, Value = filtro });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

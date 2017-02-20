@@ -11,6 +11,26 @@ namespace negocio.Componentes
     
     public class AgentesCOM
     {
+        public DataSet sp_detalle_comision_presupuesto(int pidc_usuario, int paño, int pmes)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pmes", SqlDbType = SqlDbType.Int, Value = pmes });
+            listparameters.Add(new SqlParameter() { ParameterName = "@paño", SqlDbType = SqlDbType.Int, Value = paño });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pusuage", SqlDbType = SqlDbType.Int, Value = pidc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@ptipo", SqlDbType = SqlDbType.Int, Value = "A" });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_detalle_comision_presupuesto", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet sp_anomina_asistencia_guardias(int pidc_usuario, int total, string cadena)
         {
             DataSet ds = new DataSet();

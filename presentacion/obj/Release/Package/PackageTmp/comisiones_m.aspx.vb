@@ -3,6 +3,7 @@ Imports System.Drawing
 Imports System.Data
 Imports presentacion
 Imports System.Globalization
+Imports negocio.Componentes
 
 Partial Class comisiones_m
     Inherits System.Web.UI.Page
@@ -25,8 +26,33 @@ Partial Class comisiones_m
             'add 14-10-2015 MIC
             btn_esparticulo.Attributes("onclick") = "window.open('comisiones_esp_articulos.aspx');return false;"
             btn_espactivacion.Attributes("onclick") = "window.open('comisiones_esp_activaciones.aspx');return false;"
+            btncomisiones.Visible = False
         End If
     End Sub
+
+    Private Function AplicaBono(ByVal mes As Integer, ByVal año As Integer, ByVal idc_usuario As Integer) As Boolean
+        Try
+            Dim componente As New AgentesCOM
+            Dim ds As New DataSet
+            ds = componente.sp_detalle_comision_presupuesto(idc_usuario, año, mes)
+            Dim dt As New DataTable
+            dt = ds.Tables(0)
+            If (dt.Rows.Count = 0) Then
+                Return False
+            Else
+                Dim alcanzo_bono As Boolean = Convert.ToBoolean(dt.Rows(0)("alcanzo_bono"))
+                txtnumagente.Text = IIf(alcanzo_bono, idc_usuario.ToString(), "")
+                txtpresupuesto.Text = IIf(alcanzo_bono, Convert.ToDecimal(dt.Rows(0)("presupuesto")).ToString("C"), "")
+                txtventa_modal.Text = IIf(alcanzo_bono, Convert.ToDecimal(dt.Rows(0)("venta")).ToString("C"), "")
+                txtbono_presupuesto.Text = IIf(alcanzo_bono, Convert.ToDecimal(dt.Rows(0)("bono_presupuesto")).ToString("C"), "")
+                Return True
+            End If
+        Catch ex As Exception
+            Alert.ShowAlertError(ex.ToString(), Me)
+            Return False
+        End Try
+    End Function
+
 
     Sub botones_mes()
         Dim mes As String
@@ -219,7 +245,7 @@ Partial Class comisiones_m
         End If
         Try
             ds = gweb.comisiones_agente(month, year, idc_agente, actual)
-
+            btncomisiones.Visible = AplicaBono(month, year, idc_agente)
             '31-08-2015
             Dim VQUITADIF As Boolean
             VQUITADIF = False
@@ -755,4 +781,8 @@ Partial Class comisiones_m
             Alert.ShowAlertInfo("Elige el mes para ver los detalles.", "Mensaje del sistema", Me)
         End If
     End Sub
+    'Protected Sub btncomisiones_Click(sender As Object, e As EventArgs) Handles btncomisiones.Click
+    '    'ScriptManager.RegisterStartupScript(Me, [GetType](), Guid.NewGuid().ToString(),
+    '    '"ModalConfirm('Información del BONO DE PRESUPUESTO','modal fade modal-info');", True)
+    'End Sub
 End Class

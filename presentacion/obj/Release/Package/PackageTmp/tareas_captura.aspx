@@ -59,7 +59,7 @@
                             </strong></h3>
                             <h4><i class="fa fa-list-alt"></i>&nbsp;Descripción de la tarea
                             </h4>
-                            <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" onblur="return imposeMaxLength(this, 1000);" placeholder="Descripcion" CssClass="form-control"
+                            <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" placeholder="Descripcion" CssClass="form-control"
                                 TextMode="MultiLine" Rows="5" runat="server" Style="resize: none; text-transform: uppercase; font-size: 12px;"></asp:TextBox>
                         </div>
                     </div>
@@ -169,10 +169,10 @@
                     <asp:TextBox ID="txtNombreArchivo" onfocus="$(this).select();" runat="server" CssClass="form-control" placeholder="Descripcion del documento" 
                         onkeypress="return isNumber(event);"></asp:TextBox>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                     <asp:FileUpload ID="fupPapeleria" CssClass="form-control" runat="server" />
                 </div>
-                <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <asp:LinkButton ID="lnkGuardarPape" CssClass="btn btn-primary btn-block" OnClick="lnkGuardarPape_Click" runat="server">Agregar Comentario <i class="fa fa-plus-circle"></i> </asp:LinkButton>
                 </div>
                 <div class="col-lg-12">
@@ -201,10 +201,10 @@
             </div>
             <br />
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary btn-block" OnClick="btnGuardar_Click" />
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger btn-block" OnClick="btnCancelar_Click" />
                 </div>
             </div>
