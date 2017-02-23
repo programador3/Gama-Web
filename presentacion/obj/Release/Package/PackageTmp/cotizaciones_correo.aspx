@@ -139,6 +139,10 @@
         window.open(ruta);
         return false;
     }
+
+ 
+
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
@@ -184,7 +188,8 @@
                                 Font-Overline="False" Font-Size="10pt" ForeColor="White" Text="Codigo Articulo"
                                 Width="100px"></asp:Label></h5>
                     </div>
-                    <asp:TextBox ID="txtcodigo" runat="server" Width="100%" ReadOnly="true" CssClass=" form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtcodigo" runat="server" Width="70%" CssClass=" form-control2"  onkeypress="return validarEnter(event);"></asp:TextBox>
+                    <asp:LinkButton ID="LinkButton4" Visible="false" Width="28%" runat="server" CssClass="btn btn-info" OnClick="LinkButton4_Click"><i class="fa fa-search" aria-hidden="true"></i></asp:LinkButton>
                     <asp:DropDownList ID="cboproductos" runat="server" Font-Names="arial"
                         Font-Size="Small" ForeColor="Black" Height="34px" Visible="False"
                         Width="100%">

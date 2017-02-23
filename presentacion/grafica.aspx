@@ -229,7 +229,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="display:none;">
                 <div class="col-lg-6 col-lg-6 col-md-6 col-sm-12  col-xs-12">
                     <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto; text-align: center;"></div>
                 </div>

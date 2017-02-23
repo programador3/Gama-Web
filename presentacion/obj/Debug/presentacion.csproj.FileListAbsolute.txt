@@ -4805,3 +4805,153 @@ D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\17_02_17\Puestos\presen
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\17_02_17\Puestos\presentacion\bin\GWebCD.xml
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\17_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\17_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\presentacion.dll.config
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\presentacion.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\presentacion.pdb
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\AjaxControlToolkit.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\ClosedXML.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\datos.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\Gios Pdf.NET.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\GWebCN.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\ICSharpCode.SharpZipLib.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\itextsharp.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WebForms.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WinForms.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\negocio.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\OpenPop.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\GWebCD.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\datos.pdb
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\GWebCN.pdb
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\GWebCN.xml
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\negocio.pdb
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\ClosedXML.xml
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\itextsharp.xml
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\GWebCD.pdb
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\GWebCD.xml
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\obj\Debug\presentacion.csprojResolveAssemblyReference.cache
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\obj\Debug\presentacion.dll.licenses
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\obj\Debug\presentacion.dll
+Y:\PROYECTOS\20_02_17\Puestos\presentacion\obj\Debug\presentacion.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\presentacion.dll.config
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\presentacion.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\presentacion.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\AjaxControlToolkit.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\ClosedXML.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\Gios Pdf.NET.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\ICSharpCode.SharpZipLib.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\itextsharp.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WinForms.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\OpenPop.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\ClosedXML.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\itextsharp.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\obj\Debug\presentacion.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\obj\Debug\presentacion.dll.licenses
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\obj\Debug\presentacion.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\presentacion\obj\Debug\presentacion.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\presentacion.dll.config
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\presentacion.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\presentacion.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\AjaxControlToolkit.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\ClosedXML.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\Gios Pdf.NET.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\ICSharpCode.SharpZipLib.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\itextsharp.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WinForms.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\OpenPop.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\ClosedXML.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\itextsharp.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\obj\Debug\presentacion.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\obj\Debug\presentacion.dll.licenses
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\obj\Debug\presentacion.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\presentacion\obj\Debug\presentacion.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\presentacion.dll.config
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\presentacion.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\presentacion.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\AjaxControlToolkit.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\ClosedXML.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\Gios Pdf.NET.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\ICSharpCode.SharpZipLib.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\itextsharp.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WinForms.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\OpenPop.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\ClosedXML.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\itextsharp.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\obj\Debug\presentacion.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\obj\Debug\presentacion.dll.licenses
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\obj\Debug\presentacion.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\presentacion\obj\Debug\presentacion.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\presentacion.dll.config
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\presentacion.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\presentacion.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\AjaxControlToolkit.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\ClosedXML.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\DocumentFormat.OpenXml.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\Gios Pdf.NET.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\GWebCN.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\ICSharpCode.SharpZipLib.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\itextsharp.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\Microsoft.ReportViewer.WinForms.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\negocio.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\OpenPop.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\GWebCN.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\GWebCN.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\negocio.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\ClosedXML.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\itextsharp.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\bin\es\Microsoft.ReportViewer.WinForms.resources.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\obj\Debug\presentacion.csprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\obj\Debug\presentacion.dll.licenses
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\obj\Debug\presentacion.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\23_02_17\Puestos\presentacion\obj\Debug\presentacion.pdb

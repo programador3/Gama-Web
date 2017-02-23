@@ -65,6 +65,33 @@
             }
         }
     </script>
+    <style>
+        .div_espera {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 1px;
+            border-width: 1px;
+            font-family: 'Roboto Condensed', sans-serif;
+            background-color: #F0F0F0;
+            border-color: #EAEAEA;
+            padding: 10px;
+            text-align: center;
+            min-height:170px;
+        }
+
+        .div_aten {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 1px;
+            border-width: 1px;
+            background-color: #546e7a  ;
+            color: #FFF;
+            border-color: #546e7a  ;
+            padding: 10px;
+            text-align: center;
+            min-height:150px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div id="page-wrapper">
@@ -229,9 +256,25 @@
 
 
                 </div>
-                <div class="col-lg-12">
-                    <div class="table-responsive">
-                        <asp:GridView ID="gridPapeleria" OnRowDataBound="gridPapeleria_RowDataBound" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-hover table-condensed" OnRowCommand="gridPapeleria_RowCommand" DataKeyNames="archivo,idc_tarea_archivo,descripcion, ruta, extension">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <%--      <asp:Repeater ID="repeat_comentarios" runat="server">
+                        <ItemTemplate>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" data-toggle="tooltip" data-placement="top" title='<%# Eval("descripcion").ToString() %>'>
+                                <div class='<%# Convert.ToBoolean(Eval("archivo"))?"div_aten":"div_aten" %>'>
+                                    <h6><strong><%# Eval("descripcion").ToString() %></strong></h6>
+                                    <h6><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;<strong><%# Eval("empleado").ToString() %></strong></h6>
+                                    <h6><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<%# Eval("fecha").ToString() %></h6>
+                                    <asp:LinkButton Visible='<%# Convert.ToBoolean(Eval("archivo")) %>' ID="LNKARCHIVO2" OnClick="ArchivoClcik" CommandName="Descargar" CommandArgument='<%# Eval("ruta")%>' runat="server"
+                                        CssClass="btn btn-success" ToolTip='<%# Eval("descripcion").ToString() %>'>                                  
+                                                 Archivo&nbsp;<i class="fa fa-download" aria-hidden="true"></i>
+                                    </asp:LinkButton>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>--%>
+                    
+                        <asp:GridView ID="gridPapeleria" OnRowDataBound="gridPapeleria_RowDataBound" runat="server" AutoGenerateColumns="false" 
+                            CssClass="table table-bordered table-responsive table-condensed" OnRowCommand="gridPapeleria_RowCommand" DataKeyNames="archivo,idc_tarea_archivo,descripcion, ruta, extension">
                             <Columns>
                                 <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn btn-info" HeaderText="Descargar" CommandName="Descargar" Text="Descargar">
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -242,12 +285,11 @@
                                 <asp:BoundField DataField="descripcion" HeaderText="Comentario"></asp:BoundField>
                                 <asp:BoundField DataField="idc_tarea_archivo" HeaderText="id_archi" Visible="false"></asp:BoundField>
                                 <asp:BoundField DataField="archivo" HeaderText="id_archi" Visible="false"></asp:BoundField>
-                                <asp:BoundField DataField="empleado" HeaderText="Empleado" Visible="true"></asp:BoundField>
-                                <asp:BoundField DataField="puesto" HeaderText="Puesto" Visible="true"></asp:BoundField>
-                                <asp:BoundField DataField="fecha" HeaderText="Fecha" Visible="true"></asp:BoundField>
+                                <asp:BoundField DataField="empleado" HeaderText="Empleado" Visible="true" HeaderStyle-Width="120px"></asp:BoundField>
+                                <asp:BoundField DataField="puesto" HeaderText="Puesto" HeaderStyle-Width="120px" Visible="true"></asp:BoundField>
+                                <asp:BoundField DataField="fecha" HeaderText="Fecha" HeaderStyle-Width="120px" Visible="true"></asp:BoundField>
                             </Columns>
                         </asp:GridView>
-                    </div>
                 </div>
             </div>
             <br />

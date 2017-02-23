@@ -422,7 +422,6 @@ namespace presentacion
                     txtNombreArchivo.Text = descripcion;
                     break;
             }
-            ScriptManager.RegisterStartupScript(this, GetType(), "DE", "GoSection('" + "#" + gridPapeleria.ClientID.ToString() + "');", true);
         }
 
         private string CadenaProveedores()
@@ -1295,7 +1294,25 @@ namespace presentacion
                 Alert.ShowAlertInfo(obs, "Información Acerca del Proveedor", this);
             }
         }
+        protected void ArchivoClcik(object sender, EventArgs e)
+        {
+            LinkButton BTN = (LinkButton)sender;
+            string ARCHIVO = BTN.CommandArgument;
+            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(Server.MapPath("~/temp/files/"));//path local
+            string Domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host;
+            string extension = Path.GetExtension(ARCHIVO);
+            string pageName = HttpContext.Current.Request.ApplicationPath + "/";
+            if (extension.ToUpper() == ".PDF" || extension.ToUpper() == ".JPG")
+            {
+                File.Copy(ARCHIVO, dirInfo + Path.GetFileName(ARCHIVO), true);
+                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + pageName + "temp/files/" + Path.GetFileName(ARCHIVO) + "');", true);
+            }
+            else
+            {
+                funciones.Download(ARCHIVO, System.IO.Path.GetFileName(ARCHIVO), this);
+            }
 
+        }
         protected void BTNCANCELARGUARDAR_Click(object sender, EventArgs e)
         {
         }
@@ -1461,6 +1478,11 @@ namespace presentacion
                 Alert.ShowAlertError(ex.ToString(), this.Page);
                 Global.CreateFileError(ex.ToString(), this);
             }
+        }
+
+        protected void gridPapeleria_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
         }
     }
 }

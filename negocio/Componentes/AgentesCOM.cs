@@ -1156,7 +1156,7 @@ namespace negocio.Componentes
             return ds;
         }
 
-        public DataSet sp_buscar_articulo_VENTAS_existencias(object codigo, string tipo, int idc_sucursal, int idc_usuario)
+        public DataSet sp_buscar_articulo_VENTAS_existencias(object codigo, string tipo, int idc_sucursal, int idc_usuario, int idc_cliente)
         {
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
@@ -1165,6 +1165,7 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_sucursal", SqlDbType = SqlDbType.Int, Value = idc_sucursal });
             listparameters.Add(new SqlParameter() { ParameterName = "@pvalor", SqlDbType = SqlDbType.Int, Value = codigo });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_usuario", SqlDbType = SqlDbType.Int, Value = idc_usuario });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_cliente", SqlDbType = SqlDbType.Int, Value = idc_cliente });
             try
             {
                 //ds = data.datos_Clientes(listparameters);

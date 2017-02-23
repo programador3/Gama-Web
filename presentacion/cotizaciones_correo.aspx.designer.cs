@@ -166,6 +166,15 @@ namespace presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtcodigo;
         
         /// <summary>
+        /// Control LinkButton4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        
+        /// <summary>
         /// Control cboproductos.
         /// </summary>
         /// <remarks>

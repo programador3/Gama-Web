@@ -62,7 +62,7 @@ namespace presentacion
             {
                 AgentesENT entidad = new AgentesENT();
                 AgentesCOM com = new AgentesCOM();
-                ds = com.sp_buscar_articulo_VENTAS_existencias(idc_articulo, "c", Convert.ToInt32(Session["idc_sucursal"]), Convert.ToInt32(Session["sidc_usuario"]));
+                ds = com.sp_buscar_articulo_VENTAS_existencias(idc_articulo, "c", Convert.ToInt32(Session["idc_sucursal"]), Convert.ToInt32(Session["sidc_usuario"]), Convert.ToInt32(txtid.Text));
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     cbomaster.DataSource = ds.Tables[0];

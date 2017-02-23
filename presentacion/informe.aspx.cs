@@ -27,7 +27,7 @@ namespace presentacion
                     ReportViewer2.ProcessingMode = ProcessingMode.Remote;
                     ServerReport serverReport = ReportViewer2.ServerReport;
 
-                    serverReport.ReportServerUrl = new Uri(variables.reporting_services);
+                    serverReport.ReportServerUrl = new Uri("http://192.168.0.4/ReportServer/");
                     serverReport.ReportPath = (string)Session["reportpath"];
 
                     List<ReportParameter> parametros = new List<ReportParameter>();

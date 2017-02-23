@@ -130,6 +130,7 @@
     <Content Include="Audios\JavaScript.js" />
     <Content Include="avisos_todos_m.aspx" />
     <Content Include="avisos_gen_m.aspx" />
+    <Content Include="bono_presupuesto.aspx" />
     <Content Include="buscar_colonia_mobile.aspx" />
     <Content Include="busc_Cliente.aspx" />
     <Content Include="cambiar_fechas_compromiso.aspx" />
@@ -1107,6 +1108,13 @@
     <Compile Include="avisos_gen_m.aspx.designer.cs">
       <DependentUpon>avisos_gen_m.aspx</DependentUpon>
     </Compile>
+    <Compile Include="bono_presupuesto.aspx.cs">
+      <DependentUpon>bono_presupuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bono_presupuesto.aspx.designer.cs">
+      <DependentUpon>bono_presupuesto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="buscar_colonia_mobile.aspx.cs">
       <DependentUpon>buscar_colonia_mobile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1860,7 +1868,6 @@
     <Compile Include="menu_ventas.aspx.designer.cs">
       <DependentUpon>menu_ventas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="metodos.cs" />
     <Compile Include="msgbox.cs" />
     <Compile Include="oc_clientes.aspx.cs">
       <DependentUpon>oc_clientes.aspx</DependentUpon>
@@ -2270,7 +2277,6 @@
     <Compile Include="reporte_visitas.aspx.designer.cs">
       <DependentUpon>reporte_visitas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="reporting.cs" />
     <Compile Include="Reproductor_llamadas2.aspx.cs">
       <DependentUpon>Reproductor_llamadas2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2418,7 +2424,6 @@
     <Compile Include="solicitud_horario.aspx.designer.cs">
       <DependentUpon>solicitud_horario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="solo_digitos.cs" />
     <Compile Include="subprocesos_captura.aspx.cs">
       <DependentUpon>subprocesos_captura.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2426,7 +2431,6 @@
     <Compile Include="subprocesos_captura.aspx.designer.cs">
       <DependentUpon>subprocesos_captura.aspx</DependentUpon>
     </Compile>
-    <Compile Include="substraer.cs" />
     <Compile Include="tareas.aspx.cs">
       <DependentUpon>tareas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2574,8 +2578,6 @@
     <Compile Include="conteo_m.aspx.designer.cs">
       <DependentUpon>conteo_m.aspx</DependentUpon>
     </Compile>
-    <Compile Include="validar_expresiones_regulares.cs" />
-    <Compile Include="variables.Designer.cs" />
     <Compile Include="vehiculos_entrega.aspx.cs">
       <DependentUpon>vehiculos_entrega.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2805,7 +2807,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="variables.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

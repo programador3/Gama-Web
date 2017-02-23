@@ -459,6 +459,7 @@ Partial Class Pedidos_m2
         'txtdescripcion.Focus()
 
         Try
+            Dim idc_cliente As Integer = IIf(txtid.Text = "", 0, Convert.ToInt32(txtid.Text))
             Dim ds As New DataSet
             Dim gweb As New GWebCN.Productos
             Dim row As DataRow
@@ -467,173 +468,38 @@ Partial Class Pedidos_m2
                 Return
             End If
             If IsNumeric(txtcodigoarticulo.Text) Then
-                ds = gweb.buscar_productos(txtcodigoarticulo.Text, "A", Session("idc_sucursal"), Session("idc_usuario"))
+                ds = gweb.buscar_productosCliente(txtcodigoarticulo.Text, "A", Session("idc_sucursal"), Session("idc_usuario"), idc_cliente)
                 If ds.Tables(0).Rows.Count > 0 Then
 
-                    'row = ds.Tables(0).Rows(0)
-                    'cargar_datos_productob_x_codigo(row)
-                    'ver_observaciones_articulo(row)
-                    'txtcodigoarticulo.Enabled = False
-                    '-----------------------------
 
                     If ds.Tables(0).Rows.Count > 0 Then
                         cboproductos.DataSource = ds.Tables(0)
                         cboproductos.DataTextField = "desart"
                         cboproductos.DataValueField = "idc_articulo"
                         cboproductos.DataBind()
-
-
-
-                        'txtcodigoarticulo.Visible = False
                         txtcodigoarticulo.Text = ""
 
                         cboproductos.Attributes("style") = "width:100%"
                         cboproductos.Visible = True
                         ViewState("dt_productos") = ds.Tables(0)
                         Session("dt_productos_busqueda") = ds.Tables(0)
-
-                        'rowr = ds.Tables(0).Rows(0)
-                        ''cargar_datos_productob_x_codigo(row)
-                        ''ver_observaciones_articulo(row)
-                        ''txtcodigoarticulo.Enabled = False
-
-                        ''Dim index As Integer = e.Item.ItemIndex
-                        'Dim dt As New DataTable
-                        'dt = ViewState("dt")
-                        ''Dim row As DataRow
-                        'Dim rows() As DataRow
-                        'row = dt.NewRow
-                        'Session("rowprincipal") = row
-                        'row("idc_articulo") = rowr("idc_articulo")
-                        'rows = dt.Select("idc_articulo=" & row("idc_articulo"))
-                        'If rows.Length > 0 Then
-                        '    WriteMsgBox("El Articulo ya Esta Capturado.")
-                        '    txtcodigoarticulo.Text = ""
-                        '    txtcodigoarticulo.Focus()
-                        '    Return
-                        'End If
-                        ''row("minimo_venta") = buscar_Existencia_Articulo(row("idc_articulo"))
-                        'row("existencia") = buscar_Existencia_Articulo(row("idc_articulo"))
-                        'Session("rowprincipal") = row
-                        'buscar_precio_producto(row("idc_articulo"))
-                        ''/Dim datos() As Object
-                        ''/datos = buscar_precio(row("idc_articulo"))
-                        'row("Codigo") = rowr("Codigo")
-                        'row("Descripcion") = rowr("desart")
-                        'row("UM") = rowr("unimed")
-                        ''row("Cantidad") = gridresultadosbusqueda.Items(index).Cells(0).Text.Trim
-                        ''/row("Precio") = datos(0)
-                        ''row("Importe") = gridresultadosbusqueda.Items(index).Cells(0).Text.Trim
-                        ''/row("PrecioReal") = datos(4) 'gridresultadosbusqueda.Items(index).Cells(0).Text.Trim 
-                        ''/row("Descuento") = datos(2) 'gridresultadosbusqueda.Items(index).Cells(0).Text.Trim 
-                        'row("Decimales") = rowr("decimales")
-                        'row("Paquete") = rowr("paquete")
-                        'row("precio_libre") = rowr("precio_libre")
-                        'row("comercial") = rowr("comercial")
-                        'row("fecha") = rowr("fecha")
-                        'row("obscotiza") = rowr("obscotiza")
-                        'row("vende_exis") = rowr("vende_exis")
-                        'row("minimo_venta") = rowr("minimo_venta")
-                        'row("minimo_venta") = buscar_Existencia_Articulo(row("idc_articulo"))
-                        'row("Master") = True
-                        'row("mensaje") = rowr("mensaje")
-                        'row("Porcentaje") = calculado(row("idc_articulo")) 'gridresultadosbusqueda.Items(index).Cells(0).Text.Trim
-                        'If row("Porcentaje") > 0 Then
-                        '    row("Calculado") = True 'gridresultadosbusqueda.Items(index).Cells(0).Text.Trim
-                        'Else
-                        '    row("Calculado") = False
-                        'End If
-                        ''/row("Nota_Credito") = datos(3) 'gridresultadosbusqueda.Items(index).Cells(0).Text.Trim 
-                        'row("Anticipo") = rowr("anticipo")
-                        ''/row("Costo") = datos(1) 'gridresultadosbusqueda.Items(index).Cells(0).Text.Trim 
-                        ''row("Existencia") = rowr("")
-                        'If row("Calculado") = True Then
-                        '    row("Cantidad") = 1
-                        '    row("Existencia") = 1
-                        '    dt.Rows.Add(row)
-                        '    ViewState("dt") = dt
-                        '    'calcular_valores()
-                        '    'Articulos_Calculados()
-                        '    grdproductos2.DataSource = ViewState("dt")
-                        '    grdproductos2.DataBind()
-                        '    'limpiar_controles()
-
-                        '    tbnguardarPP.Enabled = True
-                        '    btnnuevoprepedido.Enabled = True
-                        '    controles_busqueda_prod(True)
-                        '    controles_busqueda_prod_sel_cancel(False)
-                        '    txtcodigoarticulo.Attributes.Remove("onfocus")
-                        'Else
-                        '    'lbl_idc.Text = row("idc_articulo")
-                        '    'txtdesc.Text = row("Descripcion")
-                        '    'txtcodigoarticulo.Text = row("Codigo")
-                        '    'txtum.Text = row("UM")
-                        '    txtcodigoarticulo.Attributes("onfocus") = "this.blur()"
-                        '    If row("Decimales") = True Then
-                        '        'txtcantidad.Attributes("onkeydown") = "agregar_articulo(event);soloNumeros(event,'true');"
-                        '        'txtcantidad.Attributes("onkeydown") = "return agregar_articulo(event);"
-                        '    Else
-                        '        'txtcantidad.Attributes("onkeydown") = "agregar_articulo(event);soloNumeros(event,'false');"
-                        '        'txtcantidad.Attributes("onkeydown") = "return agregar_articulo(event);"
-                        '    End If
-
-
-                        '    Session("rowprincipal") = row
-                        '    ScriptManager.RegisterStartupScript(Me, GetType(Page), "", "<script>editar_precios_cantidad();</script>", False)
-
-                        '    'dt.Rows.Add(row)
-                        '    'ViewState("dt_c_correo") = dt
-                        '    'botones_captura(True)
-                        '    'txtcantidad.Attributes.Remove("onfocus")
-                        '    'txtcantidad.Focus()
-                        '    'Aki mandar llamar la pantalla de cantidad.
-                        'End If
                     Else
-                        ds = gweb.buscar_productos(txtcodigoarticulo.Text, "D", Session("idc_sucursal"), Session("idc_usuario"))
+                        ds = gweb.buscar_productosCliente(txtcodigoarticulo.Text, "D", Session("idc_sucursal"), Session("idc_usuario"), idc_cliente)
                         If ds.Tables(0).Rows.Count > 0 Then
                             row = ds.Tables(0).Rows(0)
-                            'cargar_datos_productob_x_codigo(row)
-                            'ver_observaciones_articulo(row)
-                            'txtcodigoarticulo.Enabled = False
-
-
                         Else
                             WriteMsgBox("No se encontro articulo con esa descripción")
                             txtcodigoarticulo.Focus()
                         End If
                     End If
-
-
-
-
-
-                    '-------------------------------------
-
-
-
-
-
-
-
-
                 Else
-                    ds = gweb.buscar_productos(txtcodigoarticulo.Text, "D", Session("idc_sucursal"), Session("idc_usuario"))
+                    ds = gweb.buscar_productosCliente(txtcodigoarticulo.Text, "D", Session("idc_sucursal"), Session("idc_usuario"), idc_cliente)
                     If ds.Tables(0).Rows.Count > 0 Then
-                        'row = ds.Tables(0).Rows(0)
-                        'cargar_datos_productob_x_codigo(row)
-                        'ver_observaciones_articulo(row)
-                        'txtcodigoarticulo.Enabled = False
-
-
-
                         cboproductos.DataSource = ds.Tables(0)
                         cboproductos.DataTextField = "desart"
                         cboproductos.DataValueField = "idc_articulo"
                         cboproductos.DataBind()
 
-
-
-                        'txtcodigoarticulo.Visible = False
                         txtcodigoarticulo.Text = ""
 
                         cboproductos.Attributes("style") = "width:100%"
@@ -648,10 +514,8 @@ Partial Class Pedidos_m2
                 End If
             Else
                 Dim dt As New DataTable
-                ds = gweb.buscar_productos(txtcodigoarticulo.Text, "C", Session("idc_sucursal"), Session("idc_usuario"))
+                ds = gweb.buscar_productosCliente(txtcodigoarticulo.Text, "C", Session("idc_sucursal"), Session("idc_usuario"), idc_cliente)
                 If ds.Tables(0).Rows.Count > 0 Then
-                    'gridresultadosbusqueda.DataSource = ds
-                    'gridresultadosbusqueda.DataBind()
                     dt = ds.Tables(0)
                     dt.Columns.Add("desart2")
                     For i As Integer = 0 To dt.Rows.Count - 1
@@ -669,7 +533,7 @@ Partial Class Pedidos_m2
                     ViewState("dt_productos") = ds.Tables(0)
                     'mpeSeleccion.Show()
                 Else
-                    ds = gweb.buscar_productos(txtcodigoarticulo.Text, "B", Session("idc_sucursal"), Session("idc_usuario"))
+                    ds = gweb.buscar_productosCliente(txtcodigoarticulo.Text, "B", Session("idc_sucursal"), Session("idc_usuario"), idc_cliente)
                     If ds.Tables(0).Rows.Count > 0 Then
 
                         dt = ds.Tables(0)

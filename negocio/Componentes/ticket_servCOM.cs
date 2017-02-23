@@ -160,6 +160,8 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@pfecha_fin", Value = ent.Pfechafin });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", Value = ent.Pidc_puesto });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_depto_aten", Value = ent.Pidc_depto_aten });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puestoconsulta", SqlDbType = SqlDbType.Int, Value = ent.Pidc_puestomira });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PMIS_DEPTOS", SqlDbType = SqlDbType.Int, Value = ent.Psolomisdeptos });
             //listparameters.Add(new SqlParameter() { ParameterName = "@pidc_depto_rep", Value = ent.Pidc_depto_rep });
 
             try

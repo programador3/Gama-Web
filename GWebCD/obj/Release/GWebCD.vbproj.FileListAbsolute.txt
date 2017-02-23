@@ -449,3 +449,58 @@ D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\GWebCD
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\GWebCD\obj\Release\GWebCD.dll
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\GWebCD\obj\Release\GWebCD.xml
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\18_02_17\Puestos\GWebCD\obj\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\obj\Release\GWebCD.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\obj\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\obj\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\19_02_17\Puestos\GWebCD\obj\Release\GWebCD.pdb
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\bin\Release\GWebCD.dll
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\bin\Release\GWebCD.pdb
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\bin\Release\GWebCD.xml
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\bin\Release\datos.dll
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\bin\Release\datos.pdb
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbprojResolveAssemblyReference.cache
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.Resources.resources
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbproj.GenerateResource.Cache
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.dll
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.xml
+Y:\PROYECTOS\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\20_02_17\Puestos\GWebCD\obj\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\obj\Release\GWebCD.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\obj\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\obj\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\21_02_17\Puestos\GWebCD\obj\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\bin\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\bin\Release\GWebCD.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\bin\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\bin\Release\datos.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\bin\Release\datos.pdb
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbprojResolveAssemblyReference.cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\obj\Release\GWebCD.Resources.resources
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\obj\Release\GWebCD.vbproj.GenerateResource.Cache
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\obj\Release\GWebCD.dll
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\obj\Release\GWebCD.xml
+D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\22_02_17\Puestos\GWebCD\obj\Release\GWebCD.pdb

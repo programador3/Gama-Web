@@ -358,7 +358,7 @@ a:hover {
   margin-left: 260px; }
 
 /* small screen */
-@media (max-width: 768px) {
+@media (max-width: 708px) {
   .navbar {
     padding-left: 0; }
     .navbar .navbar-header {

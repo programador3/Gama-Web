@@ -21,13 +21,15 @@ namespace presentacion
             LinkButton2.Visible = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 340);
             if (!IsPostBack)
             {
+                LlenaCombos();
+                TieneDeptos();
                 CargaPuestos("");
                 CargaDeptos();
 
                 if (Request.Url.Query.Length == 0)
                 {
                     txtfechafin.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');
-                    txtfechainicio.Text = DateTime.Now.ToString("yyyy-MM-dd").Replace(' ', 'T');
+                    txtfechainicio.Text = DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd").Replace(' ', 'T');
 
 
                 }
@@ -38,6 +40,46 @@ namespace presentacion
                 }
 
 
+            }
+        }
+
+        private void TieneDeptos()
+        {
+            try
+            {
+                TareasCOM componente = new TareasCOM();
+                DataSet ds = componente.SP_fn_deptos_asignados_puestos(Convert.ToInt32(Session["sidc_puesto_login"]));
+                DataTable dt = ds.Tables[0];
+                div_misdeptos.Visible= dt.Rows.Count > 0;
+                bdlMisDeptos.DataTextField = "nombre";
+                bdlMisDeptos.DataValueField = "nombre";
+                bdlMisDeptos.DataSource = dt;
+                bdlMisDeptos.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+            }
+        }
+
+        private void LlenaCombos()
+        {
+            try
+            {
+                TareasCOM componente = new TareasCOM();
+                DataSet ds = componente.SP_fn_deptos_asignados_puestos(0);
+                DataTable dt = ds.Tables[0];
+                DataView view = new DataView(dt);
+                DataTable distinctValues = view.ToTable(true, "empleado", "idc_puesto");
+                ddlpuestos_deptos.DataValueField = "idc_puesto";
+                ddlpuestos_deptos.DataTextField = "empleado";
+                ddlpuestos_deptos.DataSource = distinctValues;
+                ddlpuestos_deptos.DataBind();
+                div_combo.Visible = distinctValues.Rows.Count > 0;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
             }
         }
 
@@ -92,7 +134,6 @@ namespace presentacion
             catch (Exception ex)
             {
                 Alert.ShowAlertError(ex.ToString(), this.Page);
-                Global.CreateFileError(ex.ToString(), this);
             }
         }
 
@@ -324,5 +365,110 @@ namespace presentacion
             }
         }
 
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+            bool error = false;
+
+
+            bool permiso = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 340);
+            if (txtfechainicio.Text == "" || txtfechafin.Text == "")
+            {
+                Alert.ShowAlertError("Debe seleccionar una fecha de inicio y una fecha de fin", this);
+                error = true;
+            }
+
+            int pidc_puesto = 0;           
+            if (error == false)
+            {
+                string idc_depto = funciones.deTextoa64("0");
+                String url = HttpContext.Current.Request.Url.AbsoluteUri;
+                String path_actual = url.Substring(url.LastIndexOf("/") + 1);
+                url = url.Replace(path_actual, "");
+                url = url + "grafica.aspx?misdp=1&pidc_depto=" + idc_depto + "&idc_puesto=" + funciones.deTextoa64(pidc_puesto.ToString()) + "&fecha_inicio=" + txtfechainicio.Text + "&fecha_fin=" + txtfechafin.Text;
+                ScriptManager.RegisterStartupScript(this, GetType(), "noti533ssW3", "window.open('" + url + "');", true);
+            }
+        }
+
+        protected void LinkButton5_Click(object sender, EventArgs e)
+        {
+            //string caso = h_Caso.Value;
+            bool error = false;
+
+            bool permiso = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 340);
+            if (txtfechainicio.Text == "" || txtfechafin.Text == "")
+            {
+                Alert.ShowAlertError("Debe seleccionar una fecha de inicio y una fecha de fin", this);
+                error = true;
+            }
+            if (error == false)
+            {
+                String url = HttpContext.Current.Request.Url.AbsoluteUri;
+                String path_actual = url.Substring(url.LastIndexOf("/") + 1);
+                url = url.Replace(path_actual, "");
+                url = url + "grafica.aspx?misdp=1&idc_puesto=" + funciones.deTextoa64(ddlPuestoAsigna.SelectedValue) + "&fecha_inicio=" + txtfechainicio.Text + "&fecha_fin=" + txtfechafin.Text;
+                string id_puesto = funciones.deTextoa64("0");
+                string idc_depto = funciones.deTextoa64("0");
+                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + "rendimiento_tareas_detalles.aspx?misdp=1&pidc_depto=" + idc_depto + "&pidc_puesto=" + id_puesto + "&inicio=" + funciones.deTextoa64(txtfechainicio.Text) + "&fin=" + funciones.deTextoa64(txtfechafin.Text) + "&casoFiltro=" + funciones.deTextoa64(h_casoFiltro.Value) + "');",
+                   true);
+            }
+        }
+
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            bool error = false;
+
+
+            bool permiso = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 340);
+            if (txtfechainicio.Text == "" || txtfechafin.Text == "")
+            {
+                Alert.ShowAlertError("Debe seleccionar una fecha de inicio y una fecha de fin", this);
+                error = true;
+            }
+            if (ddlpuestos_deptos.SelectedValue=="")
+            {
+                Alert.ShowAlertError("Debe seleccionar un puesto asignado", this);
+                error = true;
+            }
+            int pidc_puesto = 0;
+            if (error == false)
+            {
+                string idc_depto = funciones.deTextoa64("0");
+                String url = HttpContext.Current.Request.Url.AbsoluteUri;
+                String path_actual = url.Substring(url.LastIndexOf("/") + 1);
+                url = url.Replace(path_actual, "");
+                url = url + "grafica.aspx?idcpl=" + funciones.deTextoa64(ddlpuestos_deptos.SelectedValue) + "&misdp=1&pidc_depto=" + idc_depto + "&idc_puesto=" + funciones.deTextoa64(pidc_puesto.ToString()) + "&fecha_inicio=" + txtfechainicio.Text + "&fecha_fin=" + txtfechafin.Text;
+                ScriptManager.RegisterStartupScript(this, GetType(), "noti533ssW3", "window.open('" + url + "');", true);
+            }
+            
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            //string caso = h_Caso.Value;
+            bool error = false;
+
+            bool permiso = funciones.autorizacion(Convert.ToInt32(Session["sidc_usuario"]), 340);
+            if (txtfechainicio.Text == "" || txtfechafin.Text == "")
+            {
+                Alert.ShowAlertError("Debe seleccionar una fecha de inicio y una fecha de fin", this);
+                error = true;
+            }
+            if (ddlpuestos_deptos.SelectedValue == "")
+            {
+                Alert.ShowAlertError("Debe seleccionar un puesto asignado", this);
+                error = true;
+            }
+            if (error == false)
+            {
+                String url = HttpContext.Current.Request.Url.AbsoluteUri;
+                String path_actual = url.Substring(url.LastIndexOf("/") + 1);
+                url = url.Replace(path_actual, "");
+                url = url + "grafica.aspx?misdp=1&idc_puesto=" + funciones.deTextoa64(ddlPuestoAsigna.SelectedValue) + "&fecha_inicio=" + txtfechainicio.Text + "&fecha_fin=" + txtfechafin.Text;
+                string id_puesto = funciones.deTextoa64("0");
+                string idc_depto = funciones.deTextoa64("0");
+                ScriptManager.RegisterStartupScript(this, GetType(), Guid.NewGuid().ToString(), "window.open('" + "rendimiento_tareas_detalles.aspx?idcpl="+funciones.deTextoa64(ddlpuestos_deptos.SelectedValue)+"&misdp=1&pidc_depto=" + idc_depto + "&pidc_puesto=" + id_puesto + "&inicio=" + funciones.deTextoa64(txtfechainicio.Text) + "&fin=" + funciones.deTextoa64(txtfechafin.Text) + "&casoFiltro=" + funciones.deTextoa64(h_casoFiltro.Value) + "');",
+                   true);
+            }
+        }
     }
 }

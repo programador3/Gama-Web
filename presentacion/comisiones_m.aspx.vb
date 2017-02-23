@@ -38,13 +38,17 @@ Partial Class comisiones_m
             Dim dt As New DataTable
             dt = ds.Tables(0)
             If (dt.Rows.Count = 0) Then
+                btncomisiones.CommandName = ""
                 Return False
             Else
                 Dim alcanzo_bono As Boolean = Convert.ToBoolean(dt.Rows(0)("alcanzo_bono"))
-                txtnumagente.Text = IIf(alcanzo_bono, idc_usuario.ToString(), "")
-                txtpresupuesto.Text = IIf(alcanzo_bono, Convert.ToDecimal(dt.Rows(0)("presupuesto")).ToString("C"), "")
-                txtventa_modal.Text = IIf(alcanzo_bono, Convert.ToDecimal(dt.Rows(0)("venta")).ToString("C"), "")
-                txtbono_presupuesto.Text = IIf(alcanzo_bono, Convert.ToDecimal(dt.Rows(0)("bono_presupuesto")).ToString("C"), "")
+                txtnumagente.Text = idc_usuario.ToString()
+                txtpresupuesto.Text = IIf(True, Convert.ToDecimal(dt.Rows(0)("presupuesto")).ToString("C"), "$ 0.00")
+                txtventa_modal.Text = IIf(True, Convert.ToDecimal(dt.Rows(0)("venta")).ToString("C"), "$ 0.00")
+                txtbono_presupuesto.Text = IIf(True, Convert.ToDecimal(dt.Rows(0)("bono_presupuesto")).ToString("C"), "$ 0.00")
+                Dim bcolor As String = IIF(alcanzo_bono, "#00897b", "#e53935")
+                Dim url As String = "bono_presupuesto.aspx?color=" + funciones.deTextoa64(bcolor) + "&agente=" + funciones.deTextoa64(txtnumagente.Text) + "&presupuesto=" + funciones.deTextoa64(txtpresupuesto.Text) + "&venta=" + funciones.deTextoa64(txtventa_modal.Text) + "&bono=" + funciones.deTextoa64(txtbono_presupuesto.Text)
+                btncomisiones.CommandName = url
                 Return True
             End If
         Catch ex As Exception
@@ -785,4 +789,10 @@ Partial Class comisiones_m
     '    'ScriptManager.RegisterStartupScript(Me, [GetType](), Guid.NewGuid().ToString(),
     '    '"ModalConfirm('Información del BONO DE PRESUPUESTO','modal fade modal-info');", True)
     'End Sub
+    Protected Sub btncomisiones_Click(sender As Object, e As EventArgs) Handles btncomisiones.Click
+        Dim url As String = btncomisiones.CommandName
+        If url IsNot "" Then
+            ScriptManager.RegisterStartupScript(Me, [GetType](), Guid.NewGuid.ToString(), "window.open('" + url + "');", True)
+        End If
+    End Sub
 End Class

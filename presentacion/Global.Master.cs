@@ -45,6 +45,7 @@ namespace presentacion
             CargarHerramientasMenu();
             menu_vents.Visible = TieneOpcionesdeVentas();
             OpcionesUsadas();
+            TareasIncumplidas();
             if (Session["sidc_usuario"] == null && Session["lista"] == null && path_actual != "reproductor_llamadas.aspx")//si no hay session logeamos
             {
                 Response.Redirect("login.aspx");
@@ -95,6 +96,25 @@ namespace presentacion
                 }
             }
         }
+
+        private void TareasIncumplidas()
+        {
+            try
+            {
+                TareasCOM componente = new TareasCOM();
+                DataSet ds = componente.sp_tareas_incumplidas(Convert.ToInt32(Session["sidc_puesto_login"]));
+                div_mensaje.Visible = false;
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    div_mensaje.Visible = Convert.ToInt32(ds.Tables[0].Rows[0][0]) > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+            }
+        }
+
         private bool TieneOpcionesdeVentas()
         {
             try

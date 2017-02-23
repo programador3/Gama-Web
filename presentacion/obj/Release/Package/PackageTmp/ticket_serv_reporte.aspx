@@ -193,6 +193,18 @@
                 Exportar a Excel&nbsp; <i class="fa fa-file-excel-o" aria-hidden="true"></i>
             </asp:LinkButton>
         </div>
+        
+        <div id="div_combo" class="col-lg-12" runat="server">
+
+            <br />
+            <br />
+            <br />
+            <h4><strong><i class="fa fa-address-card-o" aria-hidden="true"></i>&nbsp;Puede Seleccionar por los Deptos Asignados a los siguientes puestos:</strong></h4>
+            <asp:DropDownList ID="ddlpuestos_deptos" CssClass=" form-control2" runat="server">
+            </asp:DropDownList>
+            <asp:LinkButton ID="LinkButton6" CssClass="btn btn-info" runat="server" OnClick="LinkButton6_Click">
+                        Generar Graficas de sus Deptos&nbsp;<i class="fa fa-pie-chart" aria-hidden="true"></i></asp:LinkButton>
+        </div>
     </div>
 
     <div class="row" id="div_panel_lista">

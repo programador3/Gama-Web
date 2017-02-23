@@ -38,8 +38,12 @@ namespace negocio.Entidades
         private string pnombrepc;
         private string pusuariopc;
         private int idc_usuario;
+        private int idc_puesto_login;
+        private bool misdeptos;
         private int pcasoFiltro; /* PARAMETRO PARA EL FILTRO EN RELACION PUESTO TAREAS*/
 
+        public int Pidc_puesto_login { get { return idc_puesto_login; } set { idc_puesto_login = value; } }
+        public bool Psolomisdeptos { get { return misdeptos; } set { misdeptos = value; } }
         public int Idc_usuario
         {
             get { return idc_usuario; }

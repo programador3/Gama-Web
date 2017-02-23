@@ -236,14 +236,14 @@ namespace presentacion
             }
 
             string vimagen = filimagen.FileName.ToString().ToUpper();
-            if ((vimagen == "" | substraer.derecha(vimagen, 3) != "JPG") & filimagen.Visible == true)
+            if ((vimagen == "" | funciones.derecha(vimagen, 3) != "JPG") & filimagen.Visible == true)
             {
                 Alert.ShowAlertError("Imagen de la Obra 1 es Requerido en Formato JPG", this.Page);
                 return false;
             }
 
             string vimagen2 = filimagen2.FileName.ToString().ToUpper();
-            if ((vimagen2 == "" | substraer.derecha(vimagen2, 3) != "JPG") & filimagen2.Visible == true)
+            if ((vimagen2 == "" | funciones.derecha(vimagen2, 3) != "JPG") & filimagen2.Visible == true)
             {
                 Alert.ShowAlertError("Imagen de la Obra 2 es Requerido en Formato JPG", this.Page);
                 return false;
@@ -677,7 +677,7 @@ namespace presentacion
             if (correo.Trim().Length > 0)
             {
                 Match match;
-                match = validar_expresiones_regulares.comparar(correo.Trim(), 2);
+                match = funciones.comparar(correo.Trim(), 2);
                 if (match.Success)
                 {
                     return true;

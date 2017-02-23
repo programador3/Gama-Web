@@ -15,10 +15,58 @@ using System.Web.UI.WebControls;
 
 namespace presentacion
 {
+    /// <summary>
+    /// EN ESTA CLASE SE AGREGAN TODAS LAS FUNCIONES QUE PUEDAN UTILIZARSE DE MANERA GLOBAL, SE DEBE AGREGAS EL CONTEXTO DE LA PAGINA C#(THIS), VB(ME)
+    /// </summary>
     public class funciones
     {
 
         public static DBConnection conexion = new DBConnection();
+
+        /// <summary>
+        /// Comprueba ina expresion regular
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <param name="tipo"></param>
+        /// <returns></returns>
+        public static Match comparar(string cadena, int tipo)
+        {
+            string patron, patron_rfc, patron_correo;
+            patron_rfc = "[A-ZÑ&]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z0-9]?[A-Z0-9]?[0-9A-Z]?";
+            patron_correo = "^([0-9a-zA-Z]+[-._+&])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$";
+
+            Match match;
+
+            if (tipo == 1) // rfc
+            {
+                patron = patron_rfc;
+            }
+            else
+            {
+                patron = patron_correo;
+            }
+
+            match = Regex.Match(cadena, patron);
+            return match;
+        }
+
+
+        public static string derecha(string cadena, int total)
+        {
+            string resultado = "";
+            int vlen;
+            vlen = cadena.Trim().Length;
+
+            if (vlen > 0)
+            { resultado = cadena.Substring(vlen - total, total); }
+
+            return resultado;
+        }
+
+        /// <summary>
+        /// Genera una llave Unica en formato String
+        /// </summary>
+        /// <returns></returns>
         public static string GUID()
         {
             Random random_edit = new Random();
@@ -30,6 +78,32 @@ namespace presentacion
 
             return date + randomNumber_live.ToString();
         }
+
+
+        public static string get_reporte(int idc_reporting)
+        {
+            DataSet ds = new DataSet();
+            string path;
+            //llenamos la entidad
+            reportingE llenar_datos = new reportingE();
+            llenar_datos.Idc_reporting = idc_reporting;
+            //llamamos al componente
+            ReportingBL datos = new ReportingBL();
+            try
+            {
+                //ejecutamos metodo: recupera el path y nombre del reporte
+                ds = datos.path_reporte(llenar_datos);
+                //formamos la cadena
+                path = ds.Tables[0].Rows[0]["ruta"].ToString() + ds.Tables[0].Rows[0]["nombre"].ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return path;
+        }
+
         public static string NombreMes(string strOutput)
         {
             strOutput = strOutput.Replace("Monday", "Lunes");
@@ -331,19 +405,19 @@ namespace presentacion
                 if (tipo == "conexion")
                 {
                     if (cs == "P")
-                        cadena = variables.cad_conexion;
+                        cadena = datos.recursos.cadena_conexion;
                     else
-                        cadena = variables.cad_conexion_respa;
+                        cadena = datos.recursos.cadena_conexion_respa;
                 }
                 else if (tipo == "phost")
                 {
                     if (cs == "P")
                     {
-                        cadena = variables.servidor_ima;
+                        cadena = "192.168.0.4";
                     }
                     else
                     {
-                        cadena = variables.servidor_ima_resp;
+                        cadena = "192.168.0.3";
                     }
                 }
                 else

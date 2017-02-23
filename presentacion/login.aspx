@@ -50,41 +50,41 @@
             <asp:AsyncPostBackTrigger ControlID="btnaceptar" EventName="Click" />
         </Triggers>
         <ContentTemplate>
-          
+
             <div class="login-page">
                 <div class="form">
                     <div class="login-form">
                         <div class="form-group" style="text-align: center; height: 50%">
-                            <img onclick="ClicImg();" style="display: block; margin: 0 auto; max-width:150px"
+                            <img onclick="ClicImg();" style="display: block; margin: 0 auto; max-width: 150px"
                                 class="img-responsive" src="imagenes/acount.png?p=9" />
                         </div>
                         <br />
-                       
+
                         <asp:TextBox ID="txtuser" onfocus="this.select()" Style="text-align: center;"
                             runat="server" CssClass="form-control" placeholder="Usuario" required="Indique su Usuario" autofocus></asp:TextBox>
-                        <h5 id="tit1" runat="server" visible="false" style="color:white;">Bienvenido de Nuevo </h5>
-                        <h6 id="tit2" runat="server" visible="false" style="color:white;">
-                        <asp:Label style="color:white;" ID="lblnamecooki" runat="server" Text="Label"></asp:Label></h6>
+                        <h5 id="tit1" runat="server" visible="false" style="color: white;">Bienvenido de Nuevo </h5>
+                        <h6 id="tit2" runat="server" visible="false" style="color: white;">
+                            <asp:Label Style="color: white;" ID="lblnamecooki" runat="server" Text="Label"></asp:Label></h6>
                         <asp:TextBox ID="txtpass" onfocus="this.select()" Style="text-align: center;"
                             runat="server" CssClass="form-password form-control" placeholder="Contraseña" required="Escriba su contraseña" TextMode="Password"></asp:TextBox>
 
                         <asp:Button ID="btnaceptar" runat="server"
                             Text="Iniciar Sesión" CssClass="waves-effect waves-light btn-large bt " OnClick="btnaceptar_Click" />
-                        <h6>   <asp:LinkButton CssClass="waves-effect waves-light btn" Style="background: #37474f  ; height:30px; font-size:12px"
-            Visible="false" ID="lnlotracuenta" runat="server" OnClick="lnlotracuenta_Click">Iniciar Sesion con otra Cuenta</asp:LinkButton></h6>
+                        <h6>
+                            <asp:LinkButton CssClass="waves-effect waves-light btn" Style="background: #37474f; height: 30px; font-size: 12px"
+                                Visible="false" ID="lnlotracuenta" runat="server" OnClick="lnlotracuenta_Click">Iniciar Sesion con otra Cuenta</asp:LinkButton></h6>
                         <br />
                         <br />
                         <br />
                         <asp:LinkButton ID="lbklimpiarsession" CssClass="waves-effect waves-light red darken-1 btn" runat="server" OnClick="lbklimpiarsession_Click">Cerrar Sesión Iniciada</asp:LinkButton>
-                           </div>
+                    </div>
                 </div>
             </div>
             <!-- Top content -->
-            
         </ContentTemplate>
     </asp:UpdatePanel>
     <div id="footer-zone" style="text-align: center; color: white;">
-      
+
         <h6>Sistema GAMA Web <small>v.<asp:Label ID="lblfooter" runat="server" Text="Footer"></asp:Label></small></h6>
     </div>
     <!-- /#page-wrapper -->

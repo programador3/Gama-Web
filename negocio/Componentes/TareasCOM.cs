@@ -9,6 +9,41 @@ namespace negocio.Componentes
 {
     public class TareasCOM
     {
+        public DataSet sp_tareas_incumplidas(int idc_puesto)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = idc_puesto });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("sp_tareas_incumplidas", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
+
+        public DataSet SP_fn_deptos_asignados_puestos(int idc_puesto)
+        {
+            DataSet ds = new DataSet();
+            List<SqlParameter> listparameters = new List<SqlParameter>();
+            Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = idc_puesto });
+            try
+            {
+                //ds = data.datos_Clientes(listparameters);
+                ds = data.enviar("SP_fn_deptos_asignados_puestos", listparameters, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ds;
+        }
         public DataSet sp_reporte_guardias(DateTime fecha)
         {
             DataSet ds = new DataSet();
@@ -805,6 +840,8 @@ namespace negocio.Componentes
             listparameters.Add(new SqlParameter() { ParameterName = "@PFECHA_FIN", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pfecha_fin });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptipofiltro", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptipof });
             listparameters.Add(new SqlParameter() { ParameterName = "@ptipofiltro_sistema", SqlDbType = SqlDbType.Int, Value = Etiqueta.Ptipofs });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PMIS_DEPTOS", SqlDbType = SqlDbType.Int, Value = Etiqueta.Psolomisdeptos });
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puestoconsulta", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto_login });
 
             if (Etiqueta.Pidc_tarea != 0)
             {

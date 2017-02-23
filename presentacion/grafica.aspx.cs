@@ -23,14 +23,16 @@ namespace presentacion
                 int idc_puesto = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idc_puesto"]));
 
                 int pidc_depto = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_depto"]));
-                GenerarDatos(fi, ff, idc_puesto, pidc_depto);
+                bool solo_misdeptos = Request.QueryString["misdp"] != null;
+                int pidc_puestomira = Request.QueryString["idcpl"] != null ? Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idcpl"])) : Convert.ToInt32(Session["sidc_puesto_login"]);
+                GenerarDatos(fi, ff, idc_puesto, pidc_depto, solo_misdeptos, pidc_puestomira);
             }
         }
 
         public List<String> meses = new List<string>();
         public List<int> valores = new List<int>();
 
-        private void GenerarDatos(DateTime fecha_i, DateTime fecha_f, int idc_puesto, int IDC_DEPTO)
+        private void GenerarDatos(DateTime fecha_i, DateTime fecha_f, int idc_puesto, int IDC_DEPTO, bool misdeptos, int pidc_puestomira)
         {
             try
             {
@@ -39,6 +41,8 @@ namespace presentacion
                 entidad.Pfecha_empieza = fecha_i;
                 entidad.Pfecha_termina = fecha_f;
                 entidad.Pidc_depto = IDC_DEPTO;
+                entidad.Psolomisdeptos = misdeptos;
+                entidad.Pidc_puesto = pidc_puestomira;
                 TareasAutomaticasCOM componente = new TareasAutomaticasCOM();
                 DataSet ds = componente.DatosGraficas(entidad);
                 string nombre = ds.Tables[0].Rows[0]["empleado"].ToString();
@@ -165,6 +169,9 @@ namespace presentacion
             string idc_puesto = Request.QueryString["idc_puesto"];
             string pidc_depto = Request.QueryString["pidc_depto"];
             string tipofiltro = "";
+
+            string pidc_puestomira = Request.QueryString["idcpl"] != null ? "&idcpl=" + Request.QueryString["idcpl"]: "";
+            string misdeptos = Request.QueryString["misdp"] != null ? "&misdp=1" : "";
             switch (index)
             {
                 case 0://buenos resultados
@@ -188,7 +195,7 @@ namespace presentacion
                     tipofiltro = "C";
                     break;
             }
-            Response.Redirect("rendimiento_tareas_detalles.aspx?pidc_puesto=" + idc_puesto + "&pidc_depto=" + pidc_depto + "&inicio=" + fi + "&fin=" + ff + "&tipofiltrosistema=" + tipofiltro);
+            Response.Redirect("rendimiento_tareas_detalles.aspx?pidc_puesto=" + idc_puesto + "&pidc_depto=" + pidc_depto + "&inicio=" + fi + "&fin=" + ff + "&tipofiltrosistema=" + tipofiltro+ misdeptos+ pidc_puestomira);
         }
 
         protected void gridconcentrado_RowCommand(object sender, GridViewCommandEventArgs e)

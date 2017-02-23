@@ -144,7 +144,14 @@
                 });
             }
         }
-
+        function validarEnter(e) {
+            k = (document.all) ? e.keyCode : e.which;
+            if (k == 13) {
+                return false;
+            } else {
+                return true;
+            } 
+        }
         //VALIDA QUE SEA TIPO MONTO
         function validarMontoMoney(e) {
             k = (document.all) ? e.keyCode : e.which;
@@ -977,6 +984,15 @@
                 </div>
                 <!-- Main Content -->
                 <div class="side-body">
+                    <div id="div_mensaje" runat="server">
+                        <br />
+                        <br />
+                        <div class="alert fresh-color alert-danger alert-dismissible" role="alert"  style="cursor:pointer" onclick="location.href='tareas_listado.aspx'">
+
+                            <strong>Alerta!</strong> Tiene Tareas sin contestar o con la fecha compromiso sobrepasada de tiempo.
+                        </div>
+                    </div>
+
                     <asp:ContentPlaceHolder ID="Contenido" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
@@ -984,4 +1000,4 @@
         </div>
     </form>
 </body>
-</html>
+</html> 

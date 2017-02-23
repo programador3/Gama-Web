@@ -32,7 +32,9 @@ namespace presentacion
                 int pidc_depto = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_depto"]));
                 H_casoFiltor.Value = Request.QueryString["casoFiltro"] == null ? "0":funciones.de64aTexto(Request.QueryString["casoFiltro"]);
                 H_casoFiltor.Value = H_casoFiltor.Value == "" ? "0" : H_casoFiltor.Value;
-                CargaTareas(start, end, pidc_puesto, 0, pidc_depto);
+                bool solo_misdeptos = Request.QueryString["misdp"] != null;
+                int pidc_puestomira = Request.QueryString["idcpl"] != null ? Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idcpl"])) : Convert.ToInt32(Session["sidc_puesto_login"]);
+                CargaTareas(start, end, pidc_puesto, 0, pidc_depto, solo_misdeptos, pidc_puestomira);
 
             }
         }
@@ -40,7 +42,7 @@ namespace presentacion
         /// <summary>
         /// Carga Tareas
         /// </summary>
-        public void CargaTareas(DateTime start, DateTime end, int pidc_puesto, int pidc_tarea, int idc_depto)
+        public void CargaTareas(DateTime start, DateTime end, int pidc_puesto, int pidc_tarea, int idc_depto, bool misdeptos, int pidc_puestomira)
         {
             try
             {
@@ -56,6 +58,8 @@ namespace presentacion
                 entidad.PcasoFiltro = Convert.ToInt32(H_casoFiltor.Value);
                 entidad.Idc_usuario = Request.QueryString["ver_solo_asignadas"] != null ? 0 : Convert.ToInt32(Session["sidc_usuario"]);
                 entidad.Pidc_puesto_asigna = Convert.ToInt32(Session["sidc_puesto_login"]);
+                entidad.Pidc_puesto_login = pidc_puestomira;
+                entidad.Psolomisdeptos = misdeptos;
                 if (Request.QueryString["tipofiltro"] != null)
                 {
                     entidad.Ptipof = Request.QueryString["tipofiltro"];
@@ -289,7 +293,9 @@ namespace presentacion
                 case "Detalles":
                     lblheaddet.Text = gridtareas.DataKeys[index].Values["desc_completa"].ToString();
 
-                    CargaTareas(start, end, pidc_puesto, idc_tarea, Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_depto"])));
+                    bool solo_misdeptos = Request.QueryString["misdp"] != null;
+                    int pidc_puestomira = Request.QueryString["idcpl"] != null ? Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idcpl"])) : Convert.ToInt32(Session["sidc_puesto_login"]);
+                    CargaTareas(start, end, pidc_puesto, idc_tarea, Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_depto"])), solo_misdeptos, pidc_puestomira);
                     break;
 
                 case "Ver Desc":
@@ -307,12 +313,14 @@ namespace presentacion
 
         protected void lnkmostrar_Click(object sender, EventArgs e)
         {
+            bool solo_misdeptos = Request.QueryString["misdp"] != null;
             panel_repeat.Visible = true;
             panel_detalles.Visible = false;
             DateTime start = Convert.ToDateTime(funciones.de64aTexto(Request.QueryString["inicio"]));
             DateTime end = Convert.ToDateTime(funciones.de64aTexto(Request.QueryString["fin"]));
             int pidc_puesto = Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_puesto"]));
-            CargaTareas(start, end, pidc_puesto, 0, Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_depto"])));
+            int pidc_puestomira = Request.QueryString["idcpl"] != null ? Convert.ToInt32(funciones.de64aTexto(Request.QueryString["idcpl"])) : Convert.ToInt32(Session["sidc_puesto_login"]);
+            CargaTareas(start, end, pidc_puesto, 0, Convert.ToInt32(funciones.de64aTexto(Request.QueryString["pidc_depto"])),solo_misdeptos, pidc_puestomira);
         }
 
         protected void gridtareas_RowDataBound(object sender, GridViewRowEventArgs e)

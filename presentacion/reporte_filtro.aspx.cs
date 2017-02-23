@@ -51,7 +51,7 @@ namespace presentacion
                 parametros.Add(new ReportParameter("cadconexion", cadena));
                 //le mandamos a la clase reporting que informe queremos
                 //en este caso 270 y nos devuelve la pagina a donde debe ir --informe.aspx--
-                path = reporting.get_reporte(270);
+                path = funciones.get_reporte(270);
                 //redireccionamos
                 //sesion
                 string indice = funciones.id_aleatorio();

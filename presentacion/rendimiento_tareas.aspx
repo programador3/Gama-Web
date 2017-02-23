@@ -43,7 +43,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-    <h1 class="page-header">Reportes de rendimiento por Puesto</h1>
+    <h2 class="page-header">Reportes de rendimiento por Puesto</h2>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="ddldeptos" EventName="SelectedIndexChanged" />
@@ -75,13 +75,12 @@
                     <asp:DropDownList ID="ddlPuestoAsigna" OnSelectedIndexChanged="ddlPuesto_SelectedIndexChanged" runat="server" CssClass="form-control" AutoPostBack="false">
                     </asp:DropDownList>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <h4>Escriba un Filtro</h4>
-                    <asp:TextBox ID="txtpuesto_filtro" runat="server" TextMode="SingleLine" CssClass="form-control" AutoPostBack="false" OnTextChanged="lnkbuscarpuestos_Click" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
-                    <h4>&nbsp&nbsp</h4>
-                    <asp:LinkButton ID="lnkbuscarpuestos" runat="server" CssClass="btn btn-success btn-block" OnClick="lnkbuscarpuestos_Click">Buscar <i class="fa fa-search"></i></asp:LinkButton>
+                    <asp:TextBox ID="txtpuesto_filtro" runat="server" TextMode="SingleLine" CssClass="form-control2" Width="80%" AutoPostBack="false" 
+                        OnTextChanged="lnkbuscarpuestos_Click" placeholder="Escriba el Nombre del Puesto o del Empleado"></asp:TextBox>
+                    
+                    <asp:LinkButton ID="lnkbuscarpuestos" runat="server" CssClass="btn btn-success" Width="18%" OnClick="lnkbuscarpuestos_Click"><i class="fa fa-search"></i></asp:LinkButton>
                 </div>
             </div>
             <div class="row">
@@ -94,16 +93,54 @@
                     <asp:TextBox ID="txtfechafin" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-lg-12 col-xs-12">
-                    <asp:LinkButton ID="lnkir" OnClick="lnkir_Click" CssClass="btn btn-success btn-block" runat="server">Generar Graficas <i class="fa fa-repeat" aria-hidden="true"></i></asp:LinkButton>
+                    <asp:LinkButton ID="lnkir" OnClick="lnkir_Click" CssClass="btn btn-success" runat="server">
+                        Generar Graficas&nbsp;<i class="fa fa-pie-chart" aria-hidden="true"></i></asp:LinkButton>
+              
+                    <asp:LinkButton ID="LinkButton1" OnClick="LinkButton1_Click" CssClass="btn btn-info" runat="server">
+                        Ver Detalles Desglosados&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i></asp:LinkButton>
+           
+                    <asp:LinkButton ID="LinkButton2" CssClass="btn btn-danger" runat="server" OnClick="LinkButton2_Click">
+                        Reporte para Junta Dirección&nbsp;<i class="fa fa-users" aria-hidden="true"></i></asp:LinkButton>
+            
+                    <asp:LinkButton ID="LinkButton3" CssClass=" btn btn-primary" runat="server" OnClientClick="window.open('grafica_reclutamiento.aspx');">
+                        Grafica de Rendimiento Reclutamiento&nbsp;<i class="fa fa-address-card-o" aria-hidden="true"></i></asp:LinkButton>
+
+                    <div id="div_combo" runat="server">
+                        
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                        <h4><strong><i class="fa fa-address-card-o" aria-hidden="true"></i>&nbsp;Puede Seleccionar por los Deptos Asignados a los siguientes puestos:</strong></h4>
+                        <asp:DropDownList ID="ddlpuestos_deptos" CssClass=" form-control2" runat="server">
+                        </asp:DropDownList>
+                        <asp:LinkButton ID="LinkButton6" CssClass="btn btn-success" runat="server" OnClick="LinkButton6_Click">
+                        Generar Graficas de sus Deptos&nbsp;<i class="fa fa-pie-chart" aria-hidden="true"></i></asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton7" CssClass="btn btn-info" runat="server" OnClick="LinkButton7_Click">
+                        Ver Detalles Desglosados de sus Deptos&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i></asp:LinkButton>
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <asp:LinkButton ID="LinkButton1" OnClick="LinkButton1_Click" CssClass="btn btn-info btn-block" runat="server">Ver Detalles Desglosados <i class="fa fa-repeat" aria-hidden="true"></i></asp:LinkButton>
-                </div>
-                <div class="col-lg-12 col-xs-12">
-                    <asp:LinkButton ID="LinkButton2" CssClass="btn btn-danger btn-block" runat="server" OnClick="LinkButton2_Click">Reporte para Junta Direccion <i class="fa fa-repeat" aria-hidden="true"></i></asp:LinkButton>
-                </div>
+            </div>
+            <div class="row" id="div_misdeptos" runat="server" visible="false">
+
                 <div class="col-lg-12">
-                    <asp:LinkButton ID="LinkButton3" CssClass=" btn btn-success btn-block" runat="server" OnClientClick="window.open('grafica_reclutamiento.aspx');">Grafica de Rendimiento Reclutamiento</asp:LinkButton>
+                    <br />
+                    <br />
+                    <br />
+                       <div class="alert fresh-color alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        USTED TIENE DEPARTAMENTOS ASIGNADOS, Y PUEDE VER UN REPORTE DE ESTOS MISMOS.
+                    </div>
+                    <h4><strong><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;Listado de Sus Departamentos Asignados</strong></h4>
+                    <asp:LinkButton ID="LinkButton4" CssClass="btn btn-success" runat="server" OnClick="LinkButton4_Click">
+                        Generar Graficas de mis Deptos&nbsp;<i class="fa fa-pie-chart" aria-hidden="true"></i></asp:LinkButton>
+                
+                    <asp:LinkButton ID="LinkButton5" CssClass="btn btn-info" runat="server" OnClick="LinkButton5_Click">
+                        Ver Detalles Desglosados de mis Deptos&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i></asp:LinkButton>
+
+                    <asp:BulletedList ID="bdlMisDeptos" runat="server">
+
+                    </asp:BulletedList>
                 </div>
             </div>
         </ContentTemplate>

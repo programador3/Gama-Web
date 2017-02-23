@@ -11,9 +11,7 @@ namespace presentacion
 {
     public class ReadXL
     {
-       
-
-        public static DataTable ImportExcel(string filePath)
+                public static DataTable ImportExcel(string filePath)
         {
             //Create a new DataTable.
             DataTable dt = new DataTable();

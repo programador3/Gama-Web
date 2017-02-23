@@ -21,6 +21,8 @@ namespace negocio.Entidades
         private int numero_horas_comienza;
         private int numero_horas_termina;
         private bool lunes;
+        private int idc_puesto;
+        private bool misdeptos;
         private bool martes;
         private bool miercole;
         private bool jueves;
@@ -71,6 +73,8 @@ namespace negocio.Entidades
         public String Ptipo { get { return tipo; } set { tipo = value; } }
         public int Pfrecuencia { get { return frecuencia; } set { frecuencia = value; } }
         public int Pdia_mes { get { return dia_mes; } set { dia_mes = value; } }
+        public int Pidc_puesto { get { return idc_puesto; } set { idc_puesto = value; } }
+        public bool Psolomisdeptos { get { return misdeptos; } set { misdeptos = value; } }
         public int Phora_especifica { get { return hora_especifica; } set { hora_especifica = value; } }
         public int Pnumero_horas { get { return numero_horas; } set { numero_horas = value; } }
         public int Pnumero_horas_comienza { get { return numero_horas_comienza; } set { numero_horas_comienza = value; } }

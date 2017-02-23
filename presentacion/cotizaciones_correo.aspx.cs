@@ -284,8 +284,11 @@ namespace presentacion
 
         public void controles_busqueda_prod(bool estado)
         {
+            cboproductos.Visible = estado;
             txtcodigo.Visible = estado;
             txtcodigo.Enabled = estado;
+
+            LinkButton4.Visible = estado;
             if (estado == true)
             {
                 btnbuscar_codigo.Visible = false;
@@ -1224,6 +1227,7 @@ namespace presentacion
 
         protected void btnmaster_Click(object sender, EventArgs e)
         {
+            string name = sender.ToString();
             prep_cargar_grid_prod_master_cliente(Convert.ToInt32(txtid.Text.Trim()));
             controles_busqueda_master(true);
             controles_busqueda_prod(false);
@@ -1802,6 +1806,312 @@ namespace presentacion
             }
 
 
+        }
+
+        protected void txtcodigo_TextChanged(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+            int idc_cliente = (string.IsNullOrEmpty(txtid.Text) ? 0 : Convert.ToInt32(txtid.Text));
+            
+            try
+            {
+                if ((txtcodigo.Text.Trim().Length < 3))
+                {
+                    Alert.ShowAlertError("Ingrear Minimo 3 Caracteres Para Realizar la Busqueda.", this);
+                    return;
+                }
+                DataTable dt = new DataTable();
+                dt = ViewState["dt_c_correo"] as DataTable;
+                DataSet ds = new DataSet();
+                GWebCN.Productos gweb = new GWebCN.Productos();
+                DataRow row = default(DataRow);
+                DataRow rowr = default(DataRow);
+                row = dt.NewRow();
+                DataRow[] rows = null;
+                if (funciones.isNumeric(txtcodigo.Text))
+                {
+                    ds = gweb.buscar_productos(txtcodigo.Text, "A", Convert.ToInt32(Session["idc_sucursal"]), Convert.ToInt32(Session["sidc_usuario"]));
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        rowr = ds.Tables[0].Rows[0];
+                        row["idc_articulo"] = rowr["idc_articulo"];
+                        rows = dt.Select("idc_articulo=" + row["idc_articulo"].ToString());
+                        if (rows.Length > 0)
+                        {
+                            Alert.ShowAlertError("El Articulo ya Esta Capturado.", this);
+                            txtcodigo.Text = "";
+                            txtcodigo.Focus();
+                            return;
+                        }
+                        object[] datos = null;
+                        datos = buscar_precio(Convert.ToInt32(row["idc_articulo"]));
+                        row["Codigo"] = rowr["Codigo"];
+                        row["Descripcion"] = rowr["desart"];
+                        row["UM"] = rowr["unimed"];
+                        row["Precio"] = datos[0];
+                        row["PrecioReal"] = datos[4];
+                        row["Descuento"] = datos[2];
+                        row["Decimales"] = rowr["decimales"];
+                        row["Paquete"] = rowr["paquete"];
+                        row["precio_libre"] = rowr["precio_libre"];
+                        row["comercial"] = rowr["comercial"];
+                        row["fecha"] = rowr["fecha"];
+                        row["obscotiza"] = rowr["obscotiza"];
+                        row["vende_exis"] = rowr["vende_exis"];
+                        row["minimo_venta"] = rowr["minimo_venta"];
+                        row["Master"] = true;
+                        row["mensaje"] = rowr["mensaje"];
+                        row["Porcentaje"] = calculado(Convert.ToInt32(row["idc_articulo"]));
+                        row["Calculado"] = Convert.ToDecimal(row["Porcentaje"]) > 0;
+                        row["Nota_Credito"] = datos[3];
+                        row["Anticipo"] = rowr["anticipo"];
+                        row["Costo"] = datos[1];
+                        if (Convert.ToBoolean(row["Calculado"]))
+                        {
+                            row["Cantidad"] = 1;
+                            row["Existencia"] = 1;
+                            dt.Rows.Add(row);
+                            ViewState["dt_c_correo"] = dt;
+                            calcular_valores();
+                            Articulos_Calculados();
+                            gridprodcotizados.DataSource = ViewState["dt_c_correo"] as DataTable;
+                            gridprodcotizados.DataBind();
+                            limpiar_controles();
+
+                            controles_busqueda_prod(true);
+                            controles_busqueda_prod_sel_cancel(false);
+                            txtcodigo.Attributes.Remove("onfocus");
+                            txtcodigo.Text = string.Empty;
+                        }
+                        else
+                        {
+                            Session["dt_productos_busqueda"] = ds.Tables[0];
+                            ds.Tables[0].Columns.Add("nombre2");
+                            for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                            {
+                                ds.Tables[0].Rows[i]["nombre2"] = ds.Tables[0].Rows[i]["desart"].ToString() + " || " + ds.Tables[0].Rows[i]["unimed"].ToString();
+                            }
+                            controles_busqueda_prod_sel_cancel(true);
+                            //controles_busqueda_prod(False)
+                            txtcodigo.Text = string.Empty;
+                            btnbuscar_codigo.Visible = false;
+                            cboproductos.DataSource = ds.Tables[0];
+                            cboproductos.DataTextField = "nombre2";
+                            cboproductos.DataValueField = "idc_articulo";
+                            cboproductos.DataBind();
+                            btn_seleccionar_master.Visible = true;
+                            btn_seleccionar_master.Attributes["onclick"] = "return editar_articulo();";
+
+                        }
+                    }
+                    else
+                    {
+                        ds = gweb.buscar_productos(txtcodigo.Text, "D", Convert.ToInt32(Session["idc_sucursal"]), Convert.ToInt32(Session["sidc_usuario"]));
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            Session["dt_productos_busqueda"] = ds.Tables[0];
+                            ds.Tables[0].Columns.Add("nombre2");
+                            for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                            {
+                                ds.Tables[0].Rows[i]["nombre2"] = ds.Tables[0].Rows[i]["desart"].ToString() + " || " + ds.Tables[0].Rows[i]["unimed"].ToString();
+                            }
+                            controles_busqueda_prod_sel_cancel(true);
+                            //controles_busqueda_prod(False)
+                            txtcodigo.Text = string.Empty;
+                            btnbuscar_codigo.Visible = false;
+                            cboproductos.DataSource = ds.Tables[0];
+                            cboproductos.DataTextField = "nombre2";
+                            cboproductos.DataValueField = "idc_articulo";
+                            cboproductos.DataBind();
+                            btn_seleccionar_master.Visible = true;
+                            btn_seleccionar_master.Attributes["onclick"] = "return editar_articulo();";
+                        }
+                        else
+                        {
+                            CargarMsgBox("No se encontro articulo con esa descripción");
+                            txtcodigo.Focus();
+                        }
+                    }
+                }
+                else
+                {
+                    ds = gweb.buscar_productos(txtcodigo.Text, "C", Convert.ToInt32(Session["idc_sucursal"]), Convert.ToInt32(Session["sidc_usuario"]));
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        //gridresultadosbusqueda.DataSource = ds
+                        //gridresultadosbusqueda.DataBind()
+                        //mpeSeleccion.Show()
+                        Session["dt_productos_busqueda"] = ds.Tables[0];
+                        ds.Tables[0].Columns.Add("nombre2");
+                        for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                        {
+                            ds.Tables[0].Rows[i]["nombre2"] = ds.Tables[0].Rows[i]["desart"].ToString() + " || " + ds.Tables[0].Rows[i]["unimed"].ToString();
+                    }
+                        controles_busqueda_prod_sel_cancel(true);
+                        //controles_busqueda_prod(False)
+                        txtcodigo.Text = string.Empty;
+                        btnbuscar_codigo.Visible = false;
+                        //cboproductos.Attributes("style") = "width:100%"
+                        cboproductos.DataSource = ds.Tables[0];
+                        cboproductos.DataTextField = "nombre2";
+                        cboproductos.DataValueField = "idc_articulo";
+                        cboproductos.DataBind();
+                        btn_seleccionar_master.Visible = true;
+                        btn_seleccionar_master.Attributes["onclick"] = "return editar_articulo();";
+                    }
+                    else
+                    {
+                        ds = gweb.buscar_productos(txtcodigo.Text, "B", Convert.ToInt32(Session["idc_sucursal"]), Convert.ToInt32(Session["sidc_usuario"]));
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            //gridresultadosbusqueda.DataSource = ds
+                            //gridresultadosbusqueda.DataBind()
+                            //mpeSeleccion.Show()
+                            Session["dt_productos_busqueda"] = ds.Tables[0];
+                            ds.Tables[0].Columns.Add("nombre2");
+                            for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                            {
+                                ds.Tables[0].Rows[i]["nombre2"] = ds.Tables[0].Rows[i]["desart"].ToString() + " || " + ds.Tables[0].Rows[i]["unimed"].ToString();
+                            }
+                            controles_busqueda_prod_sel_cancel(true);
+                            //controles_busqueda_prod(False)
+                            txtcodigo.Text = string.Empty;
+                            btnbuscar_codigo.Visible = false;
+                            //cboproductos.Attributes("style") = "width:100%"
+                            cboproductos.DataSource = ds.Tables[0];
+                            cboproductos.DataTextField = "nombre2";
+                            cboproductos.DataValueField = "idc_articulo";
+                            cboproductos.DataBind();
+                            btn_seleccionar_master.Visible = true;
+                            btn_seleccionar_master.Attributes["onclick"] = "return editar_articulo();";
+                        }
+                        else
+                        {
+                            CargarMsgbox("No se encontro articulo con esa descripción");
+                        }
+                    }
+                }
+                //Session["dt_productos_busqueda_cot"]
+            }
+            catch (Exception ex)
+            {
+                CargarMsgbox(ex.Message);
+            }
+            finally
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "cerrar_process", "<script>myStopFunction_busq();</script>", false);
+            }
+            
+
+
+        }
+
+
+
+        public double calculado(int idc_articulo)
+        {
+            try
+            {
+                GWebCN.Productos gweb = new GWebCN.Productos();
+                DataSet datos = new DataSet();
+                DataRow row = default(DataRow);
+                datos = gweb.Articulo_calculado(idc_articulo);
+                if (datos.Tables[0].Rows.Count > 0)
+                {
+                    row = datos.Tables[0].Rows[0];
+                    return Convert.ToDouble(row["porcentaje"]);
+                }
+                else {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                CargarMsgBox(ex.ToString());
+                return 0;
+            }
+        }
+
+
+        public object[] buscar_precio(int idc_articulo)
+        {
+            object[] datos = new object[5];
+            try
+            {
+                // 0=Precio, 1=Costo , 2=Descuento, 3=Nota_Credito, 4=Precio_Real
+                GWebCN.Productos gweb = new GWebCN.Productos();
+                DataSet ds = new DataSet();
+                DataRow row = default(DataRow);
+                DataRow rowprincipal = default(DataRow);
+                rowprincipal = Session["rowprincipal"] as DataRow;
+                ds = gweb.Nota_Credito_Automatica(Convert.ToInt32(txtid.Text.Trim()), idc_articulo);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    row = ds.Tables[0].Rows[0];
+                    if (txtrfc.Text.StartsWith("*"))
+                    {
+                        //txtprecio.Text = Redondeo_cuatro_decimales(row("precio") * ((Session["Xiva"] / 100) + 1))
+                        datos[0] = Redondeo_cuatro_decimales(Convert.ToDouble(row["precio"]) * ((Convert.ToDouble(Session["Xiva"]) / 100) + 1));
+                    }
+                    else
+                    {
+                        //txtprecio.Text = Redondeo_cuatro_decimales(row("precio"))
+                        datos[0] = Redondeo_cuatro_decimales(Convert.ToDouble(row["precio"]));
+                    }
+                    //txtprecio.Enabled = False
+                    datos[1] = row[8];
+                    datos[2] = Convert.ToDouble(row["descuento"]);
+                    datos[3] = true;
+                    datos[4] = Redondeo_cuatro_decimales(Convert.ToDouble(row["precio"]) - Convert.ToDouble(row["descuento"]));
+                }
+                else
+                {
+                    ds = gweb.buscar_precio_producto(idc_articulo, Convert.ToInt32(txtid.Text.Trim()), Convert.ToInt32(Session["idc_sucursal"]));
+                    ///*Cambiar 1 por la Var Session[""]*/
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        row = ds.Tables[0].Rows[0];
+                        if (txtrfc.Text.StartsWith("*"))
+                        {
+                            //txtprecio.Text = Redondeo_cuatro_decimales(row("precio") * ((Session["Xiva"] / 100) + 1))
+                            //txtprecio.Text = Math.Round(CDec(txtprecio.Text), 4)
+                            datos[0] = Redondeo_cuatro_decimales(Convert.ToDouble(row["precio"]) * ((Convert.ToDouble(Session["Xiva"]) / 100) + 1));
+                        }
+                        else
+                        {
+                            //txtprecio.Text = Redondeo_cuatro_decimales(row("precio"))
+                            datos[0] = Redondeo_cuatro_decimales(Convert.ToDouble(row["precio"]));
+                        }
+
+                        datos[3] = false;
+                        datos[1] = row[1];
+                        datos[2] = 0;
+                        datos[4] = Redondeo_cuatro_decimales(Convert.ToDouble(row["precio"]));
+                    }
+                }
+                //Session["rowprincipal"] = rowprincipal
+                if (datos.Length > 0)
+                {
+                    return datos;
+                }
+                else {
+                    return datos;
+                }
+            }
+            catch (Exception ex)
+            {
+                CargarMsgbox(ex.Message);
+                return datos;
+            }
+        }
+        private void CargarMsgbox(string msg)
+        {
+            Alert.ShowAlertError(msg,this);
         }
     }
 }

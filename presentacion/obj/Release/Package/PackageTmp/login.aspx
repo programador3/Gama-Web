@@ -80,7 +80,6 @@
                 </div>
             </div>
             <!-- Top content -->
-            
         </ContentTemplate>
     </asp:UpdatePanel>
     <div id="footer-zone" style="text-align: center; color: white;">

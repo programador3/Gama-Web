@@ -16,6 +16,8 @@ namespace negocio.Entidades
         private string pcontraseña;
         private int pidc_usuario_term;
         private bool todo;
+        private int idc_puesto;
+        private bool misdeptos;
         private DateTime pfechaInicio;
         private DateTime pfechafin;
         private int pidc_depto_aten;
@@ -28,10 +30,12 @@ namespace negocio.Entidades
 
         private int pidc_usuario;
 
+        public int Pidc_puesto { get { return idc_puesto; } set { idc_puesto = value; } }
+        public bool Psolomisdeptos { get { return misdeptos; } set { misdeptos = value; } }
         public int Pidc_tareaser { get { return pidc_tareaser; } set { pidc_tareaser = value; } }
         public int Pidc_ticketserv { get { return pidc_ticketserv; } set { pidc_ticketserv = value; } }
         public int Pidc_ticketserva { get { return pidc_ticketserva; } set { pidc_ticketserva = value; } }
-        public int Pidc_puesto { get { return pidc_puesto; } set { pidc_puesto = value; } }
+        public int Pidc_puestomira { get { return pidc_puesto; } set { pidc_puesto = value; } }
         public string Pmotivo { get { return pmotivo; } set { pmotivo = value; } }
         public string Pobservaciones { get { return pobservaciones; } set { pobservaciones = value; } }
         public string Pcontraseña { get { return pcontraseña; } set { pcontraseña = value; } }

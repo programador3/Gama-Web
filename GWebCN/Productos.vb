@@ -112,6 +112,19 @@ Public Class Productos
 
         End Try
     End Function
+    Public Function buscar_productosCliente(ByVal codigo As Object, ByVal tipo As String, ByVal idc_sucursal As Integer, ByVal idc_usuario As Integer, ByVal idc_cliente As Integer) As DataSet
+        Dim parametros() As String = {"@pvalor", "@ptipo", "@pidc_sucursal", "@pidc_usuario", "@pidc_cliente"}
+        Dim valores() As String = {codigo.ToString.Trim, tipo, idc_sucursal, idc_usuario, idc_cliente}
+        Try
+            Return GWebCD.clsConexion.EjecutaSP("sp_buscar_articulo_VENTAS_existencias", parametros, valores)
+        Catch ex As Exception
+            Throw ex
+        Finally
+            parametros = Nothing
+            valores = Nothing
+
+        End Try
+    End Function
     Public Function buscar_precio_producto(ByVal codigo As Integer, ByVal idc_cliente As Integer, ByVal idc_sucursal As Integer) As DataSet
         Dim parametros() As String = {"@pidc_articulo", "@pidc_cliente", "@pidc_sucursal"}
         Dim valores() As Object = {codigo, idc_cliente, idc_sucursal}

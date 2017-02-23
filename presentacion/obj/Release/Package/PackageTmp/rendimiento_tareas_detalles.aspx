@@ -99,12 +99,12 @@
                                             <asp:Image ID="edo" runat="server" Width="20px" ImageUrl="~/imagenes/btn/inchecked.png" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="R. Solicitante" HeaderStyle-Width="60px">
+                                    <asp:TemplateField HeaderText="R. Solicitante" HeaderStyle-Width="60px" Visible="False">
                                         <ItemTemplate>
                                             <asp:Image ID="r_usuarios" runat="server" Width="20px" ImageUrl="~/imagenes/btn/inchecked.png" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="R. Sistema" HeaderStyle-Width="60px">
+                                    <asp:TemplateField HeaderText="Resultado Sistema" HeaderStyle-Width="120px">
                                         <ItemTemplate>
                                             <asp:Image ID="r_sistema" runat="server" Width="20px" ImageUrl="~/imagenes/btn/inchecked.png" />
                                         </ItemTemplate>

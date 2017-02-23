@@ -658,7 +658,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <asp:Button ID="btncomisiones" runat="server" CssClass="btn btn-success btn-block" Text="Bono de Presupuesto"  data-toggle="modal" data-target="#myModal" />
+                            <asp:Button ID="btncomisiones" runat="server" CssClass="btn btn-success btn-block" Text="Bono de Presupuesto" />
                         </td>
                     </tr>
                     <!-- fin 14-10-2015 MIC -->

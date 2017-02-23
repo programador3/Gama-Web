@@ -283,3 +283,10 @@ D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\17_02_17\Puestos\datos\
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\17_02_17\Puestos\datos\obj\Debug\datos.csproj.GenerateResource.Cache
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\17_02_17\Puestos\datos\obj\Debug\datos.dll
 D:\Trabajos Humberto\Proyectos Diarios\2017\FEBRERO 2017\17_02_17\Puestos\datos\obj\Debug\datos.pdb
+Y:\PROYECTOS\20_02_17\Puestos\datos\bin\Debug\datos.dll
+Y:\PROYECTOS\20_02_17\Puestos\datos\bin\Debug\datos.pdb
+Y:\PROYECTOS\20_02_17\Puestos\datos\obj\Debug\datos.csprojResolveAssemblyReference.cache
+Y:\PROYECTOS\20_02_17\Puestos\datos\obj\Debug\datos.recursos.resources
+Y:\PROYECTOS\20_02_17\Puestos\datos\obj\Debug\datos.csproj.GenerateResource.Cache
+Y:\PROYECTOS\20_02_17\Puestos\datos\obj\Debug\datos.dll
+Y:\PROYECTOS\20_02_17\Puestos\datos\obj\Debug\datos.pdb

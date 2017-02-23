@@ -143,6 +143,8 @@ namespace negocio.Componentes
             DataSet ds = new DataSet();
             List<SqlParameter> listparameters = new List<SqlParameter>();
             Datos data = new Datos();
+            listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puestoconsulta", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto });
+            listparameters.Add(new SqlParameter() { ParameterName = "@PMIS_DEPTOS", SqlDbType = SqlDbType.Int, Value = Etiqueta.Psolomisdeptos });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_puesto", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_puesto_realiza });
             listparameters.Add(new SqlParameter() { ParameterName = "@pidc_depto", SqlDbType = SqlDbType.Int, Value = Etiqueta.Pidc_depto });
             if (Etiqueta.Pfecha_empieza != Convert.ToDateTime("1/1/0001 12:00:00 AM"))

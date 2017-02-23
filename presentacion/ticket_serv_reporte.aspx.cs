@@ -25,7 +25,8 @@ namespace presentacion
 
             if (!IsPostBack)
             {
-                txtfechainicio.Text = DateTime.Now.ToString("yyyy-MM-01");
+                LlenaCombos();
+                txtfechainicio.Text = DateTime.Now.AddMonths(-1).ToString("yyyy-MM-01");
                 txtfechafin.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 CargaDeptos();
                 CargaPuestos("", 0);
@@ -107,6 +108,26 @@ namespace presentacion
 
         }
 
+        private void LlenaCombos()
+        {
+            try
+            {
+                TareasCOM componente = new TareasCOM();
+                DataSet ds = componente.SP_fn_deptos_asignados_puestos(0);
+                DataTable dt = ds.Tables[0];
+                DataView view = new DataView(dt);
+                DataTable distinctValues = view.ToTable(true, "empleado", "idc_puesto");
+                ddlpuestos_deptos.DataValueField = "idc_puesto";
+                ddlpuestos_deptos.DataTextField = "empleado";
+                ddlpuestos_deptos.DataSource = distinctValues;
+                ddlpuestos_deptos.DataBind();
+                div_combo.Visible = distinctValues.Rows.Count > 0;
+            }
+            catch (Exception ex)
+            {
+                Alert.ShowAlertError(ex.ToString(), this.Page);
+            }
+        }
         protected void ddldeptos_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargaPuestos("", Convert.ToInt32(ddldeptos.SelectedValue));
@@ -122,11 +143,13 @@ namespace presentacion
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", str_modal, true);
         }
 
-        public void Cargar_Grid(int id)
+        public void Cargar_Grid(int id, bool solo_mis_deptos,int idc_puestomira )
         {
             ticket_servCOM com = new ticket_servCOM();
             ticket_servENT ent = new ticket_servENT();
 
+            ent.Psolomisdeptos = solo_mis_deptos;
+            ent.Pidc_puestomira = idc_puestomira;
             ent.PfechaInicio = Convert.ToDateTime(txtfechainicio.Text);
             ent.Pfechafin = Convert.ToDateTime(txtfechafin.Text);
 
@@ -331,7 +354,7 @@ namespace presentacion
         {
             /*fechas no valida*/
             if (!validar_fechas()) { return; }
-            Cargar_Grid(0);
+            Cargar_Grid(0,false,0);
         }
 
         private bool validar_fechas()
@@ -422,6 +445,20 @@ namespace presentacion
             }
         }
 
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            if (!validar_fechas())
+            {
+                return;
+            }
+            else if (ddlpuestos_deptos.SelectedValue == "")
+            {
+
+            }
+            else {
+                Cargar_Grid(0, true, Convert.ToInt32(ddlpuestos_deptos.SelectedValue));
+            }
+        }
 
     }
 }

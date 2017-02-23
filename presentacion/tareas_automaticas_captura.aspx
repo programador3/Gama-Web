@@ -123,7 +123,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h4><i class="fa fa-list-alt"></i>&nbsp;Descripcion de la tarea</h4>
-                            <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" placeholder="Descripcion" CssClass="form-control" TextMode="MultiLine" Rows="4" onblur="return imposeMaxLength(this, 1000);" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
+                            <asp:TextBox ID="txtdescripcion" onfocus="$(this).select();" placeholder="Descripcion" CssClass="form-control" TextMode="MultiLine" Rows="4" 
+                                onblur="return imposeMaxLength(this, 1000);" runat="server" Style="resize: none; text-transform: uppercase;"></asp:TextBox>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <h4><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;Fecha de inicio <small>A partir de cuando comenzara la tarea automatica</small></h4>
@@ -136,7 +137,8 @@
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                             <h4><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Tiempo de duracion</h4>
                             <h4>Tiempo aproximado de duración en horas (este tiempo ayuda a calcular la fecha compromiso)
-                        <asp:TextBox ID="txthoras_terminar" onblur="ValidateRange(this,1,360,'El valor de duracion debe ser de 1 a 360 horas (1-15 dias)');" onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="txtred" Width="100px" TextMode="Number" MaxLength="1" runat="server" AutoPostBack="true"></asp:TextBox>
+                        <asp:TextBox ID="txthoras_terminar" onblur="ValidateRange(this,1,720,'El valor de duracion debe ser de 1 a 720 horas (1-30 dias)');" 
+                            onkeypress="return validarEnteros(event);" onfocus="$(this).select();" CssClass="txtred" Width="100px" TextMode="Number" MaxLength="1" runat="server"></asp:TextBox>
                             </h4>
                         </div>
                         <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">

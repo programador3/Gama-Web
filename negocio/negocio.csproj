@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Componentes\ArticulosCOM.cs" />
     <Compile Include="Componentes\comidasCOM.cs" />
     <Compile Include="Componentes\AdministradorPrebajasCOM.cs" />
     <Compile Include="Componentes\Administrador_EntregasCOM.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Entidades\Aprobaciones_solicitudE.cs" />
     <Compile Include="Entidades\ArbolTareas.cs" />
     <Compile Include="Entidades\Area_TrabajoENT.cs" />
+    <Compile Include="Entidades\ArticulosENT.cs" />
     <Compile Include="Entidades\Asignacion_RevisionesENT.cs" />
     <Compile Include="Entidades\AvisosENT.cs" />
     <Compile Include="Entidades\BajasENT.cs" />

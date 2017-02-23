@@ -111,6 +111,20 @@ namespace presentacion
                         //pasamos a estilos title
                         String nombre_user = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(nombre_usuario);
                         String puesto_user = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(puesto_perfil);
+                       
+                        //Char delimiter = ' ';
+                        //String[] substrings = nombre_user.Split(delimiter);
+                        //nombre_user = "";
+                        //int i = 0;
+                        //foreach (var substring in substrings)
+                        //{
+                        //    if (i < substrings.Length - 1)
+                        //    {
+                        //        nombre_user = nombre_user + substring + delimiter;
+                        //        i++;
+
+                        //    }
+                        //}
                         //subimos a sesion
                         Session["nombre"] = nombre_user;
                         Session["puesto_login"] = puesto_user;
@@ -259,5 +273,6 @@ namespace presentacion
             Session["sidc_usuario"] = null;
             Response.Redirect("login.aspx");
         }
+
     }
 }
